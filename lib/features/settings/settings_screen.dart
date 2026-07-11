@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/constants/app_colors.dart';
@@ -23,40 +25,59 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
   int _dailyGoal = 50;
   bool _isLoading = true;
   bool _isSaving = false;
+  String? _loadError;
 
   @override
   void initState() {
     super.initState();
-    _loadSettings();
+    unawaited(_loadSettings());
   }
 
   Future<void> _loadSettings() async {
-    final openai = ref.read(openaiServiceProvider);
-    final key = await openai.getApiKey();
-    final model = await openai.getModel();
-    final baseUrl = await openai.getBaseUrl();
-    final providerId = await openai.getProviderId();
-    final stats = await ref.read(gamificationServiceProvider).getStats();
+    try {
+      final openai = ref.read(openaiServiceProvider);
+      final key = await openai.getApiKey();
+      final model = await openai.getModel();
+      final baseUrl = await openai.getBaseUrl();
+      final providerId = await openai.getProviderId();
+      final stats = await ref.read(gamificationServiceProvider).getStats();
+      if (!mounted) return;
 
+      setState(() {
+        _apiKeyController.text = key ?? '';
+        _baseUrlController.text = baseUrl;
+        _selectedProviderId = providerId;
+        _dailyGoal = stats.dailyGoal;
+
+        // 检查模型是否在当前厂商的预设列表中
+        final provider = AIProviders.getById(providerId);
+        if (provider != null && provider.models.contains(model)) {
+          _selectedModel = model;
+          _useCustomModel = false;
+        } else {
+          // 不在预设列表中，使用自定义模型
+          _useCustomModel = true;
+          _customModelController.text = model;
+        }
+
+        _loadError = null;
+        _isLoading = false;
+      });
+    } catch (error) {
+      if (!mounted) return;
+      setState(() {
+        _loadError = '设置加载失败: $error';
+        _isLoading = false;
+      });
+    }
+  }
+
+  void _retryLoadSettings() {
     setState(() {
-      _apiKeyController.text = key ?? '';
-      _baseUrlController.text = baseUrl;
-      _selectedProviderId = providerId;
-      _dailyGoal = stats.dailyGoal;
-
-      // 检查模型是否在当前厂商的预设列表中
-      final provider = AIProviders.getById(providerId);
-      if (provider != null && provider.models.contains(model)) {
-        _selectedModel = model;
-        _useCustomModel = false;
-      } else {
-        // 不在预设列表中，使用自定义模型
-        _useCustomModel = true;
-        _customModelController.text = model;
-      }
-
-      _isLoading = false;
+      _loadError = null;
+      _isLoading = true;
     });
+    unawaited(_loadSettings());
   }
 
   /// 选择厂商时自动填充 base URL 和默认模型
@@ -84,25 +105,81 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
   Future<void> _saveSettings() async {
     setState(() => _isSaving = true);
     final openai = ref.read(openaiServiceProvider);
-    await openai.setApiKey(_apiKeyController.text.trim());
-    await openai.setBaseUrl(_baseUrlController.text.trim());
-    await openai.setProviderId(_selectedProviderId);
+    final model =
+        _useCustomModel ? _customModelController.text.trim() : _selectedModel;
 
-    final model = _useCustomModel
-        ? _customModelController.text.trim()
-        : _selectedModel;
-    await openai.setModel(model);
-
-    await ref.read(userStatsProvider.notifier).setDailyGoal(_dailyGoal);
-    setState(() => _isSaving = false);
-
-    if (mounted) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('设置已保存'),
-          backgroundColor: AppColors.green,
-        ),
+    try {
+      final baseUrl = OpenAIService.validateAndNormalizeBaseUrl(
+        _baseUrlController.text,
       );
+      final previousApiKey = await openai.getApiKey();
+      final previousBaseUrl = await openai.getBaseUrl();
+      final previousProviderId = await openai.getProviderId();
+      final previousModel = await openai.getModel();
+      final previousDailyGoal =
+          (await ref.read(gamificationServiceProvider).getStats()).dailyGoal;
+
+      try {
+        await openai.setApiKey(_apiKeyController.text.trim());
+        await openai.setBaseUrl(baseUrl);
+        await openai.setProviderId(_selectedProviderId);
+        await openai.setModel(model);
+        await ref.read(userStatsProvider.notifier).setDailyGoal(_dailyGoal);
+      } catch (_) {
+        Object? rollbackError;
+        final rollbackOperations = <Future<void> Function()>[
+          () => openai.setApiKey(previousApiKey ?? ''),
+          () => openai.restoreBaseUrlForRollback(previousBaseUrl),
+          () => openai.setProviderId(previousProviderId),
+          () => openai.setModel(previousModel),
+          () => ref
+              .read(userStatsProvider.notifier)
+              .setDailyGoal(previousDailyGoal),
+        ];
+        for (final rollback in rollbackOperations) {
+          try {
+            await rollback();
+          } catch (error) {
+            rollbackError ??= error;
+          }
+        }
+        if (rollbackError != null) {
+          throw StateError('设置回滚未完全成功: $rollbackError');
+        }
+        rethrow;
+      }
+
+      if (mounted) {
+        _baseUrlController.text = baseUrl;
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('设置已保存'),
+            backgroundColor: AppColors.green,
+          ),
+        );
+      }
+    } on FormatException catch (error) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(error.message.toString()),
+            backgroundColor: AppColors.red,
+          ),
+        );
+      }
+    } catch (error) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('保存失败: $error'),
+            backgroundColor: AppColors.red,
+          ),
+        );
+      }
+    } finally {
+      if (mounted) {
+        setState(() => _isSaving = false);
+      }
     }
   }
 
@@ -122,6 +199,35 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
     if (_isLoading) {
       return const Scaffold(
         body: Center(child: CircularProgressIndicator(color: AppColors.green)),
+      );
+    }
+    if (_loadError != null) {
+      return Scaffold(
+        appBar: AppBar(title: const Text('设置')),
+        body: Center(
+          child: Padding(
+            padding: const EdgeInsets.all(24),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const Icon(Icons.error_outline, color: AppColors.red, size: 44),
+                const SizedBox(height: 12),
+                Text(
+                  _loadError!,
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(color: AppColors.textSecondary),
+                ),
+                const SizedBox(height: 20),
+                DuoButton(
+                  label: '重试',
+                  icon: Icons.refresh,
+                  width: 160,
+                  onPressed: _retryLoadSettings,
+                ),
+              ],
+            ),
+          ),
+        ),
       );
     }
 

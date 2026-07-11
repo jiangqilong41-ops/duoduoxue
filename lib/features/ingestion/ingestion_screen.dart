@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/material.dart';
@@ -6,17 +7,27 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/providers/providers.dart';
+import '../../services/shared_image_store.dart';
 import '../../shared/widgets/duo_button.dart';
 import 'deck_preview_screen.dart';
+
+typedef SharedImageLoader = Future<String> Function(String imagePath);
+
+Future<String> _loadSharedImage(String imagePath) async {
+  final bytes = await File(imagePath).readAsBytes();
+  return base64Encode(bytes);
+}
 
 class IngestionScreen extends ConsumerStatefulWidget {
   final String? sharedText;
   final String? sharedImagePath;
+  final SharedImageLoader imageLoader;
 
   const IngestionScreen({
     super.key,
     this.sharedText,
     this.sharedImagePath,
+    this.imageLoader = _loadSharedImage,
   });
 
   @override
@@ -30,6 +41,8 @@ class _IngestionScreenState extends ConsumerState<IngestionScreen> {
   bool _isAnalyzing = false;
   String _statusText = '';
   String? _errorMessage;
+  bool _imageTransferred = false;
+  bool _isImageLoading = false;
 
   @override
   void initState() {
@@ -39,6 +52,7 @@ class _IngestionScreenState extends ConsumerState<IngestionScreen> {
     }
     if (widget.sharedImagePath != null) {
       _imagePath = widget.sharedImagePath;
+      _isImageLoading = true;
       _loadImageBase64();
     }
   }
@@ -46,18 +60,24 @@ class _IngestionScreenState extends ConsumerState<IngestionScreen> {
   Future<void> _loadImageBase64() async {
     if (_imagePath == null) return;
     try {
-      final file = File(_imagePath!);
-      final bytes = await file.readAsBytes();
+      final imageBase64 = await widget.imageLoader(_imagePath!);
+      if (!mounted) return;
       setState(() {
-        _imageBase64 = base64Encode(bytes);
+        _imageBase64 = imageBase64;
+        _isImageLoading = false;
       });
-    } catch (e) {
-      // 忽略图片加载错误
+    } catch (_) {
+      if (!mounted) return;
+      setState(() {
+        _isImageLoading = false;
+        _errorMessage = '图片读取失败，请重新分享或选择其他图片';
+      });
     }
   }
 
   Future<void> _pasteFromClipboard() async {
     final clipData = await Clipboard.getData('text/plain');
+    if (!mounted) return;
     if (clipData?.text != null && clipData!.text!.isNotEmpty) {
       setState(() {
         _textController.text = clipData.text!;
@@ -73,8 +93,15 @@ class _IngestionScreenState extends ConsumerState<IngestionScreen> {
     }
 
     // 检查 API Key
-    final openai = ref.read(openaiServiceProvider);
-    final hasKey = await openai.hasApiKey();
+    late final bool hasKey;
+    try {
+      hasKey = await ref.read(openaiServiceProvider).hasApiKey();
+    } catch (error) {
+      if (!mounted) return;
+      setState(() => _errorMessage = '无法读取 API Key: $error');
+      return;
+    }
+    if (!mounted) return;
     if (!hasKey) {
       setState(() => _errorMessage = '请先在设置中配置 OpenAI API Key');
       return;
@@ -95,12 +122,14 @@ class _IngestionScreenState extends ConsumerState<IngestionScreen> {
         imageBase64: _imageBase64,
       );
 
+      if (!mounted) return;
       setState(() => _statusText = '正在生成题目...');
       await Future.delayed(const Duration(milliseconds: 500));
 
       if (mounted) {
         setState(() => _isAnalyzing = false);
         // 跳转到预览页，用户确认后再保存
+        _imageTransferred = true;
         Navigator.of(context).pushReplacement(
           MaterialPageRoute(
             builder: (_) => DeckPreviewScreen(
@@ -123,6 +152,9 @@ class _IngestionScreenState extends ConsumerState<IngestionScreen> {
 
   @override
   void dispose() {
+    if (!_imageTransferred) {
+      unawaited(deleteOwnedImage(_imagePath));
+    }
     _textController.dispose();
     super.dispose();
   }
@@ -264,6 +296,7 @@ class _IngestionScreenState extends ConsumerState<IngestionScreen> {
             height: 56,
             icon: Icons.auto_awesome,
             fontSize: 18,
+            enabled: !_isImageLoading,
             onPressed: _analyze,
           ),
         ],

@@ -1,7 +1,7 @@
 name: dlg_q
 description: "DIY 多邻国学习APP - 用户自定义题库 + AI拆题"
 publish_to: 'none'
-version: 1.0.0+1
+version: 1.0.1+1
 
 environment:
   sdk: ^3.5.0
@@ -19,12 +19,14 @@ dependencies:
   google_fonts: ^6.2.1
   flutter_svg: ^2.0.10+1
   shared_preferences: ^2.3.2
+  flutter_secure_storage: ^10.3.1
   cached_network_image: ^3.4.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^4.0.0
+  shared_preferences_platform_interface: ^2.4.2
 
 flutter:
   uses-material-design: true

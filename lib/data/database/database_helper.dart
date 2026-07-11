@@ -1,5 +1,6 @@
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
+import '../../services/shared_image_store.dart';
 import '../models/deck.dart';
 import '../models/question.dart';
 import '../models/study_record.dart';
@@ -127,9 +128,15 @@ class DatabaseHelper {
 
   Future<void> deleteDeck(String id) async {
     final db = await database;
+    final deck = await getDeck(id);
     await db.delete('questions', where: 'deck_id = ?', whereArgs: [id]);
     await db.delete('study_records', where: 'deck_id = ?', whereArgs: [id]);
     await db.delete('decks', where: 'id = ?', whereArgs: [id]);
+    try {
+      await deleteOwnedImage(deck?.sourceImage);
+    } catch (_) {
+      // Database deletion has committed; leave cleanup as best effort.
+    }
   }
 
   // ============ Question 操作 ============

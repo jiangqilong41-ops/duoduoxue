@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -6,6 +8,7 @@ import '../../core/providers/providers.dart';
 import '../../data/models/question.dart';
 import '../../data/models/question_type.dart';
 import '../../services/content_analyzer.dart';
+import '../../services/shared_image_store.dart';
 import '../../shared/widgets/duo_button.dart';
 
 /// 题目预览页 — AI 生成后让用户预览，确认后保存
@@ -27,6 +30,7 @@ class DeckPreviewScreen extends ConsumerStatefulWidget {
 
 class _DeckPreviewScreenState extends ConsumerState<DeckPreviewScreen> {
   bool _isSaving = false;
+  bool _isSaved = false;
 
   Future<void> _save() async {
     setState(() => _isSaving = true);
@@ -36,6 +40,7 @@ class _DeckPreviewScreenState extends ConsumerState<DeckPreviewScreen> {
             sourceText: widget.sourceText,
             sourceImage: widget.sourceImage,
           );
+      _isSaved = true;
       if (mounted) {
         // 提示保存成功，返回首页
         ScaffoldMessenger.of(context).showSnackBar(
@@ -58,13 +63,28 @@ class _DeckPreviewScreenState extends ConsumerState<DeckPreviewScreen> {
   }
 
   @override
+  void dispose() {
+    if (!_isSaved) {
+      unawaited(deleteOwnedImage(widget.sourceImage));
+    }
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    return PopScope(
+      canPop: !_isSaving,
+      child: _buildScaffold(context),
+    );
+  }
+
+  Widget _buildScaffold(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('题目预览'),
         leading: IconButton(
           icon: const Icon(Icons.close),
-          onPressed: () => Navigator.of(context).pop(),
+          onPressed: _isSaving ? null : () => Navigator.of(context).pop(),
         ),
       ),
       body: Column(

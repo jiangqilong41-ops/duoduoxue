@@ -36,6 +36,7 @@ class HomeScreen extends ConsumerWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton.extended(
+        heroTag: 'home_add_content',
         onPressed: () {
           Navigator.of(context).push(
             MaterialPageRoute(builder: (_) => const IngestionScreen()),
