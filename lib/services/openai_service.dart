@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:dio/dio.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 /// AI 厂商预设
@@ -97,28 +98,57 @@ class OpenAIService {
   static const String _baseUrlKey = 'ai_base_url';
   static const String _providerIdKey = 'ai_provider_id';
 
-  final Dio _dio = Dio(BaseOptions(
-    connectTimeout: const Duration(seconds: 30),
-    receiveTimeout: const Duration(seconds: 120),
-  ));
+  final Dio _dio;
+  final FlutterSecureStorage _secureStorage;
+
+  OpenAIService({Dio? dio, FlutterSecureStorage? secureStorage})
+      : _dio = dio ??
+            Dio(BaseOptions(
+              connectTimeout: const Duration(seconds: 30),
+              receiveTimeout: const Duration(seconds: 120),
+            )),
+        _secureStorage = secureStorage ??
+            const FlutterSecureStorage(
+              iOptions: IOSOptions(
+                accessibility: KeychainAccessibility.unlocked_this_device,
+                synchronizable: false,
+              ),
+            );
 
   Future<String?> getApiKey() async {
     final prefs = await SharedPreferences.getInstance();
-    final key = prefs.getString(_apiKeyKey);
-    if (key != null) return key;
-    // 兼容旧版本 key
-    final oldKey = prefs.getString('openai_api_key');
-    if (oldKey != null) {
-      await prefs.setString(_apiKeyKey, oldKey);
-      await prefs.remove('openai_api_key');
-      return oldKey;
+    final secureKey = await _secureStorage.read(key: _apiKeyKey);
+    if (secureKey != null) {
+      await _removePlaintextApiKeys(prefs);
+      return secureKey;
     }
-    return null;
+
+    final plaintextKey =
+        prefs.getString(_apiKeyKey) ?? prefs.getString('openai_api_key');
+    if (plaintextKey != null) {
+      await _secureStorage.write(key: _apiKeyKey, value: plaintextKey);
+      await _removePlaintextApiKeys(prefs);
+    }
+    return plaintextKey;
   }
 
   Future<void> setApiKey(String key) async {
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setString(_apiKeyKey, key);
+    if (key.isEmpty) {
+      await _removePlaintextApiKeys(prefs);
+      await _secureStorage.delete(key: _apiKeyKey);
+    } else {
+      await _secureStorage.write(key: _apiKeyKey, value: key);
+      await _removePlaintextApiKeys(prefs);
+    }
+  }
+
+  Future<void> _removePlaintextApiKeys(SharedPreferences prefs) async {
+    final currentKeyRemoved = await prefs.remove(_apiKeyKey);
+    final oldKeyRemoved = await prefs.remove('openai_api_key');
+    if (!currentKeyRemoved || !oldKeyRemoved) {
+      throw StateError('无法清理明文 API Key，请重试');
+    }
   }
 
   Future<String> getModel() async {
@@ -137,7 +167,8 @@ class OpenAIService {
 
   Future<void> setModel(String model) async {
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setString(_modelKey, model);
+    final saved = await prefs.setString(_modelKey, model);
+    if (!saved) throw StateError('无法保存 AI 模型');
   }
 
   Future<String> getBaseUrl() async {
@@ -147,7 +178,92 @@ class OpenAIService {
 
   Future<void> setBaseUrl(String url) async {
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setString(_baseUrlKey, url);
+    final saved = await prefs.setString(
+      _baseUrlKey,
+      validateAndNormalizeBaseUrl(url),
+    );
+    if (!saved) throw StateError('无法保存 API Base URL');
+  }
+
+  Future<void> restoreBaseUrlForRollback(String url) async {
+    final prefs = await SharedPreferences.getInstance();
+    final restored = await prefs.setString(_baseUrlKey, url);
+    if (!restored) throw StateError('无法恢复 API Base URL');
+  }
+
+  static String validateAndNormalizeBaseUrl(String value) {
+    final trimmed = value.trim();
+    final match = RegExp(
+      r'^https://([^/?#]*)([^?#]*)$',
+      caseSensitive: false,
+    ).firstMatch(trimmed);
+    final uri = Uri.tryParse(trimmed);
+    if (trimmed.contains(r'\') ||
+        match == null ||
+        uri == null ||
+        uri.scheme != 'https' ||
+        uri.host.isEmpty ||
+        !_isValidAuthority(match.group(1)!) ||
+        uri.userInfo.isNotEmpty ||
+        uri.hasQuery ||
+        uri.hasFragment) {
+      throw const FormatException('API Base URL 必须是有效的 HTTPS 地址');
+    }
+    return uri
+        .replace(scheme: 'https')
+        .toString()
+        .replaceFirst(RegExp(r'/+$'), '');
+  }
+
+  static bool _isValidAuthority(String authority) {
+    if (authority.isEmpty ||
+        authority.contains('@') ||
+        authority.contains('%') ||
+        RegExp(r'\s').hasMatch(authority)) {
+      return false;
+    }
+
+    late String host;
+    String? portText;
+    if (authority.startsWith('[')) {
+      final closingBracket = authority.indexOf(']');
+      if (closingBracket <= 1) return false;
+      host = authority.substring(1, closingBracket);
+      final suffix = authority.substring(closingBracket + 1);
+      if (suffix.isNotEmpty) {
+        if (!suffix.startsWith(':')) return false;
+        portText = suffix.substring(1);
+      }
+      if (!RegExp(r'^[0-9a-fA-F:.]+$').hasMatch(host) ||
+          !host.contains(':')) {
+        return false;
+      }
+    } else {
+      final parts = authority.split(':');
+      if (parts.length > 2) return false;
+      host = parts.first;
+      if (parts.length == 2) portText = parts.last;
+
+      final dnsHost = host.endsWith('.')
+          ? host.substring(0, host.length - 1)
+          : host;
+      final validLabel = RegExp(
+        r'^[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?$',
+      );
+      if (dnsHost.isEmpty ||
+          dnsHost.split('.').any(
+                (label) => label.isEmpty || !validLabel.hasMatch(label),
+              )) {
+        return false;
+      }
+    }
+
+    if (portText != null) {
+      if (!RegExp(r'^\d+$').hasMatch(portText)) return false;
+      final port = int.tryParse(portText);
+      if (port == null || port < 1 || port > 65535) return false;
+    }
+    return true;
   }
 
   Future<String> getProviderId() async {
@@ -157,7 +273,8 @@ class OpenAIService {
 
   Future<void> setProviderId(String id) async {
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setString(_providerIdKey, id);
+    final saved = await prefs.setString(_providerIdKey, id);
+    if (!saved) throw StateError('无法保存 AI 厂商');
   }
 
   Future<bool> hasApiKey() async {
@@ -178,20 +295,21 @@ class OpenAIService {
     }
 
     final model = await getModel();
-    final baseUrl = await getBaseUrl();
+    final baseUrl = validateAndNormalizeBaseUrl(await getBaseUrl());
 
     final messages = <Map<String, dynamic>>[
       {'role': 'system', 'content': systemPrompt},
     ];
 
     if (imageBase64 != null) {
+      final imageMimeType = _detectImageMimeType(imageBase64);
       messages.add({
         'role': 'user',
         'content': [
           {'type': 'text', 'text': userContent},
           {
             'type': 'image_url',
-            'image_url': {'url': 'data:image/jpeg;base64,$imageBase64'},
+            'image_url': {'url': 'data:$imageMimeType;base64,$imageBase64'},
           },
         ],
       });
@@ -228,8 +346,58 @@ class OpenAIService {
     return choices[0]['message']['content'] as String;
   }
 
+  static String _detectImageMimeType(String encodedImage) {
+    try {
+      final prefixLength = encodedImage.length < 32 ? encodedImage.length : 32;
+      final alignedLength = prefixLength - (prefixLength % 4);
+      final bytes = base64Decode(encodedImage.substring(0, alignedLength));
+      if (bytes.length >= 8 &&
+          bytes[0] == 0x89 &&
+          bytes[1] == 0x50 &&
+          bytes[2] == 0x4e &&
+          bytes[3] == 0x47) {
+        return 'image/png';
+      }
+      if (bytes.length >= 3 &&
+          bytes[0] == 0xff &&
+          bytes[1] == 0xd8 &&
+          bytes[2] == 0xff) {
+        return 'image/jpeg';
+      }
+      if (bytes.length >= 6 &&
+          bytes[0] == 0x47 &&
+          bytes[1] == 0x49 &&
+          bytes[2] == 0x46) {
+        return 'image/gif';
+      }
+      if (bytes.length >= 12 &&
+          bytes[0] == 0x52 &&
+          bytes[1] == 0x49 &&
+          bytes[2] == 0x46 &&
+          bytes[8] == 0x57 &&
+          bytes[9] == 0x45 &&
+          bytes[10] == 0x42 &&
+          bytes[11] == 0x50) {
+        return 'image/webp';
+      }
+      if (bytes.length >= 12 &&
+          bytes[4] == 0x66 &&
+          bytes[5] == 0x74 &&
+          bytes[6] == 0x79 &&
+          bytes[7] == 0x70 &&
+          bytes[8] == 0x68 &&
+          bytes[9] == 0x65 &&
+          bytes[10] == 0x69) {
+        return 'image/heic';
+      }
+    } on FormatException {
+      // Existing callers only pass base64-encoded files; preserve the old fallback.
+    }
+    return 'image/jpeg';
+  }
+
   /// AI 判断填空题答案是否正确
-  /// 
+  ///
   /// 当用户答案与标准答案不完全匹配时，调用大模型判断语义是否等价。
   /// 返回 true 表示正确，false 表示错误。
   Future<bool> judgeFillBlankAnswer({
