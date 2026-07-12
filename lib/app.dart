@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:receive_sharing_intent/receive_sharing_intent.dart';
+import 'core/providers/providers.dart';
 import 'services/shared_image_store.dart';
 import '../features/home/home_screen.dart';
 import '../features/deck/deck_list_screen.dart';
@@ -35,7 +36,7 @@ class MainApp extends ConsumerStatefulWidget {
   ConsumerState<MainApp> createState() => _MainAppState();
 }
 
-class _MainAppState extends ConsumerState<MainApp> {
+class _MainAppState extends ConsumerState<MainApp> with WidgetsBindingObserver {
   int _currentIndex = 0;
   StreamSubscription? _sharingSubscription;
 
@@ -48,7 +49,15 @@ class _MainAppState extends ConsumerState<MainApp> {
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addObserver(this);
     _initSharingIntent();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed) {
+      unawaited(ref.read(userStatsProvider.notifier).refresh());
+    }
   }
 
   void _initSharingIntent() {
@@ -106,6 +115,7 @@ class _MainAppState extends ConsumerState<MainApp> {
 
   @override
   void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
     _sharingSubscription?.cancel();
     super.dispose();
   }

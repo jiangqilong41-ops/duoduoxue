@@ -6,46 +6,89 @@ import '../data/models/user_stats.dart';
 /// 游戏化服务 - 管理 XP、连续打卡、心数、掌握度、月度打卡
 class GamificationService {
   final DatabaseHelper _db;
+  final DateTime Function() _clock;
+  ({DateTime day, Future<UserStats> future})? _pendingRollover;
 
-  GamificationService(this._db);
+  GamificationService(this._db, {DateTime Function()? clock})
+      : _clock = clock ?? DateTime.now;
 
   static const int xpPerCorrect = 10;
   static const int xpPerDeckComplete = 50;
   static const int xpPerPerfectDeck = 100;
   static const int streakBonusBase = 5; // 每天连续学习额外奖励基数
+  static const String _lastHeartResetDateKey = 'last_heart_reset_date';
 
   /// 获取用户统计(自动检查每日重置)
-  Future<UserStats> getStats() async {
-    var stats = await _db.getUserStats();
-    // 如果不是今天，重置 todayXp
-    if (!stats.isToday) {
-      // 检查是否中断了 streak
-      if (!stats.studiedYesterday) {
-        stats = stats.copyWith(streak: 0, todayXp: 0);
-      } else {
-        stats = stats.copyWith(todayXp: 0);
+  Future<UserStats> getStats() => _getStatsAt(_clock());
+
+  Future<UserStats> _getStatsAt(DateTime now) async {
+    while (true) {
+      var pending = _pendingRollover;
+      if (pending != null) {
+        if (_isSameDay(pending.day, now)) return pending.future;
+        await pending.future;
+        continue;
       }
-      await _db.updateUserStats(stats);
+
+      final stats = await _db.getUserStats();
+      pending = _pendingRollover;
+      if (pending != null) {
+        if (_isSameDay(pending.day, now)) return pending.future;
+        await pending.future;
+        continue;
+      }
+      if (_isSameDay(stats.lastStudyDate, now)) return stats;
+
+      late final Future<UserStats> rollover;
+      rollover = _rollover(stats, now).whenComplete(() {
+        if (identical(_pendingRollover?.future, rollover)) {
+          _pendingRollover = null;
+        }
+      });
+      _pendingRollover = (
+        day: DateTime(now.year, now.month, now.day),
+        future: rollover,
+      );
+      return rollover;
     }
-    return stats;
+  }
+
+  Future<UserStats> _rollover(UserStats stats, DateTime now) async {
+    final prefs = await SharedPreferences.getInstance();
+    final today = '${now.year}-${now.month}-${now.day}';
+    if (prefs.getString(_lastHeartResetDateKey) == today) return stats;
+
+    final resetStats = stats.copyWith(
+      streak: _studiedYesterday(stats.lastStudyDate, now) ? stats.streak : 0,
+      hearts: 99,
+      maxHearts: 99,
+      todayXp: 0,
+    );
+    await _db.updateUserStats(resetStats);
+    if (!await prefs.setString(_lastHeartResetDateKey, today)) {
+      await prefs.reload();
+      throw StateError('failed to persist daily heart reset marker');
+    }
+    return resetStats;
   }
 
   /// 答对一题
   Future<UserStats> onCorrectAnswer() async {
-    var stats = await getStats();
+    final now = _clock();
+    var stats = await _getStatsAt(now);
     stats = stats.copyWith(
       xp: stats.xp + xpPerCorrect,
       todayXp: stats.todayXp + xpPerCorrect,
     );
 
     // 更新 streak
-    if (!stats.isToday) {
-      if (stats.studiedYesterday) {
+    if (!_isSameDay(stats.lastStudyDate, now)) {
+      if (_studiedYesterday(stats.lastStudyDate, now)) {
         stats = stats.copyWith(streak: stats.streak + 1);
       } else {
         stats = stats.copyWith(streak: 1);
       }
-      stats = stats.copyWith(lastStudyDate: DateTime.now());
+      stats = stats.copyWith(lastStudyDate: now);
     }
 
     await _db.updateUserStats(stats);
@@ -54,16 +97,17 @@ class GamificationService {
 
   /// 答错一题(扣心)
   Future<UserStats> onWrongAnswer() async {
-    var stats = await getStats();
+    final now = _clock();
+    var stats = await _getStatsAt(now);
 
     // 更新 streak (即使答错也记录今天学习了)
-    if (!stats.isToday) {
-      if (stats.studiedYesterday) {
+    if (!_isSameDay(stats.lastStudyDate, now)) {
+      if (_studiedYesterday(stats.lastStudyDate, now)) {
         stats = stats.copyWith(streak: stats.streak + 1);
       } else {
         stats = stats.copyWith(streak: 1);
       }
-      stats = stats.copyWith(lastStudyDate: DateTime.now());
+      stats = stats.copyWith(lastStudyDate: now);
     }
 
     // 扣心
@@ -77,7 +121,8 @@ class GamificationService {
 
   /// 完成题包（含连续天数奖励）
   Future<UserStats> onDeckComplete({required bool allCorrect}) async {
-    var stats = await getStats();
+    final now = _clock();
+    var stats = await _getStatsAt(now);
     final bonus = allCorrect ? xpPerPerfectDeck : xpPerDeckComplete;
     // 连续天数额外奖励：streak * base
     final streakBonus = stats.streak * streakBonusBase;
@@ -91,7 +136,8 @@ class GamificationService {
 
   /// 完美完成答题，恢复一颗心
   Future<UserStats> onPerfectQuiz() async {
-    var stats = await getStats();
+    final now = _clock();
+    var stats = await _getStatsAt(now);
     if (stats.hearts < stats.maxHearts) {
       stats = stats.copyWith(hearts: stats.hearts + 1);
       await _db.updateUserStats(stats);
@@ -104,7 +150,8 @@ class GamificationService {
 
   /// 恢复一颗心
   Future<UserStats> refillOneHeart() async {
-    var stats = await getStats();
+    final now = _clock();
+    var stats = await _getStatsAt(now);
     if (stats.hearts < stats.maxHearts) {
       stats = stats.copyWith(hearts: stats.hearts + 1);
       await _db.updateUserStats(stats);
@@ -114,7 +161,8 @@ class GamificationService {
 
   /// 设置每日目标
   Future<void> setDailyGoal(int goal) async {
-    var stats = await getStats();
+    final now = _clock();
+    var stats = await _getStatsAt(now);
     stats = stats.copyWith(dailyGoal: goal);
     await _db.updateUserStats(stats);
   }
@@ -135,9 +183,10 @@ class GamificationService {
 
   /// 记录今日打卡（每天只记一次）
   Future<void> recordCheckIn() async {
+    final now = _clock();
     final prefs = await SharedPreferences.getInstance();
-    final now = DateTime.now();
-    final dateStr = '${now.year}-${now.month.toString().padLeft(2, '0')}-${now.day.toString().padLeft(2, '0')}';
+    final dateStr =
+        '${now.year}-${now.month.toString().padLeft(2, '0')}-${now.day.toString().padLeft(2, '0')}';
     final monthKey = 'checkin_${now.year}_${now.month}';
     final dates = prefs.getStringList(monthKey) ?? [];
     if (!dates.contains(dateStr)) {
@@ -170,7 +219,9 @@ class GamificationService {
   /// 获取所有已获得的月度勋章
   Future<List<({int year, int month})>> getEarnedMedals() async {
     final prefs = await SharedPreferences.getInstance();
-    final keys = prefs.getKeys().where((k) => k.startsWith('medal_') && prefs.getBool(k) == true);
+    final keys = prefs
+        .getKeys()
+        .where((k) => k.startsWith('medal_') && prefs.getBool(k) == true);
     final medals = <({int year, int month})>[];
     for (final key in keys) {
       final parts = key.split('_');
@@ -213,5 +264,18 @@ class GamificationService {
   Future<int> getPerfectCount() async {
     final prefs = await SharedPreferences.getInstance();
     return prefs.getInt('perfect_count') ?? 0;
+  }
+
+  bool _isSameDay(DateTime date, DateTime other) {
+    return date.year == other.year &&
+        date.month == other.month &&
+        date.day == other.day;
+  }
+
+  bool _studiedYesterday(DateTime lastStudyDate, DateTime now) {
+    return _isSameDay(
+      lastStudyDate,
+      DateTime(now.year, now.month, now.day - 1),
+    );
   }
 }

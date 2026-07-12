@@ -11,8 +11,8 @@ class UserStats {
   UserStats({
     this.xp = 0,
     this.streak = 0,
-    this.hearts = 5,
-    this.maxHearts = 5,
+    this.hearts = 99,
+    this.maxHearts = 99,
     required this.lastStudyDate,
     this.dailyGoal = 50,
     this.todayXp = 0,
@@ -54,8 +54,8 @@ class UserStats {
     return UserStats(
       xp: (map['xp'] as int?) ?? 0,
       streak: (map['streak'] as int?) ?? 0,
-      hearts: (map['hearts'] as int?) ?? 5,
-      maxHearts: (map['max_hearts'] as int?) ?? 5,
+      hearts: (map['hearts'] as int?) ?? 99,
+      maxHearts: (map['max_hearts'] as int?) ?? 99,
       lastStudyDate: DateTime.fromMillisecondsSinceEpoch(
         (map['last_study_date'] as int?) ?? DateTime.now().millisecondsSinceEpoch,
       ),
