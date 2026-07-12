@@ -1,0 +1,6 @@
+interface:
+  display_name: "同步课程到 iPhone"
+  short_description: "保留学习进度并安全同步新增课程到已安装的 iPhone App"
+  default_prompt: "使用 $deploy-courses-to-iphone 将新增课程安全同步到已安装的 iPhone。"
+policy:
+  allow_implicit_invocation: false

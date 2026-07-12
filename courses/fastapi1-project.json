@@ -1,0 +1,914 @@
+{
+  "course": {
+    "id": "fastapi1-project",
+    "prefix": "FA",
+    "title": "看懂 fastapi1"
+  },
+  "source": {
+    "kind": "git",
+    "ref": "fastapi1@b21b6e4",
+    "snapshot": "2026-07-11"
+  },
+  "decks": [
+    {
+      "id": "course-fa-01",
+      "code": "FA01",
+      "title": "FA01 产品边界",
+      "order": 1,
+      "lab_ref": "FA01",
+      "source_text": "fastapi1@b21b6e4: README.md, main.py, html/customer_management.html",
+      "questions": [
+        {
+          "id": "course-fa-01-q01",
+          "type": "multiple_choice",
+          "content": "[FastAPI1@b21b6e4] 从仓库当前能力看，哪项最准确地描述产品边界？",
+          "options": [
+            "企业查询导出、认证用户、采集、邮件微信和 AI 已形成主闭环，短信、电话及手工新增客户后端仍未完成",
+            "系统只负责展示静态 HTML，不包含任何后端业务能力",
+            "短信、电话、邮件和微信四个渠道都已具备同等完整的生产闭环",
+            "项目仅是通用 FastAPI 模板，不包含企业数据领域规则"
+          ],
+          "answer": "企业查询导出、认证用户、采集、邮件微信和 AI 已形成主闭环，短信、电话及手工新增客户后端仍未完成",
+          "explanation": "结论：应把 fastapi1 看成企业数据与营销协作平台，而不是完整的全渠道 CRM。\n依据：README 列出查询、导出、认证、采集、邮件、微信、客户跟进和 AI；页面及测试明确提示短信、电话营销和手工新增客户后端尚未接入。\n错误选项：B：仓库包含 FastAPI 路由、领域服务、任务队列和持久化逻辑，并非静态页面集合；C：短信和电话发送页仍明确提示后端未实现，成熟度不等同于邮件与微信；D：企业查询、采集和营销模块都包含企业数据领域规则，不是空白通用模板。\n实践：设计需求前先标注“已有闭环、仅页面、明确未完成”三种状态，避免把占位界面当成可调用能力。"
+        },
+        {
+          "id": "course-fa-01-q02",
+          "type": "multiple_choice",
+          "content": "[FastAPI1@b21b6e4] 想确认某个页面背后是否真的有业务闭环，最有价值的材料组合是什么？",
+          "options": [
+            "只看页面按钮是否可点击",
+            "同时核对 README 路由表、main.py 挂载、对应 routes/services 以及回归测试",
+            "只看最近一次提交标题",
+            "只搜索页面中的中文提示词"
+          ],
+          "answer": "同时核对 README 路由表、main.py 挂载、对应 routes/services 以及回归测试",
+          "explanation": "结论：界面、路由、服务和测试要形成互相印证的证据链。\n依据：仓库同时包含 HTML 页面、FastAPI 组合根、领域 routes/services 与大量 pytest/Playwright 测试；单看任一层都可能把占位控件或历史页面误判为已实现接口。\n错误选项：A：按钮可点击只能证明前端交互存在，不能证明请求已接到受权 API 和服务；C：提交标题不展示当前路由挂载、错误分支或回归测试；D：中文提示词只能提供页面线索，无法证明服务调用和持久化闭环。\n实践：从用户入口追到 API，再追到服务与测试断言；若中间断链，就把能力标为未完成或仅展示。"
+        },
+        {
+          "id": "course-fa-01-q03",
+          "type": "multiple_choice",
+          "content": "[FastAPI1@b21b6e4] 产品同事要求下周上线短信群发，当前最合理的工程决策是什么？",
+          "options": [
+            "直接复用邮件发送接口并把字段名改成 sms",
+            "因为页面已有短信表单，所以只需开放按钮",
+            "先确认短信供应商、任务状态、回调、安全和测试合同，再按新后端能力立项",
+            "让前端把成功数量写死为零即可视为上线"
+          ],
+          "answer": "先确认短信供应商、任务状态、回调、安全和测试合同，再按新后端能力立项",
+          "explanation": "结论：短信目前是明确的未完成后端，不能把页面原型当作实现。\n依据：营销页面会提示“短信营销后端尚未实现”，独立短信页也不展示模拟业务数据；现有真实闭环主要在邮件和微信。\n错误选项：A：邮件接口绑定邮件供应商、投递状态和回调合同，改字段名不会产生短信通道；B：现有短信表单是占位入口，页面本身明确提示后端尚未实现；D：把成功数写成零只会伪造展示状态，不会创建发送任务或结果回调。\n实践：新建独立需求，先定义供应商适配、权限、幂等、队列、状态回调和验收测试，再决定是否复用现有营销任务抽象。"
+        },
+        {
+          "id": "course-fa-01-q04",
+          "type": "multiple_choice",
+          "content": "[FastAPI1@b21b6e4] 在 Mac 上只读盘点产品入口，哪种做法最安全？",
+          "options": [
+            "启动生产 profile 并逐页点击真实任务",
+            "读取本机环境变量确认服务凭证",
+            "连接数据库统计当前客户与任务数量",
+            "固定在 b21b6e4，用 git show 和 git grep 查看 README、main.py、路由与测试"
+          ],
+          "answer": "固定在 b21b6e4，用 git show 和 git grep 查看 README、main.py、路由与测试",
+          "explanation": "结论：课程观察应基于固定提交的版本化源码，不接触运行数据。\n依据：git show 与 git grep 可以读取 b21b6e4 中已提交的公开代码和文档，不需要加载 .env、连接数据库、查看导出或调用生产网络。\n错误选项：A：生产 profile 和真实任务会访问外部系统并可能产生业务副作用；B：环境变量可能含数据库、Account-Key 或供应商凭据，不属于课程盘点材料；C：连接数据库会读取真实客户和任务数据，超出固定源码的只读边界。\n实践：先检查工作区，再用路径限定的 git 命令建立路由清单；所有结论都记录提交号和文件证据。"
+        },
+        {
+          "id": "course-fa-01-q05",
+          "type": "multiple_choice",
+          "content": "[FastAPI1@b21b6e4] 审查一个“新增客户已完成”的 Codex 改动时，首要验收标准是什么？",
+          "options": [
+            "从页面提交一路追到受权 API、服务写入、错误处理和测试，确认不再只是提示占位",
+            "新增客户按钮颜色与现有页面一致",
+            "代码总行数比改动前更多",
+            "在 README 中把“未完成”三个字删除"
+          ],
+          "answer": "从页面提交一路追到受权 API、服务写入、错误处理和测试，确认不再只是提示占位",
+          "explanation": "结论：功能完成必须由端到端行为证明，文案和按钮不算后端实现。\n依据：当前客户管理已有线索聚合与跟进记录接口，但手工新增客户仍由页面明确提示未接入后端；这是两个不同能力。\n错误选项：B：按钮样式一致不能证明新增客户请求已进入后端和持久层；C：代码行数不反映权限、事务和重复提交是否正确；D：删除 README 文案不会创建请求模型、API、服务写入或测试。\n实践：审查时核对请求模型、权限与区域范围、事务失败、重复提交和回归测试，并保留原占位提示直到闭环真正通过验收。"
+        }
+      ]
+    },
+    {
+      "id": "course-fa-02",
+      "code": "FA02",
+      "title": "FA02 组合根与生命周期",
+      "order": 2,
+      "lab_ref": "FA02",
+      "source_text": "fastapi1@b21b6e4: main.py, app/enterprise_data_platform/api/routes.py, app/internet_marketing/email_queue.py",
+      "questions": [
+        {
+          "id": "course-fa-02-q01",
+          "type": "multiple_choice",
+          "content": "[FastAPI1@b21b6e4] 哪个文件承担应用组合根的主要职责？",
+          "options": [
+            "app/internet_marketing/services.py，因为它行数最多",
+            "main.py，因为它创建 FastAPI、注册中间件与路由并管理 lifespan",
+            "README.md，因为它列出了所有接口",
+            "package.json，因为它定义了 Playwright 命令"
+          ],
+          "answer": "main.py，因为它创建 FastAPI、注册中间件与路由并管理 lifespan",
+          "explanation": "结论：main.py 是当前后端组合根。\n依据：它创建 FastAPI 实例，装配安全头、CORS、压缩、静态页面、异常处理器与各业务 router，并在 lifespan 中协调邮件队列、导出管理器、调度器和资源关闭。\n错误选项：A：internet_marketing/services.py 承担营销领域逻辑，文件大不等于负责全应用装配；C：README 记录接口说明但不会创建 FastAPI 实例或注册 router；D：package.json 定义前端测试命令，不管理后端 lifespan 和中间件。\n实践：新增跨应用组件时先判断是否必须进入组合根；领域规则仍留在各自模块，避免继续扩大 main.py 的职责。"
+        },
+        {
+          "id": "course-fa-02-q02",
+          "type": "multiple_choice",
+          "content": "[FastAPI1@b21b6e4] 核对启动与关闭是否对称，应该重点阅读哪组材料？",
+          "options": [
+            "只读 health 接口返回文案",
+            "只看 APScheduler 的 Cron 表达式",
+            "main.py 的 lifespan、队列 worker、导出管理器及 Redis/SSE 关闭路径",
+            "只看 HTML 页面加载顺序"
+          ],
+          "answer": "main.py 的 lifespan、队列 worker、导出管理器及 Redis/SSE 关闭路径",
+          "explanation": "结论：生命周期审查要成对检查 start/stop 与异常分支。\n依据：lifespan 启动邮件队列消费者、导出任务管理器和主调度器；关闭时停止这些组件，并关闭通知线程池、Redis 客户端和调度器锁。\n错误选项：A：health 文案只能反映单个探针结果，不能证明 worker 和连接在关闭时被释放；B：Cron 表达式只描述触发时间，不覆盖调度器启动失败和 shutdown；D：HTML 加载顺序不涉及 Redis、SSE、线程池或后台消费者生命周期。\n实践：制作资源清单，逐项确认启动失败是否可见、关闭是否幂等、后台线程是否退出，以及 /ready 能否反映关键组件状态。"
+        },
+        {
+          "id": "course-fa-02-q03",
+          "type": "multiple_choice",
+          "content": "[FastAPI1@b21b6e4] 新增一个常驻后台消费者时，哪种接入方案最符合现有生命周期？",
+          "options": [
+            "在模块 import 时自动启动线程",
+            "由每个请求按需创建并永不关闭",
+            "只在 README 记录启动命令，不接入应用状态",
+            "在 lifespan 显式 start/stop，并把关键状态纳入 readiness 与失败日志"
+          ],
+          "answer": "在 lifespan 显式 start/stop，并把关键状态纳入 readiness 与失败日志",
+          "explanation": "结论：常驻组件必须由应用生命周期统一拥有。\n依据：现有邮件队列和导出管理器都在 lifespan 启停，/ready 还检查数据库、Redis、邮件消费者和调度器；模块导入副作用会让测试、多 worker 和关闭行为失控。\n错误选项：A：import 时启动会在测试和多 worker 导入中产生重复后台线程；B：每个请求创建常驻消费者会重复消费且没有关闭所有者；C：README 命令不能让应用实际启动、停止或监测该组件。\n实践：提供明确的 start、stop 和状态接口，启动失败写脱敏日志，必要时让 readiness 降级或失败。"
+        },
+        {
+          "id": "course-fa-02-q04",
+          "type": "multiple_choice",
+          "content": "[FastAPI1@b21b6e4] 在 Mac 上观察组合根而不启动服务，首选命令组合是什么？",
+          "options": [
+            "git show b21b6e4:main.py 配合 rg 检索 lifespan、include_router、mount 和 readiness",
+            "执行 uvicorn 并连接公开域名",
+            "打开数据库控制台查看连接池",
+            "运行后台清理脚本验证调度器"
+          ],
+          "answer": "git show b21b6e4:main.py 配合 rg 检索 lifespan、include_router、mount 和 readiness",
+          "explanation": "结论：组合关系可以完全从固定提交的源码静态观察。\n依据：main.py 中的 FastAPI 构造、middleware、router 挂载、lifespan 和 readiness 检查已经暴露了组件边界，不需要运行服务或触发定时任务。\n错误选项：B：启动 uvicorn 并连接公开域名会离开静态观察边界并可能访问真实服务；C：数据库控制台需要运行连接信息且会暴露运行态资源；D：执行清理脚本会触发删除或状态迁移，不是无副作用盘点。\n实践：先用 rg 获取符号行号，再用 git show 的小范围切片阅读上下文，最后把每个组件的启动、停止和健康信号画成表格。"
+        },
+        {
+          "id": "course-fa-02-q05",
+          "type": "multiple_choice",
+          "content": "[FastAPI1@b21b6e4] 审查调度器相关改动时，哪个风险最值得优先检查？",
+          "options": [
+            "调度任务名称是否足够简短",
+            "多进程下是否仍由文件锁保证单主实例，并在失败和关闭时正确释放与上报",
+            "Cron 时间是否全部改成整点",
+            "日志是否打印完整运行环境"
+          ],
+          "answer": "多进程下是否仍由文件锁保证单主实例，并在失败和关闭时正确释放与上报",
+          "explanation": "结论：多 worker 重复执行才是调度器的核心风险。\n依据：当前实现用非阻塞文件锁区分 primary 与 standby，并把 lock_error、primary、standby 状态纳入 readiness；关闭时还要 shutdown 并释放锁文件。\n错误选项：A：任务名称长短不影响多进程是否重复执行同一清理任务；C：把 Cron 调整到整点不能替代跨进程单主锁；D：打印完整运行环境既不能证明锁正确，还可能泄露凭据和连接信息。\n实践：审查锁获取失败、scheduler.start 异常、重复启动和优雅关闭四条路径，避免清理任务被多个进程同时执行。"
+        }
+      ]
+    },
+    {
+      "id": "course-fa-03",
+      "code": "FA03",
+      "title": "FA03 认证与权限",
+      "order": 3,
+      "lab_ref": "FA03",
+      "source_text": "fastapi1@b21b6e4: README.md, app/login/routes.py, app/middleware/permission.py, app/internet_marketing/routes.py",
+      "questions": [
+        {
+          "id": "course-fa-03-q01",
+          "type": "multiple_choice",
+          "content": "[FastAPI1@b21b6e4] 哪组最完整地概括了仓库的四类认证面？",
+          "options": [
+            "只有用户名密码，没有 token 或客户端认证",
+            "浏览器 cookie、数据库口令、SSH 私钥和 OSS 密钥",
+            "Bearer API 会话、access_token cookie 页面守卫、X-Account-Key 客户端/CLI 引导、邮件事件 HMAC 或兼容 token",
+            "管理员、经理、普通用户和匿名用户四个角色"
+          ],
+          "answer": "Bearer API 会话、access_token cookie 页面守卫、X-Account-Key 客户端/CLI 引导、邮件事件 HMAC 或兼容 token",
+          "explanation": "结论：认证面与角色层级不是同一概念。\n依据：普通 API 复用 Bearer；受保护页面额外用 access_token cookie 做服务端守卫；CLI 用 Account-Key 换短期 Bearer，采集与微信客户端写协议直接用 X-Account-Key；邮件事件回调支持 HMAC 加固并保留兼容 token。\n错误选项：A：仓库除口令登录外还实现 Bearer、cookie、Account-Key 和回调签名；B：数据库口令、SSH 私钥和 OSS 密钥是基础设施秘密，不是四类应用认证协议；D：管理员、经理和普通用户是授权角色，不能替代 cookie、Bearer 等凭据传递面。\n实践：改动前先标明自己触及哪一认证面，不能用一种凭据替代全部协议。"
+        },
+        {
+          "id": "course-fa-03-q02",
+          "type": "multiple_choice",
+          "content": "[FastAPI1@b21b6e4] 判断一个新 API 需要何种权限，应该核对哪些现有材料？",
+          "options": [
+            "只看函数名是否含 admin",
+            "只看前端是否隐藏按钮",
+            "只看 HTTP 方法是 GET 还是 POST",
+            "permission.py 的 user/manager/admin 依赖、区域过滤、相邻路由和对应测试"
+          ],
+          "answer": "permission.py 的 user/manager/admin 依赖、区域过滤、相邻路由和对应测试",
+          "explanation": "结论：权限由角色、区域和资源语义共同决定。\n依据：permission.py 定义普通用户、经理、管理员依赖，并另有区域权限规则；README 指出导出通常要求经理以上，项目采集客户端甚至只允许管理员 Account-Key。\n错误选项：A：函数名包含 admin 不会自动装配 permission.py 的依赖；B：隐藏前端按钮可被直接 HTTP 请求绕过，不能作为服务端授权；C：GET 仍可能读取受保护企业数据，HTTP 方法不决定角色和区域范围。\n实践：沿用同业务模块已有依赖，补充越权与区域边界测试，不把前端按钮可见性当成授权控制。"
+        },
+        {
+          "id": "course-fa-03-q03",
+          "type": "multiple_choice",
+          "content": "[FastAPI1@b21b6e4] 新增企业只读接口时，最稳妥的权限设计是什么？",
+          "options": [
+            "复用 user_required，并继续应用当前用户的区域范围过滤与响应模型",
+            "因为是 GET，所以无需认证",
+            "接受任意 X-Account-Key 以方便脚本调用",
+            "只在页面 JavaScript 中检查角色"
+          ],
+          "answer": "复用 user_required，并继续应用当前用户的区域范围过滤与响应模型",
+          "explanation": "结论：只读不等于公开，企业数据仍受用户身份与区域权限约束。\n依据：企业查询路由使用登录用户和区域分区计算可见范围；普通鉴权应复用 user_required，外部客户端的 X-Account-Key 只用于明确协议。\n错误选项：B：企业查询 GET 会返回受区域限制的数据，仓库要求登录用户而非匿名访问；C：X-Account-Key 只用于明确的客户端协议，不能作为所有查询的宽泛替代认证；D：JavaScript 角色检查可被绕过，服务端仍必须执行依赖和区域过滤。\n实践：先找同类查询端点，复用依赖与过滤助手，再增加未登录、越区域和合法范围三类测试。"
+        },
+        {
+          "id": "course-fa-03-q04",
+          "type": "multiple_choice",
+          "content": "[FastAPI1@b21b6e4] 在 Mac 上安全观察认证合同，哪种方式合适？",
+          "options": [
+            "打印本机 config.toml 中的 Account-Key",
+            "用 git show 阅读 login/routes.py 与 permission.py，并用测试名称核对拒绝路径",
+            "向生产 cli-token 接口发送试验密钥",
+            "读取浏览器现有 cookie 内容"
+          ],
+          "answer": "用 git show 阅读 login/routes.py 与 permission.py，并用测试名称核对拒绝路径",
+          "explanation": "结论：认证结构可从源码和测试核实，不需要任何真实凭据。\n依据：登录路由公开 token 签发、cookie 维护、CLI token、黑名单与当前用户函数；permission.py 定义角色依赖，测试覆盖登录安全、限流、会话和越权。\n错误选项：A：config.toml 中的 Account-Key 是真实凭据，打印它违反脱敏边界；C：调用生产 cli-token 会发送试验密钥并触及真实认证系统；D：浏览器 cookie 是有效会话材料，读取其内容既非必要也不安全。\n实践：只记录接口、依赖和状态码，不复制密钥、token、cookie、用户数据或运行环境值。"
+        },
+        {
+          "id": "course-fa-03-q05",
+          "type": "multiple_choice",
+          "content": "[FastAPI1@b21b6e4] Codex 为兼容旧微信客户端而放宽所有微信读接口认证，应该如何审查？",
+          "options": [
+            "接受，因为兼容性永远优先于最小权限",
+            "只要增加一条日志就接受",
+            "拒绝全局放宽；保留 Bearer 默认，只在既有显式兼容门禁内处理并补回归测试",
+            "改成所有接口都无需认证"
+          ],
+          "answer": "拒绝全局放宽；保留 Bearer 默认，只在既有显式兼容门禁内处理并补回归测试",
+          "explanation": "结论：兼容例外不能扩散成默认权限。\n依据：项目治理明确微信读接口默认走 Bearer，旧 Windows 客户端兼容依赖显式开关；微信领取、结果回传与同步仍是专门的 X-Account-Key 写协议。\n错误选项：A：旧客户端兼容不能覆盖默认 Bearer 和最小权限原则；B：增加日志不会恢复被放宽的认证门禁，还可能扩大敏感信息暴露；D：取消所有认证会把微信任务和客户相关读取暴露给匿名请求。\n实践：审查默认关闭、最小路径、过渡期限、脱敏日志和 401/403 回归，禁止为排障轮换或输出真实凭据。"
+        }
+      ]
+    },
+    {
+      "id": "course-fa-04",
+      "code": "FA04",
+      "title": "FA04 数据与状态",
+      "order": 4,
+      "lab_ref": "FA04",
+      "source_text": "fastapi1@b21b6e4: README.md, app/utils/redis_client.py, app/enterprise_data_platform/oss/oss_download.py, main.py",
+      "questions": [
+        {
+          "id": "course-fa-04-q01",
+          "type": "multiple_choice",
+          "content": "[FastAPI1@b21b6e4] PostgreSQL、Redis 与 OSS 在当前架构中的主要分工是什么？",
+          "options": [
+            "三者都保存完全相同的客户记录作为多主数据库",
+            "Redis 是唯一业务真相，PostgreSQL 只做缓存",
+            "OSS 负责登录会话，Redis 负责永久企业档案",
+            "PostgreSQL 持久化业务数据，Redis 承担队列/缓存/租约等短期状态，OSS 保存文档对象"
+          ],
+          "answer": "PostgreSQL 持久化业务数据，Redis 承担队列/缓存/租约等短期状态，OSS 保存文档对象",
+          "explanation": "结论：三种存储承担不同一致性与生命周期职责。\n依据：项目使用 SQLAlchemy/PostgreSQL 保存企业、用户和营销业务记录；Redis 支撑邮件队列、AI 任务、会话辅助和租约；采集生成的文档可上传 OSS，再以受控下载路径访问。\n错误选项：A：PostgreSQL、Redis 和 OSS 分别保存持久业务、短期协调状态和文档对象，并非多主副本；B：企业和营销业务真相持久化在 PostgreSQL，Redis 状态带队列或 TTL 语义；C：OSS 保存对象而非登录会话，Redis 也不承担永久企业档案。\n实践：设计字段前先确定真相源，不能把短 TTL 状态当永久记录，也不能在对象名中泄露敏感信息。"
+        },
+        {
+          "id": "course-fa-04-q02",
+          "type": "multiple_choice",
+          "content": "[FastAPI1@b21b6e4] 只读理解数据边界时，哪组源码最有代表性？",
+          "options": [
+            "企业 services/API、redis_client、AI/邮件任务管理和 OSS 下载模块",
+            "仅查看 Tailwind 静态资源",
+            "仅查看登录页面 CSS",
+            "仅查看 GitHub workflow 名称"
+          ],
+          "answer": "企业 services/API、redis_client、AI/邮件任务管理和 OSS 下载模块",
+          "explanation": "结论：应从业务持久化、短期状态和对象存储三个方向分别取证。\n依据：企业服务和 API 展示 SQLAlchemy 查询与导出；Redis 客户端及任务管理器展示队列、TTL、锁和任务状态；OSS 模块展示凭据门禁、对象检查与下载。\n错误选项：B：Tailwind 静态资源只描述展示样式，不揭示数据库、队列或对象存储调用；C：登录页 CSS 不包含企业持久化和任务状态合同；D：workflow 名称只能说明自动化入口，不能展示运行时存储分工。\n实践：只读函数签名、调用关系和测试，不打开数据库文件、导出结果或真实对象。"
+        },
+        {
+          "id": "course-fa-04-q03",
+          "type": "multiple_choice",
+          "content": "[FastAPI1@b21b6e4] Redis 暂时不可用时，哪种判断最符合当前系统？",
+          "options": [
+            "所有 PostgreSQL 业务数据会立即丢失",
+            "依赖 Redis 的队列、AI 任务或 readiness 会降级/失败，但持久化业务真相仍应留在 PostgreSQL",
+            "OSS 会自动接管所有队列状态",
+            "系统应静默返回成功，避免用户看到错误"
+          ],
+          "answer": "依赖 Redis 的队列、AI 任务或 readiness 会降级/失败，但持久化业务真相仍应留在 PostgreSQL",
+          "explanation": "结论：Redis 故障影响协调能力，不应抹去数据库中的持久业务记录。\n依据：/ready 分别检查数据库、Redis、邮件消费者和调度器；AI 任务管理与邮件队列会显式检测 Redis 可用性并报告失败。\n错误选项：A：Redis 故障不会删除独立 PostgreSQL 中已提交的业务记录；C：OSS 是文档对象存储，没有接管 Redis 队列和租约的实现；D：静默成功会掩盖未入队或未执行的任务并诱发重复副作用。\n实践：调用方区分可重试的短期状态故障与持久数据错误，保持错误可见，避免伪造成功或重复执行副作用。"
+        },
+        {
+          "id": "course-fa-04-q04",
+          "type": "multiple_choice",
+          "content": "[FastAPI1@b21b6e4] 在 Mac 上观察存储分工，哪项不会接触真实数据？",
+          "options": [
+            "运行企业导出并打开结果文件",
+            "连接 Redis 列出所有键",
+            "用 git grep 在 b21b6e4 中检索 SessionLocal、get_redis_client 和 OSS 下载调用",
+            "打开本地数据库查看企业表"
+          ],
+          "answer": "用 git grep 在 b21b6e4 中检索 SessionLocal、get_redis_client 和 OSS 下载调用",
+          "explanation": "结论：静态调用图足以建立存储职责地图。\n依据：版本化源码会显示数据库会话、Redis 客户端和 OSS 函数的引用位置，而不会读取任何连接串、键值、企业记录、导出或对象内容。\n错误选项：A：生成并打开企业导出会接触真实企业文件和潜在写任务；B：列出 Redis 键会读取运行态队列、会话或任务标识；D：打开数据库会直接读取企业业务记录，不是源码层观察。\n实践：限定检索路径和提交号，记录“谁调用谁、失败如何返回、资源由谁关闭”，不执行数据访问命令。"
+        },
+        {
+          "id": "course-fa-04-q05",
+          "type": "multiple_choice",
+          "content": "[FastAPI1@b21b6e4] 审查一个把邮件最终结果只写 Redis 的改动，正确意见是什么？",
+          "options": [
+            "接受，Redis 查询更快",
+            "接受，只要 TTL 设置足够长",
+            "接受，因为邮件历史不属于业务数据",
+            "拒绝把短期队列状态当唯一真相；最终结果应按现有业务模型持久化并处理幂等"
+          ],
+          "answer": "拒绝把短期队列状态当唯一真相；最终结果应按现有业务模型持久化并处理幂等",
+          "explanation": "结论：Redis 可协调执行，但不能替代需要审计的营销历史。\n依据：邮件消费者在 Redis 中管理队列与状态快照，同时业务服务和邮件历史接口承担持久查询；TTL、重启或孤儿清理都会改变短期状态。\n错误选项：A：Redis 查询速度不能提供营销历史所需的持久审计；B：再长的 TTL 仍会过期，也不能抵御清理和重建；C：邮件投递历史会被业务接口查询并影响统计，属于需持久化的业务记录。\n实践：审查事务边界、重复回调、状态迁移和恢复流程，确保最终业务结果可从持久层重建。"
+        }
+      ]
+    },
+    {
+      "id": "course-fa-05",
+      "code": "FA05",
+      "title": "FA05 采集任务",
+      "order": 5,
+      "lab_ref": "FA05",
+      "source_text": "fastapi1@b21b6e4: README.md, app/index/project_collection_service.py, client/Data-Collection/README.md",
+      "questions": [
+        {
+          "id": "course-fa-05-q01",
+          "type": "multiple_choice",
+          "content": "[FastAPI1@b21b6e4] 首页项目采集的真实业务闭环是什么？",
+          "options": [
+            "管理员创建地区任务，Data-Collection 经 WebSocket 领取、续租、采集并回传进度、数据同步和结果",
+            "浏览器直接连接数据库批量写入企业表",
+            "普通用户通过匿名 REST 接口领取所有地区任务",
+            "OSS 定时扫描文件并自动创建用户"
+          ],
+          "answer": "管理员创建地区任务，Data-Collection 经 WebSocket 领取、续租、采集并回传进度、数据同步和结果",
+          "explanation": "结论：采集是服务端任务编排与专用客户端执行组成的闭环。\n依据：WebSocket 协议包含 request_task、progress、heartbeat、sync_enterprise_data 和 result；客户端使用管理员 Account-Key，经理和普通用户不能领取或回传。\n错误选项：B：浏览器通过受权服务端接口工作，不会直接连接数据库批量写企业表；C：领取和回传走专用 WebSocket，且要求管理员 Account-Key，不是匿名 REST；D：OSS 只保存采集文档对象，没有扫描对象并创建用户的职责。\n实践：分析问题时把父任务、地区 item、租约、客户端处理和数据库同步分开，不把采集脚本等同于服务端任务系统。"
+        },
+        {
+          "id": "course-fa-05-q02",
+          "type": "multiple_choice",
+          "content": "[FastAPI1@b21b6e4] 理解采集协议最关键的材料组合是什么？",
+          "options": [
+            "只看首页任务卡片样式",
+            "README 与 Data-Collection README、project_collection_service、客户端 main.py 和相关测试",
+            "只看 OSS Bucket 默认名称",
+            "只看企业导出路由"
+          ],
+          "answer": "README 与 Data-Collection README、project_collection_service、客户端 main.py 和相关测试",
+          "explanation": "结论：协议必须由服务端、客户端和测试三方对读。\n依据：服务端负责领取、租约、状态和同步；客户端负责常驻轮询、心跳、文件转换与结果回传；README 记录退出码和 waiting 语义，测试固化异常与脱敏行为。\n错误选项：A：首页卡片只展示任务状态，无法定义 WebSocket 消息和租约迁移；C：Bucket 名称不说明领取、心跳、同步或 waiting 协议；D：企业导出路由属于查询导出能力，不实现采集客户端合同。\n实践：建立消息类型与状态迁移表，逐项核对双方字段、超时、重试和错误码。"
+        },
+        {
+          "id": "course-fa-05-q03",
+          "type": "multiple_choice",
+          "content": "[FastAPI1@b21b6e4] 采集命令输出 PROJECT_COLLECTION_NOT_COLLECTABLE_YET 时应如何处理？",
+          "options": [
+            "立即把地区任务永久标记失败",
+            "忽略 marker，只看进程退出码",
+            "上报 waiting 和 next_claim_after，延后再领取而不是普通失败",
+            "删除任务并重新创建父任务"
+          ],
+          "answer": "上报 waiting 和 next_claim_after，延后再领取而不是普通失败",
+          "explanation": "结论：尚不可采是时间条件，不是业务失败。\n依据：README 明确无论采集命令退出码是否为零，只要输出该 marker 就按 waiting 处理；服务端也会让整段尚不可采的新任务等待，避免反复失败。\n错误选项：A：该 marker 明确表示暂不可采，永久失败会错误终止仍可后续执行的 item；B：协议规定 marker 的 waiting 语义优先于进程退出码；D：删除并重建父任务会丢失既有 item、进度和租约状态。\n实践：保留进度与下一次可领取时间，客户端按服务端建议退避，监控中单独统计 waiting。"
+        },
+        {
+          "id": "course-fa-05-q04",
+          "type": "multiple_choice",
+          "content": "[FastAPI1@b21b6e4] 在 Mac 上只读观察采集租约，哪种方法正确？",
+          "options": [
+            "启动真实 Windows 采集任务",
+            "查看客户下载文件判断进度",
+            "用管理员密钥连接 WebSocket",
+            "git grep 固定提交中的 lease、heartbeat、waiting、next_claim_after 与对应测试"
+          ],
+          "answer": "git grep 固定提交中的 lease、heartbeat、waiting、next_claim_after 与对应测试",
+          "explanation": "结论：租约协议可由源码常量、状态分支和测试静态还原。\n依据：文档给出 3 分钟租约和默认 60 秒心跳，服务端与客户端代码包含 waiting、续租与退避处理；无需领取真实任务或查看任何客户文件。\n错误选项：A：启动真实 Windows 采集会领取任务并产生外部采集和写入副作用；B：客户下载文件含业务数据，也不能还原完整租约状态机；C：管理员密钥连接 WebSocket 会触及真实认证和任务队列。\n实践：记录租约长度、心跳约束、断线恢复和失效结果，再用本地单元测试验证边界。"
+        },
+        {
+          "id": "course-fa-05-q05",
+          "type": "multiple_choice",
+          "content": "[FastAPI1@b21b6e4] 审查采集重试改动时，哪个不变量最重要？",
+          "options": [
+            "重试不得造成同一 item 重复副作用，且租约、进度、脱敏错误和结果回传保持一致",
+            "所有错误都无限立即重试",
+            "客户端日志输出完整凭据便于排障",
+            "0 文件下载一律视为整个任务失败"
+          ],
+          "answer": "重试不得造成同一 item 重复副作用，且租约、进度、脱敏错误和结果回传保持一致",
+          "explanation": "结论：采集重试首先要守住幂等和租约所有权。\n依据：客户端一次处理一个地区 item，持续 heartbeat；0 文件默认按未命中编号推进，文件占用则延迟重领，错误摘要还要脱敏凭据与本机路径。\n错误选项：B：无限立即重试会绕过 waiting 和租约退避，并可能重复采集或同步；C：日志输出凭据违反现有错误摘要脱敏要求；D：当前协议把零文件默认按未命中编号推进，不会一律判定整个父任务失败。\n实践：测试断线、租约过期、同步失败、文件占用和重复 result，确认不会重复入库或泄露敏感上下文。"
+        }
+      ]
+    },
+    {
+      "id": "course-fa-06",
+      "code": "FA06",
+      "title": "FA06 查询导出与AI",
+      "order": 6,
+      "lab_ref": "FA06",
+      "source_text": "fastapi1@b21b6e4: README.md, app/enterprise_data_platform/api/routes.py, app/enterprise_data_platform/ai/routes.py, app/enterprise_data_platform/ai/task_manager.py",
+      "questions": [
+        {
+          "id": "course-fa-06-q01",
+          "type": "multiple_choice",
+          "content": "[FastAPI1@b21b6e4] 企业数据平台的查询、导出与 AI 三类能力应如何区分？",
+          "options": [
+            "三者都只是同一个 GET 请求的不同名称",
+            "查询负责筛选读取，导出负责受权文件任务，AI 负责分析或联网任务及状态管理",
+            "导出只允许匿名用户，AI 不需要资源限额",
+            "查询结果必须先写 OSS 才能展示"
+          ],
+          "answer": "查询负责筛选读取，导出负责受权文件任务，AI 负责分析或联网任务及状态管理",
+          "explanation": "结论：三类能力共享企业数据域，但执行模型与风险不同。\n依据：企业 API 提供列表、复杂查询、同步/异步导出和下载；AI routes 提供企业分析、竞品、可行性及联网搜索，并通过任务管理与配额控制长任务。\n错误选项：A：查询、导出和 AI 分别采用在线读取、文件 job 和受配额任务模型，不是同一 GET；C：导出要求受权用户且 AI 有启用门禁和资源配额；D：查询可直接返回数据库筛选结果，不要求先写入 OSS。\n实践：需求评审先确认是在线读取、文件生成还是外部模型任务，再选择权限、超时和状态接口。"
+        },
+        {
+          "id": "course-fa-06-q02",
+          "type": "multiple_choice",
+          "content": "[FastAPI1@b21b6e4] 研究导出与 AI 的安全边界，哪组材料最直接？",
+          "options": [
+            "仅查看企业页面表格列名",
+            "仅查看 AI 模型名称",
+            "企业 api/routes.py、AI routes/task_manager、响应 schema 与导出/AI 测试",
+            "仅查看 package-lock.json"
+          ],
+          "answer": "企业 api/routes.py、AI routes/task_manager、响应 schema 与导出/AI 测试",
+          "explanation": "结论：入口、后台状态与安全测试必须一起阅读。\n依据：导出路由包含输入校验、并发容量、owner 元数据、异步任务和下载；AI 路由包含启用门禁、用户配额、任务租约、URL 安全和结果查询。\n错误选项：A：页面列名不展示权限、owner 元数据、并发限制和失败状态；B：模型名称不能说明 AI 任务租约、URL 安全或用户配额；D：package-lock.json 记录 JavaScript 依赖，不定义 FastAPI 导出和 AI 合同。\n实践：静态列出每个端点的权限、资源上限、状态保存、下载归属和失败码，不调用外部 AI 或生成真实导出。"
+        },
+        {
+          "id": "course-fa-06-q03",
+          "type": "multiple_choice",
+          "content": "[FastAPI1@b21b6e4] 大批量企业导出预计耗时较长，应优先采用哪种现有模式？",
+          "options": [
+            "在浏览器请求线程中无限等待",
+            "先触发 AI 联网搜索再导出",
+            "把结果直接打印到服务日志",
+            "使用异步导出任务，轮询 job 状态并通过受权下载获取结果"
+          ],
+          "answer": "使用异步导出任务，轮询 job 状态并通过受权下载获取结果",
+          "explanation": "结论：长导出应进入现有异步 job 生命周期。\n依据：企业 API 已提供 /export/async、/export/jobs/{job_id} 与下载端点，并实现全局和用户并发限制、任务状态持久化及文件 owner 校验。\n错误选项：A：在请求线程无限等待会占用连接并绕过已有 job 状态与并发限制；B：AI 联网搜索与企业导出无关，还会增加外部调用和成本；C：把企业结果写进服务日志既泄露数据，也不提供受权下载文件。\n实践：前端保存 job_id、处理终态和过期，服务端继续执行输入限制、CSV 安全与归属检查，禁止猜测文件名直接下载。"
+        },
+        {
+          "id": "course-fa-06-q04",
+          "type": "multiple_choice",
+          "content": "[FastAPI1@b21b6e4] 在 Mac 上观察企业 API 表面而不调用服务，首选什么？",
+          "options": [
+            "git show 配合 rg 列出 @router、response_model、Depends 和导出/AI 状态函数",
+            "运行 prod-smoke 并允许业务写入",
+            "下载一份现有企业 Excel",
+            "执行 Tavily 联网搜索确认模型可用"
+          ],
+          "answer": "git show 配合 rg 列出 @router、response_model、Depends 和导出/AI 状态函数",
+          "explanation": "结论：接口表面与依赖可以从提交快照完整提取。\n依据：路由装饰器、response_model、权限 Depends 和任务函数会显示协议边界；测试名称进一步标明下载安全、配额、URL 校验与异常语义。\n错误选项：B：prod-smoke 可能连接真实服务并产生业务写入，不是静态观察；C：下载现有 Excel 会接触真实企业数据和对象权限；D：Tavily 搜索会调用外部上游，不能用于无网络的接口盘点。\n实践：生成静态端点清单后抽样阅读实现，不访问生产、OSS、AI 上游或企业数据。"
+        },
+        {
+          "id": "course-fa-06-q05",
+          "type": "multiple_choice",
+          "content": "[FastAPI1@b21b6e4] 审查“简化下载权限”的 Codex 改动时，哪项必须保留？",
+          "options": [
+            "文件名越短越好",
+            "文件名校验、任务/文件归属、经理权限、错误不落盘和临时文件清理",
+            "任何登录用户都可下载任意已知文件名",
+            "下载失败时仍创建空文件表示请求完成"
+          ],
+          "answer": "文件名校验、任务/文件归属、经理权限、错误不落盘和临时文件清理",
+          "explanation": "结论：下载路径是数据外泄边界，不能用“简化”删除安全合同。\n依据：现有路由校验安全文件名、导出 owner 元数据和 OSS 对象归属，并在测试与 CLI 中要求非 2xx 不写输出文件。\n错误选项：A：文件名短不能防路径穿越，也不能证明任务或对象归属；C：允许任意登录用户按已知文件名下载会绕过 owner 与经理权限；D：失败时创建空文件违反非 2xx 不落盘合同，并会把错误伪装成成功。\n实践：审查路径穿越、越权猜测、签名元数据、临时目录和清理回调，保持错误响应与文件响应严格分离。"
+        }
+      ]
+    },
+    {
+      "id": "course-fa-07",
+      "code": "FA07",
+      "title": "FA07 邮件营销",
+      "order": 7,
+      "lab_ref": "FA07",
+      "source_text": "fastapi1@b21b6e4: app/internet_marketing/routes.py, app/internet_marketing/email_queue.py, app/internet_marketing/email_policy.py, tests/test_internet_marketing_queue_consumer.py",
+      "questions": [
+        {
+          "id": "course-fa-07-q01",
+          "type": "multiple_choice",
+          "content": "[FastAPI1@b21b6e4] 邮件营销当前的核心执行闭环是什么？",
+          "options": [
+            "浏览器直接循环调用邮件供应商，不保存任务",
+            "每封邮件都作为独立 GitHub Action 运行",
+            "受权 API 创建任务，Redis 队列消费者执行，持久层记录任务与投递历史，事件回调更新结果",
+            "只生成 Excel，不发送邮件"
+          ],
+          "answer": "受权 API 创建任务，Redis 队列消费者执行，持久层记录任务与投递历史，事件回调更新结果",
+          "explanation": "结论：邮件是任务、队列、投递与回调组成的异步闭环。\n依据：营销 routes 提供任务创建、列表、详情、导出、历史与阿里云事件入口；email_queue 管理 Redis 队列、worker 锁、状态快照与恢复，services 负责业务记录。\n错误选项：A：浏览器直发不会形成服务端任务、持久历史、重试和回调闭环；B：仓库用应用内 Redis 队列消费者执行邮件，不为每封邮件启动 GitHub Action；D：Excel 导出只生成文件，不会调用邮件供应商投递。\n实践：排障时按“创建是否成功、是否入队、worker 是否领取、供应商结果、回调是否落库”逐段定位。"
+        },
+        {
+          "id": "course-fa-07-q02",
+          "type": "multiple_choice",
+          "content": "[FastAPI1@b21b6e4] 核对邮件任务为什么没有推进，应该先阅读哪组材料？",
+          "options": [
+            "只看邮件模板 HTML",
+            "只看客户邮箱字段",
+            "只看 dashboard 图表",
+            "email_queue、email_policy、营销 routes/services、readiness 与队列消费者测试"
+          ],
+          "answer": "email_queue、email_policy、营销 routes/services、readiness 与队列消费者测试",
+          "explanation": "结论：队列故障要同时检查准入策略、执行器、持久状态和健康信号。\n依据：email_policy 约束发送时段与策略，email_queue 负责 Redis 与 worker，routes/services 连接任务和历史，/ready 会暴露消费者是否启动。\n错误选项：A：模板 HTML 不展示队列锁、恢复、准入策略和持久状态；B：客户邮箱是敏感业务数据，也不能说明消费者生命周期；C：dashboard 图表是聚合结果，不定义任务执行和故障恢复。\n实践：先做静态状态机和错误分类，再在隔离本地测试中复现；不要读取真实收件人、邮件正文或生产队列。"
+        },
+        {
+          "id": "course-fa-07-q03",
+          "type": "multiple_choice",
+          "content": "[FastAPI1@b21b6e4] worker 重启后发现 Redis 中存在任务状态但持久层任务已不存在，应如何处理？",
+          "options": [
+            "按现有恢复/孤儿清理规则处理，避免继续发送不存在任务",
+            "无条件重发所有邮件",
+            "把 Redis 快照永久当作唯一任务记录",
+            "忽略差异并把 readiness 固定为 ok"
+          ],
+          "answer": "按现有恢复/孤儿清理规则处理，避免继续发送不存在任务",
+          "explanation": "结论：孤儿短期状态不能驱动新的外部副作用。\n依据：email_queue 包含状态键扫描、持久层核对、孤儿状态删除、TTL 修复和恢复游标；邮件发送属于不可随意重复的外部动作。\n错误选项：B：无条件重发会对外重复投递邮件并破坏幂等；C：Redis 快照带 TTL 和清理语义，不能替代持久任务记录；D：把 readiness 固定为 ok 会掩盖消费者或 Redis 故障。\n实践：恢复流程先验证持久任务与终态，再决定重入队；为重复投递、崩溃窗口和无效状态补幂等测试。"
+        },
+        {
+          "id": "course-fa-07-q04",
+          "type": "multiple_choice",
+          "content": "[FastAPI1@b21b6e4] 在 Mac 上安全观察邮件队列，应该怎么做？",
+          "options": [
+            "连接生产 Redis 查看任务 payload",
+            "git show email_queue.py，并用 rg 提取 worker、lock、status、recovery 与测试符号",
+            "向真实邮箱发送测试邮件",
+            "读取导出的收件人名单"
+          ],
+          "answer": "git show email_queue.py，并用 rg 提取 worker、lock、status、recovery 与测试符号",
+          "explanation": "结论：队列结构和恢复策略可以从源码与单元测试安全学习。\n依据：固定提交包含 Redis 操作、worker 生命周期、锁脚本、状态快照和恢复逻辑；无需查看任何真实 payload、邮箱或生产服务。\n错误选项：A：生产 Redis payload 可能包含收件人与任务内容，不应作为课程材料；C：向真实邮箱发送会产生外部投递副作用；D：导出收件人名单会读取个人联系数据，且不解释队列实现。\n实践：记录状态键用途和持久层交互，随后只运行隔离的队列消费者测试，确认不会加载生产配置。"
+        },
+        {
+          "id": "course-fa-07-q05",
+          "type": "multiple_choice",
+          "content": "[FastAPI1@b21b6e4] 审查邮件事件回调改动时，哪个组合最关键？",
+          "options": [
+            "只检查回调页面是否美观",
+            "只检查 HTTP 200 数量",
+            "HMAC/兼容 token 门禁、时间窗口、输入清洗、幂等状态迁移和敏感字段脱敏",
+            "让回调请求携带管理员浏览器 cookie"
+          ],
+          "answer": "HMAC/兼容 token 门禁、时间窗口、输入清洗、幂等状态迁移和敏感字段脱敏",
+          "explanation": "结论：外部回调必须同时解决真实性、重放、输入与重复事件。\n依据：营销 routes 提供 HMAC 签名、时间窗口、payload 清洗和兼容 token；回调最终会影响邮件投递历史和仪表盘统计。\n错误选项：A：回调页面外观与请求真实性、重放和状态迁移无关；B：HTTP 200 数量不能证明签名有效或重复事件已幂等处理；D：管理员浏览器 cookie 不是供应商回调凭据，还会错误耦合用户会话。\n实践：测试错误签名、过期时间、重复事件、乱序状态和日志脱敏，强制 HMAC 前还要明确兼容迁移策略。"
+        }
+      ]
+    },
+    {
+      "id": "course-fa-08",
+      "code": "FA08",
+      "title": "FA08 微信与客户",
+      "order": 8,
+      "lab_ref": "FA08",
+      "source_text": "fastapi1@b21b6e4: README.md, app/internet_marketing/routes.py, client/wxcli/README.md, html/customer_management.html",
+      "questions": [
+        {
+          "id": "course-fa-08-q01",
+          "type": "multiple_choice",
+          "content": "[FastAPI1@b21b6e4] 微信营销服务端与 wxcli 的职责边界是什么？",
+          "options": [
+            "服务端直接控制所有 Windows UI，wxcli 只展示报表",
+            "wxcli 保存全部客户真相，服务端无需任务记录",
+            "二者都可以任意调用底层微信 raw API",
+            "服务端管理任务、领取和结果；wxcli 在 Windows 调用 PC 微信 RPA，并通过受控协议回传"
+          ],
+          "answer": "服务端管理任务、领取和结果；wxcli 在 Windows 调用 PC 微信 RPA，并通过受控协议回传",
+          "explanation": "结论：任务编排留在服务端，桌面自动化留在 Windows 执行端。\n依据：wxcli 不做协议逆向、Hook 或公网监听，只允许营销 worker 调用 friend.add；服务端 routes 提供微信任务、claim-next、结果回传、重置与通讯录同步。\n错误选项：A：服务端只编排任务和协议，不直接操纵 Windows 微信界面；B：客户和营销任务真相仍由服务端持久化，wxcli 只保留受控恢复状态；C：wxcli 明确不做 raw API、Hook 或协议逆向，只调用允许的 RPA 动作。\n实践：改协议时同步更新双方 schema、风险确认、失败码和测试，不把桌面细节泄漏进通用 API。"
+        },
+        {
+          "id": "course-fa-08-q02",
+          "type": "multiple_choice",
+          "content": "[FastAPI1@b21b6e4] 理解微信 worker 崩溃恢复，最应查看哪些材料？",
+          "options": [
+            "wxcli README、worker/runner、pending 与 ledger 实现，以及微信任务服务端测试",
+            "只看微信页面颜色",
+            "只看 PC 微信版本号",
+            "只看邮件队列代码"
+          ],
+          "answer": "wxcli README、worker/runner、pending 与 ledger 实现，以及微信任务服务端测试",
+          "explanation": "结论：崩溃恢复跨越本地持久状态和服务端领取状态。\n依据：wxcli 每轮先 flush pending，再领取、执行、写 pending 和回传；不可重试结果进入 quarantine，execution-ledger 只存摘要。已领取未回传的 processing item 还需要人工确认后受控重置。\n错误选项：B：页面颜色不包含 pending、quarantine 或领取状态迁移；C：PC 微信版本号只能说明环境要求，不能解释崩溃窗口和回传恢复；D：邮件队列实现属于另一执行通道，不能代替 wxcli 本地状态证据。\n实践：画出领取前后崩溃窗口，并验证每个窗口是否会重复加好友。"
+        },
+        {
+          "id": "course-fa-08-q03",
+          "type": "multiple_choice",
+          "content": "[FastAPI1@b21b6e4] pending 结果回传持续收到 400/404/409 时，wxcli 应怎样处理？",
+          "options": [
+            "永久高频重试并阻塞所有后续任务",
+            "移入 quarantine，保留诊断材料但解除 worker 永久阻塞",
+            "删除 execution ledger 和所有本地配置",
+            "把完整手机号和 claim token 打印到 stdout"
+          ],
+          "answer": "移入 quarantine，保留诊断材料但解除 worker 永久阻塞",
+          "explanation": "结论：确定不可重试的 pending 应隔离，而不是无限阻塞。\n依据：wxcli README 明确 400、404、409 进入同目录 quarantine；网络、认证和 5xx 则保留 pending 等待重试。pending 可能含完整重试 payload，必须保存在用户私有目录且不能打印敏感值。\n错误选项：A：对确定不可重试状态永久高频重试会阻塞 worker 且持续制造无效请求；C：删除 ledger 和配置会破坏去重证据与可恢复身份设置；D：手机号和 claim token 属于敏感重试 payload，输出到 stdout 违反脱敏边界。\n实践：审查错误分类、原子写入和恢复命令，确保隔离不会误删执行证据。"
+        },
+        {
+          "id": "course-fa-08-q04",
+          "type": "multiple_choice",
+          "content": "[FastAPI1@b21b6e4] 在 Mac 上观察 wxcli 状态机制，哪种方法安全？",
+          "options": [
+            "远程控制一台已登录微信的 Windows 机器",
+            "读取本机 pending-results.json 的真实内容",
+            "git show wxcli 的 ledger、worker、risk 与 README，并运行纯本地单元测试",
+            "调用生产 claim-next 获取客户任务"
+          ],
+          "answer": "git show wxcli 的 ledger、worker、risk 与 README，并运行纯本地单元测试",
+          "explanation": "结论：状态机可以从版本化实现与模拟测试观察，不需要真实微信或客户任务。\n依据：仓库包含 pending、quarantine、ledger、单机锁、风险和 worker 代码，以及 tests/test_wxcli_runtime.py；真实状态文件可能含重试 payload，不应读取。\n错误选项：A：远控已登录微信会触及真实账号并可能执行加好友副作用；B：真实 pending 文件可能含完整手机号和回传 token；D：调用生产 claim-next 会领取真实客户任务并改变服务端状态。\n实践：限定在提交快照与临时目录测试，任何实机 UI 操作都必须另行取得 operator confirmation。"
+        },
+        {
+          "id": "course-fa-08-q05",
+          "type": "multiple_choice",
+          "content": "[FastAPI1@b21b6e4] 审查营销“全渠道已完成”的说法时，哪项判断正确？",
+          "options": [
+            "四个营销渠道的后端成熟度完全相同",
+            "只要 dashboard 有零值统计就表示渠道已上线",
+            "客户跟进接口存在就等于手工新增客户已经实现",
+            "邮件和微信已有较完整后端；短信、电话营销及手工新增客户后端仍明确未完成"
+          ],
+          "answer": "邮件和微信已有较完整后端；短信、电话营销及手工新增客户后端仍明确未完成",
+          "explanation": "结论：必须区分真实任务闭环、零值聚合和页面占位。\n依据：邮件和微信有任务 routes、services 与回归测试；短信、电话页面和发送操作明确提示后端未接入；客户管理支持线索与 follow-up，但新增客户弹窗仍提示未实现。\n错误选项：A：短信和电话后端仍未接入，四渠道成熟度并不相同；B：dashboard 的零值可能只是聚合占位，不能证明发送接口存在；C：follow-up 记录和手工创建客户是不同 API 闭环，前者不能证明后者完成。\n实践：评审文档逐项引用接口和测试证据，禁止用菜单、表单或图表替代后端验收。"
+        }
+      ]
+    },
+    {
+      "id": "course-fa-09",
+      "code": "FA09",
+      "title": "FA09 三类客户端",
+      "order": 9,
+      "lab_ref": "FA09",
+      "source_text": "fastapi1@b21b6e4: client/README.md, client/fastapi1_cli/README.md, client/Data-Collection/README.md, client/wxcli/README.md",
+      "questions": [
+        {
+          "id": "course-fa-09-q01",
+          "type": "multiple_choice",
+          "content": "[FastAPI1@b21b6e4] 三类客户端的主要用途如何对应？",
+          "options": [
+            "fastapi1 CLI 做通用受控 HTTP 操作，Data-Collection 执行采集 WebSocket 协议，wxcli 执行 Windows 微信 RPA",
+            "三个客户端都是同一程序的不同文件名",
+            "Data-Collection 用于邮件回调，wxcli 用于企业导出",
+            "fastapi1 CLI 直接控制 WPS 和 PC 微信"
+          ],
+          "answer": "fastapi1 CLI 做通用受控 HTTP 操作，Data-Collection 执行采集 WebSocket 协议，wxcli 执行 Windows 微信 RPA",
+          "explanation": "结论：三个客户端按协议和运行环境分工，不能互相替代。\n依据：fastapi1 CLI 提供 doctor、preflight、企业、营销和安全 GET 兜底；Data-Collection 常驻领取地区任务并处理文档；wxcli 在 Windows 上驱动 PC 微信好友申请。\n错误选项：B：三者有独立入口、依赖、认证和运行环境，并非同一可执行文件别名；C：Data-Collection 处理采集 WebSocket，wxcli 处理微信任务，选项交换了职责；D：通用 CLI 调用受控 HTTP API，不直接操纵 WPS 或 PC 微信。\n实践：先按任务性质选择客户端，再检查各自凭据、平台和副作用门禁。"
+        },
+        {
+          "id": "course-fa-09-q02",
+          "type": "multiple_choice",
+          "content": "[FastAPI1@b21b6e4] 判断某操作应加入哪个客户端，应该先看什么？",
+          "options": [
+            "哪个客户端文件最短",
+            "client 各 README/AGENTS、公开入口、认证协议和现有命令覆盖",
+            "哪个客户端依赖最多",
+            "用户更喜欢哪种命令颜色"
+          ],
+          "answer": "client 各 README/AGENTS、公开入口、认证协议和现有命令覆盖",
+          "explanation": "结论：客户端归属由协议、平台与风险边界决定。\n依据：CLI 使用短期 Bearer 并硬拦危险写路径；Data-Collection 维护独立 WebSocket 和文档处理；wxcli 需要 Windows、PC 微信与人工确认。\n错误选项：A：文件长度不能决定协议所有权和平台边界；C：依赖数量反映实现需求，不代表某操作应归属该客户端；D：命令颜色是展示偏好，无法确定认证、平台和副作用门禁。\n实践：新增命令前列出目标 API、凭据、平台、是否产生业务副作用和现有替代入口，优先扩展正确的现有客户端。"
+        },
+        {
+          "id": "course-fa-09-q03",
+          "type": "multiple_choice",
+          "content": "[FastAPI1@b21b6e4] 需要只读列出企业项目并输出机器可读结果，应优先选什么？",
+          "options": [
+            "Data-Collection --once",
+            "wx doctor",
+            "fastapi1 --json enterprise projects，并先做相应 profile 的 preflight",
+            "直接写一个新的数据库脚本"
+          ],
+          "answer": "fastapi1 --json enterprise projects，并先做相应 profile 的 preflight",
+          "explanation": "结论：通用企业只读 API 已有专用 CLI 高阶命令。\n依据：fastapi1 CLI 支持 JSON 稳定 envelope、preflight、认证引导和企业项目读取；Data-Collection 是采集 worker，wxcli 是微信桌面执行端。\n错误选项：A：Data-Collection --once 领取采集任务，不提供通用企业项目 JSON 查询；B：wx doctor 只诊断 Windows 微信执行环境，不读取企业项目；D：新数据库脚本会绕过现有 API 的认证、区域过滤和稳定输出合同。\n实践：课程环境只观察命令定义与本地帮助，不向生产发送认证；真实执行前必须确认 HTTPS、profile 和凭据门禁。"
+        },
+        {
+          "id": "course-fa-09-q04",
+          "type": "multiple_choice",
+          "content": "[FastAPI1@b21b6e4] 在 Mac 上比较三类客户端而不运行外部系统，最佳做法是什么？",
+          "options": [
+            "安装并启动所有 Windows 依赖",
+            "调用生产接口比较返回速度",
+            "读取用户级客户端配置内容",
+            "用 git show 对比三个 README、入口文件和 pyproject/requirements，再运行纯本地测试"
+          ],
+          "answer": "用 git show 对比三个 README、入口文件和 pyproject/requirements，再运行纯本地测试",
+          "explanation": "结论：静态对比即可确认职责、入口和平台要求。\n依据：三个客户端都在仓库中提供文档与代码；CLI 和 wxcli 有 pyproject，Data-Collection 有 requirements 与独立 README。无需读取用户配置、登录微信或连接服务端。\n错误选项：A：Windows RPA 依赖在 Mac 上不适用，启动它们也超出静态比较边界；B：生产接口测速会发送真实网络和认证请求；C：用户级配置可能含 Account-Key 或服务地址，无需读取即可比较客户端。\n实践：整理“入口、Python、平台、认证、协议、副作用、测试”七列表格。"
+        },
+        {
+          "id": "course-fa-09-q05",
+          "type": "multiple_choice",
+          "content": "[FastAPI1@b21b6e4] Codex 把 Data-Collection WebSocket 功能复制进通用 CLI，审查时应如何处理？",
+          "options": [
+            "要求先证明重复实现的必要性；默认保留 Data-Collection 的协议所有权并复用现有客户端",
+            "接受，客户端越多功能越完整",
+            "同时再复制进 wxcli 保持一致",
+            "删除 Data-Collection 的测试以避免冲突"
+          ],
+          "answer": "要求先证明重复实现的必要性；默认保留 Data-Collection 的协议所有权并复用现有客户端",
+          "explanation": "结论：当前边界已明确，重复协议实现会造成漂移。\n依据：CLI 文档明确不实现 Data-Collection WebSocket 客户端，该协议由 client/Data-Collection 维护；两者认证、状态机和运行模式也不同。\n错误选项：B：复制协议会形成两套认证和状态机实现，增加漂移而非完整性；C：wxcli 的 Windows 微信 RPA 边界不适合承载采集 WebSocket；D：删除 Data-Collection 测试只会移除合同保护，不能解决重复实现。\n实践：优先通过现有入口编排；只有明确的新用户场景和迁移计划才能改变所有权，并同步合同测试。"
+        }
+      ]
+    },
+    {
+      "id": "course-fa-10",
+      "code": "FA10",
+      "title": "FA10 依赖与部署",
+      "order": 10,
+      "lab_ref": "FA10",
+      "source_text": "fastapi1@b21b6e4: requirements.txt, requirements-tools.txt, client/fastapi1_cli/pyproject.toml, client/fastapi1_cli/install-local.sh, client/fastapi1_cli/install-local.ps1, client/wxcli/pyproject.toml, client/wxcli/install-windows.ps1, client/Data-Collection/requirements.txt, .github/workflows/harness.yml",
+      "questions": [
+        {
+          "id": "course-fa-10-q01",
+          "type": "multiple_choice",
+          "content": "[FastAPI1@b21b6e4] 根应用与客户端的 Python 版本要求应如何理解？",
+          "options": [
+            "整个仓库只支持一个未声明的 Python 版本",
+            "通用 CLI 明确要求 Python 3.11+，wxcli 要求 3.10+，Data-Collection 与根应用还需结合依赖和部署环境分别验证",
+            "wxcli 可以在任意 Python 2 版本运行",
+            "GitHub workflow 的 Python 3.13 自动证明所有生产组件都兼容"
+          ],
+          "answer": "通用 CLI 明确要求 Python 3.11+，wxcli 要求 3.10+，Data-Collection 与根应用还需结合依赖和部署环境分别验证",
+          "explanation": "结论：这是多运行面仓库，不能用单一解释器假设覆盖全部组件。\n依据：fastapi1_cli pyproject 声明 >=3.11，wxcli 声明 >=3.10 且含 Windows 条件依赖；Data-Collection 使用独立 requirements，根应用依赖另在 requirements.txt。\n错误选项：A：CLI 和 wxcli 的 pyproject 已分别声明不同 Python 下限；C：wxcli 要求 Python 3.10+，不支持 Python 2；D：单个 3.13 Harness job不运行全部服务端和 Windows 客户端行为，不能证明生产兼容。\n实践：部署和 CI 应按组件建立版本矩阵，分别验证入口、平台条件与锁定依赖。"
+        },
+        {
+          "id": "course-fa-10-q02",
+          "type": "multiple_choice",
+          "content": "[FastAPI1@b21b6e4] 核对依赖漂移风险时，哪组文件必须一起看？",
+          "options": [
+            "只看 package.json",
+            "只看根 requirements.txt",
+            "根 requirements、tools requirements、两个 pyproject、Data-Collection requirements 和安装脚本",
+            "只看 README 的技术栈一句话"
+          ],
+          "answer": "根 requirements、tools requirements、两个 pyproject、Data-Collection requirements 和安装脚本",
+          "explanation": "结论：依赖声明分散在服务端、工具链和三个客户端。\n依据：根应用包含 FastAPI、SQLAlchemy、Redis、OSS 与 AI 依赖；CLI 只有 httpx；wxcli 有 Windows RPA 条件依赖；Data-Collection 有 websockets、文档和 OSS 依赖。\n错误选项：A：package.json 主要覆盖 Playwright 等 JavaScript 工具，不包含 Python 运行面依赖；B：根 requirements 只覆盖服务端，漏掉 CLI、wxcli 和 Data-Collection；D：README 技术栈摘要不提供精确版本、Python 下限和平台 marker。\n实践：升级前建立组件清单，确认版本范围、平台 marker、安装入口和对应测试，不在一个文件里盲目统一。"
+        },
+        {
+          "id": "course-fa-10-q03",
+          "type": "multiple_choice",
+          "content": "[FastAPI1@b21b6e4] 某依赖在 Python 3.13 的 harness job 安装成功，能否直接宣布生产兼容？",
+          "options": [
+            "能，因为最新 Python 会覆盖所有平台行为",
+            "能，只要 pip 没报错",
+            "能，因为 harness job 会执行全部应用 E2E",
+            "不能；harness job 主要检查 Codex 配置，仍需按服务端、Windows wxcli 和采集客户端分别验证"
+          ],
+          "answer": "不能；harness job 主要检查 Codex 配置，仍需按服务端、Windows wxcli 和采集客户端分别验证",
+          "explanation": "结论：安装成功和 harness 通过都不是全栈兼容证明。\n依据：唯一 GitHub workflow 使用 Python 3.13，但执行的是 harness health、知识图谱、skills 审计和少量治理测试，不运行完整应用 pytest、Playwright 或 Windows 客户端矩阵。\n错误选项：A：较新 Python 不会自动覆盖 Windows 条件依赖和各组件运行行为；B：pip 安装成功只证明依赖可解析，不证明导入、协议和业务测试通过；C：当前 Harness workflow 不执行完整应用 E2E 或 Windows 客户端矩阵。\n实践：为受影响组件运行目标 Python 与平台测试，并明确生产解释器和回滚版本。"
+        },
+        {
+          "id": "course-fa-10-q04",
+          "type": "multiple_choice",
+          "content": "[FastAPI1@b21b6e4] 在 Mac 上只读比较依赖，哪条命令路径最安全？",
+          "options": [
+            "git show 固定提交中的 requirements 与 pyproject，并用 rg 比较版本约束",
+            "直接升级当前全局 Python 包",
+            "登录生产服务器执行 pip install -U",
+            "读取部署环境中的私有配置"
+          ],
+          "answer": "git show 固定提交中的 requirements 与 pyproject，并用 rg 比较版本约束",
+          "explanation": "结论：依赖盘点不需要安装、升级或访问部署环境。\n依据：版本化依赖文件已经给出包名、范围、条件 marker 与 Python 下限；安装脚本还能显示不同平台入口。\n错误选项：B：升级全局 Python 包会污染当前开发环境且不保留组件隔离；C：在生产执行 pip install -U 会直接改变部署环境并缺少回滚验证；D：私有配置含凭据和连接信息，依赖版本比较无需读取它。\n实践：输出按组件分组的差异表，标记精确 pin、开放上限和平台条件，再在隔离分支与虚拟环境中做升级实验。"
+        },
+        {
+          "id": "course-fa-10-q05",
+          "type": "multiple_choice",
+          "content": "[FastAPI1@b21b6e4] 审查一次“大范围统一依赖版本”的 Codex 改动，首先要求什么？",
+          "options": [
+            "所有文件使用完全相同的依赖集合",
+            "说明每个运行面的必要性、兼容矩阵、锁定策略、目标测试、部署顺序和回滚版本",
+            "删除平台条件 marker 以减少行数",
+            "只要 requirements.txt 能解析就合并"
+          ],
+          "answer": "说明每个运行面的必要性、兼容矩阵、锁定策略、目标测试、部署顺序和回滚版本",
+          "explanation": "结论：跨组件依赖统一是高风险变更，必须有证据而非整齐偏好。\n依据：根服务、CLI、Data-Collection 与 wxcli 的平台和 Python 下限不同，Windows RPA 还固定特定依赖范围；盲目统一可能破坏安装或运行。\n错误选项：A：服务端、CLI、采集端和 wxcli 的依赖集合因协议与平台不同，不应强制一致；C：平台 marker 用于限制 Windows RPA 依赖，删除后会破坏其他平台安装；D：requirements 能解析不代表各入口可运行、测试通过或部署可回滚。\n实践：缩小升级批次，先跑目标组件测试和安装 smoke，保留旧版本清单与可逆部署步骤。"
+        }
+      ]
+    },
+    {
+      "id": "course-fa-11",
+      "code": "FA11",
+      "title": "FA11 测试与Harness",
+      "order": 11,
+      "lab_ref": "FA11",
+      "source_text": "fastapi1@b21b6e4: pytest.ini, tests/, tests/e2e/, .codex/contract.json, scripts/check_harness_health.py, .github/workflows/harness.yml",
+      "questions": [
+        {
+          "id": "course-fa-11-q01",
+          "type": "multiple_choice",
+          "content": "[FastAPI1@b21b6e4] 仓库的测试与 Harness 各自主要解决什么问题？",
+          "options": [
+            "二者都只检查代码格式",
+            "Harness 负责生产数据备份，pytest 负责部署",
+            "pytest/Playwright 验证业务行为，Harness 合同与脚本约束 Codex 配置、hooks、MCP、skills 和图谱治理",
+            "Harness 可以替代所有应用测试"
+          ],
+          "answer": "pytest/Playwright 验证业务行为，Harness 合同与脚本约束 Codex 配置、hooks、MCP、skills 和图谱治理",
+          "explanation": "结论：业务验证和代理运行约束是两层不同质量系统。\n依据：tests 下有大量后端单元/集成与 Playwright E2E；.codex/contract.json、check_harness_health、hooks 和 skills 审计负责防止 Harness 漂移与敏感配置进入项目。\n错误选项：A：pytest/Playwright 验证业务行为，Harness 脚本验证代理合同，二者都不只是格式检查；B：Harness 不负责生产备份，pytest 也不是部署工具；D：Harness 不执行企业、营销和客户端的全部业务路径，不能替代应用测试。\n实践：业务改动运行目标测试，Harness 改动运行合同检查；任何一层通过都不能替代另一层。"
+        },
+        {
+          "id": "course-fa-11-q02",
+          "type": "multiple_choice",
+          "content": "[FastAPI1@b21b6e4] 研究 Harness 的权威材料组合是什么？",
+          "options": [
+            "只看全局 Codex 配置",
+            "只看某次代理聊天记录",
+            "只看 README 中的 Harness 一段",
+            "根/目录 AGENTS、.codex/contract.json、config/hooks/rules、诊断脚本及其测试"
+          ],
+          "answer": "根/目录 AGENTS、.codex/contract.json、config/hooks/rules、诊断脚本及其测试",
+          "explanation": "结论：自然语言边界与结构化合同要共同解释 Harness。\n依据：AGENTS 描述目录职责和安全约束；contract 固化 features、MCP、hook 与 skills 基线；检查脚本和测试将合同变成可执行门禁。\n错误选项：A：全局配置既缺少仓库目录作用域，也可能含不应复制的用户级值；B：聊天记录不是版本化、可执行的仓库合同；C：README 段落不能替代 contract、hooks 和测试所固化的基线。\n实践：先读最近作用域的 AGENTS，再核对合同与脚本，不复制用户级配置或任何连接凭据。"
+        },
+        {
+          "id": "course-fa-11-q03",
+          "type": "multiple_choice",
+          "content": "[FastAPI1@b21b6e4] 修改邮件队列一个状态分支后，最合理的测试顺序是什么？",
+          "options": [
+            "先跑最小相关队列测试，再扩展营销集成测试，必要时最后跑隔离 E2E",
+            "一开始就连接生产发送真实邮件",
+            "只运行 Harness workflow 中的六个治理测试",
+            "不运行测试，因为改动只有一个分支"
+          ],
+          "answer": "先跑最小相关队列测试，再扩展营销集成测试，必要时最后跑隔离 E2E",
+          "explanation": "结论：验证范围应随改动风险逐层扩大。\n依据：仓库已有队列消费者、营销全链路、routes、前端和 Playwright 测试；最小测试提供快速反馈，集成与 E2E 再覆盖跨模块合同。\n错误选项：B：生产发送会产生真实邮件副作用并使用真实收件人；C：六个治理测试检查 Harness，不覆盖邮件队列状态分支；D：即使只有一个分支，仍可能改变重试或终态，必须留下最小回归测试。\n实践：记录失败前后证据，使用隔离测试数据与 run id，禁止拿生产收件人或服务作为测试夹具。"
+        },
+        {
+          "id": "course-fa-11-q04",
+          "type": "multiple_choice",
+          "content": "[FastAPI1@b21b6e4] 在 Mac 上只读盘点测试覆盖，哪种方法合适？",
+          "options": [
+            "运行所有生产 smoke 并允许业务写入",
+            "git ls-tree 与 git grep 枚举 tests、E2E manifest、workflow 和目标模块引用",
+            "读取 E2E 凭据确认是否存在",
+            "删除慢测试后统计数量"
+          ],
+          "answer": "git ls-tree 与 git grep 枚举 tests、E2E manifest、workflow 和目标模块引用",
+          "explanation": "结论：测试资产和 CI 接线可从 Git 元数据安全盘点。\n依据：测试文件名、endpoint manifest 和 workflow 会显示覆盖领域与自动执行范围，不需要读取凭据、数据库或运行生产 smoke。\n错误选项：A：生产 smoke 可能写入任务或触发外部服务，不是只读盘点；C：E2E 凭据属于秘密，确认覆盖无需查看其值；D：删除慢测试会降低覆盖且篡改待盘点资产。\n实践：为每个核心模块列出单元、集成、E2E 和 CI 四列，特别标出“有测试但未接入 GitHub CI”的缺口。"
+        },
+        {
+          "id": "course-fa-11-q05",
+          "type": "multiple_choice",
+          "content": "[FastAPI1@b21b6e4] 当前 GitHub Actions 最明显的应用质量缺口是什么？",
+          "options": [
+            "没有 checkout 步骤",
+            "没有安装 Python",
+            "唯一 workflow 聚焦 Harness，未自动运行完整应用 pytest、Playwright 和多平台客户端矩阵",
+            "没有任何 Harness 测试"
+          ],
+          "answer": "唯一 workflow 聚焦 Harness，未自动运行完整应用 pytest、Playwright 和多平台客户端矩阵",
+          "explanation": "结论：仓库测试很多，但自动化门禁覆盖不足。\n依据：.github/workflows 只有 harness.yml，它安装依赖后运行 Harness 健康、图谱、skills 与六个治理测试；完整后端测试、E2E 和 Windows wxcli 并未进入该 workflow。\n错误选项：A：harness.yml 已包含 checkout，缺口不在拉取源码；B：workflow 已设置 Python 3.13，缺口不在解释器安装；D：当前 workflow 确实运行 Harness 健康、图谱、skills 和治理测试。\n实践：提案应分阶段增加应用 CI，并处理服务依赖、测试数据隔离、耗时与平台矩阵，而不是直接声称现有 CI 已覆盖全栈。"
+        }
+      ]
+    },
+    {
+      "id": "course-fa-12",
+      "code": "FA12",
+      "title": "FA12 审查Codex改动",
+      "order": 12,
+      "lab_ref": "FA12",
+      "source_text": "fastapi1@b21b6e4: AGENTS.md, .codex/AGENTS.md, graphify-out/GRAPH_REPORT.md, .github/workflows/harness.yml, main.py",
+      "questions": [
+        {
+          "id": "course-fa-12-q01",
+          "type": "multiple_choice",
+          "content": "[FastAPI1@b21b6e4] 审查 Codex 改动的第一原则是什么？",
+          "options": [
+            "先运行所有部署命令，再查看差异",
+            "只根据 Codex 的完成说明判断",
+            "只检查新增代码，不看删除内容",
+            "先确认工作区与指令作用域，再用 diff 追踪真实数据流、风险边界和验证证据"
+          ],
+          "answer": "先确认工作区与指令作用域，再用 diff 追踪真实数据流、风险边界和验证证据",
+          "explanation": "结论：审查从事实和边界开始，不从代理叙述开始。\n依据：仓库有根及目录 AGENTS、Harness 合同和大量跨层业务；工作区还可能包含用户未提交改动。只看新增行会漏掉权限放宽、错误处理删除和测试弱化。\n错误选项：A：审查前部署会把未验证差异带入运行环境并产生副作用；B：Codex 完成说明不是 diff、调用关系或测试证据；C：删除内容可能移除权限和错误处理，只看新增行会漏掉回归。\n实践：依次检查 status、适用指令、diff、调用方、测试与回滚，所有结论引用文件和行为。"
+        },
+        {
+          "id": "course-fa-12-q02",
+          "type": "multiple_choice",
+          "content": "[FastAPI1@b21b6e4] 开始审查前，哪组材料最能限定改动意图和仓库规则？",
+          "options": [
+            "git status/diff、相关 AGENTS、需求说明、目标模块测试与最近提交",
+            "只看最终文件大小",
+            "只看代理使用了多少工具",
+            "只看 README 首页"
+          ],
+          "answer": "git status/diff、相关 AGENTS、需求说明、目标模块测试与最近提交",
+          "explanation": "结论：意图、约束、现状和证据必须同时建立。\n依据：AGENTS 按目录规定认证、测试和安全边界；git status/diff 区分用户改动与本次改动；目标测试和近期提交说明现有行为与演进方向。\n错误选项：B：文件大小不能说明需求意图、用户改动归属或适用规则；C：工具调用数量不反映改动是否符合目录 AGENTS 和业务合同；D：README 首页不包含工作区 diff、最近提交和目录级约束的完整证据。\n实践：先做只读清单，任何不在需求中的重构、依赖升级或配置变化都单独质询。"
+        },
+        {
+          "id": "course-fa-12-q03",
+          "type": "multiple_choice",
+          "content": "[FastAPI1@b21b6e4] 面对超大 services.py 中的一处修复，最稳妥的改动策略是什么？",
+          "options": [
+            "顺便重写整个文件并引入新框架",
+            "定位共享根因和全部调用方，做最小修复并用目标回归测试锁住行为",
+            "复制函数到另一个文件但保留旧调用",
+            "只修改报告中出现的一个页面症状"
+          ],
+          "answer": "定位共享根因和全部调用方，做最小修复并用目标回归测试锁住行为",
+          "explanation": "结论：巨大文件提高了误伤面，更需要根因最小改动。\n依据：internet_marketing/services.py 超过一万行，project_collection_service、CLI 等也很大；图谱报告显示多个高连接模块。大范围顺手重构会混淆行为修复与结构迁移。\n错误选项：A：重写超大文件并引入框架会扩大行为变更面且混淆修复证据；C：复制函数会保留旧调用路径并制造两套实现；D：只改一个页面症状会遗漏经过同一共享函数的其他调用方。\n实践：先 rg 全部调用，新增一个能复现问题的最小测试，修复共享路径后再评估独立拆分提案。"
+        },
+        {
+          "id": "course-fa-12-q04",
+          "type": "multiple_choice",
+          "content": "[FastAPI1@b21b6e4] 在 Mac 上做无副作用改动审查，哪组命令最合适？",
+          "options": [
+            "直接 reset --hard 回到主分支",
+            "部署当前分支后观察生产日志",
+            "git status、git diff、git show、git grep、diff --check 与隔离的目标测试",
+            "打开数据库比较前后记录"
+          ],
+          "answer": "git status、git diff、git show、git grep、diff --check 与隔离的目标测试",
+          "explanation": "结论：审查应以版本差异、调用关系和本地验证为核心。\n依据：这些命令不会访问生产网络或业务数据，并能发现未跟踪文件、意外删除、调用遗漏、空白错误和回归失败。\n错误选项：A：reset --hard 会销毁工作区中用户或其他任务的未提交改动；B：部署后读生产日志会先引入未验证变更并接触运行数据；D：打开数据库读取业务记录不是无副作用的源码审查。\n实践：测试前确认环境隔离；若工作区含他人改动则停止覆盖，按文件归属分开审查和回滚。"
+        },
+        {
+          "id": "course-fa-12-q05",
+          "type": "multiple_choice",
+          "content": "[FastAPI1@b21b6e4] 对当前技术债的描述，哪项最准确？",
+          "options": [
+            "项目已完成 Alembic 迁移、全应用 CI 和小文件模块化，不存在明显债务",
+            "唯一问题是 README 太长，代码结构没有风险",
+            "只要测试数量多，启动期 schema patch 就等价于正式迁移体系",
+            "存在巨大高连接文件、未见 Alembic、仍有启动期 schema patch，且 GitHub CI 主要覆盖 Harness 而非完整应用"
+          ],
+          "answer": "存在巨大高连接文件、未见 Alembic、仍有启动期 schema patch，且 GitHub CI 主要覆盖 Harness 而非完整应用",
+          "explanation": "结论：债务集中在模块规模、迁移治理和自动化门禁，而不是功能完全不可用。\n依据：多个核心文件达到数千至上万行；仓库没有 Alembic 目录，却在 main.py 通过显式开关执行 schema patch；唯一 workflow 只跑 Harness 检查。\n错误选项：A：仓库未见 Alembic，仍有大文件、启动期 schema patch 和应用 CI 缺口；B：多个核心模块高连接且达数千至上万行，结构风险不止 README；C：启动期 patch 缺少正式迁移版本链与回滚治理，测试数量不能使二者等价。\n实践：分别提出可回滚的模块拆分、正式迁移基线和应用 CI 路线，不把三类债务揉成一次大重写。"
+        }
+      ]
+    }
+  ]
+}

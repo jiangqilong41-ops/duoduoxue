@@ -62,7 +62,7 @@ class _QuizScreenState extends ConsumerState<QuizScreen> {
   }
 
   Future<void> _checkAnswer() async {
-    if (_selectedAnswer == null) return;
+    if (_selectedAnswer == null || _selectedAnswer!.isEmpty) return;
 
     final question = _questions[_currentIndex];
 
@@ -124,12 +124,18 @@ class _QuizScreenState extends ConsumerState<QuizScreen> {
         return answer.trim() == question.answer.trim();
       case QuestionType.fillBlank:
         // 去除空格和标点，忽略大小写
-        return answer.trim().toLowerCase() == question.answer.trim().toLowerCase();
+        return answer.trim().toLowerCase() ==
+            question.answer.trim().toLowerCase();
       case QuestionType.matching:
+        return matchingAnswersEqual(
+          question.matchLeft ?? [],
+          question.matchRight ?? [],
+          answer,
+          question.answer,
+        );
       case QuestionType.ordering:
-        // 对于匹配和排序，答案格式为 "item1-match1|item2-match2" 或 "step1|step2|step3"
-        // 比较时需要规范化
-        final normalize = (String s) => s.split('|').map((e) => e.trim()).join('|');
+        final normalize =
+            (String s) => s.split('|').map((e) => e.trim()).join('|');
         return normalize(answer) == normalize(question.answer);
     }
   }
@@ -152,7 +158,9 @@ class _QuizScreenState extends ConsumerState<QuizScreen> {
   Future<void> _finishQuiz() async {
     final allCorrect = _correctCount == _questions.length;
     final statsBefore = ref.read(userStatsProvider).value;
-    await ref.read(userStatsProvider.notifier).onDeckComplete(allCorrect: allCorrect);
+    await ref
+        .read(userStatsProvider.notifier)
+        .onDeckComplete(allCorrect: allCorrect);
     final statsAfter = ref.read(userStatsProvider).value;
 
     // 计算总 XP（含连续天数奖励）
@@ -189,7 +197,9 @@ class _QuizScreenState extends ConsumerState<QuizScreen> {
     if (before.streak < 3 && after.streak >= 3) newAchievements.add('连续3天');
     if (before.streak < 7 && after.streak >= 7) newAchievements.add('连续7天');
     if (before.streak < 30 && after.streak >= 30) newAchievements.add('连续30天');
-    if (before.streak < 100 && after.streak >= 100) newAchievements.add('连续100天');
+    if (before.streak < 100 && after.streak >= 100) {
+      newAchievements.add('连续100天');
+    }
     // XP
     if (before.xp < 100 && after.xp >= 100) newAchievements.add('初心者');
     if (before.xp < 500 && after.xp >= 500) newAchievements.add('积少成多');
@@ -202,7 +212,8 @@ class _QuizScreenState extends ConsumerState<QuizScreen> {
         showDialog(
           context: context,
           builder: (_) => AlertDialog(
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
             content: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -210,26 +221,33 @@ class _QuizScreenState extends ConsumerState<QuizScreen> {
                 const SizedBox(height: 12),
                 const Text(
                   '成就解锁！',
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800, color: AppColors.gold),
+                  style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.w800,
+                      color: AppColors.gold),
                 ),
                 const SizedBox(height: 16),
                 ...newAchievements.map((a) => Padding(
-                  padding: const EdgeInsets.only(bottom: 8),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Icon(Icons.star, color: AppColors.gold, size: 20),
-                      const SizedBox(width: 6),
-                      Text(a, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w700)),
-                    ],
-                  ),
-                )),
+                      padding: const EdgeInsets.only(bottom: 8),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Icon(Icons.star,
+                              color: AppColors.gold, size: 20),
+                          const SizedBox(width: 6),
+                          Text(a,
+                              style: const TextStyle(
+                                  fontSize: 18, fontWeight: FontWeight.w700)),
+                        ],
+                      ),
+                    )),
               ],
             ),
             actions: [
               TextButton(
                 onPressed: () => Navigator.of(context).pop(),
-                child: const Text('太棒了', style: TextStyle(fontWeight: FontWeight.w700)),
+                child: const Text('太棒了',
+                    style: TextStyle(fontWeight: FontWeight.w700)),
               ),
             ],
           ),
@@ -287,7 +305,8 @@ class _QuizScreenState extends ConsumerState<QuizScreen> {
                   children: [
                     // 题型标签
                     Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 12, vertical: 6),
                       decoration: BoxDecoration(
                         color: AppColors.surface,
                         borderRadius: BorderRadius.circular(8),
@@ -318,6 +337,7 @@ class _QuizScreenState extends ConsumerState<QuizScreen> {
                     QuestionWidget(
                       question: question,
                       showResult: _showResult,
+                      answerIsCorrect: _isCorrectAnswer,
                       selectedAnswer: _selectedAnswer,
                       onAnswerSelected: (answer) {
                         setState(() => _selectedAnswer = answer);
@@ -340,7 +360,9 @@ class _QuizScreenState extends ConsumerState<QuizScreen> {
                                 Icon(
                                   isCorrect ? Icons.lightbulb : Icons.info,
                                   size: 18,
-                                  color: isCorrect ? AppColors.green : AppColors.blue,
+                                  color: isCorrect
+                                      ? AppColors.green
+                                      : AppColors.blue,
                                 ),
                                 const SizedBox(width: 6),
                                 Text(
@@ -348,7 +370,9 @@ class _QuizScreenState extends ConsumerState<QuizScreen> {
                                   style: TextStyle(
                                     fontSize: 14,
                                     fontWeight: FontWeight.w800,
-                                    color: isCorrect ? AppColors.green : AppColors.blue,
+                                    color: isCorrect
+                                        ? AppColors.green
+                                        : AppColors.blue,
                                   ),
                                 ),
                               ],
@@ -424,7 +448,7 @@ class _QuizScreenState extends ConsumerState<QuizScreen> {
           child: DuoButton(
             label: '检查',
             color: AppColors.green,
-            enabled: _selectedAnswer != null && !_isChecking,
+            enabled: _selectedAnswer?.isNotEmpty == true && !_isChecking,
             width: double.infinity,
             onPressed: _checkAnswer,
           ),
@@ -455,7 +479,8 @@ class _QuizScreenState extends ConsumerState<QuizScreen> {
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.w800,
-                      color: isCorrect ? AppColors.greenDark : AppColors.redDark,
+                      color:
+                          isCorrect ? AppColors.greenDark : AppColors.redDark,
                     ),
                   ),
                   if (isCorrect)
@@ -582,7 +607,8 @@ class _QuizScreenState extends ConsumerState<QuizScreen> {
   }
 
   Widget _buildResultScreen() {
-    final accuracy = _questions.isNotEmpty ? _correctCount / _questions.length : 0.0;
+    final accuracy =
+        _questions.isNotEmpty ? _correctCount / _questions.length : 0.0;
     final allCorrect = _correctCount == _questions.length;
     final stats = ref.watch(userStatsProvider).value;
     final streakBonus = (stats?.streak ?? 0) * 5;

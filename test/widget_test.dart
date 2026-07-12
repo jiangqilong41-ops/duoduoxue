@@ -15,9 +15,13 @@ import 'package:shared_preferences/shared_preferences.dart';
 class _FakeGamificationService extends GamificationService {
   _FakeGamificationService() : super(DatabaseHelper());
 
+  int getStatsCount = 0;
+
   @override
-  Future<UserStats> getStats() async =>
-      UserStats(lastStudyDate: DateTime.now());
+  Future<UserStats> getStats() async {
+    getStatsCount++;
+    return UserStats(lastStudyDate: DateTime.now());
+  }
 }
 
 void main() {
@@ -81,6 +85,35 @@ void main() {
       );
       await tester.pumpAndSettle(const Duration(seconds: 2));
       expect(tester.takeException(), isNull);
+    } finally {
+      ErrorWidget.builder = originalErrorWidgetBuilder;
+    }
+  });
+
+  testWidgets('resuming the app refreshes user stats', (tester) async {
+    final gamification = _FakeGamificationService();
+    final originalErrorWidgetBuilder = ErrorWidget.builder;
+    try {
+      await tester.pumpWidget(
+        ProviderScope(
+          overrides: [
+            deckListProvider.overrideWith((ref) async => []),
+            allQuestionsProvider.overrideWith((ref) async => []),
+            gamificationServiceProvider.overrideWithValue(gamification),
+            userStatsProvider.overrideWith(
+              (ref) => UserStatsNotifier(gamification),
+            ),
+          ],
+          child: const DIYDuolingoApp(),
+        ),
+      );
+      await tester.pumpAndSettle();
+      expect(gamification.getStatsCount, 1);
+
+      tester.binding.handleAppLifecycleStateChanged(AppLifecycleState.resumed);
+      await tester.pumpAndSettle();
+
+      expect(gamification.getStatsCount, 2);
     } finally {
       ErrorWidget.builder = originalErrorWidgetBuilder;
     }
