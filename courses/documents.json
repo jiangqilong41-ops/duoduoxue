@@ -1,0 +1,146 @@
+{
+  "course": {
+    "id": "documents",
+    "prefix": "DO",
+    "title": "documents"
+  },
+  "source": {
+    "kind": "local-sanitized",
+    "ref": "documents@26.715.12143",
+    "snapshot": "2026-07-20"
+  },
+  "decks": [
+    {
+      "id": "course-do-01",
+      "code": "DO01",
+      "title": "DO01 Documents 插件总览",
+      "order": 1,
+      "lab_ref": "DO01",
+      "source_text": "documents@26.715.12143#.codex-plugin/plugin.json; README.md",
+      "questions": [
+        {
+          "id": "course-do-01-q01",
+          "type": "multiple_choice",
+          "content": "[documents@26.715.12143] 场景：用户要创建、编辑、审阅、修订、批注或交付 Word、DOCX 或 Google Docs 文档。哪项处理最符合 Documents 插件总览 的职责？",
+          "options": [
+            "只打开 Documents 总览并直接宣称任务完成",
+            "跳过输入与验证，直接把 PDF 或工作簿任务误路由为 DOCX，或未验证便声称文档完成",
+            "调用 @documents，把以 Word、DOCX、Google Docs、memo、报告或可编辑文稿为最终产物的请求路由到 Documents skill",
+            "改用 Sales 客户跟进流程来绕开文件请求"
+          ],
+          "answer": "调用 @documents，把以 Word、DOCX、Google Docs、memo、报告或可编辑文稿为最终产物的请求路由到 Documents skill",
+          "explanation": "结论：应选择 @documents，把请求交给清晰且最窄的文件能力。\n依据：Documents manifest 和 README 把插件定义为文档文件类型 wrapper，并只包含 Documents skill。\n错误选项：A：总览或路由说明不能替代 Documents 插件总览 的实际输出；B：该做法触犯“插件入口只负责文件类型路由，文档质量要由 Documents 的 render-and-verify 流程证明”这一边界；D：销售跟进不能产出“明确的 Documents skill 路由、需要的源文件和最终文档交付面”\n实践：用虚构文件复述输入、预期输出和停止条件，再写出显式调用。"
+        },
+        {
+          "id": "course-do-01-q02",
+          "type": "true_false",
+          "content": "[documents@26.715.12143] 场景：最终产物是 PDF、电子表格或普通聊天答复，且不需要可编辑文档。同事仍计划调用 @documents 并把 PDF 或工作簿任务误路由为 DOCX，或未验证便声称文档完成。这个判断正确吗？",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "错误",
+          "explanation": "结论：该场景不应沿用这个执行路径。\n依据：插件入口只负责文件类型路由；文档质量要由 Documents 的 render-and-verify 流程证明；当前不适用条件是“最终产物是 PDF、电子表格或普通聊天答复，且不需要可编辑文档”。\n实践：先写一句不适用理由，再选择更匹配的文件 skill 或停在澄清步骤。"
+        },
+        {
+          "id": "course-do-01-q03",
+          "type": "fill_blank",
+          "content": "[documents@26.715.12143] 场景：你已确认“用户要创建、编辑、审阅、修订、批注或交付 Word、DOCX 或 Google Docs 文档”，要显式记录插件、skill slug 与 display name。应调用 ___（Documents 插件总览）。",
+          "options": [],
+          "answer": "@documents",
+          "explanation": "结论：显式调用写作 @documents。\n依据：课程把 documents 作为插件名，并把 @documents 作为插件入口；展示名是“Documents 插件总览”。\n实践：把合成文件任务追加在调用后，并写明期望得到“明确的 Documents skill 路由、需要的源文件和最终文档交付面”。"
+        },
+        {
+          "id": "course-do-01-q04",
+          "type": "multiple_choice",
+          "content": "[documents@26.715.12143] 场景：学员要在不创建真实文件的情况下验收本单元。哪项证据最有效？",
+          "options": [
+            "读取真实客户或生产文件来提高练习真实性",
+            "执行把 PDF 或工作簿任务误路由为 DOCX，或未验证便声称文档完成后只回复“已完成”",
+            "一次执行所有文件插件，以免遗漏",
+            "使用合成输入得到明确的 Documents skill 路由、需要的源文件和最终文档交付面，并检查“插件入口只负责文件类型路由；文档质量要由 Documents 的 render-and-verify 流程证明”"
+          ],
+          "answer": "使用合成输入得到明确的 Documents skill 路由、需要的源文件和最终文档交付面，并检查“插件入口只负责文件类型路由；文档质量要由 Documents 的 render-and-verify 流程证明”",
+          "explanation": "结论：验收要同时看到目标输出和边界检查。\n依据：只用合成提纲判断 DOCX、Google Docs 与非文档请求，课程不读取真实文件、凭据或生产数据，也不执行外部写入。\n错误选项：A：课程安全边界限定合成材料与只读判断；B：这既越过能力边界，也没有可观察验收结果；C：入口应按最终产物选择最窄文件 workflow\n实践：保留合成提示词、路由判断和检查清单作为观察证据。"
+        },
+        {
+          "id": "course-do-01-q05",
+          "type": "true_false",
+          "content": "[documents@26.715.12143] 场景：学员只用合成的“写作目标、内容、目标文件类型、现有 DOCX 或模板和交付要求”，得到明确的 Documents skill 路由、需要的源文件和最终文档交付面，并确认没有把 PDF 或工作簿任务误路由为 DOCX，或未验证便声称文档完成。这可以作为本单元的可观察验收吗？",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：这组证据覆盖了能力选择、输出和安全边界。\n依据：只用合成提纲判断 DOCX、Google Docs 与非文档请求；课程练习不需要真实客户数据、外部写入或生产操作。\n实践：逐项记录输入、输出与“插件入口只负责文件类型路由；文档质量要由 Documents 的 render-and-verify 流程证明”的检查结果。"
+        }
+      ]
+    },
+    {
+      "id": "course-do-02",
+      "code": "DO02",
+      "title": "DO02 Documents:文档处理",
+      "order": 2,
+      "lab_ref": "DO02",
+      "source_text": "documents@26.715.12143#skills/documents/SKILL.md; skills/documents/agents/openai.yaml",
+      "questions": [
+        {
+          "id": "course-do-02-q01",
+          "type": "multiple_choice",
+          "content": "[documents@26.715.12143] 场景：任务需要创建、修改、修订、批注、检查或导出 Word、DOCX 或 Google Docs 目标文档。哪项处理最符合 documents（Documents:文档处理） 的职责？",
+          "options": [
+            "调用 $documents:documents，写出使用工作区依赖创建或局部编辑 DOCX、再逐页 PNG 渲染检查的方案",
+            "只打开 Documents 总览并直接宣称任务完成",
+            "跳过输入与验证，直接使用系统依赖、修改受管依赖目录或只读 XML 便宣称布局无缺陷",
+            "改用 Sales 客户跟进流程来绕开文件请求"
+          ],
+          "answer": "调用 $documents:documents，写出使用工作区依赖创建或局部编辑 DOCX、再逐页 PNG 渲染检查的方案",
+          "explanation": "结论：应选择 $documents:documents，把请求交给清晰且最窄的文件能力。\n依据：Documents skill 规定 workspace dependencies、DOCX render-to-PNG gate、模板优先和现有文档的最小局部编辑。\n错误选项：B：总览或路由说明不能替代 documents（Documents:文档处理） 的实际输出；C：该做法触犯“必须使用 loader 返回的依赖，每批有意义的编辑后都要重新渲染并检查，缺少 LibreOffice 时才可披露后跳过视觉门槛”这一边界；D：销售跟进不能产出“结构检查和逐页视觉 QA 的执行方案、预期证据字段及交付清单”\n实践：用虚构文件复述输入、预期输出和停止条件，再写出显式调用。"
+        },
+        {
+          "id": "course-do-02-q02",
+          "type": "true_false",
+          "content": "[documents@26.715.12143] 场景：用户只要求从 PDF 提取内容，或最终产物是电子表格。同事仍计划调用 $documents:documents 并使用系统依赖、修改受管依赖目录或只读 XML 便宣称布局无缺陷。这个判断正确吗？",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "错误",
+          "explanation": "结论：该场景不应沿用这个执行路径。\n依据：必须使用 loader 返回的依赖；每批有意义的编辑后都要重新渲染并检查，缺少 LibreOffice 时才可披露后跳过视觉门槛；当前不适用条件是“用户只要求从 PDF 提取内容，或最终产物是电子表格”。\n实践：先写一句不适用理由，再选择更匹配的文件 skill 或停在澄清步骤。"
+        },
+        {
+          "id": "course-do-02-q03",
+          "type": "fill_blank",
+          "content": "[documents@26.715.12143] 场景：你已确认“任务需要创建、修改、修订、批注、检查或导出 Word、DOCX 或 Google Docs 目标文档”，要显式记录插件、skill slug 与 display name。应调用 ___（Documents:文档处理）。",
+          "options": [],
+          "answer": "$documents:documents",
+          "explanation": "结论：显式调用写作 $documents:documents。\n依据：课程把 documents 作为插件名，并把 documents 作为 skill slug；展示名是“Documents:文档处理”。\n实践：把合成文件任务追加在调用后，并写明期望得到“结构检查和逐页视觉 QA 的执行方案、预期证据字段及交付清单”。"
+        },
+        {
+          "id": "course-do-02-q04",
+          "type": "ordering",
+          "content": "[documents@26.715.12143] 场景：用合成材料练习 documents（Documents:文档处理） 时，请按安全执行顺序排列。",
+          "options": [
+            "列出并检查结构检查和逐页视觉 QA 的执行方案、预期证据字段及交付清单",
+            "识别场景是否满足“任务需要创建、修改、修订、批注、检查或导出 Word、DOCX 或 Google Docs 目标文档”",
+            "核对输入“内容要求、目标 DOCX、可选模板、文档类型、样式约束和目标交付面”与所需依赖",
+            "按最小安全范围执行 $documents:documents"
+          ],
+          "answer": "识别场景是否满足“任务需要创建、修改、修订、批注、检查或导出 Word、DOCX 或 Google Docs 目标文档”|核对输入“内容要求、目标 DOCX、可选模板、文档类型、样式约束和目标交付面”与所需依赖|按最小安全范围执行 $documents:documents|列出并检查结构检查和逐页视觉 QA 的执行方案、预期证据字段及交付清单",
+          "explanation": "结论：先判定适用性和输入，再执行，最后检查可观察结果。\n依据：必须使用 loader 返回的依赖；每批有意义的编辑后都要重新渲染并检查，缺少 LibreOffice 时才可披露后跳过视觉门槛；乱序执行容易跳过依赖或视觉验收门槛。\n实践：把四步抄成检查表，任何前置项不满足时停在对应步骤。"
+        },
+        {
+          "id": "course-do-02-q05",
+          "type": "true_false",
+          "content": "[documents@26.715.12143] 场景：学员只用合成的“内容要求、目标 DOCX、可选模板、文档类型、样式约束和目标交付面”，得到结构检查和逐页视觉 QA 的执行方案、预期证据字段及交付清单，并确认没有使用系统依赖、修改受管依赖目录或只读 XML 便宣称布局无缺陷。这可以作为本单元的可观察验收吗？",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：这组证据覆盖了能力选择、输出和安全边界。\n依据：用合成提纲写一份短 memo 的执行计划和逐页检查表；课程练习不需要真实客户数据、外部写入或生产操作。\n实践：逐项记录输入、输出与“必须使用 loader 返回的依赖；每批有意义的编辑后都要重新渲染并检查，缺少 LibreOffice 时才可披露后跳过视觉门槛”的检查结果。"
+        }
+      ]
+    }
+  ]
+}

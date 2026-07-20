@@ -1,16 +1,16 @@
 # 看懂 fastapi1：Mac 实验手册
 
-本手册只观察 `$HOME/Documents/fastapi1` 在提交 `b21b6e4` 的已提交源码。不要读取 `.env`、数据库、导出文件、客户数据、用户级凭据或本地运行状态，也不要调用生产或其他远程服务。
+本手册只观察 `$HOME/Documents/fastapi1` 在提交 `710807b` 的已提交源码。不要读取 `.env`、数据库、导出文件、客户数据、用户级凭据或本地运行状态，也不要调用生产或其他远程服务。
 
 每课开始都先运行：
 
 ```bash
 cd "$HOME/Documents/fastapi1"
 git status --short
-git rev-parse --verify 'b21b6e4^{commit}'
+git rev-parse --verify '710807b^{commit}'
 ```
 
-若 `git status --short` 有输出，停止分支练习，不覆盖或清理现有改动。只读的 `git show`、`git grep` 和 `git ls-tree` 仍应固定在 `b21b6e4`。需要持续改造时，确认工作区为空后从 `b21b6e4` 创建本课独立分支；回滚命令仅可用于该分支中由自己改动且已经逐行检查过的明确路径。
+若 `git status --short` 有输出，停止分支练习，不覆盖或清理现有改动。只读的 `git show`、`git grep` 和 `git ls-tree` 仍应固定在 `710807b`。需要持续改造时，确认工作区为空后从 `710807b` 创建本课独立分支；回滚命令仅可用于该分支中由自己改动且已经逐行检查过的明确路径。
 
 执行本手册的本地测试前，在仓库根定义以下两个临时 helper。它们只把 Git 已跟踪文件复制到一次性 `tracked_snapshot`，因此不会带入未跟踪或忽略的 `.env`、数据库、导出与运行态文件；若敏感文件已经被 Git 跟踪则直接拒绝运行。测试还会清空继承环境、禁用 dotenv 与字节码/pytest 缓存，并通过 macOS 系统沙箱拒绝包括 loopback 在内的全部网络；结束后删除整个临时目录。
 
@@ -18,8 +18,8 @@ git rev-parse --verify 'b21b6e4^{commit}'
 safe_python() {
   local source_root python_bin test_root test_home tracked_snapshot exit_code sandbox_profile
   source_root="$(git rev-parse --show-toplevel 2>/dev/null)" || return 1
-  git -C "$source_root" merge-base --is-ancestor b21b6e4 HEAD || {
-    printf 'refuse: HEAD is not based on b21b6e4\n' >&2
+  git -C "$source_root" merge-base --is-ancestor 710807b HEAD || {
+    printf 'refuse: HEAD is not based on 710807b\n' >&2
     return 1
   }
   python_bin="$source_root/.venv/bin/python"
@@ -83,12 +83,12 @@ safe_pytest() {
 ```bash
 cd "$HOME/Documents/fastapi1"
 git status --short
-git show b21b6e4:README.md | rg -n '项目概述|当前运行入口|短信|电话|客户管理|AI 分析'
-git show b21b6e4:main.py | rg -n 'include_router|mount\(|protected_html_page_guard'
-git show b21b6e4:html/customer_management.html | rg -n '新增客户|暂未接入后端'
-git show b21b6e4:html/Internet_marketing/Marketing_Management.html | rg -n '营销后端尚未实现'
-git show b21b6e4:html/Internet_marketing/Sms_Marketing_Clean.html | rg -n '功能暂未接入后端'
-git show b21b6e4:html/Internet_marketing/Telemarketing_Marketing_Clean.html | rg -n '功能暂未接入后端'
+git show 710807b:README.md | rg -n '项目概述|当前运行入口|短信|电话|客户管理|AI 分析'
+git show 710807b:main.py | rg -n 'include_router|mount\(|protected_html_page_guard'
+git show 710807b:html/customer_management.html | rg -n '新增客户|暂未接入后端'
+git show 710807b:html/Internet_marketing/Marketing_Management.html | rg -n '营销后端尚未实现'
+git show 710807b:html/Internet_marketing/Sms_Marketing_Clean.html | rg -n '功能暂未接入后端'
+git show 710807b:html/Internet_marketing/Telemarketing_Marketing_Clean.html | rg -n '功能暂未接入后端'
 ```
 
 把能力分成三列：真实 API 与服务闭环、只读或占位页面、明确未完成。邮件、微信、查询导出、采集和 AI 应能找到后端证据；短信、电话营销和手工新增客户不能因为存在页面控件就标为完成。
@@ -96,7 +96,7 @@ git show b21b6e4:html/Internet_marketing/Telemarketing_Marketing_Clean.html | rg
 ### 可选分支练习
 
 ```bash
-git switch -c course/fa01-product-boundary b21b6e4
+git switch -c course/fa01-product-boundary 710807b
 ```
 
 只做一个小改动：在 `README.md` 补充一处能力状态说明，并在 `tests/test_documentation_governance.py` 锁定该事实，禁止顺便实现新渠道。
@@ -133,9 +133,9 @@ git diff --check
 ```bash
 cd "$HOME/Documents/fastapi1"
 git status --short
-git show b21b6e4:main.py | rg -n 'lifespan|initialize_database_state|email_queue_worker|start_export_job_manager|_start_scheduler_if_primary|close_redis_client'
-git show b21b6e4:main.py | rg -n 'include_router|add_middleware|mount\(|_collect_readiness_checks'
-git show b21b6e4:app/enterprise_data_platform/api/routes.py | rg -n 'start_export_job_manager|stop_export_job_manager'
+git show 710807b:main.py | rg -n 'lifespan|initialize_database_state|email_queue_worker|start_export_job_manager|_start_scheduler_if_primary|close_redis_client'
+git show 710807b:main.py | rg -n 'include_router|add_middleware|mount\(|_collect_readiness_checks'
+git show 710807b:app/enterprise_data_platform/api/routes.py | rg -n 'start_export_job_manager|stop_export_job_manager'
 ```
 
 整理五列：组件、启动函数、停止函数、readiness 信号、失败后的可见行为。特别确认邮件消费者、导出管理器、SSE 线程池、Redis 客户端和单主调度器都有关闭路径。
@@ -143,7 +143,7 @@ git show b21b6e4:app/enterprise_data_platform/api/routes.py | rg -n 'start_expor
 ### 可选分支练习
 
 ```bash
-git switch -c course/fa02-lifecycle-map b21b6e4
+git switch -c course/fa02-lifecycle-map 710807b
 ```
 
 选择一个只影响可观测性的微小改动，例如为已有生命周期分支补测试；不要在 import 时启动新线程。
@@ -179,10 +179,10 @@ git diff --check
 ```bash
 cd "$HOME/Documents/fastapi1"
 git status --short
-git show b21b6e4:README.md | rg -n '权限控制|cli-token|access_token cookie|X-Account-Key|HMAC'
-git show b21b6e4:app/middleware/permission.py | rg -n 'user_required|manager_required|admin_required|check_region_permission'
-git show b21b6e4:app/login/routes.py | rg -n 'AUTH_TOKEN_COOKIE_NAME|/token|/cli-token|/me|/logout'
-git show b21b6e4:app/internet_marketing/routes.py | rg -n 'HMAC|account.key|claim_next|report_wechat'
+git show 710807b:README.md | rg -n '权限控制|cli-token|access_token cookie|X-Account-Key|HMAC'
+git show 710807b:app/middleware/permission.py | rg -n 'user_required|manager_required|admin_required|check_region_permission'
+git show 710807b:app/login/routes.py | rg -n 'AUTH_TOKEN_COOKIE_NAME|/token|/cli-token|/me|/logout'
+git show 710807b:app/internet_marketing/routes.py | rg -n 'HMAC|account.key|claim_next|report_wechat'
 ```
 
 不要读取任何真实 key、token 或 cookie。为每类认证面记录凭据类型、适用入口、角色/区域限制、过期与撤销方式。
@@ -190,7 +190,7 @@ git show b21b6e4:app/internet_marketing/routes.py | rg -n 'HMAC|account.key|clai
 ### 可选分支练习
 
 ```bash
-git switch -c course/fa03-auth-review b21b6e4
+git switch -c course/fa03-auth-review 710807b
 ```
 
 只补一个拒绝路径测试，例如未认证、低角色或越区域；不要为了测试放宽默认认证。
@@ -224,10 +224,10 @@ git diff --check
 ```bash
 cd "$HOME/Documents/fastapi1"
 git status --short
-git show b21b6e4:README.md | rg -n 'PostgreSQL|Redis|OSS|查询与导出|任务状态'
-git show b21b6e4:app/utils/redis_client.py | rg -n '^def |redis|close'
-git show b21b6e4:app/enterprise_data_platform/oss/oss_download.py | rg -n '^def |凭证|object|download|exists'
-git grep -n 'SessionLocal\|get_redis_client\|download_from_oss' b21b6e4 -- main.py app | sed -n '1,160p'
+git show 710807b:README.md | rg -n 'PostgreSQL|Redis|OSS|查询与导出|任务状态'
+git show 710807b:app/utils/redis_client.py | rg -n '^def |redis|close'
+git show 710807b:app/enterprise_data_platform/oss/oss_download.py | rg -n '^def |凭证|object|download|exists'
+git grep -n 'SessionLocal\|get_redis_client\|download_from_oss' 710807b -- main.py app | sed -n '1,160p'
 ```
 
 只记录调用关系，不连接任何存储。给每种状态标注真相源、TTL、恢复方式和访问控制。
@@ -235,7 +235,7 @@ git grep -n 'SessionLocal\|get_redis_client\|download_from_oss' b21b6e4 -- main.
 ### 可选分支练习
 
 ```bash
-git switch -c course/fa04-state-boundaries b21b6e4
+git switch -c course/fa04-state-boundaries 710807b
 ```
 
 选一个现有 Redis 状态，补充“持久记录不存在时不得继续副作用”的测试；不要新增数据迁移。
@@ -269,10 +269,10 @@ git diff --check
 ```bash
 cd "$HOME/Documents/fastapi1"
 git status --short
-git show b21b6e4:client/Data-Collection/README.md | rg -n 'WebSocket|租约|heartbeat|waiting|next_claim_after|退出码|sync_enterprise_data'
-git show b21b6e4:app/index/project_collection_service.py | rg -n 'lease|heartbeat|waiting|next_claim_after|claim|result' | sed -n '1,200p'
-git show b21b6e4:client/Data-Collection/main.py | rg -n 'request_task|heartbeat|sync_enterprise_data|waiting|result' | sed -n '1,200p'
-git show b21b6e4:tests/test_data_collection_client.py | rg -n 'lease|heartbeat|waiting|redact|retry'
+git show 710807b:client/Data-Collection/README.md | rg -n 'WebSocket|租约|heartbeat|waiting|next_claim_after|退出码|sync_enterprise_data'
+git show 710807b:app/index/project_collection_service.py | rg -n 'lease|heartbeat|waiting|next_claim_after|claim|result' | sed -n '1,200p'
+git show 710807b:client/Data-Collection/main.py | rg -n 'request_task|heartbeat|sync_enterprise_data|waiting|result' | sed -n '1,200p'
+git show 710807b:tests/test_data_collection_client.py | rg -n 'lease|heartbeat|waiting|redact|retry'
 ```
 
 不要运行采集客户端，不查看输出目录。画出状态迁移，并标注 3 分钟租约、默认 60 秒心跳和 `PROJECT_COLLECTION_NOT_COLLECTABLE_YET` 的 waiting 语义。
@@ -280,7 +280,7 @@ git show b21b6e4:tests/test_data_collection_client.py | rg -n 'lease|heartbeat|w
 ### 可选分支练习
 
 ```bash
-git switch -c course/fa05-collection-state b21b6e4
+git switch -c course/fa05-collection-state 710807b
 ```
 
 只补一个纯本地状态机测试，例如 marker 即使伴随退出码 0 也应进入 waiting。
@@ -314,10 +314,10 @@ git diff --check
 ```bash
 cd "$HOME/Documents/fastapi1"
 git status --short
-git show b21b6e4:app/enterprise_data_platform/api/routes.py | rg -n '^@router|response_model|export|download|owner|capacity' | sed -n '1,240p'
-git show b21b6e4:app/enterprise_data_platform/ai/routes.py | rg -n '^@router|quota|task|lease|web.search|extract' | sed -n '1,220p'
-git show b21b6e4:app/enterprise_data_platform/ai/task_manager.py | rg -n 'lease|setex|task_ttl|active|lock' | sed -n '1,200p'
-git show b21b6e4:tests/test_export_security.py | rg -n '^def test_'
+git show 710807b:app/enterprise_data_platform/api/routes.py | rg -n '^@router|response_model|export|download|owner|capacity' | sed -n '1,240p'
+git show 710807b:app/enterprise_data_platform/ai/routes.py | rg -n '^@router|quota|task|lease|web.search|extract' | sed -n '1,220p'
+git show 710807b:app/enterprise_data_platform/ai/task_manager.py | rg -n 'lease|setex|task_ttl|active|lock' | sed -n '1,200p'
+git show 710807b:tests/test_export_security.py | rg -n '^def test_'
 ```
 
 不要生成导出，不调用 AI 或联网搜索。为每个端点记录权限、输入上限、异步状态、归属校验和失败清理。
@@ -325,7 +325,7 @@ git show b21b6e4:tests/test_export_security.py | rg -n '^def test_'
 ### 可选分支练习
 
 ```bash
-git switch -c course/fa06-export-review b21b6e4
+git switch -c course/fa06-export-review 710807b
 ```
 
 选择一个安全边界补测试，例如非 2xx 不落盘或非 owner 不可下载，不扩大 API 表面。
@@ -359,10 +359,10 @@ git diff --check
 ```bash
 cd "$HOME/Documents/fastapi1"
 git status --short
-git show b21b6e4:app/internet_marketing/routes.py | rg -n 'email/tasks|email/history|events|HMAC|export'
-git show b21b6e4:app/internet_marketing/email_queue.py | rg -n 'worker|lock|status|recovery|orphan|setex|SessionLocal' | sed -n '1,240p'
-git show b21b6e4:app/internet_marketing/email_policy.py | rg -n '^def |window|interval|policy'
-git show b21b6e4:tests/test_internet_marketing_queue_consumer.py | rg -n '^def test_' | sed -n '1,180p'
+git show 710807b:app/internet_marketing/routes.py | rg -n 'email/tasks|email/history|events|HMAC|export'
+git show 710807b:app/internet_marketing/email_queue.py | rg -n 'worker|lock|status|recovery|orphan|setex|SessionLocal' | sed -n '1,240p'
+git show 710807b:app/internet_marketing/email_policy.py | rg -n '^def |window|interval|policy'
+git show 710807b:tests/test_internet_marketing_queue_consumer.py | rg -n '^def test_' | sed -n '1,180p'
 ```
 
 不要查看队列 payload、真实邮箱、邮件内容或历史记录。把状态机分为任务状态、队列状态、投递状态和回调状态。
@@ -370,7 +370,7 @@ git show b21b6e4:tests/test_internet_marketing_queue_consumer.py | rg -n '^def t
 ### 可选分支练习
 
 ```bash
-git switch -c course/fa07-email-queue b21b6e4
+git switch -c course/fa07-email-queue 710807b
 ```
 
 补一个恢复或重复回调测试，优先锁定幂等行为，不改供应商配置。
@@ -404,10 +404,10 @@ git diff --check
 ```bash
 cd "$HOME/Documents/fastapi1"
 git status --short
-git show b21b6e4:client/wxcli/README.md | rg -n 'pending|quarantine|ledger|claim|确认模式|自动模式|客户|回传'
-git show b21b6e4:client/wxcli/src/wxcli/worker.py | rg -n 'pending|claim|result|flush|quarantine'
-git show b21b6e4:client/wxcli/src/wxcli/ledger.py | rg -n '^class |^def |digest|stage'
-git show b21b6e4:app/internet_marketing/routes.py | rg -n 'wechat/tasks|claim-next|result|claim-reset|sync-batch|customer-management'
+git show 710807b:client/wxcli/README.md | rg -n 'pending|quarantine|ledger|claim|确认模式|自动模式|客户|回传'
+git show 710807b:client/wxcli/src/wxcli/worker.py | rg -n 'pending|claim|result|flush|quarantine'
+git show 710807b:client/wxcli/src/wxcli/ledger.py | rg -n '^class |^def |digest|stage'
+git show 710807b:app/internet_marketing/routes.py | rg -n 'wechat/tasks|claim-next|result|claim-reset|sync-batch|customer-management'
 ```
 
 不要读取本机 wxcli 状态文件，也不要操作 PC 微信。确认 pending 保存可重试 payload，quarantine 隔离确定不可重试结果，ledger 只保留执行摘要和 digest。
@@ -415,7 +415,7 @@ git show b21b6e4:app/internet_marketing/routes.py | rg -n 'wechat/tasks|claim-ne
 ### 可选分支练习
 
 ```bash
-git switch -c course/fa08-wxcli-recovery b21b6e4
+git switch -c course/fa08-wxcli-recovery 710807b
 ```
 
 只在临时目录测试 pending 分类或 ledger 摘要，不调用真实 adapter。
@@ -449,10 +449,10 @@ git diff --check
 ```bash
 cd "$HOME/Documents/fastapi1"
 git status --short
-git show b21b6e4:client/README.md | sed -n '1,240p'
-git show b21b6e4:client/fastapi1_cli/README.md | rg -n 'preflight|doctor|request|只限|WebSocket|Bearer'
-git show b21b6e4:client/Data-Collection/README.md | rg -n 'WebSocket|常驻|管理员|Windows|macOS'
-git show b21b6e4:client/wxcli/README.md | rg -n 'Windows|PC 微信|RPA|pending|operator confirmation'
+git show 710807b:client/README.md | sed -n '1,240p'
+git show 710807b:client/fastapi1_cli/README.md | rg -n 'preflight|doctor|request|只限|WebSocket|Bearer'
+git show 710807b:client/Data-Collection/README.md | rg -n 'WebSocket|常驻|管理员|Windows|macOS'
+git show 710807b:client/wxcli/README.md | rg -n 'Windows|PC 微信|RPA|pending|operator confirmation'
 ```
 
 建立七列表格：命令入口、Python 下限、支持平台、认证、协议、允许副作用、主要测试。
@@ -460,7 +460,7 @@ git show b21b6e4:client/wxcli/README.md | rg -n 'Windows|PC 微信|RPA|pending|o
 ### 可选分支练习
 
 ```bash
-git switch -c course/fa09-client-contracts b21b6e4
+git switch -c course/fa09-client-contracts 710807b
 ```
 
 只修正一处客户端文档或合同测试漂移，不复制另一客户端的协议实现。
@@ -494,15 +494,15 @@ git diff --check
 ```bash
 cd "$HOME/Documents/fastapi1"
 git status --short
-git show b21b6e4:requirements.txt | nl -ba
-git show b21b6e4:requirements-tools.txt | nl -ba
-git show b21b6e4:client/fastapi1_cli/pyproject.toml | rg -n 'requires-python|dependencies|scripts'
-git show b21b6e4:client/wxcli/pyproject.toml | rg -n 'requires-python|dependencies|Windows|scripts'
-git show b21b6e4:client/Data-Collection/requirements.txt | nl -ba
-git show b21b6e4:client/fastapi1_cli/install-local.sh | rg -n 'python|venv|pipx|wrapper|install'
-git show b21b6e4:client/fastapi1_cli/install-local.ps1 | rg -n 'Python|pipx|wrapper|install'
-git show b21b6e4:client/wxcli/install-windows.ps1 | rg -n 'Python|3\.10|Windows|venv|pip|install'
-git show b21b6e4:.github/workflows/harness.yml | rg -n 'python-version|pip install|pytest'
+git show 710807b:requirements.txt | nl -ba
+git show 710807b:requirements-tools.txt | nl -ba
+git show 710807b:client/fastapi1_cli/pyproject.toml | rg -n 'requires-python|dependencies|scripts'
+git show 710807b:client/wxcli/pyproject.toml | rg -n 'requires-python|dependencies|Windows|scripts'
+git show 710807b:client/Data-Collection/requirements.txt | nl -ba
+git show 710807b:client/fastapi1_cli/install-local.sh | rg -n 'python|venv|pipx|wrapper|install'
+git show 710807b:client/fastapi1_cli/install-local.ps1 | rg -n 'Python|pipx|wrapper|install'
+git show 710807b:client/wxcli/install-windows.ps1 | rg -n 'Python|3\.10|Windows|venv|pip|install'
+git show 710807b:.github/workflows/harness.yml | rg -n 'python-version|pip install|pytest'
 ```
 
 不要安装或升级任何包。记录 CLI 的 Python 3.11+、wxcli 的 3.10+ 与 Windows 条件依赖，并把根服务、工具链和采集客户端分开评估。
@@ -510,7 +510,7 @@ git show b21b6e4:.github/workflows/harness.yml | rg -n 'python-version|pip insta
 ### 可选分支练习
 
 ```bash
-git switch -c course/fa10-dependency-audit b21b6e4
+git switch -c course/fa10-dependency-audit 710807b
 ```
 
 只在 `README.md` 补充一张组件级兼容矩阵，并在 `tests/test_documentation_governance.py` 锁定 Python 下限、平台条件、安装入口和回滚版本；不要安装、升级或统一依赖。
@@ -545,11 +545,11 @@ git diff --check
 ```bash
 cd "$HOME/Documents/fastapi1"
 git status --short
-git ls-tree -r --name-only b21b6e4 tests | rg 'test_|\.spec\.ts$|endpoint-manifest'
-git show b21b6e4:.github/workflows/harness.yml | sed -n '1,220p'
-git show b21b6e4:.codex/contract.json | sed -n '1,240p'
-git show b21b6e4:scripts/check_harness_health.py | rg -n '^def check_|contract|hooks|mcp|skills'
-git ls-tree -r --name-only b21b6e4 .github/workflows
+git ls-tree -r --name-only 710807b tests | rg 'test_|\.spec\.ts$|endpoint-manifest'
+git show 710807b:.github/workflows/harness.yml | sed -n '1,220p'
+git show 710807b:.codex/contract.json | sed -n '1,240p'
+git show 710807b:scripts/check_harness_health.py | rg -n '^def check_|contract|hooks|mcp|skills'
+git ls-tree -r --name-only 710807b .github/workflows
 ```
 
 不要读取 E2E 凭据。制作模块到单元、集成、E2E、GitHub CI 的映射，明确唯一 workflow 主要执行 Harness 治理检查。
@@ -557,7 +557,7 @@ git ls-tree -r --name-only b21b6e4 .github/workflows
 ### 可选分支练习
 
 ```bash
-git switch -c course/fa11-test-map b21b6e4
+git switch -c course/fa11-test-map 710807b
 ```
 
 只为 Harness 健康检查补一个缺失断言，并在必要时调整 `harness.yml`；不要把依赖生产服务的全量命令塞入 workflow。
@@ -594,15 +594,15 @@ git diff --check
 ```bash
 cd "$HOME/Documents/fastapi1"
 git status --short
-git show b21b6e4:AGENTS.md | sed -n '1,220p'
-git show b21b6e4:.codex/AGENTS.md | sed -n '1,220p'
-git show b21b6e4:.github/workflows/harness.yml | sed -n '1,180p'
-git show b21b6e4:graphify-out/GRAPH_REPORT.md | rg -n 'God Nodes|most connected|app/internet_marketing/services.py|app/index/project_collection_service.py|client/fastapi1_cli/cli.py'
+git show 710807b:AGENTS.md | sed -n '1,220p'
+git show 710807b:.codex/AGENTS.md | sed -n '1,220p'
+git show 710807b:.github/workflows/harness.yml | sed -n '1,180p'
+git show 710807b:graphify-out/GRAPH_REPORT.md | rg -n 'God Nodes|most connected|app/internet_marketing/services.py|app/index/project_collection_service.py|client/fastapi1_cli/cli.py'
 for file in main.py app/internet_marketing/services.py app/index/project_collection_service.py client/fastapi1_cli/cli.py; do
   printf '%s ' "$file"
-  git show "b21b6e4:$file" | wc -l
+  git show "710807b:$file" | wc -l
 done
-git ls-tree -r --name-only b21b6e4 | rg -i 'alembic|migration|db_setup|workflow'
+git ls-tree -r --name-only 710807b | rg -i 'alembic|migration|db_setup|workflow'
 ```
 
 观察结论应包含：多个核心文件巨大且高连接、仓库未见 Alembic、main.py 仍有显式门禁的启动期 schema patch、GitHub CI 主要覆盖 Harness。不要因此提出一次性大重写。
@@ -610,7 +610,7 @@ git ls-tree -r --name-only b21b6e4 | rg -i 'alembic|migration|db_setup|workflow'
 ### 可选分支练习
 
 ```bash
-git switch -c course/fa12-review-drill b21b6e4
+git switch -c course/fa12-review-drill 710807b
 ```
 
 以 `README.md` 的一条当前架构说明做审查演练：先和固定提交及源码互证，再在必要时修正文档并更新 `tests/test_documentation_governance.py`。不要扩展到业务重构。

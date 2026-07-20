@@ -1,0 +1,1547 @@
+{
+  "course": {
+    "id": "openai-templates",
+    "prefix": "OT",
+    "title": "openai-templates"
+  },
+  "source": {
+    "kind": "local-sanitized",
+    "ref": "openai-templates@0.1.0",
+    "snapshot": "2026-07-20"
+  },
+  "decks": [
+    {
+      "id": "course-ot-01",
+      "code": "OT01",
+      "title": "OT01 插件总览",
+      "order": 1,
+      "lab_ref": "OT01",
+      "source_text": "openai-templates@0.1.0 的 .codex-plugin/plugin.json 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-ot-01-q01",
+          "type": "multiple_choice",
+          "content": "[openai-templates] 场景题：学习者第一次接触该插件，怎样建立正确的课程路径？",
+          "options": [
+            "先学习插件总览，再逐个学习 20 个 canonical skill 的独立单元",
+            "只记住插件名，遇到任务时同时调用全部 skill",
+            "跳过总览，只背每个 display name 的中文字面意思",
+            "先在真实系统执行所有示例，再回头理解风险"
+          ],
+          "answer": "先学习插件总览，再逐个学习 20 个 canonical skill 的独立单元",
+          "explanation": "结论：总览负责建立地图，skill 单元负责形成可观察的选择能力。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：B：全量调用忽略路由边界，也无法判断技能之间的分工；C：字面记忆不能建立适用与不适用场景；D：未经确认的真实写入和发布不属于安全学习路径\n实践：先只读列出插件名、版本与 skill 数量，不调用任何执行工具。"
+        },
+        {
+          "id": "course-ot-01-q02",
+          "type": "multiple_choice",
+          "content": "[openai-templates] 来源题：课程事实应如何与本机插件材料对应？",
+          "options": [
+            "每次启动都自动抓取最新版并覆盖课程",
+            "使用 openai-templates 的 local-sanitized 版本快照，并记录 2026-07-20 日期",
+            "复制插件目录中的全部文件和个人绝对路径",
+            "省略版本与日期，只保留插件营销名称"
+          ],
+          "answer": "使用 openai-templates 的 local-sanitized 版本快照，并记录 2026-07-20 日期",
+          "explanation": "结论：固定版本、来源种类和快照日期才能复核课程内容。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：A：计划采用固定快照，自动漂移会破坏可复现性；C：课程只需中文概括和相对来源，不能复制机器信息；D：缺版本和快照日期就无法追溯课程事实\n实践：对照 manifest 与相邻 agents/openai.yaml，只记录非敏感元数据。"
+        },
+        {
+          "id": "course-ot-01-q03",
+          "type": "multiple_choice",
+          "content": "[openai-templates] 调用题：技能单元中的最小显式调用应包含哪些信息？",
+          "options": [
+            "只写一个模糊任务，不指出任何技能",
+            "只写 display_name，省略插件与 slug",
+            "插件名、skill slug 与 interface.display_name",
+            "写入本机插件缓存的绝对路径"
+          ],
+          "answer": "插件名、skill slug 与 interface.display_name",
+          "explanation": "结论：三项同时出现可把人类可读名称与稳定调用标识对应起来。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：A：无法验证学习者是否会正确显式路由；B：显示名不能替代稳定的技能标识；D：绝对路径是机器特定信息，也不是正常调用接口\n实践：用一个合成场景写出显式调用句，但注明只输出方案。"
+        },
+        {
+          "id": "course-ot-01-q04",
+          "type": "multiple_choice",
+          "content": "[openai-templates] 安全题：课程练习应采用哪种执行边界？",
+          "options": [
+            "使用真实客户数据验证技能是否有效",
+            "让学习者安装所有依赖和插件后再答题",
+            "自动发送、发布或部署，再把链接当作成绩",
+            "只使用合成 fixture、提示词和只读检查，不触碰真实外部状态"
+          ],
+          "answer": "只使用合成 fixture、提示词和只读检查，不触碰真实外部状态",
+          "explanation": "结论：安全练习必须可观察、可复核且不改变真实系统。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：A：客户数据超出教学最小范围并带来隐私风险；B：课程不应把安装和系统变更当作前置动作；C：外部写入需要额外授权，不能由课程练习默认执行\n实践：把任何真实名称替换为虚构占位符，只检查路由、提示词和验收清单。"
+        },
+        {
+          "id": "course-ot-01-q05",
+          "type": "true_false",
+          "content": "[openai-templates] 判断题：只要课程使用的是插件官方 skill，就可以在未确认授权时发送邮件、发布站点或写入生产数据。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "错误",
+          "explanation": "结论：官方 skill 也不自动扩大操作授权。\n依据：技能说明定义流程能力，真实外部写入仍受用户授权、数据边界和运行环境约束。\n实践：练习只提交计划、占位符和只读验收结果。"
+        }
+      ]
+    },
+    {
+      "id": "course-ot-02",
+      "code": "OT02",
+      "title": "OT02 OpenAI Templates:分析仪表盘",
+      "order": 2,
+      "lab_ref": "OT02",
+      "source_text": "openai-templates@0.1.0 的 skills/artifact-template-analytics-dashboard/SKILL.md 与相邻 agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-ot-02-q01",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:分析仪表盘] 场景题：团队遇到以下场景：用户明确选择“分析仪表盘”时，用保留的参考模板创建电子表格。最合适的下一步是什么？",
+          "options": [
+            "显式调用 $openai-templates:artifact-template-analytics-dashboard（OpenAI Templates:分析仪表盘），先核对输入和边界",
+            "跳过技能，直接承诺已经交付最终结果",
+            "调用同插件全部技能，让它们自行竞争",
+            "先修改真实外部状态，再补写需求说明"
+          ],
+          "answer": "显式调用 $openai-templates:artifact-template-analytics-dashboard（OpenAI Templates:分析仪表盘），先核对输入和边界",
+          "explanation": "结论：该场景正是 OpenAI Templates:分析仪表盘 的适用范围。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：B：没有执行相应流程，也缺少可观察证据；C：无差别调用增加上下文和副作用，掩盖清晰分工；D：把不可逆动作放在确认之前违反安全边界\n实践：用合成材料复述任务，并确认输入包含：用户提供的内容、可核实来源、保留的参考文件与预装电子表格能力。"
+        },
+        {
+          "id": "course-ot-02-q02",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:分析仪表盘] 调用题：评审会上需要明确记录所选技能，哪种写法最完整？",
+          "options": [
+            "只写“使用 OpenAI Templates:分析仪表盘”",
+            "插件 openai-templates；skill artifact-template-analytics-dashboard；调用 $openai-templates:artifact-template-analytics-dashboard；显示名 OpenAI Templates:分析仪表盘",
+            "只写插件 openai-templates，不指定 skill",
+            "复制本机缓存绝对路径作为调用语法"
+          ],
+          "answer": "插件 openai-templates；skill artifact-template-analytics-dashboard；调用 $openai-templates:artifact-template-analytics-dashboard；显示名 OpenAI Templates:分析仪表盘",
+          "explanation": "结论：插件 openai-templates；skill artifact-template-analytics-dashboard；调用 $openai-templates:artifact-template-analytics-dashboard；显示名 OpenAI Templates:分析仪表盘。\n依据：OpenAI Templates:分析仪表盘 的正式入口是 $openai-templates:artifact-template-analytics-dashboard；同时记录插件、skill slug 与显示名，才能在相似路由间复核选择。\n错误选项：A：省略稳定 slug 与插件名，不能完整核对调用目标；C：插件级名称无法区分内部多个独立技能；D：文件路径不是技能调用接口且会泄露机器特定信息\n实践：在合成场景中写出 $openai-templates:artifact-template-analytics-dashboard，并补一条不适用条件；不实际执行工具。"
+        },
+        {
+          "id": "course-ot-02-q03",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:分析仪表盘] 边界题：出现“用户没有选择该模板，或需求是无需模板约束的自由设计”时，怎样处理最稳妥？",
+          "options": [
+            "仍强制使用该技能，因为课程要求每个技能都执行",
+            "编造缺失输入以让流程继续",
+            "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+            "直接对真实数据、账户或发布面做试错"
+          ],
+          "answer": "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+          "explanation": "结论：停止套用该技能，重新路由或先补齐真正改变选择的条件。\n依据：OpenAI Templates:分析仪表盘 的不适用条件决定何时停止；越过该条件会把本 skill 错当成通用执行器。\n错误选项：A：课程目标是会判断，不是无条件执行；B：虚构事实会污染后续产出和验收；D：真实外部状态不应成为未确认路由的试验场\n实践：为 $openai-templates:artifact-template-analytics-dashboard 写一个最小反例和替代路由，只输出判断。"
+        },
+        {
+          "id": "course-ot-02-q04",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:分析仪表盘] 验收题：怎样证明这个单元已学会，而不是只记住名称？",
+          "options": [
+            "只背出 display_name",
+            "只说任务看起来已完成",
+            "展示一次真实写入或发布截图",
+            "能说明用途、输入“用户提供的内容、可核实来源、保留的参考文件与预装电子表格能力”、输出“保留模板结构和视觉系统、经过渲染验证的电子表格成品”和边界，并在合成场景中选对技能"
+          ],
+          "answer": "能说明用途、输入“用户提供的内容、可核实来源、保留的参考文件与预装电子表格能力”、输出“保留模板结构和视觉系统、经过渲染验证的电子表格成品”和边界，并在合成场景中选对技能",
+          "explanation": "结论：能说明用途、输入“用户提供的内容、可核实来源、保留的参考文件与预装电子表格能力”、输出“保留模板结构和视觉系统、经过渲染验证的电子表格成品”和边界，并在合成场景中选对技能。\n依据：OpenAI Templates:分析仪表盘 的验收必须同时覆盖其输入、输出、边界与可观察证据，不能只记名称。\n错误选项：A：显示名不能证明会判断适用场景；B：没有对应输入、输出或可观察证据；C：不可逆操作不是必要教学证据，也可能越权\n实践：用 <synthetic-fixture> 核对 $openai-templates:artifact-template-analytics-dashboard 的输入与预期输出，不访问真实状态。"
+        },
+        {
+          "id": "course-ot-02-q05",
+          "type": "true_false",
+          "content": "[OpenAI Templates:分析仪表盘] 判断题：使用 $openai-templates:artifact-template-analytics-dashboard 时，应保留这条约束——参考文件保持不变；不得为填满版位编造事实，缺所需预装能力时停止而非重建模板。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：该约束必须保留。\n依据：它来自 OpenAI Templates:分析仪表盘 的流程或风险边界，能防止把技能能力扩大为未经确认的操作。\n实践：在提示词末尾加入该约束，并只检查模型返回的计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-ot-03",
+      "code": "OT03",
+      "title": "OT03 OpenAI Templates:商业回顾",
+      "order": 3,
+      "lab_ref": "OT03",
+      "source_text": "openai-templates@0.1.0 的 skills/artifact-template-business-review/SKILL.md 与相邻 agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-ot-03-q01",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:商业回顾] 场景题：团队遇到以下场景：用户明确选择“商业回顾”时，用保留的参考模板创建演示文稿。最合适的下一步是什么？",
+          "options": [
+            "显式调用 $openai-templates:artifact-template-business-review（OpenAI Templates:商业回顾），先核对输入和边界",
+            "跳过技能，直接承诺已经交付最终结果",
+            "调用同插件全部技能，让它们自行竞争",
+            "先修改真实外部状态，再补写需求说明"
+          ],
+          "answer": "显式调用 $openai-templates:artifact-template-business-review（OpenAI Templates:商业回顾），先核对输入和边界",
+          "explanation": "结论：该场景正是 OpenAI Templates:商业回顾 的适用范围。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：B：没有执行相应流程，也缺少可观察证据；C：无差别调用增加上下文和副作用，掩盖清晰分工；D：把不可逆动作放在确认之前违反安全边界\n实践：用合成材料复述任务，并确认输入包含：用户提供的内容、可核实来源、保留的参考文件与预装演示文稿能力。"
+        },
+        {
+          "id": "course-ot-03-q02",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:商业回顾] 调用题：评审会上需要明确记录所选技能，哪种写法最完整？",
+          "options": [
+            "只写“使用 OpenAI Templates:商业回顾”",
+            "插件 openai-templates；skill artifact-template-business-review；调用 $openai-templates:artifact-template-business-review；显示名 OpenAI Templates:商业回顾",
+            "只写插件 openai-templates，不指定 skill",
+            "复制本机缓存绝对路径作为调用语法"
+          ],
+          "answer": "插件 openai-templates；skill artifact-template-business-review；调用 $openai-templates:artifact-template-business-review；显示名 OpenAI Templates:商业回顾",
+          "explanation": "结论：插件 openai-templates；skill artifact-template-business-review；调用 $openai-templates:artifact-template-business-review；显示名 OpenAI Templates:商业回顾。\n依据：OpenAI Templates:商业回顾 的正式入口是 $openai-templates:artifact-template-business-review；同时记录插件、skill slug 与显示名，才能在相似路由间复核选择。\n错误选项：A：省略稳定 slug 与插件名，不能完整核对调用目标；C：插件级名称无法区分内部多个独立技能；D：文件路径不是技能调用接口且会泄露机器特定信息\n实践：在合成场景中写出 $openai-templates:artifact-template-business-review，并补一条不适用条件；不实际执行工具。"
+        },
+        {
+          "id": "course-ot-03-q03",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:商业回顾] 边界题：出现“用户没有选择该模板，或需求是无需模板约束的自由设计”时，怎样处理最稳妥？",
+          "options": [
+            "仍强制使用该技能，因为课程要求每个技能都执行",
+            "编造缺失输入以让流程继续",
+            "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+            "直接对真实数据、账户或发布面做试错"
+          ],
+          "answer": "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+          "explanation": "结论：停止套用该技能，重新路由或先补齐真正改变选择的条件。\n依据：OpenAI Templates:商业回顾 的不适用条件决定何时停止；越过该条件会把本 skill 错当成通用执行器。\n错误选项：A：课程目标是会判断，不是无条件执行；B：虚构事实会污染后续产出和验收；D：真实外部状态不应成为未确认路由的试验场\n实践：为 $openai-templates:artifact-template-business-review 写一个最小反例和替代路由，只输出判断。"
+        },
+        {
+          "id": "course-ot-03-q04",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:商业回顾] 验收题：怎样证明这个单元已学会，而不是只记住名称？",
+          "options": [
+            "只背出 display_name",
+            "只说任务看起来已完成",
+            "展示一次真实写入或发布截图",
+            "能说明用途、输入“用户提供的内容、可核实来源、保留的参考文件与预装演示文稿能力”、输出“保留模板结构和视觉系统、经过渲染验证的演示文稿成品”和边界，并在合成场景中选对技能"
+          ],
+          "answer": "能说明用途、输入“用户提供的内容、可核实来源、保留的参考文件与预装演示文稿能力”、输出“保留模板结构和视觉系统、经过渲染验证的演示文稿成品”和边界，并在合成场景中选对技能",
+          "explanation": "结论：能说明用途、输入“用户提供的内容、可核实来源、保留的参考文件与预装演示文稿能力”、输出“保留模板结构和视觉系统、经过渲染验证的演示文稿成品”和边界，并在合成场景中选对技能。\n依据：OpenAI Templates:商业回顾 的验收必须同时覆盖其输入、输出、边界与可观察证据，不能只记名称。\n错误选项：A：显示名不能证明会判断适用场景；B：没有对应输入、输出或可观察证据；C：不可逆操作不是必要教学证据，也可能越权\n实践：用 <synthetic-fixture> 核对 $openai-templates:artifact-template-business-review 的输入与预期输出，不访问真实状态。"
+        },
+        {
+          "id": "course-ot-03-q05",
+          "type": "true_false",
+          "content": "[OpenAI Templates:商业回顾] 判断题：使用 $openai-templates:artifact-template-business-review 时，应保留这条约束——参考文件保持不变；不得为填满版位编造事实，缺所需预装能力时停止而非重建模板。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：该约束必须保留。\n依据：它来自 OpenAI Templates:商业回顾 的流程或风险边界，能防止把技能能力扩大为未经确认的操作。\n实践：在提示词末尾加入该约束，并只检查模型返回的计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-ot-04",
+      "code": "OT04",
+      "title": "OT04 OpenAI Templates:设计报告",
+      "order": 4,
+      "lab_ref": "OT04",
+      "source_text": "openai-templates@0.1.0 的 skills/artifact-template-design-report/SKILL.md 与相邻 agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-ot-04-q01",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:设计报告] 场景题：团队遇到以下场景：用户明确选择“设计报告”时，用保留的参考模板创建文档。最合适的下一步是什么？",
+          "options": [
+            "显式调用 $openai-templates:artifact-template-design-report（OpenAI Templates:设计报告），先核对输入和边界",
+            "跳过技能，直接承诺已经交付最终结果",
+            "调用同插件全部技能，让它们自行竞争",
+            "先修改真实外部状态，再补写需求说明"
+          ],
+          "answer": "显式调用 $openai-templates:artifact-template-design-report（OpenAI Templates:设计报告），先核对输入和边界",
+          "explanation": "结论：该场景正是 OpenAI Templates:设计报告 的适用范围。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：B：没有执行相应流程，也缺少可观察证据；C：无差别调用增加上下文和副作用，掩盖清晰分工；D：把不可逆动作放在确认之前违反安全边界\n实践：用合成材料复述任务，并确认输入包含：用户提供的内容、可核实来源、保留的参考文件与预装文档能力。"
+        },
+        {
+          "id": "course-ot-04-q02",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:设计报告] 调用题：评审会上需要明确记录所选技能，哪种写法最完整？",
+          "options": [
+            "只写“使用 OpenAI Templates:设计报告”",
+            "插件 openai-templates；skill artifact-template-design-report；调用 $openai-templates:artifact-template-design-report；显示名 OpenAI Templates:设计报告",
+            "只写插件 openai-templates，不指定 skill",
+            "复制本机缓存绝对路径作为调用语法"
+          ],
+          "answer": "插件 openai-templates；skill artifact-template-design-report；调用 $openai-templates:artifact-template-design-report；显示名 OpenAI Templates:设计报告",
+          "explanation": "结论：插件 openai-templates；skill artifact-template-design-report；调用 $openai-templates:artifact-template-design-report；显示名 OpenAI Templates:设计报告。\n依据：OpenAI Templates:设计报告 的正式入口是 $openai-templates:artifact-template-design-report；同时记录插件、skill slug 与显示名，才能在相似路由间复核选择。\n错误选项：A：省略稳定 slug 与插件名，不能完整核对调用目标；C：插件级名称无法区分内部多个独立技能；D：文件路径不是技能调用接口且会泄露机器特定信息\n实践：在合成场景中写出 $openai-templates:artifact-template-design-report，并补一条不适用条件；不实际执行工具。"
+        },
+        {
+          "id": "course-ot-04-q03",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:设计报告] 边界题：出现“用户没有选择该模板，或需求是无需模板约束的自由设计”时，怎样处理最稳妥？",
+          "options": [
+            "仍强制使用该技能，因为课程要求每个技能都执行",
+            "编造缺失输入以让流程继续",
+            "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+            "直接对真实数据、账户或发布面做试错"
+          ],
+          "answer": "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+          "explanation": "结论：停止套用该技能，重新路由或先补齐真正改变选择的条件。\n依据：OpenAI Templates:设计报告 的不适用条件决定何时停止；越过该条件会把本 skill 错当成通用执行器。\n错误选项：A：课程目标是会判断，不是无条件执行；B：虚构事实会污染后续产出和验收；D：真实外部状态不应成为未确认路由的试验场\n实践：为 $openai-templates:artifact-template-design-report 写一个最小反例和替代路由，只输出判断。"
+        },
+        {
+          "id": "course-ot-04-q04",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:设计报告] 验收题：怎样证明这个单元已学会，而不是只记住名称？",
+          "options": [
+            "只背出 display_name",
+            "只说任务看起来已完成",
+            "展示一次真实写入或发布截图",
+            "能说明用途、输入“用户提供的内容、可核实来源、保留的参考文件与预装文档能力”、输出“保留模板结构和视觉系统、经过渲染验证的文档成品”和边界，并在合成场景中选对技能"
+          ],
+          "answer": "能说明用途、输入“用户提供的内容、可核实来源、保留的参考文件与预装文档能力”、输出“保留模板结构和视觉系统、经过渲染验证的文档成品”和边界，并在合成场景中选对技能",
+          "explanation": "结论：能说明用途、输入“用户提供的内容、可核实来源、保留的参考文件与预装文档能力”、输出“保留模板结构和视觉系统、经过渲染验证的文档成品”和边界，并在合成场景中选对技能。\n依据：OpenAI Templates:设计报告 的验收必须同时覆盖其输入、输出、边界与可观察证据，不能只记名称。\n错误选项：A：显示名不能证明会判断适用场景；B：没有对应输入、输出或可观察证据；C：不可逆操作不是必要教学证据，也可能越权\n实践：用 <synthetic-fixture> 核对 $openai-templates:artifact-template-design-report 的输入与预期输出，不访问真实状态。"
+        },
+        {
+          "id": "course-ot-04-q05",
+          "type": "true_false",
+          "content": "[OpenAI Templates:设计报告] 判断题：使用 $openai-templates:artifact-template-design-report 时，应保留这条约束——参考文件保持不变；不得为填满版位编造事实，缺所需预装能力时停止而非重建模板。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：该约束必须保留。\n依据：它来自 OpenAI Templates:设计报告 的流程或风险边界，能防止把技能能力扩大为未经确认的操作。\n实践：在提示词末尾加入该约束，并只检查模型返回的计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-ot-05",
+      "code": "OT05",
+      "title": "OT05 OpenAI Templates:实验分析",
+      "order": 5,
+      "lab_ref": "OT05",
+      "source_text": "openai-templates@0.1.0 的 skills/artifact-template-experiment-analysis/SKILL.md 与相邻 agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-ot-05-q01",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:实验分析] 场景题：团队遇到以下场景：用户明确选择“实验分析”时，用保留的参考模板创建文档。最合适的下一步是什么？",
+          "options": [
+            "显式调用 $openai-templates:artifact-template-experiment-analysis（OpenAI Templates:实验分析），先核对输入和边界",
+            "跳过技能，直接承诺已经交付最终结果",
+            "调用同插件全部技能，让它们自行竞争",
+            "先修改真实外部状态，再补写需求说明"
+          ],
+          "answer": "显式调用 $openai-templates:artifact-template-experiment-analysis（OpenAI Templates:实验分析），先核对输入和边界",
+          "explanation": "结论：该场景正是 OpenAI Templates:实验分析 的适用范围。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：B：没有执行相应流程，也缺少可观察证据；C：无差别调用增加上下文和副作用，掩盖清晰分工；D：把不可逆动作放在确认之前违反安全边界\n实践：用合成材料复述任务，并确认输入包含：用户提供的内容、可核实来源、保留的参考文件与预装文档能力。"
+        },
+        {
+          "id": "course-ot-05-q02",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:实验分析] 调用题：评审会上需要明确记录所选技能，哪种写法最完整？",
+          "options": [
+            "只写“使用 OpenAI Templates:实验分析”",
+            "插件 openai-templates；skill artifact-template-experiment-analysis；调用 $openai-templates:artifact-template-experiment-analysis；显示名 OpenAI Templates:实验分析",
+            "只写插件 openai-templates，不指定 skill",
+            "复制本机缓存绝对路径作为调用语法"
+          ],
+          "answer": "插件 openai-templates；skill artifact-template-experiment-analysis；调用 $openai-templates:artifact-template-experiment-analysis；显示名 OpenAI Templates:实验分析",
+          "explanation": "结论：插件 openai-templates；skill artifact-template-experiment-analysis；调用 $openai-templates:artifact-template-experiment-analysis；显示名 OpenAI Templates:实验分析。\n依据：OpenAI Templates:实验分析 的正式入口是 $openai-templates:artifact-template-experiment-analysis；同时记录插件、skill slug 与显示名，才能在相似路由间复核选择。\n错误选项：A：省略稳定 slug 与插件名，不能完整核对调用目标；C：插件级名称无法区分内部多个独立技能；D：文件路径不是技能调用接口且会泄露机器特定信息\n实践：在合成场景中写出 $openai-templates:artifact-template-experiment-analysis，并补一条不适用条件；不实际执行工具。"
+        },
+        {
+          "id": "course-ot-05-q03",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:实验分析] 边界题：出现“用户没有选择该模板，或需求是无需模板约束的自由设计”时，怎样处理最稳妥？",
+          "options": [
+            "仍强制使用该技能，因为课程要求每个技能都执行",
+            "编造缺失输入以让流程继续",
+            "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+            "直接对真实数据、账户或发布面做试错"
+          ],
+          "answer": "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+          "explanation": "结论：停止套用该技能，重新路由或先补齐真正改变选择的条件。\n依据：OpenAI Templates:实验分析 的不适用条件决定何时停止；越过该条件会把本 skill 错当成通用执行器。\n错误选项：A：课程目标是会判断，不是无条件执行；B：虚构事实会污染后续产出和验收；D：真实外部状态不应成为未确认路由的试验场\n实践：为 $openai-templates:artifact-template-experiment-analysis 写一个最小反例和替代路由，只输出判断。"
+        },
+        {
+          "id": "course-ot-05-q04",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:实验分析] 验收题：怎样证明这个单元已学会，而不是只记住名称？",
+          "options": [
+            "只背出 display_name",
+            "只说任务看起来已完成",
+            "展示一次真实写入或发布截图",
+            "能说明用途、输入“用户提供的内容、可核实来源、保留的参考文件与预装文档能力”、输出“保留模板结构和视觉系统、经过渲染验证的文档成品”和边界，并在合成场景中选对技能"
+          ],
+          "answer": "能说明用途、输入“用户提供的内容、可核实来源、保留的参考文件与预装文档能力”、输出“保留模板结构和视觉系统、经过渲染验证的文档成品”和边界，并在合成场景中选对技能",
+          "explanation": "结论：能说明用途、输入“用户提供的内容、可核实来源、保留的参考文件与预装文档能力”、输出“保留模板结构和视觉系统、经过渲染验证的文档成品”和边界，并在合成场景中选对技能。\n依据：OpenAI Templates:实验分析 的验收必须同时覆盖其输入、输出、边界与可观察证据，不能只记名称。\n错误选项：A：显示名不能证明会判断适用场景；B：没有对应输入、输出或可观察证据；C：不可逆操作不是必要教学证据，也可能越权\n实践：用 <synthetic-fixture> 核对 $openai-templates:artifact-template-experiment-analysis 的输入与预期输出，不访问真实状态。"
+        },
+        {
+          "id": "course-ot-05-q05",
+          "type": "true_false",
+          "content": "[OpenAI Templates:实验分析] 判断题：使用 $openai-templates:artifact-template-experiment-analysis 时，应保留这条约束——参考文件保持不变；不得为填满版位编造事实，缺所需预装能力时停止而非重建模板。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：该约束必须保留。\n依据：它来自 OpenAI Templates:实验分析 的流程或风险边界，能防止把技能能力扩大为未经确认的操作。\n实践：在提示词末尾加入该约束，并只检查模型返回的计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-ot-06",
+      "code": "OT06",
+      "title": "OT06 OpenAI Templates:财务预算",
+      "order": 6,
+      "lab_ref": "OT06",
+      "source_text": "openai-templates@0.1.0 的 skills/artifact-template-financial-budget/SKILL.md 与相邻 agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-ot-06-q01",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:财务预算] 场景题：团队遇到以下场景：用户明确选择“财务预算”时，用保留的参考模板创建电子表格。最合适的下一步是什么？",
+          "options": [
+            "显式调用 $openai-templates:artifact-template-financial-budget（OpenAI Templates:财务预算），先核对输入和边界",
+            "跳过技能，直接承诺已经交付最终结果",
+            "调用同插件全部技能，让它们自行竞争",
+            "先修改真实外部状态，再补写需求说明"
+          ],
+          "answer": "显式调用 $openai-templates:artifact-template-financial-budget（OpenAI Templates:财务预算），先核对输入和边界",
+          "explanation": "结论：该场景正是 OpenAI Templates:财务预算 的适用范围。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：B：没有执行相应流程，也缺少可观察证据；C：无差别调用增加上下文和副作用，掩盖清晰分工；D：把不可逆动作放在确认之前违反安全边界\n实践：用合成材料复述任务，并确认输入包含：用户提供的内容、可核实来源、保留的参考文件与预装电子表格能力。"
+        },
+        {
+          "id": "course-ot-06-q02",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:财务预算] 调用题：评审会上需要明确记录所选技能，哪种写法最完整？",
+          "options": [
+            "只写“使用 OpenAI Templates:财务预算”",
+            "插件 openai-templates；skill artifact-template-financial-budget；调用 $openai-templates:artifact-template-financial-budget；显示名 OpenAI Templates:财务预算",
+            "只写插件 openai-templates，不指定 skill",
+            "复制本机缓存绝对路径作为调用语法"
+          ],
+          "answer": "插件 openai-templates；skill artifact-template-financial-budget；调用 $openai-templates:artifact-template-financial-budget；显示名 OpenAI Templates:财务预算",
+          "explanation": "结论：插件 openai-templates；skill artifact-template-financial-budget；调用 $openai-templates:artifact-template-financial-budget；显示名 OpenAI Templates:财务预算。\n依据：OpenAI Templates:财务预算 的正式入口是 $openai-templates:artifact-template-financial-budget；同时记录插件、skill slug 与显示名，才能在相似路由间复核选择。\n错误选项：A：省略稳定 slug 与插件名，不能完整核对调用目标；C：插件级名称无法区分内部多个独立技能；D：文件路径不是技能调用接口且会泄露机器特定信息\n实践：在合成场景中写出 $openai-templates:artifact-template-financial-budget，并补一条不适用条件；不实际执行工具。"
+        },
+        {
+          "id": "course-ot-06-q03",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:财务预算] 边界题：出现“用户没有选择该模板，或需求是无需模板约束的自由设计”时，怎样处理最稳妥？",
+          "options": [
+            "仍强制使用该技能，因为课程要求每个技能都执行",
+            "编造缺失输入以让流程继续",
+            "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+            "直接对真实数据、账户或发布面做试错"
+          ],
+          "answer": "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+          "explanation": "结论：停止套用该技能，重新路由或先补齐真正改变选择的条件。\n依据：OpenAI Templates:财务预算 的不适用条件决定何时停止；越过该条件会把本 skill 错当成通用执行器。\n错误选项：A：课程目标是会判断，不是无条件执行；B：虚构事实会污染后续产出和验收；D：真实外部状态不应成为未确认路由的试验场\n实践：为 $openai-templates:artifact-template-financial-budget 写一个最小反例和替代路由，只输出判断。"
+        },
+        {
+          "id": "course-ot-06-q04",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:财务预算] 验收题：怎样证明这个单元已学会，而不是只记住名称？",
+          "options": [
+            "只背出 display_name",
+            "只说任务看起来已完成",
+            "展示一次真实写入或发布截图",
+            "能说明用途、输入“用户提供的内容、可核实来源、保留的参考文件与预装电子表格能力”、输出“保留模板结构和视觉系统、经过渲染验证的电子表格成品”和边界，并在合成场景中选对技能"
+          ],
+          "answer": "能说明用途、输入“用户提供的内容、可核实来源、保留的参考文件与预装电子表格能力”、输出“保留模板结构和视觉系统、经过渲染验证的电子表格成品”和边界，并在合成场景中选对技能",
+          "explanation": "结论：能说明用途、输入“用户提供的内容、可核实来源、保留的参考文件与预装电子表格能力”、输出“保留模板结构和视觉系统、经过渲染验证的电子表格成品”和边界，并在合成场景中选对技能。\n依据：OpenAI Templates:财务预算 的验收必须同时覆盖其输入、输出、边界与可观察证据，不能只记名称。\n错误选项：A：显示名不能证明会判断适用场景；B：没有对应输入、输出或可观察证据；C：不可逆操作不是必要教学证据，也可能越权\n实践：用 <synthetic-fixture> 核对 $openai-templates:artifact-template-financial-budget 的输入与预期输出，不访问真实状态。"
+        },
+        {
+          "id": "course-ot-06-q05",
+          "type": "true_false",
+          "content": "[OpenAI Templates:财务预算] 判断题：使用 $openai-templates:artifact-template-financial-budget 时，应保留这条约束——参考文件保持不变；不得为填满版位编造事实，缺所需预装能力时停止而非重建模板。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：该约束必须保留。\n依据：它来自 OpenAI Templates:财务预算 的流程或风险边界，能防止把技能能力扩大为未经确认的操作。\n实践：在提示词末尾加入该约束，并只检查模型返回的计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-ot-07",
+      "code": "OT07",
+      "title": "OT07 OpenAI Templates:投委会备忘录",
+      "order": 7,
+      "lab_ref": "OT07",
+      "source_text": "openai-templates@0.1.0 的 skills/artifact-template-investment-committee-memo/SKILL.md 与相邻 agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-ot-07-q01",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:投委会备忘录] 场景题：团队遇到以下场景：用户明确选择“投委会备忘录”时，用保留的参考模板创建文档。最合适的下一步是什么？",
+          "options": [
+            "显式调用 $openai-templates:artifact-template-investment-committee-memo（OpenAI Templates:投委会备忘录），先核对输入和边界",
+            "跳过技能，直接承诺已经交付最终结果",
+            "调用同插件全部技能，让它们自行竞争",
+            "先修改真实外部状态，再补写需求说明"
+          ],
+          "answer": "显式调用 $openai-templates:artifact-template-investment-committee-memo（OpenAI Templates:投委会备忘录），先核对输入和边界",
+          "explanation": "结论：该场景正是 OpenAI Templates:投委会备忘录 的适用范围。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：B：没有执行相应流程，也缺少可观察证据；C：无差别调用增加上下文和副作用，掩盖清晰分工；D：把不可逆动作放在确认之前违反安全边界\n实践：用合成材料复述任务，并确认输入包含：用户提供的内容、可核实来源、保留的参考文件与预装文档能力。"
+        },
+        {
+          "id": "course-ot-07-q02",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:投委会备忘录] 调用题：评审会上需要明确记录所选技能，哪种写法最完整？",
+          "options": [
+            "只写“使用 OpenAI Templates:投委会备忘录”",
+            "插件 openai-templates；skill artifact-template-investment-committee-memo；调用 $openai-templates:artifact-template-investment-committee-memo；显示名 OpenAI Templates:投委会备忘录",
+            "只写插件 openai-templates，不指定 skill",
+            "复制本机缓存绝对路径作为调用语法"
+          ],
+          "answer": "插件 openai-templates；skill artifact-template-investment-committee-memo；调用 $openai-templates:artifact-template-investment-committee-memo；显示名 OpenAI Templates:投委会备忘录",
+          "explanation": "结论：插件 openai-templates；skill artifact-template-investment-committee-memo；调用 $openai-templates:artifact-template-investment-committee-memo；显示名 OpenAI Templates:投委会备忘录。\n依据：OpenAI Templates:投委会备忘录 的正式入口是 $openai-templates:artifact-template-investment-committee-memo；同时记录插件、skill slug 与显示名，才能在相似路由间复核选择。\n错误选项：A：省略稳定 slug 与插件名，不能完整核对调用目标；C：插件级名称无法区分内部多个独立技能；D：文件路径不是技能调用接口且会泄露机器特定信息\n实践：在合成场景中写出 $openai-templates:artifact-template-investment-committee-memo，并补一条不适用条件；不实际执行工具。"
+        },
+        {
+          "id": "course-ot-07-q03",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:投委会备忘录] 边界题：出现“用户没有选择该模板，或需求是无需模板约束的自由设计”时，怎样处理最稳妥？",
+          "options": [
+            "仍强制使用该技能，因为课程要求每个技能都执行",
+            "编造缺失输入以让流程继续",
+            "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+            "直接对真实数据、账户或发布面做试错"
+          ],
+          "answer": "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+          "explanation": "结论：停止套用该技能，重新路由或先补齐真正改变选择的条件。\n依据：OpenAI Templates:投委会备忘录 的不适用条件决定何时停止；越过该条件会把本 skill 错当成通用执行器。\n错误选项：A：课程目标是会判断，不是无条件执行；B：虚构事实会污染后续产出和验收；D：真实外部状态不应成为未确认路由的试验场\n实践：为 $openai-templates:artifact-template-investment-committee-memo 写一个最小反例和替代路由，只输出判断。"
+        },
+        {
+          "id": "course-ot-07-q04",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:投委会备忘录] 验收题：怎样证明这个单元已学会，而不是只记住名称？",
+          "options": [
+            "只背出 display_name",
+            "只说任务看起来已完成",
+            "展示一次真实写入或发布截图",
+            "能说明用途、输入“用户提供的内容、可核实来源、保留的参考文件与预装文档能力”、输出“保留模板结构和视觉系统、经过渲染验证的文档成品”和边界，并在合成场景中选对技能"
+          ],
+          "answer": "能说明用途、输入“用户提供的内容、可核实来源、保留的参考文件与预装文档能力”、输出“保留模板结构和视觉系统、经过渲染验证的文档成品”和边界，并在合成场景中选对技能",
+          "explanation": "结论：能说明用途、输入“用户提供的内容、可核实来源、保留的参考文件与预装文档能力”、输出“保留模板结构和视觉系统、经过渲染验证的文档成品”和边界，并在合成场景中选对技能。\n依据：OpenAI Templates:投委会备忘录 的验收必须同时覆盖其输入、输出、边界与可观察证据，不能只记名称。\n错误选项：A：显示名不能证明会判断适用场景；B：没有对应输入、输出或可观察证据；C：不可逆操作不是必要教学证据，也可能越权\n实践：用 <synthetic-fixture> 核对 $openai-templates:artifact-template-investment-committee-memo 的输入与预期输出，不访问真实状态。"
+        },
+        {
+          "id": "course-ot-07-q05",
+          "type": "true_false",
+          "content": "[OpenAI Templates:投委会备忘录] 判断题：使用 $openai-templates:artifact-template-investment-committee-memo 时，应保留这条约束——参考文件保持不变；不得为填满版位编造事实，缺所需预装能力时停止而非重建模板。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：该约束必须保留。\n依据：它来自 OpenAI Templates:投委会备忘录 的流程或风险边界，能防止把技能能力扩大为未经确认的操作。\n实践：在提示词末尾加入该约束，并只检查模型返回的计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-ot-08",
+      "code": "OT08",
+      "title": "OT08 OpenAI Templates:法律备忘录",
+      "order": 8,
+      "lab_ref": "OT08",
+      "source_text": "openai-templates@0.1.0 的 skills/artifact-template-legal-memorandum/SKILL.md 与相邻 agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-ot-08-q01",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:法律备忘录] 场景题：团队遇到以下场景：用户明确选择“法律备忘录”时，用保留的参考模板创建文档。最合适的下一步是什么？",
+          "options": [
+            "显式调用 $openai-templates:artifact-template-legal-memorandum（OpenAI Templates:法律备忘录），先核对输入和边界",
+            "跳过技能，直接承诺已经交付最终结果",
+            "调用同插件全部技能，让它们自行竞争",
+            "先修改真实外部状态，再补写需求说明"
+          ],
+          "answer": "显式调用 $openai-templates:artifact-template-legal-memorandum（OpenAI Templates:法律备忘录），先核对输入和边界",
+          "explanation": "结论：该场景正是 OpenAI Templates:法律备忘录 的适用范围。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：B：没有执行相应流程，也缺少可观察证据；C：无差别调用增加上下文和副作用，掩盖清晰分工；D：把不可逆动作放在确认之前违反安全边界\n实践：用合成材料复述任务，并确认输入包含：用户提供的内容、可核实来源、保留的参考文件与预装文档能力。"
+        },
+        {
+          "id": "course-ot-08-q02",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:法律备忘录] 调用题：评审会上需要明确记录所选技能，哪种写法最完整？",
+          "options": [
+            "只写“使用 OpenAI Templates:法律备忘录”",
+            "插件 openai-templates；skill artifact-template-legal-memorandum；调用 $openai-templates:artifact-template-legal-memorandum；显示名 OpenAI Templates:法律备忘录",
+            "只写插件 openai-templates，不指定 skill",
+            "复制本机缓存绝对路径作为调用语法"
+          ],
+          "answer": "插件 openai-templates；skill artifact-template-legal-memorandum；调用 $openai-templates:artifact-template-legal-memorandum；显示名 OpenAI Templates:法律备忘录",
+          "explanation": "结论：插件 openai-templates；skill artifact-template-legal-memorandum；调用 $openai-templates:artifact-template-legal-memorandum；显示名 OpenAI Templates:法律备忘录。\n依据：OpenAI Templates:法律备忘录 的正式入口是 $openai-templates:artifact-template-legal-memorandum；同时记录插件、skill slug 与显示名，才能在相似路由间复核选择。\n错误选项：A：省略稳定 slug 与插件名，不能完整核对调用目标；C：插件级名称无法区分内部多个独立技能；D：文件路径不是技能调用接口且会泄露机器特定信息\n实践：在合成场景中写出 $openai-templates:artifact-template-legal-memorandum，并补一条不适用条件；不实际执行工具。"
+        },
+        {
+          "id": "course-ot-08-q03",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:法律备忘录] 边界题：出现“用户没有选择该模板，或需求是无需模板约束的自由设计”时，怎样处理最稳妥？",
+          "options": [
+            "仍强制使用该技能，因为课程要求每个技能都执行",
+            "编造缺失输入以让流程继续",
+            "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+            "直接对真实数据、账户或发布面做试错"
+          ],
+          "answer": "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+          "explanation": "结论：停止套用该技能，重新路由或先补齐真正改变选择的条件。\n依据：OpenAI Templates:法律备忘录 的不适用条件决定何时停止；越过该条件会把本 skill 错当成通用执行器。\n错误选项：A：课程目标是会判断，不是无条件执行；B：虚构事实会污染后续产出和验收；D：真实外部状态不应成为未确认路由的试验场\n实践：为 $openai-templates:artifact-template-legal-memorandum 写一个最小反例和替代路由，只输出判断。"
+        },
+        {
+          "id": "course-ot-08-q04",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:法律备忘录] 验收题：怎样证明这个单元已学会，而不是只记住名称？",
+          "options": [
+            "只背出 display_name",
+            "只说任务看起来已完成",
+            "展示一次真实写入或发布截图",
+            "能说明用途、输入“用户提供的内容、可核实来源、保留的参考文件与预装文档能力”、输出“保留模板结构和视觉系统、经过渲染验证的文档成品”和边界，并在合成场景中选对技能"
+          ],
+          "answer": "能说明用途、输入“用户提供的内容、可核实来源、保留的参考文件与预装文档能力”、输出“保留模板结构和视觉系统、经过渲染验证的文档成品”和边界，并在合成场景中选对技能",
+          "explanation": "结论：能说明用途、输入“用户提供的内容、可核实来源、保留的参考文件与预装文档能力”、输出“保留模板结构和视觉系统、经过渲染验证的文档成品”和边界，并在合成场景中选对技能。\n依据：OpenAI Templates:法律备忘录 的验收必须同时覆盖其输入、输出、边界与可观察证据，不能只记名称。\n错误选项：A：显示名不能证明会判断适用场景；B：没有对应输入、输出或可观察证据；C：不可逆操作不是必要教学证据，也可能越权\n实践：用 <synthetic-fixture> 核对 $openai-templates:artifact-template-legal-memorandum 的输入与预期输出，不访问真实状态。"
+        },
+        {
+          "id": "course-ot-08-q05",
+          "type": "true_false",
+          "content": "[OpenAI Templates:法律备忘录] 判断题：使用 $openai-templates:artifact-template-legal-memorandum 时，应保留这条约束——参考文件保持不变；不得为填满版位编造事实，缺所需预装能力时停止而非重建模板。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：该约束必须保留。\n依据：它来自 OpenAI Templates:法律备忘录 的流程或风险边界，能防止把技能能力扩大为未经确认的操作。\n实践：在提示词末尾加入该约束，并只检查模型返回的计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-ot-09",
+      "code": "OT09",
+      "title": "OT09 OpenAI Templates:市场趋势报告",
+      "order": 9,
+      "lab_ref": "OT09",
+      "source_text": "openai-templates@0.1.0 的 skills/artifact-template-market-trends-report/SKILL.md 与相邻 agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-ot-09-q01",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:市场趋势报告] 场景题：团队遇到以下场景：用户明确选择“市场趋势报告”时，用保留的参考模板创建演示文稿。最合适的下一步是什么？",
+          "options": [
+            "显式调用 $openai-templates:artifact-template-market-trends-report（OpenAI Templates:市场趋势报告），先核对输入和边界",
+            "跳过技能，直接承诺已经交付最终结果",
+            "调用同插件全部技能，让它们自行竞争",
+            "先修改真实外部状态，再补写需求说明"
+          ],
+          "answer": "显式调用 $openai-templates:artifact-template-market-trends-report（OpenAI Templates:市场趋势报告），先核对输入和边界",
+          "explanation": "结论：该场景正是 OpenAI Templates:市场趋势报告 的适用范围。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：B：没有执行相应流程，也缺少可观察证据；C：无差别调用增加上下文和副作用，掩盖清晰分工；D：把不可逆动作放在确认之前违反安全边界\n实践：用合成材料复述任务，并确认输入包含：用户提供的内容、可核实来源、保留的参考文件与预装演示文稿能力。"
+        },
+        {
+          "id": "course-ot-09-q02",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:市场趋势报告] 调用题：评审会上需要明确记录所选技能，哪种写法最完整？",
+          "options": [
+            "只写“使用 OpenAI Templates:市场趋势报告”",
+            "插件 openai-templates；skill artifact-template-market-trends-report；调用 $openai-templates:artifact-template-market-trends-report；显示名 OpenAI Templates:市场趋势报告",
+            "只写插件 openai-templates，不指定 skill",
+            "复制本机缓存绝对路径作为调用语法"
+          ],
+          "answer": "插件 openai-templates；skill artifact-template-market-trends-report；调用 $openai-templates:artifact-template-market-trends-report；显示名 OpenAI Templates:市场趋势报告",
+          "explanation": "结论：插件 openai-templates；skill artifact-template-market-trends-report；调用 $openai-templates:artifact-template-market-trends-report；显示名 OpenAI Templates:市场趋势报告。\n依据：OpenAI Templates:市场趋势报告 的正式入口是 $openai-templates:artifact-template-market-trends-report；同时记录插件、skill slug 与显示名，才能在相似路由间复核选择。\n错误选项：A：省略稳定 slug 与插件名，不能完整核对调用目标；C：插件级名称无法区分内部多个独立技能；D：文件路径不是技能调用接口且会泄露机器特定信息\n实践：在合成场景中写出 $openai-templates:artifact-template-market-trends-report，并补一条不适用条件；不实际执行工具。"
+        },
+        {
+          "id": "course-ot-09-q03",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:市场趋势报告] 边界题：出现“用户没有选择该模板，或需求是无需模板约束的自由设计”时，怎样处理最稳妥？",
+          "options": [
+            "仍强制使用该技能，因为课程要求每个技能都执行",
+            "编造缺失输入以让流程继续",
+            "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+            "直接对真实数据、账户或发布面做试错"
+          ],
+          "answer": "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+          "explanation": "结论：停止套用该技能，重新路由或先补齐真正改变选择的条件。\n依据：OpenAI Templates:市场趋势报告 的不适用条件决定何时停止；越过该条件会把本 skill 错当成通用执行器。\n错误选项：A：课程目标是会判断，不是无条件执行；B：虚构事实会污染后续产出和验收；D：真实外部状态不应成为未确认路由的试验场\n实践：为 $openai-templates:artifact-template-market-trends-report 写一个最小反例和替代路由，只输出判断。"
+        },
+        {
+          "id": "course-ot-09-q04",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:市场趋势报告] 验收题：怎样证明这个单元已学会，而不是只记住名称？",
+          "options": [
+            "只背出 display_name",
+            "只说任务看起来已完成",
+            "展示一次真实写入或发布截图",
+            "能说明用途、输入“用户提供的内容、可核实来源、保留的参考文件与预装演示文稿能力”、输出“保留模板结构和视觉系统、经过渲染验证的演示文稿成品”和边界，并在合成场景中选对技能"
+          ],
+          "answer": "能说明用途、输入“用户提供的内容、可核实来源、保留的参考文件与预装演示文稿能力”、输出“保留模板结构和视觉系统、经过渲染验证的演示文稿成品”和边界，并在合成场景中选对技能",
+          "explanation": "结论：能说明用途、输入“用户提供的内容、可核实来源、保留的参考文件与预装演示文稿能力”、输出“保留模板结构和视觉系统、经过渲染验证的演示文稿成品”和边界，并在合成场景中选对技能。\n依据：OpenAI Templates:市场趋势报告 的验收必须同时覆盖其输入、输出、边界与可观察证据，不能只记名称。\n错误选项：A：显示名不能证明会判断适用场景；B：没有对应输入、输出或可观察证据；C：不可逆操作不是必要教学证据，也可能越权\n实践：用 <synthetic-fixture> 核对 $openai-templates:artifact-template-market-trends-report 的输入与预期输出，不访问真实状态。"
+        },
+        {
+          "id": "course-ot-09-q05",
+          "type": "true_false",
+          "content": "[OpenAI Templates:市场趋势报告] 判断题：使用 $openai-templates:artifact-template-market-trends-report 时，应保留这条约束——参考文件保持不变；不得为填满版位编造事实，缺所需预装能力时停止而非重建模板。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：该约束必须保留。\n依据：它来自 OpenAI Templates:市场趋势报告 的流程或风险边界，能防止把技能能力扩大为未经确认的操作。\n实践：在提示词末尾加入该约束，并只检查模型返回的计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-ot-10",
+      "code": "OT10",
+      "title": "OT10 OpenAI Templates:简洁信头",
+      "order": 10,
+      "lab_ref": "OT10",
+      "source_text": "openai-templates@0.1.0 的 skills/artifact-template-minimal-letterhead/SKILL.md 与相邻 agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-ot-10-q01",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:简洁信头] 场景题：团队遇到以下场景：用户明确选择“简洁信头”时，用保留的参考模板创建文档。最合适的下一步是什么？",
+          "options": [
+            "显式调用 $openai-templates:artifact-template-minimal-letterhead（OpenAI Templates:简洁信头），先核对输入和边界",
+            "跳过技能，直接承诺已经交付最终结果",
+            "调用同插件全部技能，让它们自行竞争",
+            "先修改真实外部状态，再补写需求说明"
+          ],
+          "answer": "显式调用 $openai-templates:artifact-template-minimal-letterhead（OpenAI Templates:简洁信头），先核对输入和边界",
+          "explanation": "结论：该场景正是 OpenAI Templates:简洁信头 的适用范围。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：B：没有执行相应流程，也缺少可观察证据；C：无差别调用增加上下文和副作用，掩盖清晰分工；D：把不可逆动作放在确认之前违反安全边界\n实践：用合成材料复述任务，并确认输入包含：用户提供的内容、可核实来源、保留的参考文件与预装文档能力。"
+        },
+        {
+          "id": "course-ot-10-q02",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:简洁信头] 调用题：评审会上需要明确记录所选技能，哪种写法最完整？",
+          "options": [
+            "只写“使用 OpenAI Templates:简洁信头”",
+            "插件 openai-templates；skill artifact-template-minimal-letterhead；调用 $openai-templates:artifact-template-minimal-letterhead；显示名 OpenAI Templates:简洁信头",
+            "只写插件 openai-templates，不指定 skill",
+            "复制本机缓存绝对路径作为调用语法"
+          ],
+          "answer": "插件 openai-templates；skill artifact-template-minimal-letterhead；调用 $openai-templates:artifact-template-minimal-letterhead；显示名 OpenAI Templates:简洁信头",
+          "explanation": "结论：插件 openai-templates；skill artifact-template-minimal-letterhead；调用 $openai-templates:artifact-template-minimal-letterhead；显示名 OpenAI Templates:简洁信头。\n依据：OpenAI Templates:简洁信头 的正式入口是 $openai-templates:artifact-template-minimal-letterhead；同时记录插件、skill slug 与显示名，才能在相似路由间复核选择。\n错误选项：A：省略稳定 slug 与插件名，不能完整核对调用目标；C：插件级名称无法区分内部多个独立技能；D：文件路径不是技能调用接口且会泄露机器特定信息\n实践：在合成场景中写出 $openai-templates:artifact-template-minimal-letterhead，并补一条不适用条件；不实际执行工具。"
+        },
+        {
+          "id": "course-ot-10-q03",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:简洁信头] 边界题：出现“用户没有选择该模板，或需求是无需模板约束的自由设计”时，怎样处理最稳妥？",
+          "options": [
+            "仍强制使用该技能，因为课程要求每个技能都执行",
+            "编造缺失输入以让流程继续",
+            "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+            "直接对真实数据、账户或发布面做试错"
+          ],
+          "answer": "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+          "explanation": "结论：停止套用该技能，重新路由或先补齐真正改变选择的条件。\n依据：OpenAI Templates:简洁信头 的不适用条件决定何时停止；越过该条件会把本 skill 错当成通用执行器。\n错误选项：A：课程目标是会判断，不是无条件执行；B：虚构事实会污染后续产出和验收；D：真实外部状态不应成为未确认路由的试验场\n实践：为 $openai-templates:artifact-template-minimal-letterhead 写一个最小反例和替代路由，只输出判断。"
+        },
+        {
+          "id": "course-ot-10-q04",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:简洁信头] 验收题：怎样证明这个单元已学会，而不是只记住名称？",
+          "options": [
+            "只背出 display_name",
+            "只说任务看起来已完成",
+            "展示一次真实写入或发布截图",
+            "能说明用途、输入“用户提供的内容、可核实来源、保留的参考文件与预装文档能力”、输出“保留模板结构和视觉系统、经过渲染验证的文档成品”和边界，并在合成场景中选对技能"
+          ],
+          "answer": "能说明用途、输入“用户提供的内容、可核实来源、保留的参考文件与预装文档能力”、输出“保留模板结构和视觉系统、经过渲染验证的文档成品”和边界，并在合成场景中选对技能",
+          "explanation": "结论：能说明用途、输入“用户提供的内容、可核实来源、保留的参考文件与预装文档能力”、输出“保留模板结构和视觉系统、经过渲染验证的文档成品”和边界，并在合成场景中选对技能。\n依据：OpenAI Templates:简洁信头 的验收必须同时覆盖其输入、输出、边界与可观察证据，不能只记名称。\n错误选项：A：显示名不能证明会判断适用场景；B：没有对应输入、输出或可观察证据；C：不可逆操作不是必要教学证据，也可能越权\n实践：用 <synthetic-fixture> 核对 $openai-templates:artifact-template-minimal-letterhead 的输入与预期输出，不访问真实状态。"
+        },
+        {
+          "id": "course-ot-10-q05",
+          "type": "true_false",
+          "content": "[OpenAI Templates:简洁信头] 判断题：使用 $openai-templates:artifact-template-minimal-letterhead 时，应保留这条约束——参考文件保持不变；不得为填满版位编造事实，缺所需预装能力时停止而非重建模板。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：该约束必须保留。\n依据：它来自 OpenAI Templates:简洁信头 的流程或风险边界，能防止把技能能力扩大为未经确认的操作。\n实践：在提示词末尾加入该约束，并只检查模型返回的计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-ot-11",
+      "code": "OT11",
+      "title": "OT11 OpenAI Templates:运营日历",
+      "order": 11,
+      "lab_ref": "OT11",
+      "source_text": "openai-templates@0.1.0 的 skills/artifact-template-operating-calendar/SKILL.md 与相邻 agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-ot-11-q01",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:运营日历] 场景题：团队遇到以下场景：用户明确选择“运营日历”时，用保留的参考模板创建电子表格。最合适的下一步是什么？",
+          "options": [
+            "显式调用 $openai-templates:artifact-template-operating-calendar（OpenAI Templates:运营日历），先核对输入和边界",
+            "跳过技能，直接承诺已经交付最终结果",
+            "调用同插件全部技能，让它们自行竞争",
+            "先修改真实外部状态，再补写需求说明"
+          ],
+          "answer": "显式调用 $openai-templates:artifact-template-operating-calendar（OpenAI Templates:运营日历），先核对输入和边界",
+          "explanation": "结论：该场景正是 OpenAI Templates:运营日历 的适用范围。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：B：没有执行相应流程，也缺少可观察证据；C：无差别调用增加上下文和副作用，掩盖清晰分工；D：把不可逆动作放在确认之前违反安全边界\n实践：用合成材料复述任务，并确认输入包含：用户提供的内容、可核实来源、保留的参考文件与预装电子表格能力。"
+        },
+        {
+          "id": "course-ot-11-q02",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:运营日历] 调用题：评审会上需要明确记录所选技能，哪种写法最完整？",
+          "options": [
+            "只写“使用 OpenAI Templates:运营日历”",
+            "插件 openai-templates；skill artifact-template-operating-calendar；调用 $openai-templates:artifact-template-operating-calendar；显示名 OpenAI Templates:运营日历",
+            "只写插件 openai-templates，不指定 skill",
+            "复制本机缓存绝对路径作为调用语法"
+          ],
+          "answer": "插件 openai-templates；skill artifact-template-operating-calendar；调用 $openai-templates:artifact-template-operating-calendar；显示名 OpenAI Templates:运营日历",
+          "explanation": "结论：插件 openai-templates；skill artifact-template-operating-calendar；调用 $openai-templates:artifact-template-operating-calendar；显示名 OpenAI Templates:运营日历。\n依据：OpenAI Templates:运营日历 的正式入口是 $openai-templates:artifact-template-operating-calendar；同时记录插件、skill slug 与显示名，才能在相似路由间复核选择。\n错误选项：A：省略稳定 slug 与插件名，不能完整核对调用目标；C：插件级名称无法区分内部多个独立技能；D：文件路径不是技能调用接口且会泄露机器特定信息\n实践：在合成场景中写出 $openai-templates:artifact-template-operating-calendar，并补一条不适用条件；不实际执行工具。"
+        },
+        {
+          "id": "course-ot-11-q03",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:运营日历] 边界题：出现“用户没有选择该模板，或需求是无需模板约束的自由设计”时，怎样处理最稳妥？",
+          "options": [
+            "仍强制使用该技能，因为课程要求每个技能都执行",
+            "编造缺失输入以让流程继续",
+            "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+            "直接对真实数据、账户或发布面做试错"
+          ],
+          "answer": "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+          "explanation": "结论：停止套用该技能，重新路由或先补齐真正改变选择的条件。\n依据：OpenAI Templates:运营日历 的不适用条件决定何时停止；越过该条件会把本 skill 错当成通用执行器。\n错误选项：A：课程目标是会判断，不是无条件执行；B：虚构事实会污染后续产出和验收；D：真实外部状态不应成为未确认路由的试验场\n实践：为 $openai-templates:artifact-template-operating-calendar 写一个最小反例和替代路由，只输出判断。"
+        },
+        {
+          "id": "course-ot-11-q04",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:运营日历] 验收题：怎样证明这个单元已学会，而不是只记住名称？",
+          "options": [
+            "只背出 display_name",
+            "只说任务看起来已完成",
+            "展示一次真实写入或发布截图",
+            "能说明用途、输入“用户提供的内容、可核实来源、保留的参考文件与预装电子表格能力”、输出“保留模板结构和视觉系统、经过渲染验证的电子表格成品”和边界，并在合成场景中选对技能"
+          ],
+          "answer": "能说明用途、输入“用户提供的内容、可核实来源、保留的参考文件与预装电子表格能力”、输出“保留模板结构和视觉系统、经过渲染验证的电子表格成品”和边界，并在合成场景中选对技能",
+          "explanation": "结论：能说明用途、输入“用户提供的内容、可核实来源、保留的参考文件与预装电子表格能力”、输出“保留模板结构和视觉系统、经过渲染验证的电子表格成品”和边界，并在合成场景中选对技能。\n依据：OpenAI Templates:运营日历 的验收必须同时覆盖其输入、输出、边界与可观察证据，不能只记名称。\n错误选项：A：显示名不能证明会判断适用场景；B：没有对应输入、输出或可观察证据；C：不可逆操作不是必要教学证据，也可能越权\n实践：用 <synthetic-fixture> 核对 $openai-templates:artifact-template-operating-calendar 的输入与预期输出，不访问真实状态。"
+        },
+        {
+          "id": "course-ot-11-q05",
+          "type": "true_false",
+          "content": "[OpenAI Templates:运营日历] 判断题：使用 $openai-templates:artifact-template-operating-calendar 时，应保留这条约束——参考文件保持不变；不得为填满版位编造事实，缺所需预装能力时停止而非重建模板。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：该约束必须保留。\n依据：它来自 OpenAI Templates:运营日历 的流程或风险边界，能防止把技能能力扩大为未经确认的操作。\n实践：在提示词末尾加入该约束，并只检查模型返回的计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-ot-12",
+      "code": "OT12",
+      "title": "OT12 OpenAI Templates:运营回顾",
+      "order": 12,
+      "lab_ref": "OT12",
+      "source_text": "openai-templates@0.1.0 的 skills/artifact-template-operating-review/SKILL.md 与相邻 agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-ot-12-q01",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:运营回顾] 场景题：团队遇到以下场景：用户明确选择“运营回顾”时，用保留的参考模板创建演示文稿。最合适的下一步是什么？",
+          "options": [
+            "显式调用 $openai-templates:artifact-template-operating-review（OpenAI Templates:运营回顾），先核对输入和边界",
+            "跳过技能，直接承诺已经交付最终结果",
+            "调用同插件全部技能，让它们自行竞争",
+            "先修改真实外部状态，再补写需求说明"
+          ],
+          "answer": "显式调用 $openai-templates:artifact-template-operating-review（OpenAI Templates:运营回顾），先核对输入和边界",
+          "explanation": "结论：该场景正是 OpenAI Templates:运营回顾 的适用范围。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：B：没有执行相应流程，也缺少可观察证据；C：无差别调用增加上下文和副作用，掩盖清晰分工；D：把不可逆动作放在确认之前违反安全边界\n实践：用合成材料复述任务，并确认输入包含：用户提供的内容、可核实来源、保留的参考文件与预装演示文稿能力。"
+        },
+        {
+          "id": "course-ot-12-q02",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:运营回顾] 调用题：评审会上需要明确记录所选技能，哪种写法最完整？",
+          "options": [
+            "只写“使用 OpenAI Templates:运营回顾”",
+            "插件 openai-templates；skill artifact-template-operating-review；调用 $openai-templates:artifact-template-operating-review；显示名 OpenAI Templates:运营回顾",
+            "只写插件 openai-templates，不指定 skill",
+            "复制本机缓存绝对路径作为调用语法"
+          ],
+          "answer": "插件 openai-templates；skill artifact-template-operating-review；调用 $openai-templates:artifact-template-operating-review；显示名 OpenAI Templates:运营回顾",
+          "explanation": "结论：插件 openai-templates；skill artifact-template-operating-review；调用 $openai-templates:artifact-template-operating-review；显示名 OpenAI Templates:运营回顾。\n依据：OpenAI Templates:运营回顾 的正式入口是 $openai-templates:artifact-template-operating-review；同时记录插件、skill slug 与显示名，才能在相似路由间复核选择。\n错误选项：A：省略稳定 slug 与插件名，不能完整核对调用目标；C：插件级名称无法区分内部多个独立技能；D：文件路径不是技能调用接口且会泄露机器特定信息\n实践：在合成场景中写出 $openai-templates:artifact-template-operating-review，并补一条不适用条件；不实际执行工具。"
+        },
+        {
+          "id": "course-ot-12-q03",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:运营回顾] 边界题：出现“用户没有选择该模板，或需求是无需模板约束的自由设计”时，怎样处理最稳妥？",
+          "options": [
+            "仍强制使用该技能，因为课程要求每个技能都执行",
+            "编造缺失输入以让流程继续",
+            "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+            "直接对真实数据、账户或发布面做试错"
+          ],
+          "answer": "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+          "explanation": "结论：停止套用该技能，重新路由或先补齐真正改变选择的条件。\n依据：OpenAI Templates:运营回顾 的不适用条件决定何时停止；越过该条件会把本 skill 错当成通用执行器。\n错误选项：A：课程目标是会判断，不是无条件执行；B：虚构事实会污染后续产出和验收；D：真实外部状态不应成为未确认路由的试验场\n实践：为 $openai-templates:artifact-template-operating-review 写一个最小反例和替代路由，只输出判断。"
+        },
+        {
+          "id": "course-ot-12-q04",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:运营回顾] 验收题：怎样证明这个单元已学会，而不是只记住名称？",
+          "options": [
+            "只背出 display_name",
+            "只说任务看起来已完成",
+            "展示一次真实写入或发布截图",
+            "能说明用途、输入“用户提供的内容、可核实来源、保留的参考文件与预装演示文稿能力”、输出“保留模板结构和视觉系统、经过渲染验证的演示文稿成品”和边界，并在合成场景中选对技能"
+          ],
+          "answer": "能说明用途、输入“用户提供的内容、可核实来源、保留的参考文件与预装演示文稿能力”、输出“保留模板结构和视觉系统、经过渲染验证的演示文稿成品”和边界，并在合成场景中选对技能",
+          "explanation": "结论：能说明用途、输入“用户提供的内容、可核实来源、保留的参考文件与预装演示文稿能力”、输出“保留模板结构和视觉系统、经过渲染验证的演示文稿成品”和边界，并在合成场景中选对技能。\n依据：OpenAI Templates:运营回顾 的验收必须同时覆盖其输入、输出、边界与可观察证据，不能只记名称。\n错误选项：A：显示名不能证明会判断适用场景；B：没有对应输入、输出或可观察证据；C：不可逆操作不是必要教学证据，也可能越权\n实践：用 <synthetic-fixture> 核对 $openai-templates:artifact-template-operating-review 的输入与预期输出，不访问真实状态。"
+        },
+        {
+          "id": "course-ot-12-q05",
+          "type": "true_false",
+          "content": "[OpenAI Templates:运营回顾] 判断题：使用 $openai-templates:artifact-template-operating-review 时，应保留这条约束——参考文件保持不变；不得为填满版位编造事实，缺所需预装能力时停止而非重建模板。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：该约束必须保留。\n依据：它来自 OpenAI Templates:运营回顾 的流程或风险边界，能防止把技能能力扩大为未经确认的操作。\n实践：在提示词末尾加入该约束，并只检查模型返回的计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-ot-13",
+      "code": "OT13",
+      "title": "OT13 OpenAI Templates:项目启动",
+      "order": 13,
+      "lab_ref": "OT13",
+      "source_text": "openai-templates@0.1.0 的 skills/artifact-template-project-kickoff/SKILL.md 与相邻 agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-ot-13-q01",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:项目启动] 场景题：团队遇到以下场景：用户明确选择“项目启动”时，用保留的参考模板创建演示文稿。最合适的下一步是什么？",
+          "options": [
+            "显式调用 $openai-templates:artifact-template-project-kickoff（OpenAI Templates:项目启动），先核对输入和边界",
+            "跳过技能，直接承诺已经交付最终结果",
+            "调用同插件全部技能，让它们自行竞争",
+            "先修改真实外部状态，再补写需求说明"
+          ],
+          "answer": "显式调用 $openai-templates:artifact-template-project-kickoff（OpenAI Templates:项目启动），先核对输入和边界",
+          "explanation": "结论：该场景正是 OpenAI Templates:项目启动 的适用范围。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：B：没有执行相应流程，也缺少可观察证据；C：无差别调用增加上下文和副作用，掩盖清晰分工；D：把不可逆动作放在确认之前违反安全边界\n实践：用合成材料复述任务，并确认输入包含：用户提供的内容、可核实来源、保留的参考文件与预装演示文稿能力。"
+        },
+        {
+          "id": "course-ot-13-q02",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:项目启动] 调用题：评审会上需要明确记录所选技能，哪种写法最完整？",
+          "options": [
+            "只写“使用 OpenAI Templates:项目启动”",
+            "插件 openai-templates；skill artifact-template-project-kickoff；调用 $openai-templates:artifact-template-project-kickoff；显示名 OpenAI Templates:项目启动",
+            "只写插件 openai-templates，不指定 skill",
+            "复制本机缓存绝对路径作为调用语法"
+          ],
+          "answer": "插件 openai-templates；skill artifact-template-project-kickoff；调用 $openai-templates:artifact-template-project-kickoff；显示名 OpenAI Templates:项目启动",
+          "explanation": "结论：插件 openai-templates；skill artifact-template-project-kickoff；调用 $openai-templates:artifact-template-project-kickoff；显示名 OpenAI Templates:项目启动。\n依据：OpenAI Templates:项目启动 的正式入口是 $openai-templates:artifact-template-project-kickoff；同时记录插件、skill slug 与显示名，才能在相似路由间复核选择。\n错误选项：A：省略稳定 slug 与插件名，不能完整核对调用目标；C：插件级名称无法区分内部多个独立技能；D：文件路径不是技能调用接口且会泄露机器特定信息\n实践：在合成场景中写出 $openai-templates:artifact-template-project-kickoff，并补一条不适用条件；不实际执行工具。"
+        },
+        {
+          "id": "course-ot-13-q03",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:项目启动] 边界题：出现“用户没有选择该模板，或需求是无需模板约束的自由设计”时，怎样处理最稳妥？",
+          "options": [
+            "仍强制使用该技能，因为课程要求每个技能都执行",
+            "编造缺失输入以让流程继续",
+            "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+            "直接对真实数据、账户或发布面做试错"
+          ],
+          "answer": "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+          "explanation": "结论：停止套用该技能，重新路由或先补齐真正改变选择的条件。\n依据：OpenAI Templates:项目启动 的不适用条件决定何时停止；越过该条件会把本 skill 错当成通用执行器。\n错误选项：A：课程目标是会判断，不是无条件执行；B：虚构事实会污染后续产出和验收；D：真实外部状态不应成为未确认路由的试验场\n实践：为 $openai-templates:artifact-template-project-kickoff 写一个最小反例和替代路由，只输出判断。"
+        },
+        {
+          "id": "course-ot-13-q04",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:项目启动] 验收题：怎样证明这个单元已学会，而不是只记住名称？",
+          "options": [
+            "只背出 display_name",
+            "只说任务看起来已完成",
+            "展示一次真实写入或发布截图",
+            "能说明用途、输入“用户提供的内容、可核实来源、保留的参考文件与预装演示文稿能力”、输出“保留模板结构和视觉系统、经过渲染验证的演示文稿成品”和边界，并在合成场景中选对技能"
+          ],
+          "answer": "能说明用途、输入“用户提供的内容、可核实来源、保留的参考文件与预装演示文稿能力”、输出“保留模板结构和视觉系统、经过渲染验证的演示文稿成品”和边界，并在合成场景中选对技能",
+          "explanation": "结论：能说明用途、输入“用户提供的内容、可核实来源、保留的参考文件与预装演示文稿能力”、输出“保留模板结构和视觉系统、经过渲染验证的演示文稿成品”和边界，并在合成场景中选对技能。\n依据：OpenAI Templates:项目启动 的验收必须同时覆盖其输入、输出、边界与可观察证据，不能只记名称。\n错误选项：A：显示名不能证明会判断适用场景；B：没有对应输入、输出或可观察证据；C：不可逆操作不是必要教学证据，也可能越权\n实践：用 <synthetic-fixture> 核对 $openai-templates:artifact-template-project-kickoff 的输入与预期输出，不访问真实状态。"
+        },
+        {
+          "id": "course-ot-13-q05",
+          "type": "true_false",
+          "content": "[OpenAI Templates:项目启动] 判断题：使用 $openai-templates:artifact-template-project-kickoff 时，应保留这条约束——参考文件保持不变；不得为填满版位编造事实，缺所需预装能力时停止而非重建模板。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：该约束必须保留。\n依据：它来自 OpenAI Templates:项目启动 的流程或风险边界，能防止把技能能力扩大为未经确认的操作。\n实践：在提示词末尾加入该约束，并只检查模型返回的计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-ot-14",
+      "code": "OT14",
+      "title": "OT14 OpenAI Templates:项目追踪",
+      "order": 14,
+      "lab_ref": "OT14",
+      "source_text": "openai-templates@0.1.0 的 skills/artifact-template-project-tracker/SKILL.md 与相邻 agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-ot-14-q01",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:项目追踪] 场景题：团队遇到以下场景：用户明确选择“项目追踪”时，用保留的参考模板创建电子表格。最合适的下一步是什么？",
+          "options": [
+            "显式调用 $openai-templates:artifact-template-project-tracker（OpenAI Templates:项目追踪），先核对输入和边界",
+            "跳过技能，直接承诺已经交付最终结果",
+            "调用同插件全部技能，让它们自行竞争",
+            "先修改真实外部状态，再补写需求说明"
+          ],
+          "answer": "显式调用 $openai-templates:artifact-template-project-tracker（OpenAI Templates:项目追踪），先核对输入和边界",
+          "explanation": "结论：该场景正是 OpenAI Templates:项目追踪 的适用范围。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：B：没有执行相应流程，也缺少可观察证据；C：无差别调用增加上下文和副作用，掩盖清晰分工；D：把不可逆动作放在确认之前违反安全边界\n实践：用合成材料复述任务，并确认输入包含：用户提供的内容、可核实来源、保留的参考文件与预装电子表格能力。"
+        },
+        {
+          "id": "course-ot-14-q02",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:项目追踪] 调用题：评审会上需要明确记录所选技能，哪种写法最完整？",
+          "options": [
+            "只写“使用 OpenAI Templates:项目追踪”",
+            "插件 openai-templates；skill artifact-template-project-tracker；调用 $openai-templates:artifact-template-project-tracker；显示名 OpenAI Templates:项目追踪",
+            "只写插件 openai-templates，不指定 skill",
+            "复制本机缓存绝对路径作为调用语法"
+          ],
+          "answer": "插件 openai-templates；skill artifact-template-project-tracker；调用 $openai-templates:artifact-template-project-tracker；显示名 OpenAI Templates:项目追踪",
+          "explanation": "结论：插件 openai-templates；skill artifact-template-project-tracker；调用 $openai-templates:artifact-template-project-tracker；显示名 OpenAI Templates:项目追踪。\n依据：OpenAI Templates:项目追踪 的正式入口是 $openai-templates:artifact-template-project-tracker；同时记录插件、skill slug 与显示名，才能在相似路由间复核选择。\n错误选项：A：省略稳定 slug 与插件名，不能完整核对调用目标；C：插件级名称无法区分内部多个独立技能；D：文件路径不是技能调用接口且会泄露机器特定信息\n实践：在合成场景中写出 $openai-templates:artifact-template-project-tracker，并补一条不适用条件；不实际执行工具。"
+        },
+        {
+          "id": "course-ot-14-q03",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:项目追踪] 边界题：出现“用户没有选择该模板，或需求是无需模板约束的自由设计”时，怎样处理最稳妥？",
+          "options": [
+            "仍强制使用该技能，因为课程要求每个技能都执行",
+            "编造缺失输入以让流程继续",
+            "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+            "直接对真实数据、账户或发布面做试错"
+          ],
+          "answer": "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+          "explanation": "结论：停止套用该技能，重新路由或先补齐真正改变选择的条件。\n依据：OpenAI Templates:项目追踪 的不适用条件决定何时停止；越过该条件会把本 skill 错当成通用执行器。\n错误选项：A：课程目标是会判断，不是无条件执行；B：虚构事实会污染后续产出和验收；D：真实外部状态不应成为未确认路由的试验场\n实践：为 $openai-templates:artifact-template-project-tracker 写一个最小反例和替代路由，只输出判断。"
+        },
+        {
+          "id": "course-ot-14-q04",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:项目追踪] 验收题：怎样证明这个单元已学会，而不是只记住名称？",
+          "options": [
+            "只背出 display_name",
+            "只说任务看起来已完成",
+            "展示一次真实写入或发布截图",
+            "能说明用途、输入“用户提供的内容、可核实来源、保留的参考文件与预装电子表格能力”、输出“保留模板结构和视觉系统、经过渲染验证的电子表格成品”和边界，并在合成场景中选对技能"
+          ],
+          "answer": "能说明用途、输入“用户提供的内容、可核实来源、保留的参考文件与预装电子表格能力”、输出“保留模板结构和视觉系统、经过渲染验证的电子表格成品”和边界，并在合成场景中选对技能",
+          "explanation": "结论：能说明用途、输入“用户提供的内容、可核实来源、保留的参考文件与预装电子表格能力”、输出“保留模板结构和视觉系统、经过渲染验证的电子表格成品”和边界，并在合成场景中选对技能。\n依据：OpenAI Templates:项目追踪 的验收必须同时覆盖其输入、输出、边界与可观察证据，不能只记名称。\n错误选项：A：显示名不能证明会判断适用场景；B：没有对应输入、输出或可观察证据；C：不可逆操作不是必要教学证据，也可能越权\n实践：用 <synthetic-fixture> 核对 $openai-templates:artifact-template-project-tracker 的输入与预期输出，不访问真实状态。"
+        },
+        {
+          "id": "course-ot-14-q05",
+          "type": "true_false",
+          "content": "[OpenAI Templates:项目追踪] 判断题：使用 $openai-templates:artifact-template-project-tracker 时，应保留这条约束——参考文件保持不变；不得为填满版位编造事实，缺所需预装能力时停止而非重建模板。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：该约束必须保留。\n依据：它来自 OpenAI Templates:项目追踪 的流程或风险边界，能防止把技能能力扩大为未经确认的操作。\n实践：在提示词末尾加入该约束，并只检查模型返回的计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-ot-15",
+      "code": "OT15",
+      "title": "OT15 OpenAI Templates:销售管道",
+      "order": 15,
+      "lab_ref": "OT15",
+      "source_text": "openai-templates@0.1.0 的 skills/artifact-template-sales-pipeline/SKILL.md 与相邻 agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-ot-15-q01",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:销售管道] 场景题：团队遇到以下场景：用户明确选择“销售管道”时，用保留的参考模板创建电子表格。最合适的下一步是什么？",
+          "options": [
+            "显式调用 $openai-templates:artifact-template-sales-pipeline（OpenAI Templates:销售管道），先核对输入和边界",
+            "跳过技能，直接承诺已经交付最终结果",
+            "调用同插件全部技能，让它们自行竞争",
+            "先修改真实外部状态，再补写需求说明"
+          ],
+          "answer": "显式调用 $openai-templates:artifact-template-sales-pipeline（OpenAI Templates:销售管道），先核对输入和边界",
+          "explanation": "结论：该场景正是 OpenAI Templates:销售管道 的适用范围。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：B：没有执行相应流程，也缺少可观察证据；C：无差别调用增加上下文和副作用，掩盖清晰分工；D：把不可逆动作放在确认之前违反安全边界\n实践：用合成材料复述任务，并确认输入包含：用户提供的内容、可核实来源、保留的参考文件与预装电子表格能力。"
+        },
+        {
+          "id": "course-ot-15-q02",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:销售管道] 调用题：评审会上需要明确记录所选技能，哪种写法最完整？",
+          "options": [
+            "只写“使用 OpenAI Templates:销售管道”",
+            "插件 openai-templates；skill artifact-template-sales-pipeline；调用 $openai-templates:artifact-template-sales-pipeline；显示名 OpenAI Templates:销售管道",
+            "只写插件 openai-templates，不指定 skill",
+            "复制本机缓存绝对路径作为调用语法"
+          ],
+          "answer": "插件 openai-templates；skill artifact-template-sales-pipeline；调用 $openai-templates:artifact-template-sales-pipeline；显示名 OpenAI Templates:销售管道",
+          "explanation": "结论：插件 openai-templates；skill artifact-template-sales-pipeline；调用 $openai-templates:artifact-template-sales-pipeline；显示名 OpenAI Templates:销售管道。\n依据：OpenAI Templates:销售管道 的正式入口是 $openai-templates:artifact-template-sales-pipeline；同时记录插件、skill slug 与显示名，才能在相似路由间复核选择。\n错误选项：A：省略稳定 slug 与插件名，不能完整核对调用目标；C：插件级名称无法区分内部多个独立技能；D：文件路径不是技能调用接口且会泄露机器特定信息\n实践：在合成场景中写出 $openai-templates:artifact-template-sales-pipeline，并补一条不适用条件；不实际执行工具。"
+        },
+        {
+          "id": "course-ot-15-q03",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:销售管道] 边界题：出现“用户没有选择该模板，或需求是无需模板约束的自由设计”时，怎样处理最稳妥？",
+          "options": [
+            "仍强制使用该技能，因为课程要求每个技能都执行",
+            "编造缺失输入以让流程继续",
+            "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+            "直接对真实数据、账户或发布面做试错"
+          ],
+          "answer": "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+          "explanation": "结论：停止套用该技能，重新路由或先补齐真正改变选择的条件。\n依据：OpenAI Templates:销售管道 的不适用条件决定何时停止；越过该条件会把本 skill 错当成通用执行器。\n错误选项：A：课程目标是会判断，不是无条件执行；B：虚构事实会污染后续产出和验收；D：真实外部状态不应成为未确认路由的试验场\n实践：为 $openai-templates:artifact-template-sales-pipeline 写一个最小反例和替代路由，只输出判断。"
+        },
+        {
+          "id": "course-ot-15-q04",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:销售管道] 验收题：怎样证明这个单元已学会，而不是只记住名称？",
+          "options": [
+            "只背出 display_name",
+            "只说任务看起来已完成",
+            "展示一次真实写入或发布截图",
+            "能说明用途、输入“用户提供的内容、可核实来源、保留的参考文件与预装电子表格能力”、输出“保留模板结构和视觉系统、经过渲染验证的电子表格成品”和边界，并在合成场景中选对技能"
+          ],
+          "answer": "能说明用途、输入“用户提供的内容、可核实来源、保留的参考文件与预装电子表格能力”、输出“保留模板结构和视觉系统、经过渲染验证的电子表格成品”和边界，并在合成场景中选对技能",
+          "explanation": "结论：能说明用途、输入“用户提供的内容、可核实来源、保留的参考文件与预装电子表格能力”、输出“保留模板结构和视觉系统、经过渲染验证的电子表格成品”和边界，并在合成场景中选对技能。\n依据：OpenAI Templates:销售管道 的验收必须同时覆盖其输入、输出、边界与可观察证据，不能只记名称。\n错误选项：A：显示名不能证明会判断适用场景；B：没有对应输入、输出或可观察证据；C：不可逆操作不是必要教学证据，也可能越权\n实践：用 <synthetic-fixture> 核对 $openai-templates:artifact-template-sales-pipeline 的输入与预期输出，不访问真实状态。"
+        },
+        {
+          "id": "course-ot-15-q05",
+          "type": "true_false",
+          "content": "[OpenAI Templates:销售管道] 判断题：使用 $openai-templates:artifact-template-sales-pipeline 时，应保留这条约束——参考文件保持不变；不得为填满版位编造事实，缺所需预装能力时停止而非重建模板。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：该约束必须保留。\n依据：它来自 OpenAI Templates:销售管道 的流程或风险边界，能防止把技能能力扩大为未经确认的操作。\n实践：在提示词末尾加入该约束，并只检查模型返回的计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-ot-16",
+      "code": "OT16",
+      "title": "OT16 OpenAI Templates:简洁暗色演示",
+      "order": 16,
+      "lab_ref": "OT16",
+      "source_text": "openai-templates@0.1.0 的 skills/artifact-template-simple-dark-mode/SKILL.md 与相邻 agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-ot-16-q01",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:简洁暗色演示] 场景题：团队遇到以下场景：用户明确选择“简洁暗色演示”时，用保留的参考模板创建演示文稿。最合适的下一步是什么？",
+          "options": [
+            "显式调用 $openai-templates:artifact-template-simple-dark-mode（OpenAI Templates:简洁暗色演示），先核对输入和边界",
+            "跳过技能，直接承诺已经交付最终结果",
+            "调用同插件全部技能，让它们自行竞争",
+            "先修改真实外部状态，再补写需求说明"
+          ],
+          "answer": "显式调用 $openai-templates:artifact-template-simple-dark-mode（OpenAI Templates:简洁暗色演示），先核对输入和边界",
+          "explanation": "结论：该场景正是 OpenAI Templates:简洁暗色演示 的适用范围。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：B：没有执行相应流程，也缺少可观察证据；C：无差别调用增加上下文和副作用，掩盖清晰分工；D：把不可逆动作放在确认之前违反安全边界\n实践：用合成材料复述任务，并确认输入包含：用户提供的内容、可核实来源、保留的参考文件与预装演示文稿能力。"
+        },
+        {
+          "id": "course-ot-16-q02",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:简洁暗色演示] 调用题：评审会上需要明确记录所选技能，哪种写法最完整？",
+          "options": [
+            "只写“使用 OpenAI Templates:简洁暗色演示”",
+            "插件 openai-templates；skill artifact-template-simple-dark-mode；调用 $openai-templates:artifact-template-simple-dark-mode；显示名 OpenAI Templates:简洁暗色演示",
+            "只写插件 openai-templates，不指定 skill",
+            "复制本机缓存绝对路径作为调用语法"
+          ],
+          "answer": "插件 openai-templates；skill artifact-template-simple-dark-mode；调用 $openai-templates:artifact-template-simple-dark-mode；显示名 OpenAI Templates:简洁暗色演示",
+          "explanation": "结论：插件 openai-templates；skill artifact-template-simple-dark-mode；调用 $openai-templates:artifact-template-simple-dark-mode；显示名 OpenAI Templates:简洁暗色演示。\n依据：OpenAI Templates:简洁暗色演示 的正式入口是 $openai-templates:artifact-template-simple-dark-mode；同时记录插件、skill slug 与显示名，才能在相似路由间复核选择。\n错误选项：A：省略稳定 slug 与插件名，不能完整核对调用目标；C：插件级名称无法区分内部多个独立技能；D：文件路径不是技能调用接口且会泄露机器特定信息\n实践：在合成场景中写出 $openai-templates:artifact-template-simple-dark-mode，并补一条不适用条件；不实际执行工具。"
+        },
+        {
+          "id": "course-ot-16-q03",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:简洁暗色演示] 边界题：出现“用户没有选择该模板，或需求是无需模板约束的自由设计”时，怎样处理最稳妥？",
+          "options": [
+            "仍强制使用该技能，因为课程要求每个技能都执行",
+            "编造缺失输入以让流程继续",
+            "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+            "直接对真实数据、账户或发布面做试错"
+          ],
+          "answer": "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+          "explanation": "结论：停止套用该技能，重新路由或先补齐真正改变选择的条件。\n依据：OpenAI Templates:简洁暗色演示 的不适用条件决定何时停止；越过该条件会把本 skill 错当成通用执行器。\n错误选项：A：课程目标是会判断，不是无条件执行；B：虚构事实会污染后续产出和验收；D：真实外部状态不应成为未确认路由的试验场\n实践：为 $openai-templates:artifact-template-simple-dark-mode 写一个最小反例和替代路由，只输出判断。"
+        },
+        {
+          "id": "course-ot-16-q04",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:简洁暗色演示] 验收题：怎样证明这个单元已学会，而不是只记住名称？",
+          "options": [
+            "只背出 display_name",
+            "只说任务看起来已完成",
+            "展示一次真实写入或发布截图",
+            "能说明用途、输入“用户提供的内容、可核实来源、保留的参考文件与预装演示文稿能力”、输出“保留模板结构和视觉系统、经过渲染验证的演示文稿成品”和边界，并在合成场景中选对技能"
+          ],
+          "answer": "能说明用途、输入“用户提供的内容、可核实来源、保留的参考文件与预装演示文稿能力”、输出“保留模板结构和视觉系统、经过渲染验证的演示文稿成品”和边界，并在合成场景中选对技能",
+          "explanation": "结论：能说明用途、输入“用户提供的内容、可核实来源、保留的参考文件与预装演示文稿能力”、输出“保留模板结构和视觉系统、经过渲染验证的演示文稿成品”和边界，并在合成场景中选对技能。\n依据：OpenAI Templates:简洁暗色演示 的验收必须同时覆盖其输入、输出、边界与可观察证据，不能只记名称。\n错误选项：A：显示名不能证明会判断适用场景；B：没有对应输入、输出或可观察证据；C：不可逆操作不是必要教学证据，也可能越权\n实践：用 <synthetic-fixture> 核对 $openai-templates:artifact-template-simple-dark-mode 的输入与预期输出，不访问真实状态。"
+        },
+        {
+          "id": "course-ot-16-q05",
+          "type": "true_false",
+          "content": "[OpenAI Templates:简洁暗色演示] 判断题：使用 $openai-templates:artifact-template-simple-dark-mode 时，应保留这条约束——参考文件保持不变；不得为填满版位编造事实，缺所需预装能力时停止而非重建模板。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：该约束必须保留。\n依据：它来自 OpenAI Templates:简洁暗色演示 的流程或风险边界，能防止把技能能力扩大为未经确认的操作。\n实践：在提示词末尾加入该约束，并只检查模型返回的计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-ot-17",
+      "code": "OT17",
+      "title": "OT17 OpenAI Templates:简洁浅色演示",
+      "order": 17,
+      "lab_ref": "OT17",
+      "source_text": "openai-templates@0.1.0 的 skills/artifact-template-simple-light-mode/SKILL.md 与相邻 agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-ot-17-q01",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:简洁浅色演示] 场景题：团队遇到以下场景：用户明确选择“简洁浅色演示”时，用保留的参考模板创建演示文稿。最合适的下一步是什么？",
+          "options": [
+            "显式调用 $openai-templates:artifact-template-simple-light-mode（OpenAI Templates:简洁浅色演示），先核对输入和边界",
+            "跳过技能，直接承诺已经交付最终结果",
+            "调用同插件全部技能，让它们自行竞争",
+            "先修改真实外部状态，再补写需求说明"
+          ],
+          "answer": "显式调用 $openai-templates:artifact-template-simple-light-mode（OpenAI Templates:简洁浅色演示），先核对输入和边界",
+          "explanation": "结论：该场景正是 OpenAI Templates:简洁浅色演示 的适用范围。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：B：没有执行相应流程，也缺少可观察证据；C：无差别调用增加上下文和副作用，掩盖清晰分工；D：把不可逆动作放在确认之前违反安全边界\n实践：用合成材料复述任务，并确认输入包含：用户提供的内容、可核实来源、保留的参考文件与预装演示文稿能力。"
+        },
+        {
+          "id": "course-ot-17-q02",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:简洁浅色演示] 调用题：评审会上需要明确记录所选技能，哪种写法最完整？",
+          "options": [
+            "只写“使用 OpenAI Templates:简洁浅色演示”",
+            "插件 openai-templates；skill artifact-template-simple-light-mode；调用 $openai-templates:artifact-template-simple-light-mode；显示名 OpenAI Templates:简洁浅色演示",
+            "只写插件 openai-templates，不指定 skill",
+            "复制本机缓存绝对路径作为调用语法"
+          ],
+          "answer": "插件 openai-templates；skill artifact-template-simple-light-mode；调用 $openai-templates:artifact-template-simple-light-mode；显示名 OpenAI Templates:简洁浅色演示",
+          "explanation": "结论：插件 openai-templates；skill artifact-template-simple-light-mode；调用 $openai-templates:artifact-template-simple-light-mode；显示名 OpenAI Templates:简洁浅色演示。\n依据：OpenAI Templates:简洁浅色演示 的正式入口是 $openai-templates:artifact-template-simple-light-mode；同时记录插件、skill slug 与显示名，才能在相似路由间复核选择。\n错误选项：A：省略稳定 slug 与插件名，不能完整核对调用目标；C：插件级名称无法区分内部多个独立技能；D：文件路径不是技能调用接口且会泄露机器特定信息\n实践：在合成场景中写出 $openai-templates:artifact-template-simple-light-mode，并补一条不适用条件；不实际执行工具。"
+        },
+        {
+          "id": "course-ot-17-q03",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:简洁浅色演示] 边界题：出现“用户没有选择该模板，或需求是无需模板约束的自由设计”时，怎样处理最稳妥？",
+          "options": [
+            "仍强制使用该技能，因为课程要求每个技能都执行",
+            "编造缺失输入以让流程继续",
+            "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+            "直接对真实数据、账户或发布面做试错"
+          ],
+          "answer": "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+          "explanation": "结论：停止套用该技能，重新路由或先补齐真正改变选择的条件。\n依据：OpenAI Templates:简洁浅色演示 的不适用条件决定何时停止；越过该条件会把本 skill 错当成通用执行器。\n错误选项：A：课程目标是会判断，不是无条件执行；B：虚构事实会污染后续产出和验收；D：真实外部状态不应成为未确认路由的试验场\n实践：为 $openai-templates:artifact-template-simple-light-mode 写一个最小反例和替代路由，只输出判断。"
+        },
+        {
+          "id": "course-ot-17-q04",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:简洁浅色演示] 验收题：怎样证明这个单元已学会，而不是只记住名称？",
+          "options": [
+            "只背出 display_name",
+            "只说任务看起来已完成",
+            "展示一次真实写入或发布截图",
+            "能说明用途、输入“用户提供的内容、可核实来源、保留的参考文件与预装演示文稿能力”、输出“保留模板结构和视觉系统、经过渲染验证的演示文稿成品”和边界，并在合成场景中选对技能"
+          ],
+          "answer": "能说明用途、输入“用户提供的内容、可核实来源、保留的参考文件与预装演示文稿能力”、输出“保留模板结构和视觉系统、经过渲染验证的演示文稿成品”和边界，并在合成场景中选对技能",
+          "explanation": "结论：能说明用途、输入“用户提供的内容、可核实来源、保留的参考文件与预装演示文稿能力”、输出“保留模板结构和视觉系统、经过渲染验证的演示文稿成品”和边界，并在合成场景中选对技能。\n依据：OpenAI Templates:简洁浅色演示 的验收必须同时覆盖其输入、输出、边界与可观察证据，不能只记名称。\n错误选项：A：显示名不能证明会判断适用场景；B：没有对应输入、输出或可观察证据；C：不可逆操作不是必要教学证据，也可能越权\n实践：用 <synthetic-fixture> 核对 $openai-templates:artifact-template-simple-light-mode 的输入与预期输出，不访问真实状态。"
+        },
+        {
+          "id": "course-ot-17-q05",
+          "type": "true_false",
+          "content": "[OpenAI Templates:简洁浅色演示] 判断题：使用 $openai-templates:artifact-template-simple-light-mode 时，应保留这条约束——参考文件保持不变；不得为填满版位编造事实，缺所需预装能力时停止而非重建模板。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：该约束必须保留。\n依据：它来自 OpenAI Templates:简洁浅色演示 的流程或风险边界，能防止把技能能力扩大为未经确认的操作。\n实践：在提示词末尾加入该约束，并只检查模型返回的计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-ot-18",
+      "code": "OT18",
+      "title": "OT18 OpenAI Templates:战略备忘录",
+      "order": 18,
+      "lab_ref": "OT18",
+      "source_text": "openai-templates@0.1.0 的 skills/artifact-template-strategy-memorandum/SKILL.md 与相邻 agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-ot-18-q01",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:战略备忘录] 场景题：团队遇到以下场景：用户明确选择“战略备忘录”时，用保留的参考模板创建文档。最合适的下一步是什么？",
+          "options": [
+            "显式调用 $openai-templates:artifact-template-strategy-memorandum（OpenAI Templates:战略备忘录），先核对输入和边界",
+            "跳过技能，直接承诺已经交付最终结果",
+            "调用同插件全部技能，让它们自行竞争",
+            "先修改真实外部状态，再补写需求说明"
+          ],
+          "answer": "显式调用 $openai-templates:artifact-template-strategy-memorandum（OpenAI Templates:战略备忘录），先核对输入和边界",
+          "explanation": "结论：该场景正是 OpenAI Templates:战略备忘录 的适用范围。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：B：没有执行相应流程，也缺少可观察证据；C：无差别调用增加上下文和副作用，掩盖清晰分工；D：把不可逆动作放在确认之前违反安全边界\n实践：用合成材料复述任务，并确认输入包含：用户提供的内容、可核实来源、保留的参考文件与预装文档能力。"
+        },
+        {
+          "id": "course-ot-18-q02",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:战略备忘录] 调用题：评审会上需要明确记录所选技能，哪种写法最完整？",
+          "options": [
+            "只写“使用 OpenAI Templates:战略备忘录”",
+            "插件 openai-templates；skill artifact-template-strategy-memorandum；调用 $openai-templates:artifact-template-strategy-memorandum；显示名 OpenAI Templates:战略备忘录",
+            "只写插件 openai-templates，不指定 skill",
+            "复制本机缓存绝对路径作为调用语法"
+          ],
+          "answer": "插件 openai-templates；skill artifact-template-strategy-memorandum；调用 $openai-templates:artifact-template-strategy-memorandum；显示名 OpenAI Templates:战略备忘录",
+          "explanation": "结论：插件 openai-templates；skill artifact-template-strategy-memorandum；调用 $openai-templates:artifact-template-strategy-memorandum；显示名 OpenAI Templates:战略备忘录。\n依据：OpenAI Templates:战略备忘录 的正式入口是 $openai-templates:artifact-template-strategy-memorandum；同时记录插件、skill slug 与显示名，才能在相似路由间复核选择。\n错误选项：A：省略稳定 slug 与插件名，不能完整核对调用目标；C：插件级名称无法区分内部多个独立技能；D：文件路径不是技能调用接口且会泄露机器特定信息\n实践：在合成场景中写出 $openai-templates:artifact-template-strategy-memorandum，并补一条不适用条件；不实际执行工具。"
+        },
+        {
+          "id": "course-ot-18-q03",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:战略备忘录] 边界题：出现“用户没有选择该模板，或需求是无需模板约束的自由设计”时，怎样处理最稳妥？",
+          "options": [
+            "仍强制使用该技能，因为课程要求每个技能都执行",
+            "编造缺失输入以让流程继续",
+            "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+            "直接对真实数据、账户或发布面做试错"
+          ],
+          "answer": "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+          "explanation": "结论：停止套用该技能，重新路由或先补齐真正改变选择的条件。\n依据：OpenAI Templates:战略备忘录 的不适用条件决定何时停止；越过该条件会把本 skill 错当成通用执行器。\n错误选项：A：课程目标是会判断，不是无条件执行；B：虚构事实会污染后续产出和验收；D：真实外部状态不应成为未确认路由的试验场\n实践：为 $openai-templates:artifact-template-strategy-memorandum 写一个最小反例和替代路由，只输出判断。"
+        },
+        {
+          "id": "course-ot-18-q04",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:战略备忘录] 验收题：怎样证明这个单元已学会，而不是只记住名称？",
+          "options": [
+            "只背出 display_name",
+            "只说任务看起来已完成",
+            "展示一次真实写入或发布截图",
+            "能说明用途、输入“用户提供的内容、可核实来源、保留的参考文件与预装文档能力”、输出“保留模板结构和视觉系统、经过渲染验证的文档成品”和边界，并在合成场景中选对技能"
+          ],
+          "answer": "能说明用途、输入“用户提供的内容、可核实来源、保留的参考文件与预装文档能力”、输出“保留模板结构和视觉系统、经过渲染验证的文档成品”和边界，并在合成场景中选对技能",
+          "explanation": "结论：能说明用途、输入“用户提供的内容、可核实来源、保留的参考文件与预装文档能力”、输出“保留模板结构和视觉系统、经过渲染验证的文档成品”和边界，并在合成场景中选对技能。\n依据：OpenAI Templates:战略备忘录 的验收必须同时覆盖其输入、输出、边界与可观察证据，不能只记名称。\n错误选项：A：显示名不能证明会判断适用场景；B：没有对应输入、输出或可观察证据；C：不可逆操作不是必要教学证据，也可能越权\n实践：用 <synthetic-fixture> 核对 $openai-templates:artifact-template-strategy-memorandum 的输入与预期输出，不访问真实状态。"
+        },
+        {
+          "id": "course-ot-18-q05",
+          "type": "true_false",
+          "content": "[OpenAI Templates:战略备忘录] 判断题：使用 $openai-templates:artifact-template-strategy-memorandum 时，应保留这条约束——参考文件保持不变；不得为填满版位编造事实，缺所需预装能力时停止而非重建模板。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：该约束必须保留。\n依据：它来自 OpenAI Templates:战略备忘录 的流程或风险边界，能防止把技能能力扩大为未经确认的操作。\n实践：在提示词末尾加入该约束，并只检查模型返回的计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-ot-19",
+      "code": "OT19",
+      "title": "OT19 OpenAI Templates:系统设计",
+      "order": 19,
+      "lab_ref": "OT19",
+      "source_text": "openai-templates@0.1.0 的 skills/artifact-template-system-design/SKILL.md 与相邻 agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-ot-19-q01",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:系统设计] 场景题：团队遇到以下场景：用户明确选择“系统设计”时，用保留的参考模板创建文档。最合适的下一步是什么？",
+          "options": [
+            "显式调用 $openai-templates:artifact-template-system-design（OpenAI Templates:系统设计），先核对输入和边界",
+            "跳过技能，直接承诺已经交付最终结果",
+            "调用同插件全部技能，让它们自行竞争",
+            "先修改真实外部状态，再补写需求说明"
+          ],
+          "answer": "显式调用 $openai-templates:artifact-template-system-design（OpenAI Templates:系统设计），先核对输入和边界",
+          "explanation": "结论：该场景正是 OpenAI Templates:系统设计 的适用范围。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：B：没有执行相应流程，也缺少可观察证据；C：无差别调用增加上下文和副作用，掩盖清晰分工；D：把不可逆动作放在确认之前违反安全边界\n实践：用合成材料复述任务，并确认输入包含：用户提供的内容、可核实来源、保留的参考文件与预装文档能力。"
+        },
+        {
+          "id": "course-ot-19-q02",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:系统设计] 调用题：评审会上需要明确记录所选技能，哪种写法最完整？",
+          "options": [
+            "只写“使用 OpenAI Templates:系统设计”",
+            "插件 openai-templates；skill artifact-template-system-design；调用 $openai-templates:artifact-template-system-design；显示名 OpenAI Templates:系统设计",
+            "只写插件 openai-templates，不指定 skill",
+            "复制本机缓存绝对路径作为调用语法"
+          ],
+          "answer": "插件 openai-templates；skill artifact-template-system-design；调用 $openai-templates:artifact-template-system-design；显示名 OpenAI Templates:系统设计",
+          "explanation": "结论：插件 openai-templates；skill artifact-template-system-design；调用 $openai-templates:artifact-template-system-design；显示名 OpenAI Templates:系统设计。\n依据：OpenAI Templates:系统设计 的正式入口是 $openai-templates:artifact-template-system-design；同时记录插件、skill slug 与显示名，才能在相似路由间复核选择。\n错误选项：A：省略稳定 slug 与插件名，不能完整核对调用目标；C：插件级名称无法区分内部多个独立技能；D：文件路径不是技能调用接口且会泄露机器特定信息\n实践：在合成场景中写出 $openai-templates:artifact-template-system-design，并补一条不适用条件；不实际执行工具。"
+        },
+        {
+          "id": "course-ot-19-q03",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:系统设计] 边界题：出现“用户没有选择该模板，或需求是无需模板约束的自由设计”时，怎样处理最稳妥？",
+          "options": [
+            "仍强制使用该技能，因为课程要求每个技能都执行",
+            "编造缺失输入以让流程继续",
+            "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+            "直接对真实数据、账户或发布面做试错"
+          ],
+          "answer": "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+          "explanation": "结论：停止套用该技能，重新路由或先补齐真正改变选择的条件。\n依据：OpenAI Templates:系统设计 的不适用条件决定何时停止；越过该条件会把本 skill 错当成通用执行器。\n错误选项：A：课程目标是会判断，不是无条件执行；B：虚构事实会污染后续产出和验收；D：真实外部状态不应成为未确认路由的试验场\n实践：为 $openai-templates:artifact-template-system-design 写一个最小反例和替代路由，只输出判断。"
+        },
+        {
+          "id": "course-ot-19-q04",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:系统设计] 验收题：怎样证明这个单元已学会，而不是只记住名称？",
+          "options": [
+            "只背出 display_name",
+            "只说任务看起来已完成",
+            "展示一次真实写入或发布截图",
+            "能说明用途、输入“用户提供的内容、可核实来源、保留的参考文件与预装文档能力”、输出“保留模板结构和视觉系统、经过渲染验证的文档成品”和边界，并在合成场景中选对技能"
+          ],
+          "answer": "能说明用途、输入“用户提供的内容、可核实来源、保留的参考文件与预装文档能力”、输出“保留模板结构和视觉系统、经过渲染验证的文档成品”和边界，并在合成场景中选对技能",
+          "explanation": "结论：能说明用途、输入“用户提供的内容、可核实来源、保留的参考文件与预装文档能力”、输出“保留模板结构和视觉系统、经过渲染验证的文档成品”和边界，并在合成场景中选对技能。\n依据：OpenAI Templates:系统设计 的验收必须同时覆盖其输入、输出、边界与可观察证据，不能只记名称。\n错误选项：A：显示名不能证明会判断适用场景；B：没有对应输入、输出或可观察证据；C：不可逆操作不是必要教学证据，也可能越权\n实践：用 <synthetic-fixture> 核对 $openai-templates:artifact-template-system-design 的输入与预期输出，不访问真实状态。"
+        },
+        {
+          "id": "course-ot-19-q05",
+          "type": "true_false",
+          "content": "[OpenAI Templates:系统设计] 判断题：使用 $openai-templates:artifact-template-system-design 时，应保留这条约束——参考文件保持不变；不得为填满版位编造事实，缺所需预装能力时停止而非重建模板。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：该约束必须保留。\n依据：它来自 OpenAI Templates:系统设计 的流程或风险边界，能防止把技能能力扩大为未经确认的操作。\n实践：在提示词末尾加入该约束，并只检查模型返回的计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-ot-20",
+      "code": "OT20",
+      "title": "OT20 OpenAI Templates:团队对齐",
+      "order": 20,
+      "lab_ref": "OT20",
+      "source_text": "openai-templates@0.1.0 的 skills/artifact-template-team-alignment/SKILL.md 与相邻 agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-ot-20-q01",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:团队对齐] 场景题：团队遇到以下场景：用户明确选择“团队对齐”时，用保留的参考模板创建演示文稿。最合适的下一步是什么？",
+          "options": [
+            "显式调用 $openai-templates:artifact-template-team-alignment（OpenAI Templates:团队对齐），先核对输入和边界",
+            "跳过技能，直接承诺已经交付最终结果",
+            "调用同插件全部技能，让它们自行竞争",
+            "先修改真实外部状态，再补写需求说明"
+          ],
+          "answer": "显式调用 $openai-templates:artifact-template-team-alignment（OpenAI Templates:团队对齐），先核对输入和边界",
+          "explanation": "结论：该场景正是 OpenAI Templates:团队对齐 的适用范围。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：B：没有执行相应流程，也缺少可观察证据；C：无差别调用增加上下文和副作用，掩盖清晰分工；D：把不可逆动作放在确认之前违反安全边界\n实践：用合成材料复述任务，并确认输入包含：用户提供的内容、可核实来源、保留的参考文件与预装演示文稿能力。"
+        },
+        {
+          "id": "course-ot-20-q02",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:团队对齐] 调用题：评审会上需要明确记录所选技能，哪种写法最完整？",
+          "options": [
+            "只写“使用 OpenAI Templates:团队对齐”",
+            "插件 openai-templates；skill artifact-template-team-alignment；调用 $openai-templates:artifact-template-team-alignment；显示名 OpenAI Templates:团队对齐",
+            "只写插件 openai-templates，不指定 skill",
+            "复制本机缓存绝对路径作为调用语法"
+          ],
+          "answer": "插件 openai-templates；skill artifact-template-team-alignment；调用 $openai-templates:artifact-template-team-alignment；显示名 OpenAI Templates:团队对齐",
+          "explanation": "结论：插件 openai-templates；skill artifact-template-team-alignment；调用 $openai-templates:artifact-template-team-alignment；显示名 OpenAI Templates:团队对齐。\n依据：OpenAI Templates:团队对齐 的正式入口是 $openai-templates:artifact-template-team-alignment；同时记录插件、skill slug 与显示名，才能在相似路由间复核选择。\n错误选项：A：省略稳定 slug 与插件名，不能完整核对调用目标；C：插件级名称无法区分内部多个独立技能；D：文件路径不是技能调用接口且会泄露机器特定信息\n实践：在合成场景中写出 $openai-templates:artifact-template-team-alignment，并补一条不适用条件；不实际执行工具。"
+        },
+        {
+          "id": "course-ot-20-q03",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:团队对齐] 边界题：出现“用户没有选择该模板，或需求是无需模板约束的自由设计”时，怎样处理最稳妥？",
+          "options": [
+            "仍强制使用该技能，因为课程要求每个技能都执行",
+            "编造缺失输入以让流程继续",
+            "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+            "直接对真实数据、账户或发布面做试错"
+          ],
+          "answer": "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+          "explanation": "结论：停止套用该技能，重新路由或先补齐真正改变选择的条件。\n依据：OpenAI Templates:团队对齐 的不适用条件决定何时停止；越过该条件会把本 skill 错当成通用执行器。\n错误选项：A：课程目标是会判断，不是无条件执行；B：虚构事实会污染后续产出和验收；D：真实外部状态不应成为未确认路由的试验场\n实践：为 $openai-templates:artifact-template-team-alignment 写一个最小反例和替代路由，只输出判断。"
+        },
+        {
+          "id": "course-ot-20-q04",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:团队对齐] 验收题：怎样证明这个单元已学会，而不是只记住名称？",
+          "options": [
+            "只背出 display_name",
+            "只说任务看起来已完成",
+            "展示一次真实写入或发布截图",
+            "能说明用途、输入“用户提供的内容、可核实来源、保留的参考文件与预装演示文稿能力”、输出“保留模板结构和视觉系统、经过渲染验证的演示文稿成品”和边界，并在合成场景中选对技能"
+          ],
+          "answer": "能说明用途、输入“用户提供的内容、可核实来源、保留的参考文件与预装演示文稿能力”、输出“保留模板结构和视觉系统、经过渲染验证的演示文稿成品”和边界，并在合成场景中选对技能",
+          "explanation": "结论：能说明用途、输入“用户提供的内容、可核实来源、保留的参考文件与预装演示文稿能力”、输出“保留模板结构和视觉系统、经过渲染验证的演示文稿成品”和边界，并在合成场景中选对技能。\n依据：OpenAI Templates:团队对齐 的验收必须同时覆盖其输入、输出、边界与可观察证据，不能只记名称。\n错误选项：A：显示名不能证明会判断适用场景；B：没有对应输入、输出或可观察证据；C：不可逆操作不是必要教学证据，也可能越权\n实践：用 <synthetic-fixture> 核对 $openai-templates:artifact-template-team-alignment 的输入与预期输出，不访问真实状态。"
+        },
+        {
+          "id": "course-ot-20-q05",
+          "type": "true_false",
+          "content": "[OpenAI Templates:团队对齐] 判断题：使用 $openai-templates:artifact-template-team-alignment 时，应保留这条约束——参考文件保持不变；不得为填满版位编造事实，缺所需预装能力时停止而非重建模板。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：该约束必须保留。\n依据：它来自 OpenAI Templates:团队对齐 的流程或风险边界，能防止把技能能力扩大为未经确认的操作。\n实践：在提示词末尾加入该约束，并只检查模型返回的计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-ot-21",
+      "code": "OT21",
+      "title": "OT21 OpenAI Templates:三表预测",
+      "order": 21,
+      "lab_ref": "OT21",
+      "source_text": "openai-templates@0.1.0 的 skills/artifact-template-three-statement-forecast/SKILL.md 与相邻 agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-ot-21-q01",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:三表预测] 场景题：团队遇到以下场景：用户明确选择“三表预测”时，用保留的参考模板创建电子表格。最合适的下一步是什么？",
+          "options": [
+            "显式调用 $openai-templates:artifact-template-three-statement-forecast（OpenAI Templates:三表预测），先核对输入和边界",
+            "跳过技能，直接承诺已经交付最终结果",
+            "调用同插件全部技能，让它们自行竞争",
+            "先修改真实外部状态，再补写需求说明"
+          ],
+          "answer": "显式调用 $openai-templates:artifact-template-three-statement-forecast（OpenAI Templates:三表预测），先核对输入和边界",
+          "explanation": "结论：该场景正是 OpenAI Templates:三表预测 的适用范围。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：B：没有执行相应流程，也缺少可观察证据；C：无差别调用增加上下文和副作用，掩盖清晰分工；D：把不可逆动作放在确认之前违反安全边界\n实践：用合成材料复述任务，并确认输入包含：用户提供的内容、可核实来源、保留的参考文件与预装电子表格能力。"
+        },
+        {
+          "id": "course-ot-21-q02",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:三表预测] 调用题：评审会上需要明确记录所选技能，哪种写法最完整？",
+          "options": [
+            "只写“使用 OpenAI Templates:三表预测”",
+            "插件 openai-templates；skill artifact-template-three-statement-forecast；调用 $openai-templates:artifact-template-three-statement-forecast；显示名 OpenAI Templates:三表预测",
+            "只写插件 openai-templates，不指定 skill",
+            "复制本机缓存绝对路径作为调用语法"
+          ],
+          "answer": "插件 openai-templates；skill artifact-template-three-statement-forecast；调用 $openai-templates:artifact-template-three-statement-forecast；显示名 OpenAI Templates:三表预测",
+          "explanation": "结论：插件 openai-templates；skill artifact-template-three-statement-forecast；调用 $openai-templates:artifact-template-three-statement-forecast；显示名 OpenAI Templates:三表预测。\n依据：OpenAI Templates:三表预测 的正式入口是 $openai-templates:artifact-template-three-statement-forecast；同时记录插件、skill slug 与显示名，才能在相似路由间复核选择。\n错误选项：A：省略稳定 slug 与插件名，不能完整核对调用目标；C：插件级名称无法区分内部多个独立技能；D：文件路径不是技能调用接口且会泄露机器特定信息\n实践：在合成场景中写出 $openai-templates:artifact-template-three-statement-forecast，并补一条不适用条件；不实际执行工具。"
+        },
+        {
+          "id": "course-ot-21-q03",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:三表预测] 边界题：出现“用户没有选择该模板，或需求是无需模板约束的自由设计”时，怎样处理最稳妥？",
+          "options": [
+            "仍强制使用该技能，因为课程要求每个技能都执行",
+            "编造缺失输入以让流程继续",
+            "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+            "直接对真实数据、账户或发布面做试错"
+          ],
+          "answer": "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+          "explanation": "结论：停止套用该技能，重新路由或先补齐真正改变选择的条件。\n依据：OpenAI Templates:三表预测 的不适用条件决定何时停止；越过该条件会把本 skill 错当成通用执行器。\n错误选项：A：课程目标是会判断，不是无条件执行；B：虚构事实会污染后续产出和验收；D：真实外部状态不应成为未确认路由的试验场\n实践：为 $openai-templates:artifact-template-three-statement-forecast 写一个最小反例和替代路由，只输出判断。"
+        },
+        {
+          "id": "course-ot-21-q04",
+          "type": "multiple_choice",
+          "content": "[OpenAI Templates:三表预测] 验收题：怎样证明这个单元已学会，而不是只记住名称？",
+          "options": [
+            "只背出 display_name",
+            "只说任务看起来已完成",
+            "展示一次真实写入或发布截图",
+            "能说明用途、输入“用户提供的内容、可核实来源、保留的参考文件与预装电子表格能力”、输出“保留模板结构和视觉系统、经过渲染验证的电子表格成品”和边界，并在合成场景中选对技能"
+          ],
+          "answer": "能说明用途、输入“用户提供的内容、可核实来源、保留的参考文件与预装电子表格能力”、输出“保留模板结构和视觉系统、经过渲染验证的电子表格成品”和边界，并在合成场景中选对技能",
+          "explanation": "结论：能说明用途、输入“用户提供的内容、可核实来源、保留的参考文件与预装电子表格能力”、输出“保留模板结构和视觉系统、经过渲染验证的电子表格成品”和边界，并在合成场景中选对技能。\n依据：OpenAI Templates:三表预测 的验收必须同时覆盖其输入、输出、边界与可观察证据，不能只记名称。\n错误选项：A：显示名不能证明会判断适用场景；B：没有对应输入、输出或可观察证据；C：不可逆操作不是必要教学证据，也可能越权\n实践：用 <synthetic-fixture> 核对 $openai-templates:artifact-template-three-statement-forecast 的输入与预期输出，不访问真实状态。"
+        },
+        {
+          "id": "course-ot-21-q05",
+          "type": "true_false",
+          "content": "[OpenAI Templates:三表预测] 判断题：使用 $openai-templates:artifact-template-three-statement-forecast 时，应保留这条约束——参考文件保持不变；不得为填满版位编造事实，缺所需预装能力时停止而非重建模板。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：该约束必须保留。\n依据：它来自 OpenAI Templates:三表预测 的流程或风险边界，能防止把技能能力扩大为未经确认的操作。\n实践：在提示词末尾加入该约束，并只检查模型返回的计划和验收项。"
+        }
+      ]
+    }
+  ]
+}

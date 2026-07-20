@@ -1,0 +1,525 @@
+{
+  "course": {
+    "id": "ponytail",
+    "prefix": "PT",
+    "title": "ponytail"
+  },
+  "source": {
+    "kind": "local-sanitized",
+    "ref": "ponytail@4.8.4",
+    "snapshot": "2026-07-20"
+  },
+  "decks": [
+    {
+      "id": "course-pt-01",
+      "code": "PT01",
+      "title": "PT01 插件总览",
+      "order": 1,
+      "lab_ref": "PT01",
+      "source_text": "ponytail@4.8.4 的 .codex-plugin/plugin.json 与 hooks/claude-codex-hooks.json 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-pt-01-q01",
+          "type": "multiple_choice",
+          "content": "[ponytail] 场景题：学习者第一次接触该插件，怎样建立正确的课程路径？",
+          "options": [
+            "先学习插件总览，再逐个学习 6 个 canonical skill 的独立单元",
+            "只记住插件名，遇到任务时同时调用全部 skill",
+            "跳过总览，只背每个 display name 的中文字面意思",
+            "先在真实系统执行所有示例，再回头理解风险"
+          ],
+          "answer": "先学习插件总览，再逐个学习 6 个 canonical skill 的独立单元",
+          "explanation": "结论：总览负责建立地图，skill 单元负责形成可观察的选择能力。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：B：全量调用忽略路由边界，也无法判断技能之间的分工；C：字面记忆不能建立适用与不适用场景；D：未经确认的真实写入和发布不属于安全学习路径\n实践：先只读列出插件名、版本与 skill 数量，不调用任何执行工具。"
+        },
+        {
+          "id": "course-pt-01-q02",
+          "type": "multiple_choice",
+          "content": "[ponytail] 来源题：课程事实应如何与本机插件材料对应？",
+          "options": [
+            "每次启动都自动抓取最新版并覆盖课程",
+            "使用 ponytail 的 local-sanitized 版本快照，并记录 2026-07-20 日期",
+            "复制插件目录中的全部文件和个人绝对路径",
+            "省略版本与日期，只保留插件营销名称"
+          ],
+          "answer": "使用 ponytail 的 local-sanitized 版本快照，并记录 2026-07-20 日期",
+          "explanation": "结论：固定版本、来源种类和快照日期才能复核课程内容。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：A：计划采用固定快照，自动漂移会破坏可复现性；C：课程只需中文概括和相对来源，不能复制机器信息；D：缺版本和快照日期就无法追溯课程事实\n实践：对照 manifest 与相邻 agents/openai.yaml，只记录非敏感元数据。"
+        },
+        {
+          "id": "course-pt-01-q03",
+          "type": "multiple_choice",
+          "content": "[ponytail] 调用题：技能单元中的最小显式调用应包含哪些信息？",
+          "options": [
+            "只写一个模糊任务，不指出任何技能",
+            "只写 display_name，省略插件与 slug",
+            "插件名、skill slug 与 interface.display_name",
+            "写入本机插件缓存的绝对路径"
+          ],
+          "answer": "插件名、skill slug 与 interface.display_name",
+          "explanation": "结论：三项同时出现可把人类可读名称与稳定调用标识对应起来。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：A：无法验证学习者是否会正确显式路由；B：显示名不能替代稳定的技能标识；D：绝对路径是机器特定信息，也不是正常调用接口\n实践：用一个合成场景写出显式调用句，但注明只输出方案。"
+        },
+        {
+          "id": "course-pt-01-q04",
+          "type": "multiple_choice",
+          "content": "[ponytail] 安全题：课程练习应采用哪种执行边界？",
+          "options": [
+            "使用真实客户数据验证技能是否有效",
+            "让学习者安装所有依赖和插件后再答题",
+            "自动发送、发布或部署，再把链接当作成绩",
+            "只使用合成 fixture、提示词和只读检查，不触碰真实外部状态"
+          ],
+          "answer": "只使用合成 fixture、提示词和只读检查，不触碰真实外部状态",
+          "explanation": "结论：安全练习必须可观察、可复核且不改变真实系统。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：A：客户数据超出教学最小范围并带来隐私风险；B：课程不应把安装和系统变更当作前置动作；C：外部写入需要额外授权，不能由课程练习默认执行\n实践：把任何真实名称替换为虚构占位符，只检查路由、提示词和验收清单。"
+        },
+        {
+          "id": "course-pt-01-q05",
+          "type": "true_false",
+          "content": "[ponytail] 判断题：插件 manifest 声明 Hook，只能证明插件携带生命周期定义；Hook 不是独立 skill 或执行器，信任、启用与实际执行仍需分别取证。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：Hook 的携带、信任、启用和实际执行是四个不同证据层，Hook 定义本身不是独立执行器。\n依据：Ponytail 的 plugin manifest 只指向 hooks/claude-codex-hooks.json；用户级信任、当前启用状态与一次可观察执行结果仍需分别核对。\n实践：课程只记录事件名、matcher 和脱敏状态，不运行 Hook 命令或修改信任决定。"
+        }
+      ]
+    },
+    {
+      "id": "course-pt-02",
+      "code": "PT02",
+      "title": "PT02 ponytail:极简模式",
+      "order": 2,
+      "lab_ref": "PT02",
+      "source_text": "ponytail@4.8.4 的 skills/ponytail/SKILL.md 与相邻 agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-pt-02-q01",
+          "type": "multiple_choice",
+          "content": "[ponytail:极简模式] 场景题：团队遇到以下场景：在编码任务中寻找最短且正确的实现。最合适的下一步是什么？",
+          "options": [
+            "显式调用 $ponytail:ponytail（ponytail:极简模式），先核对输入和边界",
+            "跳过技能，直接承诺已经交付最终结果",
+            "调用同插件全部技能，让它们自行竞争",
+            "先修改真实外部状态，再补写需求说明"
+          ],
+          "answer": "显式调用 $ponytail:ponytail（ponytail:极简模式），先核对输入和边界",
+          "explanation": "结论：该场景正是 ponytail:极简模式 的适用范围。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：B：没有执行相应流程，也缺少可观察证据；C：无差别调用增加上下文和副作用，掩盖清晰分工；D：把不可逆动作放在确认之前违反安全边界\n实践：用合成材料复述任务，并确认输入包含：真实需求、相关代码全链路、现有依赖与验收方式。"
+        },
+        {
+          "id": "course-pt-02-q02",
+          "type": "multiple_choice",
+          "content": "[ponytail:极简模式] 调用题：评审会上需要明确记录所选技能，哪种写法最完整？",
+          "options": [
+            "只写“使用 ponytail:极简模式”",
+            "插件 ponytail；skill ponytail；调用 $ponytail:ponytail；显示名 ponytail:极简模式",
+            "只写插件 ponytail，不指定 skill",
+            "复制本机缓存绝对路径作为调用语法"
+          ],
+          "answer": "插件 ponytail；skill ponytail；调用 $ponytail:ponytail；显示名 ponytail:极简模式",
+          "explanation": "结论：插件 ponytail；skill ponytail；调用 $ponytail:ponytail；显示名 ponytail:极简模式。\n依据：ponytail:极简模式 的正式入口是 $ponytail:ponytail；同时记录插件、skill slug 与显示名，才能在相似路由间复核选择。\n错误选项：A：省略稳定 slug 与插件名，不能完整核对调用目标；C：插件级名称无法区分内部多个独立技能；D：文件路径不是技能调用接口且会泄露机器特定信息\n实践：在合成场景中写出 $ponytail:ponytail，并补一条不适用条件；不实际执行工具。"
+        },
+        {
+          "id": "course-pt-02-q03",
+          "type": "multiple_choice",
+          "content": "[ponytail:极简模式] 边界题：出现“非编码知识、翻译或一般写作请求”时，怎样处理最稳妥？",
+          "options": [
+            "仍强制使用该技能，因为课程要求每个技能都执行",
+            "编造缺失输入以让流程继续",
+            "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+            "直接对真实数据、账户或发布面做试错"
+          ],
+          "answer": "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+          "explanation": "结论：停止套用该技能，重新路由或先补齐真正改变选择的条件。\n依据：ponytail:极简模式 的不适用条件决定何时停止；越过该条件会把本 skill 错当成通用执行器。\n错误选项：A：课程目标是会判断，不是无条件执行；B：虚构事实会污染后续产出和验收；D：真实外部状态不应成为未确认路由的试验场\n实践：为 $ponytail:ponytail 写一个最小反例和替代路由，只输出判断。"
+        },
+        {
+          "id": "course-pt-02-q04",
+          "type": "multiple_choice",
+          "content": "[ponytail:极简模式] 验收题：怎样证明这个单元已学会，而不是只记住名称？",
+          "options": [
+            "只背出 display_name",
+            "只说任务看起来已完成",
+            "展示一次真实写入或发布截图",
+            "能说明用途、输入“真实需求、相关代码全链路、现有依赖与验收方式”、输出“沿 YAGNI、复用、标准库、原生能力阶梯得到的最小改动”和边界，并在合成场景中选对技能"
+          ],
+          "answer": "能说明用途、输入“真实需求、相关代码全链路、现有依赖与验收方式”、输出“沿 YAGNI、复用、标准库、原生能力阶梯得到的最小改动”和边界，并在合成场景中选对技能",
+          "explanation": "结论：能说明用途、输入“真实需求、相关代码全链路、现有依赖与验收方式”、输出“沿 YAGNI、复用、标准库、原生能力阶梯得到的最小改动”和边界，并在合成场景中选对技能。\n依据：ponytail:极简模式 的验收必须同时覆盖其输入、输出、边界与可观察证据，不能只记名称。\n错误选项：A：显示名不能证明会判断适用场景；B：没有对应输入、输出或可观察证据；C：不可逆操作不是必要教学证据，也可能越权\n实践：用 <synthetic-fixture> 核对 $ponytail:ponytail 的输入与预期输出，不访问真实状态。"
+        },
+        {
+          "id": "course-pt-02-q05",
+          "type": "true_false",
+          "content": "[ponytail:极简模式] 判断题：使用 $ponytail:ponytail 时，应保留这条约束——不能简化掉安全、信任边界验证、数据保护、无障碍或明确需求。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：该约束必须保留。\n依据：它来自 ponytail:极简模式 的流程或风险边界，能防止把技能能力扩大为未经确认的操作。\n实践：在提示词末尾加入该约束，并只检查模型返回的计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-pt-03",
+      "code": "PT03",
+      "title": "PT03 ponytail:全库瘦身审计",
+      "order": 3,
+      "lab_ref": "PT03",
+      "source_text": "ponytail@4.8.4 的 skills/ponytail-audit/SKILL.md 与相邻 agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-pt-03-q01",
+          "type": "multiple_choice",
+          "content": "[ponytail:全库瘦身审计] 场景题：团队遇到以下场景：对整个仓库做过度工程审计并按可删规模排序。最合适的下一步是什么？",
+          "options": [
+            "显式调用 $ponytail:ponytail-audit（ponytail:全库瘦身审计），先核对输入和边界",
+            "跳过技能，直接承诺已经交付最终结果",
+            "调用同插件全部技能，让它们自行竞争",
+            "先修改真实外部状态，再补写需求说明"
+          ],
+          "answer": "显式调用 $ponytail:ponytail-audit（ponytail:全库瘦身审计），先核对输入和边界",
+          "explanation": "结论：该场景正是 ponytail:全库瘦身审计 的适用范围。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：B：没有执行相应流程，也缺少可观察证据；C：无差别调用增加上下文和副作用，掩盖清晰分工；D：把不可逆动作放在确认之前违反安全边界\n实践：用合成材料复述任务，并确认输入包含：完整仓库树与应排除的构建、依赖目录。"
+        },
+        {
+          "id": "course-pt-03-q02",
+          "type": "multiple_choice",
+          "content": "[ponytail:全库瘦身审计] 调用题：评审会上需要明确记录所选技能，哪种写法最完整？",
+          "options": [
+            "只写“使用 ponytail:全库瘦身审计”",
+            "插件 ponytail；skill ponytail-audit；调用 $ponytail:ponytail-audit；显示名 ponytail:全库瘦身审计",
+            "只写插件 ponytail，不指定 skill",
+            "复制本机缓存绝对路径作为调用语法"
+          ],
+          "answer": "插件 ponytail；skill ponytail-audit；调用 $ponytail:ponytail-audit；显示名 ponytail:全库瘦身审计",
+          "explanation": "结论：插件 ponytail；skill ponytail-audit；调用 $ponytail:ponytail-audit；显示名 ponytail:全库瘦身审计。\n依据：ponytail:全库瘦身审计 的正式入口是 $ponytail:ponytail-audit；同时记录插件、skill slug 与显示名，才能在相似路由间复核选择。\n错误选项：A：省略稳定 slug 与插件名，不能完整核对调用目标；C：插件级名称无法区分内部多个独立技能；D：文件路径不是技能调用接口且会泄露机器特定信息\n实践：在合成场景中写出 $ponytail:ponytail-audit，并补一条不适用条件；不实际执行工具。"
+        },
+        {
+          "id": "course-pt-03-q03",
+          "type": "multiple_choice",
+          "content": "[ponytail:全库瘦身审计] 边界题：出现“只审查当前 diff，或需要正确性和安全审查”时，怎样处理最稳妥？",
+          "options": [
+            "仍强制使用该技能，因为课程要求每个技能都执行",
+            "编造缺失输入以让流程继续",
+            "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+            "直接对真实数据、账户或发布面做试错"
+          ],
+          "answer": "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+          "explanation": "结论：停止套用该技能，重新路由或先补齐真正改变选择的条件。\n依据：ponytail:全库瘦身审计 的不适用条件决定何时停止；越过该条件会把本 skill 错当成通用执行器。\n错误选项：A：课程目标是会判断，不是无条件执行；B：虚构事实会污染后续产出和验收；D：真实外部状态不应成为未确认路由的试验场\n实践：为 $ponytail:ponytail-audit 写一个最小反例和替代路由，只输出判断。"
+        },
+        {
+          "id": "course-pt-03-q04",
+          "type": "multiple_choice",
+          "content": "[ponytail:全库瘦身审计] 验收题：怎样证明这个单元已学会，而不是只记住名称？",
+          "options": [
+            "只背出 display_name",
+            "只说任务看起来已完成",
+            "展示一次真实写入或发布截图",
+            "能说明用途、输入“完整仓库树与应排除的构建、依赖目录”、输出“带 delete、stdlib、native、yagni、shrink 标签的一次性报告”和边界，并在合成场景中选对技能"
+          ],
+          "answer": "能说明用途、输入“完整仓库树与应排除的构建、依赖目录”、输出“带 delete、stdlib、native、yagni、shrink 标签的一次性报告”和边界，并在合成场景中选对技能",
+          "explanation": "结论：能说明用途、输入“完整仓库树与应排除的构建、依赖目录”、输出“带 delete、stdlib、native、yagni、shrink 标签的一次性报告”和边界，并在合成场景中选对技能。\n依据：ponytail:全库瘦身审计 的验收必须同时覆盖其输入、输出、边界与可观察证据，不能只记名称。\n错误选项：A：显示名不能证明会判断适用场景；B：没有对应输入、输出或可观察证据；C：不可逆操作不是必要教学证据，也可能越权\n实践：用 <synthetic-fixture> 核对 $ponytail:ponytail-audit 的输入与预期输出，不访问真实状态。"
+        },
+        {
+          "id": "course-pt-03-q05",
+          "type": "true_false",
+          "content": "[ponytail:全库瘦身审计] 判断题：使用 $ponytail:ponytail-audit 时，应保留这条约束——只报告不修复；正确性、安全和性能问题交给普通审查。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：该约束必须保留。\n依据：它来自 ponytail:全库瘦身审计 的流程或风险边界，能防止把技能能力扩大为未经确认的操作。\n实践：在提示词末尾加入该约束，并只检查模型返回的计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-pt-04",
+      "code": "PT04",
+      "title": "PT04 ponytail:简化债务台账",
+      "order": 4,
+      "lab_ref": "PT04",
+      "source_text": "ponytail@4.8.4 的 skills/ponytail-debt/SKILL.md 与相邻 agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-pt-04-q01",
+          "type": "multiple_choice",
+          "content": "[ponytail:简化债务台账] 场景题：团队遇到以下场景：汇总仓库里所有 ponytail 注释形成简化债务台账。最合适的下一步是什么？",
+          "options": [
+            "显式调用 $ponytail:ponytail-debt（ponytail:简化债务台账），先核对输入和边界",
+            "跳过技能，直接承诺已经交付最终结果",
+            "调用同插件全部技能，让它们自行竞争",
+            "先修改真实外部状态，再补写需求说明"
+          ],
+          "answer": "显式调用 $ponytail:ponytail-debt（ponytail:简化债务台账），先核对输入和边界",
+          "explanation": "结论：该场景正是 ponytail:简化债务台账 的适用范围。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：B：没有执行相应流程，也缺少可观察证据；C：无差别调用增加上下文和副作用，掩盖清晰分工；D：把不可逆动作放在确认之前违反安全边界\n实践：用合成材料复述任务，并确认输入包含：源码中的注释标记、文件位置与可选 blame 信息。"
+        },
+        {
+          "id": "course-pt-04-q02",
+          "type": "multiple_choice",
+          "content": "[ponytail:简化债务台账] 调用题：评审会上需要明确记录所选技能，哪种写法最完整？",
+          "options": [
+            "只写“使用 ponytail:简化债务台账”",
+            "插件 ponytail；skill ponytail-debt；调用 $ponytail:ponytail-debt；显示名 ponytail:简化债务台账",
+            "只写插件 ponytail，不指定 skill",
+            "复制本机缓存绝对路径作为调用语法"
+          ],
+          "answer": "插件 ponytail；skill ponytail-debt；调用 $ponytail:ponytail-debt；显示名 ponytail:简化债务台账",
+          "explanation": "结论：插件 ponytail；skill ponytail-debt；调用 $ponytail:ponytail-debt；显示名 ponytail:简化债务台账。\n依据：ponytail:简化债务台账 的正式入口是 $ponytail:ponytail-debt；同时记录插件、skill slug 与显示名，才能在相似路由间复核选择。\n错误选项：A：省略稳定 slug 与插件名，不能完整核对调用目标；C：插件级名称无法区分内部多个独立技能；D：文件路径不是技能调用接口且会泄露机器特定信息\n实践：在合成场景中写出 $ponytail:ponytail-debt，并补一条不适用条件；不实际执行工具。"
+        },
+        {
+          "id": "course-pt-04-q03",
+          "type": "multiple_choice",
+          "content": "[ponytail:简化债务台账] 边界题：出现“仓库没有使用 ponytail 标记且用户要求推测潜在债务”时，怎样处理最稳妥？",
+          "options": [
+            "仍强制使用该技能，因为课程要求每个技能都执行",
+            "编造缺失输入以让流程继续",
+            "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+            "直接对真实数据、账户或发布面做试错"
+          ],
+          "answer": "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+          "explanation": "结论：停止套用该技能，重新路由或先补齐真正改变选择的条件。\n依据：ponytail:简化债务台账 的不适用条件决定何时停止；越过该条件会把本 skill 错当成通用执行器。\n错误选项：A：课程目标是会判断，不是无条件执行；B：虚构事实会污染后续产出和验收；D：真实外部状态不应成为未确认路由的试验场\n实践：为 $ponytail:ponytail-debt 写一个最小反例和替代路由，只输出判断。"
+        },
+        {
+          "id": "course-pt-04-q04",
+          "type": "multiple_choice",
+          "content": "[ponytail:简化债务台账] 验收题：怎样证明这个单元已学会，而不是只记住名称？",
+          "options": [
+            "只背出 display_name",
+            "只说任务看起来已完成",
+            "展示一次真实写入或发布截图",
+            "能说明用途、输入“源码中的注释标记、文件位置与可选 blame 信息”、输出“按文件分组的 ceiling、upgrade trigger 与 no-trigger 统计”和边界，并在合成场景中选对技能"
+          ],
+          "answer": "能说明用途、输入“源码中的注释标记、文件位置与可选 blame 信息”、输出“按文件分组的 ceiling、upgrade trigger 与 no-trigger 统计”和边界，并在合成场景中选对技能",
+          "explanation": "结论：能说明用途、输入“源码中的注释标记、文件位置与可选 blame 信息”、输出“按文件分组的 ceiling、upgrade trigger 与 no-trigger 统计”和边界，并在合成场景中选对技能。\n依据：ponytail:简化债务台账 的验收必须同时覆盖其输入、输出、边界与可观察证据，不能只记名称。\n错误选项：A：显示名不能证明会判断适用场景；B：没有对应输入、输出或可观察证据；C：不可逆操作不是必要教学证据，也可能越权\n实践：用 <synthetic-fixture> 核对 $ponytail:ponytail-debt 的输入与预期输出，不访问真实状态。"
+        },
+        {
+          "id": "course-pt-04-q05",
+          "type": "true_false",
+          "content": "[ponytail:简化债务台账] 判断题：使用 $ponytail:ponytail-debt 时，应保留这条约束——默认只读；不能把普通 prose 中的 ponytail 字样误收成债务。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：该约束必须保留。\n依据：它来自 ponytail:简化债务台账 的流程或风险边界，能防止把技能能力扩大为未经确认的操作。\n实践：在提示词末尾加入该约束，并只检查模型返回的计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-pt-05",
+      "code": "PT05",
+      "title": "PT05 ponytail:收益看板",
+      "order": 5,
+      "lab_ref": "PT05",
+      "source_text": "ponytail@4.8.4 的 skills/ponytail-gain/SKILL.md 与相邻 agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-pt-05-q01",
+          "type": "multiple_choice",
+          "content": "[ponytail:收益看板] 场景题：团队遇到以下场景：展示 Ponytail 已发布基准的代码量、成本和速度中位收益。最合适的下一步是什么？",
+          "options": [
+            "显式调用 $ponytail:ponytail-gain（ponytail:收益看板），先核对输入和边界",
+            "跳过技能，直接承诺已经交付最终结果",
+            "调用同插件全部技能，让它们自行竞争",
+            "先修改真实外部状态，再补写需求说明"
+          ],
+          "answer": "显式调用 $ponytail:ponytail-gain（ponytail:收益看板），先核对输入和边界",
+          "explanation": "结论：该场景正是 ponytail:收益看板 的适用范围。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：B：没有执行相应流程，也缺少可观察证据；C：无差别调用增加上下文和副作用，掩盖清晰分工；D：把不可逆动作放在确认之前违反安全边界\n实践：用合成材料复述任务，并确认输入包含：插件内 benchmarks 与 README 的既有基准说明。"
+        },
+        {
+          "id": "course-pt-05-q02",
+          "type": "multiple_choice",
+          "content": "[ponytail:收益看板] 调用题：评审会上需要明确记录所选技能，哪种写法最完整？",
+          "options": [
+            "只写“使用 ponytail:收益看板”",
+            "插件 ponytail；skill ponytail-gain；调用 $ponytail:ponytail-gain；显示名 ponytail:收益看板",
+            "只写插件 ponytail，不指定 skill",
+            "复制本机缓存绝对路径作为调用语法"
+          ],
+          "answer": "插件 ponytail；skill ponytail-gain；调用 $ponytail:ponytail-gain；显示名 ponytail:收益看板",
+          "explanation": "结论：插件 ponytail；skill ponytail-gain；调用 $ponytail:ponytail-gain；显示名 ponytail:收益看板。\n依据：ponytail:收益看板 的正式入口是 $ponytail:ponytail-gain；同时记录插件、skill slug 与显示名，才能在相似路由间复核选择。\n错误选项：A：省略稳定 slug 与插件名，不能完整核对调用目标；C：插件级名称无法区分内部多个独立技能；D：文件路径不是技能调用接口且会泄露机器特定信息\n实践：在合成场景中写出 $ponytail:ponytail-gain，并补一条不适用条件；不实际执行工具。"
+        },
+        {
+          "id": "course-pt-05-q03",
+          "type": "multiple_choice",
+          "content": "[ponytail:收益看板] 边界题：出现“计算当前仓库实际节省了多少代码或费用”时，怎样处理最稳妥？",
+          "options": [
+            "仍强制使用该技能，因为课程要求每个技能都执行",
+            "编造缺失输入以让流程继续",
+            "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+            "直接对真实数据、账户或发布面做试错"
+          ],
+          "answer": "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+          "explanation": "结论：停止套用该技能，重新路由或先补齐真正改变选择的条件。\n依据：ponytail:收益看板 的不适用条件决定何时停止；越过该条件会把本 skill 错当成通用执行器。\n错误选项：A：课程目标是会判断，不是无条件执行；B：虚构事实会污染后续产出和验收；D：真实外部状态不应成为未确认路由的试验场\n实践：为 $ponytail:ponytail-gain 写一个最小反例和替代路由，只输出判断。"
+        },
+        {
+          "id": "course-pt-05-q04",
+          "type": "multiple_choice",
+          "content": "[ponytail:收益看板] 验收题：怎样证明这个单元已学会，而不是只记住名称？",
+          "options": [
+            "只背出 display_name",
+            "只说任务看起来已完成",
+            "展示一次真实写入或发布截图",
+            "能说明用途、输入“插件内 benchmarks 与 README 的既有基准说明”、输出“一次性的固定 ASCII 收益看板”和边界，并在合成场景中选对技能"
+          ],
+          "answer": "能说明用途、输入“插件内 benchmarks 与 README 的既有基准说明”、输出“一次性的固定 ASCII 收益看板”和边界，并在合成场景中选对技能",
+          "explanation": "结论：能说明用途、输入“插件内 benchmarks 与 README 的既有基准说明”、输出“一次性的固定 ASCII 收益看板”和边界，并在合成场景中选对技能。\n依据：ponytail:收益看板 的验收必须同时覆盖其输入、输出、边界与可观察证据，不能只记名称。\n错误选项：A：显示名不能证明会判断适用场景；B：没有对应输入、输出或可观察证据；C：不可逆操作不是必要教学证据，也可能越权\n实践：用 <synthetic-fixture> 核对 $ponytail:ponytail-gain 的输入与预期输出，不访问真实状态。"
+        },
+        {
+          "id": "course-pt-05-q05",
+          "type": "true_false",
+          "content": "[ponytail:收益看板] 判断题：使用 $ponytail:ponytail-gain 时，应保留这条约束——基准不是当前仓库测量值，绝不能虚构 per-repo 节省数字。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：该约束必须保留。\n依据：它来自 ponytail:收益看板 的流程或风险边界，能防止把技能能力扩大为未经确认的操作。\n实践：在提示词末尾加入该约束，并只检查模型返回的计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-pt-06",
+      "code": "PT06",
+      "title": "PT06 ponytail:帮助",
+      "order": 6,
+      "lab_ref": "PT06",
+      "source_text": "ponytail@4.8.4 的 skills/ponytail-help/SKILL.md 与相邻 agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-pt-06-q01",
+          "type": "multiple_choice",
+          "content": "[ponytail:帮助] 场景题：团队遇到以下场景：查看 Ponytail 模式、技能、命令与停用方式。最合适的下一步是什么？",
+          "options": [
+            "显式调用 $ponytail:ponytail-help（ponytail:帮助），先核对输入和边界",
+            "跳过技能，直接承诺已经交付最终结果",
+            "调用同插件全部技能，让它们自行竞争",
+            "先修改真实外部状态，再补写需求说明"
+          ],
+          "answer": "显式调用 $ponytail:ponytail-help（ponytail:帮助），先核对输入和边界",
+          "explanation": "结论：该场景正是 ponytail:帮助 的适用范围。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：B：没有执行相应流程，也缺少可观察证据；C：无差别调用增加上下文和副作用，掩盖清晰分工；D：把不可逆动作放在确认之前违反安全边界\n实践：用合成材料复述任务，并确认输入包含：当前插件版本及其帮助卡内容。"
+        },
+        {
+          "id": "course-pt-06-q02",
+          "type": "multiple_choice",
+          "content": "[ponytail:帮助] 调用题：评审会上需要明确记录所选技能，哪种写法最完整？",
+          "options": [
+            "只写“使用 ponytail:帮助”",
+            "插件 ponytail；skill ponytail-help；调用 $ponytail:ponytail-help；显示名 ponytail:帮助",
+            "只写插件 ponytail，不指定 skill",
+            "复制本机缓存绝对路径作为调用语法"
+          ],
+          "answer": "插件 ponytail；skill ponytail-help；调用 $ponytail:ponytail-help；显示名 ponytail:帮助",
+          "explanation": "结论：插件 ponytail；skill ponytail-help；调用 $ponytail:ponytail-help；显示名 ponytail:帮助。\n依据：ponytail:帮助 的正式入口是 $ponytail:ponytail-help；同时记录插件、skill slug 与显示名，才能在相似路由间复核选择。\n错误选项：A：省略稳定 slug 与插件名，不能完整核对调用目标；C：插件级名称无法区分内部多个独立技能；D：文件路径不是技能调用接口且会泄露机器特定信息\n实践：在合成场景中写出 $ponytail:ponytail-help，并补一条不适用条件；不实际执行工具。"
+        },
+        {
+          "id": "course-pt-06-q03",
+          "type": "multiple_choice",
+          "content": "[ponytail:帮助] 边界题：出现“用户已经要求执行某个具体审查或切换模式”时，怎样处理最稳妥？",
+          "options": [
+            "仍强制使用该技能，因为课程要求每个技能都执行",
+            "编造缺失输入以让流程继续",
+            "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+            "直接对真实数据、账户或发布面做试错"
+          ],
+          "answer": "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+          "explanation": "结论：停止套用该技能，重新路由或先补齐真正改变选择的条件。\n依据：ponytail:帮助 的不适用条件决定何时停止；越过该条件会把本 skill 错当成通用执行器。\n错误选项：A：课程目标是会判断，不是无条件执行；B：虚构事实会污染后续产出和验收；D：真实外部状态不应成为未确认路由的试验场\n实践：为 $ponytail:ponytail-help 写一个最小反例和替代路由，只输出判断。"
+        },
+        {
+          "id": "course-pt-06-q04",
+          "type": "multiple_choice",
+          "content": "[ponytail:帮助] 验收题：怎样证明这个单元已学会，而不是只记住名称？",
+          "options": [
+            "只背出 display_name",
+            "只说任务看起来已完成",
+            "展示一次真实写入或发布截图",
+            "能说明用途、输入“当前插件版本及其帮助卡内容”、输出“一次性快速参考卡，不改变持久模式”和边界，并在合成场景中选对技能"
+          ],
+          "answer": "能说明用途、输入“当前插件版本及其帮助卡内容”、输出“一次性快速参考卡，不改变持久模式”和边界，并在合成场景中选对技能",
+          "explanation": "结论：能说明用途、输入“当前插件版本及其帮助卡内容”、输出“一次性快速参考卡，不改变持久模式”和边界，并在合成场景中选对技能。\n依据：ponytail:帮助 的验收必须同时覆盖其输入、输出、边界与可观察证据，不能只记名称。\n错误选项：A：显示名不能证明会判断适用场景；B：没有对应输入、输出或可观察证据；C：不可逆操作不是必要教学证据，也可能越权\n实践：用 <synthetic-fixture> 核对 $ponytail:ponytail-help 的输入与预期输出，不访问真实状态。"
+        },
+        {
+          "id": "course-pt-06-q05",
+          "type": "true_false",
+          "content": "[ponytail:帮助] 判断题：使用 $ponytail:ponytail-help 时，应保留这条约束——展示帮助不应写标志文件、改配置或偷偷切换模式。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：该约束必须保留。\n依据：它来自 ponytail:帮助 的流程或风险边界，能防止把技能能力扩大为未经确认的操作。\n实践：在提示词末尾加入该约束，并只检查模型返回的计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-pt-07",
+      "code": "PT07",
+      "title": "PT07 ponytail:复杂度审查",
+      "order": 7,
+      "lab_ref": "PT07",
+      "source_text": "ponytail@4.8.4 的 skills/ponytail-review/SKILL.md 与相邻 agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-pt-07-q01",
+          "type": "multiple_choice",
+          "content": "[ponytail:复杂度审查] 场景题：团队遇到以下场景：仅针对当前 diff 审查过度工程与可删除复杂度。最合适的下一步是什么？",
+          "options": [
+            "显式调用 $ponytail:ponytail-review（ponytail:复杂度审查），先核对输入和边界",
+            "跳过技能，直接承诺已经交付最终结果",
+            "调用同插件全部技能，让它们自行竞争",
+            "先修改真实外部状态，再补写需求说明"
+          ],
+          "answer": "显式调用 $ponytail:ponytail-review（ponytail:复杂度审查），先核对输入和边界",
+          "explanation": "结论：该场景正是 ponytail:复杂度审查 的适用范围。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：B：没有执行相应流程，也缺少可观察证据；C：无差别调用增加上下文和副作用，掩盖清晰分工；D：把不可逆动作放在确认之前违反安全边界\n实践：用合成材料复述任务，并确认输入包含：待审 diff、文件行号与相关实现上下文。"
+        },
+        {
+          "id": "course-pt-07-q02",
+          "type": "multiple_choice",
+          "content": "[ponytail:复杂度审查] 调用题：评审会上需要明确记录所选技能，哪种写法最完整？",
+          "options": [
+            "只写“使用 ponytail:复杂度审查”",
+            "插件 ponytail；skill ponytail-review；调用 $ponytail:ponytail-review；显示名 ponytail:复杂度审查",
+            "只写插件 ponytail，不指定 skill",
+            "复制本机缓存绝对路径作为调用语法"
+          ],
+          "answer": "插件 ponytail；skill ponytail-review；调用 $ponytail:ponytail-review；显示名 ponytail:复杂度审查",
+          "explanation": "结论：插件 ponytail；skill ponytail-review；调用 $ponytail:ponytail-review；显示名 ponytail:复杂度审查。\n依据：ponytail:复杂度审查 的正式入口是 $ponytail:ponytail-review；同时记录插件、skill slug 与显示名，才能在相似路由间复核选择。\n错误选项：A：省略稳定 slug 与插件名，不能完整核对调用目标；C：插件级名称无法区分内部多个独立技能；D：文件路径不是技能调用接口且会泄露机器特定信息\n实践：在合成场景中写出 $ponytail:ponytail-review，并补一条不适用条件；不实际执行工具。"
+        },
+        {
+          "id": "course-pt-07-q03",
+          "type": "multiple_choice",
+          "content": "[ponytail:复杂度审查] 边界题：出现“需要全库扫描，或需要正确性、安全与性能审查”时，怎样处理最稳妥？",
+          "options": [
+            "仍强制使用该技能，因为课程要求每个技能都执行",
+            "编造缺失输入以让流程继续",
+            "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+            "直接对真实数据、账户或发布面做试错"
+          ],
+          "answer": "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+          "explanation": "结论：停止套用该技能，重新路由或先补齐真正改变选择的条件。\n依据：ponytail:复杂度审查 的不适用条件决定何时停止；越过该条件会把本 skill 错当成通用执行器。\n错误选项：A：课程目标是会判断，不是无条件执行；B：虚构事实会污染后续产出和验收；D：真实外部状态不应成为未确认路由的试验场\n实践：为 $ponytail:ponytail-review 写一个最小反例和替代路由，只输出判断。"
+        },
+        {
+          "id": "course-pt-07-q04",
+          "type": "multiple_choice",
+          "content": "[ponytail:复杂度审查] 验收题：怎样证明这个单元已学会，而不是只记住名称？",
+          "options": [
+            "只背出 display_name",
+            "只说任务看起来已完成",
+            "展示一次真实写入或发布截图",
+            "能说明用途、输入“待审 diff、文件行号与相关实现上下文”、输出“逐行定位的 delete、stdlib、native、yagni、shrink 发现与净减行数”和边界，并在合成场景中选对技能"
+          ],
+          "answer": "能说明用途、输入“待审 diff、文件行号与相关实现上下文”、输出“逐行定位的 delete、stdlib、native、yagni、shrink 发现与净减行数”和边界，并在合成场景中选对技能",
+          "explanation": "结论：能说明用途、输入“待审 diff、文件行号与相关实现上下文”、输出“逐行定位的 delete、stdlib、native、yagni、shrink 发现与净减行数”和边界，并在合成场景中选对技能。\n依据：ponytail:复杂度审查 的验收必须同时覆盖其输入、输出、边界与可观察证据，不能只记名称。\n错误选项：A：显示名不能证明会判断适用场景；B：没有对应输入、输出或可观察证据；C：不可逆操作不是必要教学证据，也可能越权\n实践：用 <synthetic-fixture> 核对 $ponytail:ponytail-review 的输入与预期输出，不访问真实状态。"
+        },
+        {
+          "id": "course-pt-07-q05",
+          "type": "true_false",
+          "content": "[ponytail:复杂度审查] 判断题：使用 $ponytail:ponytail-review 时，应保留这条约束——只列发现不应用修复；最小烟雾检查不能被当作冗余测试删除。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：该约束必须保留。\n依据：它来自 ponytail:复杂度审查 的流程或风险边界，能防止把技能能力扩大为未经确认的操作。\n实践：在提示词末尾加入该约束，并只检查模型返回的计划和验收项。"
+        }
+      ]
+    }
+  ]
+}

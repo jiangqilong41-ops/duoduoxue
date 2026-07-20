@@ -1,0 +1,740 @@
+{
+  "course": {
+    "id": "product-design",
+    "prefix": "PD",
+    "title": "product-design"
+  },
+  "source": {
+    "kind": "local-sanitized",
+    "ref": "product-design@0.1.50",
+    "snapshot": "2026-07-20"
+  },
+  "decks": [
+    {
+      "id": "course-pd-01",
+      "code": "PD01",
+      "title": "PD01 Product Design 插件总览",
+      "order": 1,
+      "lab_ref": "PD01",
+      "source_text": "product-design@0.1.50#.codex-plugin/plugin.json; README.md",
+      "questions": [
+        {
+          "id": "course-pd-01-q01",
+          "type": "multiple_choice",
+          "content": "[product-design@0.1.50] 场景：用户显式提到 Product Design，或主要目标是设计探索、UX 研究、流程审计、视觉复刻、原型质检或分享。哪项处理最符合 Product Design 插件总览 的职责？",
+          "options": [
+            "调用 @product-design，判断设计请求属于研究、审计、构思、复刻、实现、质检、分享或上下文管理，并转交对应的 focused skill",
+            "只打开 Product Design 总览并直接宣称任务完成",
+            "跳过输入与证据检查，直接在没有视觉目标或部署选择时创建文件、启动构建或发布",
+            "改用无关的文件格式化流程来绕开当前请求"
+          ],
+          "answer": "调用 @product-design，判断设计请求属于研究、审计、构思、复刻、实现、质检、分享或上下文管理，并转交对应的 focused skill",
+          "explanation": "结论：应选择 @product-design，把请求交给清晰且最窄的能力边界。\n依据：插件 README 和 index 说明 Product Design 覆盖研究、审计、构思、复刻、实现、质检、分享与上下文管理，index 本身只做路由。\n错误选项：B：总览或路由说明不能替代 Product Design 插件总览 的实际输出；C：该做法触犯“插件总览只负责路由，涉及构建时要经过简报与视觉目标门槛，涉及部署时要由用户选择目标”这一边界；D：文件格式化不能产出“一个明确的 focused skill、所需输入和下一步动作”\n实践：用虚构项目复述输入、预期输出和停止条件，再写出显式调用。"
+        },
+        {
+          "id": "course-pd-01-q02",
+          "type": "true_false",
+          "content": "[product-design@0.1.50] 场景：需求只是普通前端功能实现，且用户没有提出设计探索、忠实复刻或 Product Design 调用。同事仍计划调用 @product-design 并在没有视觉目标或部署选择时创建文件、启动构建或发布。这个判断正确吗？",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "错误",
+          "explanation": "结论：该场景不应沿用这个执行路径。\n依据：插件总览只负责路由；涉及构建时要经过简报与视觉目标门槛，涉及部署时要由用户选择目标；当前不适用条件是“需求只是普通前端功能实现，且用户没有提出设计探索、忠实复刻或 Product Design 调用”。\n实践：先写一句不适用理由，再选择更匹配的 skill 或停止在澄清步骤。"
+        },
+        {
+          "id": "course-pd-01-q03",
+          "type": "fill_blank",
+          "content": "[product-design@0.1.50] 场景：你已确认“用户显式提到 Product Design，或主要目标是设计探索、UX 研究、流程审计、视觉复刻、原型质检或分享”，要显式记录插件、skill slug 与 display name。应调用 ___（Product Design 插件总览）。",
+          "options": [],
+          "answer": "@product-design",
+          "explanation": "结论：显式调用写作 @product-design。\n依据：课程把 product-design 作为插件名，并把 @product-design 作为插件入口；展示名是“Product Design 插件总览”。\n实践：把合成任务追加在调用后，并写明期望得到“一个明确的 focused skill、所需输入和下一步动作”。"
+        },
+        {
+          "id": "course-pd-01-q04",
+          "type": "multiple_choice",
+          "content": "[product-design@0.1.50] 场景：学员要在不连接外部系统的情况下验收本单元。哪项证据最有效？",
+          "options": [
+            "读取真实客户或生产资料来提高练习真实性",
+            "使用合成输入得到一个明确的 focused skill、所需输入和下一步动作，并检查“插件总览只负责路由；涉及构建时要经过简报与视觉目标门槛，涉及部署时要由用户选择目标”",
+            "执行在没有视觉目标或部署选择时创建文件、启动构建或发布后只回复“已完成”",
+            "一次执行所有 focused skill，以免遗漏"
+          ],
+          "answer": "使用合成输入得到一个明确的 focused skill、所需输入和下一步动作，并检查“插件总览只负责路由；涉及构建时要经过简报与视觉目标门槛，涉及部署时要由用户选择目标”",
+          "explanation": "结论：验收要同时看到目标输出和边界检查。\n依据：先判定路由，再只读取当前 workflow 所需资料，课程不安装插件、不访问真实数据，也不执行发布或外部写入。\n错误选项：A：课程安全边界限定合成材料与只读检查；C：这既越过能力边界，也没有可观察验收结果；D：路由器应选择当前请求所需的最窄 workflow\n实践：保留合成提示词、路由判断和检查清单作为观察证据。"
+        },
+        {
+          "id": "course-pd-01-q05",
+          "type": "true_false",
+          "content": "[product-design@0.1.50] 场景：学员只用合成的“设计目标、预期用户结果，以及按任务提供的文字简报、URL、截图、视觉稿或现有原型”，得到一个明确的 focused skill、所需输入和下一步动作，并确认没有在没有视觉目标或部署选择时创建文件、启动构建或发布。这可以作为本单元的可观察验收吗？",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：这组证据覆盖了能力选择、输出和安全边界。\n依据：先判定路由，再只读取当前 workflow 所需资料；验收不需要真实客户数据、外部写入或生产操作。\n实践：逐项记录输入、输出与“插件总览只负责路由；涉及构建时要经过简报与视觉目标门槛，涉及部署时要由用户选择目标”的检查结果。"
+        }
+      ]
+    },
+    {
+      "id": "course-pd-02",
+      "code": "PD02",
+      "title": "PD02 Product Design:产品体验审计",
+      "order": 2,
+      "lab_ref": "PD02",
+      "source_text": "product-design@0.1.50#skills/audit/SKILL.md; skills/audit/agents/openai.yaml",
+      "questions": [
+        {
+          "id": "course-pd-02-q01",
+          "type": "multiple_choice",
+          "content": "[product-design@0.1.50] 场景：用户要求审查、批评或评估现有页面、流程、漏斗、引导、结账或多步产品体验。哪项处理最符合 audit（Product Design:产品体验审计） 的职责？",
+          "options": [
+            "只打开 Product Design 总览并直接宣称任务完成",
+            "跳过输入与证据检查，直接不采集截图便凭印象给出宽泛设计评价",
+            "调用 $product-design:audit，先采集产品流程截图，再把 UX、视觉和可访问性发现绑定到具体步骤与截图",
+            "改用无关的文件格式化流程来绕开当前请求"
+          ],
+          "answer": "调用 $product-design:audit，先采集产品流程截图，再把 UX、视觉和可访问性发现绑定到具体步骤与截图",
+          "explanation": "结论：应选择 $product-design:audit，把请求交给清晰且最窄的能力边界。\n依据：audit 要求先捕获截图，输出步骤化 UX、设计与可访问性发现，并说明截图证据的验证上限。\n错误选项：A：总览或路由说明不能替代 audit（Product Design:产品体验审计） 的实际输出；B：该做法触犯“截图不能证明键盘、读屏或动态状态，报告必须标注未能验证的项目”这一边界；D：文件格式化不能产出“带编号步骤、内联截图、证据定位、优先级和截图局限说明的审计报告”\n实践：用虚构项目复述输入、预期输出和停止条件，再写出显式调用。"
+        },
+        {
+          "id": "course-pd-02-q02",
+          "type": "true_false",
+          "content": "[product-design@0.1.50] 场景：团队只想比较已实现原型与选定视觉稿的还原度。同事仍计划调用 $product-design:audit 并不采集截图便凭印象给出宽泛设计评价。这个判断正确吗？",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "错误",
+          "explanation": "结论：该场景不应沿用这个执行路径。\n依据：截图不能证明键盘、读屏或动态状态；报告必须标注未能验证的项目；当前不适用条件是“团队只想比较已实现原型与选定视觉稿的还原度”。\n实践：先写一句不适用理由，再选择更匹配的 skill 或停止在澄清步骤。"
+        },
+        {
+          "id": "course-pd-02-q03",
+          "type": "fill_blank",
+          "content": "[product-design@0.1.50] 场景：你已确认“用户要求审查、批评或评估现有页面、流程、漏斗、引导、结账或多步产品体验”，要显式记录插件、skill slug 与 display name。应调用 ___（Product Design:产品体验审计）。",
+          "options": [],
+          "answer": "$product-design:audit",
+          "explanation": "结论：显式调用写作 $product-design:audit。\n依据：课程把 product-design 作为插件名，并把 audit 作为 skill slug；展示名是“Product Design:产品体验审计”。\n实践：把合成任务追加在调用后，并写明期望得到“带编号步骤、内联截图、证据定位、优先级和截图局限说明的审计报告”。"
+        },
+        {
+          "id": "course-pd-02-q04",
+          "type": "ordering",
+          "content": "[product-design@0.1.50] 场景：用合成材料练习 audit（Product Design:产品体验审计） 时，请按安全执行顺序排列。",
+          "options": [
+            "生成并检查带编号步骤、内联截图、证据定位、优先级和截图局限说明的审计报告",
+            "识别场景是否满足“用户要求审查、批评或评估现有页面、流程、漏斗、引导、结账或多步产品体验”",
+            "核对输入“可访问的产品流程、检查范围、关键状态与逐步截图”与所需依赖",
+            "按最小安全范围执行 $product-design:audit"
+          ],
+          "answer": "识别场景是否满足“用户要求审查、批评或评估现有页面、流程、漏斗、引导、结账或多步产品体验”|核对输入“可访问的产品流程、检查范围、关键状态与逐步截图”与所需依赖|按最小安全范围执行 $product-design:audit|生成并检查带编号步骤、内联截图、证据定位、优先级和截图局限说明的审计报告",
+          "explanation": "结论：先判定适用性和输入，再执行，最后检查可观察结果。\n依据：截图不能证明键盘、读屏或动态状态；报告必须标注未能验证的项目；乱序执行容易在输入不全时越过门槛。\n实践：把四步抄成检查表，任何前置项不满足时停在对应步骤。"
+        },
+        {
+          "id": "course-pd-02-q05",
+          "type": "true_false",
+          "content": "[product-design@0.1.50] 场景：学员只用合成的“可访问的产品流程、检查范围、关键状态与逐步截图”，得到带编号步骤、内联截图、证据定位、优先级和截图局限说明的审计报告，并确认没有不采集截图便凭印象给出宽泛设计评价。这可以作为本单元的可观察验收吗？",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：这组证据覆盖了能力选择、输出和安全边界。\n依据：只观察合成页面截图并把每条发现链接到证据；验收不需要真实客户数据、外部写入或生产操作。\n实践：逐项记录输入、输出与“截图不能证明键盘、读屏或动态状态；报告必须标注未能验证的项目”的检查结果。"
+        }
+      ]
+    },
+    {
+      "id": "course-pd-03",
+      "code": "PD03",
+      "title": "PD03 Product Design:设计还原质检",
+      "order": 3,
+      "lab_ref": "PD03",
+      "source_text": "product-design@0.1.50#skills/design-qa/SKILL.md; skills/design-qa/agents/openai.yaml",
+      "questions": [
+        {
+          "id": "course-pd-03-q01",
+          "type": "multiple_choice",
+          "content": "[product-design@0.1.50] 场景：Product Design 原型已有源视觉目标和可渲染实现，需要在交付前检查还原质量。哪项处理最符合 design-qa（Product Design:设计还原质检） 的职责？",
+          "options": [
+            "只打开 Product Design 总览并直接宣称任务完成",
+            "跳过输入与证据检查，直接只读代码便声称视觉还原通过",
+            "改用无关的文件格式化流程来绕开当前请求",
+            "调用 $product-design:design-qa，把源视觉目标与同一视口、同一状态的渲染实现放在一起比较，并在交付前关闭 P0 至 P2 差异"
+          ],
+          "answer": "调用 $product-design:design-qa，把源视觉目标与同一视口、同一状态的渲染实现放在一起比较，并在交付前关闭 P0 至 P2 差异",
+          "explanation": "结论：应选择 $product-design:design-qa，把请求交给清晰且最窄的能力边界。\n依据：design-qa 是内部交付门槛，要求同时打开源视觉与实现截图，并把 final result 严格写成 passed 或 blocked。\n错误选项：A：总览或路由说明不能替代 design-qa（Product Design:设计还原质检） 的实际输出；B：该做法触犯“缺少任一可比较视觉证据时结果只能是 blocked，构建成功不能替代浏览器视觉比较”这一边界；C：文件格式化不能产出“含证据、修复项、比较历史和 final result 的 design-qa.md”\n实践：用虚构项目复述输入、预期输出和停止条件，再写出显式调用。"
+        },
+        {
+          "id": "course-pd-03-q02",
+          "type": "true_false",
+          "content": "[product-design@0.1.50] 场景：用户要求对现有产品流程做宽泛 UX 审计或可访问性评价。同事仍计划调用 $product-design:design-qa 并只读代码便声称视觉还原通过。这个判断正确吗？",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "错误",
+          "explanation": "结论：该场景不应沿用这个执行路径。\n依据：缺少任一可比较视觉证据时结果只能是 blocked；构建成功不能替代浏览器视觉比较；当前不适用条件是“用户要求对现有产品流程做宽泛 UX 审计或可访问性评价”。\n实践：先写一句不适用理由，再选择更匹配的 skill 或停止在澄清步骤。"
+        },
+        {
+          "id": "course-pd-03-q03",
+          "type": "fill_blank",
+          "content": "[product-design@0.1.50] 场景：你已确认“Product Design 原型已有源视觉目标和可渲染实现，需要在交付前检查还原质量”，要显式记录插件、skill slug 与 display name。应调用 ___（Product Design:设计还原质检）。",
+          "options": [],
+          "answer": "$product-design:design-qa",
+          "explanation": "结论：显式调用写作 $product-design:design-qa。\n依据：课程把 product-design 作为插件名，并把 design-qa 作为 skill slug；展示名是“Product Design:设计还原质检”。\n实践：把合成任务追加在调用后，并写明期望得到“含证据、修复项、比较历史和 final result 的 design-qa.md”。"
+        },
+        {
+          "id": "course-pd-03-q04",
+          "type": "ordering",
+          "content": "[product-design@0.1.50] 场景：用合成材料练习 design-qa（Product Design:设计还原质检） 时，请按安全执行顺序排列。",
+          "options": [
+            "生成并检查含证据、修复项、比较历史和 final result 的 design-qa.md",
+            "识别场景是否满足“Product Design 原型已有源视觉目标和可渲染实现，需要在交付前检查还原质量”",
+            "核对输入“源截图、Figma 节点或 Mock，以及相同视口和状态下的实现截图”与所需依赖",
+            "按最小安全范围执行 $product-design:design-qa"
+          ],
+          "answer": "识别场景是否满足“Product Design 原型已有源视觉目标和可渲染实现，需要在交付前检查还原质量”|核对输入“源截图、Figma 节点或 Mock，以及相同视口和状态下的实现截图”与所需依赖|按最小安全范围执行 $product-design:design-qa|生成并检查含证据、修复项、比较历史和 final result 的 design-qa.md",
+          "explanation": "结论：先判定适用性和输入，再执行，最后检查可观察结果。\n依据：缺少任一可比较视觉证据时结果只能是 blocked；构建成功不能替代浏览器视觉比较；乱序执行容易在输入不全时越过门槛。\n实践：把四步抄成检查表，任何前置项不满足时停在对应步骤。"
+        },
+        {
+          "id": "course-pd-03-q05",
+          "type": "true_false",
+          "content": "[product-design@0.1.50] 场景：学员只用合成的“源截图、Figma 节点或 Mock，以及相同视口和状态下的实现截图”，得到含证据、修复项、比较历史和 final result 的 design-qa.md，并确认没有只读代码便声称视觉还原通过。这可以作为本单元的可观察验收吗？",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：这组证据覆盖了能力选择、输出和安全边界。\n依据：用合成的成对截图说明差异并标注视口与状态；验收不需要真实客户数据、外部写入或生产操作。\n实践：逐项记录输入、输出与“缺少任一可比较视觉证据时结果只能是 blocked；构建成功不能替代浏览器视觉比较”的检查结果。"
+        }
+      ]
+    },
+    {
+      "id": "course-pd-04",
+      "code": "PD04",
+      "title": "PD04 Product Design:确认设计简报",
+      "order": 4,
+      "lab_ref": "PD04",
+      "source_text": "product-design@0.1.50#skills/get-context/SKILL.md; skills/get-context/agents/openai.yaml",
+      "questions": [
+        {
+          "id": "course-pd-04-q01",
+          "type": "multiple_choice",
+          "content": "[product-design@0.1.50] 场景：开始设计、构思、原型、复刻、重设计、扩展或产品 UI 工作。哪项处理最符合 get-context（Product Design:确认设计简报） 的职责？",
+          "options": [
+            "调用 $product-design:get-context，补齐设计对象和用户要完成的结果，回放最小简报后转入已确定的下一 workflow",
+            "只打开 Product Design 总览并直接宣称任务完成",
+            "跳过输入与证据检查，直接重复询问已知信息，或在简报不完整时开始实现",
+            "改用无关的文件格式化流程来绕开当前请求"
+          ],
+          "answer": "调用 $product-design:get-context，补齐设计对象和用户要完成的结果，回放最小简报后转入已确定的下一 workflow",
+          "explanation": "结论：应选择 $product-design:get-context，把请求交给清晰且最窄的能力边界。\n依据：get-context 把设计目标与预期用户结果设为硬门槛，两者清楚后回放简报并在同一轮继续。\n错误选项：B：总览或路由说明不能替代 get-context（Product Design:确认设计简报） 的实际输出；C：该做法触犯“设计对象或用户结果缺失时不能实现 UI、搭脚手架、启动服务器或创建文件”这一边界；D：文件格式化不能产出“一段简短简报回放、采用的默认值和明确的下一 skill”\n实践：用虚构项目复述输入、预期输出和停止条件，再写出显式调用。"
+        },
+        {
+          "id": "course-pd-04-q02",
+          "type": "true_false",
+          "content": "[product-design@0.1.50] 场景：用户只要求审计现有流程，且没有后续构建请求。同事仍计划调用 $product-design:get-context 并重复询问已知信息，或在简报不完整时开始实现。这个判断正确吗？",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "错误",
+          "explanation": "结论：该场景不应沿用这个执行路径。\n依据：设计对象或用户结果缺失时不能实现 UI、搭脚手架、启动服务器或创建文件；当前不适用条件是“用户只要求审计现有流程，且没有后续构建请求”。\n实践：先写一句不适用理由，再选择更匹配的 skill 或停止在澄清步骤。"
+        },
+        {
+          "id": "course-pd-04-q03",
+          "type": "fill_blank",
+          "content": "[product-design@0.1.50] 场景：你已确认“开始设计、构思、原型、复刻、重设计、扩展或产品 UI 工作”，要显式记录插件、skill slug 与 display name。应调用 ___（Product Design:确认设计简报）。",
+          "options": [],
+          "answer": "$product-design:get-context",
+          "explanation": "结论：显式调用写作 $product-design:get-context。\n依据：课程把 product-design 作为插件名，并把 get-context 作为 skill slug；展示名是“Product Design:确认设计简报”。\n实践：把合成任务追加在调用后，并写明期望得到“一段简短简报回放、采用的默认值和明确的下一 skill”。"
+        },
+        {
+          "id": "course-pd-04-q04",
+          "type": "ordering",
+          "content": "[product-design@0.1.50] 场景：用合成材料练习 get-context（Product Design:确认设计简报） 时，请按安全执行顺序排列。",
+          "options": [
+            "生成并检查一段简短简报回放、采用的默认值和明确的下一 skill",
+            "识别场景是否满足“开始设计、构思、原型、复刻、重设计、扩展或产品 UI 工作”",
+            "核对输入“要设计的产品、页面或流程，以及它要帮助用户完成的事情”与所需依赖",
+            "按最小安全范围执行 $product-design:get-context"
+          ],
+          "answer": "识别场景是否满足“开始设计、构思、原型、复刻、重设计、扩展或产品 UI 工作”|核对输入“要设计的产品、页面或流程，以及它要帮助用户完成的事情”与所需依赖|按最小安全范围执行 $product-design:get-context|生成并检查一段简短简报回放、采用的默认值和明确的下一 skill",
+          "explanation": "结论：先判定适用性和输入，再执行，最后检查可观察结果。\n依据：设计对象或用户结果缺失时不能实现 UI、搭脚手架、启动服务器或创建文件；乱序执行容易在输入不全时越过门槛。\n实践：把四步抄成检查表，任何前置项不满足时停在对应步骤。"
+        },
+        {
+          "id": "course-pd-04-q05",
+          "type": "true_false",
+          "content": "[product-design@0.1.50] 场景：学员只用合成的“要设计的产品、页面或流程，以及它要帮助用户完成的事情”，得到一段简短简报回放、采用的默认值和明确的下一 skill，并确认没有重复询问已知信息，或在简报不完整时开始实现。这可以作为本单元的可观察验收吗？",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：这组证据覆盖了能力选择、输出和安全边界。\n依据：只追问一个真正缺失的高影响信息并复用已提供答案；验收不需要真实客户数据、外部写入或生产操作。\n实践：逐项记录输入、输出与“设计对象或用户结果缺失时不能实现 UI、搭脚手架、启动服务器或创建文件”的检查结果。"
+        }
+      ]
+    },
+    {
+      "id": "course-pd-05",
+      "code": "PD05",
+      "title": "PD05 Product Design:视觉方案构思",
+      "order": 5,
+      "lab_ref": "PD05",
+      "source_text": "product-design@0.1.50#skills/ideate/SKILL.md; skills/ideate/agents/openai.yaml",
+      "questions": [
+        {
+          "id": "course-pd-05-q01",
+          "type": "multiple_choice",
+          "content": "[product-design@0.1.50] 场景：用户需要视觉变体、重设计方向、Remix 或新的图像化概念。哪项处理最符合 ideate（Product Design:视觉方案构思） 的职责？",
+          "options": [
+            "只打开 Product Design 总览并直接宣称任务完成",
+            "调用 $product-design:ideate，依据已确认简报生成三个可比较的图像化视觉方向，并等待用户选定",
+            "跳过输入与证据检查，直接只给一个方案并直接搭建原型",
+            "改用无关的文件格式化流程来绕开当前请求"
+          ],
+          "answer": "调用 $product-design:ideate，依据已确认简报生成三个可比较的图像化视觉方向，并等待用户选定",
+          "explanation": "结论：应选择 $product-design:ideate，把请求交给清晰且最窄的能力边界。\n依据：ideate 负责图像化方向探索，Product Design 路由要求新构建先展示三个视觉选项并等待选择。\n错误选项：A：总览或路由说明不能替代 ideate（Product Design:视觉方案构思） 的实际输出；C：该做法触犯“用户选择视觉方向前不能进入代码实现，不能用纯文字列表冒充要求的图像方案”这一边界；D：文件格式化不能产出“三个差异清晰的视觉方案、各自取舍和待用户选择的编号”\n实践：用虚构项目复述输入、预期输出和停止条件，再写出显式调用。"
+        },
+        {
+          "id": "course-pd-05-q02",
+          "type": "true_false",
+          "content": "[product-design@0.1.50] 场景：用户已选定一张明确视觉稿并要求实现。同事仍计划调用 $product-design:ideate 并只给一个方案并直接搭建原型。这个判断正确吗？",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "错误",
+          "explanation": "结论：该场景不应沿用这个执行路径。\n依据：用户选择视觉方向前不能进入代码实现；不能用纯文字列表冒充要求的图像方案；当前不适用条件是“用户已选定一张明确视觉稿并要求实现”。\n实践：先写一句不适用理由，再选择更匹配的 skill 或停止在澄清步骤。"
+        },
+        {
+          "id": "course-pd-05-q03",
+          "type": "fill_blank",
+          "content": "[product-design@0.1.50] 场景：你已确认“用户需要视觉变体、重设计方向、Remix 或新的图像化概念”，要显式记录插件、skill slug 与 display name。应调用 ___（Product Design:视觉方案构思）。",
+          "options": [],
+          "answer": "$product-design:ideate",
+          "explanation": "结论：显式调用写作 $product-design:ideate。\n依据：课程把 product-design 作为插件名，并把 ideate 作为 skill slug；展示名是“Product Design:视觉方案构思”。\n实践：把合成任务追加在调用后，并写明期望得到“三个差异清晰的视觉方案、各自取舍和待用户选择的编号”。"
+        },
+        {
+          "id": "course-pd-05-q04",
+          "type": "ordering",
+          "content": "[product-design@0.1.50] 场景：用合成材料练习 ideate（Product Design:视觉方案构思） 时，请按安全执行顺序排列。",
+          "options": [
+            "生成并检查三个差异清晰的视觉方案、各自取舍和待用户选择的编号",
+            "识别场景是否满足“用户需要视觉变体、重设计方向、Remix 或新的图像化概念”",
+            "核对输入“已回放的设计简报、相关视觉参考、品牌资料和约束”与所需依赖",
+            "按最小安全范围执行 $product-design:ideate"
+          ],
+          "answer": "识别场景是否满足“用户需要视觉变体、重设计方向、Remix 或新的图像化概念”|核对输入“已回放的设计简报、相关视觉参考、品牌资料和约束”与所需依赖|按最小安全范围执行 $product-design:ideate|生成并检查三个差异清晰的视觉方案、各自取舍和待用户选择的编号",
+          "explanation": "结论：先判定适用性和输入，再执行，最后检查可观察结果。\n依据：用户选择视觉方向前不能进入代码实现；不能用纯文字列表冒充要求的图像方案；乱序执行容易在输入不全时越过门槛。\n实践：把四步抄成检查表，任何前置项不满足时停在对应步骤。"
+        },
+        {
+          "id": "course-pd-05-q05",
+          "type": "true_false",
+          "content": "[product-design@0.1.50] 场景：学员只用合成的“已回放的设计简报、相关视觉参考、品牌资料和约束”，得到三个差异清晰的视觉方案、各自取舍和待用户选择的编号，并确认没有只给一个方案并直接搭建原型。这可以作为本单元的可观察验收吗？",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：这组证据覆盖了能力选择、输出和安全边界。\n依据：用合成品牌与虚构产品生成方案提示词，不调用真实发布目标；验收不需要真实客户数据、外部写入或生产操作。\n实践：逐项记录输入、输出与“用户选择视觉方向前不能进入代码实现；不能用纯文字列表冒充要求的图像方案”的检查结果。"
+        }
+      ]
+    },
+    {
+      "id": "course-pd-06",
+      "code": "PD06",
+      "title": "PD06 Product Design:图像转代码",
+      "order": 6,
+      "lab_ref": "PD06",
+      "source_text": "product-design@0.1.50#skills/image-to-code/SKILL.md; skills/image-to-code/agents/openai.yaml",
+      "questions": [
+        {
+          "id": "course-pd-06-q01",
+          "type": "multiple_choice",
+          "content": "[product-design@0.1.50] 场景：用户已经给出或明确选定一个可解析的视觉目标并要求实现。哪项处理最符合 image-to-code（Product Design:图像转代码） 的职责？",
+          "options": [
+            "只打开 Product Design 总览并直接宣称任务完成",
+            "跳过输入与证据检查，直接把文字简报当作选定视觉稿并跳过视觉质检",
+            "调用 $product-design:image-to-code，写出把用户选定的截图、Mock、Figma frame 或生成图实现为忠实、响应式、可交互前端的方案",
+            "改用无关的文件格式化流程来绕开当前请求"
+          ],
+          "answer": "调用 $product-design:image-to-code，写出把用户选定的截图、Mock、Figma frame 或生成图实现为忠实、响应式、可交互前端的方案",
+          "explanation": "结论：应选择 $product-design:image-to-code，把请求交给清晰且最窄的能力边界。\n依据：image-to-code 要求先解析确切视觉目标，再实现核心交互、捕获渲染并通过 design-qa。\n错误选项：A：总览或路由说明不能替代 image-to-code（Product Design:图像转代码） 的实际输出；B：该做法触犯“不能猜测含糊的视觉选项，交付前必须完成浏览器捕获和 design-qa”这一边界；D：文件格式化不能产出“实现方案、浏览器验证证据字段和通过门槛的 design-qa.md 验收清单”\n实践：用虚构项目复述输入、预期输出和停止条件，再写出显式调用。"
+        },
+        {
+          "id": "course-pd-06-q02",
+          "type": "true_false",
+          "content": "[product-design@0.1.50] 场景：只有文字简报，尚未生成或选定视觉方向。同事仍计划调用 $product-design:image-to-code 并把文字简报当作选定视觉稿并跳过视觉质检。这个判断正确吗？",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "错误",
+          "explanation": "结论：该场景不应沿用这个执行路径。\n依据：不能猜测含糊的视觉选项；交付前必须完成浏览器捕获和 design-qa；当前不适用条件是“只有文字简报，尚未生成或选定视觉方向”。\n实践：先写一句不适用理由，再选择更匹配的 skill 或停止在澄清步骤。"
+        },
+        {
+          "id": "course-pd-06-q03",
+          "type": "fill_blank",
+          "content": "[product-design@0.1.50] 场景：你已确认“用户已经给出或明确选定一个可解析的视觉目标并要求实现”，要显式记录插件、skill slug 与 display name。应调用 ___（Product Design:图像转代码）。",
+          "options": [],
+          "answer": "$product-design:image-to-code",
+          "explanation": "结论：显式调用写作 $product-design:image-to-code。\n依据：课程把 product-design 作为插件名，并把 image-to-code 作为 skill slug；展示名是“Product Design:图像转代码”。\n实践：把合成任务追加在调用后，并写明期望得到“实现方案、浏览器验证证据字段和通过门槛的 design-qa.md 验收清单”。"
+        },
+        {
+          "id": "course-pd-06-q04",
+          "type": "ordering",
+          "content": "[product-design@0.1.50] 场景：用合成材料练习 image-to-code（Product Design:图像转代码） 时，请按安全执行顺序排列。",
+          "options": [
+            "列出并检查实现方案、浏览器验证证据字段和通过门槛的 design-qa.md 验收清单",
+            "识别场景是否满足“用户已经给出或明确选定一个可解析的视觉目标并要求实现”",
+            "核对输入“可唯一解析的视觉目标、目标视口、交互范围和现有代码上下文”与所需依赖",
+            "按最小安全范围执行 $product-design:image-to-code"
+          ],
+          "answer": "识别场景是否满足“用户已经给出或明确选定一个可解析的视觉目标并要求实现”|核对输入“可唯一解析的视觉目标、目标视口、交互范围和现有代码上下文”与所需依赖|按最小安全范围执行 $product-design:image-to-code|列出并检查实现方案、浏览器验证证据字段和通过门槛的 design-qa.md 验收清单",
+          "explanation": "结论：先判定适用性和输入，再执行，最后检查可观察结果。\n依据：不能猜测含糊的视觉选项；交付前必须完成浏览器捕获和 design-qa；乱序执行容易在输入不全时越过门槛。\n实践：把四步抄成检查表，任何前置项不满足时停在对应步骤。"
+        },
+        {
+          "id": "course-pd-06-q05",
+          "type": "true_false",
+          "content": "[product-design@0.1.50] 场景：学员只用合成的“可唯一解析的视觉目标、目标视口、交互范围和现有代码上下文”，得到实现方案、浏览器验证证据字段和通过门槛的 design-qa.md 验收清单，并确认没有把文字简报当作选定视觉稿并跳过视觉质检。这可以作为本单元的可观察验收吗？",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：这组证据覆盖了能力选择、输出和安全边界。\n依据：用虚构界面说明资产清单与验收步骤，不下载或发布任何内容；验收不需要真实客户数据、外部写入或生产操作。\n实践：逐项记录输入、输出与“不能猜测含糊的视觉选项；交付前必须完成浏览器捕获和 design-qa”的检查结果。"
+        }
+      ]
+    },
+    {
+      "id": "course-pd-07",
+      "code": "PD07",
+      "title": "PD07 Product Design:产品设计",
+      "order": 7,
+      "lab_ref": "PD07",
+      "source_text": "product-design@0.1.50#skills/index/SKILL.md; skills/index/agents/openai.yaml",
+      "questions": [
+        {
+          "id": "course-pd-07-q01",
+          "type": "multiple_choice",
+          "content": "[product-design@0.1.50] 场景：用户显式调用 Product Design，或请求以设计研究、审计、视觉探索、忠实复刻、质检或分享为主。哪项处理最符合 index（Product Design:产品设计） 的职责？",
+          "options": [
+            "只打开 Product Design 总览并直接宣称任务完成",
+            "跳过输入与证据检查，直接停留在 index 后声称已完成设计审计或原型",
+            "改用无关的文件格式化流程来绕开当前请求",
+            "调用 $product-design:index，把 Product Design 请求路由到唯一或有序组合的 focused skill"
+          ],
+          "answer": "调用 $product-design:index，把 Product Design 请求路由到唯一或有序组合的 focused skill",
+          "explanation": "结论：应选择 $product-design:index，把请求交给清晰且最窄的能力边界。\n依据：index 明确声明 Router Only，并为上下文、研究、审计、构思、复刻、实现、分享与质检规定路由。\n错误选项：A：总览或路由说明不能替代 index（Product Design:产品设计） 的实际输出；B：该做法触犯“index 是路由器，不能代替 audit、ideate 或 image-to-code 完成工作”这一边界；C：文件格式化不能产出“focused skill 选择、必要的顺序和缺失门槛”\n实践：用虚构项目复述输入、预期输出和停止条件，再写出显式调用。"
+        },
+        {
+          "id": "course-pd-07-q02",
+          "type": "true_false",
+          "content": "[product-design@0.1.50] 场景：请求只是常规代码修改，且设计意图不构成主要目标。同事仍计划调用 $product-design:index 并停留在 index 后声称已完成设计审计或原型。这个判断正确吗？",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "错误",
+          "explanation": "结论：该场景不应沿用这个执行路径。\n依据：index 是路由器，不能代替 audit、ideate 或 image-to-code 完成工作；当前不适用条件是“请求只是常规代码修改，且设计意图不构成主要目标”。\n实践：先写一句不适用理由，再选择更匹配的 skill 或停止在澄清步骤。"
+        },
+        {
+          "id": "course-pd-07-q03",
+          "type": "fill_blank",
+          "content": "[product-design@0.1.50] 场景：你已确认“用户显式调用 Product Design，或请求以设计研究、审计、视觉探索、忠实复刻、质检或分享为主”，要显式记录插件、skill slug 与 display name。应调用 ___（Product Design:产品设计）。",
+          "options": [],
+          "answer": "$product-design:index",
+          "explanation": "结论：显式调用写作 $product-design:index。\n依据：课程把 product-design 作为插件名，并把 index 作为 skill slug；展示名是“Product Design:产品设计”。\n实践：把合成任务追加在调用后，并写明期望得到“focused skill 选择、必要的顺序和缺失门槛”。"
+        },
+        {
+          "id": "course-pd-07-q04",
+          "type": "ordering",
+          "content": "[product-design@0.1.50] 场景：用合成材料练习 index（Product Design:产品设计） 时，请按安全执行顺序排列。",
+          "options": [
+            "生成并检查focused skill 选择、必要的顺序和缺失门槛",
+            "识别场景是否满足“用户显式调用 Product Design，或请求以设计研究、审计、视觉探索、忠实复刻、质检或分享为主”",
+            "核对输入“用户请求、现有视觉来源、是否需要构建或分享，以及当前运行表面”与所需依赖",
+            "按最小安全范围执行 $product-design:index"
+          ],
+          "answer": "识别场景是否满足“用户显式调用 Product Design，或请求以设计研究、审计、视觉探索、忠实复刻、质检或分享为主”|核对输入“用户请求、现有视觉来源、是否需要构建或分享，以及当前运行表面”与所需依赖|按最小安全范围执行 $product-design:index|生成并检查focused skill 选择、必要的顺序和缺失门槛",
+          "explanation": "结论：先判定适用性和输入，再执行，最后检查可观察结果。\n依据：index 是路由器，不能代替 audit、ideate 或 image-to-code 完成工作；乱序执行容易在输入不全时越过门槛。\n实践：把四步抄成检查表，任何前置项不满足时停在对应步骤。"
+        },
+        {
+          "id": "course-pd-07-q05",
+          "type": "true_false",
+          "content": "[product-design@0.1.50] 场景：学员只用合成的“用户请求、现有视觉来源、是否需要构建或分享，以及当前运行表面”，得到focused skill 选择、必要的顺序和缺失门槛，并确认没有停留在 index 后声称已完成设计审计或原型。这可以作为本单元的可观察验收吗？",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：这组证据覆盖了能力选择、输出和安全边界。\n依据：只读取候选 skill 的触发边界并选择最窄路径；验收不需要真实客户数据、外部写入或生产操作。\n实践：逐项记录输入、输出与“index 是路由器，不能代替 audit、ideate 或 image-to-code 完成工作”的检查结果。"
+        }
+      ]
+    },
+    {
+      "id": "course-pd-08",
+      "code": "PD08",
+      "title": "PD08 Product Design:产品体验研究",
+      "order": 8,
+      "lab_ref": "PD08",
+      "source_text": "product-design@0.1.50#skills/research/SKILL.md; skills/research/agents/openai.yaml",
+      "questions": [
+        {
+          "id": "course-pd-08-q01",
+          "type": "multiple_choice",
+          "content": "[product-design@0.1.50] 场景：用户要研究命名产品的 UX 摩擦、引导、帮助文档、开发者体验、支持或工作流问题。哪项处理最符合 research（Product Design:产品体验研究） 的职责？",
+          "options": [
+            "调用 $product-design:research，针对用户指定的数字产品，收集当前且可追溯的用户痛点并区分证据、严重度与信心",
+            "只打开 Product Design 总览并直接宣称任务完成",
+            "跳过输入与证据检查，直接编造用户引言或把旧评论写成当前共识",
+            "改用无关的文件格式化流程来绕开当前请求"
+          ],
+          "answer": "调用 $product-design:research，针对用户指定的数字产品，收集当前且可追溯的用户痛点并区分证据、严重度与信心",
+          "explanation": "结论：应选择 $product-design:research，把请求交给清晰且最窄的能力边界。\n依据：research 聚焦用户指定产品的当前 UX 问题，要求来源支撑并呈现严重度、置信度与研究限制。\n错误选项：B：总览或路由说明不能替代 research（Product Design:产品体验研究） 的实际输出；C：该做法触犯“不能把单条抱怨推广成普遍趋势，也不能用无来源推断代替当前证据”这一边界；D：文件格式化不能产出“带来源、问题主题、严重度、信心、局限和机会建议的研究摘要”\n实践：用虚构项目复述输入、预期输出和停止条件，再写出显式调用。"
+        },
+        {
+          "id": "course-pd-08-q02",
+          "type": "true_false",
+          "content": "[product-design@0.1.50] 场景：用户需要一般市场规模分析，或没有指出要研究的数字产品。同事仍计划调用 $product-design:research 并编造用户引言或把旧评论写成当前共识。这个判断正确吗？",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "错误",
+          "explanation": "结论：该场景不应沿用这个执行路径。\n依据：不能把单条抱怨推广成普遍趋势，也不能用无来源推断代替当前证据；当前不适用条件是“用户需要一般市场规模分析，或没有指出要研究的数字产品”。\n实践：先写一句不适用理由，再选择更匹配的 skill 或停止在澄清步骤。"
+        },
+        {
+          "id": "course-pd-08-q03",
+          "type": "fill_blank",
+          "content": "[product-design@0.1.50] 场景：你已确认“用户要研究命名产品的 UX 摩擦、引导、帮助文档、开发者体验、支持或工作流问题”，要显式记录插件、skill slug 与 display name。应调用 ___（Product Design:产品体验研究）。",
+          "options": [],
+          "answer": "$product-design:research",
+          "explanation": "结论：显式调用写作 $product-design:research。\n依据：课程把 product-design 作为插件名，并把 research 作为 skill slug；展示名是“Product Design:产品体验研究”。\n实践：把合成任务追加在调用后，并写明期望得到“带来源、问题主题、严重度、信心、局限和机会建议的研究摘要”。"
+        },
+        {
+          "id": "course-pd-08-q04",
+          "type": "ordering",
+          "content": "[product-design@0.1.50] 场景：用合成材料练习 research（Product Design:产品体验研究） 时，请按安全执行顺序排列。",
+          "options": [
+            "生成并检查带来源、问题主题、严重度、信心、局限和机会建议的研究摘要",
+            "识别场景是否满足“用户要研究命名产品的 UX 摩擦、引导、帮助文档、开发者体验、支持或工作流问题”",
+            "核对输入“产品名称、研究范围、时间窗口和可访问的一手或高信号来源”与所需依赖",
+            "按最小安全范围执行 $product-design:research"
+          ],
+          "answer": "识别场景是否满足“用户要研究命名产品的 UX 摩擦、引导、帮助文档、开发者体验、支持或工作流问题”|核对输入“产品名称、研究范围、时间窗口和可访问的一手或高信号来源”与所需依赖|按最小安全范围执行 $product-design:research|生成并检查带来源、问题主题、严重度、信心、局限和机会建议的研究摘要",
+          "explanation": "结论：先判定适用性和输入，再执行，最后检查可观察结果。\n依据：不能把单条抱怨推广成普遍趋势，也不能用无来源推断代替当前证据；乱序执行容易在输入不全时越过门槛。\n实践：把四步抄成检查表，任何前置项不满足时停在对应步骤。"
+        },
+        {
+          "id": "course-pd-08-q05",
+          "type": "true_false",
+          "content": "[product-design@0.1.50] 场景：学员只用合成的“产品名称、研究范围、时间窗口和可访问的一手或高信号来源”，得到带来源、问题主题、严重度、信心、局限和机会建议的研究摘要，并确认没有编造用户引言或把旧评论写成当前共识。这可以作为本单元的可观察验收吗？",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：这组证据覆盖了能力选择、输出和安全边界。\n依据：围绕虚构产品和合成反馈练习证据分级；验收不需要真实客户数据、外部写入或生产操作。\n实践：逐项记录输入、输出与“不能把单条抱怨推广成普遍趋势，也不能用无来源推断代替当前证据”的检查结果。"
+        }
+      ]
+    },
+    {
+      "id": "course-pd-09",
+      "code": "PD09",
+      "title": "PD09 Product Design:原型分享",
+      "order": 9,
+      "lab_ref": "PD09",
+      "source_text": "product-design@0.1.50#skills/share/SKILL.md; skills/share/agents/openai.yaml",
+      "questions": [
+        {
+          "id": "course-pd-09-q01",
+          "type": "multiple_choice",
+          "content": "[product-design@0.1.50] 场景：用户要求分享、部署、发布、托管或生成原型链接。哪项处理最符合 share（Product Design:原型分享） 的职责？",
+          "options": [
+            "只打开 Product Design 总览并直接宣称任务完成",
+            "调用 $product-design:share，写出使用用户选定且可用部署工具发布原型的方案，并列出分享链接验证字段",
+            "跳过输入与证据检查，直接自行选择平台并把未验证地址当作成品链接",
+            "改用无关的文件格式化流程来绕开当前请求"
+          ],
+          "answer": "调用 $product-design:share，写出使用用户选定且可用部署工具发布原型的方案，并列出分享链接验证字段",
+          "explanation": "结论：应选择 $product-design:share，把请求交给清晰且最窄的能力边界。\n依据：share 要求确认原型目录与部署目标，使用所选工具，并在返回前确认分享 URL 可用。\n错误选项：A：总览或路由说明不能替代 share（Product Design:原型分享） 的实际输出；C：该做法触犯“用户未选择目标时必须先问，没有工作 URL 时不能声称已经分享”这一边界；D：文件格式化不能产出“分享前置条件、预期 URL 字段和仍需人工处理的明确事项”\n实践：用虚构项目复述输入、预期输出和停止条件，再写出显式调用。"
+        },
+        {
+          "id": "course-pd-09-q02",
+          "type": "true_false",
+          "content": "[product-design@0.1.50] 场景：原型尚不可运行，或用户没有选择部署目标。同事仍计划调用 $product-design:share 并自行选择平台并把未验证地址当作成品链接。这个判断正确吗？",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "错误",
+          "explanation": "结论：该场景不应沿用这个执行路径。\n依据：用户未选择目标时必须先问；没有工作 URL 时不能声称已经分享；当前不适用条件是“原型尚不可运行，或用户没有选择部署目标”。\n实践：先写一句不适用理由，再选择更匹配的 skill 或停止在澄清步骤。"
+        },
+        {
+          "id": "course-pd-09-q03",
+          "type": "fill_blank",
+          "content": "[product-design@0.1.50] 场景：你已确认“用户要求分享、部署、发布、托管或生成原型链接”，要显式记录插件、skill slug 与 display name。应调用 ___（Product Design:原型分享）。",
+          "options": [],
+          "answer": "$product-design:share",
+          "explanation": "结论：显式调用写作 $product-design:share。\n依据：课程把 product-design 作为插件名，并把 share 作为 skill slug；展示名是“Product Design:原型分享”。\n实践：把合成任务追加在调用后，并写明期望得到“分享前置条件、预期 URL 字段和仍需人工处理的明确事项”。"
+        },
+        {
+          "id": "course-pd-09-q04",
+          "type": "ordering",
+          "content": "[product-design@0.1.50] 场景：用合成材料练习 share（Product Design:原型分享） 时，请按安全执行顺序排列。",
+          "options": [
+            "列出并检查分享前置条件、预期 URL 字段和仍需人工处理的明确事项",
+            "识别场景是否满足“用户要求分享、部署、发布、托管或生成原型链接”",
+            "核对输入“原型目录、用户选定的 Sites、Vercel 或其他可用目标”与所需依赖",
+            "按最小安全范围执行 $product-design:share"
+          ],
+          "answer": "识别场景是否满足“用户要求分享、部署、发布、托管或生成原型链接”|核对输入“原型目录、用户选定的 Sites、Vercel 或其他可用目标”与所需依赖|按最小安全范围执行 $product-design:share|列出并检查分享前置条件、预期 URL 字段和仍需人工处理的明确事项",
+          "explanation": "结论：先判定适用性和输入，再执行，最后检查可观察结果。\n依据：用户未选择目标时必须先问；没有工作 URL 时不能声称已经分享；乱序执行容易在输入不全时越过门槛。\n实践：把四步抄成检查表，任何前置项不满足时停在对应步骤。"
+        },
+        {
+          "id": "course-pd-09-q05",
+          "type": "true_false",
+          "content": "[product-design@0.1.50] 场景：学员只用合成的“原型目录、用户选定的 Sites、Vercel 或其他可用目标”，得到分享前置条件、预期 URL 字段和仍需人工处理的明确事项，并确认没有自行选择平台并把未验证地址当作成品链接。这可以作为本单元的可观察验收吗？",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：这组证据覆盖了能力选择、输出和安全边界。\n依据：课程只比较合成部署选项和验收条件；验收不需要真实客户数据、外部写入或生产操作。\n实践：逐项记录输入、输出与“用户未选择目标时必须先问；没有工作 URL 时不能声称已经分享”的检查结果。"
+        }
+      ]
+    },
+    {
+      "id": "course-pd-10",
+      "code": "PD10",
+      "title": "PD10 Product Design:网址转代码",
+      "order": 10,
+      "lab_ref": "PD10",
+      "source_text": "product-design@0.1.50#skills/url-to-code/SKILL.md; skills/url-to-code/agents/openai.yaml",
+      "questions": [
+        {
+          "id": "course-pd-10-q01",
+          "type": "multiple_choice",
+          "content": "[product-design@0.1.50] 场景：用户明确要求忠实克隆或重建某个当前网站 URL。哪项处理最符合 url-to-code（Product Design:网址转代码） 的职责？",
+          "options": [
+            "只打开 Product Design 总览并直接宣称任务完成",
+            "跳过输入与证据检查，直接不打开来源页面便凭记忆重建，或修改生产代码",
+            "调用 $product-design:url-to-code，写出采集 URL 页面、状态与资产证据并复刻前端本地原型的方案",
+            "改用无关的文件格式化流程来绕开当前请求"
+          ],
+          "answer": "调用 $product-design:url-to-code，写出采集 URL 页面、状态与资产证据并复刻前端本地原型的方案",
+          "explanation": "结论：应选择 $product-design:url-to-code，把请求交给清晰且最窄的能力边界。\n依据：url-to-code 只处理明确的 clone 或 recreate，like、better、redesign 与 improve 应回到设计简报和构思流程。\n错误选项：A：总览或路由说明不能替代 url-to-code（Product Design:网址转代码） 的实际输出；B：该做法触犯“必须先有浏览器采集证据，只做前端原型，不把重设计请求伪装成克隆”这一边界；D：文件格式化不能产出“采集/复刻方案、来源证据字段、资产清单和设计质检验收清单”\n实践：用虚构项目复述输入、预期输出和停止条件，再写出显式调用。"
+        },
+        {
+          "id": "course-pd-10-q02",
+          "type": "true_false",
+          "content": "[product-design@0.1.50] 场景：用户说要做得更好、参考其风格或重设计，而非忠实复刻。同事仍计划调用 $product-design:url-to-code 并不打开来源页面便凭记忆重建，或修改生产代码。这个判断正确吗？",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "错误",
+          "explanation": "结论：该场景不应沿用这个执行路径。\n依据：必须先有浏览器采集证据；只做前端原型，不把重设计请求伪装成克隆；当前不适用条件是“用户说要做得更好、参考其风格或重设计，而非忠实复刻”。\n实践：先写一句不适用理由，再选择更匹配的 skill 或停止在澄清步骤。"
+        },
+        {
+          "id": "course-pd-10-q03",
+          "type": "fill_blank",
+          "content": "[product-design@0.1.50] 场景：你已确认“用户明确要求忠实克隆或重建某个当前网站 URL”，要显式记录插件、skill slug 与 display name。应调用 ___（Product Design:网址转代码）。",
+          "options": [],
+          "answer": "$product-design:url-to-code",
+          "explanation": "结论：显式调用写作 $product-design:url-to-code。\n依据：课程把 product-design 作为插件名，并把 url-to-code 作为 skill slug；展示名是“Product Design:网址转代码”。\n实践：把合成任务追加在调用后，并写明期望得到“采集/复刻方案、来源证据字段、资产清单和设计质检验收清单”。"
+        },
+        {
+          "id": "course-pd-10-q04",
+          "type": "ordering",
+          "content": "[product-design@0.1.50] 场景：用合成材料练习 url-to-code（Product Design:网址转代码） 时，请按安全执行顺序排列。",
+          "options": [
+            "列出并检查采集/复刻方案、来源证据字段、资产清单和设计质检验收清单",
+            "识别场景是否满足“用户明确要求忠实克隆或重建某个当前网站 URL”",
+            "核对输入“目标 URL、复刻范围、关键视口和需要覆盖的交互状态”与所需依赖",
+            "按最小安全范围执行 $product-design:url-to-code"
+          ],
+          "answer": "识别场景是否满足“用户明确要求忠实克隆或重建某个当前网站 URL”|核对输入“目标 URL、复刻范围、关键视口和需要覆盖的交互状态”与所需依赖|按最小安全范围执行 $product-design:url-to-code|列出并检查采集/复刻方案、来源证据字段、资产清单和设计质检验收清单",
+          "explanation": "结论：先判定适用性和输入，再执行，最后检查可观察结果。\n依据：必须先有浏览器采集证据；只做前端原型，不把重设计请求伪装成克隆；乱序执行容易在输入不全时越过门槛。\n实践：把四步抄成检查表，任何前置项不满足时停在对应步骤。"
+        },
+        {
+          "id": "course-pd-10-q05",
+          "type": "true_false",
+          "content": "[product-design@0.1.50] 场景：学员只用合成的“目标 URL、复刻范围、关键视口和需要覆盖的交互状态”，得到采集/复刻方案、来源证据字段、资产清单和设计质检验收清单，并确认没有不打开来源页面便凭记忆重建，或修改生产代码。这可以作为本单元的可观察验收吗？",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：这组证据覆盖了能力选择、输出和安全边界。\n依据：用合成页面说明采集清单，不访问登录态或真实生产数据；验收不需要真实客户数据、外部写入或生产操作。\n实践：逐项记录输入、输出与“必须先有浏览器采集证据；只做前端原型，不把重设计请求伪装成克隆”的检查结果。"
+        }
+      ]
+    },
+    {
+      "id": "course-pd-11",
+      "code": "PD11",
+      "title": "PD11 Product Design:产品设计上下文",
+      "order": 11,
+      "lab_ref": "PD11",
+      "source_text": "product-design@0.1.50#skills/user-context/SKILL.md; skills/user-context/agents/openai.yaml",
+      "questions": [
+        {
+          "id": "course-pd-11-q01",
+          "type": "multiple_choice",
+          "content": "[product-design@0.1.50] 场景：用户要求设置、开始使用、保存、回忆、查看或更新 Product Design 上下文。哪项处理最符合 user-context（Product Design:产品设计上下文） 的职责？",
+          "options": [
+            "只打开 Product Design 总览并直接宣称任务完成",
+            "跳过输入与证据检查，直接未做可写预检便声称已跨会话保存，或持久化秘密",
+            "改用无关的文件格式化流程来绕开当前请求",
+            "调用 $product-design:user-context，预检并管理 Product Design 的持久化产品资料、视觉参考与偏好"
+          ],
+          "answer": "调用 $product-design:user-context，预检并管理 Product Design 的持久化产品资料、视觉参考与偏好",
+          "explanation": "结论：应选择 $product-design:user-context，把请求交给清晰且最窄的能力边界。\n依据：user-context 规定状态文件与资产目录，要求可写预检，并禁止把秘密或客户数据写入持久上下文。\n错误选项：A：总览或路由说明不能替代 user-context（Product Design:产品设计上下文） 的实际输出；B：该做法触犯“保存前必须确认状态目录可解析且可写，不能保存密钥、凭据、私有令牌或客户数据”这一边界；C：文件格式化不能产出“经过整理的 user-context.md 条目和必要的本地资产引用”\n实践：用虚构项目复述输入、预期输出和停止条件，再写出显式调用。"
+        },
+        {
+          "id": "course-pd-11-q02",
+          "type": "true_false",
+          "content": "[product-design@0.1.50] 场景：当前任务只需要一次性资料，且用户没有要求跨会话保存。同事仍计划调用 $product-design:user-context 并未做可写预检便声称已跨会话保存，或持久化秘密。这个判断正确吗？",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "错误",
+          "explanation": "结论：该场景不应沿用这个执行路径。\n依据：保存前必须确认状态目录可解析且可写；不能保存密钥、凭据、私有令牌或客户数据；当前不适用条件是“当前任务只需要一次性资料，且用户没有要求跨会话保存”。\n实践：先写一句不适用理由，再选择更匹配的 skill 或停止在澄清步骤。"
+        },
+        {
+          "id": "course-pd-11-q03",
+          "type": "fill_blank",
+          "content": "[product-design@0.1.50] 场景：你已确认“用户要求设置、开始使用、保存、回忆、查看或更新 Product Design 上下文”，要显式记录插件、skill slug 与 display name。应调用 ___（Product Design:产品设计上下文）。",
+          "options": [],
+          "answer": "$product-design:user-context",
+          "explanation": "结论：显式调用写作 $product-design:user-context。\n依据：课程把 product-design 作为插件名，并把 user-context 作为 skill slug；展示名是“Product Design:产品设计上下文”。\n实践：把合成任务追加在调用后，并写明期望得到“经过整理的 user-context.md 条目和必要的本地资产引用”。"
+        },
+        {
+          "id": "course-pd-11-q04",
+          "type": "ordering",
+          "content": "[product-design@0.1.50] 场景：用合成材料练习 user-context（Product Design:产品设计上下文） 时，请按安全执行顺序排列。",
+          "options": [
+            "生成并检查经过整理的 user-context.md 条目和必要的本地资产引用",
+            "识别场景是否满足“用户要求设置、开始使用、保存、回忆、查看或更新 Product Design 上下文”",
+            "核对输入“产品 URL、Figma、截图、代码路径、Storybook、令牌设计、品牌资产或偏好”与所需依赖",
+            "按最小安全范围执行 $product-design:user-context"
+          ],
+          "answer": "识别场景是否满足“用户要求设置、开始使用、保存、回忆、查看或更新 Product Design 上下文”|核对输入“产品 URL、Figma、截图、代码路径、Storybook、令牌设计、品牌资产或偏好”与所需依赖|按最小安全范围执行 $product-design:user-context|生成并检查经过整理的 user-context.md 条目和必要的本地资产引用",
+          "explanation": "结论：先判定适用性和输入，再执行，最后检查可观察结果。\n依据：保存前必须确认状态目录可解析且可写；不能保存密钥、凭据、私有令牌或客户数据；乱序执行容易在输入不全时越过门槛。\n实践：把四步抄成检查表，任何前置项不满足时停在对应步骤。"
+        },
+        {
+          "id": "course-pd-11-q05",
+          "type": "true_false",
+          "content": "[product-design@0.1.50] 场景：学员只用合成的“产品 URL、Figma、截图、代码路径、Storybook、令牌设计、品牌资产或偏好”，得到经过整理的 user-context.md 条目和必要的本地资产引用，并确认没有未做可写预检便声称已跨会话保存，或持久化秘密。这可以作为本单元的可观察验收吗？",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：这组证据覆盖了能力选择、输出和安全边界。\n依据：用虚构 URL 和合成品牌文件名演练条目格式；验收不需要真实客户数据、外部写入或生产操作。\n实践：逐项记录输入、输出与“保存前必须确认状态目录可解析且可写；不能保存密钥、凭据、私有令牌或客户数据”的检查结果。"
+        }
+      ]
+    }
+  ]
+}

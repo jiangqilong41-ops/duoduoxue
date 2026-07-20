@@ -6,8 +6,8 @@
   },
   "source": {
     "kind": "git",
-    "ref": "fastapi1@b21b6e4",
-    "snapshot": "2026-07-11"
+    "ref": "fastapi1@710807b32a2a7af6b48496390d15c728a8afd06b",
+    "snapshot": "2026-07-20"
   },
   "decks": [
     {
@@ -16,12 +16,12 @@
       "title": "FA01 产品边界",
       "order": 1,
       "lab_ref": "FA01",
-      "source_text": "fastapi1@b21b6e4: README.md, main.py, html/customer_management.html",
+      "source_text": "fastapi1@710807b: README.md, main.py, html/customer_management.html",
       "questions": [
         {
           "id": "course-fa-01-q01",
           "type": "multiple_choice",
-          "content": "[FastAPI1@b21b6e4] 从仓库当前能力看，哪项最准确地描述产品边界？",
+          "content": "[FastAPI1@710807b] 从仓库当前能力看，哪项最准确地描述产品边界？",
           "options": [
             "企业查询导出、认证用户、采集、邮件微信和 AI 已形成主闭环，短信、电话及手工新增客户后端仍未完成",
             "系统只负责展示静态 HTML，不包含任何后端业务能力",
@@ -34,7 +34,7 @@
         {
           "id": "course-fa-01-q02",
           "type": "multiple_choice",
-          "content": "[FastAPI1@b21b6e4] 想确认某个页面背后是否真的有业务闭环，最有价值的材料组合是什么？",
+          "content": "[FastAPI1@710807b] 想确认某个页面背后是否真的有业务闭环，最有价值的材料组合是什么？",
           "options": [
             "只看页面按钮是否可点击",
             "同时核对 README 路由表、main.py 挂载、对应 routes/services 以及回归测试",
@@ -47,7 +47,7 @@
         {
           "id": "course-fa-01-q03",
           "type": "multiple_choice",
-          "content": "[FastAPI1@b21b6e4] 产品同事要求下周上线短信群发，当前最合理的工程决策是什么？",
+          "content": "[FastAPI1@710807b] 产品同事要求下周上线短信群发，当前最合理的工程决策是什么？",
           "options": [
             "直接复用邮件发送接口并把字段名改成 sms",
             "因为页面已有短信表单，所以只需开放按钮",
@@ -60,20 +60,20 @@
         {
           "id": "course-fa-01-q04",
           "type": "multiple_choice",
-          "content": "[FastAPI1@b21b6e4] 在 Mac 上只读盘点产品入口，哪种做法最安全？",
+          "content": "[FastAPI1@710807b] 在 Mac 上只读盘点产品入口，哪种做法最安全？",
           "options": [
             "启动生产 profile 并逐页点击真实任务",
             "读取本机环境变量确认服务凭证",
             "连接数据库统计当前客户与任务数量",
-            "固定在 b21b6e4，用 git show 和 git grep 查看 README、main.py、路由与测试"
+            "固定在 710807b，用 git show 和 git grep 查看 README、main.py、路由与测试"
           ],
-          "answer": "固定在 b21b6e4，用 git show 和 git grep 查看 README、main.py、路由与测试",
-          "explanation": "结论：课程观察应基于固定提交的版本化源码，不接触运行数据。\n依据：git show 与 git grep 可以读取 b21b6e4 中已提交的公开代码和文档，不需要加载 .env、连接数据库、查看导出或调用生产网络。\n错误选项：A：生产 profile 和真实任务会访问外部系统并可能产生业务副作用；B：环境变量可能含数据库、Account-Key 或供应商凭据，不属于课程盘点材料；C：连接数据库会读取真实客户和任务数据，超出固定源码的只读边界。\n实践：先检查工作区，再用路径限定的 git 命令建立路由清单；所有结论都记录提交号和文件证据。"
+          "answer": "固定在 710807b，用 git show 和 git grep 查看 README、main.py、路由与测试",
+          "explanation": "结论：课程观察应基于固定提交的版本化源码，不接触运行数据。\n依据：git show 与 git grep 可以读取 710807b 中已提交的公开代码和文档，不需要加载 .env、连接数据库、查看导出或调用生产网络。\n错误选项：A：生产 profile 和真实任务会访问外部系统并可能产生业务副作用；B：环境变量可能含数据库、Account-Key 或供应商凭据，不属于课程盘点材料；C：连接数据库会读取真实客户和任务数据，超出固定源码的只读边界。\n实践：先检查工作区，再用路径限定的 git 命令建立路由清单；所有结论都记录提交号和文件证据。"
         },
         {
           "id": "course-fa-01-q05",
           "type": "multiple_choice",
-          "content": "[FastAPI1@b21b6e4] 审查一个“新增客户已完成”的 Codex 改动时，首要验收标准是什么？",
+          "content": "[FastAPI1@710807b] 审查一个“新增客户已完成”的 Codex 改动时，首要验收标准是什么？",
           "options": [
             "从页面提交一路追到受权 API、服务写入、错误处理和测试，确认不再只是提示占位",
             "新增客户按钮颜色与现有页面一致",
@@ -91,12 +91,12 @@
       "title": "FA02 组合根与生命周期",
       "order": 2,
       "lab_ref": "FA02",
-      "source_text": "fastapi1@b21b6e4: main.py, app/enterprise_data_platform/api/routes.py, app/internet_marketing/email_queue.py",
+      "source_text": "fastapi1@710807b: main.py, app/enterprise_data_platform/api/routes.py, app/internet_marketing/email_queue.py",
       "questions": [
         {
           "id": "course-fa-02-q01",
           "type": "multiple_choice",
-          "content": "[FastAPI1@b21b6e4] 哪个文件承担应用组合根的主要职责？",
+          "content": "[FastAPI1@710807b] 哪个文件承担应用组合根的主要职责？",
           "options": [
             "app/internet_marketing/services.py，因为它行数最多",
             "main.py，因为它创建 FastAPI、注册中间件与路由并管理 lifespan",
@@ -109,7 +109,7 @@
         {
           "id": "course-fa-02-q02",
           "type": "multiple_choice",
-          "content": "[FastAPI1@b21b6e4] 核对启动与关闭是否对称，应该重点阅读哪组材料？",
+          "content": "[FastAPI1@710807b] 核对启动与关闭是否对称，应该重点阅读哪组材料？",
           "options": [
             "只读 health 接口返回文案",
             "只看 APScheduler 的 Cron 表达式",
@@ -122,7 +122,7 @@
         {
           "id": "course-fa-02-q03",
           "type": "multiple_choice",
-          "content": "[FastAPI1@b21b6e4] 新增一个常驻后台消费者时，哪种接入方案最符合现有生命周期？",
+          "content": "[FastAPI1@710807b] 新增一个常驻后台消费者时，哪种接入方案最符合现有生命周期？",
           "options": [
             "在模块 import 时自动启动线程",
             "由每个请求按需创建并永不关闭",
@@ -135,20 +135,20 @@
         {
           "id": "course-fa-02-q04",
           "type": "multiple_choice",
-          "content": "[FastAPI1@b21b6e4] 在 Mac 上观察组合根而不启动服务，首选命令组合是什么？",
+          "content": "[FastAPI1@710807b] 在 Mac 上观察组合根而不启动服务，首选命令组合是什么？",
           "options": [
-            "git show b21b6e4:main.py 配合 rg 检索 lifespan、include_router、mount 和 readiness",
+            "git show 710807b:main.py 配合 rg 检索 lifespan、include_router、mount 和 readiness",
             "执行 uvicorn 并连接公开域名",
             "打开数据库控制台查看连接池",
             "运行后台清理脚本验证调度器"
           ],
-          "answer": "git show b21b6e4:main.py 配合 rg 检索 lifespan、include_router、mount 和 readiness",
+          "answer": "git show 710807b:main.py 配合 rg 检索 lifespan、include_router、mount 和 readiness",
           "explanation": "结论：组合关系可以完全从固定提交的源码静态观察。\n依据：main.py 中的 FastAPI 构造、middleware、router 挂载、lifespan 和 readiness 检查已经暴露了组件边界，不需要运行服务或触发定时任务。\n错误选项：B：启动 uvicorn 并连接公开域名会离开静态观察边界并可能访问真实服务；C：数据库控制台需要运行连接信息且会暴露运行态资源；D：执行清理脚本会触发删除或状态迁移，不是无副作用盘点。\n实践：先用 rg 获取符号行号，再用 git show 的小范围切片阅读上下文，最后把每个组件的启动、停止和健康信号画成表格。"
         },
         {
           "id": "course-fa-02-q05",
           "type": "multiple_choice",
-          "content": "[FastAPI1@b21b6e4] 审查调度器相关改动时，哪个风险最值得优先检查？",
+          "content": "[FastAPI1@710807b] 审查调度器相关改动时，哪个风险最值得优先检查？",
           "options": [
             "调度任务名称是否足够简短",
             "多进程下是否仍由文件锁保证单主实例，并在失败和关闭时正确释放与上报",
@@ -166,12 +166,12 @@
       "title": "FA03 认证与权限",
       "order": 3,
       "lab_ref": "FA03",
-      "source_text": "fastapi1@b21b6e4: README.md, app/login/routes.py, app/middleware/permission.py, app/internet_marketing/routes.py",
+      "source_text": "fastapi1@710807b: README.md, app/login/routes.py, app/middleware/permission.py, app/internet_marketing/routes.py",
       "questions": [
         {
           "id": "course-fa-03-q01",
           "type": "multiple_choice",
-          "content": "[FastAPI1@b21b6e4] 哪组最完整地概括了仓库的四类认证面？",
+          "content": "[FastAPI1@710807b] 哪组最完整地概括了仓库的四类认证面？",
           "options": [
             "只有用户名密码，没有 token 或客户端认证",
             "浏览器 cookie、数据库口令、SSH 私钥和 OSS 密钥",
@@ -184,7 +184,7 @@
         {
           "id": "course-fa-03-q02",
           "type": "multiple_choice",
-          "content": "[FastAPI1@b21b6e4] 判断一个新 API 需要何种权限，应该核对哪些现有材料？",
+          "content": "[FastAPI1@710807b] 判断一个新 API 需要何种权限，应该核对哪些现有材料？",
           "options": [
             "只看函数名是否含 admin",
             "只看前端是否隐藏按钮",
@@ -197,7 +197,7 @@
         {
           "id": "course-fa-03-q03",
           "type": "multiple_choice",
-          "content": "[FastAPI1@b21b6e4] 新增企业只读接口时，最稳妥的权限设计是什么？",
+          "content": "[FastAPI1@710807b] 新增企业只读接口时，最稳妥的权限设计是什么？",
           "options": [
             "复用 user_required，并继续应用当前用户的区域范围过滤与响应模型",
             "因为是 GET，所以无需认证",
@@ -210,7 +210,7 @@
         {
           "id": "course-fa-03-q04",
           "type": "multiple_choice",
-          "content": "[FastAPI1@b21b6e4] 在 Mac 上安全观察认证合同，哪种方式合适？",
+          "content": "[FastAPI1@710807b] 在 Mac 上安全观察认证合同，哪种方式合适？",
           "options": [
             "打印本机 config.toml 中的 Account-Key",
             "用 git show 阅读 login/routes.py 与 permission.py，并用测试名称核对拒绝路径",
@@ -223,7 +223,7 @@
         {
           "id": "course-fa-03-q05",
           "type": "multiple_choice",
-          "content": "[FastAPI1@b21b6e4] Codex 为兼容旧微信客户端而放宽所有微信读接口认证，应该如何审查？",
+          "content": "[FastAPI1@710807b] Codex 为兼容旧微信客户端而放宽所有微信读接口认证，应该如何审查？",
           "options": [
             "接受，因为兼容性永远优先于最小权限",
             "只要增加一条日志就接受",
@@ -241,12 +241,12 @@
       "title": "FA04 数据与状态",
       "order": 4,
       "lab_ref": "FA04",
-      "source_text": "fastapi1@b21b6e4: README.md, app/utils/redis_client.py, app/enterprise_data_platform/oss/oss_download.py, main.py",
+      "source_text": "fastapi1@710807b: README.md, app/utils/redis_client.py, app/enterprise_data_platform/oss/oss_download.py, main.py",
       "questions": [
         {
           "id": "course-fa-04-q01",
           "type": "multiple_choice",
-          "content": "[FastAPI1@b21b6e4] PostgreSQL、Redis 与 OSS 在当前架构中的主要分工是什么？",
+          "content": "[FastAPI1@710807b] PostgreSQL、Redis 与 OSS 在当前架构中的主要分工是什么？",
           "options": [
             "三者都保存完全相同的客户记录作为多主数据库",
             "Redis 是唯一业务真相，PostgreSQL 只做缓存",
@@ -259,7 +259,7 @@
         {
           "id": "course-fa-04-q02",
           "type": "multiple_choice",
-          "content": "[FastAPI1@b21b6e4] 只读理解数据边界时，哪组源码最有代表性？",
+          "content": "[FastAPI1@710807b] 只读理解数据边界时，哪组源码最有代表性？",
           "options": [
             "企业 services/API、redis_client、AI/邮件任务管理和 OSS 下载模块",
             "仅查看 Tailwind 静态资源",
@@ -272,7 +272,7 @@
         {
           "id": "course-fa-04-q03",
           "type": "multiple_choice",
-          "content": "[FastAPI1@b21b6e4] Redis 暂时不可用时，哪种判断最符合当前系统？",
+          "content": "[FastAPI1@710807b] Redis 暂时不可用时，哪种判断最符合当前系统？",
           "options": [
             "所有 PostgreSQL 业务数据会立即丢失",
             "依赖 Redis 的队列、AI 任务或 readiness 会降级/失败，但持久化业务真相仍应留在 PostgreSQL",
@@ -285,20 +285,20 @@
         {
           "id": "course-fa-04-q04",
           "type": "multiple_choice",
-          "content": "[FastAPI1@b21b6e4] 在 Mac 上观察存储分工，哪项不会接触真实数据？",
+          "content": "[FastAPI1@710807b] 在 Mac 上观察存储分工，哪项不会接触真实数据？",
           "options": [
             "运行企业导出并打开结果文件",
             "连接 Redis 列出所有键",
-            "用 git grep 在 b21b6e4 中检索 SessionLocal、get_redis_client 和 OSS 下载调用",
+            "用 git grep 在 710807b 中检索 SessionLocal、get_redis_client 和 OSS 下载调用",
             "打开本地数据库查看企业表"
           ],
-          "answer": "用 git grep 在 b21b6e4 中检索 SessionLocal、get_redis_client 和 OSS 下载调用",
+          "answer": "用 git grep 在 710807b 中检索 SessionLocal、get_redis_client 和 OSS 下载调用",
           "explanation": "结论：静态调用图足以建立存储职责地图。\n依据：版本化源码会显示数据库会话、Redis 客户端和 OSS 函数的引用位置，而不会读取任何连接串、键值、企业记录、导出或对象内容。\n错误选项：A：生成并打开企业导出会接触真实企业文件和潜在写任务；B：列出 Redis 键会读取运行态队列、会话或任务标识；D：打开数据库会直接读取企业业务记录，不是源码层观察。\n实践：限定检索路径和提交号，记录“谁调用谁、失败如何返回、资源由谁关闭”，不执行数据访问命令。"
         },
         {
           "id": "course-fa-04-q05",
           "type": "multiple_choice",
-          "content": "[FastAPI1@b21b6e4] 审查一个把邮件最终结果只写 Redis 的改动，正确意见是什么？",
+          "content": "[FastAPI1@710807b] 审查一个把邮件最终结果只写 Redis 的改动，正确意见是什么？",
           "options": [
             "接受，Redis 查询更快",
             "接受，只要 TTL 设置足够长",
@@ -316,12 +316,12 @@
       "title": "FA05 采集任务",
       "order": 5,
       "lab_ref": "FA05",
-      "source_text": "fastapi1@b21b6e4: README.md, app/index/project_collection_service.py, client/Data-Collection/README.md",
+      "source_text": "fastapi1@710807b: README.md, app/index/project_collection_service.py, client/Data-Collection/README.md",
       "questions": [
         {
           "id": "course-fa-05-q01",
           "type": "multiple_choice",
-          "content": "[FastAPI1@b21b6e4] 首页项目采集的真实业务闭环是什么？",
+          "content": "[FastAPI1@710807b] 首页项目采集的真实业务闭环是什么？",
           "options": [
             "管理员创建地区任务，Data-Collection 经 WebSocket 领取、续租、采集并回传进度、数据同步和结果",
             "浏览器直接连接数据库批量写入企业表",
@@ -334,7 +334,7 @@
         {
           "id": "course-fa-05-q02",
           "type": "multiple_choice",
-          "content": "[FastAPI1@b21b6e4] 理解采集协议最关键的材料组合是什么？",
+          "content": "[FastAPI1@710807b] 理解采集协议最关键的材料组合是什么？",
           "options": [
             "只看首页任务卡片样式",
             "README 与 Data-Collection README、project_collection_service、客户端 main.py 和相关测试",
@@ -347,7 +347,7 @@
         {
           "id": "course-fa-05-q03",
           "type": "multiple_choice",
-          "content": "[FastAPI1@b21b6e4] 采集命令输出 PROJECT_COLLECTION_NOT_COLLECTABLE_YET 时应如何处理？",
+          "content": "[FastAPI1@710807b] 采集命令输出 PROJECT_COLLECTION_NOT_COLLECTABLE_YET 时应如何处理？",
           "options": [
             "立即把地区任务永久标记失败",
             "忽略 marker，只看进程退出码",
@@ -360,7 +360,7 @@
         {
           "id": "course-fa-05-q04",
           "type": "multiple_choice",
-          "content": "[FastAPI1@b21b6e4] 在 Mac 上只读观察采集租约，哪种方法正确？",
+          "content": "[FastAPI1@710807b] 在 Mac 上只读观察采集租约，哪种方法正确？",
           "options": [
             "启动真实 Windows 采集任务",
             "查看客户下载文件判断进度",
@@ -373,7 +373,7 @@
         {
           "id": "course-fa-05-q05",
           "type": "multiple_choice",
-          "content": "[FastAPI1@b21b6e4] 审查采集重试改动时，哪个不变量最重要？",
+          "content": "[FastAPI1@710807b] 审查采集重试改动时，哪个不变量最重要？",
           "options": [
             "重试不得造成同一 item 重复副作用，且租约、进度、脱敏错误和结果回传保持一致",
             "所有错误都无限立即重试",
@@ -391,12 +391,12 @@
       "title": "FA06 查询导出与AI",
       "order": 6,
       "lab_ref": "FA06",
-      "source_text": "fastapi1@b21b6e4: README.md, app/enterprise_data_platform/api/routes.py, app/enterprise_data_platform/ai/routes.py, app/enterprise_data_platform/ai/task_manager.py",
+      "source_text": "fastapi1@710807b: README.md, app/enterprise_data_platform/api/routes.py, app/enterprise_data_platform/ai/routes.py, app/enterprise_data_platform/ai/task_manager.py",
       "questions": [
         {
           "id": "course-fa-06-q01",
           "type": "multiple_choice",
-          "content": "[FastAPI1@b21b6e4] 企业数据平台的查询、导出与 AI 三类能力应如何区分？",
+          "content": "[FastAPI1@710807b] 企业数据平台的查询、导出与 AI 三类能力应如何区分？",
           "options": [
             "三者都只是同一个 GET 请求的不同名称",
             "查询负责筛选读取，导出负责受权文件任务，AI 负责分析或联网任务及状态管理",
@@ -409,7 +409,7 @@
         {
           "id": "course-fa-06-q02",
           "type": "multiple_choice",
-          "content": "[FastAPI1@b21b6e4] 研究导出与 AI 的安全边界，哪组材料最直接？",
+          "content": "[FastAPI1@710807b] 研究导出与 AI 的安全边界，哪组材料最直接？",
           "options": [
             "仅查看企业页面表格列名",
             "仅查看 AI 模型名称",
@@ -422,7 +422,7 @@
         {
           "id": "course-fa-06-q03",
           "type": "multiple_choice",
-          "content": "[FastAPI1@b21b6e4] 大批量企业导出预计耗时较长，应优先采用哪种现有模式？",
+          "content": "[FastAPI1@710807b] 大批量企业导出预计耗时较长，应优先采用哪种现有模式？",
           "options": [
             "在浏览器请求线程中无限等待",
             "先触发 AI 联网搜索再导出",
@@ -435,7 +435,7 @@
         {
           "id": "course-fa-06-q04",
           "type": "multiple_choice",
-          "content": "[FastAPI1@b21b6e4] 在 Mac 上观察企业 API 表面而不调用服务，首选什么？",
+          "content": "[FastAPI1@710807b] 在 Mac 上观察企业 API 表面而不调用服务，首选什么？",
           "options": [
             "git show 配合 rg 列出 @router、response_model、Depends 和导出/AI 状态函数",
             "运行 prod-smoke 并允许业务写入",
@@ -448,7 +448,7 @@
         {
           "id": "course-fa-06-q05",
           "type": "multiple_choice",
-          "content": "[FastAPI1@b21b6e4] 审查“简化下载权限”的 Codex 改动时，哪项必须保留？",
+          "content": "[FastAPI1@710807b] 审查“简化下载权限”的 Codex 改动时，哪项必须保留？",
           "options": [
             "文件名越短越好",
             "文件名校验、任务/文件归属、经理权限、错误不落盘和临时文件清理",
@@ -466,12 +466,12 @@
       "title": "FA07 邮件营销",
       "order": 7,
       "lab_ref": "FA07",
-      "source_text": "fastapi1@b21b6e4: app/internet_marketing/routes.py, app/internet_marketing/email_queue.py, app/internet_marketing/email_policy.py, tests/test_internet_marketing_queue_consumer.py",
+      "source_text": "fastapi1@710807b: app/internet_marketing/routes.py, app/internet_marketing/email_queue.py, app/internet_marketing/email_policy.py, tests/test_internet_marketing_queue_consumer.py",
       "questions": [
         {
           "id": "course-fa-07-q01",
           "type": "multiple_choice",
-          "content": "[FastAPI1@b21b6e4] 邮件营销当前的核心执行闭环是什么？",
+          "content": "[FastAPI1@710807b] 邮件营销当前的核心执行闭环是什么？",
           "options": [
             "浏览器直接循环调用邮件供应商，不保存任务",
             "每封邮件都作为独立 GitHub Action 运行",
@@ -484,7 +484,7 @@
         {
           "id": "course-fa-07-q02",
           "type": "multiple_choice",
-          "content": "[FastAPI1@b21b6e4] 核对邮件任务为什么没有推进，应该先阅读哪组材料？",
+          "content": "[FastAPI1@710807b] 核对邮件任务为什么没有推进，应该先阅读哪组材料？",
           "options": [
             "只看邮件模板 HTML",
             "只看客户邮箱字段",
@@ -497,7 +497,7 @@
         {
           "id": "course-fa-07-q03",
           "type": "multiple_choice",
-          "content": "[FastAPI1@b21b6e4] worker 重启后发现 Redis 中存在任务状态但持久层任务已不存在，应如何处理？",
+          "content": "[FastAPI1@710807b] worker 重启后发现 Redis 中存在任务状态但持久层任务已不存在，应如何处理？",
           "options": [
             "按现有恢复/孤儿清理规则处理，避免继续发送不存在任务",
             "无条件重发所有邮件",
@@ -510,7 +510,7 @@
         {
           "id": "course-fa-07-q04",
           "type": "multiple_choice",
-          "content": "[FastAPI1@b21b6e4] 在 Mac 上安全观察邮件队列，应该怎么做？",
+          "content": "[FastAPI1@710807b] 在 Mac 上安全观察邮件队列，应该怎么做？",
           "options": [
             "连接生产 Redis 查看任务 payload",
             "git show email_queue.py，并用 rg 提取 worker、lock、status、recovery 与测试符号",
@@ -523,7 +523,7 @@
         {
           "id": "course-fa-07-q05",
           "type": "multiple_choice",
-          "content": "[FastAPI1@b21b6e4] 审查邮件事件回调改动时，哪个组合最关键？",
+          "content": "[FastAPI1@710807b] 审查邮件事件回调改动时，哪个组合最关键？",
           "options": [
             "只检查回调页面是否美观",
             "只检查 HTTP 200 数量",
@@ -541,12 +541,12 @@
       "title": "FA08 微信与客户",
       "order": 8,
       "lab_ref": "FA08",
-      "source_text": "fastapi1@b21b6e4: README.md, app/internet_marketing/routes.py, client/wxcli/README.md, html/customer_management.html",
+      "source_text": "fastapi1@710807b: README.md, app/internet_marketing/routes.py, client/wxcli/README.md, html/customer_management.html",
       "questions": [
         {
           "id": "course-fa-08-q01",
           "type": "multiple_choice",
-          "content": "[FastAPI1@b21b6e4] 微信营销服务端与 wxcli 的职责边界是什么？",
+          "content": "[FastAPI1@710807b] 微信营销服务端与 wxcli 的职责边界是什么？",
           "options": [
             "服务端直接控制所有 Windows UI，wxcli 只展示报表",
             "wxcli 保存全部客户真相，服务端无需任务记录",
@@ -559,7 +559,7 @@
         {
           "id": "course-fa-08-q02",
           "type": "multiple_choice",
-          "content": "[FastAPI1@b21b6e4] 理解微信 worker 崩溃恢复，最应查看哪些材料？",
+          "content": "[FastAPI1@710807b] 理解微信 worker 崩溃恢复，最应查看哪些材料？",
           "options": [
             "wxcli README、worker/runner、pending 与 ledger 实现，以及微信任务服务端测试",
             "只看微信页面颜色",
@@ -572,7 +572,7 @@
         {
           "id": "course-fa-08-q03",
           "type": "multiple_choice",
-          "content": "[FastAPI1@b21b6e4] pending 结果回传持续收到 400/404/409 时，wxcli 应怎样处理？",
+          "content": "[FastAPI1@710807b] pending 结果回传持续收到 400/404/409 时，wxcli 应怎样处理？",
           "options": [
             "永久高频重试并阻塞所有后续任务",
             "移入 quarantine，保留诊断材料但解除 worker 永久阻塞",
@@ -585,7 +585,7 @@
         {
           "id": "course-fa-08-q04",
           "type": "multiple_choice",
-          "content": "[FastAPI1@b21b6e4] 在 Mac 上观察 wxcli 状态机制，哪种方法安全？",
+          "content": "[FastAPI1@710807b] 在 Mac 上观察 wxcli 状态机制，哪种方法安全？",
           "options": [
             "远程控制一台已登录微信的 Windows 机器",
             "读取本机 pending-results.json 的真实内容",
@@ -598,7 +598,7 @@
         {
           "id": "course-fa-08-q05",
           "type": "multiple_choice",
-          "content": "[FastAPI1@b21b6e4] 审查营销“全渠道已完成”的说法时，哪项判断正确？",
+          "content": "[FastAPI1@710807b] 审查营销“全渠道已完成”的说法时，哪项判断正确？",
           "options": [
             "四个营销渠道的后端成熟度完全相同",
             "只要 dashboard 有零值统计就表示渠道已上线",
@@ -616,12 +616,12 @@
       "title": "FA09 三类客户端",
       "order": 9,
       "lab_ref": "FA09",
-      "source_text": "fastapi1@b21b6e4: client/README.md, client/fastapi1_cli/README.md, client/Data-Collection/README.md, client/wxcli/README.md",
+      "source_text": "fastapi1@710807b: client/README.md, client/fastapi1_cli/README.md, client/Data-Collection/README.md, client/wxcli/README.md",
       "questions": [
         {
           "id": "course-fa-09-q01",
           "type": "multiple_choice",
-          "content": "[FastAPI1@b21b6e4] 三类客户端的主要用途如何对应？",
+          "content": "[FastAPI1@710807b] 三类客户端的主要用途如何对应？",
           "options": [
             "fastapi1 CLI 做通用受控 HTTP 操作，Data-Collection 执行采集 WebSocket 协议，wxcli 执行 Windows 微信 RPA",
             "三个客户端都是同一程序的不同文件名",
@@ -634,7 +634,7 @@
         {
           "id": "course-fa-09-q02",
           "type": "multiple_choice",
-          "content": "[FastAPI1@b21b6e4] 判断某操作应加入哪个客户端，应该先看什么？",
+          "content": "[FastAPI1@710807b] 判断某操作应加入哪个客户端，应该先看什么？",
           "options": [
             "哪个客户端文件最短",
             "client 各 README/AGENTS、公开入口、认证协议和现有命令覆盖",
@@ -647,7 +647,7 @@
         {
           "id": "course-fa-09-q03",
           "type": "multiple_choice",
-          "content": "[FastAPI1@b21b6e4] 需要只读列出企业项目并输出机器可读结果，应优先选什么？",
+          "content": "[FastAPI1@710807b] 需要只读列出企业项目并输出机器可读结果，应优先选什么？",
           "options": [
             "Data-Collection --once",
             "wx doctor",
@@ -660,7 +660,7 @@
         {
           "id": "course-fa-09-q04",
           "type": "multiple_choice",
-          "content": "[FastAPI1@b21b6e4] 在 Mac 上比较三类客户端而不运行外部系统，最佳做法是什么？",
+          "content": "[FastAPI1@710807b] 在 Mac 上比较三类客户端而不运行外部系统，最佳做法是什么？",
           "options": [
             "安装并启动所有 Windows 依赖",
             "调用生产接口比较返回速度",
@@ -673,7 +673,7 @@
         {
           "id": "course-fa-09-q05",
           "type": "multiple_choice",
-          "content": "[FastAPI1@b21b6e4] Codex 把 Data-Collection WebSocket 功能复制进通用 CLI，审查时应如何处理？",
+          "content": "[FastAPI1@710807b] Codex 把 Data-Collection WebSocket 功能复制进通用 CLI，审查时应如何处理？",
           "options": [
             "要求先证明重复实现的必要性；默认保留 Data-Collection 的协议所有权并复用现有客户端",
             "接受，客户端越多功能越完整",
@@ -691,12 +691,12 @@
       "title": "FA10 依赖与部署",
       "order": 10,
       "lab_ref": "FA10",
-      "source_text": "fastapi1@b21b6e4: requirements.txt, requirements-tools.txt, client/fastapi1_cli/pyproject.toml, client/fastapi1_cli/install-local.sh, client/fastapi1_cli/install-local.ps1, client/wxcli/pyproject.toml, client/wxcli/install-windows.ps1, client/Data-Collection/requirements.txt, .github/workflows/harness.yml",
+      "source_text": "fastapi1@710807b: requirements.txt, requirements-tools.txt, client/fastapi1_cli/pyproject.toml, client/fastapi1_cli/install-local.sh, client/fastapi1_cli/install-local.ps1, client/wxcli/pyproject.toml, client/wxcli/install-windows.ps1, client/Data-Collection/requirements.txt, .github/workflows/harness.yml",
       "questions": [
         {
           "id": "course-fa-10-q01",
           "type": "multiple_choice",
-          "content": "[FastAPI1@b21b6e4] 根应用与客户端的 Python 版本要求应如何理解？",
+          "content": "[FastAPI1@710807b] 根应用与客户端的 Python 版本要求应如何理解？",
           "options": [
             "整个仓库只支持一个未声明的 Python 版本",
             "通用 CLI 明确要求 Python 3.11+，wxcli 要求 3.10+，Data-Collection 与根应用还需结合依赖和部署环境分别验证",
@@ -709,7 +709,7 @@
         {
           "id": "course-fa-10-q02",
           "type": "multiple_choice",
-          "content": "[FastAPI1@b21b6e4] 核对依赖漂移风险时，哪组文件必须一起看？",
+          "content": "[FastAPI1@710807b] 核对依赖漂移风险时，哪组文件必须一起看？",
           "options": [
             "只看 package.json",
             "只看根 requirements.txt",
@@ -722,7 +722,7 @@
         {
           "id": "course-fa-10-q03",
           "type": "multiple_choice",
-          "content": "[FastAPI1@b21b6e4] 某依赖在 Python 3.13 的 harness job 安装成功，能否直接宣布生产兼容？",
+          "content": "[FastAPI1@710807b] 某依赖在 Python 3.13 的 harness job 安装成功，能否直接宣布生产兼容？",
           "options": [
             "能，因为最新 Python 会覆盖所有平台行为",
             "能，只要 pip 没报错",
@@ -735,7 +735,7 @@
         {
           "id": "course-fa-10-q04",
           "type": "multiple_choice",
-          "content": "[FastAPI1@b21b6e4] 在 Mac 上只读比较依赖，哪条命令路径最安全？",
+          "content": "[FastAPI1@710807b] 在 Mac 上只读比较依赖，哪条命令路径最安全？",
           "options": [
             "git show 固定提交中的 requirements 与 pyproject，并用 rg 比较版本约束",
             "直接升级当前全局 Python 包",
@@ -748,7 +748,7 @@
         {
           "id": "course-fa-10-q05",
           "type": "multiple_choice",
-          "content": "[FastAPI1@b21b6e4] 审查一次“大范围统一依赖版本”的 Codex 改动，首先要求什么？",
+          "content": "[FastAPI1@710807b] 审查一次“大范围统一依赖版本”的 Codex 改动，首先要求什么？",
           "options": [
             "所有文件使用完全相同的依赖集合",
             "说明每个运行面的必要性、兼容矩阵、锁定策略、目标测试、部署顺序和回滚版本",
@@ -766,12 +766,12 @@
       "title": "FA11 测试与Harness",
       "order": 11,
       "lab_ref": "FA11",
-      "source_text": "fastapi1@b21b6e4: pytest.ini, tests/, tests/e2e/, .codex/contract.json, scripts/check_harness_health.py, .github/workflows/harness.yml",
+      "source_text": "fastapi1@710807b: pytest.ini, tests/, tests/e2e/, .codex/contract.json, scripts/check_harness_health.py, .github/workflows/harness.yml",
       "questions": [
         {
           "id": "course-fa-11-q01",
           "type": "multiple_choice",
-          "content": "[FastAPI1@b21b6e4] 仓库的测试与 Harness 各自主要解决什么问题？",
+          "content": "[FastAPI1@710807b] 仓库的测试与 Harness 各自主要解决什么问题？",
           "options": [
             "二者都只检查代码格式",
             "Harness 负责生产数据备份，pytest 负责部署",
@@ -784,7 +784,7 @@
         {
           "id": "course-fa-11-q02",
           "type": "multiple_choice",
-          "content": "[FastAPI1@b21b6e4] 研究 Harness 的权威材料组合是什么？",
+          "content": "[FastAPI1@710807b] 研究 Harness 的权威材料组合是什么？",
           "options": [
             "只看全局 Codex 配置",
             "只看某次代理聊天记录",
@@ -797,7 +797,7 @@
         {
           "id": "course-fa-11-q03",
           "type": "multiple_choice",
-          "content": "[FastAPI1@b21b6e4] 修改邮件队列一个状态分支后，最合理的测试顺序是什么？",
+          "content": "[FastAPI1@710807b] 修改邮件队列一个状态分支后，最合理的测试顺序是什么？",
           "options": [
             "先跑最小相关队列测试，再扩展营销集成测试，必要时最后跑隔离 E2E",
             "一开始就连接生产发送真实邮件",
@@ -810,7 +810,7 @@
         {
           "id": "course-fa-11-q04",
           "type": "multiple_choice",
-          "content": "[FastAPI1@b21b6e4] 在 Mac 上只读盘点测试覆盖，哪种方法合适？",
+          "content": "[FastAPI1@710807b] 在 Mac 上只读盘点测试覆盖，哪种方法合适？",
           "options": [
             "运行所有生产 smoke 并允许业务写入",
             "git ls-tree 与 git grep 枚举 tests、E2E manifest、workflow 和目标模块引用",
@@ -823,7 +823,7 @@
         {
           "id": "course-fa-11-q05",
           "type": "multiple_choice",
-          "content": "[FastAPI1@b21b6e4] 当前 GitHub Actions 最明显的应用质量缺口是什么？",
+          "content": "[FastAPI1@710807b] 当前 GitHub Actions 最明显的应用质量缺口是什么？",
           "options": [
             "没有 checkout 步骤",
             "没有安装 Python",
@@ -841,12 +841,12 @@
       "title": "FA12 审查Codex改动",
       "order": 12,
       "lab_ref": "FA12",
-      "source_text": "fastapi1@b21b6e4: AGENTS.md, .codex/AGENTS.md, graphify-out/GRAPH_REPORT.md, .github/workflows/harness.yml, main.py",
+      "source_text": "fastapi1@710807b: AGENTS.md, .codex/AGENTS.md, graphify-out/GRAPH_REPORT.md, .github/workflows/harness.yml, main.py",
       "questions": [
         {
           "id": "course-fa-12-q01",
           "type": "multiple_choice",
-          "content": "[FastAPI1@b21b6e4] 审查 Codex 改动的第一原则是什么？",
+          "content": "[FastAPI1@710807b] 审查 Codex 改动的第一原则是什么？",
           "options": [
             "先运行所有部署命令，再查看差异",
             "只根据 Codex 的完成说明判断",
@@ -859,7 +859,7 @@
         {
           "id": "course-fa-12-q02",
           "type": "multiple_choice",
-          "content": "[FastAPI1@b21b6e4] 开始审查前，哪组材料最能限定改动意图和仓库规则？",
+          "content": "[FastAPI1@710807b] 开始审查前，哪组材料最能限定改动意图和仓库规则？",
           "options": [
             "git status/diff、相关 AGENTS、需求说明、目标模块测试与最近提交",
             "只看最终文件大小",
@@ -872,7 +872,7 @@
         {
           "id": "course-fa-12-q03",
           "type": "multiple_choice",
-          "content": "[FastAPI1@b21b6e4] 面对超大 services.py 中的一处修复，最稳妥的改动策略是什么？",
+          "content": "[FastAPI1@710807b] 面对超大 services.py 中的一处修复，最稳妥的改动策略是什么？",
           "options": [
             "顺便重写整个文件并引入新框架",
             "定位共享根因和全部调用方，做最小修复并用目标回归测试锁住行为",
@@ -885,7 +885,7 @@
         {
           "id": "course-fa-12-q04",
           "type": "multiple_choice",
-          "content": "[FastAPI1@b21b6e4] 在 Mac 上做无副作用改动审查，哪组命令最合适？",
+          "content": "[FastAPI1@710807b] 在 Mac 上做无副作用改动审查，哪组命令最合适？",
           "options": [
             "直接 reset --hard 回到主分支",
             "部署当前分支后观察生产日志",
@@ -898,7 +898,7 @@
         {
           "id": "course-fa-12-q05",
           "type": "multiple_choice",
-          "content": "[FastAPI1@b21b6e4] 对当前技术债的描述，哪项最准确？",
+          "content": "[FastAPI1@710807b] 对当前技术债的描述，哪项最准确？",
           "options": [
             "项目已完成 Alembic 迁移、全应用 CI 和小文件模块化，不存在明显债务",
             "唯一问题是 README 太长，代码结构没有风险",

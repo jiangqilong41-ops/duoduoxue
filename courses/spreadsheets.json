@@ -1,0 +1,212 @@
+{
+  "course": {
+    "id": "spreadsheets",
+    "prefix": "SS",
+    "title": "spreadsheets"
+  },
+  "source": {
+    "kind": "local-sanitized",
+    "ref": "spreadsheets@26.715.12143",
+    "snapshot": "2026-07-20"
+  },
+  "decks": [
+    {
+      "id": "course-ss-01",
+      "code": "SS01",
+      "title": "SS01 Spreadsheets 插件总览",
+      "order": 1,
+      "lab_ref": "SS01",
+      "source_text": "spreadsheets@26.715.12143#.codex-plugin/plugin.json; README.md",
+      "questions": [
+        {
+          "id": "course-ss-01-q01",
+          "type": "multiple_choice",
+          "content": "[spreadsheets@26.715.12143] 场景：用户要创建、编辑、分析或验证 XLSX、XLS、CSV、TSV、Google Sheets 目标文件，或明确控制已打开的 Excel 工作簿。哪项处理最符合 Spreadsheets 插件总览 的职责？",
+          "options": [
+            "调用 @spreadsheets，在独立工作簿与 Microsoft Excel 实时会话之间选择正确执行面",
+            "只打开 Spreadsheets 总览并直接宣称任务完成",
+            "跳过输入与验证，直接在 live 连接失败后擅自改做另一份本地工作簿",
+            "改用 Sales 客户跟进流程来绕开文件请求"
+          ],
+          "answer": "调用 @spreadsheets，在独立工作簿与 Microsoft Excel 实时会话之间选择正确执行面",
+          "explanation": "结论：应选择 @spreadsheets，把请求交给清晰且最窄的文件能力。\n依据：Spreadsheets manifest 和 README 同时列出独立文件 skill 与 excel-live-control，并明确两条执行面的分界。\n错误选项：B：总览或路由说明不能替代 Spreadsheets 插件总览 的实际输出；C：该做法触犯“通用建表默认走独立文件，只有显式 Excel desktop、已打开 workbook 或 add-in 语境才走 live control，不能静默切换”这一边界；D：销售跟进不能产出“Spreadsheets 文件工作流或 Excel Live Control 路由，以及对应验收面”\n实践：用虚构文件复述输入、预期输出和停止条件，再写出显式调用。"
+        },
+        {
+          "id": "course-ss-01-q02",
+          "type": "true_false",
+          "content": "[spreadsheets@26.715.12143] 场景：最终产物是 Word、PDF 或纯聊天分析，且没有电子表格输入或输出。同事仍计划调用 @spreadsheets 并在 live 连接失败后擅自改做另一份本地工作簿。这个判断正确吗？",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "错误",
+          "explanation": "结论：该场景不应沿用这个执行路径。\n依据：通用建表默认走独立文件；只有显式 Excel desktop、已打开 workbook 或 add-in 语境才走 live control，不能静默切换；当前不适用条件是“最终产物是 Word、PDF 或纯聊天分析，且没有电子表格输入或输出”。\n实践：先写一句不适用理由，再选择更匹配的文件 skill 或停在澄清步骤。"
+        },
+        {
+          "id": "course-ss-01-q03",
+          "type": "fill_blank",
+          "content": "[spreadsheets@26.715.12143] 场景：你已确认“用户要创建、编辑、分析或验证 XLSX、XLS、CSV、TSV、Google Sheets 目标文件，或明确控制已打开的 Excel 工作簿”，要显式记录插件、skill slug 与 display name。应调用 ___（Spreadsheets 插件总览）。",
+          "options": [],
+          "answer": "@spreadsheets",
+          "explanation": "结论：显式调用写作 @spreadsheets。\n依据：课程把 spreadsheets 作为插件名，并把 @spreadsheets 作为插件入口；展示名是“Spreadsheets 插件总览”。\n实践：把合成文件任务追加在调用后，并写明期望得到“Spreadsheets 文件工作流或 Excel Live Control 路由，以及对应验收面”。"
+        },
+        {
+          "id": "course-ss-01-q04",
+          "type": "multiple_choice",
+          "content": "[spreadsheets@26.715.12143] 场景：学员要在不创建真实文件的情况下验收本单元。哪项证据最有效？",
+          "options": [
+            "读取真实客户或生产文件来提高练习真实性",
+            "使用合成输入得到Spreadsheets 文件工作流或 Excel Live Control 路由，以及对应验收面，并检查“通用建表默认走独立文件；只有显式 Excel desktop、已打开 workbook 或 add-in 语境才走 live control，不能静默切换”",
+            "执行在 live 连接失败后擅自改做另一份本地工作簿后只回复“已完成”",
+            "一次执行所有文件插件，以免遗漏"
+          ],
+          "answer": "使用合成输入得到Spreadsheets 文件工作流或 Excel Live Control 路由，以及对应验收面，并检查“通用建表默认走独立文件；只有显式 Excel desktop、已打开 workbook 或 add-in 语境才走 live control，不能静默切换”",
+          "explanation": "结论：验收要同时看到目标输出和边界检查。\n依据：用合成请求判断本地 XLSX、Google Sheets handoff 与 live Excel 的路由，课程不读取真实文件、凭据或生产数据，也不执行外部写入。\n错误选项：A：课程安全边界限定合成材料与只读判断；C：这既越过能力边界，也没有可观察验收结果；D：入口应按最终产物选择最窄文件 workflow\n实践：保留合成提示词、路由判断和检查清单作为观察证据。"
+        },
+        {
+          "id": "course-ss-01-q05",
+          "type": "true_false",
+          "content": "[spreadsheets@26.715.12143] 场景：学员只用合成的“工作簿目标、文件或 live Excel 线索、目标 sheet/range、计算和交付要求”，得到Spreadsheets 文件工作流或 Excel Live Control 路由，以及对应验收面，并确认没有在 live 连接失败后擅自改做另一份本地工作簿。这可以作为本单元的可观察验收吗？",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：这组证据覆盖了能力选择、输出和安全边界。\n依据：用合成请求判断本地 XLSX、Google Sheets handoff 与 live Excel 的路由；课程练习不需要真实客户数据、外部写入或生产操作。\n实践：逐项记录输入、输出与“通用建表默认走独立文件；只有显式 Excel desktop、已打开 workbook 或 add-in 语境才走 live control，不能静默切换”的检查结果。"
+        }
+      ]
+    },
+    {
+      "id": "course-ss-02",
+      "code": "SS02",
+      "title": "SS02 Spreadsheets:Excel 实时控制",
+      "order": 2,
+      "lab_ref": "SS02",
+      "source_text": "spreadsheets@26.715.12143#skills/excel-live-control/SKILL.md; skills/excel-live-control/agents/openai.yaml",
+      "questions": [
+        {
+          "id": "course-ss-02-q01",
+          "type": "multiple_choice",
+          "content": "[spreadsheets@26.715.12143] 场景：用户显式标记 Microsoft Excel，或请求针对已打开、活动、已连接 workbook、选区或 add-in 的后续修改。哪项处理最符合 excel-live-control（Spreadsheets:Excel 实时控制） 的职责？",
+          "options": [
+            "只打开 Spreadsheets 总览并直接宣称任务完成",
+            "跳过输入与验证，直接向名称相似的其他 workbook 发命令，或通过界面自动化编辑单元格",
+            "调用 $spreadsheets:excel-live-control，写出经过 Excel、目标 workbook、ChatGPT add-in、登录、工具和注册门槛后进行只读核对的方案，并列出预期变更 diff",
+            "改用 Sales 客户跟进流程来绕开文件请求"
+          ],
+          "answer": "调用 $spreadsheets:excel-live-control，写出经过 Excel、目标 workbook、ChatGPT add-in、登录、工具和注册门槛后进行只读核对的方案，并列出预期变更 diff",
+          "explanation": "结论：应选择 $spreadsheets:excel-live-control，把请求交给清晰且最窄的文件能力。\n依据：excel-live-control 定义六步 setup state machine、session discovery、schema-first live commands 和禁止静默 fallback。\n错误选项：A：总览或路由说明不能替代 excel-live-control（Spreadsheets:Excel 实时控制） 的实际输出；B：该做法触犯“Computer Use 只用于设置与焦点，单元格读写必须走连接文档工具，任一设置门槛失败时停下，不能改写其他 workbook 或转本地文件”这一边界；D：销售跟进不能产出“连接门槛、只读检查计划、预期变更 diff 及关键值/公式/视觉验收字段”\n实践：用虚构文件复述输入、预期输出和停止条件，再写出显式调用。"
+        },
+        {
+          "id": "course-ss-02-q02",
+          "type": "true_false",
+          "content": "[spreadsheets@26.715.12143] 场景：用户只说创建电子表格、Excel 文件或 workbook，没有指向 Excel desktop 或 live session。同事仍计划调用 $spreadsheets:excel-live-control 并向名称相似的其他 workbook 发命令，或通过界面自动化编辑单元格。这个判断正确吗？",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "错误",
+          "explanation": "结论：该场景不应沿用这个执行路径。\n依据：Computer Use 只用于设置与焦点，单元格读写必须走连接文档工具；任一设置门槛失败时停下，不能改写其他 workbook 或转本地文件；当前不适用条件是“用户只说创建电子表格、Excel 文件或 workbook，没有指向 Excel desktop 或 live session”。\n实践：先写一句不适用理由，再选择更匹配的文件 skill 或停在澄清步骤。"
+        },
+        {
+          "id": "course-ss-02-q03",
+          "type": "fill_blank",
+          "content": "[spreadsheets@26.715.12143] 场景：你已确认“用户显式标记 Microsoft Excel，或请求针对已打开、活动、已连接 workbook、选区或 add-in 的后续修改”，要显式记录插件、skill slug 与 display name。应调用 ___（Spreadsheets:Excel 实时控制）。",
+          "options": [],
+          "answer": "$spreadsheets:excel-live-control",
+          "explanation": "结论：显式调用写作 $spreadsheets:excel-live-control。\n依据：课程把 spreadsheets 作为插件名，并把 excel-live-control 作为 skill slug；展示名是“Spreadsheets:Excel 实时控制”。\n实践：把合成文件任务追加在调用后，并写明期望得到“连接门槛、只读检查计划、预期变更 diff 及关键值/公式/视觉验收字段”。"
+        },
+        {
+          "id": "course-ss-02-q04",
+          "type": "ordering",
+          "content": "[spreadsheets@26.715.12143] 场景：用合成材料练习 excel-live-control（Spreadsheets:Excel 实时控制） 时，请按安全执行顺序排列。",
+          "options": [
+            "列出并检查连接门槛、只读检查计划、预期变更 diff 及关键值/公式/视觉验收字段",
+            "识别场景是否满足“用户显式标记 Microsoft Excel，或请求针对已打开、活动、已连接 workbook、选区或 add-in 的后续修改”",
+            "核对输入“明确 workbook 标题、sheet/range、当前选区、请求变更和已注册 live session”与所需依赖",
+            "按最小安全范围执行 $spreadsheets:excel-live-control"
+          ],
+          "answer": "识别场景是否满足“用户显式标记 Microsoft Excel，或请求针对已打开、活动、已连接 workbook、选区或 add-in 的后续修改”|核对输入“明确 workbook 标题、sheet/range、当前选区、请求变更和已注册 live session”与所需依赖|按最小安全范围执行 $spreadsheets:excel-live-control|列出并检查连接门槛、只读检查计划、预期变更 diff 及关键值/公式/视觉验收字段",
+          "explanation": "结论：先判定适用性和输入，再执行，最后检查可观察结果。\n依据：Computer Use 只用于设置与焦点，单元格读写必须走连接文档工具；任一设置门槛失败时停下，不能改写其他 workbook 或转本地文件；乱序执行容易跳过依赖或视觉验收门槛。\n实践：把四步抄成检查表，任何前置项不满足时停在对应步骤。"
+        },
+        {
+          "id": "course-ss-02-q05",
+          "type": "true_false",
+          "content": "[spreadsheets@26.715.12143] 场景：学员只用合成的“明确 workbook 标题、sheet/range、当前选区、请求变更和已注册 live session”，得到连接门槛、只读检查计划、预期变更 diff 及关键值/公式/视觉验收字段，并确认没有向名称相似的其他 workbook 发命令，或通过界面自动化编辑单元格。这可以作为本单元的可观察验收吗？",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：这组证据覆盖了能力选择、输出和安全边界。\n依据：用合成 setup 状态判断应继续、停下或请求用户处理哪一门槛；课程练习不需要真实客户数据、外部写入或生产操作。\n实践：逐项记录输入、输出与“Computer Use 只用于设置与焦点，单元格读写必须走连接文档工具；任一设置门槛失败时停下，不能改写其他 workbook 或转本地文件”的检查结果。"
+        }
+      ]
+    },
+    {
+      "id": "course-ss-03",
+      "code": "SS03",
+      "title": "SS03 Spreadsheets:电子表格",
+      "order": 3,
+      "lab_ref": "SS03",
+      "source_text": "spreadsheets@26.715.12143#skills/spreadsheets/SKILL.md; skills/spreadsheets/agents/openai.yaml",
+      "questions": [
+        {
+          "id": "course-ss-03-q01",
+          "type": "multiple_choice",
+          "content": "[spreadsheets@26.715.12143] 场景：用户要独立 XLSX、XLS、CSV、TSV 或 Google Sheets-ready workbook，且没有 live Excel 目标。哪项处理最符合 spreadsheets（Spreadsheets:电子表格） 的职责？",
+          "options": [
+            "只打开 Spreadsheets 总览并直接宣称任务完成",
+            "跳过输入与验证，直接硬编码派生值、忽略公式错误或在只读问答中改写文件",
+            "改用 Sales 客户跟进流程来绕开文件请求",
+            "插件 spreadsheets；路径 slug spreadsheets；调用名 Spreadsheets；调用 $spreadsheets:Spreadsheets，写出使用 loader 提供的 artifact-tool 创建、编辑、分析并验证独立电子表格的方案"
+          ],
+          "answer": "插件 spreadsheets；路径 slug spreadsheets；调用名 Spreadsheets；调用 $spreadsheets:Spreadsheets，写出使用 loader 提供的 artifact-tool 创建、编辑、分析并验证独立电子表格的方案",
+          "explanation": "结论：应选择 $spreadsheets:Spreadsheets，把请求交给清晰且最窄的文件能力。\n依据：Spreadsheets skill 规定 artifact-tool 路径、公式与类型规则、关键范围 inspect、错误扫描、全 sheet 视觉检查和单一最终导出。\n错误选项：A：总览或路由说明不能替代 spreadsheets（Spreadsheets:电子表格） 的实际输出；B：该做法触犯“必须使用 loader 提供的 @oai/artifact-tool，依赖缺失时报告阻塞，不能换 openpyxl 等库，读问题也不能擅自修改或导出”这一边界；C：销售跟进不能产出“artifact-tool 调用方案、公式可追溯规则、关键范围检查和渲染验收清单”\n实践：用虚构文件复述输入、预期输出和停止条件，再写出显式调用。"
+        },
+        {
+          "id": "course-ss-03-q02",
+          "type": "true_false",
+          "content": "[spreadsheets@26.715.12143] 场景：用户明确要求控制 Excel desktop 中当前打开的工作簿。同事仍计划调用 $spreadsheets:Spreadsheets 并硬编码派生值、忽略公式错误或在只读问答中改写文件。这个判断正确吗？",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "错误",
+          "explanation": "结论：该场景不应沿用这个执行路径。\n依据：必须使用 loader 提供的 @oai/artifact-tool；依赖缺失时报告阻塞，不能换 openpyxl 等库，读问题也不能擅自修改或导出；当前不适用条件是“用户明确要求控制 Excel desktop 中当前打开的工作簿”。\n实践：先写一句不适用理由，再选择更匹配的文件 skill 或停在澄清步骤。"
+        },
+        {
+          "id": "course-ss-03-q03",
+          "type": "fill_blank",
+          "content": "[spreadsheets@26.715.12143] 场景：你已确认“用户要独立 XLSX、XLS、CSV、TSV 或 Google Sheets-ready workbook，且没有 live Excel 目标”，要显式记录插件、skill slug 与 display name。应调用 ___（Spreadsheets:电子表格）。",
+          "options": [],
+          "answer": "$spreadsheets:Spreadsheets",
+          "explanation": "结论：显式调用写作 $spreadsheets:Spreadsheets。\n依据：插件名是 spreadsheets，路径 slug 是 spreadsheets，但 SKILL.md frontmatter 的调用名是 Spreadsheets；展示名是“Spreadsheets:电子表格”。\n实践：把合成文件任务追加在调用后，并写明期望得到“artifact-tool 调用方案、公式可追溯规则、关键范围检查和渲染验收清单”。"
+        },
+        {
+          "id": "course-ss-03-q04",
+          "type": "ordering",
+          "content": "[spreadsheets@26.715.12143] 场景：用合成材料练习 spreadsheets（Spreadsheets:电子表格） 时，请按安全执行顺序排列。",
+          "options": [
+            "列出并检查 artifact-tool 调用方案、公式可追溯规则、关键范围检查和渲染验收清单",
+            "识别场景是否满足“用户要独立 XLSX、XLS、CSV、TSV 或 Google Sheets-ready workbook，且没有 live Excel 目标”",
+            "核对输入“源表或数据、工作簿结构、公式规则、格式、图表需求和最终文件目标”与所需依赖",
+            "按最小安全范围执行 $spreadsheets:Spreadsheets"
+          ],
+          "answer": "识别场景是否满足“用户要独立 XLSX、XLS、CSV、TSV 或 Google Sheets-ready workbook，且没有 live Excel 目标”|核对输入“源表或数据、工作簿结构、公式规则、格式、图表需求和最终文件目标”与所需依赖|按最小安全范围执行 $spreadsheets:Spreadsheets|列出并检查 artifact-tool 调用方案、公式可追溯规则、关键范围检查和渲染验收清单",
+          "explanation": "结论：先判定适用性和输入，再执行，最后检查可观察结果。\n依据：必须使用 loader 提供的 @oai/artifact-tool；依赖缺失时报告阻塞，不能换 openpyxl 等库，读问题也不能擅自修改或导出；乱序执行容易跳过依赖或视觉验收门槛。\n实践：把四步抄成检查表，任何前置项不满足时停在对应步骤。"
+        },
+        {
+          "id": "course-ss-03-q05",
+          "type": "true_false",
+          "content": "[spreadsheets@26.715.12143] 场景：学员只用合成的“源表或数据、工作簿结构、公式规则、格式、图表需求和最终文件目标”，得到artifact-tool 调用方案、公式可追溯规则、关键范围检查和渲染验收清单，并确认没有硬编码派生值、忽略公式错误或在只读问答中改写文件。这可以作为本单元的可观察验收吗？",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：这组证据覆盖了能力选择、输出和安全边界。\n依据：用合成销售数据设计公式、格式和 compact verification；课程练习不需要真实客户数据、外部写入或生产操作。\n实践：逐项记录输入、输出与“必须使用 loader 提供的 @oai/artifact-tool；依赖缺失时报告阻塞，不能换 openpyxl 等库，读问题也不能擅自修改或导出”的检查结果。"
+        }
+      ]
+    }
+  ]
+}

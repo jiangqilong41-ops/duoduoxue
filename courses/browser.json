@@ -1,0 +1,160 @@
+{
+  "course": {
+    "id": "browser",
+    "prefix": "BR",
+    "title": "browser"
+  },
+  "source": {
+    "kind": "local-sanitized",
+    "ref": "browser@26.715.52143",
+    "snapshot": "2026-07-20"
+  },
+  "decks": [
+    {
+      "id": "course-br-01",
+      "code": "BR01",
+      "title": "BR01 Browser 插件总览",
+      "order": 1,
+      "lab_ref": "BR01",
+      "source_text": "browser@26.715.52143 的 .codex-plugin/plugin.json 与 canonical skills 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-br-01-q01",
+          "type": "multiple_choice",
+          "content": "[Browser] 第一次学习 Browser，怎样建立正确路径？",
+          "options": [
+            "先学习插件总览，再逐个学习 1 个独立 skill 单元",
+            "只背插件名，不区分内部 skill",
+            "同时调用所有可见工具",
+            "先在真实系统执行再补边界"
+          ],
+          "answer": "先学习插件总览，再逐个学习 1 个独立 skill 单元",
+          "explanation": "结论：先学习插件总览，再逐个学习 1 个独立 skill 单元。\n依据：manifest 声明 1 个 canonical skill；总览负责地图，后续单元负责具体判断。\n错误选项：B：无法形成路由能力；C：忽略了接口优先级和停止条件；D：课程不授权真实外部动作\n实践：列出每个 skill 的调用名、适用场景和一个停止条件。"
+        },
+        {
+          "id": "course-br-01-q02",
+          "type": "multiple_choice",
+          "content": "[Browser] 课程事实应如何固定？",
+          "options": [
+            "每次启动自动覆盖为最新版",
+            "使用 browser@26.715.52143 的 local-sanitized 快照并记录 2026-07-20",
+            "复制插件缓存和个人绝对路径",
+            "只保留营销名称"
+          ],
+          "answer": "使用 browser@26.715.52143 的 local-sanitized 快照并记录 2026-07-20",
+          "explanation": "结论：使用 browser@26.715.52143 的 local-sanitized 快照并记录 2026-07-20。\n依据：course source 同时记录 kind、ref 和 snapshot；技能事实来自 manifest 与 canonical SKILL.md。\n错误选项：A：会破坏可复现性；C：会泄露机器信息且超出课程范围；D：无法追溯版本与来源\n实践：对照研究表核对版本、相对路径和 SHA-256。"
+        },
+        {
+          "id": "course-br-01-q03",
+          "type": "multiple_choice",
+          "content": "[Browser] 课程练习应产出什么？",
+          "options": [
+            "真实系统操作后的截图",
+            "账户登录状态和 cookies",
+            "合成场景下的路由理由、输入输出、停止条件和预期验收证据",
+            "一句没有证据的“已完成”"
+          ],
+          "answer": "合成场景下的路由理由、输入输出、停止条件和预期验收证据",
+          "explanation": "结论：合成场景下的路由理由、输入输出、停止条件和预期验收证据。\n依据：Browser 与非浏览器接口的选择理由、所需输入、停止条件和预期可见证据。\n错误选项：A：课程不执行真实 UI 或部署；B：属于敏感运行态信息；D：不能观察或复核\n实践：使用 <synthetic-fixture> 写一份只读路由记录。"
+        },
+        {
+          "id": "course-br-01-q04",
+          "type": "multiple_choice",
+          "content": "[Browser] 遇到真实凭证、敏感状态或不可逆动作时怎么办？",
+          "options": [
+            "把凭证粘进提示词",
+            "先执行再询问",
+            "复制生产状态到本地",
+            "停止练习，改用 <synthetic-fixture>、占位符和预期证据"
+          ],
+          "answer": "停止练习，改用 <synthetic-fixture>、占位符和预期证据",
+          "explanation": "结论：停止练习，改用 <synthetic-fixture>、占位符和预期证据。\n依据：课程只分析 <synthetic-fixture> 本地页面；不启动浏览器、不读取登录态，也不点击、输入或截图真实页面。\n错误选项：A：会扩大敏感数据暴露；B：授权必须发生在受约束动作之前；C：生产数据不属于课程材料\n实践：明确写出停止原因，不尝试绕过。"
+        },
+        {
+          "id": "course-br-01-q05",
+          "type": "true_false",
+          "content": "[Browser] 插件可用或已安装就等于课程获得真实 UI、账户或部署操作授权。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "错误",
+          "explanation": "结论：安装状态不等于授权，课程只允许合成材料和预期证据。\n依据：manifest 描述能力，不替代用户授权与安全边界。\n实践：把实际操作改写成路由题和发布/动作前检查清单。"
+        }
+      ]
+    },
+    {
+      "id": "course-br-02",
+      "code": "BR02",
+      "title": "BR02 Browser",
+      "order": 2,
+      "lab_ref": "BR02",
+      "source_text": "browser@26.715.52143 的 skills/control-in-app-browser/SKILL.md 与相邻 agents/openai.yaml 本地脱敏快照；显示名 Browser；调用名 control-in-app-browser；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-br-02-q01",
+          "type": "multiple_choice",
+          "content": "[Browser] 虚构团队要在 in-app Browser 检查 localhost 页面按钮和响应式布局，最合适的入口是什么？",
+          "options": [
+            "显式调用 $browser:control-in-app-browser（Browser），只输出本地 UI 测试计划",
+            "先用文档 connector",
+            "改用 Computer Use 控制浏览器",
+            "用 shell 的 open 命令代替"
+          ],
+          "answer": "显式调用 $browser:control-in-app-browser（Browser），只输出本地 UI 测试计划",
+          "explanation": "结论：显式调用 $browser:control-in-app-browser（Browser），只输出本地 UI 测试计划。\n依据：SKILL.md 将打开、检查、点击、输入、截图和本地 Web 测试列为 Browser 场景。\n错误选项：B：目标是可见网页 UI，不是文档语义操作；C：Browser skill 可用时不能因 Computer Use 更显眼而跳过它；D：显式 in-app Browser 意图不能被普通系统打开命令替代\n实践：只描述 <synthetic-fixture> 页面、视口和预期可见状态。"
+        },
+        {
+          "id": "course-br-02-q02",
+          "type": "multiple_choice",
+          "content": "[Browser] 没有显式浏览器意图，只需更新链接中的日历记录，下一步是什么？",
+          "options": [
+            "因为上下文有 URL 就启动 Browser",
+            "先查询并使用能完成该语义操作的 connector、API 或 CLI",
+            "沿用上一次 Browser 绑定完成所有后续任务",
+            "改用 Computer Use 点击日历网页"
+          ],
+          "answer": "先查询并使用能完成该语义操作的 connector、API 或 CLI",
+          "explanation": "结论：先查询并使用能完成该语义操作的 connector、API 或 CLI。\n依据：每次语义操作前都要查询适用的专用接口，Browser 只在其不存在、能力不足或仍需 UI 时使用。\n错误选项：A：URL 只是上下文，不自动构成浏览器意图；C：先前使用不会让后续语义操作变成 browser-first；D：专用接口优先于通用 UI 自动化\n实践：为同一合成任务分别写 Browser 与 connector 的适用条件。"
+        },
+        {
+          "id": "course-br-02-q03",
+          "type": "multiple_choice",
+          "content": "[Browser] 用户明确要求 in-app Browser，但当前会话没有 Browser skill，应该怎样处理？",
+          "options": [
+            "自动换 Chrome",
+            "改用 standalone Playwright",
+            "报告 in-app Browser 不可用，不擅自替换其他浏览器",
+            "用 Computer Use 控制任意浏览器"
+          ],
+          "answer": "报告 in-app Browser 不可用，不擅自替换其他浏览器",
+          "explanation": "结论：报告 in-app Browser 不可用，不擅自替换其他浏览器。\n依据：SKILL.md 明确要求：显式请求 in-app Browser 但 skill 不可用时，直接报告不可用。\n错误选项：A：显式浏览器选择必须保留；B：显式 in-app Browser 请求不能无授权回退；D：Computer Use 不是 Browser 的默认替代\n实践：只返回可用性结论和需要用户决定的下一步。"
+        },
+        {
+          "id": "course-br-02-q04",
+          "type": "multiple_choice",
+          "content": "[Browser] 显式选择的 in-app Browser 被登录页阻塞，下一步是什么？",
+          "options": [
+            "用网页搜索绕过登录",
+            "自动切换 Chrome",
+            "读取 cookies 找到会话",
+            "请用户在该 Browser 中登录并告知就绪；未经批准不换浏览器或来源"
+          ],
+          "answer": "请用户在该 Browser 中登录并告知就绪；未经批准不换浏览器或来源",
+          "explanation": "结论：请用户在该 Browser 中登录并告知就绪；未经批准不换浏览器或来源。\n依据：显式浏览器被认证阻塞时，应在同一浏览器请求用户登录，除非文档提供受支持流程。\n错误选项：A：认证阻塞不能通过换来源绕过；B：显式浏览器选择仍然有效；C：禁止检查 cookies 和 session stores\n实践：写一句不泄露账号信息的登录阻塞提示。"
+        },
+        {
+          "id": "course-br-02-q05",
+          "type": "true_false",
+          "content": "[Browser] Browser discovery 必须保持只读，不得检查 cookies、local storage、profiles、passwords 或 session stores。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：这些浏览器私密状态明确禁止检查。\n依据：SKILL.md 的 Browser selection 边界逐项列出这些禁区。\n实践：在检查清单加入“只看可见页面/交互状态，不读取浏览器私密存储”。"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1401 @@
+{
+  "course": {
+    "id": "data-analytics",
+    "prefix": "DA",
+    "title": "data-analytics"
+  },
+  "source": {
+    "kind": "local-sanitized",
+    "ref": "data-analytics@0.2.8-13ceeea1f599",
+    "snapshot": "2026-07-20"
+  },
+  "decks": [
+    {
+      "id": "course-da-01",
+      "code": "DA01",
+      "title": "DA01 插件总览",
+      "order": 1,
+      "lab_ref": "DA01",
+      "source_text": "data-analytics@0.2.8-13ceeea1f599 的 .codex-plugin/plugin.json 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-da-01-q01",
+          "type": "multiple_choice",
+          "content": "[data-analytics] 场景题：学习者第一次接触该插件，怎样建立正确的课程路径？",
+          "options": [
+            "先学习插件总览，再逐个学习 18 个 canonical skill 的独立单元",
+            "只记住插件名，遇到任务时同时调用全部 skill",
+            "跳过总览，只背每个 display name 的中文字面意思",
+            "先在真实系统执行所有示例，再回头理解风险"
+          ],
+          "answer": "先学习插件总览，再逐个学习 18 个 canonical skill 的独立单元",
+          "explanation": "结论：总览负责建立地图，skill 单元负责形成可观察的选择能力。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：B：全量调用忽略路由边界，也无法判断技能之间的分工；C：字面记忆不能建立适用与不适用场景；D：未经确认的真实写入和发布不属于安全学习路径\n实践：先只读列出插件名、版本与 skill 数量，不调用任何执行工具。"
+        },
+        {
+          "id": "course-da-01-q02",
+          "type": "multiple_choice",
+          "content": "[data-analytics] 来源题：课程事实应如何与本机插件材料对应？",
+          "options": [
+            "每次启动都自动抓取最新版并覆盖课程",
+            "使用 data-analytics 的 local-sanitized 版本快照，并记录 2026-07-20 日期",
+            "复制插件目录中的全部文件和个人绝对路径",
+            "省略版本与日期，只保留插件营销名称"
+          ],
+          "answer": "使用 data-analytics 的 local-sanitized 版本快照，并记录 2026-07-20 日期",
+          "explanation": "结论：固定版本、来源种类和快照日期才能复核课程内容。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：A：计划采用固定快照，自动漂移会破坏可复现性；C：课程只需中文概括和相对来源，不能复制机器信息；D：缺版本和快照日期就无法追溯课程事实\n实践：对照 manifest 与相邻 agents/openai.yaml，只记录非敏感元数据。"
+        },
+        {
+          "id": "course-da-01-q03",
+          "type": "multiple_choice",
+          "content": "[data-analytics] 调用题：技能单元中的最小显式调用应包含哪些信息？",
+          "options": [
+            "只写一个模糊任务，不指出任何技能",
+            "只写 display_name，省略插件与 slug",
+            "插件名、skill slug 与 interface.display_name",
+            "写入本机插件缓存的绝对路径"
+          ],
+          "answer": "插件名、skill slug 与 interface.display_name",
+          "explanation": "结论：三项同时出现可把人类可读名称与稳定调用标识对应起来。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：A：无法验证学习者是否会正确显式路由；B：显示名不能替代稳定的技能标识；D：绝对路径是机器特定信息，也不是正常调用接口\n实践：用一个合成场景写出显式调用句，但注明只输出方案。"
+        },
+        {
+          "id": "course-da-01-q04",
+          "type": "multiple_choice",
+          "content": "[data-analytics] 安全题：课程练习应采用哪种执行边界？",
+          "options": [
+            "使用真实客户数据验证技能是否有效",
+            "让学习者安装所有依赖和插件后再答题",
+            "自动发送、发布或部署，再把链接当作成绩",
+            "只使用合成 fixture、提示词和只读检查，不触碰真实外部状态"
+          ],
+          "answer": "只使用合成 fixture、提示词和只读检查，不触碰真实外部状态",
+          "explanation": "结论：安全练习必须可观察、可复核且不改变真实系统。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：A：客户数据超出教学最小范围并带来隐私风险；B：课程不应把安装和系统变更当作前置动作；C：外部写入需要额外授权，不能由课程练习默认执行\n实践：把任何真实名称替换为虚构占位符，只检查路由、提示词和验收清单。"
+        },
+        {
+          "id": "course-da-01-q05",
+          "type": "true_false",
+          "content": "[data-analytics] 判断题：只要课程使用的是插件官方 skill，就可以在未确认授权时发送邮件、发布站点或写入生产数据。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "错误",
+          "explanation": "结论：官方 skill 也不自动扩大操作授权。\n依据：技能说明定义流程能力，真实外部写入仍受用户授权、数据边界和运行环境约束。\n实践：练习只提交计划、占位符和只读验收结果。"
+        }
+      ]
+    },
+    {
+      "id": "course-da-02",
+      "code": "DA02",
+      "title": "DA02 Data Analytics:数据质量分析",
+      "order": 2,
+      "lab_ref": "DA02",
+      "source_text": "data-analytics@0.2.8-13ceeea1f599 的 skills/analyze-data-quality/SKILL.md 与相邻 agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-da-02-q01",
+          "type": "multiple_choice",
+          "content": "[Data Analytics:数据质量分析] 场景题：团队遇到以下场景：评估数据集、查询结果或指标证据是否可信。最合适的下一步是什么？",
+          "options": [
+            "显式调用 $data-analytics:analyze-data-quality（Data Analytics:数据质量分析），先核对输入和边界",
+            "跳过技能，直接承诺已经交付最终结果",
+            "调用同插件全部技能，让它们自行竞争",
+            "先修改真实外部状态，再补写需求说明"
+          ],
+          "answer": "显式调用 $data-analytics:analyze-data-quality（Data Analytics:数据质量分析），先核对输入和边界",
+          "explanation": "结论：该场景正是 Data Analytics:数据质量分析 的适用范围。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：B：没有执行相应流程，也缺少可观察证据；C：无差别调用增加上下文和副作用，掩盖清晰分工；D：把不可逆动作放在确认之前违反安全边界\n实践：用合成材料复述任务，并确认输入包含：预期粒度、关键字段、时间窗口、来源和下游用途。"
+        },
+        {
+          "id": "course-da-02-q02",
+          "type": "multiple_choice",
+          "content": "[Data Analytics:数据质量分析] 调用题：评审会上需要明确记录所选技能，哪种写法最完整？",
+          "options": [
+            "只写“使用 Data Analytics:数据质量分析”",
+            "插件 data-analytics；skill analyze-data-quality；调用 $data-analytics:analyze-data-quality；显示名 Data Analytics:数据质量分析",
+            "只写插件 data-analytics，不指定 skill",
+            "复制本机缓存绝对路径作为调用语法"
+          ],
+          "answer": "插件 data-analytics；skill analyze-data-quality；调用 $data-analytics:analyze-data-quality；显示名 Data Analytics:数据质量分析",
+          "explanation": "结论：插件 data-analytics；skill analyze-data-quality；调用 $data-analytics:analyze-data-quality；显示名 Data Analytics:数据质量分析。\n依据：Data Analytics:数据质量分析 的正式入口是 $data-analytics:analyze-data-quality；同时记录插件、skill slug 与显示名，才能在相似路由间复核选择。\n错误选项：A：省略稳定 slug 与插件名，不能完整核对调用目标；C：插件级名称无法区分内部多个独立技能；D：文件路径不是技能调用接口且会泄露机器特定信息\n实践：在合成场景中写出 $data-analytics:analyze-data-quality，并补一条不适用条件；不实际执行工具。"
+        },
+        {
+          "id": "course-da-02-q03",
+          "type": "multiple_choice",
+          "content": "[Data Analytics:数据质量分析] 边界题：出现“要定义未来 KPI，或只需 QA 已完成的分析成品”时，怎样处理最稳妥？",
+          "options": [
+            "仍强制使用该技能，因为课程要求每个技能都执行",
+            "编造缺失输入以让流程继续",
+            "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+            "直接对真实数据、账户或发布面做试错"
+          ],
+          "answer": "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+          "explanation": "结论：停止套用该技能，重新路由或先补齐真正改变选择的条件。\n依据：Data Analytics:数据质量分析 的不适用条件决定何时停止；越过该条件会把本 skill 错当成通用执行器。\n错误选项：A：课程目标是会判断，不是无条件执行；B：虚构事实会污染后续产出和验收；D：真实外部状态不应成为未确认路由的试验场\n实践：为 $data-analytics:analyze-data-quality 写一个最小反例和替代路由，只输出判断。"
+        },
+        {
+          "id": "course-da-02-q04",
+          "type": "multiple_choice",
+          "content": "[Data Analytics:数据质量分析] 验收题：怎样证明这个单元已学会，而不是只记住名称？",
+          "options": [
+            "只背出 display_name",
+            "只说任务看起来已完成",
+            "展示一次真实写入或发布截图",
+            "能说明用途、输入“预期粒度、关键字段、时间窗口、来源和下游用途”、输出“带计数、比例、严重度、风险和最小修复建议的质量结论”和边界，并在合成场景中选对技能"
+          ],
+          "answer": "能说明用途、输入“预期粒度、关键字段、时间窗口、来源和下游用途”、输出“带计数、比例、严重度、风险和最小修复建议的质量结论”和边界，并在合成场景中选对技能",
+          "explanation": "结论：能说明用途、输入“预期粒度、关键字段、时间窗口、来源和下游用途”、输出“带计数、比例、严重度、风险和最小修复建议的质量结论”和边界，并在合成场景中选对技能。\n依据：Data Analytics:数据质量分析 的验收必须同时覆盖其输入、输出、边界与可观察证据，不能只记名称。\n错误选项：A：显示名不能证明会判断适用场景；B：没有对应输入、输出或可观察证据；C：不可逆操作不是必要教学证据，也可能越权\n实践：用 <synthetic-fixture> 核对 $data-analytics:analyze-data-quality 的输入与预期输出，不访问真实状态。"
+        },
+        {
+          "id": "course-da-02-q05",
+          "type": "true_false",
+          "content": "[Data Analytics:数据质量分析] 判断题：使用 $data-analytics:analyze-data-quality 时，应保留这条约束——先确认粒度并比较比例；不得把原始 profiling dump 当成解释。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：该约束必须保留。\n依据：它来自 Data Analytics:数据质量分析 的流程或风险边界，能防止把技能能力扩大为未经确认的操作。\n实践：在提示词末尾加入该约束，并只检查模型返回的计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-da-03",
+      "code": "DA03",
+      "title": "DA03 Data Analytics:仪表板构建",
+      "order": 3,
+      "lab_ref": "DA03",
+      "source_text": "data-analytics@0.2.8-13ceeea1f599 的 skills/build-dashboard/SKILL.md 与相邻 agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-da-03-q01",
+          "type": "multiple_choice",
+          "content": "[Data Analytics:仪表板构建] 场景题：团队遇到以下场景：构建可持续监控、探索驱动因素或采取行动的来源支撑仪表板。最合适的下一步是什么？",
+          "options": [
+            "显式调用 $data-analytics:build-dashboard（Data Analytics:仪表板构建），先核对输入和边界",
+            "跳过技能，直接承诺已经交付最终结果",
+            "调用同插件全部技能，让它们自行竞争",
+            "先修改真实外部状态，再补写需求说明"
+          ],
+          "answer": "显式调用 $data-analytics:build-dashboard（Data Analytics:仪表板构建），先核对输入和边界",
+          "explanation": "结论：该场景正是 Data Analytics:仪表板构建 的适用范围。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：B：没有执行相应流程，也缺少可观察证据；C：无差别调用增加上下文和副作用，掩盖清晰分工；D：把不可逆动作放在确认之前违反安全边界\n实践：用合成材料复述任务，并确认输入包含：受众、监控目标、指标定义、来源、筛选和刷新要求。"
+        },
+        {
+          "id": "course-da-03-q02",
+          "type": "multiple_choice",
+          "content": "[Data Analytics:仪表板构建] 调用题：评审会上需要明确记录所选技能，哪种写法最完整？",
+          "options": [
+            "只写“使用 Data Analytics:仪表板构建”",
+            "插件 data-analytics；skill build-dashboard；调用 $data-analytics:build-dashboard；显示名 Data Analytics:仪表板构建",
+            "只写插件 data-analytics，不指定 skill",
+            "复制本机缓存绝对路径作为调用语法"
+          ],
+          "answer": "插件 data-analytics；skill build-dashboard；调用 $data-analytics:build-dashboard；显示名 Data Analytics:仪表板构建",
+          "explanation": "结论：插件 data-analytics；skill build-dashboard；调用 $data-analytics:build-dashboard；显示名 Data Analytics:仪表板构建。\n依据：Data Analytics:仪表板构建 的正式入口是 $data-analytics:build-dashboard；同时记录插件、skill slug 与显示名，才能在相似路由间复核选择。\n错误选项：A：省略稳定 slug 与插件名，不能完整核对调用目标；C：插件级名称无法区分内部多个独立技能；D：文件路径不是技能调用接口且会泄露机器特定信息\n实践：在合成场景中写出 $data-analytics:build-dashboard，并补一条不适用条件；不实际执行工具。"
+        },
+        {
+          "id": "course-da-03-q03",
+          "type": "multiple_choice",
+          "content": "[Data Analytics:仪表板构建] 边界题：出现“只需要一次性报告、笔记本或聊天摘要”时，怎样处理最稳妥？",
+          "options": [
+            "仍强制使用该技能，因为课程要求每个技能都执行",
+            "编造缺失输入以让流程继续",
+            "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+            "直接对真实数据、账户或发布面做试错"
+          ],
+          "answer": "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+          "explanation": "结论：停止套用该技能，重新路由或先补齐真正改变选择的条件。\n依据：Data Analytics:仪表板构建 的不适用条件决定何时停止；越过该条件会把本 skill 错当成通用执行器。\n错误选项：A：课程目标是会判断，不是无条件执行；B：虚构事实会污染后续产出和验收；D：真实外部状态不应成为未确认路由的试验场\n实践：为 $data-analytics:build-dashboard 写一个最小反例和替代路由，只输出判断。"
+        },
+        {
+          "id": "course-da-03-q04",
+          "type": "multiple_choice",
+          "content": "[Data Analytics:仪表板构建] 验收题：怎样证明这个单元已学会，而不是只记住名称？",
+          "options": [
+            "只背出 display_name",
+            "只说任务看起来已完成",
+            "展示一次真实写入或发布截图",
+            "能说明用途、输入“受众、监控目标、指标定义、来源、筛选和刷新要求”、输出“经过来源验证与最终表面 QA 的仪表板”和边界，并在合成场景中选对技能"
+          ],
+          "answer": "能说明用途、输入“受众、监控目标、指标定义、来源、筛选和刷新要求”、输出“经过来源验证与最终表面 QA 的仪表板”和边界，并在合成场景中选对技能",
+          "explanation": "结论：能说明用途、输入“受众、监控目标、指标定义、来源、筛选和刷新要求”、输出“经过来源验证与最终表面 QA 的仪表板”和边界，并在合成场景中选对技能。\n依据：Data Analytics:仪表板构建 的验收必须同时覆盖其输入、输出、边界与可观察证据，不能只记名称。\n错误选项：A：显示名不能证明会判断适用场景；B：没有对应输入、输出或可观察证据；C：不可逆操作不是必要教学证据，也可能越权\n实践：用 <synthetic-fixture> 核对 $data-analytics:build-dashboard 的输入与预期输出，不访问真实状态。"
+        },
+        {
+          "id": "course-da-03-q05",
+          "type": "true_false",
+          "content": "[Data Analytics:仪表板构建] 判断题：使用 $data-analytics:build-dashboard 时，应保留这条约束——核心来源不可用时停止；除明确 mockup 外不得用样例数据冒充真实数据。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：该约束必须保留。\n依据：它来自 Data Analytics:仪表板构建 的流程或风险边界，能防止把技能能力扩大为未经确认的操作。\n实践：在提示词末尾加入该约束，并只检查模型返回的计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-da-04",
+      "code": "DA04",
+      "title": "DA04 Data Analytics:分析报告构建",
+      "order": 4,
+      "lab_ref": "DA04",
+      "source_text": "data-analytics@0.2.8-13ceeea1f599 的 skills/build-report/SKILL.md 与相邻 agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-da-04-q01",
+          "type": "multiple_choice",
+          "content": "[Data Analytics:分析报告构建] 场景题：团队遇到以下场景：把分析证据组织为面向决策者的可分享报告。最合适的下一步是什么？",
+          "options": [
+            "显式调用 $data-analytics:build-report（Data Analytics:分析报告构建），先核对输入和边界",
+            "跳过技能，直接承诺已经交付最终结果",
+            "调用同插件全部技能，让它们自行竞争",
+            "先修改真实外部状态，再补写需求说明"
+          ],
+          "answer": "显式调用 $data-analytics:build-report（Data Analytics:分析报告构建），先核对输入和边界",
+          "explanation": "结论：该场景正是 Data Analytics:分析报告构建 的适用范围。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：B：没有执行相应流程，也缺少可观察证据；C：无差别调用增加上下文和副作用，掩盖清晰分工；D：把不可逆动作放在确认之前违反安全边界\n实践：用合成材料复述任务，并确认输入包含：结论、支持证据、来源、受众、交付表面与 caveat。"
+        },
+        {
+          "id": "course-da-04-q02",
+          "type": "multiple_choice",
+          "content": "[Data Analytics:分析报告构建] 调用题：评审会上需要明确记录所选技能，哪种写法最完整？",
+          "options": [
+            "只写“使用 Data Analytics:分析报告构建”",
+            "插件 data-analytics；skill build-report；调用 $data-analytics:build-report；显示名 Data Analytics:分析报告构建",
+            "只写插件 data-analytics，不指定 skill",
+            "复制本机缓存绝对路径作为调用语法"
+          ],
+          "answer": "插件 data-analytics；skill build-report；调用 $data-analytics:build-report；显示名 Data Analytics:分析报告构建",
+          "explanation": "结论：插件 data-analytics；skill build-report；调用 $data-analytics:build-report；显示名 Data Analytics:分析报告构建。\n依据：Data Analytics:分析报告构建 的正式入口是 $data-analytics:build-report；同时记录插件、skill slug 与显示名，才能在相似路由间复核选择。\n错误选项：A：省略稳定 slug 与插件名，不能完整核对调用目标；C：插件级名称无法区分内部多个独立技能；D：文件路径不是技能调用接口且会泄露机器特定信息\n实践：在合成场景中写出 $data-analytics:build-report，并补一条不适用条件；不实际执行工具。"
+        },
+        {
+          "id": "course-da-04-q03",
+          "type": "multiple_choice",
+          "content": "[Data Analytics:分析报告构建] 边界题：出现“需求本质是持续监控仪表板，或只是转换既有 HTML”时，怎样处理最稳妥？",
+          "options": [
+            "仍强制使用该技能，因为课程要求每个技能都执行",
+            "编造缺失输入以让流程继续",
+            "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+            "直接对真实数据、账户或发布面做试错"
+          ],
+          "answer": "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+          "explanation": "结论：停止套用该技能，重新路由或先补齐真正改变选择的条件。\n依据：Data Analytics:分析报告构建 的不适用条件决定何时停止；越过该条件会把本 skill 错当成通用执行器。\n错误选项：A：课程目标是会判断，不是无条件执行；B：虚构事实会污染后续产出和验收；D：真实外部状态不应成为未确认路由的试验场\n实践：为 $data-analytics:build-report 写一个最小反例和替代路由，只输出判断。"
+        },
+        {
+          "id": "course-da-04-q04",
+          "type": "multiple_choice",
+          "content": "[Data Analytics:分析报告构建] 验收题：怎样证明这个单元已学会，而不是只记住名称？",
+          "options": [
+            "只背出 display_name",
+            "只说任务看起来已完成",
+            "展示一次真实写入或发布截图",
+            "能说明用途、输入“结论、支持证据、来源、受众、交付表面与 caveat”、输出“经过分析验证、视觉 QA 和来源标注的报告成品”和边界，并在合成场景中选对技能"
+          ],
+          "answer": "能说明用途、输入“结论、支持证据、来源、受众、交付表面与 caveat”、输出“经过分析验证、视觉 QA 和来源标注的报告成品”和边界，并在合成场景中选对技能",
+          "explanation": "结论：能说明用途、输入“结论、支持证据、来源、受众、交付表面与 caveat”、输出“经过分析验证、视觉 QA 和来源标注的报告成品”和边界，并在合成场景中选对技能。\n依据：Data Analytics:分析报告构建 的验收必须同时覆盖其输入、输出、边界与可观察证据，不能只记名称。\n错误选项：A：显示名不能证明会判断适用场景；B：没有对应输入、输出或可观察证据；C：不可逆操作不是必要教学证据，也可能越权\n实践：用 <synthetic-fixture> 核对 $data-analytics:build-report 的输入与预期输出，不访问真实状态。"
+        },
+        {
+          "id": "course-da-04-q05",
+          "type": "true_false",
+          "content": "[Data Analytics:分析报告构建] 判断题：使用 $data-analytics:build-report 时，应保留这条约束——事实、推断和建议要可区分；不能用漂亮版式掩盖缺失证据。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：该约束必须保留。\n依据：它来自 Data Analytics:分析报告构建 的流程或风险边界，能防止把技能能力扩大为未经确认的操作。\n实践：在提示词末尾加入该约束，并只检查模型返回的计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-da-05",
+      "code": "DA05",
+      "title": "DA05 Data Analytics:报告转 Google 文档",
+      "order": 5,
+      "lab_ref": "DA05",
+      "source_text": "data-analytics@0.2.8-13ceeea1f599 的 skills/build-report/report-to-google-doc/SKILL.md 与相邻 agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-da-05-q01",
+          "type": "multiple_choice",
+          "content": "[Data Analytics:报告转 Google 文档] 场景题：团队遇到以下场景：写出把现有 HTML 分析报告转换成可分享 DOCX 或 Google Drive 文档的方案。最合适的下一步是什么？",
+          "options": [
+            "显式调用 $data-analytics:report-to-google-doc（Data Analytics:报告转 Google 文档），先核对输入和边界",
+            "跳过技能，直接承诺已经交付最终结果",
+            "调用同插件全部技能，让它们自行竞争",
+            "先修改真实外部状态，再补写需求说明"
+          ],
+          "answer": "显式调用 $data-analytics:report-to-google-doc（Data Analytics:报告转 Google 文档），先核对输入和边界",
+          "explanation": "结论：该场景正是 Data Analytics:报告转 Google 文档 的适用范围。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：B：没有执行相应流程，也缺少可观察证据；C：无差别调用增加上下文和副作用，掩盖清晰分工；D：把不可逆动作放在确认之前违反安全边界\n实践：用合成材料复述任务，并确认输入包含：本地完整 HTML、报告标题与可用 Drive 上传能力。"
+        },
+        {
+          "id": "course-da-05-q02",
+          "type": "multiple_choice",
+          "content": "[Data Analytics:报告转 Google 文档] 调用题：评审会上需要明确记录所选技能，哪种写法最完整？",
+          "options": [
+            "只写“使用 Data Analytics:报告转 Google 文档”",
+            "插件 data-analytics；skill report-to-google-doc；调用 $data-analytics:report-to-google-doc；显示名 Data Analytics:报告转 Google 文档",
+            "只写插件 data-analytics，不指定 skill",
+            "复制本机缓存绝对路径作为调用语法"
+          ],
+          "answer": "插件 data-analytics；skill report-to-google-doc；调用 $data-analytics:report-to-google-doc；显示名 Data Analytics:报告转 Google 文档",
+          "explanation": "结论：插件 data-analytics；skill report-to-google-doc；调用 $data-analytics:report-to-google-doc；显示名 Data Analytics:报告转 Google 文档。\n依据：Data Analytics:报告转 Google 文档 的正式入口是 $data-analytics:report-to-google-doc；同时记录插件、skill slug 与显示名，才能在相似路由间复核选择。\n错误选项：A：省略稳定 slug 与插件名，不能完整核对调用目标；C：插件级名称无法区分内部多个独立技能；D：文件路径不是技能调用接口且会泄露机器特定信息\n实践：在合成场景中写出 $data-analytics:report-to-google-doc，并补一条不适用条件；不实际执行工具。"
+        },
+        {
+          "id": "course-da-05-q03",
+          "type": "multiple_choice",
+          "content": "[Data Analytics:报告转 Google 文档] 边界题：出现“只有实时 MCP app，或用户没有明确要求文档交付”时，怎样处理最稳妥？",
+          "options": [
+            "仍强制使用该技能，因为课程要求每个技能都执行",
+            "编造缺失输入以让流程继续",
+            "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+            "直接对真实数据、账户或发布面做试错"
+          ],
+          "answer": "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+          "explanation": "结论：停止套用该技能，重新路由或先补齐真正改变选择的条件。\n依据：Data Analytics:报告转 Google 文档 的不适用条件决定何时停止；越过该条件会把本 skill 错当成通用执行器。\n错误选项：A：课程目标是会判断，不是无条件执行；B：虚构事实会污染后续产出和验收；D：真实外部状态不应成为未确认路由的试验场\n实践：为 $data-analytics:report-to-google-doc 写一个最小反例和替代路由，只输出判断。"
+        },
+        {
+          "id": "course-da-05-q04",
+          "type": "multiple_choice",
+          "content": "[Data Analytics:报告转 Google 文档] 验收题：怎样证明这个单元已学会，而不是只记住名称？",
+          "options": [
+            "只背出 display_name",
+            "只说任务看起来已完成",
+            "展示一次真实写入或发布截图",
+            "能说明用途、输入“本地完整 HTML、报告标题与可用 Drive 上传能力”、输出“DOCX 转换与上传前 preflight、预期链接字段和结构核对清单”和边界，并在合成场景中选对技能"
+          ],
+          "answer": "能说明用途、输入“本地完整 HTML、报告标题与可用 Drive 上传能力”、输出“DOCX 转换与上传前 preflight、预期链接字段和结构核对清单”和边界，并在合成场景中选对技能",
+          "explanation": "结论：能说明用途、输入“本地完整 HTML、报告标题与可用 Drive 上传能力”、输出“DOCX 转换与上传前 preflight、预期链接字段和结构核对清单”和边界，并在合成场景中选对技能。\n依据：Data Analytics:报告转 Google 文档 的验收必须同时覆盖其输入、输出、边界与可观察证据，不能只记名称。\n错误选项：A：显示名不能证明会判断适用场景；B：没有对应输入、输出或可观察证据；C：不可逆操作不是必要教学证据，也可能越权\n实践：用 <synthetic-fixture> 核对 $data-analytics:report-to-google-doc 的输入与预期输出，不访问真实状态。"
+        },
+        {
+          "id": "course-da-05-q05",
+          "type": "true_false",
+          "content": "[Data Analytics:报告转 Google 文档] 判断题：使用 $data-analytics:report-to-google-doc 时，应保留这条约束——必须走 HTML 到 DOCX 再上传；预检有错误时不得上传。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：该约束必须保留。\n依据：它来自 Data Analytics:报告转 Google 文档 的流程或风险边界，能防止把技能能力扩大为未经确认的操作。\n实践：在提示词末尾加入该约束，并只检查模型返回的计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-da-06",
+      "code": "DA06",
+      "title": "DA06 Data Analytics:报告转 Google 幻灯片",
+      "order": 6,
+      "lab_ref": "DA06",
+      "source_text": "data-analytics@0.2.8-13ceeea1f599 的 skills/build-report/report-to-google-slides/SKILL.md 与相邻 agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-da-06-q01",
+          "type": "multiple_choice",
+          "content": "[Data Analytics:报告转 Google 幻灯片] 场景题：团队遇到以下场景：写出把现有 HTML 分析报告转换成原生 Google Slides 演示的方案。最合适的下一步是什么？",
+          "options": [
+            "显式调用 $data-analytics:report-to-google-slides（Data Analytics:报告转 Google 幻灯片），先核对输入和边界",
+            "跳过技能，直接承诺已经交付最终结果",
+            "调用同插件全部技能，让它们自行竞争",
+            "先修改真实外部状态，再补写需求说明"
+          ],
+          "answer": "显式调用 $data-analytics:report-to-google-slides（Data Analytics:报告转 Google 幻灯片），先核对输入和边界",
+          "explanation": "结论：该场景正是 Data Analytics:报告转 Google 幻灯片 的适用范围。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：B：没有执行相应流程，也缺少可观察证据；C：无差别调用增加上下文和副作用，掩盖清晰分工；D：把不可逆动作放在确认之前违反安全边界\n实践：用合成材料复述任务，并确认输入包含：本地完整 HTML、受众、可用 Drive 导入与缩略图检查能力。"
+        },
+        {
+          "id": "course-da-06-q02",
+          "type": "multiple_choice",
+          "content": "[Data Analytics:报告转 Google 幻灯片] 调用题：评审会上需要明确记录所选技能，哪种写法最完整？",
+          "options": [
+            "只写“使用 Data Analytics:报告转 Google 幻灯片”",
+            "插件 data-analytics；skill report-to-google-slides；调用 $data-analytics:report-to-google-slides；显示名 Data Analytics:报告转 Google 幻灯片",
+            "只写插件 data-analytics，不指定 skill",
+            "复制本机缓存绝对路径作为调用语法"
+          ],
+          "answer": "插件 data-analytics；skill report-to-google-slides；调用 $data-analytics:report-to-google-slides；显示名 Data Analytics:报告转 Google 幻灯片",
+          "explanation": "结论：插件 data-analytics；skill report-to-google-slides；调用 $data-analytics:report-to-google-slides；显示名 Data Analytics:报告转 Google 幻灯片。\n依据：Data Analytics:报告转 Google 幻灯片 的正式入口是 $data-analytics:report-to-google-slides；同时记录插件、skill slug 与显示名，才能在相似路由间复核选择。\n错误选项：A：省略稳定 slug 与插件名，不能完整核对调用目标；C：插件级名称无法区分内部多个独立技能；D：文件路径不是技能调用接口且会泄露机器特定信息\n实践：在合成场景中写出 $data-analytics:report-to-google-slides，并补一条不适用条件；不实际执行工具。"
+        },
+        {
+          "id": "course-da-06-q03",
+          "type": "multiple_choice",
+          "content": "[Data Analytics:报告转 Google 幻灯片] 边界题：出现“只有实时 MCP app，或用户没有明确要求幻灯片”时，怎样处理最稳妥？",
+          "options": [
+            "仍强制使用该技能，因为课程要求每个技能都执行",
+            "编造缺失输入以让流程继续",
+            "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+            "直接对真实数据、账户或发布面做试错"
+          ],
+          "answer": "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+          "explanation": "结论：停止套用该技能，重新路由或先补齐真正改变选择的条件。\n依据：Data Analytics:报告转 Google 幻灯片 的不适用条件决定何时停止；越过该条件会把本 skill 错当成通用执行器。\n错误选项：A：课程目标是会判断，不是无条件执行；B：虚构事实会污染后续产出和验收；D：真实外部状态不应成为未确认路由的试验场\n实践：为 $data-analytics:report-to-google-slides 写一个最小反例和替代路由，只输出判断。"
+        },
+        {
+          "id": "course-da-06-q04",
+          "type": "multiple_choice",
+          "content": "[Data Analytics:报告转 Google 幻灯片] 验收题：怎样证明这个单元已学会，而不是只记住名称？",
+          "options": [
+            "只背出 display_name",
+            "只说任务看起来已完成",
+            "展示一次真实写入或发布截图",
+            "能说明用途、输入“本地完整 HTML、受众、可用 Drive 导入与缩略图检查能力”、输出“PPTX 转换与导入前 preflight、预期链接字段和逐页验证清单”和边界，并在合成场景中选对技能"
+          ],
+          "answer": "能说明用途、输入“本地完整 HTML、受众、可用 Drive 导入与缩略图检查能力”、输出“PPTX 转换与导入前 preflight、预期链接字段和逐页验证清单”和边界，并在合成场景中选对技能",
+          "explanation": "结论：能说明用途、输入“本地完整 HTML、受众、可用 Drive 导入与缩略图检查能力”、输出“PPTX 转换与导入前 preflight、预期链接字段和逐页验证清单”和边界，并在合成场景中选对技能。\n依据：Data Analytics:报告转 Google 幻灯片 的验收必须同时覆盖其输入、输出、边界与可观察证据，不能只记名称。\n错误选项：A：显示名不能证明会判断适用场景；B：没有对应输入、输出或可观察证据；C：不可逆操作不是必要教学证据，也可能越权\n实践：用 <synthetic-fixture> 核对 $data-analytics:report-to-google-slides 的输入与预期输出，不访问真实状态。"
+        },
+        {
+          "id": "course-da-06-q05",
+          "type": "true_false",
+          "content": "[Data Analytics:报告转 Google 幻灯片] 判断题：使用 $data-analytics:report-to-google-slides 时，应保留这条约束——要做 slide-native 摘要而非整页截图；预检通过后才能导入。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：该约束必须保留。\n依据：它来自 Data Analytics:报告转 Google 幻灯片 的流程或风险边界，能防止把技能能力扩大为未经确认的操作。\n实践：在提示词末尾加入该约束，并只检查模型返回的计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-da-07",
+      "code": "DA07",
+      "title": "DA07 Data Analytics:报告转 PDF",
+      "order": 7,
+      "lab_ref": "DA07",
+      "source_text": "data-analytics@0.2.8-13ceeea1f599 的 skills/build-report/report-to-pdf/SKILL.md 与相邻 agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-da-07-q01",
+          "type": "multiple_choice",
+          "content": "[Data Analytics:报告转 PDF] 场景题：团队遇到以下场景：写出把现有静态分析报告、仪表板导出或图表表面转换为 PDF 的方案。最合适的下一步是什么？",
+          "options": [
+            "显式调用 $data-analytics:report-to-pdf（Data Analytics:报告转 PDF），先核对输入和边界",
+            "跳过技能，直接承诺已经交付最终结果",
+            "调用同插件全部技能，让它们自行竞争",
+            "先修改真实外部状态，再补写需求说明"
+          ],
+          "answer": "显式调用 $data-analytics:report-to-pdf（Data Analytics:报告转 PDF），先核对输入和边界",
+          "explanation": "结论：该场景正是 Data Analytics:报告转 PDF 的适用范围。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：B：没有执行相应流程，也缺少可观察证据；C：无差别调用增加上下文和副作用，掩盖清晰分工；D：把不可逆动作放在确认之前违反安全边界\n实践：用合成材料复述任务，并确认输入包含：静态 HTML 或导出、本地浏览器渲染器与 PDF 检查工具。"
+        },
+        {
+          "id": "course-da-07-q02",
+          "type": "multiple_choice",
+          "content": "[Data Analytics:报告转 PDF] 调用题：评审会上需要明确记录所选技能，哪种写法最完整？",
+          "options": [
+            "只写“使用 Data Analytics:报告转 PDF”",
+            "插件 data-analytics；skill report-to-pdf；调用 $data-analytics:report-to-pdf；显示名 Data Analytics:报告转 PDF",
+            "只写插件 data-analytics，不指定 skill",
+            "复制本机缓存绝对路径作为调用语法"
+          ],
+          "answer": "插件 data-analytics；skill report-to-pdf；调用 $data-analytics:report-to-pdf；显示名 Data Analytics:报告转 PDF",
+          "explanation": "结论：插件 data-analytics；skill report-to-pdf；调用 $data-analytics:report-to-pdf；显示名 Data Analytics:报告转 PDF。\n依据：Data Analytics:报告转 PDF 的正式入口是 $data-analytics:report-to-pdf；同时记录插件、skill slug 与显示名，才能在相似路由间复核选择。\n错误选项：A：省略稳定 slug 与插件名，不能完整核对调用目标；C：插件级名称无法区分内部多个独立技能；D：文件路径不是技能调用接口且会泄露机器特定信息\n实践：在合成场景中写出 $data-analytics:report-to-pdf，并补一条不适用条件；不实际执行工具。"
+        },
+        {
+          "id": "course-da-07-q03",
+          "type": "multiple_choice",
+          "content": "[Data Analytics:报告转 PDF] 边界题：出现“来源只是实时 MCP app 壳，或用户未明确要求 PDF”时，怎样处理最稳妥？",
+          "options": [
+            "仍强制使用该技能，因为课程要求每个技能都执行",
+            "编造缺失输入以让流程继续",
+            "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+            "直接对真实数据、账户或发布面做试错"
+          ],
+          "answer": "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+          "explanation": "结论：停止套用该技能，重新路由或先补齐真正改变选择的条件。\n依据：Data Analytics:报告转 PDF 的不适用条件决定何时停止；越过该条件会把本 skill 错当成通用执行器。\n错误选项：A：课程目标是会判断，不是无条件执行；B：虚构事实会污染后续产出和验收；D：真实外部状态不应成为未确认路由的试验场\n实践：为 $data-analytics:report-to-pdf 写一个最小反例和替代路由，只输出判断。"
+        },
+        {
+          "id": "course-da-07-q04",
+          "type": "multiple_choice",
+          "content": "[Data Analytics:报告转 PDF] 验收题：怎样证明这个单元已学会，而不是只记住名称？",
+          "options": [
+            "只背出 display_name",
+            "只说任务看起来已完成",
+            "展示一次真实写入或发布截图",
+            "能说明用途、输入“静态 HTML 或导出、本地浏览器渲染器与 PDF 检查工具”、输出“PDF 导出前检查方案、内容完整性/控件/元数据验收清单”和边界，并在合成场景中选对技能"
+          ],
+          "answer": "能说明用途、输入“静态 HTML 或导出、本地浏览器渲染器与 PDF 检查工具”、输出“PDF 导出前检查方案、内容完整性/控件/元数据验收清单”和边界，并在合成场景中选对技能",
+          "explanation": "结论：能说明用途、输入“静态 HTML 或导出、本地浏览器渲染器与 PDF 检查工具”、输出“PDF 导出前检查方案、内容完整性/控件/元数据验收清单”和边界，并在合成场景中选对技能。\n依据：Data Analytics:报告转 PDF 的验收必须同时覆盖其输入、输出、边界与可观察证据，不能只记名称。\n错误选项：A：显示名不能证明会判断适用场景；B：没有对应输入、输出或可观察证据；C：不可逆操作不是必要教学证据，也可能越权\n实践：用 <synthetic-fixture> 核对 $data-analytics:report-to-pdf 的输入与预期输出，不访问真实状态。"
+        },
+        {
+          "id": "course-da-07-q05",
+          "type": "true_false",
+          "content": "[Data Analytics:报告转 PDF] 判断题：使用 $data-analytics:report-to-pdf 时，应保留这条约束——静态来源是真相；不能从记忆重写报告或打印实时 app 壳。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：该约束必须保留。\n依据：它来自 Data Analytics:报告转 PDF 的流程或风险边界，能防止把技能能力扩大为未经确认的操作。\n实践：在提示词末尾加入该约束，并只检查模型返回的计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-da-08",
+      "code": "DA08",
+      "title": "DA08 Data Analytics:数据上下文创建",
+      "order": 8,
+      "lab_ref": "DA08",
+      "source_text": "data-analytics@0.2.8-13ceeea1f599 的 skills/create-data-context/SKILL.md 与相邻 agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-da-08-q01",
+          "type": "multiple_choice",
+          "content": "[Data Analytics:数据上下文创建] 场景题：团队遇到以下场景：创建、检查、更新或修复可复用的 Data Analytics 语义层。最合适的下一步是什么？",
+          "options": [
+            "显式调用 $data-analytics:create-data-context（Data Analytics:数据上下文创建），先核对输入和边界",
+            "跳过技能，直接承诺已经交付最终结果",
+            "调用同插件全部技能，让它们自行竞争",
+            "先修改真实外部状态，再补写需求说明"
+          ],
+          "answer": "显式调用 $data-analytics:create-data-context（Data Analytics:数据上下文创建），先核对输入和边界",
+          "explanation": "结论：该场景正是 Data Analytics:数据上下文创建 的适用范围。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：B：没有执行相应流程，也缺少可观察证据；C：无差别调用增加上下文和副作用，掩盖清晰分工；D：把不可逆动作放在确认之前违反安全边界\n实践：用合成材料复述任务，并确认输入包含：指标定义、权威表、仪表板、业务文档、冲突与来源清单。"
+        },
+        {
+          "id": "course-da-08-q02",
+          "type": "multiple_choice",
+          "content": "[Data Analytics:数据上下文创建] 调用题：评审会上需要明确记录所选技能，哪种写法最完整？",
+          "options": [
+            "只写“使用 Data Analytics:数据上下文创建”",
+            "插件 data-analytics；skill create-data-context；调用 $data-analytics:create-data-context；显示名 Data Analytics:数据上下文创建",
+            "只写插件 data-analytics，不指定 skill",
+            "复制本机缓存绝对路径作为调用语法"
+          ],
+          "answer": "插件 data-analytics；skill create-data-context；调用 $data-analytics:create-data-context；显示名 Data Analytics:数据上下文创建",
+          "explanation": "结论：插件 data-analytics；skill create-data-context；调用 $data-analytics:create-data-context；显示名 Data Analytics:数据上下文创建。\n依据：Data Analytics:数据上下文创建 的正式入口是 $data-analytics:create-data-context；同时记录插件、skill slug 与显示名，才能在相似路由间复核选择。\n错误选项：A：省略稳定 slug 与插件名，不能完整核对调用目标；C：插件级名称无法区分内部多个独立技能；D：文件路径不是技能调用接口且会泄露机器特定信息\n实践：在合成场景中写出 $data-analytics:create-data-context，并补一条不适用条件；不实际执行工具。"
+        },
+        {
+          "id": "course-da-08-q03",
+          "type": "multiple_choice",
+          "content": "[Data Analytics:数据上下文创建] 边界题：出现“用户现在要完成一次普通数据分析任务”时，怎样处理最稳妥？",
+          "options": [
+            "仍强制使用该技能，因为课程要求每个技能都执行",
+            "编造缺失输入以让流程继续",
+            "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+            "直接对真实数据、账户或发布面做试错"
+          ],
+          "answer": "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+          "explanation": "结论：停止套用该技能，重新路由或先补齐真正改变选择的条件。\n依据：Data Analytics:数据上下文创建 的不适用条件决定何时停止；越过该条件会把本 skill 错当成通用执行器。\n错误选项：A：课程目标是会判断，不是无条件执行；B：虚构事实会污染后续产出和验收；D：真实外部状态不应成为未确认路由的试验场\n实践：为 $data-analytics:create-data-context 写一个最小反例和替代路由，只输出判断。"
+        },
+        {
+          "id": "course-da-08-q04",
+          "type": "multiple_choice",
+          "content": "[Data Analytics:数据上下文创建] 验收题：怎样证明这个单元已学会，而不是只记住名称？",
+          "options": [
+            "只背出 display_name",
+            "只说任务看起来已完成",
+            "展示一次真实写入或发布截图",
+            "能说明用途、输入“指标定义、权威表、仪表板、业务文档、冲突与来源清单”、输出“可发现的语义层 skill 或明确说明未安装的便携包”和边界，并在合成场景中选对技能"
+          ],
+          "answer": "能说明用途、输入“指标定义、权威表、仪表板、业务文档、冲突与来源清单”、输出“可发现的语义层 skill 或明确说明未安装的便携包”和边界，并在合成场景中选对技能",
+          "explanation": "结论：能说明用途、输入“指标定义、权威表、仪表板、业务文档、冲突与来源清单”、输出“可发现的语义层 skill 或明确说明未安装的便携包”和边界，并在合成场景中选对技能。\n依据：Data Analytics:数据上下文创建 的验收必须同时覆盖其输入、输出、边界与可观察证据，不能只记名称。\n错误选项：A：显示名不能证明会判断适用场景；B：没有对应输入、输出或可观察证据；C：不可逆操作不是必要教学证据，也可能越权\n实践：用 <synthetic-fixture> 核对 $data-analytics:create-data-context 的输入与预期输出，不访问真实状态。"
+        },
+        {
+          "id": "course-da-08-q05",
+          "type": "true_false",
+          "content": "[Data Analytics:数据上下文创建] 判断题：使用 $data-analytics:create-data-context 时，应保留这条约束——只保存紧凑语义与来源，不复制凭证、行级敏感数据或长私信。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：该约束必须保留。\n依据：它来自 Data Analytics:数据上下文创建 的流程或风险边界，能防止把技能能力扩大为未经确认的操作。\n实践：在提示词末尾加入该约束，并只检查模型返回的计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-da-09",
+      "code": "DA09",
+      "title": "DA09 Data Analytics:KPI 设计",
+      "order": 9,
+      "lab_ref": "DA09",
+      "source_text": "data-analytics@0.2.8-13ceeea1f599 的 skills/design-kpis/SKILL.md 与相邻 agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-da-09-q01",
+          "type": "multiple_choice",
+          "content": "[Data Analytics:KPI 设计] 场景题：团队遇到以下场景：设计 KPI、驱动指标、护栏、目标和衡量计划。最合适的下一步是什么？",
+          "options": [
+            "显式调用 $data-analytics:design-kpis（Data Analytics:KPI 设计），先核对输入和边界",
+            "跳过技能，直接承诺已经交付最终结果",
+            "调用同插件全部技能，让它们自行竞争",
+            "先修改真实外部状态，再补写需求说明"
+          ],
+          "answer": "显式调用 $data-analytics:design-kpis（Data Analytics:KPI 设计），先核对输入和边界",
+          "explanation": "结论：该场景正是 Data Analytics:KPI 设计 的适用范围。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：B：没有执行相应流程，也缺少可观察证据；C：无差别调用增加上下文和副作用，掩盖清晰分工；D：把不可逆动作放在确认之前违反安全边界\n实践：用合成材料复述任务，并确认输入包含：业务决定、受众、节奏、现有定义、历史基线与可用数据。"
+        },
+        {
+          "id": "course-da-09-q02",
+          "type": "multiple_choice",
+          "content": "[Data Analytics:KPI 设计] 调用题：评审会上需要明确记录所选技能，哪种写法最完整？",
+          "options": [
+            "只写“使用 Data Analytics:KPI 设计”",
+            "插件 data-analytics；skill design-kpis；调用 $data-analytics:design-kpis；显示名 Data Analytics:KPI 设计",
+            "只写插件 data-analytics，不指定 skill",
+            "复制本机缓存绝对路径作为调用语法"
+          ],
+          "answer": "插件 data-analytics；skill design-kpis；调用 $data-analytics:design-kpis；显示名 Data Analytics:KPI 设计",
+          "explanation": "结论：插件 data-analytics；skill design-kpis；调用 $data-analytics:design-kpis；显示名 Data Analytics:KPI 设计。\n依据：Data Analytics:KPI 设计 的正式入口是 $data-analytics:design-kpis；同时记录插件、skill slug 与显示名，才能在相似路由间复核选择。\n错误选项：A：省略稳定 slug 与插件名，不能完整核对调用目标；C：插件级名称无法区分内部多个独立技能；D：文件路径不是技能调用接口且会泄露机器特定信息\n实践：在合成场景中写出 $data-analytics:design-kpis，并补一条不适用条件；不实际执行工具。"
+        },
+        {
+          "id": "course-da-09-q03",
+          "type": "multiple_choice",
+          "content": "[Data Analytics:KPI 设计] 边界题：出现“只是在核对现有指标是否可信或报告现有 KPI”时，怎样处理最稳妥？",
+          "options": [
+            "仍强制使用该技能，因为课程要求每个技能都执行",
+            "编造缺失输入以让流程继续",
+            "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+            "直接对真实数据、账户或发布面做试错"
+          ],
+          "answer": "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+          "explanation": "结论：停止套用该技能，重新路由或先补齐真正改变选择的条件。\n依据：Data Analytics:KPI 设计 的不适用条件决定何时停止；越过该条件会把本 skill 错当成通用执行器。\n错误选项：A：课程目标是会判断，不是无条件执行；B：虚构事实会污染后续产出和验收；D：真实外部状态不应成为未确认路由的试验场\n实践：为 $data-analytics:design-kpis 写一个最小反例和替代路由，只输出判断。"
+        },
+        {
+          "id": "course-da-09-q04",
+          "type": "multiple_choice",
+          "content": "[Data Analytics:KPI 设计] 验收题：怎样证明这个单元已学会，而不是只记住名称？",
+          "options": [
+            "只背出 display_name",
+            "只说任务看起来已完成",
+            "展示一次真实写入或发布截图",
+            "能说明用途、输入“业务决定、受众、节奏、现有定义、历史基线与可用数据”、输出“少量主 KPI、驱动指标、护栏及透明目标方法”和边界，并在合成场景中选对技能"
+          ],
+          "answer": "能说明用途、输入“业务决定、受众、节奏、现有定义、历史基线与可用数据”、输出“少量主 KPI、驱动指标、护栏及透明目标方法”和边界，并在合成场景中选对技能",
+          "explanation": "结论：能说明用途、输入“业务决定、受众、节奏、现有定义、历史基线与可用数据”、输出“少量主 KPI、驱动指标、护栏及透明目标方法”和边界，并在合成场景中选对技能。\n依据：Data Analytics:KPI 设计 的验收必须同时覆盖其输入、输出、边界与可观察证据，不能只记名称。\n错误选项：A：显示名不能证明会判断适用场景；B：没有对应输入、输出或可观察证据；C：不可逆操作不是必要教学证据，也可能越权\n实践：用 <synthetic-fixture> 核对 $data-analytics:design-kpis 的输入与预期输出，不访问真实状态。"
+        },
+        {
+          "id": "course-da-09-q05",
+          "type": "true_false",
+          "content": "[Data Analytics:KPI 设计] 判断题：使用 $data-analytics:design-kpis 时，应保留这条约束——先决定测什么再设目标；缺关键证据时给方法或范围而非假精确值。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：该约束必须保留。\n依据：它来自 Data Analytics:KPI 设计 的流程或风险边界，能防止把技能能力扩大为未经确认的操作。\n实践：在提示词末尾加入该约束，并只检查模型返回的计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-da-10",
+      "code": "DA10",
+      "title": "DA10 Data Analytics:业务上下文收集",
+      "order": 10,
+      "lab_ref": "DA10",
+      "source_text": "data-analytics@0.2.8-13ceeea1f599 的 skills/gather-business-context/SKILL.md 与相邻 agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-da-10-q01",
+          "type": "multiple_choice",
+          "content": "[Data Analytics:业务上下文收集] 场景题：团队遇到以下场景：从已连接或提供的来源收集分析所需业务语境。最合适的下一步是什么？",
+          "options": [
+            "显式调用 $data-analytics:gather-business-context（Data Analytics:业务上下文收集），先核对输入和边界",
+            "跳过技能，直接承诺已经交付最终结果",
+            "调用同插件全部技能，让它们自行竞争",
+            "先修改真实外部状态，再补写需求说明"
+          ],
+          "answer": "显式调用 $data-analytics:gather-business-context（Data Analytics:业务上下文收集），先核对输入和边界",
+          "explanation": "结论：该场景正是 Data Analytics:业务上下文收集 的适用范围。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：B：没有执行相应流程，也缺少可观察证据；C：无差别调用增加上下文和副作用，掩盖清晰分工；D：把不可逆动作放在确认之前违反安全边界\n实践：用合成材料复述任务，并确认输入包含：主题、时间窗、产品或团队锚点与可访问来源。"
+        },
+        {
+          "id": "course-da-10-q02",
+          "type": "multiple_choice",
+          "content": "[Data Analytics:业务上下文收集] 调用题：评审会上需要明确记录所选技能，哪种写法最完整？",
+          "options": [
+            "只写“使用 Data Analytics:业务上下文收集”",
+            "插件 data-analytics；skill gather-business-context；调用 $data-analytics:gather-business-context；显示名 Data Analytics:业务上下文收集",
+            "只写插件 data-analytics，不指定 skill",
+            "复制本机缓存绝对路径作为调用语法"
+          ],
+          "answer": "插件 data-analytics；skill gather-business-context；调用 $data-analytics:gather-business-context；显示名 Data Analytics:业务上下文收集",
+          "explanation": "结论：插件 data-analytics；skill gather-business-context；调用 $data-analytics:gather-business-context；显示名 Data Analytics:业务上下文收集。\n依据：Data Analytics:业务上下文收集 的正式入口是 $data-analytics:gather-business-context；同时记录插件、skill slug 与显示名，才能在相似路由间复核选择。\n错误选项：A：省略稳定 slug 与插件名，不能完整核对调用目标；C：插件级名称无法区分内部多个独立技能；D：文件路径不是技能调用接口且会泄露机器特定信息\n实践：在合成场景中写出 $data-analytics:gather-business-context，并补一条不适用条件；不实际执行工具。"
+        },
+        {
+          "id": "course-da-10-q03",
+          "type": "multiple_choice",
+          "content": "[Data Analytics:业务上下文收集] 边界题：出现“提示已经自包含，或用户要完整诊断和最终交付物”时，怎样处理最稳妥？",
+          "options": [
+            "仍强制使用该技能，因为课程要求每个技能都执行",
+            "编造缺失输入以让流程继续",
+            "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+            "直接对真实数据、账户或发布面做试错"
+          ],
+          "answer": "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+          "explanation": "结论：停止套用该技能，重新路由或先补齐真正改变选择的条件。\n依据：Data Analytics:业务上下文收集 的不适用条件决定何时停止；越过该条件会把本 skill 错当成通用执行器。\n错误选项：A：课程目标是会判断，不是无条件执行；B：虚构事实会污染后续产出和验收；D：真实外部状态不应成为未确认路由的试验场\n实践：为 $data-analytics:gather-business-context 写一个最小反例和替代路由，只输出判断。"
+        },
+        {
+          "id": "course-da-10-q04",
+          "type": "multiple_choice",
+          "content": "[Data Analytics:业务上下文收集] 验收题：怎样证明这个单元已学会，而不是只记住名称？",
+          "options": [
+            "只背出 display_name",
+            "只说任务看起来已完成",
+            "展示一次真实写入或发布截图",
+            "能说明用途、输入“主题、时间窗、产品或团队锚点与可访问来源”、输出“供下一专门技能使用的紧凑事实、定义、来源和缺口”和边界，并在合成场景中选对技能"
+          ],
+          "answer": "能说明用途、输入“主题、时间窗、产品或团队锚点与可访问来源”、输出“供下一专门技能使用的紧凑事实、定义、来源和缺口”和边界，并在合成场景中选对技能",
+          "explanation": "结论：能说明用途、输入“主题、时间窗、产品或团队锚点与可访问来源”、输出“供下一专门技能使用的紧凑事实、定义、来源和缺口”和边界，并在合成场景中选对技能。\n依据：Data Analytics:业务上下文收集 的验收必须同时覆盖其输入、输出、边界与可观察证据，不能只记名称。\n错误选项：A：显示名不能证明会判断适用场景；B：没有对应输入、输出或可观察证据；C：不可逆操作不是必要教学证据，也可能越权\n实践：用 <synthetic-fixture> 核对 $data-analytics:gather-business-context 的输入与预期输出，不访问真实状态。"
+        },
+        {
+          "id": "course-da-10-q05",
+          "type": "true_false",
+          "content": "[Data Analytics:业务上下文收集] 判断题：使用 $data-analytics:gather-business-context 时，应保留这条约束——它是检索和提取步骤，不应越权完成根因分析或最终建议。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：该约束必须保留。\n依据：它来自 Data Analytics:业务上下文收集 的流程或风险边界，能防止把技能能力扩大为未经确认的操作。\n实践：在提示词末尾加入该约束，并只检查模型返回的计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-da-11",
+      "code": "DA11",
+      "title": "DA11 Data Analytics:分析工作流入口",
+      "order": 11,
+      "lab_ref": "DA11",
+      "source_text": "data-analytics@0.2.8-13ceeea1f599 的 skills/index/SKILL.md 与相邻 agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-da-11-q01",
+          "type": "multiple_choice",
+          "content": "[Data Analytics:分析工作流入口] 场景题：团队遇到以下场景：从宽泛的数据任务出发选择正确分析工作流和技能组合。最合适的下一步是什么？",
+          "options": [
+            "显式调用 $data-analytics:index（Data Analytics:分析工作流入口），先核对输入和边界",
+            "跳过技能，直接承诺已经交付最终结果",
+            "调用同插件全部技能，让它们自行竞争",
+            "先修改真实外部状态，再补写需求说明"
+          ],
+          "answer": "显式调用 $data-analytics:index（Data Analytics:分析工作流入口），先核对输入和边界",
+          "explanation": "结论：该场景正是 Data Analytics:分析工作流入口 的适用范围。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：B：没有执行相应流程，也缺少可观察证据；C：无差别调用增加上下文和副作用，掩盖清晰分工；D：把不可逆动作放在确认之前违反安全边界\n实践：用合成材料复述任务，并确认输入包含：用户问题、期望决定、可用数据表面和交付形式。"
+        },
+        {
+          "id": "course-da-11-q02",
+          "type": "multiple_choice",
+          "content": "[Data Analytics:分析工作流入口] 调用题：评审会上需要明确记录所选技能，哪种写法最完整？",
+          "options": [
+            "只写“使用 Data Analytics:分析工作流入口”",
+            "插件 data-analytics；skill index；调用 $data-analytics:index；显示名 Data Analytics:分析工作流入口",
+            "只写插件 data-analytics，不指定 skill",
+            "复制本机缓存绝对路径作为调用语法"
+          ],
+          "answer": "插件 data-analytics；skill index；调用 $data-analytics:index；显示名 Data Analytics:分析工作流入口",
+          "explanation": "结论：插件 data-analytics；skill index；调用 $data-analytics:index；显示名 Data Analytics:分析工作流入口。\n依据：Data Analytics:分析工作流入口 的正式入口是 $data-analytics:index；同时记录插件、skill slug 与显示名，才能在相似路由间复核选择。\n错误选项：A：省略稳定 slug 与插件名，不能完整核对调用目标；C：插件级名称无法区分内部多个独立技能；D：文件路径不是技能调用接口且会泄露机器特定信息\n实践：在合成场景中写出 $data-analytics:index，并补一条不适用条件；不实际执行工具。"
+        },
+        {
+          "id": "course-da-11-q03",
+          "type": "multiple_choice",
+          "content": "[Data Analytics:分析工作流入口] 边界题：出现“请求已经明确落到一个具体技能且输入充分”时，怎样处理最稳妥？",
+          "options": [
+            "仍强制使用该技能，因为课程要求每个技能都执行",
+            "编造缺失输入以让流程继续",
+            "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+            "直接对真实数据、账户或发布面做试错"
+          ],
+          "answer": "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+          "explanation": "结论：停止套用该技能，重新路由或先补齐真正改变选择的条件。\n依据：Data Analytics:分析工作流入口 的不适用条件决定何时停止；越过该条件会把本 skill 错当成通用执行器。\n错误选项：A：课程目标是会判断，不是无条件执行；B：虚构事实会污染后续产出和验收；D：真实外部状态不应成为未确认路由的试验场\n实践：为 $data-analytics:index 写一个最小反例和替代路由，只输出判断。"
+        },
+        {
+          "id": "course-da-11-q04",
+          "type": "multiple_choice",
+          "content": "[Data Analytics:分析工作流入口] 验收题：怎样证明这个单元已学会，而不是只记住名称？",
+          "options": [
+            "只背出 display_name",
+            "只说任务看起来已完成",
+            "展示一次真实写入或发布截图",
+            "能说明用途、输入“用户问题、期望决定、可用数据表面和交付形式”、输出“明确的数据工作路径、必要前置步骤与后续技能”和边界，并在合成场景中选对技能"
+          ],
+          "answer": "能说明用途、输入“用户问题、期望决定、可用数据表面和交付形式”、输出“明确的数据工作路径、必要前置步骤与后续技能”和边界，并在合成场景中选对技能",
+          "explanation": "结论：能说明用途、输入“用户问题、期望决定、可用数据表面和交付形式”、输出“明确的数据工作路径、必要前置步骤与后续技能”和边界，并在合成场景中选对技能。\n依据：Data Analytics:分析工作流入口 的验收必须同时覆盖其输入、输出、边界与可观察证据，不能只记名称。\n错误选项：A：显示名不能证明会判断适用场景；B：没有对应输入、输出或可观察证据；C：不可逆操作不是必要教学证据，也可能越权\n实践：用 <synthetic-fixture> 核对 $data-analytics:index 的输入与预期输出，不访问真实状态。"
+        },
+        {
+          "id": "course-da-11-q05",
+          "type": "true_false",
+          "content": "[Data Analytics:分析工作流入口] 判断题：使用 $data-analytics:index 时，应保留这条约束——入口负责路由和串联，不能把所有技能一起调用或绕过来源门禁。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：该约束必须保留。\n依据：它来自 Data Analytics:分析工作流入口 的流程或风险边界，能防止把技能能力扩大为未经确认的操作。\n实践：在提示词末尾加入该约束，并只检查模型返回的计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-da-12",
+      "code": "DA12",
+      "title": "DA12 Data Analytics:Jupyter 笔记本",
+      "order": 12,
+      "lab_ref": "DA12",
+      "source_text": "data-analytics@0.2.8-13ceeea1f599 的 skills/jupyter-notebooks/SKILL.md 与相邻 agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-da-12-q01",
+          "type": "multiple_choice",
+          "content": "[Data Analytics:Jupyter 笔记本] 场景题：团队遇到以下场景：创建、编辑或验证可复现的 SQL 或 Python 笔记本。最合适的下一步是什么？",
+          "options": [
+            "显式调用 $data-analytics:jupyter-notebooks（Data Analytics:Jupyter 笔记本），先核对输入和边界",
+            "跳过技能，直接承诺已经交付最终结果",
+            "调用同插件全部技能，让它们自行竞争",
+            "先修改真实外部状态，再补写需求说明"
+          ],
+          "answer": "显式调用 $data-analytics:jupyter-notebooks（Data Analytics:Jupyter 笔记本），先核对输入和边界",
+          "explanation": "结论：该场景正是 Data Analytics:Jupyter 笔记本 的适用范围。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：B：没有执行相应流程，也缺少可观察证据；C：无差别调用增加上下文和副作用，掩盖清晰分工；D：把不可逆动作放在确认之前违反安全边界\n实践：用合成材料复述任务，并确认输入包含：分析目标、数据来源、参数、现有 notebook 与运行环境。"
+        },
+        {
+          "id": "course-da-12-q02",
+          "type": "multiple_choice",
+          "content": "[Data Analytics:Jupyter 笔记本] 调用题：评审会上需要明确记录所选技能，哪种写法最完整？",
+          "options": [
+            "只写“使用 Data Analytics:Jupyter 笔记本”",
+            "插件 data-analytics；skill jupyter-notebooks；调用 $data-analytics:jupyter-notebooks；显示名 Data Analytics:Jupyter 笔记本",
+            "只写插件 data-analytics，不指定 skill",
+            "复制本机缓存绝对路径作为调用语法"
+          ],
+          "answer": "插件 data-analytics；skill jupyter-notebooks；调用 $data-analytics:jupyter-notebooks；显示名 Data Analytics:Jupyter 笔记本",
+          "explanation": "结论：插件 data-analytics；skill jupyter-notebooks；调用 $data-analytics:jupyter-notebooks；显示名 Data Analytics:Jupyter 笔记本。\n依据：Data Analytics:Jupyter 笔记本 的正式入口是 $data-analytics:jupyter-notebooks；同时记录插件、skill slug 与显示名，才能在相似路由间复核选择。\n错误选项：A：省略稳定 slug 与插件名，不能完整核对调用目标；C：插件级名称无法区分内部多个独立技能；D：文件路径不是技能调用接口且会泄露机器特定信息\n实践：在合成场景中写出 $data-analytics:jupyter-notebooks，并补一条不适用条件；不实际执行工具。"
+        },
+        {
+          "id": "course-da-12-q03",
+          "type": "multiple_choice",
+          "content": "[Data Analytics:Jupyter 笔记本] 边界题：出现“只需简短聊天答案且没有可复现计算或教学流程”时，怎样处理最稳妥？",
+          "options": [
+            "仍强制使用该技能，因为课程要求每个技能都执行",
+            "编造缺失输入以让流程继续",
+            "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+            "直接对真实数据、账户或发布面做试错"
+          ],
+          "answer": "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+          "explanation": "结论：停止套用该技能，重新路由或先补齐真正改变选择的条件。\n依据：Data Analytics:Jupyter 笔记本 的不适用条件决定何时停止；越过该条件会把本 skill 错当成通用执行器。\n错误选项：A：课程目标是会判断，不是无条件执行；B：虚构事实会污染后续产出和验收；D：真实外部状态不应成为未确认路由的试验场\n实践：为 $data-analytics:jupyter-notebooks 写一个最小反例和替代路由，只输出判断。"
+        },
+        {
+          "id": "course-da-12-q04",
+          "type": "multiple_choice",
+          "content": "[Data Analytics:Jupyter 笔记本] 验收题：怎样证明这个单元已学会，而不是只记住名称？",
+          "options": [
+            "只背出 display_name",
+            "只说任务看起来已完成",
+            "展示一次真实写入或发布截图",
+            "能说明用途、输入“分析目标、数据来源、参数、现有 notebook 与运行环境”、输出“结构清楚、输出有界、可追溯且已执行或注明阻塞的 ipynb”和边界，并在合成场景中选对技能"
+          ],
+          "answer": "能说明用途、输入“分析目标、数据来源、参数、现有 notebook 与运行环境”、输出“结构清楚、输出有界、可追溯且已执行或注明阻塞的 ipynb”和边界，并在合成场景中选对技能",
+          "explanation": "结论：能说明用途、输入“分析目标、数据来源、参数、现有 notebook 与运行环境”、输出“结构清楚、输出有界、可追溯且已执行或注明阻塞的 ipynb”和边界，并在合成场景中选对技能。\n依据：Data Analytics:Jupyter 笔记本 的验收必须同时覆盖其输入、输出、边界与可观察证据，不能只记名称。\n错误选项：A：显示名不能证明会判断适用场景；B：没有对应输入、输出或可观察证据；C：不可逆操作不是必要教学证据，也可能越权\n实践：用 <synthetic-fixture> 核对 $data-analytics:jupyter-notebooks 的输入与预期输出，不访问真实状态。"
+        },
+        {
+          "id": "course-da-12-q05",
+          "type": "true_false",
+          "content": "[Data Analytics:Jupyter 笔记本] 判断题：使用 $data-analytics:jupyter-notebooks 时，应保留这条约束——tl;dr 必须依据执行输出；未运行计算不能写成已验证结论。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：该约束必须保留。\n依据：它来自 Data Analytics:Jupyter 笔记本 的流程或风险边界，能防止把技能能力扩大为未经确认的操作。\n实践：在提示词末尾加入该约束，并只检查模型返回的计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-da-13",
+      "code": "DA13",
+      "title": "DA13 Data Analytics:KPI 汇报",
+      "order": 13,
+      "lab_ref": "DA13",
+      "source_text": "data-analytics@0.2.8-13ceeea1f599 的 skills/kpi-reporting/SKILL.md 与相邻 agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-da-13-q01",
+          "type": "multiple_choice",
+          "content": "[Data Analytics:KPI 汇报] 场景题：团队遇到以下场景：制作 WBR、MBR、QBR、记分卡或管理层 KPI 更新。最合适的下一步是什么？",
+          "options": [
+            "显式调用 $data-analytics:kpi-reporting（Data Analytics:KPI 汇报），先核对输入和边界",
+            "跳过技能，直接承诺已经交付最终结果",
+            "调用同插件全部技能，让它们自行竞争",
+            "先修改真实外部状态，再补写需求说明"
+          ],
+          "answer": "显式调用 $data-analytics:kpi-reporting（Data Analytics:KPI 汇报），先核对输入和边界",
+          "explanation": "结论：该场景正是 Data Analytics:KPI 汇报 的适用范围。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：B：没有执行相应流程，也缺少可观察证据；C：无差别调用增加上下文和副作用，掩盖清晰分工；D：把不可逆动作放在确认之前违反安全边界\n实践：用合成材料复述任务，并确认输入包含：指标定义、实际值、比较期、目标、节奏、驱动证据与受众。"
+        },
+        {
+          "id": "course-da-13-q02",
+          "type": "multiple_choice",
+          "content": "[Data Analytics:KPI 汇报] 调用题：评审会上需要明确记录所选技能，哪种写法最完整？",
+          "options": [
+            "只写“使用 Data Analytics:KPI 汇报”",
+            "插件 data-analytics；skill kpi-reporting；调用 $data-analytics:kpi-reporting；显示名 Data Analytics:KPI 汇报",
+            "只写插件 data-analytics，不指定 skill",
+            "复制本机缓存绝对路径作为调用语法"
+          ],
+          "answer": "插件 data-analytics；skill kpi-reporting；调用 $data-analytics:kpi-reporting；显示名 Data Analytics:KPI 汇报",
+          "explanation": "结论：插件 data-analytics；skill kpi-reporting；调用 $data-analytics:kpi-reporting；显示名 Data Analytics:KPI 汇报。\n依据：Data Analytics:KPI 汇报 的正式入口是 $data-analytics:kpi-reporting；同时记录插件、skill slug 与显示名，才能在相似路由间复核选择。\n错误选项：A：省略稳定 slug 与插件名，不能完整核对调用目标；C：插件级名称无法区分内部多个独立技能；D：文件路径不是技能调用接口且会泄露机器特定信息\n实践：在合成场景中写出 $data-analytics:kpi-reporting，并补一条不适用条件；不实际执行工具。"
+        },
+        {
+          "id": "course-da-13-q03",
+          "type": "multiple_choice",
+          "content": "[Data Analytics:KPI 汇报] 边界题：出现“要重新设计指标体系，或需要首次探索指标驱动因素”时，怎样处理最稳妥？",
+          "options": [
+            "仍强制使用该技能，因为课程要求每个技能都执行",
+            "编造缺失输入以让流程继续",
+            "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+            "直接对真实数据、账户或发布面做试错"
+          ],
+          "answer": "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+          "explanation": "结论：停止套用该技能，重新路由或先补齐真正改变选择的条件。\n依据：Data Analytics:KPI 汇报 的不适用条件决定何时停止；越过该条件会把本 skill 错当成通用执行器。\n错误选项：A：课程目标是会判断，不是无条件执行；B：虚构事实会污染后续产出和验收；D：真实外部状态不应成为未确认路由的试验场\n实践：为 $data-analytics:kpi-reporting 写一个最小反例和替代路由，只输出判断。"
+        },
+        {
+          "id": "course-da-13-q04",
+          "type": "multiple_choice",
+          "content": "[Data Analytics:KPI 汇报] 验收题：怎样证明这个单元已学会，而不是只记住名称？",
+          "options": [
+            "只背出 display_name",
+            "只说任务看起来已完成",
+            "展示一次真实写入或发布截图",
+            "能说明用途、输入“指标定义、实际值、比较期、目标、节奏、驱动证据与受众”、输出“状态、pacing、验证驱动因素和经营含义清晰的 readout”和边界，并在合成场景中选对技能"
+          ],
+          "answer": "能说明用途、输入“指标定义、实际值、比较期、目标、节奏、驱动证据与受众”、输出“状态、pacing、验证驱动因素和经营含义清晰的 readout”和边界，并在合成场景中选对技能",
+          "explanation": "结论：能说明用途、输入“指标定义、实际值、比较期、目标、节奏、驱动证据与受众”、输出“状态、pacing、验证驱动因素和经营含义清晰的 readout”和边界，并在合成场景中选对技能。\n依据：Data Analytics:KPI 汇报 的验收必须同时覆盖其输入、输出、边界与可观察证据，不能只记名称。\n错误选项：A：显示名不能证明会判断适用场景；B：没有对应输入、输出或可观察证据；C：不可逆操作不是必要教学证据，也可能越权\n实践：用 <synthetic-fixture> 核对 $data-analytics:kpi-reporting 的输入与预期输出，不访问真实状态。"
+        },
+        {
+          "id": "course-da-13-q05",
+          "type": "true_false",
+          "content": "[Data Analytics:KPI 汇报] 判断题：使用 $data-analytics:kpi-reporting 时，应保留这条约束——没有来源 actuals 不能用占位符发布；新驱动结论先交给 metric-diagnostics。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：该约束必须保留。\n依据：它来自 Data Analytics:KPI 汇报 的流程或风险边界，能防止把技能能力扩大为未经确认的操作。\n实践：在提示词末尾加入该约束，并只检查模型返回的计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-da-14",
+      "code": "DA14",
+      "title": "DA14 Data Analytics:市场规模估算",
+      "order": 14,
+      "lab_ref": "DA14",
+      "source_text": "data-analytics@0.2.8-13ceeea1f599 的 skills/market-sizing/SKILL.md 与相邻 agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-da-14-q01",
+          "type": "multiple_choice",
+          "content": "[Data Analytics:市场规模估算] 场景题：团队遇到以下场景：估算 TAM、SAM、SOM 或机会规模并展示不确定性。最合适的下一步是什么？",
+          "options": [
+            "显式调用 $data-analytics:market-sizing（Data Analytics:市场规模估算），先核对输入和边界",
+            "跳过技能，直接承诺已经交付最终结果",
+            "调用同插件全部技能，让它们自行竞争",
+            "先修改真实外部状态，再补写需求说明"
+          ],
+          "answer": "显式调用 $data-analytics:market-sizing（Data Analytics:市场规模估算），先核对输入和边界",
+          "explanation": "结论：该场景正是 Data Analytics:市场规模估算 的适用范围。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：B：没有执行相应流程，也缺少可观察证据；C：无差别调用增加上下文和副作用，掩盖清晰分工；D：把不可逆动作放在确认之前违反安全边界\n实践：用合成材料复述任务，并确认输入包含：市场边界、单位、时间地域、来源事实和关键假设。"
+        },
+        {
+          "id": "course-da-14-q02",
+          "type": "multiple_choice",
+          "content": "[Data Analytics:市场规模估算] 调用题：评审会上需要明确记录所选技能，哪种写法最完整？",
+          "options": [
+            "只写“使用 Data Analytics:市场规模估算”",
+            "插件 data-analytics；skill market-sizing；调用 $data-analytics:market-sizing；显示名 Data Analytics:市场规模估算",
+            "只写插件 data-analytics，不指定 skill",
+            "复制本机缓存绝对路径作为调用语法"
+          ],
+          "answer": "插件 data-analytics；skill market-sizing；调用 $data-analytics:market-sizing；显示名 Data Analytics:市场规模估算",
+          "explanation": "结论：插件 data-analytics；skill market-sizing；调用 $data-analytics:market-sizing；显示名 Data Analytics:市场规模估算。\n依据：Data Analytics:市场规模估算 的正式入口是 $data-analytics:market-sizing；同时记录插件、skill slug 与显示名，才能在相似路由间复核选择。\n错误选项：A：省略稳定 slug 与插件名，不能完整核对调用目标；C：插件级名称无法区分内部多个独立技能；D：文件路径不是技能调用接口且会泄露机器特定信息\n实践：在合成场景中写出 $data-analytics:market-sizing，并补一条不适用条件；不实际执行工具。"
+        },
+        {
+          "id": "course-da-14-q03",
+          "type": "multiple_choice",
+          "content": "[Data Analytics:市场规模估算] 边界题：出现“用户只要查询一个已知市场数字且不需模型”时，怎样处理最稳妥？",
+          "options": [
+            "仍强制使用该技能，因为课程要求每个技能都执行",
+            "编造缺失输入以让流程继续",
+            "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+            "直接对真实数据、账户或发布面做试错"
+          ],
+          "answer": "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+          "explanation": "结论：停止套用该技能，重新路由或先补齐真正改变选择的条件。\n依据：Data Analytics:市场规模估算 的不适用条件决定何时停止；越过该条件会把本 skill 错当成通用执行器。\n错误选项：A：课程目标是会判断，不是无条件执行；B：虚构事实会污染后续产出和验收；D：真实外部状态不应成为未确认路由的试验场\n实践：为 $data-analytics:market-sizing 写一个最小反例和替代路由，只输出判断。"
+        },
+        {
+          "id": "course-da-14-q04",
+          "type": "multiple_choice",
+          "content": "[Data Analytics:市场规模估算] 验收题：怎样证明这个单元已学会，而不是只记住名称？",
+          "options": [
+            "只背出 display_name",
+            "只说任务看起来已完成",
+            "展示一次真实写入或发布截图",
+            "能说明用途、输入“市场边界、单位、时间地域、来源事实和关键假设”、输出“可审计计算链、范围、敏感性与提高置信度的验证优先级”和边界，并在合成场景中选对技能"
+          ],
+          "answer": "能说明用途、输入“市场边界、单位、时间地域、来源事实和关键假设”、输出“可审计计算链、范围、敏感性与提高置信度的验证优先级”和边界，并在合成场景中选对技能",
+          "explanation": "结论：能说明用途、输入“市场边界、单位、时间地域、来源事实和关键假设”、输出“可审计计算链、范围、敏感性与提高置信度的验证优先级”和边界，并在合成场景中选对技能。\n依据：Data Analytics:市场规模估算 的验收必须同时覆盖其输入、输出、边界与可观察证据，不能只记名称。\n错误选项：A：显示名不能证明会判断适用场景；B：没有对应输入、输出或可观察证据；C：不可逆操作不是必要教学证据，也可能越权\n实践：用 <synthetic-fixture> 核对 $data-analytics:market-sizing 的输入与预期输出，不访问真实状态。"
+        },
+        {
+          "id": "course-da-14-q05",
+          "type": "true_false",
+          "content": "[Data Analytics:市场规模估算] 判断题：使用 $data-analytics:market-sizing 时，应保留这条约束——事实、推断与判断要分开；输入薄弱时不能隐藏在单一点估计后。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：该约束必须保留。\n依据：它来自 Data Analytics:市场规模估算 的流程或风险边界，能防止把技能能力扩大为未经确认的操作。\n实践：在提示词末尾加入该约束，并只检查模型返回的计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-da-15",
+      "code": "DA15",
+      "title": "DA15 Data Analytics:指标诊断",
+      "order": 15,
+      "lab_ref": "DA15",
+      "source_text": "data-analytics@0.2.8-13ceeea1f599 的 skills/metric-diagnostics/SKILL.md 与相邻 agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-da-15-q01",
+          "type": "multiple_choice",
+          "content": "[Data Analytics:指标诊断] 场景题：团队遇到以下场景：诊断指标变化、异常、预期差距或口径不一致。最合适的下一步是什么？",
+          "options": [
+            "显式调用 $data-analytics:metric-diagnostics（Data Analytics:指标诊断），先核对输入和边界",
+            "跳过技能，直接承诺已经交付最终结果",
+            "调用同插件全部技能，让它们自行竞争",
+            "先修改真实外部状态，再补写需求说明"
+          ],
+          "answer": "显式调用 $data-analytics:metric-diagnostics（Data Analytics:指标诊断），先核对输入和边界",
+          "explanation": "结论：该场景正是 Data Analytics:指标诊断 的适用范围。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：B：没有执行相应流程，也缺少可观察证据；C：无差别调用增加上下文和副作用，掩盖清晰分工；D：把不可逆动作放在确认之前违反安全边界\n实践：用合成材料复述任务，并确认输入包含：指标定义、粒度、比较窗口、权威来源与候选驱动维度。"
+        },
+        {
+          "id": "course-da-15-q02",
+          "type": "multiple_choice",
+          "content": "[Data Analytics:指标诊断] 调用题：评审会上需要明确记录所选技能，哪种写法最完整？",
+          "options": [
+            "只写“使用 Data Analytics:指标诊断”",
+            "插件 data-analytics；skill metric-diagnostics；调用 $data-analytics:metric-diagnostics；显示名 Data Analytics:指标诊断",
+            "只写插件 data-analytics，不指定 skill",
+            "复制本机缓存绝对路径作为调用语法"
+          ],
+          "answer": "插件 data-analytics；skill metric-diagnostics；调用 $data-analytics:metric-diagnostics；显示名 Data Analytics:指标诊断",
+          "explanation": "结论：插件 data-analytics；skill metric-diagnostics；调用 $data-analytics:metric-diagnostics；显示名 Data Analytics:指标诊断。\n依据：Data Analytics:指标诊断 的正式入口是 $data-analytics:metric-diagnostics；同时记录插件、skill slug 与显示名，才能在相似路由间复核选择。\n错误选项：A：省略稳定 slug 与插件名，不能完整核对调用目标；C：插件级名称无法区分内部多个独立技能；D：文件路径不是技能调用接口且会泄露机器特定信息\n实践：在合成场景中写出 $data-analytics:metric-diagnostics，并补一条不适用条件；不实际执行工具。"
+        },
+        {
+          "id": "course-da-15-q03",
+          "type": "multiple_choice",
+          "content": "[Data Analytics:指标诊断] 边界题：出现“用户的主要问题是选择策略或做产品取舍”时，怎样处理最稳妥？",
+          "options": [
+            "仍强制使用该技能，因为课程要求每个技能都执行",
+            "编造缺失输入以让流程继续",
+            "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+            "直接对真实数据、账户或发布面做试错"
+          ],
+          "answer": "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+          "explanation": "结论：停止套用该技能，重新路由或先补齐真正改变选择的条件。\n依据：Data Analytics:指标诊断 的不适用条件决定何时停止；越过该条件会把本 skill 错当成通用执行器。\n错误选项：A：课程目标是会判断，不是无条件执行；B：虚构事实会污染后续产出和验收；D：真实外部状态不应成为未确认路由的试验场\n实践：为 $data-analytics:metric-diagnostics 写一个最小反例和替代路由，只输出判断。"
+        },
+        {
+          "id": "course-da-15-q04",
+          "type": "multiple_choice",
+          "content": "[Data Analytics:指标诊断] 验收题：怎样证明这个单元已学会，而不是只记住名称？",
+          "options": [
+            "只背出 display_name",
+            "只说任务看起来已完成",
+            "展示一次真实写入或发布截图",
+            "能说明用途、输入“指标定义、粒度、比较窗口、权威来源与候选驱动维度”、输出“复现后的变化、量化驱动、置信度、残差与下一步”和边界，并在合成场景中选对技能"
+          ],
+          "answer": "能说明用途、输入“指标定义、粒度、比较窗口、权威来源与候选驱动维度”、输出“复现后的变化、量化驱动、置信度、残差与下一步”和边界，并在合成场景中选对技能",
+          "explanation": "结论：能说明用途、输入“指标定义、粒度、比较窗口、权威来源与候选驱动维度”、输出“复现后的变化、量化驱动、置信度、残差与下一步”和边界，并在合成场景中选对技能。\n依据：Data Analytics:指标诊断 的验收必须同时覆盖其输入、输出、边界与可观察证据，不能只记名称。\n错误选项：A：显示名不能证明会判断适用场景；B：没有对应输入、输出或可观察证据；C：不可逆操作不是必要教学证据，也可能越权\n实践：用 <synthetic-fixture> 核对 $data-analytics:metric-diagnostics 的输入与预期输出，不访问真实状态。"
+        },
+        {
+          "id": "course-da-15-q05",
+          "type": "true_false",
+          "content": "[Data Analytics:指标诊断] 判断题：使用 $data-analytics:metric-diagnostics 时，应保留这条约束——先复现模式再找原因；时间重合不能直接升级为因果。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：该约束必须保留。\n依据：它来自 Data Analytics:指标诊断 的流程或风险边界，能防止把技能能力扩大为未经确认的操作。\n实践：在提示词末尾加入该约束，并只检查模型返回的计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-da-16",
+      "code": "DA16",
+      "title": "DA16 Data Analytics:产品与业务分析",
+      "order": 16,
+      "lab_ref": "DA16",
+      "source_text": "data-analytics@0.2.8-13ceeea1f599 的 skills/product-business-analysis/SKILL.md 与相邻 agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-da-16-q01",
+          "type": "multiple_choice",
+          "content": "[Data Analytics:产品与业务分析] 场景题：团队遇到以下场景：用产品或业务数据支持优先级、方向和取舍建议。最合适的下一步是什么？",
+          "options": [
+            "显式调用 $data-analytics:product-business-analysis（Data Analytics:产品与业务分析），先核对输入和边界",
+            "跳过技能，直接承诺已经交付最终结果",
+            "调用同插件全部技能，让它们自行竞争",
+            "先修改真实外部状态，再补写需求说明"
+          ],
+          "answer": "显式调用 $data-analytics:product-business-analysis（Data Analytics:产品与业务分析），先核对输入和边界",
+          "explanation": "结论：该场景正是 Data Analytics:产品与业务分析 的适用范围。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：B：没有执行相应流程，也缺少可观察证据；C：无差别调用增加上下文和副作用，掩盖清晰分工；D：把不可逆动作放在确认之前违反安全边界\n实践：用合成材料复述任务，并确认输入包含：待做决定、评价标准、来源证据、业务语境和约束。"
+        },
+        {
+          "id": "course-da-16-q02",
+          "type": "multiple_choice",
+          "content": "[Data Analytics:产品与业务分析] 调用题：评审会上需要明确记录所选技能，哪种写法最完整？",
+          "options": [
+            "只写“使用 Data Analytics:产品与业务分析”",
+            "插件 data-analytics；skill product-business-analysis；调用 $data-analytics:product-business-analysis；显示名 Data Analytics:产品与业务分析",
+            "只写插件 data-analytics，不指定 skill",
+            "复制本机缓存绝对路径作为调用语法"
+          ],
+          "answer": "插件 data-analytics；skill product-business-analysis；调用 $data-analytics:product-business-analysis；显示名 Data Analytics:产品与业务分析",
+          "explanation": "结论：插件 data-analytics；skill product-business-analysis；调用 $data-analytics:product-business-analysis；显示名 Data Analytics:产品与业务分析。\n依据：Data Analytics:产品与业务分析 的正式入口是 $data-analytics:product-business-analysis；同时记录插件、skill slug 与显示名，才能在相似路由间复核选择。\n错误选项：A：省略稳定 slug 与插件名，不能完整核对调用目标；C：插件级名称无法区分内部多个独立技能；D：文件路径不是技能调用接口且会泄露机器特定信息\n实践：在合成场景中写出 $data-analytics:product-business-analysis，并补一条不适用条件；不实际执行工具。"
+        },
+        {
+          "id": "course-da-16-q03",
+          "type": "multiple_choice",
+          "content": "[Data Analytics:产品与业务分析] 边界题：出现“只需要解释单个指标为何变化而不做决定”时，怎样处理最稳妥？",
+          "options": [
+            "仍强制使用该技能，因为课程要求每个技能都执行",
+            "编造缺失输入以让流程继续",
+            "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+            "直接对真实数据、账户或发布面做试错"
+          ],
+          "answer": "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+          "explanation": "结论：停止套用该技能，重新路由或先补齐真正改变选择的条件。\n依据：Data Analytics:产品与业务分析 的不适用条件决定何时停止；越过该条件会把本 skill 错当成通用执行器。\n错误选项：A：课程目标是会判断，不是无条件执行；B：虚构事实会污染后续产出和验收；D：真实外部状态不应成为未确认路由的试验场\n实践：为 $data-analytics:product-business-analysis 写一个最小反例和替代路由，只输出判断。"
+        },
+        {
+          "id": "course-da-16-q04",
+          "type": "multiple_choice",
+          "content": "[Data Analytics:产品与业务分析] 验收题：怎样证明这个单元已学会，而不是只记住名称？",
+          "options": [
+            "只背出 display_name",
+            "只说任务看起来已完成",
+            "展示一次真实写入或发布截图",
+            "能说明用途、输入“待做决定、评价标准、来源证据、业务语境和约束”、输出“事实与解释分开的分析、权衡和可执行建议”和边界，并在合成场景中选对技能"
+          ],
+          "answer": "能说明用途、输入“待做决定、评价标准、来源证据、业务语境和约束”、输出“事实与解释分开的分析、权衡和可执行建议”和边界，并在合成场景中选对技能",
+          "explanation": "结论：能说明用途、输入“待做决定、评价标准、来源证据、业务语境和约束”、输出“事实与解释分开的分析、权衡和可执行建议”和边界，并在合成场景中选对技能。\n依据：Data Analytics:产品与业务分析 的验收必须同时覆盖其输入、输出、边界与可观察证据，不能只记名称。\n错误选项：A：显示名不能证明会判断适用场景；B：没有对应输入、输出或可观察证据；C：不可逆操作不是必要教学证据，也可能越权\n实践：用 <synthetic-fixture> 核对 $data-analytics:product-business-analysis 的输入与预期输出，不访问真实状态。"
+        },
+        {
+          "id": "course-da-16-q05",
+          "type": "true_false",
+          "content": "[Data Analytics:产品与业务分析] 判断题：使用 $data-analytics:product-business-analysis 时，应保留这条约束——建议必须由可追溯证据支撑；缺关键权威来源时停止相应结论。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：该约束必须保留。\n依据：它来自 Data Analytics:产品与业务分析 的流程或风险边界，能防止把技能能力扩大为未经确认的操作。\n实践：在提示词末尾加入该约束，并只检查模型返回的计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-da-17",
+      "code": "DA17",
+      "title": "DA17 Data Analytics:分析成果发布",
+      "order": 17,
+      "lab_ref": "DA17",
+      "source_text": "data-analytics@0.2.8-13ceeea1f599 的 skills/publish-artifact-to-sites/SKILL.md 与相邻 agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-da-17-q01",
+          "type": "multiple_choice",
+          "content": "[Data Analytics:分析成果发布] 场景题：团队遇到以下场景：写出把已验证的数据分析报告或仪表板发布到 Sites 的方案。最合适的下一步是什么？",
+          "options": [
+            "显式调用 $data-analytics:publish-artifact-to-sites（Data Analytics:分析成果发布），先核对输入和边界",
+            "跳过技能，直接承诺已经交付最终结果",
+            "调用同插件全部技能，让它们自行竞争",
+            "先修改真实外部状态，再补写需求说明"
+          ],
+          "answer": "显式调用 $data-analytics:publish-artifact-to-sites（Data Analytics:分析成果发布），先核对输入和边界",
+          "explanation": "结论：该场景正是 Data Analytics:分析成果发布 的适用范围。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：B：没有执行相应流程，也缺少可观察证据；C：无差别调用增加上下文和副作用，掩盖清晰分工；D：把不可逆动作放在确认之前违反安全边界\n实践：用合成材料复述任务，并确认输入包含：已验证 artifact、站点名称、发布生命周期能力与可分享范围。"
+        },
+        {
+          "id": "course-da-17-q02",
+          "type": "multiple_choice",
+          "content": "[Data Analytics:分析成果发布] 调用题：评审会上需要明确记录所选技能，哪种写法最完整？",
+          "options": [
+            "只写“使用 Data Analytics:分析成果发布”",
+            "插件 data-analytics；skill publish-artifact-to-sites；调用 $data-analytics:publish-artifact-to-sites；显示名 Data Analytics:分析成果发布",
+            "只写插件 data-analytics，不指定 skill",
+            "复制本机缓存绝对路径作为调用语法"
+          ],
+          "answer": "插件 data-analytics；skill publish-artifact-to-sites；调用 $data-analytics:publish-artifact-to-sites；显示名 Data Analytics:分析成果发布",
+          "explanation": "结论：插件 data-analytics；skill publish-artifact-to-sites；调用 $data-analytics:publish-artifact-to-sites；显示名 Data Analytics:分析成果发布。\n依据：Data Analytics:分析成果发布 的正式入口是 $data-analytics:publish-artifact-to-sites；同时记录插件、skill slug 与显示名，才能在相似路由间复核选择。\n错误选项：A：省略稳定 slug 与插件名，不能完整核对调用目标；C：插件级名称无法区分内部多个独立技能；D：文件路径不是技能调用接口且会泄露机器特定信息\n实践：在合成场景中写出 $data-analytics:publish-artifact-to-sites，并补一条不适用条件；不实际执行工具。"
+        },
+        {
+          "id": "course-da-17-q03",
+          "type": "multiple_choice",
+          "content": "[Data Analytics:分析成果发布] 边界题：出现“分析产物尚未构建验证，或用户只要本地文件”时，怎样处理最稳妥？",
+          "options": [
+            "仍强制使用该技能，因为课程要求每个技能都执行",
+            "编造缺失输入以让流程继续",
+            "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+            "直接对真实数据、账户或发布面做试错"
+          ],
+          "answer": "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+          "explanation": "结论：停止套用该技能，重新路由或先补齐真正改变选择的条件。\n依据：Data Analytics:分析成果发布 的不适用条件决定何时停止；越过该条件会把本 skill 错当成通用执行器。\n错误选项：A：课程目标是会判断，不是无条件执行；B：虚构事实会污染后续产出和验收；D：真实外部状态不应成为未确认路由的试验场\n实践：为 $data-analytics:publish-artifact-to-sites 写一个最小反例和替代路由，只输出判断。"
+        },
+        {
+          "id": "course-da-17-q04",
+          "type": "multiple_choice",
+          "content": "[Data Analytics:分析成果发布] 验收题：怎样证明这个单元已学会，而不是只记住名称？",
+          "options": [
+            "只背出 display_name",
+            "只说任务看起来已完成",
+            "展示一次真实写入或发布截图",
+            "能说明用途、输入“已验证 artifact、站点名称、发布生命周期能力与可分享范围”、输出“checkpoint/部署前检查方案、预期 Sites 链接字段和分享范围清单”和边界，并在合成场景中选对技能"
+          ],
+          "answer": "能说明用途、输入“已验证 artifact、站点名称、发布生命周期能力与可分享范围”、输出“checkpoint/部署前检查方案、预期 Sites 链接字段和分享范围清单”和边界，并在合成场景中选对技能",
+          "explanation": "结论：能说明用途、输入“已验证 artifact、站点名称、发布生命周期能力与可分享范围”、输出“checkpoint/部署前检查方案、预期 Sites 链接字段和分享范围清单”和边界，并在合成场景中选对技能。\n依据：Data Analytics:分析成果发布 的验收必须同时覆盖其输入、输出、边界与可观察证据，不能只记名称。\n错误选项：A：显示名不能证明会判断适用场景；B：没有对应输入、输出或可观察证据；C：不可逆操作不是必要教学证据，也可能越权\n实践：用 <synthetic-fixture> 核对 $data-analytics:publish-artifact-to-sites 的输入与预期输出，不访问真实状态。"
+        },
+        {
+          "id": "course-da-17-q05",
+          "type": "true_false",
+          "content": "[Data Analytics:分析成果发布] 判断题：使用 $data-analytics:publish-artifact-to-sites 时，应保留这条约束——它只负责发布，不修补分析；没有合格产物或发布能力时应报告阻塞。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：该约束必须保留。\n依据：它来自 Data Analytics:分析成果发布 的流程或风险边界，能防止把技能能力扩大为未经确认的操作。\n实践：在提示词末尾加入该约束，并只检查模型返回的计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-da-18",
+      "code": "DA18",
+      "title": "DA18 Data Analytics:分析验证",
+      "order": 18,
+      "lab_ref": "DA18",
+      "source_text": "data-analytics@0.2.8-13ceeea1f599 的 skills/validate-data/SKILL.md 与相邻 agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-da-18-q01",
+          "type": "multiple_choice",
+          "content": "[Data Analytics:分析验证] 场景题：团队遇到以下场景：验证分析、图表、报告或建议是否准确且证据充分。最合适的下一步是什么？",
+          "options": [
+            "显式调用 $data-analytics:validate-data（Data Analytics:分析验证），先核对输入和边界",
+            "跳过技能，直接承诺已经交付最终结果",
+            "调用同插件全部技能，让它们自行竞争",
+            "先修改真实外部状态，再补写需求说明"
+          ],
+          "answer": "显式调用 $data-analytics:validate-data（Data Analytics:分析验证），先核对输入和边界",
+          "explanation": "结论：该场景正是 Data Analytics:分析验证 的适用范围。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：B：没有执行相应流程，也缺少可观察证据；C：无差别调用增加上下文和副作用，掩盖清晰分工；D：把不可逆动作放在确认之前违反安全边界\n实践：用合成材料复述任务，并确认输入包含：分析产物、计算、来源、方法、caveat 与核心主张。"
+        },
+        {
+          "id": "course-da-18-q02",
+          "type": "multiple_choice",
+          "content": "[Data Analytics:分析验证] 调用题：评审会上需要明确记录所选技能，哪种写法最完整？",
+          "options": [
+            "只写“使用 Data Analytics:分析验证”",
+            "插件 data-analytics；skill validate-data；调用 $data-analytics:validate-data；显示名 Data Analytics:分析验证",
+            "只写插件 data-analytics，不指定 skill",
+            "复制本机缓存绝对路径作为调用语法"
+          ],
+          "answer": "插件 data-analytics；skill validate-data；调用 $data-analytics:validate-data；显示名 Data Analytics:分析验证",
+          "explanation": "结论：插件 data-analytics；skill validate-data；调用 $data-analytics:validate-data；显示名 Data Analytics:分析验证。\n依据：Data Analytics:分析验证 的正式入口是 $data-analytics:validate-data；同时记录插件、skill slug 与显示名，才能在相似路由间复核选择。\n错误选项：A：省略稳定 slug 与插件名，不能完整核对调用目标；C：插件级名称无法区分内部多个独立技能；D：文件路径不是技能调用接口且会泄露机器特定信息\n实践：在合成场景中写出 $data-analytics:validate-data，并补一条不适用条件；不实际执行工具。"
+        },
+        {
+          "id": "course-da-18-q03",
+          "type": "multiple_choice",
+          "content": "[Data Analytics:分析验证] 边界题：出现“要调查底层原始数据的完整性、唯一性或新鲜度”时，怎样处理最稳妥？",
+          "options": [
+            "仍强制使用该技能，因为课程要求每个技能都执行",
+            "编造缺失输入以让流程继续",
+            "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+            "直接对真实数据、账户或发布面做试错"
+          ],
+          "answer": "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+          "explanation": "结论：停止套用该技能，重新路由或先补齐真正改变选择的条件。\n依据：Data Analytics:分析验证 的不适用条件决定何时停止；越过该条件会把本 skill 错当成通用执行器。\n错误选项：A：课程目标是会判断，不是无条件执行；B：虚构事实会污染后续产出和验收；D：真实外部状态不应成为未确认路由的试验场\n实践：为 $data-analytics:validate-data 写一个最小反例和替代路由，只输出判断。"
+        },
+        {
+          "id": "course-da-18-q04",
+          "type": "multiple_choice",
+          "content": "[Data Analytics:分析验证] 验收题：怎样证明这个单元已学会，而不是只记住名称？",
+          "options": [
+            "只背出 display_name",
+            "只说任务看起来已完成",
+            "展示一次真实写入或发布截图",
+            "能说明用途、输入“分析产物、计算、来源、方法、caveat 与核心主张”、输出“逐项核对后的问题、严重度、修复要求和是否可分享结论”和边界，并在合成场景中选对技能"
+          ],
+          "answer": "能说明用途、输入“分析产物、计算、来源、方法、caveat 与核心主张”、输出“逐项核对后的问题、严重度、修复要求和是否可分享结论”和边界，并在合成场景中选对技能",
+          "explanation": "结论：能说明用途、输入“分析产物、计算、来源、方法、caveat 与核心主张”、输出“逐项核对后的问题、严重度、修复要求和是否可分享结论”和边界，并在合成场景中选对技能。\n依据：Data Analytics:分析验证 的验收必须同时覆盖其输入、输出、边界与可观察证据，不能只记名称。\n错误选项：A：显示名不能证明会判断适用场景；B：没有对应输入、输出或可观察证据；C：不可逆操作不是必要教学证据，也可能越权\n实践：用 <synthetic-fixture> 核对 $data-analytics:validate-data 的输入与预期输出，不访问真实状态。"
+        },
+        {
+          "id": "course-da-18-q05",
+          "type": "true_false",
+          "content": "[Data Analytics:分析验证] 判断题：使用 $data-analytics:validate-data 时，应保留这条约束——验证成品不等于重新分析所有底层数据；高影响主张必须追到证据。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：该约束必须保留。\n依据：它来自 Data Analytics:分析验证 的流程或风险边界，能防止把技能能力扩大为未经确认的操作。\n实践：在提示词末尾加入该约束，并只检查模型返回的计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-da-19",
+      "code": "DA19",
+      "title": "DA19 Data Analytics:数据可视化",
+      "order": 19,
+      "lab_ref": "DA19",
+      "source_text": "data-analytics@0.2.8-13ceeea1f599 的 skills/visualize-data/SKILL.md 与相邻 agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-da-19-q01",
+          "type": "multiple_choice",
+          "content": "[Data Analytics:数据可视化] 场景题：团队遇到以下场景：选择、构建、修订或 QA 定量图表与视觉呈现。最合适的下一步是什么？",
+          "options": [
+            "显式调用 $data-analytics:visualize-data（Data Analytics:数据可视化），先核对输入和边界",
+            "跳过技能，直接承诺已经交付最终结果",
+            "调用同插件全部技能，让它们自行竞争",
+            "先修改真实外部状态，再补写需求说明"
+          ],
+          "answer": "显式调用 $data-analytics:visualize-data（Data Analytics:数据可视化），先核对输入和边界",
+          "explanation": "结论：该场景正是 Data Analytics:数据可视化 的适用范围。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：B：没有执行相应流程，也缺少可观察证据；C：无差别调用增加上下文和副作用，掩盖清晰分工；D：把不可逆动作放在确认之前违反安全边界\n实践：用合成材料复述任务，并确认输入包含：分析问题、已审数据、比较关系、受众与交付表面。"
+        },
+        {
+          "id": "course-da-19-q02",
+          "type": "multiple_choice",
+          "content": "[Data Analytics:数据可视化] 调用题：评审会上需要明确记录所选技能，哪种写法最完整？",
+          "options": [
+            "只写“使用 Data Analytics:数据可视化”",
+            "插件 data-analytics；skill visualize-data；调用 $data-analytics:visualize-data；显示名 Data Analytics:数据可视化",
+            "只写插件 data-analytics，不指定 skill",
+            "复制本机缓存绝对路径作为调用语法"
+          ],
+          "answer": "插件 data-analytics；skill visualize-data；调用 $data-analytics:visualize-data；显示名 Data Analytics:数据可视化",
+          "explanation": "结论：插件 data-analytics；skill visualize-data；调用 $data-analytics:visualize-data；显示名 Data Analytics:数据可视化。\n依据：Data Analytics:数据可视化 的正式入口是 $data-analytics:visualize-data；同时记录插件、skill slug 与显示名，才能在相似路由间复核选择。\n错误选项：A：省略稳定 slug 与插件名，不能完整核对调用目标；C：插件级名称无法区分内部多个独立技能；D：文件路径不是技能调用接口且会泄露机器特定信息\n实践：在合成场景中写出 $data-analytics:visualize-data，并补一条不适用条件；不实际执行工具。"
+        },
+        {
+          "id": "course-da-19-q03",
+          "type": "multiple_choice",
+          "content": "[Data Analytics:数据可视化] 边界题：出现“用户需要完整报告或仪表板的信息架构和发布”时，怎样处理最稳妥？",
+          "options": [
+            "仍强制使用该技能，因为课程要求每个技能都执行",
+            "编造缺失输入以让流程继续",
+            "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+            "直接对真实数据、账户或发布面做试错"
+          ],
+          "answer": "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+          "explanation": "结论：停止套用该技能，重新路由或先补齐真正改变选择的条件。\n依据：Data Analytics:数据可视化 的不适用条件决定何时停止；越过该条件会把本 skill 错当成通用执行器。\n错误选项：A：课程目标是会判断，不是无条件执行；B：虚构事实会污染后续产出和验收；D：真实外部状态不应成为未确认路由的试验场\n实践：为 $data-analytics:visualize-data 写一个最小反例和替代路由，只输出判断。"
+        },
+        {
+          "id": "course-da-19-q04",
+          "type": "multiple_choice",
+          "content": "[Data Analytics:数据可视化] 验收题：怎样证明这个单元已学会，而不是只记住名称？",
+          "options": [
+            "只背出 display_name",
+            "只说任务看起来已完成",
+            "展示一次真实写入或发布截图",
+            "能说明用途、输入“分析问题、已审数据、比较关系、受众与交付表面”、输出“选择合理图形、诚实尺度、充分标签和最终表面检查结果”和边界，并在合成场景中选对技能"
+          ],
+          "answer": "能说明用途、输入“分析问题、已审数据、比较关系、受众与交付表面”、输出“选择合理图形、诚实尺度、充分标签和最终表面检查结果”和边界，并在合成场景中选对技能",
+          "explanation": "结论：能说明用途、输入“分析问题、已审数据、比较关系、受众与交付表面”、输出“选择合理图形、诚实尺度、充分标签和最终表面检查结果”和边界，并在合成场景中选对技能。\n依据：Data Analytics:数据可视化 的验收必须同时覆盖其输入、输出、边界与可观察证据，不能只记名称。\n错误选项：A：显示名不能证明会判断适用场景；B：没有对应输入、输出或可观察证据；C：不可逆操作不是必要教学证据，也可能越权\n实践：用 <synthetic-fixture> 核对 $data-analytics:visualize-data 的输入与预期输出，不访问真实状态。"
+        },
+        {
+          "id": "course-da-19-q05",
+          "type": "true_false",
+          "content": "[Data Analytics:数据可视化] 判断题：使用 $data-analytics:visualize-data 时，应保留这条约束——图形服从比较问题；数据点过少时应补数据或换成更诚实的表述。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：该约束必须保留。\n依据：它来自 Data Analytics:数据可视化 的流程或风险边界，能防止把技能能力扩大为未经确认的操作。\n实践：在提示词末尾加入该约束，并只检查模型返回的计划和验收项。"
+        }
+      ]
+    }
+  ]
+}

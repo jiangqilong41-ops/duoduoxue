@@ -1,0 +1,525 @@
+{
+  "course": {
+    "id": "build-web-apps",
+    "prefix": "WB",
+    "title": "build-web-apps"
+  },
+  "source": {
+    "kind": "local-sanitized",
+    "ref": "build-web-apps@0.1.2",
+    "snapshot": "2026-07-20"
+  },
+  "decks": [
+    {
+      "id": "course-wb-01",
+      "code": "WB01",
+      "title": "WB01 build-web-apps 插件总览",
+      "order": 1,
+      "lab_ref": "WB01",
+      "source_text": "build-web-apps@0.1.2 的 .codex-plugin/plugin.json 与 skills/*/agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-wb-01-q01",
+          "type": "multiple_choice",
+          "content": "[build-web-apps] 路由题：第一次学习 build-web-apps，怎样建立可复用的技能地图?",
+          "options": [
+            "先学插件总览，再按清单逐个学习 6 个独立 skill 单元",
+            "只记插件名，遇到任务同时调用全部 skill",
+            "跳过总览，只背显示名",
+            "先在真实系统执行所有示例"
+          ],
+          "answer": "先学插件总览，再按清单逐个学习 6 个独立 skill 单元",
+          "explanation": "结论：先学插件总览，再按清单逐个学习 6 个独立 skill 单元。\n依据：manifest 将 build-web-apps 作为插件，skill 清单为：frontend-app-builder（Build Web Apps:前端应用构建器）、frontend-testing-debugging（Build Web Apps:前端测试调试）、react-best-practices（Build Web Apps:React 最佳实践）、shadcn-best-practices（Build Web Apps:shadcn/ui 组件管理）、stripe-best-practices（Build Web Apps:Stripe 最佳实践）、supabase-best-practices（Build Web Apps:Supabase Postgres 最佳实践）。\n错误选项：B：该选项绕过了本单元的边界或证据要求；C：该选项绕过了本单元的边界或证据要求；D：该选项绕过了本单元的边界或证据要求\n实践：用三个虚构任务分别指出候选 skill、排除理由和停止条件。"
+        },
+        {
+          "id": "course-wb-01-q02",
+          "type": "multiple_choice",
+          "content": "[build-web-apps] 来源题：课程事实应如何固定?",
+          "options": [
+            "每次启动自动抓取最新版并覆盖课程",
+            "复制缓存中的个人绝对路径和全部文件",
+            "省略版本与日期，只保留营销名称",
+            "使用 build-web-apps 的 local-sanitized 版本快照，并记录 2026-07-20"
+          ],
+          "answer": "使用 build-web-apps 的 local-sanitized 版本快照，并记录 2026-07-20",
+          "explanation": "结论：使用 build-web-apps 的 local-sanitized 版本快照，并记录 2026-07-20。\n依据：课程源字段固定记录 kind、ref 和 snapshot，保证可重建。\n错误选项：A：该选项绕过了本单元的边界或证据要求；B：该选项绕过了本单元的边界或证据要求；C：该选项绕过了本单元的边界或证据要求\n实践：对照 manifest、SKILL.md 和相邻 openai.yaml，只记录可复核的非敏感元数据。"
+        },
+        {
+          "id": "course-wb-01-q03",
+          "type": "multiple_choice",
+          "content": "[build-web-apps] 调用题：技能单元的最小显式调用应包含什么?",
+          "options": [
+            "只写 display_name，省略插件和 slug",
+            "写入本机缓存绝对路径",
+            "插件名、skill slug、interface.display_name 与停止条件",
+            "只写模糊任务，不点名 skill"
+          ],
+          "answer": "插件名、skill slug、interface.display_name 与停止条件",
+          "explanation": "结论：插件名、skill slug、interface.display_name 与停止条件。\n依据：稳定 slug 用于路由，display_name 用于人类核对，二者都不能被绝对路径替代。\n错误选项：A：该选项绕过了本单元的边界或证据要求；B：该选项绕过了本单元的边界或证据要求；D：该选项绕过了本单元的边界或证据要求\n实践：用一个合成任务写出调用句：插件、slug、显示名三者同时出现。"
+        },
+        {
+          "id": "course-wb-01-q04",
+          "type": "multiple_choice",
+          "content": "[build-web-apps] 安全题：练习应采用哪种边界?",
+          "options": [
+            "自动发送、部署或收费并把链接当成绩",
+            "只用合成 fixture、提示词和只读状态检查，不改变真实外部状态",
+            "使用真实客户数据验证效果",
+            "先安装/启用全部插件再答题"
+          ],
+          "answer": "只用合成 fixture、提示词和只读状态检查，不改变真实外部状态",
+          "explanation": "结论：只用合成 fixture、提示词和只读状态检查，不改变真实外部状态。\n依据：课程要求安全、可观察且可复核，不默认扩大用户授权。\n错误选项：A：该选项绕过了本单元的边界或证据要求；C：该选项绕过了本单元的边界或证据要求；D：该选项绕过了本单元的边界或证据要求\n实践：把任何真实名称替换成占位符，只检查路由、输入输出和验收项。"
+        },
+        {
+          "id": "course-wb-01-q05",
+          "type": "true_false",
+          "content": "[build-web-apps] 判断题：知道插件名就足以代替对每个 skill 适用场景、输入输出和边界的判断。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "错误",
+          "explanation": "结论：错误。\n依据：插件总览只提供地图；每个 skill 仍有独立的用途和风险边界。\n实践：随机抽取两个相邻 skill，说明它们为何不能无差别互换。"
+        }
+      ]
+    },
+    {
+      "id": "course-wb-02",
+      "code": "WB02",
+      "title": "WB02 Build Web Apps:前端应用构建器",
+      "order": 2,
+      "lab_ref": "WB02",
+      "source_text": "build-web-apps@0.1.2 的 skills/frontend-app-builder/SKILL.md 与 skills/frontend-app-builder/agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-wb-02-q01",
+          "type": "multiple_choice",
+          "content": "[Build Web Apps:前端应用构建器] 场景题：合成团队需要从零创建或重设计高质量前端应用、dashboard、游戏、hero section 和视觉驱动 UI。 最合适的下一步是什么？",
+          "options": [
+            "显式调用 $build-web-apps:frontend-app-builder（Build Web Apps:前端应用构建器），先核对输入、停止条件和只读边界",
+            "不判断场景，直接调用插件中的全部 skill",
+            "省略关键输入并承诺已经完成真实交付",
+            "先修改生产或客户数据，再补写理由"
+          ],
+          "answer": "显式调用 $build-web-apps:frontend-app-builder（Build Web Apps:前端应用构建器），先核对输入、停止条件和只读边界",
+          "explanation": "结论：显式调用 $build-web-apps:frontend-app-builder（Build Web Apps:前端应用构建器），先核对输入、停止条件和只读边界。\n依据：SKILL.md 将该用途作为 Build Web Apps:前端应用构建器 的适用入口。\n错误选项：B：该选项绕过了本单元的边界或证据要求；C：该选项绕过了本单元的边界或证据要求；D：该选项绕过了本单元的边界或证据要求\n实践：把任务中的真实名称替换为虚构名称，只输出路由和验收清单。"
+        },
+        {
+          "id": "course-wb-02-q02",
+          "type": "multiple_choice",
+          "content": "[Build Web Apps:前端应用构建器] 输入题：要让这条流程可复核，首先应收集什么？",
+          "options": [
+            "只给一句模糊目标，不提供上下文",
+            "复制本机绝对路径和凭证作为输入",
+            "先执行写入操作，之后再补输入",
+            "收集合成输入：产品目标、受众、页面范围、品牌/视觉方向、合成素材和响应式要求，再请求只读方案"
+          ],
+          "answer": "收集合成输入：产品目标、受众、页面范围、品牌/视觉方向、合成素材和响应式要求，再请求只读方案",
+          "explanation": "结论：收集合成输入：产品目标、受众、页面范围、品牌/视觉方向、合成素材和响应式要求，再请求只读方案。\n依据：SKILL.md 与相邻接口说明共同限定了输入范围：产品目标、受众、页面范围、品牌/视觉方向、合成素材和响应式要求。\n错误选项：A：该选项绕过了本单元的边界或证据要求；B：该选项绕过了本单元的边界或证据要求；C：该选项绕过了本单元的边界或证据要求\n实践：列出输入字段并标注缺失项；不调用外部工具。"
+        },
+        {
+          "id": "course-wb-02-q03",
+          "type": "multiple_choice",
+          "content": "[Build Web Apps:前端应用构建器] 边界题：发现以下条件时怎样处理最稳妥？",
+          "options": [
+            "虚构运行结果让验收通过",
+            "把风险转移给真实客户或生产环境",
+            "若无法满足“先做足够的图像概念并等待设计接受；持续修正视觉/交互/响应式差异；不默认部署或改动真实站点”，则停止当前路由，补齐条件或改选其他 skill",
+            "无论条件是否满足都强行继续"
+          ],
+          "answer": "若无法满足“先做足够的图像概念并等待设计接受；持续修正视觉/交互/响应式差异；不默认部署或改动真实站点”，则停止当前路由，补齐条件或改选其他 skill",
+          "explanation": "结论：若无法满足“先做足够的图像概念并等待设计接受；持续修正视觉/交互/响应式差异；不默认部署或改动真实站点”，则停止当前路由，补齐条件或改选其他 skill。\n依据：技能说明明确了边界：先做足够的图像概念并等待设计接受；持续修正视觉/交互/响应式差异；不默认部署或改动真实站点。\n错误选项：A：该选项绕过了本单元的边界或证据要求；B：该选项绕过了本单元的边界或证据要求；D：该选项绕过了本单元的边界或证据要求\n实践：写出一句停止条件和一个安全替代路径。"
+        },
+        {
+          "id": "course-wb-02-q04",
+          "type": "multiple_choice",
+          "content": "[Build Web Apps:前端应用构建器] 验收题：什么结果才能证明本单元真的学会？",
+          "options": [
+            "展示一次未经授权的真实写入截图",
+            "得到先获批的视觉概念，再有浏览器验证的忠实实现，并能解释为什么选择 frontend-app-builder",
+            "只背出显示名，不说明输入输出",
+            "只说“看起来完成”而没有证据"
+          ],
+          "answer": "得到先获批的视觉概念，再有浏览器验证的忠实实现，并能解释为什么选择 frontend-app-builder",
+          "explanation": "结论：得到先获批的视觉概念，再有浏览器验证的忠实实现，并能解释为什么选择 frontend-app-builder。\n依据：技能目标是把 产品目标、受众、页面范围、品牌/视觉方向、合成素材和响应式要求 转化为 先获批的视觉概念，再有浏览器验证的忠实实现，而不是只记名称。\n错误选项：A：该选项绕过了本单元的边界或证据要求；C：该选项绕过了本单元的边界或证据要求；D：该选项绕过了本单元的边界或证据要求\n实践：用合成 fixture 复述输入、输出、边界和三项可观察检查。"
+        },
+        {
+          "id": "course-wb-02-q05",
+          "type": "true_false",
+          "content": "[Build Web Apps:前端应用构建器] 判断题：本单元练习应只使用合成材料和只读检查，不安装、发布、收费或改变真实外部状态。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：正确。\n依据：课程安全边界要求学习者在没有额外授权时不产生真实外部副作用；先做足够的图像概念并等待设计接受；持续修正视觉/交互/响应式差异；不默认部署或改动真实站点。\n实践：让同伴检查提示词中是否含有真实账号、客户数据或不可逆动作。"
+        }
+      ]
+    },
+    {
+      "id": "course-wb-03",
+      "code": "WB03",
+      "title": "WB03 Build Web Apps:前端测试调试",
+      "order": 3,
+      "lab_ref": "WB03",
+      "source_text": "build-web-apps@0.1.2 的 skills/frontend-testing-debugging/SKILL.md 与 skills/frontend-testing-debugging/agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-wb-03-q01",
+          "type": "multiple_choice",
+          "content": "[Build Web Apps:前端测试调试] 场景题：合成团队需要通过本地服务器和浏览器循环测试、调试或定点改进已渲染前端。 最合适的下一步是什么？",
+          "options": [
+            "显式调用 $build-web-apps:frontend-testing-debugging（Build Web Apps:前端测试调试），先核对输入、停止条件和只读边界",
+            "不判断场景，直接调用插件中的全部 skill",
+            "省略关键输入并承诺已经完成真实交付",
+            "先修改生产或客户数据，再补写理由"
+          ],
+          "answer": "显式调用 $build-web-apps:frontend-testing-debugging（Build Web Apps:前端测试调试），先核对输入、停止条件和只读边界",
+          "explanation": "结论：显式调用 $build-web-apps:frontend-testing-debugging（Build Web Apps:前端测试调试），先核对输入、停止条件和只读边界。\n依据：SKILL.md 将该用途作为 Build Web Apps:前端测试调试 的适用入口。\n错误选项：B：该选项绕过了本单元的边界或证据要求；C：该选项绕过了本单元的边界或证据要求；D：该选项绕过了本单元的边界或证据要求\n实践：把任务中的真实名称替换为虚构名称，只输出路由和验收清单。"
+        },
+        {
+          "id": "course-wb-03-q02",
+          "type": "multiple_choice",
+          "content": "[Build Web Apps:前端测试调试] 输入题：要让这条流程可复核，首先应收集什么？",
+          "options": [
+            "只给一句模糊目标，不提供上下文",
+            "复制本机绝对路径和凭证作为输入",
+            "先执行写入操作，之后再补输入",
+            "收集合成输入：本地 dev server、目标用户流程、浏览器可用性、视口和预期行为，再请求只读方案"
+          ],
+          "answer": "收集合成输入：本地 dev server、目标用户流程、浏览器可用性、视口和预期行为，再请求只读方案",
+          "explanation": "结论：收集合成输入：本地 dev server、目标用户流程、浏览器可用性、视口和预期行为，再请求只读方案。\n依据：SKILL.md 与相邻接口说明共同限定了输入范围：本地 dev server、目标用户流程、浏览器可用性、视口和预期行为。\n错误选项：A：该选项绕过了本单元的边界或证据要求；B：该选项绕过了本单元的边界或证据要求；C：该选项绕过了本单元的边界或证据要求\n实践：列出输入字段并标注缺失项；不调用外部工具。"
+        },
+        {
+          "id": "course-wb-03-q03",
+          "type": "multiple_choice",
+          "content": "[Build Web Apps:前端测试调试] 边界题：发现以下条件时怎样处理最稳妥？",
+          "options": [
+            "虚构运行结果让验收通过",
+            "把风险转移给真实客户或生产环境",
+            "若无法满足“浏览器插件可用时优先使用；否则说明原因再用 Playwright；不把生产环境当实验场”，则停止当前路由，补齐条件或改选其他 skill",
+            "无论条件是否满足都强行继续"
+          ],
+          "answer": "若无法满足“浏览器插件可用时优先使用；否则说明原因再用 Playwright；不把生产环境当实验场”，则停止当前路由，补齐条件或改选其他 skill",
+          "explanation": "结论：若无法满足“浏览器插件可用时优先使用；否则说明原因再用 Playwright；不把生产环境当实验场”，则停止当前路由，补齐条件或改选其他 skill。\n依据：技能说明明确了边界：浏览器插件可用时优先使用；否则说明原因再用 Playwright；不把生产环境当实验场。\n错误选项：A：该选项绕过了本单元的边界或证据要求；B：该选项绕过了本单元的边界或证据要求；D：该选项绕过了本单元的边界或证据要求\n实践：写出一句停止条件和一个安全替代路径。"
+        },
+        {
+          "id": "course-wb-03-q04",
+          "type": "multiple_choice",
+          "content": "[Build Web Apps:前端测试调试] 验收题：什么结果才能证明本单元真的学会？",
+          "options": [
+            "展示一次未经授权的真实写入截图",
+            "得到复现步骤、控制台/网络证据、截图和最小修复后的验证报告，并能解释为什么选择 frontend-testing-debugging",
+            "只背出显示名，不说明输入输出",
+            "只说“看起来完成”而没有证据"
+          ],
+          "answer": "得到复现步骤、控制台/网络证据、截图和最小修复后的验证报告，并能解释为什么选择 frontend-testing-debugging",
+          "explanation": "结论：得到复现步骤、控制台/网络证据、截图和最小修复后的验证报告，并能解释为什么选择 frontend-testing-debugging。\n依据：技能目标是把 本地 dev server、目标用户流程、浏览器可用性、视口和预期行为 转化为 复现步骤、控制台/网络证据、截图和最小修复后的验证报告，而不是只记名称。\n错误选项：A：该选项绕过了本单元的边界或证据要求；C：该选项绕过了本单元的边界或证据要求；D：该选项绕过了本单元的边界或证据要求\n实践：用合成 fixture 复述输入、输出、边界和三项可观察检查。"
+        },
+        {
+          "id": "course-wb-03-q05",
+          "type": "true_false",
+          "content": "[Build Web Apps:前端测试调试] 判断题：本单元练习应只使用合成材料和只读检查，不安装、发布、收费或改变真实外部状态。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：正确。\n依据：课程安全边界要求学习者在没有额外授权时不产生真实外部副作用；浏览器插件可用时优先使用；否则说明原因再用 Playwright；不把生产环境当实验场。\n实践：让同伴检查提示词中是否含有真实账号、客户数据或不可逆动作。"
+        }
+      ]
+    },
+    {
+      "id": "course-wb-04",
+      "code": "WB04",
+      "title": "WB04 Build Web Apps:React 最佳实践",
+      "order": 4,
+      "lab_ref": "WB04",
+      "source_text": "build-web-apps@0.1.2 的 skills/react-best-practices/SKILL.md 与 skills/react-best-practices/agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-wb-04-q01",
+          "type": "multiple_choice",
+          "content": "[Build Web Apps:React 最佳实践] 场景题：合成团队需要按 Vercel React/Next.js 规则优化数据获取、bundle、服务端、重渲染和 JavaScript 性能。 最合适的下一步是什么？",
+          "options": [
+            "显式调用 $build-web-apps:react-best-practices（Build Web Apps:React 最佳实践），先核对输入、停止条件和只读边界",
+            "不判断场景，直接调用插件中的全部 skill",
+            "省略关键输入并承诺已经完成真实交付",
+            "先修改生产或客户数据，再补写理由"
+          ],
+          "answer": "显式调用 $build-web-apps:react-best-practices（Build Web Apps:React 最佳实践），先核对输入、停止条件和只读边界",
+          "explanation": "结论：显式调用 $build-web-apps:react-best-practices（Build Web Apps:React 最佳实践），先核对输入、停止条件和只读边界。\n依据：SKILL.md 将该用途作为 Build Web Apps:React 最佳实践 的适用入口。\n错误选项：B：该选项绕过了本单元的边界或证据要求；C：该选项绕过了本单元的边界或证据要求；D：该选项绕过了本单元的边界或证据要求\n实践：把任务中的真实名称替换为虚构名称，只输出路由和验收清单。"
+        },
+        {
+          "id": "course-wb-04-q02",
+          "type": "multiple_choice",
+          "content": "[Build Web Apps:React 最佳实践] 输入题：要让这条流程可复核，首先应收集什么？",
+          "options": [
+            "只给一句模糊目标，不提供上下文",
+            "复制本机绝对路径和凭证作为输入",
+            "先执行写入操作，之后再补输入",
+            "收集合成输入：React/Next 文件、数据获取路径、bundle 症状、渲染热点和目标约束，再请求只读方案"
+          ],
+          "answer": "收集合成输入：React/Next 文件、数据获取路径、bundle 症状、渲染热点和目标约束，再请求只读方案",
+          "explanation": "结论：收集合成输入：React/Next 文件、数据获取路径、bundle 症状、渲染热点和目标约束，再请求只读方案。\n依据：SKILL.md 与相邻接口说明共同限定了输入范围：React/Next 文件、数据获取路径、bundle 症状、渲染热点和目标约束。\n错误选项：A：该选项绕过了本单元的边界或证据要求；B：该选项绕过了本单元的边界或证据要求；C：该选项绕过了本单元的边界或证据要求\n实践：列出输入字段并标注缺失项；不调用外部工具。"
+        },
+        {
+          "id": "course-wb-04-q03",
+          "type": "multiple_choice",
+          "content": "[Build Web Apps:React 最佳实践] 边界题：发现以下条件时怎样处理最稳妥？",
+          "options": [
+            "虚构运行结果让验收通过",
+            "把风险转移给真实客户或生产环境",
+            "若无法满足“仅在 React/Next 场景使用；先读相关 rule 文件；不为了套规则重写无关框架或制造未经测量的优化”，则停止当前路由，补齐条件或改选其他 skill",
+            "无论条件是否满足都强行继续"
+          ],
+          "answer": "若无法满足“仅在 React/Next 场景使用；先读相关 rule 文件；不为了套规则重写无关框架或制造未经测量的优化”，则停止当前路由，补齐条件或改选其他 skill",
+          "explanation": "结论：若无法满足“仅在 React/Next 场景使用；先读相关 rule 文件；不为了套规则重写无关框架或制造未经测量的优化”，则停止当前路由，补齐条件或改选其他 skill。\n依据：技能说明明确了边界：仅在 React/Next 场景使用；先读相关 rule 文件；不为了套规则重写无关框架或制造未经测量的优化。\n错误选项：A：该选项绕过了本单元的边界或证据要求；B：该选项绕过了本单元的边界或证据要求；D：该选项绕过了本单元的边界或证据要求\n实践：写出一句停止条件和一个安全替代路径。"
+        },
+        {
+          "id": "course-wb-04-q04",
+          "type": "multiple_choice",
+          "content": "[Build Web Apps:React 最佳实践] 验收题：什么结果才能证明本单元真的学会？",
+          "options": [
+            "展示一次未经授权的真实写入截图",
+            "得到按影响排序的规则命中、修复建议和必要的验证指标，并能解释为什么选择 react-best-practices",
+            "只背出显示名，不说明输入输出",
+            "只说“看起来完成”而没有证据"
+          ],
+          "answer": "得到按影响排序的规则命中、修复建议和必要的验证指标，并能解释为什么选择 react-best-practices",
+          "explanation": "结论：得到按影响排序的规则命中、修复建议和必要的验证指标，并能解释为什么选择 react-best-practices。\n依据：技能目标是把 React/Next 文件、数据获取路径、bundle 症状、渲染热点和目标约束 转化为 按影响排序的规则命中、修复建议和必要的验证指标，而不是只记名称。\n错误选项：A：该选项绕过了本单元的边界或证据要求；C：该选项绕过了本单元的边界或证据要求；D：该选项绕过了本单元的边界或证据要求\n实践：用合成 fixture 复述输入、输出、边界和三项可观察检查。"
+        },
+        {
+          "id": "course-wb-04-q05",
+          "type": "true_false",
+          "content": "[Build Web Apps:React 最佳实践] 判断题：本单元练习应只使用合成材料和只读检查，不安装、发布、收费或改变真实外部状态。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：正确。\n依据：课程安全边界要求学习者在没有额外授权时不产生真实外部副作用；仅在 React/Next 场景使用；先读相关 rule 文件；不为了套规则重写无关框架或制造未经测量的优化。\n实践：让同伴检查提示词中是否含有真实账号、客户数据或不可逆动作。"
+        }
+      ]
+    },
+    {
+      "id": "course-wb-05",
+      "code": "WB05",
+      "title": "WB05 Build Web Apps:shadcn/ui 组件管理",
+      "order": 5,
+      "lab_ref": "WB05",
+      "source_text": "build-web-apps@0.1.2 的 skills/shadcn-best-practices/SKILL.md 与 skills/shadcn-best-practices/agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-wb-05-q01",
+          "type": "multiple_choice",
+          "content": "[Build Web Apps:shadcn/ui 组件管理] 场景题：合成团队需要用项目包管理器和文档管理 shadcn/ui 组件、注册表、preset 与组合。 最合适的下一步是什么？",
+          "options": [
+            "插件 build-web-apps；路径 slug shadcn-best-practices；调用名 shadcn；显式调用 $build-web-apps:shadcn（Build Web Apps:shadcn/ui 组件管理），先核对输入、停止条件和只读边界",
+            "不判断场景，直接调用插件中的全部 skill",
+            "省略关键输入并承诺已经完成真实交付",
+            "先修改生产或客户数据，再补写理由"
+          ],
+          "answer": "插件 build-web-apps；路径 slug shadcn-best-practices；调用名 shadcn；显式调用 $build-web-apps:shadcn（Build Web Apps:shadcn/ui 组件管理），先核对输入、停止条件和只读边界",
+          "explanation": "结论：插件 build-web-apps；路径 slug shadcn-best-practices；调用名 shadcn；显式调用 $build-web-apps:shadcn（Build Web Apps:shadcn/ui 组件管理），先核对输入、停止条件和只读边界。\n依据：SKILL.md 的 frontmatter name 为 shadcn，目录名 shadcn-best-practices 只是来源路径。\n错误选项：B：该选项绕过了本单元的边界或证据要求；C：该选项绕过了本单元的边界或证据要求；D：该选项绕过了本单元的边界或证据要求\n实践：把任务中的真实名称替换为虚构名称，只输出路由和验收清单。"
+        },
+        {
+          "id": "course-wb-05-q02",
+          "type": "multiple_choice",
+          "content": "[Build Web Apps:shadcn/ui 组件管理] 输入题：要让这条流程可复核，首先应收集什么？",
+          "options": [
+            "只给一句模糊目标，不提供上下文",
+            "复制本机绝对路径和凭证作为输入",
+            "先执行写入操作，之后再补输入",
+            "收集合成输入：components.json、项目上下文、package manager、已安装组件和明确的 registry 目标，再请求只读方案"
+          ],
+          "answer": "收集合成输入：components.json、项目上下文、package manager、已安装组件和明确的 registry 目标，再请求只读方案",
+          "explanation": "结论：收集合成输入：components.json、项目上下文、package manager、已安装组件和明确的 registry 目标，再请求只读方案。\n依据：SKILL.md 与相邻接口说明共同限定了输入范围：components.json、项目上下文、package manager、已安装组件和明确的 registry 目标。\n错误选项：A：该选项绕过了本单元的边界或证据要求；B：该选项绕过了本单元的边界或证据要求；C：该选项绕过了本单元的边界或证据要求\n实践：列出输入字段并标注缺失项；不调用外部工具。"
+        },
+        {
+          "id": "course-wb-05-q03",
+          "type": "multiple_choice",
+          "content": "[Build Web Apps:shadcn/ui 组件管理] 边界题：发现以下条件时怎样处理最稳妥？",
+          "options": [
+            "虚构运行结果让验收通过",
+            "把风险转移给真实客户或生产环境",
+            "若无法满足“先检查项目上下文和已安装清单；使用正确 runner；未指定 registry 时先询问，不猜并执行”，则停止当前路由，补齐条件或改选其他 skill",
+            "无论条件是否满足都强行继续"
+          ],
+          "answer": "若无法满足“先检查项目上下文和已安装清单；使用正确 runner；未指定 registry 时先询问，不猜并执行”，则停止当前路由，补齐条件或改选其他 skill",
+          "explanation": "结论：若无法满足“先检查项目上下文和已安装清单；使用正确 runner；未指定 registry 时先询问，不猜并执行”，则停止当前路由，补齐条件或改选其他 skill。\n依据：技能说明明确了边界：先检查项目上下文和已安装清单；使用正确 runner；未指定 registry 时先询问，不猜并执行。\n错误选项：A：该选项绕过了本单元的边界或证据要求；B：该选项绕过了本单元的边界或证据要求；D：该选项绕过了本单元的边界或证据要求\n实践：写出一句停止条件和一个安全替代路径。"
+        },
+        {
+          "id": "course-wb-05-q04",
+          "type": "multiple_choice",
+          "content": "[Build Web Apps:shadcn/ui 组件管理] 验收题：什么结果才能证明本单元真的学会？",
+          "options": [
+            "展示一次未经授权的真实写入截图",
+            "得到文档支撑的搜索/添加/修复方案和可审阅的组件组合，并能解释为什么选择 shadcn（路径 slug：shadcn-best-practices）",
+            "只背出显示名，不说明输入输出",
+            "只说“看起来完成”而没有证据"
+          ],
+          "answer": "得到文档支撑的搜索/添加/修复方案和可审阅的组件组合，并能解释为什么选择 shadcn（路径 slug：shadcn-best-practices）",
+          "explanation": "结论：得到文档支撑的搜索/添加/修复方案和可审阅的组件组合，并能解释为什么选择 shadcn（路径 slug：shadcn-best-practices）。\n依据：技能目标是把 components.json、项目上下文、package manager、已安装组件和明确的 registry 目标 转化为 文档支撑的搜索/添加/修复方案和可审阅的组件组合，而不是只记名称。\n错误选项：A：该选项绕过了本单元的边界或证据要求；C：该选项绕过了本单元的边界或证据要求；D：该选项绕过了本单元的边界或证据要求\n实践：用合成 fixture 复述输入、输出、边界和三项可观察检查。"
+        },
+        {
+          "id": "course-wb-05-q05",
+          "type": "true_false",
+          "content": "[Build Web Apps:shadcn/ui 组件管理] 判断题：本单元练习应只使用合成材料和只读检查，不安装、发布、收费或改变真实外部状态。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：正确。\n依据：课程安全边界要求学习者在没有额外授权时不产生真实外部副作用；先检查项目上下文和已安装清单；使用正确 runner；未指定 registry 时先询问，不猜并执行。\n实践：让同伴检查提示词中是否含有真实账号、客户数据或不可逆动作。"
+        }
+      ]
+    },
+    {
+      "id": "course-wb-06",
+      "code": "WB06",
+      "title": "WB06 Build Web Apps:Stripe 最佳实践",
+      "order": 6,
+      "lab_ref": "WB06",
+      "source_text": "build-web-apps@0.1.2 的 skills/stripe-best-practices/SKILL.md 与 skills/stripe-best-practices/agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-wb-06-q01",
+          "type": "multiple_choice",
+          "content": "[Build Web Apps:Stripe 最佳实践] 场景题：合成团队需要为一次性付款、Payment Element、Setup Intents、Connect、订阅和 Treasury 选择 Stripe 集成路径。 最合适的下一步是什么？",
+          "options": [
+            "显式调用 $build-web-apps:stripe-best-practices（Build Web Apps:Stripe 最佳实践），先核对输入、停止条件和只读边界",
+            "不判断场景，直接调用插件中的全部 skill",
+            "省略关键输入并承诺已经完成真实交付",
+            "先修改生产或客户数据，再补写理由"
+          ],
+          "answer": "显式调用 $build-web-apps:stripe-best-practices（Build Web Apps:Stripe 最佳实践），先核对输入、停止条件和只读边界",
+          "explanation": "结论：显式调用 $build-web-apps:stripe-best-practices（Build Web Apps:Stripe 最佳实践），先核对输入、停止条件和只读边界。\n依据：SKILL.md 将该用途作为 Build Web Apps:Stripe 最佳实践 的适用入口。\n错误选项：B：该选项绕过了本单元的边界或证据要求；C：该选项绕过了本单元的边界或证据要求；D：该选项绕过了本单元的边界或证据要求\n实践：把任务中的真实名称替换为虚构名称，只输出路由和验收清单。"
+        },
+        {
+          "id": "course-wb-06-q02",
+          "type": "multiple_choice",
+          "content": "[Build Web Apps:Stripe 最佳实践] 输入题：要让这条流程可复核，首先应收集什么？",
+          "options": [
+            "只给一句模糊目标，不提供上下文",
+            "复制本机绝对路径和凭证作为输入",
+            "先执行写入操作，之后再补输入",
+            "收集合成输入：付款/市场/订阅/财务账户需求、集成界面、API 版本偏好和合规约束，再请求只读方案"
+          ],
+          "answer": "收集合成输入：付款/市场/订阅/财务账户需求、集成界面、API 版本偏好和合规约束，再请求只读方案",
+          "explanation": "结论：收集合成输入：付款/市场/订阅/财务账户需求、集成界面、API 版本偏好和合规约束，再请求只读方案。\n依据：SKILL.md 与相邻接口说明共同限定了输入范围：付款/市场/订阅/财务账户需求、集成界面、API 版本偏好和合规约束。\n错误选项：A：该选项绕过了本单元的边界或证据要求；B：该选项绕过了本单元的边界或证据要求；C：该选项绕过了本单元的边界或证据要求\n实践：列出输入字段并标注缺失项；不调用外部工具。"
+        },
+        {
+          "id": "course-wb-06-q03",
+          "type": "multiple_choice",
+          "content": "[Build Web Apps:Stripe 最佳实践] 边界题：发现以下条件时怎样处理最稳妥？",
+          "options": [
+            "虚构运行结果让验收通过",
+            "把风险转移给真实客户或生产环境",
+            "若无法满足“默认使用最新 API/SDK，除非用户指定；先读相关 reference；课程不使用 live key、不收费、不创建真实账户”，则停止当前路由，补齐条件或改选其他 skill",
+            "无论条件是否满足都强行继续"
+          ],
+          "answer": "若无法满足“默认使用最新 API/SDK，除非用户指定；先读相关 reference；课程不使用 live key、不收费、不创建真实账户”，则停止当前路由，补齐条件或改选其他 skill",
+          "explanation": "结论：若无法满足“默认使用最新 API/SDK，除非用户指定；先读相关 reference；课程不使用 live key、不收费、不创建真实账户”，则停止当前路由，补齐条件或改选其他 skill。\n依据：技能说明明确了边界：默认使用最新 API/SDK，除非用户指定；先读相关 reference；课程不使用 live key、不收费、不创建真实账户。\n错误选项：A：该选项绕过了本单元的边界或证据要求；B：该选项绕过了本单元的边界或证据要求；D：该选项绕过了本单元的边界或证据要求\n实践：写出一句停止条件和一个安全替代路径。"
+        },
+        {
+          "id": "course-wb-06-q04",
+          "type": "multiple_choice",
+          "content": "[Build Web Apps:Stripe 最佳实践] 验收题：什么结果才能证明本单元真的学会？",
+          "options": [
+            "展示一次未经授权的真实写入截图",
+            "得到推荐 API、相关官方参考和分阶段集成/迁移计划，并能解释为什么选择 stripe-best-practices",
+            "只背出显示名，不说明输入输出",
+            "只说“看起来完成”而没有证据"
+          ],
+          "answer": "得到推荐 API、相关官方参考和分阶段集成/迁移计划，并能解释为什么选择 stripe-best-practices",
+          "explanation": "结论：得到推荐 API、相关官方参考和分阶段集成/迁移计划，并能解释为什么选择 stripe-best-practices。\n依据：技能目标是把 付款/市场/订阅/财务账户需求、集成界面、API 版本偏好和合规约束 转化为 推荐 API、相关官方参考和分阶段集成/迁移计划，而不是只记名称。\n错误选项：A：该选项绕过了本单元的边界或证据要求；C：该选项绕过了本单元的边界或证据要求；D：该选项绕过了本单元的边界或证据要求\n实践：用合成 fixture 复述输入、输出、边界和三项可观察检查。"
+        },
+        {
+          "id": "course-wb-06-q05",
+          "type": "true_false",
+          "content": "[Build Web Apps:Stripe 最佳实践] 判断题：本单元练习应只使用合成材料和只读检查，不安装、发布、收费或改变真实外部状态。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：正确。\n依据：课程安全边界要求学习者在没有额外授权时不产生真实外部副作用；默认使用最新 API/SDK，除非用户指定；先读相关 reference；课程不使用 live key、不收费、不创建真实账户。\n实践：让同伴检查提示词中是否含有真实账号、客户数据或不可逆动作。"
+        }
+      ]
+    },
+    {
+      "id": "course-wb-07",
+      "code": "WB07",
+      "title": "WB07 Build Web Apps:Supabase Postgres 最佳实践",
+      "order": 7,
+      "lab_ref": "WB07",
+      "source_text": "build-web-apps@0.1.2 的 skills/supabase-best-practices/SKILL.md 与 skills/supabase-best-practices/agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-wb-07-q01",
+          "type": "multiple_choice",
+          "content": "[Build Web Apps:Supabase Postgres 最佳实践] 场景题：合成团队需要按 Supabase/Postgres 规则优化查询、索引、schema、连接池、RLS、锁和监控。 最合适的下一步是什么？",
+          "options": [
+            "插件 build-web-apps；路径 slug supabase-best-practices；调用名 supabase-postgres-best-practices；显式调用 $build-web-apps:supabase-postgres-best-practices（Build Web Apps:Supabase Postgres 最佳实践），先核对输入、停止条件和只读边界",
+            "不判断场景，直接调用插件中的全部 skill",
+            "省略关键输入并承诺已经完成真实交付",
+            "先修改生产或客户数据，再补写理由"
+          ],
+          "answer": "插件 build-web-apps；路径 slug supabase-best-practices；调用名 supabase-postgres-best-practices；显式调用 $build-web-apps:supabase-postgres-best-practices（Build Web Apps:Supabase Postgres 最佳实践），先核对输入、停止条件和只读边界",
+          "explanation": "结论：插件 build-web-apps；路径 slug supabase-best-practices；调用名 supabase-postgres-best-practices；显式调用 $build-web-apps:supabase-postgres-best-practices（Build Web Apps:Supabase Postgres 最佳实践），先核对输入、停止条件和只读边界。\n依据：SKILL.md 的 frontmatter name 为 supabase-postgres-best-practices，目录名 supabase-best-practices 只是来源路径。\n错误选项：B：该选项绕过了本单元的边界或证据要求；C：该选项绕过了本单元的边界或证据要求；D：该选项绕过了本单元的边界或证据要求\n实践：把任务中的真实名称替换为虚构名称，只输出路由和验收清单。"
+        },
+        {
+          "id": "course-wb-07-q02",
+          "type": "multiple_choice",
+          "content": "[Build Web Apps:Supabase Postgres 最佳实践] 输入题：要让这条流程可复核，首先应收集什么？",
+          "options": [
+            "只给一句模糊目标，不提供上下文",
+            "复制本机绝对路径和凭证作为输入",
+            "先执行写入操作，之后再补输入",
+            "收集合成输入：合成 SQL、schema、EXPLAIN 计划、RLS 约束、连接和性能目标，再请求只读方案"
+          ],
+          "answer": "收集合成输入：合成 SQL、schema、EXPLAIN 计划、RLS 约束、连接和性能目标，再请求只读方案",
+          "explanation": "结论：收集合成输入：合成 SQL、schema、EXPLAIN 计划、RLS 约束、连接和性能目标，再请求只读方案。\n依据：SKILL.md 与相邻接口说明共同限定了输入范围：合成 SQL、schema、EXPLAIN 计划、RLS 约束、连接和性能目标。\n错误选项：A：该选项绕过了本单元的边界或证据要求；B：该选项绕过了本单元的边界或证据要求；C：该选项绕过了本单元的边界或证据要求\n实践：列出输入字段并标注缺失项；不调用外部工具。"
+        },
+        {
+          "id": "course-wb-07-q03",
+          "type": "multiple_choice",
+          "content": "[Build Web Apps:Supabase Postgres 最佳实践] 边界题：发现以下条件时怎样处理最稳妥？",
+          "options": [
+            "虚构运行结果让验收通过",
+            "把风险转移给真实客户或生产环境",
+            "若无法满足“先读命中的规则和官方文档；练习只用合成数据库；不直接迁移或修改生产 schema”，则停止当前路由，补齐条件或改选其他 skill",
+            "无论条件是否满足都强行继续"
+          ],
+          "answer": "若无法满足“先读命中的规则和官方文档；练习只用合成数据库；不直接迁移或修改生产 schema”，则停止当前路由，补齐条件或改选其他 skill",
+          "explanation": "结论：若无法满足“先读命中的规则和官方文档；练习只用合成数据库；不直接迁移或修改生产 schema”，则停止当前路由，补齐条件或改选其他 skill。\n依据：技能说明明确了边界：先读命中的规则和官方文档；练习只用合成数据库；不直接迁移或修改生产 schema。\n错误选项：A：该选项绕过了本单元的边界或证据要求；B：该选项绕过了本单元的边界或证据要求；D：该选项绕过了本单元的边界或证据要求\n实践：写出一句停止条件和一个安全替代路径。"
+        },
+        {
+          "id": "course-wb-07-q04",
+          "type": "multiple_choice",
+          "content": "[Build Web Apps:Supabase Postgres 最佳实践] 验收题：什么结果才能证明本单元真的学会？",
+          "options": [
+            "展示一次未经授权的真实写入截图",
+            "得到按优先级排序的 SQL/schema 建议、证据和验证查询，并能解释为什么选择 supabase-postgres-best-practices（路径 slug：supabase-best-practices）",
+            "只背出显示名，不说明输入输出",
+            "只说“看起来完成”而没有证据"
+          ],
+          "answer": "得到按优先级排序的 SQL/schema 建议、证据和验证查询，并能解释为什么选择 supabase-postgres-best-practices（路径 slug：supabase-best-practices）",
+          "explanation": "结论：得到按优先级排序的 SQL/schema 建议、证据和验证查询，并能解释为什么选择 supabase-postgres-best-practices（路径 slug：supabase-best-practices）。\n依据：技能目标是把 合成 SQL、schema、EXPLAIN 计划、RLS 约束、连接和性能目标 转化为 按优先级排序的 SQL/schema 建议、证据和验证查询，而不是只记名称。\n错误选项：A：该选项绕过了本单元的边界或证据要求；C：该选项绕过了本单元的边界或证据要求；D：该选项绕过了本单元的边界或证据要求\n实践：用合成 fixture 复述输入、输出、边界和三项可观察检查。"
+        },
+        {
+          "id": "course-wb-07-q05",
+          "type": "true_false",
+          "content": "[Build Web Apps:Supabase Postgres 最佳实践] 判断题：本单元练习应只使用合成材料和只读检查，不安装、发布、收费或改变真实外部状态。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：正确。\n依据：课程安全边界要求学习者在没有额外授权时不产生真实外部副作用；先读命中的规则和官方文档；练习只用合成数据库；不直接迁移或修改生产 schema。\n实践：让同伴检查提示词中是否含有真实账号、客户数据或不可逆动作。"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1620 @@
+{
+  "course": {
+    "id": "mattpocock-skills",
+    "prefix": "MP",
+    "title": "mattpocock-skills"
+  },
+  "source": {
+    "kind": "local-sanitized",
+    "ref": "mattpocock-skills@1.2.0+codex.9603c1c",
+    "snapshot": "2026-07-20"
+  },
+  "decks": [
+    {
+      "id": "course-mp-01",
+      "code": "MP01",
+      "title": "MP01 插件总览",
+      "order": 1,
+      "lab_ref": "MP01",
+      "source_text": "mattpocock-skills@1.2.0+codex.9603c1c 的 .codex-plugin/plugin.json 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-mp-01-q01",
+          "type": "multiple_choice",
+          "content": "[mattpocock-skills] 场景题：学习者第一次接触该插件，怎样建立正确的课程路径？",
+          "options": [
+            "先学习插件总览，再逐个学习 21 个 canonical skill 的独立单元",
+            "只记住插件名，遇到任务时同时调用全部 skill",
+            "跳过总览，只背每个 display name 的中文字面意思",
+            "先在真实系统执行所有示例，再回头理解风险"
+          ],
+          "answer": "先学习插件总览，再逐个学习 21 个 canonical skill 的独立单元",
+          "explanation": "结论：总览负责建立地图，skill 单元负责形成可观察的选择能力。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：B：全量调用忽略路由边界，也无法判断技能之间的分工；C：字面记忆不能建立适用与不适用场景；D：未经确认的真实写入和发布不属于安全学习路径\n实践：先只读列出插件名、版本与 skill 数量，不调用任何执行工具。"
+        },
+        {
+          "id": "course-mp-01-q02",
+          "type": "multiple_choice",
+          "content": "[mattpocock-skills] 来源题：课程事实应如何与本机插件材料对应？",
+          "options": [
+            "每次启动都自动抓取最新版并覆盖课程",
+            "使用 mattpocock-skills 的 local-sanitized 版本快照，并记录 2026-07-20 日期",
+            "复制插件目录中的全部文件和个人绝对路径",
+            "省略版本与日期，只保留插件营销名称"
+          ],
+          "answer": "使用 mattpocock-skills 的 local-sanitized 版本快照，并记录 2026-07-20 日期",
+          "explanation": "结论：固定版本、来源种类和快照日期才能复核课程内容。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：A：计划采用固定快照，自动漂移会破坏可复现性；C：课程只需中文概括和相对来源，不能复制机器信息；D：缺版本和快照日期就无法追溯课程事实\n实践：对照 manifest 与相邻 agents/openai.yaml，只记录非敏感元数据。"
+        },
+        {
+          "id": "course-mp-01-q03",
+          "type": "multiple_choice",
+          "content": "[mattpocock-skills] 调用题：技能单元中的最小显式调用应包含哪些信息？",
+          "options": [
+            "只写一个模糊任务，不指出任何技能",
+            "只写 display_name，省略插件与 slug",
+            "插件名、skill slug 与 interface.display_name",
+            "写入本机插件缓存的绝对路径"
+          ],
+          "answer": "插件名、skill slug 与 interface.display_name",
+          "explanation": "结论：三项同时出现可把人类可读名称与稳定调用标识对应起来。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：A：无法验证学习者是否会正确显式路由；B：显示名不能替代稳定的技能标识；D：绝对路径是机器特定信息，也不是正常调用接口\n实践：用一个合成场景写出显式调用句，但注明只输出方案。"
+        },
+        {
+          "id": "course-mp-01-q04",
+          "type": "multiple_choice",
+          "content": "[mattpocock-skills] 安全题：课程练习应采用哪种执行边界？",
+          "options": [
+            "使用真实客户数据验证技能是否有效",
+            "让学习者安装所有依赖和插件后再答题",
+            "自动发送、发布或部署，再把链接当作成绩",
+            "只使用合成 fixture、提示词和只读检查，不触碰真实外部状态"
+          ],
+          "answer": "只使用合成 fixture、提示词和只读检查，不触碰真实外部状态",
+          "explanation": "结论：安全练习必须可观察、可复核且不改变真实系统。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：A：客户数据超出教学最小范围并带来隐私风险；B：课程不应把安装和系统变更当作前置动作；C：外部写入需要额外授权，不能由课程练习默认执行\n实践：把任何真实名称替换为虚构占位符，只检查路由、提示词和验收清单。"
+        },
+        {
+          "id": "course-mp-01-q05",
+          "type": "true_false",
+          "content": "[mattpocock-skills] 判断题：只要课程使用的是插件官方 skill，就可以在未确认授权时发送邮件、发布站点或写入生产数据。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "错误",
+          "explanation": "结论：官方 skill 也不自动扩大操作授权。\n依据：技能说明定义流程能力，真实外部写入仍受用户授权、数据边界和运行环境约束。\n实践：练习只提交计划、占位符和只读验收结果。"
+        }
+      ]
+    },
+    {
+      "id": "course-mp-02",
+      "code": "MP02",
+      "title": "MP02 Matt Pocock:技能导航",
+      "order": 2,
+      "lab_ref": "MP02",
+      "source_text": "mattpocock-skills@1.2.0+codex.9603c1c 的 skills/ask-matt/SKILL.md 与相邻 agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-mp-02-q01",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:技能导航] 场景题：团队遇到以下场景：不确定当前工程任务应使用哪个技能或组合流程。最合适的下一步是什么？",
+          "options": [
+            "显式调用 $mattpocock-skills:ask-matt（Matt Pocock:技能导航），先核对输入和边界",
+            "跳过技能，直接承诺已经交付最终结果",
+            "调用同插件全部技能，让它们自行竞争",
+            "先修改真实外部状态，再补写需求说明"
+          ],
+          "answer": "显式调用 $mattpocock-skills:ask-matt（Matt Pocock:技能导航），先核对输入和边界",
+          "explanation": "结论：该场景正是 Matt Pocock:技能导航 的适用范围。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：B：没有执行相应流程，也缺少可观察证据；C：无差别调用增加上下文和副作用，掩盖清晰分工；D：把不可逆动作放在确认之前违反安全边界\n实践：用合成材料复述任务，并确认输入包含：任务现状、代码库是否存在、工作规模与期望交付。"
+        },
+        {
+          "id": "course-mp-02-q02",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:技能导航] 调用题：评审会上需要明确记录所选技能，哪种写法最完整？",
+          "options": [
+            "只写“使用 Matt Pocock:技能导航”",
+            "插件 mattpocock-skills；skill ask-matt；调用 $mattpocock-skills:ask-matt；显示名 Matt Pocock:技能导航",
+            "只写插件 mattpocock-skills，不指定 skill",
+            "复制本机缓存绝对路径作为调用语法"
+          ],
+          "answer": "插件 mattpocock-skills；skill ask-matt；调用 $mattpocock-skills:ask-matt；显示名 Matt Pocock:技能导航",
+          "explanation": "结论：插件 mattpocock-skills；skill ask-matt；调用 $mattpocock-skills:ask-matt；显示名 Matt Pocock:技能导航。\n依据：Matt Pocock:技能导航 的正式入口是 $mattpocock-skills:ask-matt；同时记录插件、skill slug 与显示名，才能在相似路由间复核选择。\n错误选项：A：省略稳定 slug 与插件名，不能完整核对调用目标；C：插件级名称无法区分内部多个独立技能；D：文件路径不是技能调用接口且会泄露机器特定信息\n实践：在合成场景中写出 $mattpocock-skills:ask-matt，并补一条不适用条件；不实际执行工具。"
+        },
+        {
+          "id": "course-mp-02-q03",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:技能导航] 边界题：出现“已经明确知道要调用的具体技能”时，怎样处理最稳妥？",
+          "options": [
+            "仍强制使用该技能，因为课程要求每个技能都执行",
+            "编造缺失输入以让流程继续",
+            "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+            "直接对真实数据、账户或发布面做试错"
+          ],
+          "answer": "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+          "explanation": "结论：停止套用该技能，重新路由或先补齐真正改变选择的条件。\n依据：Matt Pocock:技能导航 的不适用条件决定何时停止；越过该条件会把本 skill 错当成通用执行器。\n错误选项：A：课程目标是会判断，不是无条件执行；B：虚构事实会污染后续产出和验收；D：真实外部状态不应成为未确认路由的试验场\n实践：为 $mattpocock-skills:ask-matt 写一个最小反例和替代路由，只输出判断。"
+        },
+        {
+          "id": "course-mp-02-q04",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:技能导航] 验收题：怎样证明这个单元已学会，而不是只记住名称？",
+          "options": [
+            "只背出 display_name",
+            "只说任务看起来已完成",
+            "展示一次真实写入或发布截图",
+            "能说明用途、输入“任务现状、代码库是否存在、工作规模与期望交付”、输出“推荐的技能入口、组合顺序与分支条件”和边界，并在合成场景中选对技能"
+          ],
+          "answer": "能说明用途、输入“任务现状、代码库是否存在、工作规模与期望交付”、输出“推荐的技能入口、组合顺序与分支条件”和边界，并在合成场景中选对技能",
+          "explanation": "结论：能说明用途、输入“任务现状、代码库是否存在、工作规模与期望交付”、输出“推荐的技能入口、组合顺序与分支条件”和边界，并在合成场景中选对技能。\n依据：Matt Pocock:技能导航 的验收必须同时覆盖其输入、输出、边界与可观察证据，不能只记名称。\n错误选项：A：显示名不能证明会判断适用场景；B：没有对应输入、输出或可观察证据；C：不可逆操作不是必要教学证据，也可能越权\n实践：用 <synthetic-fixture> 核对 $mattpocock-skills:ask-matt 的输入与预期输出，不访问真实状态。"
+        },
+        {
+          "id": "course-mp-02-q05",
+          "type": "true_false",
+          "content": "[Matt Pocock:技能导航] 判断题：使用 $mattpocock-skills:ask-matt 时，应保留这条约束——它是路由器，不代替被选中的执行技能。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：该约束必须保留。\n依据：它来自 Matt Pocock:技能导航 的流程或风险边界，能防止把技能能力扩大为未经确认的操作。\n实践：在提示词末尾加入该约束，并只检查模型返回的计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-mp-03",
+      "code": "MP03",
+      "title": "MP03 Matt Pocock:双轴代码审查",
+      "order": 3,
+      "lab_ref": "MP03",
+      "source_text": "mattpocock-skills@1.2.0+codex.9603c1c 的 skills/code-review/SKILL.md 与相邻 agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-mp-03-q01",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:双轴代码审查] 场景题：团队遇到以下场景：审查相对固定点的分支或 PR，并分别核对仓库规范和原始规格。最合适的下一步是什么？",
+          "options": [
+            "显式调用 $mattpocock-skills:code-review（Matt Pocock:双轴代码审查），先核对输入和边界",
+            "跳过技能，直接承诺已经交付最终结果",
+            "调用同插件全部技能，让它们自行竞争",
+            "先修改真实外部状态，再补写需求说明"
+          ],
+          "answer": "显式调用 $mattpocock-skills:code-review（Matt Pocock:双轴代码审查），先核对输入和边界",
+          "explanation": "结论：该场景正是 Matt Pocock:双轴代码审查 的适用范围。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：B：没有执行相应流程，也缺少可观察证据；C：无差别调用增加上下文和副作用，掩盖清晰分工；D：把不可逆动作放在确认之前违反安全边界\n实践：用合成材料复述任务，并确认输入包含：固定点、三点 diff、提交列表、规范文件与规格来源。"
+        },
+        {
+          "id": "course-mp-03-q02",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:双轴代码审查] 调用题：评审会上需要明确记录所选技能，哪种写法最完整？",
+          "options": [
+            "只写“使用 Matt Pocock:双轴代码审查”",
+            "插件 mattpocock-skills；skill code-review；调用 $mattpocock-skills:code-review；显示名 Matt Pocock:双轴代码审查",
+            "只写插件 mattpocock-skills，不指定 skill",
+            "复制本机缓存绝对路径作为调用语法"
+          ],
+          "answer": "插件 mattpocock-skills；skill code-review；调用 $mattpocock-skills:code-review；显示名 Matt Pocock:双轴代码审查",
+          "explanation": "结论：插件 mattpocock-skills；skill code-review；调用 $mattpocock-skills:code-review；显示名 Matt Pocock:双轴代码审查。\n依据：Matt Pocock:双轴代码审查 的正式入口是 $mattpocock-skills:code-review；同时记录插件、skill slug 与显示名，才能在相似路由间复核选择。\n错误选项：A：省略稳定 slug 与插件名，不能完整核对调用目标；C：插件级名称无法区分内部多个独立技能；D：文件路径不是技能调用接口且会泄露机器特定信息\n实践：在合成场景中写出 $mattpocock-skills:code-review，并补一条不适用条件；不实际执行工具。"
+        },
+        {
+          "id": "course-mp-03-q03",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:双轴代码审查] 边界题：出现“尚未给出可解析固定点，或用户要求直接修改代码”时，怎样处理最稳妥？",
+          "options": [
+            "仍强制使用该技能，因为课程要求每个技能都执行",
+            "编造缺失输入以让流程继续",
+            "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+            "直接对真实数据、账户或发布面做试错"
+          ],
+          "answer": "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+          "explanation": "结论：停止套用该技能，重新路由或先补齐真正改变选择的条件。\n依据：Matt Pocock:双轴代码审查 的不适用条件决定何时停止；越过该条件会把本 skill 错当成通用执行器。\n错误选项：A：课程目标是会判断，不是无条件执行；B：虚构事实会污染后续产出和验收；D：真实外部状态不应成为未确认路由的试验场\n实践：为 $mattpocock-skills:code-review 写一个最小反例和替代路由，只输出判断。"
+        },
+        {
+          "id": "course-mp-03-q04",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:双轴代码审查] 验收题：怎样证明这个单元已学会，而不是只记住名称？",
+          "options": [
+            "只背出 display_name",
+            "只说任务看起来已完成",
+            "展示一次真实写入或发布截图",
+            "能说明用途、输入“固定点、三点 diff、提交列表、规范文件与规格来源”、输出“彼此分开的 Standards 与 Spec 审查结果”和边界，并在合成场景中选对技能"
+          ],
+          "answer": "能说明用途、输入“固定点、三点 diff、提交列表、规范文件与规格来源”、输出“彼此分开的 Standards 与 Spec 审查结果”和边界，并在合成场景中选对技能",
+          "explanation": "结论：能说明用途、输入“固定点、三点 diff、提交列表、规范文件与规格来源”、输出“彼此分开的 Standards 与 Spec 审查结果”和边界，并在合成场景中选对技能。\n依据：Matt Pocock:双轴代码审查 的验收必须同时覆盖其输入、输出、边界与可观察证据，不能只记名称。\n错误选项：A：显示名不能证明会判断适用场景；B：没有对应输入、输出或可观察证据；C：不可逆操作不是必要教学证据，也可能越权\n实践：用 <synthetic-fixture> 核对 $mattpocock-skills:code-review 的输入与预期输出，不访问真实状态。"
+        },
+        {
+          "id": "course-mp-03-q05",
+          "type": "true_false",
+          "content": "[Matt Pocock:双轴代码审查] 判断题：使用 $mattpocock-skills:code-review 时，应保留这条约束——先验证固定点和非空 diff；审查发现不等于已修复。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：该约束必须保留。\n依据：它来自 Matt Pocock:双轴代码审查 的流程或风险边界，能防止把技能能力扩大为未经确认的操作。\n实践：在提示词末尾加入该约束，并只检查模型返回的计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-mp-04",
+      "code": "MP04",
+      "title": "MP04 Matt Pocock:代码库设计",
+      "order": 4,
+      "lab_ref": "MP04",
+      "source_text": "mattpocock-skills@1.2.0+codex.9603c1c 的 skills/codebase-design/SKILL.md 与相邻 agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-mp-04-q01",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:代码库设计] 场景题：团队遇到以下场景：设计深模块、小接口与真实接缝，改善可测试性和局部性。最合适的下一步是什么？",
+          "options": [
+            "显式调用 $mattpocock-skills:codebase-design（Matt Pocock:代码库设计），先核对输入和边界",
+            "跳过技能，直接承诺已经交付最终结果",
+            "调用同插件全部技能，让它们自行竞争",
+            "先修改真实外部状态，再补写需求说明"
+          ],
+          "answer": "显式调用 $mattpocock-skills:codebase-design（Matt Pocock:代码库设计），先核对输入和边界",
+          "explanation": "结论：该场景正是 Matt Pocock:代码库设计 的适用范围。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：B：没有执行相应流程，也缺少可观察证据；C：无差别调用增加上下文和副作用，掩盖清晰分工；D：把不可逆动作放在确认之前违反安全边界\n实践：用合成材料复述任务，并确认输入包含：当前调用关系、接口约束、真实变化点与测试接缝。"
+        },
+        {
+          "id": "course-mp-04-q02",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:代码库设计] 调用题：评审会上需要明确记录所选技能，哪种写法最完整？",
+          "options": [
+            "只写“使用 Matt Pocock:代码库设计”",
+            "插件 mattpocock-skills；skill codebase-design；调用 $mattpocock-skills:codebase-design；显示名 Matt Pocock:代码库设计",
+            "只写插件 mattpocock-skills，不指定 skill",
+            "复制本机缓存绝对路径作为调用语法"
+          ],
+          "answer": "插件 mattpocock-skills；skill codebase-design；调用 $mattpocock-skills:codebase-design；显示名 Matt Pocock:代码库设计",
+          "explanation": "结论：插件 mattpocock-skills；skill codebase-design；调用 $mattpocock-skills:codebase-design；显示名 Matt Pocock:代码库设计。\n依据：Matt Pocock:代码库设计 的正式入口是 $mattpocock-skills:codebase-design；同时记录插件、skill slug 与显示名，才能在相似路由间复核选择。\n错误选项：A：省略稳定 slug 与插件名，不能完整核对调用目标；C：插件级名称无法区分内部多个独立技能；D：文件路径不是技能调用接口且会泄露机器特定信息\n实践：在合成场景中写出 $mattpocock-skills:codebase-design，并补一条不适用条件；不实际执行工具。"
+        },
+        {
+          "id": "course-mp-04-q03",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:代码库设计] 边界题：出现“只需修正格式或处理与模块形状无关的小改动”时，怎样处理最稳妥？",
+          "options": [
+            "仍强制使用该技能，因为课程要求每个技能都执行",
+            "编造缺失输入以让流程继续",
+            "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+            "直接对真实数据、账户或发布面做试错"
+          ],
+          "answer": "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+          "explanation": "结论：停止套用该技能，重新路由或先补齐真正改变选择的条件。\n依据：Matt Pocock:代码库设计 的不适用条件决定何时停止；越过该条件会把本 skill 错当成通用执行器。\n错误选项：A：课程目标是会判断，不是无条件执行；B：虚构事实会污染后续产出和验收；D：真实外部状态不应成为未确认路由的试验场\n实践：为 $mattpocock-skills:codebase-design 写一个最小反例和替代路由，只输出判断。"
+        },
+        {
+          "id": "course-mp-04-q04",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:代码库设计] 验收题：怎样证明这个单元已学会，而不是只记住名称？",
+          "options": [
+            "只背出 display_name",
+            "只说任务看起来已完成",
+            "展示一次真实写入或发布截图",
+            "能说明用途、输入“当前调用关系、接口约束、真实变化点与测试接缝”、输出“使用 module、interface、seam、adapter 等统一词汇的设计判断”和边界，并在合成场景中选对技能"
+          ],
+          "answer": "能说明用途、输入“当前调用关系、接口约束、真实变化点与测试接缝”、输出“使用 module、interface、seam、adapter 等统一词汇的设计判断”和边界，并在合成场景中选对技能",
+          "explanation": "结论：能说明用途、输入“当前调用关系、接口约束、真实变化点与测试接缝”、输出“使用 module、interface、seam、adapter 等统一词汇的设计判断”和边界，并在合成场景中选对技能。\n依据：Matt Pocock:代码库设计 的验收必须同时覆盖其输入、输出、边界与可观察证据，不能只记名称。\n错误选项：A：显示名不能证明会判断适用场景；B：没有对应输入、输出或可观察证据；C：不可逆操作不是必要教学证据，也可能越权\n实践：用 <synthetic-fixture> 核对 $mattpocock-skills:codebase-design 的输入与预期输出，不访问真实状态。"
+        },
+        {
+          "id": "course-mp-04-q05",
+          "type": "true_false",
+          "content": "[Matt Pocock:代码库设计] 判断题：使用 $mattpocock-skills:codebase-design 时，应保留这条约束——只有一个适配器时不要为了假想变化新增抽象接缝。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：该约束必须保留。\n依据：它来自 Matt Pocock:代码库设计 的流程或风险边界，能防止把技能能力扩大为未经确认的操作。\n实践：在提示词末尾加入该约束，并只检查模型返回的计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-mp-05",
+      "code": "MP05",
+      "title": "MP05 Matt Pocock:故障诊断",
+      "order": 5,
+      "lab_ref": "MP05",
+      "source_text": "mattpocock-skills@1.2.0+codex.9603c1c 的 skills/diagnosing-bugs/SKILL.md 与相邻 agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-mp-05-q01",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:故障诊断] 场景题：团队遇到以下场景：诊断顽固故障、间歇失败或性能回退。最合适的下一步是什么？",
+          "options": [
+            "显式调用 $mattpocock-skills:diagnosing-bugs（Matt Pocock:故障诊断），先核对输入和边界",
+            "跳过技能，直接承诺已经交付最终结果",
+            "调用同插件全部技能，让它们自行竞争",
+            "先修改真实外部状态，再补写需求说明"
+          ],
+          "answer": "显式调用 $mattpocock-skills:diagnosing-bugs（Matt Pocock:故障诊断），先核对输入和边界",
+          "explanation": "结论：该场景正是 Matt Pocock:故障诊断 的适用范围。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：B：没有执行相应流程，也缺少可观察证据；C：无差别调用增加上下文和副作用，掩盖清晰分工；D：把不可逆动作放在确认之前违反安全边界\n实践：用合成材料复述任务，并确认输入包含：用户精确症状、代码路径、可运行环境与复现材料。"
+        },
+        {
+          "id": "course-mp-05-q02",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:故障诊断] 调用题：评审会上需要明确记录所选技能，哪种写法最完整？",
+          "options": [
+            "只写“使用 Matt Pocock:故障诊断”",
+            "插件 mattpocock-skills；skill diagnosing-bugs；调用 $mattpocock-skills:diagnosing-bugs；显示名 Matt Pocock:故障诊断",
+            "只写插件 mattpocock-skills，不指定 skill",
+            "复制本机缓存绝对路径作为调用语法"
+          ],
+          "answer": "插件 mattpocock-skills；skill diagnosing-bugs；调用 $mattpocock-skills:diagnosing-bugs；显示名 Matt Pocock:故障诊断",
+          "explanation": "结论：插件 mattpocock-skills；skill diagnosing-bugs；调用 $mattpocock-skills:diagnosing-bugs；显示名 Matt Pocock:故障诊断。\n依据：Matt Pocock:故障诊断 的正式入口是 $mattpocock-skills:diagnosing-bugs；同时记录插件、skill slug 与显示名，才能在相似路由间复核选择。\n错误选项：A：省略稳定 slug 与插件名，不能完整核对调用目标；C：插件级名称无法区分内部多个独立技能；D：文件路径不是技能调用接口且会泄露机器特定信息\n实践：在合成场景中写出 $mattpocock-skills:diagnosing-bugs，并补一条不适用条件；不实际执行工具。"
+        },
+        {
+          "id": "course-mp-05-q03",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:故障诊断] 边界题：出现“根因已经明确且只需执行一个已验证的简单修复”时，怎样处理最稳妥？",
+          "options": [
+            "仍强制使用该技能，因为课程要求每个技能都执行",
+            "编造缺失输入以让流程继续",
+            "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+            "直接对真实数据、账户或发布面做试错"
+          ],
+          "answer": "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+          "explanation": "结论：停止套用该技能，重新路由或先补齐真正改变选择的条件。\n依据：Matt Pocock:故障诊断 的不适用条件决定何时停止；越过该条件会把本 skill 错当成通用执行器。\n错误选项：A：课程目标是会判断，不是无条件执行；B：虚构事实会污染后续产出和验收；D：真实外部状态不应成为未确认路由的试验场\n实践：为 $mattpocock-skills:diagnosing-bugs 写一个最小反例和替代路由，只输出判断。"
+        },
+        {
+          "id": "course-mp-05-q04",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:故障诊断] 验收题：怎样证明这个单元已学会，而不是只记住名称？",
+          "options": [
+            "只背出 display_name",
+            "只说任务看起来已完成",
+            "展示一次真实写入或发布截图",
+            "能说明用途、输入“用户精确症状、代码路径、可运行环境与复现材料”、输出“先红后绿的紧反馈命令、排序假设、根因修复与回归证据”和边界，并在合成场景中选对技能"
+          ],
+          "answer": "能说明用途、输入“用户精确症状、代码路径、可运行环境与复现材料”、输出“先红后绿的紧反馈命令、排序假设、根因修复与回归证据”和边界，并在合成场景中选对技能",
+          "explanation": "结论：能说明用途、输入“用户精确症状、代码路径、可运行环境与复现材料”、输出“先红后绿的紧反馈命令、排序假设、根因修复与回归证据”和边界，并在合成场景中选对技能。\n依据：Matt Pocock:故障诊断 的验收必须同时覆盖其输入、输出、边界与可观察证据，不能只记名称。\n错误选项：A：显示名不能证明会判断适用场景；B：没有对应输入、输出或可观察证据；C：不可逆操作不是必要教学证据，也可能越权\n实践：用 <synthetic-fixture> 核对 $mattpocock-skills:diagnosing-bugs 的输入与预期输出，不访问真实状态。"
+        },
+        {
+          "id": "course-mp-05-q05",
+          "type": "true_false",
+          "content": "[Matt Pocock:故障诊断] 判断题：使用 $mattpocock-skills:diagnosing-bugs 时，应保留这条约束——没有能捕获用户症状的红色反馈环就不应先编造理论。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：该约束必须保留。\n依据：它来自 Matt Pocock:故障诊断 的流程或风险边界，能防止把技能能力扩大为未经确认的操作。\n实践：在提示词末尾加入该约束，并只检查模型返回的计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-mp-06",
+      "code": "MP06",
+      "title": "MP06 Matt Pocock:领域建模",
+      "order": 6,
+      "lab_ref": "MP06",
+      "source_text": "mattpocock-skills@1.2.0+codex.9603c1c 的 skills/domain-modeling/SKILL.md 与相邻 agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-mp-06-q01",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:领域建模] 场景题：团队遇到以下场景：澄清领域术语、通用语言、边界场景或值得记录的 ADR。最合适的下一步是什么？",
+          "options": [
+            "显式调用 $mattpocock-skills:domain-modeling（Matt Pocock:领域建模），先核对输入和边界",
+            "跳过技能，直接承诺已经交付最终结果",
+            "调用同插件全部技能，让它们自行竞争",
+            "先修改真实外部状态，再补写需求说明"
+          ],
+          "answer": "显式调用 $mattpocock-skills:domain-modeling（Matt Pocock:领域建模），先核对输入和边界",
+          "explanation": "结论：该场景正是 Matt Pocock:领域建模 的适用范围。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：B：没有执行相应流程，也缺少可观察证据；C：无差别调用增加上下文和副作用，掩盖清晰分工；D：把不可逆动作放在确认之前违反安全边界\n实践：用合成材料复述任务，并确认输入包含：已有 CONTEXT、相关代码、冲突术语与具体边界案例。"
+        },
+        {
+          "id": "course-mp-06-q02",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:领域建模] 调用题：评审会上需要明确记录所选技能，哪种写法最完整？",
+          "options": [
+            "只写“使用 Matt Pocock:领域建模”",
+            "插件 mattpocock-skills；skill domain-modeling；调用 $mattpocock-skills:domain-modeling；显示名 Matt Pocock:领域建模",
+            "只写插件 mattpocock-skills，不指定 skill",
+            "复制本机缓存绝对路径作为调用语法"
+          ],
+          "answer": "插件 mattpocock-skills；skill domain-modeling；调用 $mattpocock-skills:domain-modeling；显示名 Matt Pocock:领域建模",
+          "explanation": "结论：插件 mattpocock-skills；skill domain-modeling；调用 $mattpocock-skills:domain-modeling；显示名 Matt Pocock:领域建模。\n依据：Matt Pocock:领域建模 的正式入口是 $mattpocock-skills:domain-modeling；同时记录插件、skill slug 与显示名，才能在相似路由间复核选择。\n错误选项：A：省略稳定 slug 与插件名，不能完整核对调用目标；C：插件级名称无法区分内部多个独立技能；D：文件路径不是技能调用接口且会泄露机器特定信息\n实践：在合成场景中写出 $mattpocock-skills:domain-modeling，并补一条不适用条件；不实际执行工具。"
+        },
+        {
+          "id": "course-mp-06-q03",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:领域建模] 边界题：出现“只是读取已有术语而不改变领域模型”时，怎样处理最稳妥？",
+          "options": [
+            "仍强制使用该技能，因为课程要求每个技能都执行",
+            "编造缺失输入以让流程继续",
+            "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+            "直接对真实数据、账户或发布面做试错"
+          ],
+          "answer": "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+          "explanation": "结论：停止套用该技能，重新路由或先补齐真正改变选择的条件。\n依据：Matt Pocock:领域建模 的不适用条件决定何时停止；越过该条件会把本 skill 错当成通用执行器。\n错误选项：A：课程目标是会判断，不是无条件执行；B：虚构事实会污染后续产出和验收；D：真实外部状态不应成为未确认路由的试验场\n实践：为 $mattpocock-skills:domain-modeling 写一个最小反例和替代路由，只输出判断。"
+        },
+        {
+          "id": "course-mp-06-q04",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:领域建模] 验收题：怎样证明这个单元已学会，而不是只记住名称？",
+          "options": [
+            "只背出 display_name",
+            "只说任务看起来已完成",
+            "展示一次真实写入或发布截图",
+            "能说明用途、输入“已有 CONTEXT、相关代码、冲突术语与具体边界案例”、输出“更新后的领域词汇或满足三条件的架构决策记录”和边界，并在合成场景中选对技能"
+          ],
+          "answer": "能说明用途、输入“已有 CONTEXT、相关代码、冲突术语与具体边界案例”、输出“更新后的领域词汇或满足三条件的架构决策记录”和边界，并在合成场景中选对技能",
+          "explanation": "结论：能说明用途、输入“已有 CONTEXT、相关代码、冲突术语与具体边界案例”、输出“更新后的领域词汇或满足三条件的架构决策记录”和边界，并在合成场景中选对技能。\n依据：Matt Pocock:领域建模 的验收必须同时覆盖其输入、输出、边界与可观察证据，不能只记名称。\n错误选项：A：显示名不能证明会判断适用场景；B：没有对应输入、输出或可观察证据；C：不可逆操作不是必要教学证据，也可能越权\n实践：用 <synthetic-fixture> 核对 $mattpocock-skills:domain-modeling 的输入与预期输出，不访问真实状态。"
+        },
+        {
+          "id": "course-mp-06-q05",
+          "type": "true_false",
+          "content": "[Matt Pocock:领域建模] 判断题：使用 $mattpocock-skills:domain-modeling 时，应保留这条约束——CONTEXT 只写领域词汇，不写实现规格；ADR 应少而有据。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：该约束必须保留。\n依据：它来自 Matt Pocock:领域建模 的流程或风险边界，能防止把技能能力扩大为未经确认的操作。\n实践：在提示词末尾加入该约束，并只检查模型返回的计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-mp-07",
+      "code": "MP07",
+      "title": "MP07 Matt Pocock:深度访谈",
+      "order": 7,
+      "lab_ref": "MP07",
+      "source_text": "mattpocock-skills@1.2.0+codex.9603c1c 的 skills/grill-me/SKILL.md 与相邻 agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-mp-07-q01",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:深度访谈] 场景题：团队遇到以下场景：在没有代码库的情况下通过持续访谈锐化计划或设计。最合适的下一步是什么？",
+          "options": [
+            "显式调用 $mattpocock-skills:grill-me（Matt Pocock:深度访谈），先核对输入和边界",
+            "跳过技能，直接承诺已经交付最终结果",
+            "调用同插件全部技能，让它们自行竞争",
+            "先修改真实外部状态，再补写需求说明"
+          ],
+          "answer": "显式调用 $mattpocock-skills:grill-me（Matt Pocock:深度访谈），先核对输入和边界",
+          "explanation": "结论：该场景正是 Matt Pocock:深度访谈 的适用范围。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：B：没有执行相应流程，也缺少可观察证据；C：无差别调用增加上下文和副作用，掩盖清晰分工；D：把不可逆动作放在确认之前违反安全边界\n实践：用合成材料复述任务，并确认输入包含：待澄清的计划、约束、受众与决策权归属。"
+        },
+        {
+          "id": "course-mp-07-q02",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:深度访谈] 调用题：评审会上需要明确记录所选技能，哪种写法最完整？",
+          "options": [
+            "只写“使用 Matt Pocock:深度访谈”",
+            "插件 mattpocock-skills；skill grill-me；调用 $mattpocock-skills:grill-me；显示名 Matt Pocock:深度访谈",
+            "只写插件 mattpocock-skills，不指定 skill",
+            "复制本机缓存绝对路径作为调用语法"
+          ],
+          "answer": "插件 mattpocock-skills；skill grill-me；调用 $mattpocock-skills:grill-me；显示名 Matt Pocock:深度访谈",
+          "explanation": "结论：插件 mattpocock-skills；skill grill-me；调用 $mattpocock-skills:grill-me；显示名 Matt Pocock:深度访谈。\n依据：Matt Pocock:深度访谈 的正式入口是 $mattpocock-skills:grill-me；同时记录插件、skill slug 与显示名，才能在相似路由间复核选择。\n错误选项：A：省略稳定 slug 与插件名，不能完整核对调用目标；C：插件级名称无法区分内部多个独立技能；D：文件路径不是技能调用接口且会泄露机器特定信息\n实践：在合成场景中写出 $mattpocock-skills:grill-me，并补一条不适用条件；不实际执行工具。"
+        },
+        {
+          "id": "course-mp-07-q03",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:深度访谈] 边界题：出现“计划属于现有代码库并需要同步保留领域文档”时，怎样处理最稳妥？",
+          "options": [
+            "仍强制使用该技能，因为课程要求每个技能都执行",
+            "编造缺失输入以让流程继续",
+            "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+            "直接对真实数据、账户或发布面做试错"
+          ],
+          "answer": "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+          "explanation": "结论：停止套用该技能，重新路由或先补齐真正改变选择的条件。\n依据：Matt Pocock:深度访谈 的不适用条件决定何时停止；越过该条件会把本 skill 错当成通用执行器。\n错误选项：A：课程目标是会判断，不是无条件执行；B：虚构事实会污染后续产出和验收；D：真实外部状态不应成为未确认路由的试验场\n实践：为 $mattpocock-skills:grill-me 写一个最小反例和替代路由，只输出判断。"
+        },
+        {
+          "id": "course-mp-07-q04",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:深度访谈] 验收题：怎样证明这个单元已学会，而不是只记住名称？",
+          "options": [
+            "只背出 display_name",
+            "只说任务看起来已完成",
+            "展示一次真实写入或发布截图",
+            "能说明用途、输入“待澄清的计划、约束、受众与决策权归属”、输出“逐题确认后的共同理解，不在本技能内实施”和边界，并在合成场景中选对技能"
+          ],
+          "answer": "能说明用途、输入“待澄清的计划、约束、受众与决策权归属”、输出“逐题确认后的共同理解，不在本技能内实施”和边界，并在合成场景中选对技能",
+          "explanation": "结论：能说明用途、输入“待澄清的计划、约束、受众与决策权归属”、输出“逐题确认后的共同理解，不在本技能内实施”和边界，并在合成场景中选对技能。\n依据：Matt Pocock:深度访谈 的验收必须同时覆盖其输入、输出、边界与可观察证据，不能只记名称。\n错误选项：A：显示名不能证明会判断适用场景；B：没有对应输入、输出或可观察证据；C：不可逆操作不是必要教学证据，也可能越权\n实践：用 <synthetic-fixture> 核对 $mattpocock-skills:grill-me 的输入与预期输出，不访问真实状态。"
+        },
+        {
+          "id": "course-mp-07-q05",
+          "type": "true_false",
+          "content": "[Matt Pocock:深度访谈] 判断题：使用 $mattpocock-skills:grill-me 时，应保留这条约束——它是无状态入口；有代码库时优先用 grill-with-docs。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：该约束必须保留。\n依据：它来自 Matt Pocock:深度访谈 的流程或风险边界，能防止把技能能力扩大为未经确认的操作。\n实践：在提示词末尾加入该约束，并只检查模型返回的计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-mp-08",
+      "code": "MP08",
+      "title": "MP08 Matt Pocock:文档化深度访谈",
+      "order": 8,
+      "lab_ref": "MP08",
+      "source_text": "mattpocock-skills@1.2.0+codex.9603c1c 的 skills/grill-with-docs/SKILL.md 与相邻 agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-mp-08-q01",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:文档化深度访谈] 场景题：团队遇到以下场景：在现有代码库中持续访谈，并同步维护领域词汇与决策记录。最合适的下一步是什么？",
+          "options": [
+            "显式调用 $mattpocock-skills:grill-with-docs（Matt Pocock:文档化深度访谈），先核对输入和边界",
+            "跳过技能，直接承诺已经交付最终结果",
+            "调用同插件全部技能，让它们自行竞争",
+            "先修改真实外部状态，再补写需求说明"
+          ],
+          "answer": "显式调用 $mattpocock-skills:grill-with-docs（Matt Pocock:文档化深度访谈），先核对输入和边界",
+          "explanation": "结论：该场景正是 Matt Pocock:文档化深度访谈 的适用范围。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：B：没有执行相应流程，也缺少可观察证据；C：无差别调用增加上下文和副作用，掩盖清晰分工；D：把不可逆动作放在确认之前违反安全边界\n实践：用合成材料复述任务，并确认输入包含：仓库现状、计划、CONTEXT、相关 ADR 与用户决策。"
+        },
+        {
+          "id": "course-mp-08-q02",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:文档化深度访谈] 调用题：评审会上需要明确记录所选技能，哪种写法最完整？",
+          "options": [
+            "只写“使用 Matt Pocock:文档化深度访谈”",
+            "插件 mattpocock-skills；skill grill-with-docs；调用 $mattpocock-skills:grill-with-docs；显示名 Matt Pocock:文档化深度访谈",
+            "只写插件 mattpocock-skills，不指定 skill",
+            "复制本机缓存绝对路径作为调用语法"
+          ],
+          "answer": "插件 mattpocock-skills；skill grill-with-docs；调用 $mattpocock-skills:grill-with-docs；显示名 Matt Pocock:文档化深度访谈",
+          "explanation": "结论：插件 mattpocock-skills；skill grill-with-docs；调用 $mattpocock-skills:grill-with-docs；显示名 Matt Pocock:文档化深度访谈。\n依据：Matt Pocock:文档化深度访谈 的正式入口是 $mattpocock-skills:grill-with-docs；同时记录插件、skill slug 与显示名，才能在相似路由间复核选择。\n错误选项：A：省略稳定 slug 与插件名，不能完整核对调用目标；C：插件级名称无法区分内部多个独立技能；D：文件路径不是技能调用接口且会泄露机器特定信息\n实践：在合成场景中写出 $mattpocock-skills:grill-with-docs，并补一条不适用条件；不实际执行工具。"
+        },
+        {
+          "id": "course-mp-08-q03",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:文档化深度访谈] 边界题：出现“没有代码库，或不需要任何状态化文档”时，怎样处理最稳妥？",
+          "options": [
+            "仍强制使用该技能，因为课程要求每个技能都执行",
+            "编造缺失输入以让流程继续",
+            "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+            "直接对真实数据、账户或发布面做试错"
+          ],
+          "answer": "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+          "explanation": "结论：停止套用该技能，重新路由或先补齐真正改变选择的条件。\n依据：Matt Pocock:文档化深度访谈 的不适用条件决定何时停止；越过该条件会把本 skill 错当成通用执行器。\n错误选项：A：课程目标是会判断，不是无条件执行；B：虚构事实会污染后续产出和验收；D：真实外部状态不应成为未确认路由的试验场\n实践：为 $mattpocock-skills:grill-with-docs 写一个最小反例和替代路由，只输出判断。"
+        },
+        {
+          "id": "course-mp-08-q04",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:文档化深度访谈] 验收题：怎样证明这个单元已学会，而不是只记住名称？",
+          "options": [
+            "只背出 display_name",
+            "只说任务看起来已完成",
+            "展示一次真实写入或发布截图",
+            "能说明用途、输入“仓库现状、计划、CONTEXT、相关 ADR 与用户决策”、输出“共同理解以及同步更新的领域文档或必要 ADR”和边界，并在合成场景中选对技能"
+          ],
+          "answer": "能说明用途、输入“仓库现状、计划、CONTEXT、相关 ADR 与用户决策”、输出“共同理解以及同步更新的领域文档或必要 ADR”和边界，并在合成场景中选对技能",
+          "explanation": "结论：能说明用途、输入“仓库现状、计划、CONTEXT、相关 ADR 与用户决策”、输出“共同理解以及同步更新的领域文档或必要 ADR”和边界，并在合成场景中选对技能。\n依据：Matt Pocock:文档化深度访谈 的验收必须同时覆盖其输入、输出、边界与可观察证据，不能只记名称。\n错误选项：A：显示名不能证明会判断适用场景；B：没有对应输入、输出或可观察证据；C：不可逆操作不是必要教学证据，也可能越权\n实践：用 <synthetic-fixture> 核对 $mattpocock-skills:grill-with-docs 的输入与预期输出，不访问真实状态。"
+        },
+        {
+          "id": "course-mp-08-q05",
+          "type": "true_false",
+          "content": "[Matt Pocock:文档化深度访谈] 判断题：使用 $mattpocock-skills:grill-with-docs 时，应保留这条约束——可发现事实先查仓库；产品取舍仍由用户逐项确认。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：该约束必须保留。\n依据：它来自 Matt Pocock:文档化深度访谈 的流程或风险边界，能防止把技能能力扩大为未经确认的操作。\n实践：在提示词末尾加入该约束，并只检查模型返回的计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-mp-09",
+      "code": "MP09",
+      "title": "MP09 Matt Pocock:访谈引擎",
+      "order": 9,
+      "lab_ref": "MP09",
+      "source_text": "mattpocock-skills@1.2.0+codex.9603c1c 的 skills/grilling/SKILL.md 与相邻 agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-mp-09-q01",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:访谈引擎] 场景题：团队遇到以下场景：作为复用访谈引擎逐项压力测试计划、决定或想法。最合适的下一步是什么？",
+          "options": [
+            "显式调用 $mattpocock-skills:grilling（Matt Pocock:访谈引擎），先核对输入和边界",
+            "跳过技能，直接承诺已经交付最终结果",
+            "调用同插件全部技能，让它们自行竞争",
+            "先修改真实外部状态，再补写需求说明"
+          ],
+          "answer": "显式调用 $mattpocock-skills:grilling（Matt Pocock:访谈引擎），先核对输入和边界",
+          "explanation": "结论：该场景正是 Matt Pocock:访谈引擎 的适用范围。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：B：没有执行相应流程，也缺少可观察证据；C：无差别调用增加上下文和副作用，掩盖清晰分工；D：把不可逆动作放在确认之前违反安全边界\n实践：用合成材料复述任务，并确认输入包含：待决定的分支、依赖关系与用户可确认的取舍。"
+        },
+        {
+          "id": "course-mp-09-q02",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:访谈引擎] 调用题：评审会上需要明确记录所选技能，哪种写法最完整？",
+          "options": [
+            "只写“使用 Matt Pocock:访谈引擎”",
+            "插件 mattpocock-skills；skill grilling；调用 $mattpocock-skills:grilling；显示名 Matt Pocock:访谈引擎",
+            "只写插件 mattpocock-skills，不指定 skill",
+            "复制本机缓存绝对路径作为调用语法"
+          ],
+          "answer": "插件 mattpocock-skills；skill grilling；调用 $mattpocock-skills:grilling；显示名 Matt Pocock:访谈引擎",
+          "explanation": "结论：插件 mattpocock-skills；skill grilling；调用 $mattpocock-skills:grilling；显示名 Matt Pocock:访谈引擎。\n依据：Matt Pocock:访谈引擎 的正式入口是 $mattpocock-skills:grilling；同时记录插件、skill slug 与显示名，才能在相似路由间复核选择。\n错误选项：A：省略稳定 slug 与插件名，不能完整核对调用目标；C：插件级名称无法区分内部多个独立技能；D：文件路径不是技能调用接口且会泄露机器特定信息\n实践：在合成场景中写出 $mattpocock-skills:grilling，并补一条不适用条件；不实际执行工具。"
+        },
+        {
+          "id": "course-mp-09-q03",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:访谈引擎] 边界题：出现“事实可以直接从环境查出，或用户已要求立即执行”时，怎样处理最稳妥？",
+          "options": [
+            "仍强制使用该技能，因为课程要求每个技能都执行",
+            "编造缺失输入以让流程继续",
+            "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+            "直接对真实数据、账户或发布面做试错"
+          ],
+          "answer": "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+          "explanation": "结论：停止套用该技能，重新路由或先补齐真正改变选择的条件。\n依据：Matt Pocock:访谈引擎 的不适用条件决定何时停止；越过该条件会把本 skill 错当成通用执行器。\n错误选项：A：课程目标是会判断，不是无条件执行；B：虚构事实会污染后续产出和验收；D：真实外部状态不应成为未确认路由的试验场\n实践：为 $mattpocock-skills:grilling 写一个最小反例和替代路由，只输出判断。"
+        },
+        {
+          "id": "course-mp-09-q04",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:访谈引擎] 验收题：怎样证明这个单元已学会，而不是只记住名称？",
+          "options": [
+            "只背出 display_name",
+            "只说任务看起来已完成",
+            "展示一次真实写入或发布截图",
+            "能说明用途、输入“待决定的分支、依赖关系与用户可确认的取舍”、输出“一次一个问题、每题含推荐答案的决策记录”和边界，并在合成场景中选对技能"
+          ],
+          "answer": "能说明用途、输入“待决定的分支、依赖关系与用户可确认的取舍”、输出“一次一个问题、每题含推荐答案的决策记录”和边界，并在合成场景中选对技能",
+          "explanation": "结论：能说明用途、输入“待决定的分支、依赖关系与用户可确认的取舍”、输出“一次一个问题、每题含推荐答案的决策记录”和边界，并在合成场景中选对技能。\n依据：Matt Pocock:访谈引擎 的验收必须同时覆盖其输入、输出、边界与可观察证据，不能只记名称。\n错误选项：A：显示名不能证明会判断适用场景；B：没有对应输入、输出或可观察证据；C：不可逆操作不是必要教学证据，也可能越权\n实践：用 <synthetic-fixture> 核对 $mattpocock-skills:grilling 的输入与预期输出，不访问真实状态。"
+        },
+        {
+          "id": "course-mp-09-q05",
+          "type": "true_false",
+          "content": "[Matt Pocock:访谈引擎] 判断题：使用 $mattpocock-skills:grilling 时，应保留这条约束——一次只问一个决策问题，且确认共同理解前不执行。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：该约束必须保留。\n依据：它来自 Matt Pocock:访谈引擎 的流程或风险边界，能防止把技能能力扩大为未经确认的操作。\n实践：在提示词末尾加入该约束，并只检查模型返回的计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-mp-10",
+      "code": "MP10",
+      "title": "MP10 Matt Pocock:任务交接",
+      "order": 10,
+      "lab_ref": "MP10",
+      "source_text": "mattpocock-skills@1.2.0+codex.9603c1c 的 skills/handoff/SKILL.md 与相邻 agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-mp-10-q01",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:任务交接] 场景题：团队遇到以下场景：上下文将满或要切到新会话时生成可继续工作的交接文档。最合适的下一步是什么？",
+          "options": [
+            "显式调用 $mattpocock-skills:handoff（Matt Pocock:任务交接），先核对输入和边界",
+            "跳过技能，直接承诺已经交付最终结果",
+            "调用同插件全部技能，让它们自行竞争",
+            "先修改真实外部状态，再补写需求说明"
+          ],
+          "answer": "显式调用 $mattpocock-skills:handoff（Matt Pocock:任务交接），先核对输入和边界",
+          "explanation": "结论：该场景正是 Matt Pocock:任务交接 的适用范围。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：B：没有执行相应流程，也缺少可观察证据；C：无差别调用增加上下文和副作用，掩盖清晰分工；D：把不可逆动作放在确认之前违反安全边界\n实践：用合成材料复述任务，并确认输入包含：当前状态、已定决策、现有产物、未决事项与下一阶段焦点。"
+        },
+        {
+          "id": "course-mp-10-q02",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:任务交接] 调用题：评审会上需要明确记录所选技能，哪种写法最完整？",
+          "options": [
+            "只写“使用 Matt Pocock:任务交接”",
+            "插件 mattpocock-skills；skill handoff；调用 $mattpocock-skills:handoff；显示名 Matt Pocock:任务交接",
+            "只写插件 mattpocock-skills，不指定 skill",
+            "复制本机缓存绝对路径作为调用语法"
+          ],
+          "answer": "插件 mattpocock-skills；skill handoff；调用 $mattpocock-skills:handoff；显示名 Matt Pocock:任务交接",
+          "explanation": "结论：插件 mattpocock-skills；skill handoff；调用 $mattpocock-skills:handoff；显示名 Matt Pocock:任务交接。\n依据：Matt Pocock:任务交接 的正式入口是 $mattpocock-skills:handoff；同时记录插件、skill slug 与显示名，才能在相似路由间复核选择。\n错误选项：A：省略稳定 slug 与插件名，不能完整核对调用目标；C：插件级名称无法区分内部多个独立技能；D：文件路径不是技能调用接口且会泄露机器特定信息\n实践：在合成场景中写出 $mattpocock-skills:handoff，并补一条不适用条件；不实际执行工具。"
+        },
+        {
+          "id": "course-mp-10-q03",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:任务交接] 边界题：出现“只想在同一会话继续并接受内建 compact 摘要”时，怎样处理最稳妥？",
+          "options": [
+            "仍强制使用该技能，因为课程要求每个技能都执行",
+            "编造缺失输入以让流程继续",
+            "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+            "直接对真实数据、账户或发布面做试错"
+          ],
+          "answer": "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+          "explanation": "结论：停止套用该技能，重新路由或先补齐真正改变选择的条件。\n依据：Matt Pocock:任务交接 的不适用条件决定何时停止；越过该条件会把本 skill 错当成通用执行器。\n错误选项：A：课程目标是会判断，不是无条件执行；B：虚构事实会污染后续产出和验收；D：真实外部状态不应成为未确认路由的试验场\n实践：为 $mattpocock-skills:handoff 写一个最小反例和替代路由，只输出判断。"
+        },
+        {
+          "id": "course-mp-10-q04",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:任务交接] 验收题：怎样证明这个单元已学会，而不是只记住名称？",
+          "options": [
+            "只背出 display_name",
+            "只说任务看起来已完成",
+            "展示一次真实写入或发布截图",
+            "能说明用途、输入“当前状态、已定决策、现有产物、未决事项与下一阶段焦点”、输出“位于操作系统临时目录的脱敏交接文档及建议技能”和边界，并在合成场景中选对技能"
+          ],
+          "answer": "能说明用途、输入“当前状态、已定决策、现有产物、未决事项与下一阶段焦点”、输出“位于操作系统临时目录的脱敏交接文档及建议技能”和边界，并在合成场景中选对技能",
+          "explanation": "结论：能说明用途、输入“当前状态、已定决策、现有产物、未决事项与下一阶段焦点”、输出“位于操作系统临时目录的脱敏交接文档及建议技能”和边界，并在合成场景中选对技能。\n依据：Matt Pocock:任务交接 的验收必须同时覆盖其输入、输出、边界与可观察证据，不能只记名称。\n错误选项：A：显示名不能证明会判断适用场景；B：没有对应输入、输出或可观察证据；C：不可逆操作不是必要教学证据，也可能越权\n实践：用 <synthetic-fixture> 核对 $mattpocock-skills:handoff 的输入与预期输出，不访问真实状态。"
+        },
+        {
+          "id": "course-mp-10-q05",
+          "type": "true_false",
+          "content": "[Matt Pocock:任务交接] 判断题：使用 $mattpocock-skills:handoff 时，应保留这条约束——引用已有规格和提交，不重复复制；必须去除凭证与个人信息。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：该约束必须保留。\n依据：它来自 Matt Pocock:任务交接 的流程或风险边界，能防止把技能能力扩大为未经确认的操作。\n实践：在提示词末尾加入该约束，并只检查模型返回的计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-mp-11",
+      "code": "MP11",
+      "title": "MP11 Matt Pocock:规格实施",
+      "order": 11,
+      "lab_ref": "MP11",
+      "source_text": "mattpocock-skills@1.2.0+codex.9603c1c 的 skills/implement/SKILL.md 与相邻 agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-mp-11-q01",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:规格实施] 场景题：团队遇到以下场景：依据已确认规格或票据实施一块工程工作。最合适的下一步是什么？",
+          "options": [
+            "显式调用 $mattpocock-skills:implement（Matt Pocock:规格实施），先核对输入和边界",
+            "跳过技能，直接承诺已经交付最终结果",
+            "调用同插件全部技能，让它们自行竞争",
+            "先修改真实外部状态，再补写需求说明"
+          ],
+          "answer": "显式调用 $mattpocock-skills:implement（Matt Pocock:规格实施），先核对输入和边界",
+          "explanation": "结论：该场景正是 Matt Pocock:规格实施 的适用范围。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：B：没有执行相应流程，也缺少可观察证据；C：无差别调用增加上下文和副作用，掩盖清晰分工；D：把不可逆动作放在确认之前违反安全边界\n实践：用合成材料复述任务，并确认输入包含：规格或票据、约定测试接缝、仓库检查命令。"
+        },
+        {
+          "id": "course-mp-11-q02",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:规格实施] 调用题：评审会上需要明确记录所选技能，哪种写法最完整？",
+          "options": [
+            "只写“使用 Matt Pocock:规格实施”",
+            "插件 mattpocock-skills；skill implement；调用 $mattpocock-skills:implement；显示名 Matt Pocock:规格实施",
+            "只写插件 mattpocock-skills，不指定 skill",
+            "复制本机缓存绝对路径作为调用语法"
+          ],
+          "answer": "插件 mattpocock-skills；skill implement；调用 $mattpocock-skills:implement；显示名 Matt Pocock:规格实施",
+          "explanation": "结论：插件 mattpocock-skills；skill implement；调用 $mattpocock-skills:implement；显示名 Matt Pocock:规格实施。\n依据：Matt Pocock:规格实施 的正式入口是 $mattpocock-skills:implement；同时记录插件、skill slug 与显示名，才能在相似路由间复核选择。\n错误选项：A：省略稳定 slug 与插件名，不能完整核对调用目标；C：插件级名称无法区分内部多个独立技能；D：文件路径不是技能调用接口且会泄露机器特定信息\n实践：在合成场景中写出 $mattpocock-skills:implement，并补一条不适用条件；不实际执行工具。"
+        },
+        {
+          "id": "course-mp-11-q03",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:规格实施] 边界题：出现“需求仍模糊，尚未形成可实施规格”时，怎样处理最稳妥？",
+          "options": [
+            "仍强制使用该技能，因为课程要求每个技能都执行",
+            "编造缺失输入以让流程继续",
+            "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+            "直接对真实数据、账户或发布面做试错"
+          ],
+          "answer": "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+          "explanation": "结论：停止套用该技能，重新路由或先补齐真正改变选择的条件。\n依据：Matt Pocock:规格实施 的不适用条件决定何时停止；越过该条件会把本 skill 错当成通用执行器。\n错误选项：A：课程目标是会判断，不是无条件执行；B：虚构事实会污染后续产出和验收；D：真实外部状态不应成为未确认路由的试验场\n实践：为 $mattpocock-skills:implement 写一个最小反例和替代路由，只输出判断。"
+        },
+        {
+          "id": "course-mp-11-q04",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:规格实施] 验收题：怎样证明这个单元已学会，而不是只记住名称？",
+          "options": [
+            "只背出 display_name",
+            "只说任务看起来已完成",
+            "展示一次真实写入或发布截图",
+            "能说明用途、输入“规格或票据、约定测试接缝、仓库检查命令”、输出“通过 TDD 实现并完成类型检查、测试、双轴审查和提交”和边界，并在合成场景中选对技能"
+          ],
+          "answer": "能说明用途、输入“规格或票据、约定测试接缝、仓库检查命令”、输出“通过 TDD 实现并完成类型检查、测试、双轴审查和提交”和边界，并在合成场景中选对技能",
+          "explanation": "结论：能说明用途、输入“规格或票据、约定测试接缝、仓库检查命令”、输出“通过 TDD 实现并完成类型检查、测试、双轴审查和提交”和边界，并在合成场景中选对技能。\n依据：Matt Pocock:规格实施 的验收必须同时覆盖其输入、输出、边界与可观察证据，不能只记名称。\n错误选项：A：显示名不能证明会判断适用场景；B：没有对应输入、输出或可观察证据；C：不可逆操作不是必要教学证据，也可能越权\n实践：用 <synthetic-fixture> 核对 $mattpocock-skills:implement 的输入与预期输出，不访问真实状态。"
+        },
+        {
+          "id": "course-mp-11-q05",
+          "type": "true_false",
+          "content": "[Matt Pocock:规格实施] 判断题：使用 $mattpocock-skills:implement 时，应保留这条约束——实现应受规格约束；不能把审查或提交省略为口头承诺。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：该约束必须保留。\n依据：它来自 Matt Pocock:规格实施 的流程或风险边界，能防止把技能能力扩大为未经确认的操作。\n实践：在提示词末尾加入该约束，并只检查模型返回的计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-mp-12",
+      "code": "MP12",
+      "title": "MP12 Matt Pocock:代码库架构改进",
+      "order": 12,
+      "lab_ref": "MP12",
+      "source_text": "mattpocock-skills@1.2.0+codex.9603c1c 的 skills/improve-codebase-architecture/SKILL.md 与相邻 agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-mp-12-q01",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:代码库架构改进] 场景题：团队遇到以下场景：扫描高频变更区的浅模块并提出深模块改进候选。最合适的下一步是什么？",
+          "options": [
+            "显式调用 $mattpocock-skills:improve-codebase-architecture（Matt Pocock:代码库架构改进），先核对输入和边界",
+            "跳过技能，直接承诺已经交付最终结果",
+            "调用同插件全部技能，让它们自行竞争",
+            "先修改真实外部状态，再补写需求说明"
+          ],
+          "answer": "显式调用 $mattpocock-skills:improve-codebase-architecture（Matt Pocock:代码库架构改进），先核对输入和边界",
+          "explanation": "结论：该场景正是 Matt Pocock:代码库架构改进 的适用范围。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：B：没有执行相应流程，也缺少可观察证据；C：无差别调用增加上下文和副作用，掩盖清晰分工；D：把不可逆动作放在确认之前违反安全边界\n实践：用合成材料复述任务，并确认输入包含：提交热点、领域词汇、相关 ADR 与目标子系统。"
+        },
+        {
+          "id": "course-mp-12-q02",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:代码库架构改进] 调用题：评审会上需要明确记录所选技能，哪种写法最完整？",
+          "options": [
+            "只写“使用 Matt Pocock:代码库架构改进”",
+            "插件 mattpocock-skills；skill improve-codebase-architecture；调用 $mattpocock-skills:improve-codebase-architecture；显示名 Matt Pocock:代码库架构改进",
+            "只写插件 mattpocock-skills，不指定 skill",
+            "复制本机缓存绝对路径作为调用语法"
+          ],
+          "answer": "插件 mattpocock-skills；skill improve-codebase-architecture；调用 $mattpocock-skills:improve-codebase-architecture；显示名 Matt Pocock:代码库架构改进",
+          "explanation": "结论：插件 mattpocock-skills；skill improve-codebase-architecture；调用 $mattpocock-skills:improve-codebase-architecture；显示名 Matt Pocock:代码库架构改进。\n依据：Matt Pocock:代码库架构改进 的正式入口是 $mattpocock-skills:improve-codebase-architecture；同时记录插件、skill slug 与显示名，才能在相似路由间复核选择。\n错误选项：A：省略稳定 slug 与插件名，不能完整核对调用目标；C：插件级名称无法区分内部多个独立技能；D：文件路径不是技能调用接口且会泄露机器特定信息\n实践：在合成场景中写出 $mattpocock-skills:improve-codebase-architecture，并补一条不适用条件；不实际执行工具。"
+        },
+        {
+          "id": "course-mp-12-q03",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:代码库架构改进] 边界题：出现“用户只要求正确性、安全或性能问题审查”时，怎样处理最稳妥？",
+          "options": [
+            "仍强制使用该技能，因为课程要求每个技能都执行",
+            "编造缺失输入以让流程继续",
+            "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+            "直接对真实数据、账户或发布面做试错"
+          ],
+          "answer": "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+          "explanation": "结论：停止套用该技能，重新路由或先补齐真正改变选择的条件。\n依据：Matt Pocock:代码库架构改进 的不适用条件决定何时停止；越过该条件会把本 skill 错当成通用执行器。\n错误选项：A：课程目标是会判断，不是无条件执行；B：虚构事实会污染后续产出和验收；D：真实外部状态不应成为未确认路由的试验场\n实践：为 $mattpocock-skills:improve-codebase-architecture 写一个最小反例和替代路由，只输出判断。"
+        },
+        {
+          "id": "course-mp-12-q04",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:代码库架构改进] 验收题：怎样证明这个单元已学会，而不是只记住名称？",
+          "options": [
+            "只背出 display_name",
+            "只说任务看起来已完成",
+            "展示一次真实写入或发布截图",
+            "能说明用途、输入“提交热点、领域词汇、相关 ADR 与目标子系统”、输出“带前后结构图的 HTML 候选报告及后续访谈入口”和边界，并在合成场景中选对技能"
+          ],
+          "answer": "能说明用途、输入“提交热点、领域词汇、相关 ADR 与目标子系统”、输出“带前后结构图的 HTML 候选报告及后续访谈入口”和边界，并在合成场景中选对技能",
+          "explanation": "结论：能说明用途、输入“提交热点、领域词汇、相关 ADR 与目标子系统”、输出“带前后结构图的 HTML 候选报告及后续访谈入口”和边界，并在合成场景中选对技能。\n依据：Matt Pocock:代码库架构改进 的验收必须同时覆盖其输入、输出、边界与可观察证据，不能只记名称。\n错误选项：A：显示名不能证明会判断适用场景；B：没有对应输入、输出或可观察证据；C：不可逆操作不是必要教学证据，也可能越权\n实践：用 <synthetic-fixture> 核对 $mattpocock-skills:improve-codebase-architecture 的输入与预期输出，不访问真实状态。"
+        },
+        {
+          "id": "course-mp-12-q05",
+          "type": "true_false",
+          "content": "[Matt Pocock:代码库架构改进] 判断题：使用 $mattpocock-skills:improve-codebase-architecture 时，应保留这条约束——先给候选，不提前发明接口；与 ADR 冲突时必须显式标注。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：该约束必须保留。\n依据：它来自 Matt Pocock:代码库架构改进 的流程或风险边界，能防止把技能能力扩大为未经确认的操作。\n实践：在提示词末尾加入该约束，并只检查模型返回的计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-mp-13",
+      "code": "MP13",
+      "title": "MP13 Matt Pocock:原型验证",
+      "order": 13,
+      "lab_ref": "MP13",
+      "source_text": "mattpocock-skills@1.2.0+codex.9603c1c 的 skills/prototype/SKILL.md 与相邻 agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-mp-13-q01",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:原型验证] 场景题：团队遇到以下场景：用可丢弃代码回答一个难以纸面决定的逻辑或界面问题。最合适的下一步是什么？",
+          "options": [
+            "显式调用 $mattpocock-skills:prototype（Matt Pocock:原型验证），先核对输入和边界",
+            "跳过技能，直接承诺已经交付最终结果",
+            "调用同插件全部技能，让它们自行竞争",
+            "先修改真实外部状态，再补写需求说明"
+          ],
+          "answer": "显式调用 $mattpocock-skills:prototype（Matt Pocock:原型验证），先核对输入和边界",
+          "explanation": "结论：该场景正是 Matt Pocock:原型验证 的适用范围。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：B：没有执行相应流程，也缺少可观察证据；C：无差别调用增加上下文和副作用，掩盖清晰分工；D：把不可逆动作放在确认之前违反安全边界\n实践：用合成材料复述任务，并确认输入包含：唯一设计问题、现有运行约定与逻辑或 UI 分支。"
+        },
+        {
+          "id": "course-mp-13-q02",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:原型验证] 调用题：评审会上需要明确记录所选技能，哪种写法最完整？",
+          "options": [
+            "只写“使用 Matt Pocock:原型验证”",
+            "插件 mattpocock-skills；skill prototype；调用 $mattpocock-skills:prototype；显示名 Matt Pocock:原型验证",
+            "只写插件 mattpocock-skills，不指定 skill",
+            "复制本机缓存绝对路径作为调用语法"
+          ],
+          "answer": "插件 mattpocock-skills；skill prototype；调用 $mattpocock-skills:prototype；显示名 Matt Pocock:原型验证",
+          "explanation": "结论：插件 mattpocock-skills；skill prototype；调用 $mattpocock-skills:prototype；显示名 Matt Pocock:原型验证。\n依据：Matt Pocock:原型验证 的正式入口是 $mattpocock-skills:prototype；同时记录插件、skill slug 与显示名，才能在相似路由间复核选择。\n错误选项：A：省略稳定 slug 与插件名，不能完整核对调用目标；C：插件级名称无法区分内部多个独立技能；D：文件路径不是技能调用接口且会泄露机器特定信息\n实践：在合成场景中写出 $mattpocock-skills:prototype，并补一条不适用条件；不实际执行工具。"
+        },
+        {
+          "id": "course-mp-13-q03",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:原型验证] 边界题：出现“已经决定生产实现，或用户要可维护的正式功能”时，怎样处理最稳妥？",
+          "options": [
+            "仍强制使用该技能，因为课程要求每个技能都执行",
+            "编造缺失输入以让流程继续",
+            "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+            "直接对真实数据、账户或发布面做试错"
+          ],
+          "answer": "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+          "explanation": "结论：停止套用该技能，重新路由或先补齐真正改变选择的条件。\n依据：Matt Pocock:原型验证 的不适用条件决定何时停止；越过该条件会把本 skill 错当成通用执行器。\n错误选项：A：课程目标是会判断，不是无条件执行；B：虚构事实会污染后续产出和验收；D：真实外部状态不应成为未确认路由的试验场\n实践：为 $mattpocock-skills:prototype 写一个最小反例和替代路由，只输出判断。"
+        },
+        {
+          "id": "course-mp-13-q04",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:原型验证] 验收题：怎样证明这个单元已学会，而不是只记住名称？",
+          "options": [
+            "只背出 display_name",
+            "只说任务看起来已完成",
+            "展示一次真实写入或发布截图",
+            "能说明用途、输入“唯一设计问题、现有运行约定与逻辑或 UI 分支”、输出“一条命令可运行、显式标为原型的观察材料和结论”和边界，并在合成场景中选对技能"
+          ],
+          "answer": "能说明用途、输入“唯一设计问题、现有运行约定与逻辑或 UI 分支”、输出“一条命令可运行、显式标为原型的观察材料和结论”和边界，并在合成场景中选对技能",
+          "explanation": "结论：能说明用途、输入“唯一设计问题、现有运行约定与逻辑或 UI 分支”、输出“一条命令可运行、显式标为原型的观察材料和结论”和边界，并在合成场景中选对技能。\n依据：Matt Pocock:原型验证 的验收必须同时覆盖其输入、输出、边界与可观察证据，不能只记名称。\n错误选项：A：显示名不能证明会判断适用场景；B：没有对应输入、输出或可观察证据；C：不可逆操作不是必要教学证据，也可能越权\n实践：用 <synthetic-fixture> 核对 $mattpocock-skills:prototype 的输入与预期输出，不访问真实状态。"
+        },
+        {
+          "id": "course-mp-13-q05",
+          "type": "true_false",
+          "content": "[Matt Pocock:原型验证] 判断题：使用 $mattpocock-skills:prototype 时，应保留这条约束——原型默认无持久化、少抛光；保留答案而不是把原型直接并入主线。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：该约束必须保留。\n依据：它来自 Matt Pocock:原型验证 的流程或风险边界，能防止把技能能力扩大为未经确认的操作。\n实践：在提示词末尾加入该约束，并只检查模型返回的计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-mp-14",
+      "code": "MP14",
+      "title": "MP14 Matt Pocock:一手来源研究",
+      "order": 14,
+      "lab_ref": "MP14",
+      "source_text": "mattpocock-skills@1.2.0+codex.9603c1c 的 skills/research/SKILL.md 与相邻 agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-mp-14-q01",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:一手来源研究] 场景题：团队遇到以下场景：针对文档、API 或技术事实开展一手来源调查。最合适的下一步是什么？",
+          "options": [
+            "显式调用 $mattpocock-skills:research（Matt Pocock:一手来源研究），先核对输入和边界",
+            "跳过技能，直接承诺已经交付最终结果",
+            "调用同插件全部技能，让它们自行竞争",
+            "先修改真实外部状态，再补写需求说明"
+          ],
+          "answer": "显式调用 $mattpocock-skills:research（Matt Pocock:一手来源研究），先核对输入和边界",
+          "explanation": "结论：该场景正是 Matt Pocock:一手来源研究 的适用范围。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：B：没有执行相应流程，也缺少可观察证据；C：无差别调用增加上下文和副作用，掩盖清晰分工；D：把不可逆动作放在确认之前违反安全边界\n实践：用合成材料复述任务，并确认输入包含：可验证研究问题、可信来源范围与仓库笔记约定。"
+        },
+        {
+          "id": "course-mp-14-q02",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:一手来源研究] 调用题：评审会上需要明确记录所选技能，哪种写法最完整？",
+          "options": [
+            "只写“使用 Matt Pocock:一手来源研究”",
+            "插件 mattpocock-skills；skill research；调用 $mattpocock-skills:research；显示名 Matt Pocock:一手来源研究",
+            "只写插件 mattpocock-skills，不指定 skill",
+            "复制本机缓存绝对路径作为调用语法"
+          ],
+          "answer": "插件 mattpocock-skills；skill research；调用 $mattpocock-skills:research；显示名 Matt Pocock:一手来源研究",
+          "explanation": "结论：插件 mattpocock-skills；skill research；调用 $mattpocock-skills:research；显示名 Matt Pocock:一手来源研究。\n依据：Matt Pocock:一手来源研究 的正式入口是 $mattpocock-skills:research；同时记录插件、skill slug 与显示名，才能在相似路由间复核选择。\n错误选项：A：省略稳定 slug 与插件名，不能完整核对调用目标；C：插件级名称无法区分内部多个独立技能；D：文件路径不是技能调用接口且会泄露机器特定信息\n实践：在合成场景中写出 $mattpocock-skills:research，并补一条不适用条件；不实际执行工具。"
+        },
+        {
+          "id": "course-mp-14-q03",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:一手来源研究] 边界题：出现“问题是主观取舍，或已有材料足以直接作决定”时，怎样处理最稳妥？",
+          "options": [
+            "仍强制使用该技能，因为课程要求每个技能都执行",
+            "编造缺失输入以让流程继续",
+            "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+            "直接对真实数据、账户或发布面做试错"
+          ],
+          "answer": "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+          "explanation": "结论：停止套用该技能，重新路由或先补齐真正改变选择的条件。\n依据：Matt Pocock:一手来源研究 的不适用条件决定何时停止；越过该条件会把本 skill 错当成通用执行器。\n错误选项：A：课程目标是会判断，不是无条件执行；B：虚构事实会污染后续产出和验收；D：真实外部状态不应成为未确认路由的试验场\n实践：为 $mattpocock-skills:research 写一个最小反例和替代路由，只输出判断。"
+        },
+        {
+          "id": "course-mp-14-q04",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:一手来源研究] 验收题：怎样证明这个单元已学会，而不是只记住名称？",
+          "options": [
+            "只背出 display_name",
+            "只说任务看起来已完成",
+            "展示一次真实写入或发布截图",
+            "能说明用途、输入“可验证研究问题、可信来源范围与仓库笔记约定”、输出“仓库内单个带逐项引用的 Markdown 研究文件”和边界，并在合成场景中选对技能"
+          ],
+          "answer": "能说明用途、输入“可验证研究问题、可信来源范围与仓库笔记约定”、输出“仓库内单个带逐项引用的 Markdown 研究文件”和边界，并在合成场景中选对技能",
+          "explanation": "结论：能说明用途、输入“可验证研究问题、可信来源范围与仓库笔记约定”、输出“仓库内单个带逐项引用的 Markdown 研究文件”和边界，并在合成场景中选对技能。\n依据：Matt Pocock:一手来源研究 的验收必须同时覆盖其输入、输出、边界与可观察证据，不能只记名称。\n错误选项：A：显示名不能证明会判断适用场景；B：没有对应输入、输出或可观察证据；C：不可逆操作不是必要教学证据，也可能越权\n实践：用 <synthetic-fixture> 核对 $mattpocock-skills:research 的输入与预期输出，不访问真实状态。"
+        },
+        {
+          "id": "course-mp-14-q05",
+          "type": "true_false",
+          "content": "[Matt Pocock:一手来源研究] 判断题：使用 $mattpocock-skills:research 时，应保留这条约束——优先官方文档、源码、规范和第一方 API；研究提供证据而不替用户决策。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：该约束必须保留。\n依据：它来自 Matt Pocock:一手来源研究 的流程或风险边界，能防止把技能能力扩大为未经确认的操作。\n实践：在提示词末尾加入该约束，并只检查模型返回的计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-mp-15",
+      "code": "MP15",
+      "title": "MP15 Matt Pocock:合并冲突解决",
+      "order": 15,
+      "lab_ref": "MP15",
+      "source_text": "mattpocock-skills@1.2.0+codex.9603c1c 的 skills/resolving-merge-conflicts/SKILL.md 与相邻 agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-mp-15-q01",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:合并冲突解决] 场景题：团队遇到以下场景：解决正在进行的 merge 或 rebase 冲突并完成流程。最合适的下一步是什么？",
+          "options": [
+            "显式调用 $mattpocock-skills:resolving-merge-conflicts（Matt Pocock:合并冲突解决），先核对输入和边界",
+            "跳过技能，直接承诺已经交付最终结果",
+            "调用同插件全部技能，让它们自行竞争",
+            "先修改真实外部状态，再补写需求说明"
+          ],
+          "answer": "显式调用 $mattpocock-skills:resolving-merge-conflicts（Matt Pocock:合并冲突解决），先核对输入和边界",
+          "explanation": "结论：该场景正是 Matt Pocock:合并冲突解决 的适用范围。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：B：没有执行相应流程，也缺少可观察证据；C：无差别调用增加上下文和副作用，掩盖清晰分工；D：把不可逆动作放在确认之前违反安全边界\n实践：用合成材料复述任务，并确认输入包含：当前 Git 状态、冲突文件、双方提交、议题与原始意图。"
+        },
+        {
+          "id": "course-mp-15-q02",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:合并冲突解决] 调用题：评审会上需要明确记录所选技能，哪种写法最完整？",
+          "options": [
+            "只写“使用 Matt Pocock:合并冲突解决”",
+            "插件 mattpocock-skills；skill resolving-merge-conflicts；调用 $mattpocock-skills:resolving-merge-conflicts；显示名 Matt Pocock:合并冲突解决",
+            "只写插件 mattpocock-skills，不指定 skill",
+            "复制本机缓存绝对路径作为调用语法"
+          ],
+          "answer": "插件 mattpocock-skills；skill resolving-merge-conflicts；调用 $mattpocock-skills:resolving-merge-conflicts；显示名 Matt Pocock:合并冲突解决",
+          "explanation": "结论：插件 mattpocock-skills；skill resolving-merge-conflicts；调用 $mattpocock-skills:resolving-merge-conflicts；显示名 Matt Pocock:合并冲突解决。\n依据：Matt Pocock:合并冲突解决 的正式入口是 $mattpocock-skills:resolving-merge-conflicts；同时记录插件、skill slug 与显示名，才能在相似路由间复核选择。\n错误选项：A：省略稳定 slug 与插件名，不能完整核对调用目标；C：插件级名称无法区分内部多个独立技能；D：文件路径不是技能调用接口且会泄露机器特定信息\n实践：在合成场景中写出 $mattpocock-skills:resolving-merge-conflicts，并补一条不适用条件；不实际执行工具。"
+        },
+        {
+          "id": "course-mp-15-q03",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:合并冲突解决] 边界题：出现“仓库没有进行中的冲突，或用户只是想比较两个分支”时，怎样处理最稳妥？",
+          "options": [
+            "仍强制使用该技能，因为课程要求每个技能都执行",
+            "编造缺失输入以让流程继续",
+            "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+            "直接对真实数据、账户或发布面做试错"
+          ],
+          "answer": "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+          "explanation": "结论：停止套用该技能，重新路由或先补齐真正改变选择的条件。\n依据：Matt Pocock:合并冲突解决 的不适用条件决定何时停止；越过该条件会把本 skill 错当成通用执行器。\n错误选项：A：课程目标是会判断，不是无条件执行；B：虚构事实会污染后续产出和验收；D：真实外部状态不应成为未确认路由的试验场\n实践：为 $mattpocock-skills:resolving-merge-conflicts 写一个最小反例和替代路由，只输出判断。"
+        },
+        {
+          "id": "course-mp-15-q04",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:合并冲突解决] 验收题：怎样证明这个单元已学会，而不是只记住名称？",
+          "options": [
+            "只背出 display_name",
+            "只说任务看起来已完成",
+            "展示一次真实写入或发布截图",
+            "能说明用途、输入“当前 Git 状态、冲突文件、双方提交、议题与原始意图”、输出“保留双方意图的逐块解决、项目检查与完成后的 merge/rebase”和边界，并在合成场景中选对技能"
+          ],
+          "answer": "能说明用途、输入“当前 Git 状态、冲突文件、双方提交、议题与原始意图”、输出“保留双方意图的逐块解决、项目检查与完成后的 merge/rebase”和边界，并在合成场景中选对技能",
+          "explanation": "结论：能说明用途、输入“当前 Git 状态、冲突文件、双方提交、议题与原始意图”、输出“保留双方意图的逐块解决、项目检查与完成后的 merge/rebase”和边界，并在合成场景中选对技能。\n依据：Matt Pocock:合并冲突解决 的验收必须同时覆盖其输入、输出、边界与可观察证据，不能只记名称。\n错误选项：A：显示名不能证明会判断适用场景；B：没有对应输入、输出或可观察证据；C：不可逆操作不是必要教学证据，也可能越权\n实践：用 <synthetic-fixture> 核对 $mattpocock-skills:resolving-merge-conflicts 的输入与预期输出，不访问真实状态。"
+        },
+        {
+          "id": "course-mp-15-q05",
+          "type": "true_false",
+          "content": "[Matt Pocock:合并冲突解决] 判断题：使用 $mattpocock-skills:resolving-merge-conflicts 时，应保留这条约束——不得用 abort 逃避；也不得借冲突引入双方都未要求的新行为。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：该约束必须保留。\n依据：它来自 Matt Pocock:合并冲突解决 的流程或风险边界，能防止把技能能力扩大为未经确认的操作。\n实践：在提示词末尾加入该约束，并只检查模型返回的计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-mp-16",
+      "code": "MP16",
+      "title": "MP16 Matt Pocock:技能初始化",
+      "order": 16,
+      "lab_ref": "MP16",
+      "source_text": "mattpocock-skills@1.2.0+codex.9603c1c 的 skills/setup-matt-pocock-skills/SKILL.md 与相邻 agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-mp-16-q01",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:技能初始化] 场景题：团队遇到以下场景：首次使用工程技能前配置问题跟踪、分诊标签与领域文档布局。最合适的下一步是什么？",
+          "options": [
+            "显式调用 $mattpocock-skills:setup-matt-pocock-skills（Matt Pocock:技能初始化），先核对输入和边界",
+            "跳过技能，直接承诺已经交付最终结果",
+            "调用同插件全部技能，让它们自行竞争",
+            "先修改真实外部状态，再补写需求说明"
+          ],
+          "answer": "显式调用 $mattpocock-skills:setup-matt-pocock-skills（Matt Pocock:技能初始化），先核对输入和边界",
+          "explanation": "结论：该场景正是 Matt Pocock:技能初始化 的适用范围。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：B：没有执行相应流程，也缺少可观察证据；C：无差别调用增加上下文和副作用，掩盖清晰分工；D：把不可逆动作放在确认之前违反安全边界\n实践：用合成材料复述任务，并确认输入包含：Git 远端、现有 AGENTS、上下文文档、ADR 与 tracker 约定。"
+        },
+        {
+          "id": "course-mp-16-q02",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:技能初始化] 调用题：评审会上需要明确记录所选技能，哪种写法最完整？",
+          "options": [
+            "只写“使用 Matt Pocock:技能初始化”",
+            "插件 mattpocock-skills；skill setup-matt-pocock-skills；调用 $mattpocock-skills:setup-matt-pocock-skills；显示名 Matt Pocock:技能初始化",
+            "只写插件 mattpocock-skills，不指定 skill",
+            "复制本机缓存绝对路径作为调用语法"
+          ],
+          "answer": "插件 mattpocock-skills；skill setup-matt-pocock-skills；调用 $mattpocock-skills:setup-matt-pocock-skills；显示名 Matt Pocock:技能初始化",
+          "explanation": "结论：插件 mattpocock-skills；skill setup-matt-pocock-skills；调用 $mattpocock-skills:setup-matt-pocock-skills；显示名 Matt Pocock:技能初始化。\n依据：Matt Pocock:技能初始化 的正式入口是 $mattpocock-skills:setup-matt-pocock-skills；同时记录插件、skill slug 与显示名，才能在相似路由间复核选择。\n错误选项：A：省略稳定 slug 与插件名，不能完整核对调用目标；C：插件级名称无法区分内部多个独立技能；D：文件路径不是技能调用接口且会泄露机器特定信息\n实践：在合成场景中写出 $mattpocock-skills:setup-matt-pocock-skills，并补一条不适用条件；不实际执行工具。"
+        },
+        {
+          "id": "course-mp-16-q03",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:技能初始化] 边界题：出现“仓库已经正确配置且没有切换跟踪器或重建需求”时，怎样处理最稳妥？",
+          "options": [
+            "仍强制使用该技能，因为课程要求每个技能都执行",
+            "编造缺失输入以让流程继续",
+            "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+            "直接对真实数据、账户或发布面做试错"
+          ],
+          "answer": "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+          "explanation": "结论：停止套用该技能，重新路由或先补齐真正改变选择的条件。\n依据：Matt Pocock:技能初始化 的不适用条件决定何时停止；越过该条件会把本 skill 错当成通用执行器。\n错误选项：A：课程目标是会判断，不是无条件执行；B：虚构事实会污染后续产出和验收；D：真实外部状态不应成为未确认路由的试验场\n实践：为 $mattpocock-skills:setup-matt-pocock-skills 写一个最小反例和替代路由，只输出判断。"
+        },
+        {
+          "id": "course-mp-16-q04",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:技能初始化] 验收题：怎样证明这个单元已学会，而不是只记住名称？",
+          "options": [
+            "只背出 display_name",
+            "只说任务看起来已完成",
+            "展示一次真实写入或发布截图",
+            "能说明用途、输入“Git 远端、现有 AGENTS、上下文文档、ADR 与 tracker 约定”、输出“经用户确认的仓库级技能配置和 docs/agents 文档”和边界，并在合成场景中选对技能"
+          ],
+          "answer": "能说明用途、输入“Git 远端、现有 AGENTS、上下文文档、ADR 与 tracker 约定”、输出“经用户确认的仓库级技能配置和 docs/agents 文档”和边界，并在合成场景中选对技能",
+          "explanation": "结论：能说明用途、输入“Git 远端、现有 AGENTS、上下文文档、ADR 与 tracker 约定”、输出“经用户确认的仓库级技能配置和 docs/agents 文档”和边界，并在合成场景中选对技能。\n依据：Matt Pocock:技能初始化 的验收必须同时覆盖其输入、输出、边界与可观察证据，不能只记名称。\n错误选项：A：显示名不能证明会判断适用场景；B：没有对应输入、输出或可观察证据；C：不可逆操作不是必要教学证据，也可能越权\n实践：用 <synthetic-fixture> 核对 $mattpocock-skills:setup-matt-pocock-skills 的输入与预期输出，不访问真实状态。"
+        },
+        {
+          "id": "course-mp-16-q05",
+          "type": "true_false",
+          "content": "[Matt Pocock:技能初始化] 判断题：使用 $mattpocock-skills:setup-matt-pocock-skills 时，应保留这条约束——先探索并展示草案再写；不要把 Codex 指令写入 CLAUDE.md。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：该约束必须保留。\n依据：它来自 Matt Pocock:技能初始化 的流程或风险边界，能防止把技能能力扩大为未经确认的操作。\n实践：在提示词末尾加入该约束，并只检查模型返回的计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-mp-17",
+      "code": "MP17",
+      "title": "MP17 Matt Pocock:TDD 测试驱动开发",
+      "order": 17,
+      "lab_ref": "MP17",
+      "source_text": "mattpocock-skills@1.2.0+codex.9603c1c 的 skills/tdd/SKILL.md 与相邻 agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-mp-17-q01",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:TDD 测试驱动开发] 场景题：团队遇到以下场景：以红绿循环在预先约定的公共接缝构建行为。最合适的下一步是什么？",
+          "options": [
+            "显式调用 $mattpocock-skills:tdd（Matt Pocock:TDD 测试驱动开发），先核对输入和边界",
+            "跳过技能，直接承诺已经交付最终结果",
+            "调用同插件全部技能，让它们自行竞争",
+            "先修改真实外部状态，再补写需求说明"
+          ],
+          "answer": "显式调用 $mattpocock-skills:tdd（Matt Pocock:TDD 测试驱动开发），先核对输入和边界",
+          "explanation": "结论：该场景正是 Matt Pocock:TDD 测试驱动开发 的适用范围。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：B：没有执行相应流程，也缺少可观察证据；C：无差别调用增加上下文和副作用，掩盖清晰分工；D：把不可逆动作放在确认之前违反安全边界\n实践：用合成材料复述任务，并确认输入包含：单个可观察行为、公共接口、测试位置与最小运行命令。"
+        },
+        {
+          "id": "course-mp-17-q02",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:TDD 测试驱动开发] 调用题：评审会上需要明确记录所选技能，哪种写法最完整？",
+          "options": [
+            "只写“使用 Matt Pocock:TDD 测试驱动开发”",
+            "插件 mattpocock-skills；skill tdd；调用 $mattpocock-skills:tdd；显示名 Matt Pocock:TDD 测试驱动开发",
+            "只写插件 mattpocock-skills，不指定 skill",
+            "复制本机缓存绝对路径作为调用语法"
+          ],
+          "answer": "插件 mattpocock-skills；skill tdd；调用 $mattpocock-skills:tdd；显示名 Matt Pocock:TDD 测试驱动开发",
+          "explanation": "结论：插件 mattpocock-skills；skill tdd；调用 $mattpocock-skills:tdd；显示名 Matt Pocock:TDD 测试驱动开发。\n依据：Matt Pocock:TDD 测试驱动开发 的正式入口是 $mattpocock-skills:tdd；同时记录插件、skill slug 与显示名，才能在相似路由间复核选择。\n错误选项：A：省略稳定 slug 与插件名，不能完整核对调用目标；C：插件级名称无法区分内部多个独立技能；D：文件路径不是技能调用接口且会泄露机器特定信息\n实践：在合成场景中写出 $mattpocock-skills:tdd，并补一条不适用条件；不实际执行工具。"
+        },
+        {
+          "id": "course-mp-17-q03",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:TDD 测试驱动开发] 边界题：出现“用户只要事后补覆盖率，或测试只能绑定实现细节”时，怎样处理最稳妥？",
+          "options": [
+            "仍强制使用该技能，因为课程要求每个技能都执行",
+            "编造缺失输入以让流程继续",
+            "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+            "直接对真实数据、账户或发布面做试错"
+          ],
+          "answer": "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+          "explanation": "结论：停止套用该技能，重新路由或先补齐真正改变选择的条件。\n依据：Matt Pocock:TDD 测试驱动开发 的不适用条件决定何时停止；越过该条件会把本 skill 错当成通用执行器。\n错误选项：A：课程目标是会判断，不是无条件执行；B：虚构事实会污染后续产出和验收；D：真实外部状态不应成为未确认路由的试验场\n实践：为 $mattpocock-skills:tdd 写一个最小反例和替代路由，只输出判断。"
+        },
+        {
+          "id": "course-mp-17-q04",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:TDD 测试驱动开发] 验收题：怎样证明这个单元已学会，而不是只记住名称？",
+          "options": [
+            "只背出 display_name",
+            "只说任务看起来已完成",
+            "展示一次真实写入或发布截图",
+            "能说明用途、输入“单个可观察行为、公共接口、测试位置与最小运行命令”、输出“先失败再通过的行为测试与最小生产实现”和边界，并在合成场景中选对技能"
+          ],
+          "answer": "能说明用途、输入“单个可观察行为、公共接口、测试位置与最小运行命令”、输出“先失败再通过的行为测试与最小生产实现”和边界，并在合成场景中选对技能",
+          "explanation": "结论：能说明用途、输入“单个可观察行为、公共接口、测试位置与最小运行命令”、输出“先失败再通过的行为测试与最小生产实现”和边界，并在合成场景中选对技能。\n依据：Matt Pocock:TDD 测试驱动开发 的验收必须同时覆盖其输入、输出、边界与可观察证据，不能只记名称。\n错误选项：A：显示名不能证明会判断适用场景；B：没有对应输入、输出或可观察证据；C：不可逆操作不是必要教学证据，也可能越权\n实践：用 <synthetic-fixture> 核对 $mattpocock-skills:tdd 的输入与预期输出，不访问真实状态。"
+        },
+        {
+          "id": "course-mp-17-q05",
+          "type": "true_false",
+          "content": "[Matt Pocock:TDD 测试驱动开发] 判断题：使用 $mattpocock-skills:tdd 时，应保留这条约束——测试公共行为而非内部结构；每个切片必须亲眼经历红到绿。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：该约束必须保留。\n依据：它来自 Matt Pocock:TDD 测试驱动开发 的流程或风险边界，能防止把技能能力扩大为未经确认的操作。\n实践：在提示词末尾加入该约束，并只检查模型返回的计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-mp-18",
+      "code": "MP18",
+      "title": "MP18 Matt Pocock:规格整理",
+      "order": 18,
+      "lab_ref": "MP18",
+      "source_text": "mattpocock-skills@1.2.0+codex.9603c1c 的 skills/to-spec/SKILL.md 与相邻 agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-mp-18-q01",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:规格整理] 场景题：团队遇到以下场景：把完成访谈的对话或决策地图整理为可实施规格。最合适的下一步是什么？",
+          "options": [
+            "显式调用 $mattpocock-skills:to-spec（Matt Pocock:规格整理），先核对输入和边界",
+            "跳过技能，直接承诺已经交付最终结果",
+            "调用同插件全部技能，让它们自行竞争",
+            "先修改真实外部状态，再补写需求说明"
+          ],
+          "answer": "显式调用 $mattpocock-skills:to-spec（Matt Pocock:规格整理），先核对输入和边界",
+          "explanation": "结论：该场景正是 Matt Pocock:规格整理 的适用范围。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：B：没有执行相应流程，也缺少可观察证据；C：无差别调用增加上下文和副作用，掩盖清晰分工；D：把不可逆动作放在确认之前违反安全边界\n实践：用合成材料复述任务，并确认输入包含：完整上下文、已确认决定、领域文档与研究引用。"
+        },
+        {
+          "id": "course-mp-18-q02",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:规格整理] 调用题：评审会上需要明确记录所选技能，哪种写法最完整？",
+          "options": [
+            "只写“使用 Matt Pocock:规格整理”",
+            "插件 mattpocock-skills；skill to-spec；调用 $mattpocock-skills:to-spec；显示名 Matt Pocock:规格整理",
+            "只写插件 mattpocock-skills，不指定 skill",
+            "复制本机缓存绝对路径作为调用语法"
+          ],
+          "answer": "插件 mattpocock-skills；skill to-spec；调用 $mattpocock-skills:to-spec；显示名 Matt Pocock:规格整理",
+          "explanation": "结论：插件 mattpocock-skills；skill to-spec；调用 $mattpocock-skills:to-spec；显示名 Matt Pocock:规格整理。\n依据：Matt Pocock:规格整理 的正式入口是 $mattpocock-skills:to-spec；同时记录插件、skill slug 与显示名，才能在相似路由间复核选择。\n错误选项：A：省略稳定 slug 与插件名，不能完整核对调用目标；C：插件级名称无法区分内部多个独立技能；D：文件路径不是技能调用接口且会泄露机器特定信息\n实践：在合成场景中写出 $mattpocock-skills:to-spec，并补一条不适用条件；不实际执行工具。"
+        },
+        {
+          "id": "course-mp-18-q03",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:规格整理] 边界题：出现“需求仍有高影响决策未确认，或工作小到无需独立规格”时，怎样处理最稳妥？",
+          "options": [
+            "仍强制使用该技能，因为课程要求每个技能都执行",
+            "编造缺失输入以让流程继续",
+            "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+            "直接对真实数据、账户或发布面做试错"
+          ],
+          "answer": "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+          "explanation": "结论：停止套用该技能，重新路由或先补齐真正改变选择的条件。\n依据：Matt Pocock:规格整理 的不适用条件决定何时停止；越过该条件会把本 skill 错当成通用执行器。\n错误选项：A：课程目标是会判断，不是无条件执行；B：虚构事实会污染后续产出和验收；D：真实外部状态不应成为未确认路由的试验场\n实践：为 $mattpocock-skills:to-spec 写一个最小反例和替代路由，只输出判断。"
+        },
+        {
+          "id": "course-mp-18-q04",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:规格整理] 验收题：怎样证明这个单元已学会，而不是只记住名称？",
+          "options": [
+            "只背出 display_name",
+            "只说任务看起来已完成",
+            "展示一次真实写入或发布截图",
+            "能说明用途、输入“完整上下文、已确认决定、领域文档与研究引用”、输出“决策完整、可由新会话实施的规格文档”和边界，并在合成场景中选对技能"
+          ],
+          "answer": "能说明用途、输入“完整上下文、已确认决定、领域文档与研究引用”、输出“决策完整、可由新会话实施的规格文档”和边界，并在合成场景中选对技能",
+          "explanation": "结论：能说明用途、输入“完整上下文、已确认决定、领域文档与研究引用”、输出“决策完整、可由新会话实施的规格文档”和边界，并在合成场景中选对技能。\n依据：Matt Pocock:规格整理 的验收必须同时覆盖其输入、输出、边界与可观察证据，不能只记名称。\n错误选项：A：显示名不能证明会判断适用场景；B：没有对应输入、输出或可观察证据；C：不可逆操作不是必要教学证据，也可能越权\n实践：用 <synthetic-fixture> 核对 $mattpocock-skills:to-spec 的输入与预期输出，不访问真实状态。"
+        },
+        {
+          "id": "course-mp-18-q05",
+          "type": "true_false",
+          "content": "[Matt Pocock:规格整理] 判断题：使用 $mattpocock-skills:to-spec 时，应保留这条约束——规格要压缩既有决定而不是重新发明，也不在此阶段写实现。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：该约束必须保留。\n依据：它来自 Matt Pocock:规格整理 的流程或风险边界，能防止把技能能力扩大为未经确认的操作。\n实践：在提示词末尾加入该约束，并只检查模型返回的计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-mp-19",
+      "code": "MP19",
+      "title": "MP19 Matt Pocock:任务拆分",
+      "order": 19,
+      "lab_ref": "MP19",
+      "source_text": "mattpocock-skills@1.2.0+codex.9603c1c 的 skills/to-tickets/SKILL.md 与相邻 agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-mp-19-q01",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:任务拆分] 场景题：团队遇到以下场景：把规格拆为有阻塞边的 tracer-bullet 实施票据。最合适的下一步是什么？",
+          "options": [
+            "显式调用 $mattpocock-skills:to-tickets（Matt Pocock:任务拆分），先核对输入和边界",
+            "跳过技能，直接承诺已经交付最终结果",
+            "调用同插件全部技能，让它们自行竞争",
+            "先修改真实外部状态，再补写需求说明"
+          ],
+          "answer": "显式调用 $mattpocock-skills:to-tickets（Matt Pocock:任务拆分），先核对输入和边界",
+          "explanation": "结论：该场景正是 Matt Pocock:任务拆分 的适用范围。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：B：没有执行相应流程，也缺少可观察证据；C：无差别调用增加上下文和副作用，掩盖清晰分工；D：把不可逆动作放在确认之前违反安全边界\n实践：用合成材料复述任务，并确认输入包含：已确认规格、tracker 约定、依赖关系与验收边界。"
+        },
+        {
+          "id": "course-mp-19-q02",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:任务拆分] 调用题：评审会上需要明确记录所选技能，哪种写法最完整？",
+          "options": [
+            "只写“使用 Matt Pocock:任务拆分”",
+            "插件 mattpocock-skills；skill to-tickets；调用 $mattpocock-skills:to-tickets；显示名 Matt Pocock:任务拆分",
+            "只写插件 mattpocock-skills，不指定 skill",
+            "复制本机缓存绝对路径作为调用语法"
+          ],
+          "answer": "插件 mattpocock-skills；skill to-tickets；调用 $mattpocock-skills:to-tickets；显示名 Matt Pocock:任务拆分",
+          "explanation": "结论：插件 mattpocock-skills；skill to-tickets；调用 $mattpocock-skills:to-tickets；显示名 Matt Pocock:任务拆分。\n依据：Matt Pocock:任务拆分 的正式入口是 $mattpocock-skills:to-tickets；同时记录插件、skill slug 与显示名，才能在相似路由间复核选择。\n错误选项：A：省略稳定 slug 与插件名，不能完整核对调用目标；C：插件级名称无法区分内部多个独立技能；D：文件路径不是技能调用接口且会泄露机器特定信息\n实践：在合成场景中写出 $mattpocock-skills:to-tickets，并补一条不适用条件；不实际执行工具。"
+        },
+        {
+          "id": "course-mp-19-q03",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:任务拆分] 边界题：出现“处理外部提交的原始 bug 报告，或规格尚未完成”时，怎样处理最稳妥？",
+          "options": [
+            "仍强制使用该技能，因为课程要求每个技能都执行",
+            "编造缺失输入以让流程继续",
+            "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+            "直接对真实数据、账户或发布面做试错"
+          ],
+          "answer": "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+          "explanation": "结论：停止套用该技能，重新路由或先补齐真正改变选择的条件。\n依据：Matt Pocock:任务拆分 的不适用条件决定何时停止；越过该条件会把本 skill 错当成通用执行器。\n错误选项：A：课程目标是会判断，不是无条件执行；B：虚构事实会污染后续产出和验收；D：真实外部状态不应成为未确认路由的试验场\n实践：为 $mattpocock-skills:to-tickets 写一个最小反例和替代路由，只输出判断。"
+        },
+        {
+          "id": "course-mp-19-q04",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:任务拆分] 验收题：怎样证明这个单元已学会，而不是只记住名称？",
+          "options": [
+            "只背出 display_name",
+            "只说任务看起来已完成",
+            "展示一次真实写入或发布截图",
+            "能说明用途、输入“已确认规格、tracker 约定、依赖关系与验收边界”、输出“每票可独立实施的纵向切片及明确 blocking edges”和边界，并在合成场景中选对技能"
+          ],
+          "answer": "能说明用途、输入“已确认规格、tracker 约定、依赖关系与验收边界”、输出“每票可独立实施的纵向切片及明确 blocking edges”和边界，并在合成场景中选对技能",
+          "explanation": "结论：能说明用途、输入“已确认规格、tracker 约定、依赖关系与验收边界”、输出“每票可独立实施的纵向切片及明确 blocking edges”和边界，并在合成场景中选对技能。\n依据：Matt Pocock:任务拆分 的验收必须同时覆盖其输入、输出、边界与可观察证据，不能只记名称。\n错误选项：A：显示名不能证明会判断适用场景；B：没有对应输入、输出或可观察证据；C：不可逆操作不是必要教学证据，也可能越权\n实践：用 <synthetic-fixture> 核对 $mattpocock-skills:to-tickets 的输入与预期输出，不访问真实状态。"
+        },
+        {
+          "id": "course-mp-19-q05",
+          "type": "true_false",
+          "content": "[Matt Pocock:任务拆分] 判断题：使用 $mattpocock-skills:to-tickets 时，应保留这条约束——这些票据已是 agent-ready，不应再送入 triage。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：该约束必须保留。\n依据：它来自 Matt Pocock:任务拆分 的流程或风险边界，能防止把技能能力扩大为未经确认的操作。\n实践：在提示词末尾加入该约束，并只检查模型返回的计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-mp-20",
+      "code": "MP20",
+      "title": "MP20 Matt Pocock:事项分诊",
+      "order": 20,
+      "lab_ref": "MP20",
+      "source_text": "mattpocock-skills@1.2.0+codex.9603c1c 的 skills/triage/SKILL.md 与相邻 agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-mp-20-q01",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:事项分诊] 场景题：团队遇到以下场景：把外部进入的 bug 和功能请求分诊成可行动事项。最合适的下一步是什么？",
+          "options": [
+            "显式调用 $mattpocock-skills:triage（Matt Pocock:事项分诊），先核对输入和边界",
+            "跳过技能，直接承诺已经交付最终结果",
+            "调用同插件全部技能，让它们自行竞争",
+            "先修改真实外部状态，再补写需求说明"
+          ],
+          "answer": "显式调用 $mattpocock-skills:triage（Matt Pocock:事项分诊），先核对输入和边界",
+          "explanation": "结论：该场景正是 Matt Pocock:事项分诊 的适用范围。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：B：没有执行相应流程，也缺少可观察证据；C：无差别调用增加上下文和副作用，掩盖清晰分工；D：把不可逆动作放在确认之前违反安全边界\n实践：用合成材料复述任务，并确认输入包含：原始事项、复现信息、优先级信号与 tracker 标签约定。"
+        },
+        {
+          "id": "course-mp-20-q02",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:事项分诊] 调用题：评审会上需要明确记录所选技能，哪种写法最完整？",
+          "options": [
+            "只写“使用 Matt Pocock:事项分诊”",
+            "插件 mattpocock-skills；skill triage；调用 $mattpocock-skills:triage；显示名 Matt Pocock:事项分诊",
+            "只写插件 mattpocock-skills，不指定 skill",
+            "复制本机缓存绝对路径作为调用语法"
+          ],
+          "answer": "插件 mattpocock-skills；skill triage；调用 $mattpocock-skills:triage；显示名 Matt Pocock:事项分诊",
+          "explanation": "结论：插件 mattpocock-skills；skill triage；调用 $mattpocock-skills:triage；显示名 Matt Pocock:事项分诊。\n依据：Matt Pocock:事项分诊 的正式入口是 $mattpocock-skills:triage；同时记录插件、skill slug 与显示名，才能在相似路由间复核选择。\n错误选项：A：省略稳定 slug 与插件名，不能完整核对调用目标；C：插件级名称无法区分内部多个独立技能；D：文件路径不是技能调用接口且会泄露机器特定信息\n实践：在合成场景中写出 $mattpocock-skills:triage，并补一条不适用条件；不实际执行工具。"
+        },
+        {
+          "id": "course-mp-20-q03",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:事项分诊] 边界题：出现“处理由 to-tickets 生成、已经可执行的票据”时，怎样处理最稳妥？",
+          "options": [
+            "仍强制使用该技能，因为课程要求每个技能都执行",
+            "编造缺失输入以让流程继续",
+            "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+            "直接对真实数据、账户或发布面做试错"
+          ],
+          "answer": "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+          "explanation": "结论：停止套用该技能，重新路由或先补齐真正改变选择的条件。\n依据：Matt Pocock:事项分诊 的不适用条件决定何时停止；越过该条件会把本 skill 错当成通用执行器。\n错误选项：A：课程目标是会判断，不是无条件执行；B：虚构事实会污染后续产出和验收；D：真实外部状态不应成为未确认路由的试验场\n实践：为 $mattpocock-skills:triage 写一个最小反例和替代路由，只输出判断。"
+        },
+        {
+          "id": "course-mp-20-q04",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:事项分诊] 验收题：怎样证明这个单元已学会，而不是只记住名称？",
+          "options": [
+            "只背出 display_name",
+            "只说任务看起来已完成",
+            "展示一次真实写入或发布截图",
+            "能说明用途、输入“原始事项、复现信息、优先级信号与 tracker 标签约定”、输出“needs-info、ready-for-agent、ready-for-human 或 wontfix 等明确状态”和边界，并在合成场景中选对技能"
+          ],
+          "answer": "能说明用途、输入“原始事项、复现信息、优先级信号与 tracker 标签约定”、输出“needs-info、ready-for-agent、ready-for-human 或 wontfix 等明确状态”和边界，并在合成场景中选对技能",
+          "explanation": "结论：能说明用途、输入“原始事项、复现信息、优先级信号与 tracker 标签约定”、输出“needs-info、ready-for-agent、ready-for-human 或 wontfix 等明确状态”和边界，并在合成场景中选对技能。\n依据：Matt Pocock:事项分诊 的验收必须同时覆盖其输入、输出、边界与可观察证据，不能只记名称。\n错误选项：A：显示名不能证明会判断适用场景；B：没有对应输入、输出或可观察证据；C：不可逆操作不是必要教学证据，也可能越权\n实践：用 <synthetic-fixture> 核对 $mattpocock-skills:triage 的输入与预期输出，不访问真实状态。"
+        },
+        {
+          "id": "course-mp-20-q05",
+          "type": "true_false",
+          "content": "[Matt Pocock:事项分诊] 判断题：使用 $mattpocock-skills:triage 时，应保留这条约束——只分诊传入请求；信息不足要索取证据，不能猜成可实施票。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：该约束必须保留。\n依据：它来自 Matt Pocock:事项分诊 的流程或风险边界，能防止把技能能力扩大为未经确认的操作。\n实践：在提示词末尾加入该约束，并只检查模型返回的计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-mp-21",
+      "code": "MP21",
+      "title": "MP21 Matt Pocock:大型工作导航",
+      "order": 21,
+      "lab_ref": "MP21",
+      "source_text": "mattpocock-skills@1.2.0+codex.9603c1c 的 skills/wayfinder/SKILL.md 与相邻 agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-mp-21-q01",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:大型工作导航] 场景题：团队遇到以下场景：为巨大、模糊且跨多会话的工作建立决策任务地图。最合适的下一步是什么？",
+          "options": [
+            "显式调用 $mattpocock-skills:wayfinder（Matt Pocock:大型工作导航），先核对输入和边界",
+            "跳过技能，直接承诺已经交付最终结果",
+            "调用同插件全部技能，让它们自行竞争",
+            "先修改真实外部状态，再补写需求说明"
+          ],
+          "answer": "显式调用 $mattpocock-skills:wayfinder（Matt Pocock:大型工作导航），先核对输入和边界",
+          "explanation": "结论：该场景正是 Matt Pocock:大型工作导航 的适用范围。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：B：没有执行相应流程，也缺少可观察证据；C：无差别调用增加上下文和副作用，掩盖清晰分工；D：把不可逆动作放在确认之前违反安全边界\n实践：用合成材料复述任务，并确认输入包含：目的地、当前可见决策、tracker 与人机协作约束。"
+        },
+        {
+          "id": "course-mp-21-q02",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:大型工作导航] 调用题：评审会上需要明确记录所选技能，哪种写法最完整？",
+          "options": [
+            "只写“使用 Matt Pocock:大型工作导航”",
+            "插件 mattpocock-skills；skill wayfinder；调用 $mattpocock-skills:wayfinder；显示名 Matt Pocock:大型工作导航",
+            "只写插件 mattpocock-skills，不指定 skill",
+            "复制本机缓存绝对路径作为调用语法"
+          ],
+          "answer": "插件 mattpocock-skills；skill wayfinder；调用 $mattpocock-skills:wayfinder；显示名 Matt Pocock:大型工作导航",
+          "explanation": "结论：插件 mattpocock-skills；skill wayfinder；调用 $mattpocock-skills:wayfinder；显示名 Matt Pocock:大型工作导航。\n依据：Matt Pocock:大型工作导航 的正式入口是 $mattpocock-skills:wayfinder；同时记录插件、skill slug 与显示名，才能在相似路由间复核选择。\n错误选项：A：省略稳定 slug 与插件名，不能完整核对调用目标；C：插件级名称无法区分内部多个独立技能；D：文件路径不是技能调用接口且会泄露机器特定信息\n实践：在合成场景中写出 $mattpocock-skills:wayfinder，并补一条不适用条件；不实际执行工具。"
+        },
+        {
+          "id": "course-mp-21-q03",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:大型工作导航] 边界题：出现“路径已清晰且能在一次会话内形成规格”时，怎样处理最稳妥？",
+          "options": [
+            "仍强制使用该技能，因为课程要求每个技能都执行",
+            "编造缺失输入以让流程继续",
+            "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+            "直接对真实数据、账户或发布面做试错"
+          ],
+          "answer": "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+          "explanation": "结论：停止套用该技能，重新路由或先补齐真正改变选择的条件。\n依据：Matt Pocock:大型工作导航 的不适用条件决定何时停止；越过该条件会把本 skill 错当成通用执行器。\n错误选项：A：课程目标是会判断，不是无条件执行；B：虚构事实会污染后续产出和验收；D：真实外部状态不应成为未确认路由的试验场\n实践：为 $mattpocock-skills:wayfinder 写一个最小反例和替代路由，只输出判断。"
+        },
+        {
+          "id": "course-mp-21-q04",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:大型工作导航] 验收题：怎样证明这个单元已学会，而不是只记住名称？",
+          "options": [
+            "只背出 display_name",
+            "只说任务看起来已完成",
+            "展示一次真实写入或发布截图",
+            "能说明用途、输入“目的地、当前可见决策、tracker 与人机协作约束”、输出“带 frontier、阻塞边和 fog-of-war 的共享决策地图”和边界，并在合成场景中选对技能"
+          ],
+          "answer": "能说明用途、输入“目的地、当前可见决策、tracker 与人机协作约束”、输出“带 frontier、阻塞边和 fog-of-war 的共享决策地图”和边界，并在合成场景中选对技能",
+          "explanation": "结论：能说明用途、输入“目的地、当前可见决策、tracker 与人机协作约束”、输出“带 frontier、阻塞边和 fog-of-war 的共享决策地图”和边界，并在合成场景中选对技能。\n依据：Matt Pocock:大型工作导航 的验收必须同时覆盖其输入、输出、边界与可观察证据，不能只记名称。\n错误选项：A：显示名不能证明会判断适用场景；B：没有对应输入、输出或可观察证据；C：不可逆操作不是必要教学证据，也可能越权\n实践：用 <synthetic-fixture> 核对 $mattpocock-skills:wayfinder 的输入与预期输出，不访问真实状态。"
+        },
+        {
+          "id": "course-mp-21-q05",
+          "type": "true_false",
+          "content": "[Matt Pocock:大型工作导航] 判断题：使用 $mattpocock-skills:wayfinder 时，应保留这条约束——每会话最多解决一个非研究票；地图最终交给 to-spec，而不是直接建设。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：该约束必须保留。\n依据：它来自 Matt Pocock:大型工作导航 的流程或风险边界，能防止把技能能力扩大为未经确认的操作。\n实践：在提示词末尾加入该约束，并只检查模型返回的计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-mp-22",
+      "code": "MP22",
+      "title": "MP22 Matt Pocock:高质量技能编写",
+      "order": 22,
+      "lab_ref": "MP22",
+      "source_text": "mattpocock-skills@1.2.0+codex.9603c1c 的 skills/writing-great-skills/SKILL.md 与相邻 agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-mp-22-q01",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:高质量技能编写] 场景题：团队遇到以下场景：编写或修订可预测、低上下文负担的 Agent Skill。最合适的下一步是什么？",
+          "options": [
+            "显式调用 $mattpocock-skills:writing-great-skills（Matt Pocock:高质量技能编写），先核对输入和边界",
+            "跳过技能，直接承诺已经交付最终结果",
+            "调用同插件全部技能，让它们自行竞争",
+            "先修改真实外部状态，再补写需求说明"
+          ],
+          "answer": "显式调用 $mattpocock-skills:writing-great-skills（Matt Pocock:高质量技能编写），先核对输入和边界",
+          "explanation": "结论：该场景正是 Matt Pocock:高质量技能编写 的适用范围。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：B：没有执行相应流程，也缺少可观察证据；C：无差别调用增加上下文和副作用，掩盖清晰分工；D：把不可逆动作放在确认之前违反安全边界\n实践：用合成材料复述任务，并确认输入包含：触发分支、步骤、完成条件、引用材料与调用策略。"
+        },
+        {
+          "id": "course-mp-22-q02",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:高质量技能编写] 调用题：评审会上需要明确记录所选技能，哪种写法最完整？",
+          "options": [
+            "只写“使用 Matt Pocock:高质量技能编写”",
+            "插件 mattpocock-skills；skill writing-great-skills；调用 $mattpocock-skills:writing-great-skills；显示名 Matt Pocock:高质量技能编写",
+            "只写插件 mattpocock-skills，不指定 skill",
+            "复制本机缓存绝对路径作为调用语法"
+          ],
+          "answer": "插件 mattpocock-skills；skill writing-great-skills；调用 $mattpocock-skills:writing-great-skills；显示名 Matt Pocock:高质量技能编写",
+          "explanation": "结论：插件 mattpocock-skills；skill writing-great-skills；调用 $mattpocock-skills:writing-great-skills；显示名 Matt Pocock:高质量技能编写。\n依据：Matt Pocock:高质量技能编写 的正式入口是 $mattpocock-skills:writing-great-skills；同时记录插件、skill slug 与显示名，才能在相似路由间复核选择。\n错误选项：A：省略稳定 slug 与插件名，不能完整核对调用目标；C：插件级名称无法区分内部多个独立技能；D：文件路径不是技能调用接口且会泄露机器特定信息\n实践：在合成场景中写出 $mattpocock-skills:writing-great-skills，并补一条不适用条件；不实际执行工具。"
+        },
+        {
+          "id": "course-mp-22-q03",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:高质量技能编写] 边界题：出现“只是调用现有技能完成普通工程任务”时，怎样处理最稳妥？",
+          "options": [
+            "仍强制使用该技能，因为课程要求每个技能都执行",
+            "编造缺失输入以让流程继续",
+            "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+            "直接对真实数据、账户或发布面做试错"
+          ],
+          "answer": "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+          "explanation": "结论：停止套用该技能，重新路由或先补齐真正改变选择的条件。\n依据：Matt Pocock:高质量技能编写 的不适用条件决定何时停止；越过该条件会把本 skill 错当成通用执行器。\n错误选项：A：课程目标是会判断，不是无条件执行；B：虚构事实会污染后续产出和验收；D：真实外部状态不应成为未确认路由的试验场\n实践：为 $mattpocock-skills:writing-great-skills 写一个最小反例和替代路由，只输出判断。"
+        },
+        {
+          "id": "course-mp-22-q04",
+          "type": "multiple_choice",
+          "content": "[Matt Pocock:高质量技能编写] 验收题：怎样证明这个单元已学会，而不是只记住名称？",
+          "options": [
+            "只背出 display_name",
+            "只说任务看起来已完成",
+            "展示一次真实写入或发布截图",
+            "能说明用途、输入“触发分支、步骤、完成条件、引用材料与调用策略”、输出“有清晰 leading word、信息层级和单一事实源的技能文本”和边界，并在合成场景中选对技能"
+          ],
+          "answer": "能说明用途、输入“触发分支、步骤、完成条件、引用材料与调用策略”、输出“有清晰 leading word、信息层级和单一事实源的技能文本”和边界，并在合成场景中选对技能",
+          "explanation": "结论：能说明用途、输入“触发分支、步骤、完成条件、引用材料与调用策略”、输出“有清晰 leading word、信息层级和单一事实源的技能文本”和边界，并在合成场景中选对技能。\n依据：Matt Pocock:高质量技能编写 的验收必须同时覆盖其输入、输出、边界与可观察证据，不能只记名称。\n错误选项：A：显示名不能证明会判断适用场景；B：没有对应输入、输出或可观察证据；C：不可逆操作不是必要教学证据，也可能越权\n实践：用 <synthetic-fixture> 核对 $mattpocock-skills:writing-great-skills 的输入与预期输出，不访问真实状态。"
+        },
+        {
+          "id": "course-mp-22-q05",
+          "type": "true_false",
+          "content": "[Matt Pocock:高质量技能编写] 判断题：使用 $mattpocock-skills:writing-great-skills 时，应保留这条约束——先削除 no-op、重复和沉积；只有真正不同的调用或序列才值得拆分。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：该约束必须保留。\n依据：它来自 Matt Pocock:高质量技能编写 的流程或风险边界，能防止把技能能力扩大为未经确认的操作。\n实践：在提示词末尾加入该约束，并只检查模型返回的计划和验收项。"
+        }
+      ]
+    }
+  ]
+}

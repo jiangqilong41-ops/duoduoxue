@@ -163,15 +163,18 @@ SAMPLE_SPEC = {
     "lesson_count": 1,
     "ref": "fixture",
     "snapshot": "2026-07-11",
+    "curriculum_order": 1,
+    "phase": "foundation",
+    "bridge_ref": "B01",
 }
 
 ORIGINAL_RELEASE_HASHES = {
     "agent-harness.json": "9ec2ff2141a0feed30054e3246132920670313c0eee41f5b01c3b13a996ad930",
-    "codex-harness.json": "b44ce451d4065d63ef14e94ab476036a869c9fee8bd74aaa3352c2600c4a2965",
-    "fastapi1-project.json": "0adccbfb4703a8aa6677c31f4a22d6e95b5a227592c00ec333c3d0c3ba0e9277",
+    "codex-harness.json": "729f3e5ea818ab9a7deb447bf940ba96d576edff00b2047764789e743412807f",
+    "fastapi1-project.json": "5348845f7c9b5671c7459fffc3000aa0c1ca428416ca0fdff660b64df0e6a361",
     "labs/agent.md": "03bdd506b79c0b3aa72983b56bfb44d927e4f95d91212372c44c90c582945937",
-    "labs/codex.md": "15f15ae0d02059ab554cad80b781030f09142c61310370a2be8ee7a563ca5236",
-    "labs/fastapi1.md": "285bf96b68079a49b4fcbf7920d2b40ca74e9c71680fd8eb40f437f4693ef2ba",
+    "labs/codex.md": "05c2353b53ee7ed646ce04cddefc70adca44bb416d943908d25a37ec5bdbd4b5",
+    "labs/fastapi1.md": "60016eb6b0272257df4c4360969db1b12c266187496006811e2d05d067594cae",
 }
 
 
@@ -235,6 +238,19 @@ class CourseValidationTest(unittest.TestCase):
                 [multiple_choice_course([0, 0, 0, 0, 0])],
                 {"TS": "## TS01 测试"},
             )
+
+    def test_release_allows_canonical_skill_display_names_with_bounded_length(self) -> None:
+        course = supported_course()
+        course["decks"][0]["title"] = "TS01 A canonical skill display name"
+        with mock.patch.object(build, "COURSE_SPECS", (SAMPLE_SPEC,)):
+            build.validate_release([course], {"TS": "## TS01 测试"})
+
+        course["decks"][0]["title"] = "TS01 " + ("x" * 80)
+        with (
+            mock.patch.object(build, "COURSE_SPECS", (SAMPLE_SPEC,)),
+            self.assertRaisesRegex(build.ValidationError, "too long"),
+        ):
+            build.validate_release([course], {"TS": "## TS01 测试"})
 
     def test_release_rejects_malformed_course_shapes_with_validation_error(self) -> None:
         valid = supported_course()
@@ -626,7 +642,7 @@ class CourseValidationTest(unittest.TestCase):
             "".join(("s", "k-", "1234567890abcdefghijklmnop")),
             "".join(("Bear", "er abcdefghijklmnopqrstuvwxyz123456")),
             "".join(("postgresql://user:", "password@example.com/db")),
-            "/Users/jql/.codex/config.toml",
+            "".join(("/", "Users", "/course-fixture/.codex/config.toml")),
         ):
             with self.subTest(leaked=leaked):
                 with self.assertRaises(build.ValidationError):
@@ -686,14 +702,14 @@ class FastAPI1CourseContractTest(unittest.TestCase):
         )
 
         self.assertEqual(len(switches), 12)
-        self.assertTrue(all(base == "b21b6e4" for _branch, base in switches))
+        self.assertTrue(all(base == "710807b" for _branch, base in switches))
 
     def test_every_question_exposes_the_fixed_source_in_app(self) -> None:
         for deck in self.course["decks"]:
             for question in deck["questions"]:
                 with self.subTest(question=question["id"]):
                     self.assertTrue(
-                        question["content"].startswith("[FastAPI1@b21b6e4]"),
+                        question["content"].startswith("[FastAPI1@710807b]"),
                         question["content"],
                     )
 
@@ -800,7 +816,7 @@ class FastAPI1CourseContractTest(unittest.TestCase):
         for path in expected_paths:
             with self.subTest(path=path):
                 self.assertIn(path, deck["source_text"])
-                self.assertIn(f"git show b21b6e4:{path}", section)
+                self.assertIn(f"git show 710807b:{path}", section)
 
     def test_fa10_exercise_has_verifiable_artifacts(self) -> None:
         section = self.lab.split("## FA10", 1)[1].split("## FA11", 1)[0]
@@ -815,7 +831,7 @@ class FastAPI1CourseContractTest(unittest.TestCase):
         section = self.lab.split("## FA12", 1)[1]
 
         self.assertIn(
-            "git show b21b6e4:graphify-out/GRAPH_REPORT.md", section
+            "git show 710807b:graphify-out/GRAPH_REPORT.md", section
         )
         self.assertIn("God Nodes|most connected", section)
 

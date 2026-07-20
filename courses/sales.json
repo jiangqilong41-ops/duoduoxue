@@ -1,0 +1,1400 @@
+{
+  "course": {
+    "id": "sales",
+    "prefix": "SA",
+    "title": "sales"
+  },
+  "source": {
+    "kind": "local-sanitized",
+    "ref": "sales@1.0.8",
+    "snapshot": "2026-07-20"
+  },
+  "decks": [
+    {
+      "id": "course-sa-01",
+      "code": "SA01",
+      "title": "SA01 Sales 插件总览",
+      "order": 1,
+      "lab_ref": "SA01",
+      "source_text": "sales@1.0.8#.codex-plugin/plugin.json; README.md",
+      "questions": [
+        {
+          "id": "course-sa-01-q01",
+          "type": "multiple_choice",
+          "content": "[sales@1.0.8] 场景：用户显式调用 Sales，或请求明确涉及销售代表、潜客、客户、商机、管道、预测、CRM 或面向客户的销售动作。哪项处理最符合 Sales 插件总览 的职责？",
+          "options": [
+            "调用 @sales，判断卖方请求属于会议、跟进、客户信号、优先级、商机、预测、证据、辅导、研究、丰富或 CRM 指南，并路由到 focused skill",
+            "只打开 Sales 总览并直接宣称任务完成",
+            "跳过输入与证据检查，直接把草稿直接发送、写入 CRM、启动序列或扩大付费查询",
+            "改用无关的文件格式化流程来绕开当前请求"
+          ],
+          "answer": "调用 @sales，判断卖方请求属于会议、跟进、客户信号、优先级、商机、预测、证据、辅导、研究、丰富或 CRM 指南，并路由到 focused skill",
+          "explanation": "结论：应选择 @sales，把请求交给清晰且最窄的能力边界。\n依据：Sales README 和 index 覆盖卖方工作流、CRM 与销售情报，并要求 focused skill 保持业务任务权威和外部动作确认。\n错误选项：B：总览或路由说明不能替代 Sales 插件总览 的实际输出；C：该做法触犯“插件入口只负责路由，默认先读取和起草，外部发送、CRM 写入、付费查询与序列启动需单独审查和确认”这一边界；D：文件格式化不能产出“focused skill、最小来源范围、只读产物和需要另行确认的后续动作”\n实践：用虚构客户复述输入、预期输出和停止条件，再写出显式调用。"
+        },
+        {
+          "id": "course-sa-01-q02",
+          "type": "true_false",
+          "content": "[sales@1.0.8] 场景：请求只是通用写作、个人建议或与销售角色和客户推进无关的数据整理。同事仍计划调用 @sales 并把草稿直接发送、写入 CRM、启动序列或扩大付费查询。这个判断正确吗？",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "错误",
+          "explanation": "结论：该场景不应沿用这个执行路径。\n依据：插件入口只负责路由；默认先读取和起草，外部发送、CRM 写入、付费查询与序列启动需单独审查和确认；当前不适用条件是“请求只是通用写作、个人建议或与销售角色和客户推进无关的数据整理”。\n实践：先写一句不适用理由，再选择更匹配的 skill 或停在澄清步骤。"
+        },
+        {
+          "id": "course-sa-01-q03",
+          "type": "fill_blank",
+          "content": "[sales@1.0.8] 场景：你已确认“用户显式调用 Sales，或请求明确涉及销售代表、潜客、客户、商机、管道、预测、CRM 或面向客户的销售动作”，要显式记录插件、skill slug 与 display name。应调用 ___（Sales 插件总览）。",
+          "options": [],
+          "answer": "@sales",
+          "explanation": "结论：显式调用写作 @sales。\n依据：课程把 sales 作为插件名，并把 @sales 作为插件入口；展示名是“Sales 插件总览”。\n实践：把合成销售任务追加在调用后，并写明期望得到“focused skill、最小来源范围、只读产物和需要另行确认的后续动作”。"
+        },
+        {
+          "id": "course-sa-01-q04",
+          "type": "multiple_choice",
+          "content": "[sales@1.0.8] 场景：学员要在不连接外部系统的情况下验收本单元。哪项证据最有效？",
+          "options": [
+            "读取真实客户或生产资料来提高练习真实性",
+            "使用合成输入得到focused skill、最小来源范围、只读产物和需要另行确认的后续动作，并检查“插件入口只负责路由；默认先读取和起草，外部发送、CRM 写入、付费查询与序列启动需单独审查和确认”",
+            "执行把草稿直接发送、写入 CRM、启动序列或扩大付费查询后只回复“已完成”",
+            "一次执行所有 focused skill，以免遗漏"
+          ],
+          "answer": "使用合成输入得到focused skill、最小来源范围、只读产物和需要另行确认的后续动作，并检查“插件入口只负责路由；默认先读取和起草，外部发送、CRM 写入、付费查询与序列启动需单独审查和确认”",
+          "explanation": "结论：验收要同时看到目标输出和边界检查。\n依据：先选最窄 workflow，再使用合成客户资料演练，课程不访问真实客户数据，也不发送、写 CRM、付费查询或启动序列。\n错误选项：A：课程安全边界限定合成材料与只读检查；C：这既越过能力边界，也没有可观察验收结果；D：路由器应选择当前请求所需的最窄 workflow\n实践：保留合成提示词、路由判断和检查清单作为观察证据。"
+        },
+        {
+          "id": "course-sa-01-q05",
+          "type": "true_false",
+          "content": "[sales@1.0.8] 场景：学员只用合成的“销售目标、客户或商机范围、时间窗，以及用户提供或已授权的 CRM、日历、通话、消息、文件或公开资料”，得到focused skill、最小来源范围、只读产物和需要另行确认的后续动作，并确认没有把草稿直接发送、写入 CRM、启动序列或扩大付费查询。这可以作为本单元的可观察验收吗？",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：这组证据覆盖了能力选择、输出和安全边界。\n依据：先选最窄 workflow，再使用合成客户资料演练；验收不需要真实客户数据、外部写入或生产操作。\n实践：逐项记录输入、输出与“插件入口只负责路由；默认先读取和起草，外部发送、CRM 写入、付费查询与序列启动需单独审查和确认”的检查结果。"
+        }
+      ]
+    },
+    {
+      "id": "course-sa-02",
+      "code": "SA02",
+      "title": "SA02 Sales:客户信号分析",
+      "order": 2,
+      "lab_ref": "SA02",
+      "source_text": "sales@1.0.8#skills/analyze-account-signals/SKILL.md; skills/analyze-account-signals/agents/openai.yaml",
+      "questions": [
+        {
+          "id": "course-sa-02-q01",
+          "type": "multiple_choice",
+          "content": "[sales@1.0.8] 场景：用户要知道一个客户发生了什么变化，或要监看明确的 owner、portfolio、territory 或 watchlist。哪项处理最符合 analyze-account-signals（Sales:客户信号分析） 的职责？",
+          "options": [
+            "只打开 Sales 总览并直接宣称任务完成",
+            "跳过输入与证据检查，直接根据一条无日期消息更新 CRM 或创建自动化",
+            "调用 $sales:analyze-account-signals，把近期客户证据整理为单客户简报或有范围的观察清单，并推荐下一步",
+            "改用无关的文件格式化流程来绕开当前请求"
+          ],
+          "answer": "调用 $sales:analyze-account-signals，把近期客户证据整理为单客户简报或有范围的观察清单，并推荐下一步",
+          "explanation": "结论：应选择 $sales:analyze-account-signals，把请求交给清晰且最窄的能力边界。\n依据：该 skill 拥有只读 Adhoc Account Brief 与 Monitor Summary，并要求 bounded recent evidence、来源链接和证据解释分离。\n错误选项：A：总览或路由说明不能替代 analyze-account-signals（Sales:客户信号分析） 的实际输出；B：该做法触犯“结果不能创建任务、发布摘要、保存监控状态或写 CRM，没有近期锚点时不能暗示结果为当前状态”这一边界；D：文件格式化不能产出“带信号、商业解释、建议动作、来源和缺口的只读客户简报或 Monitor Summary”\n实践：用虚构客户复述输入、预期输出和停止条件，再写出显式调用。"
+        },
+        {
+          "id": "course-sa-02-q02",
+          "type": "true_false",
+          "content": "[sales@1.0.8] 场景：用户要求发现全新的潜客名单或补全缺失的企业字段。同事仍计划调用 $sales:analyze-account-signals 并根据一条无日期消息更新 CRM 或创建自动化。这个判断正确吗？",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "错误",
+          "explanation": "结论：该场景不应沿用这个执行路径。\n依据：结果不能创建任务、发布摘要、保存监控状态或写 CRM；没有近期锚点时不能暗示结果为当前状态；当前不适用条件是“用户要求发现全新的潜客名单或补全缺失的企业字段”。\n实践：先写一句不适用理由，再选择更匹配的 skill 或停在澄清步骤。"
+        },
+        {
+          "id": "course-sa-02-q03",
+          "type": "fill_blank",
+          "content": "[sales@1.0.8] 场景：你已确认“用户要知道一个客户发生了什么变化，或要监看明确的 owner、portfolio、territory 或 watchlist”，要显式记录插件、skill slug 与 display name。应调用 ___（Sales:客户信号分析）。",
+          "options": [],
+          "answer": "$sales:analyze-account-signals",
+          "explanation": "结论：显式调用写作 $sales:analyze-account-signals。\n依据：课程把 sales 作为插件名，并把 analyze-account-signals 作为 skill slug；展示名是“Sales:客户信号分析”。\n实践：把合成销售任务追加在调用后，并写明期望得到“带信号、商业解释、建议动作、来源和缺口的只读客户简报或 Monitor Summary”。"
+        },
+        {
+          "id": "course-sa-02-q04",
+          "type": "ordering",
+          "content": "[sales@1.0.8] 场景：用合成材料练习 analyze-account-signals（Sales:客户信号分析） 时，请按安全执行顺序排列。",
+          "options": [
+            "生成并检查带信号、商业解释、建议动作、来源和缺口的只读客户简报或 Monitor Summary",
+            "识别场景是否满足“用户要知道一个客户发生了什么变化，或要监看明确的 owner、portfolio、territory 或 watchlist”",
+            "核对输入“明确客户或观察范围、近期时间窗、CRM 锚点和可追溯互动证据”与所需依赖",
+            "按最小安全范围执行 $sales:analyze-account-signals"
+          ],
+          "answer": "识别场景是否满足“用户要知道一个客户发生了什么变化，或要监看明确的 owner、portfolio、territory 或 watchlist”|核对输入“明确客户或观察范围、近期时间窗、CRM 锚点和可追溯互动证据”与所需依赖|按最小安全范围执行 $sales:analyze-account-signals|生成并检查带信号、商业解释、建议动作、来源和缺口的只读客户简报或 Monitor Summary",
+          "explanation": "结论：先判定适用性和输入，再执行，最后检查可观察结果。\n依据：结果不能创建任务、发布摘要、保存监控状态或写 CRM；没有近期锚点时不能暗示结果为当前状态；乱序执行容易在证据不足时越过确认门槛。\n实践：把四步抄成检查表，任何前置项不满足时停在对应步骤。"
+        },
+        {
+          "id": "course-sa-02-q05",
+          "type": "true_false",
+          "content": "[sales@1.0.8] 场景：学员只用合成的“明确客户或观察范围、近期时间窗、CRM 锚点和可追溯互动证据”，得到带信号、商业解释、建议动作、来源和缺口的只读客户简报或 Monitor Summary，并确认没有根据一条无日期消息更新 CRM 或创建自动化。这可以作为本单元的可观察验收吗？",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：这组证据覆盖了能力选择、输出和安全边界。\n依据：用虚构 CRM 行和合成互动记录生成有界简报；验收不需要真实客户数据、外部写入或生产操作。\n实践：逐项记录输入、输出与“结果不能创建任务、发布摘要、保存监控状态或写 CRM；没有近期锚点时不能暗示结果为当前状态”的检查结果。"
+        }
+      ]
+    },
+    {
+      "id": "course-sa-03",
+      "code": "SA03",
+      "title": "SA03 Sales:用户信息补充",
+      "order": 3,
+      "lab_ref": "SA03",
+      "source_text": "sales@1.0.8#skills/answers-ask-user-input/SKILL.md; skills/answers-ask-user-input/agents/openai.yaml",
+      "questions": [
+        {
+          "id": "course-sa-03-q01",
+          "type": "multiple_choice",
+          "content": "[sales@1.0.8] 场景：销售 workflow 缺少一个高影响偏好、范围或目标，且两到三个互斥选项能快速澄清。哪项处理最符合 answers-ask-user-input（Sales:用户信息补充） 的职责？",
+          "options": [
+            "只打开 Sales 总览并直接宣称任务完成",
+            "跳过输入与证据检查，直接一次抛出长问卷并停止所有可继续的工作",
+            "改用无关的文件格式化流程来绕开当前请求",
+            "调用 $sales:answers-ask-user-input，在少量缺失背景会改变销售建议时，用可点击选项和自由文本行收集答案"
+          ],
+          "answer": "调用 $sales:answers-ask-user-input，在少量缺失背景会改变销售建议时，用可点击选项和自由文本行收集答案",
+          "explanation": "结论：应选择 $sales:answers-ask-user-input，把请求交给清晰且最窄的能力边界。\n依据：answers-ask-user-input 专用于少量背景能显著改善答复的情况，并要求 tappable options 加具体自由文本入口。\n错误选项：A：总览或路由说明不能替代 answers-ask-user-input（Sales:用户信息补充） 的实际输出；B：该做法触犯“不能反复追问已知信息，不能用泛化占位符，也不能把低影响问题变成阻塞”这一边界；C：文件格式化不能产出“用户可点击的选择器和可用于继续 workflow 的结构化答案”\n实践：用虚构客户复述输入、预期输出和停止条件，再写出显式调用。"
+        },
+        {
+          "id": "course-sa-03-q02",
+          "type": "true_false",
+          "content": "[sales@1.0.8] 场景：答案已在上下文中，或问题不会改变路由和产物。同事仍计划调用 $sales:answers-ask-user-input 并一次抛出长问卷并停止所有可继续的工作。这个判断正确吗？",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "错误",
+          "explanation": "结论：该场景不应沿用这个执行路径。\n依据：不能反复追问已知信息，不能用泛化占位符，也不能把低影响问题变成阻塞；当前不适用条件是“答案已在上下文中，或问题不会改变路由和产物”。\n实践：先写一句不适用理由，再选择更匹配的 skill 或停在澄清步骤。"
+        },
+        {
+          "id": "course-sa-03-q03",
+          "type": "fill_blank",
+          "content": "[sales@1.0.8] 场景：你已确认“销售 workflow 缺少一个高影响偏好、范围或目标，且两到三个互斥选项能快速澄清”，要显式记录插件、skill slug 与 display name。应调用 ___（Sales:用户信息补充）。",
+          "options": [],
+          "answer": "$sales:answers-ask-user-input",
+          "explanation": "结论：显式调用写作 $sales:answers-ask-user-input。\n依据：课程把 sales 作为插件名，并把 answers-ask-user-input 作为 skill slug；展示名是“Sales:用户信息补充”。\n实践：把合成销售任务追加在调用后，并写明期望得到“用户可点击的选择器和可用于继续 workflow 的结构化答案”。"
+        },
+        {
+          "id": "course-sa-03-q04",
+          "type": "ordering",
+          "content": "[sales@1.0.8] 场景：用合成材料练习 answers-ask-user-input（Sales:用户信息补充） 时，请按安全执行顺序排列。",
+          "options": [
+            "生成并检查用户可点击的选择器和可用于继续 workflow 的结构化答案",
+            "识别场景是否满足“销售 workflow 缺少一个高影响偏好、范围或目标，且两到三个互斥选项能快速澄清”",
+            "核对输入“一个简短问题、两到三个互斥选项、各选项影响和具体自由文本提示”与所需依赖",
+            "按最小安全范围执行 $sales:answers-ask-user-input"
+          ],
+          "answer": "识别场景是否满足“销售 workflow 缺少一个高影响偏好、范围或目标，且两到三个互斥选项能快速澄清”|核对输入“一个简短问题、两到三个互斥选项、各选项影响和具体自由文本提示”与所需依赖|按最小安全范围执行 $sales:answers-ask-user-input|生成并检查用户可点击的选择器和可用于继续 workflow 的结构化答案",
+          "explanation": "结论：先判定适用性和输入，再执行，最后检查可观察结果。\n依据：不能反复追问已知信息，不能用泛化占位符，也不能把低影响问题变成阻塞；乱序执行容易在证据不足时越过确认门槛。\n实践：把四步抄成检查表，任何前置项不满足时停在对应步骤。"
+        },
+        {
+          "id": "course-sa-03-q05",
+          "type": "true_false",
+          "content": "[sales@1.0.8] 场景：学员只用合成的“一个简短问题、两到三个互斥选项、各选项影响和具体自由文本提示”，得到用户可点击的选择器和可用于继续 workflow 的结构化答案，并确认没有一次抛出长问卷并停止所有可继续的工作。这可以作为本单元的可观察验收吗？",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：这组证据覆盖了能力选择、输出和安全边界。\n依据：用虚构商机让学员选择时间窗或输出模式；验收不需要真实客户数据、外部写入或生产操作。\n实践：逐项记录输入、输出与“不能反复追问已知信息，不能用泛化占位符，也不能把低影响问题变成阻塞”的检查结果。"
+        }
+      ]
+    },
+    {
+      "id": "course-sa-04",
+      "code": "SA04",
+      "title": "SA04 Sales:Apollo 使用指南",
+      "order": 4,
+      "lab_ref": "SA04",
+      "source_text": "sales@1.0.8#skills/apollo/SKILL.md; skills/apollo/agents/openai.yaml",
+      "questions": [
+        {
+          "id": "course-sa-04-q01",
+          "type": "multiple_choice",
+          "content": "[sales@1.0.8] 场景：focused workflow 已选择连接的 Apollo，或用户明确要求 Apollo 潜客、丰富、Company Details、记录、序列或外联规划。哪项处理最符合 apollo（Sales:Apollo 使用指南） 的职责？",
+          "options": [
+            "调用 $sales:apollo，在父级 Sales workflow 中安全使用 Apollo 搜索、丰富、记录与序列能力",
+            "只打开 Sales 总览并直接宣称任务完成",
+            "跳过输入与证据检查，直接猜测 ID、批量消耗积分、写记录或激活序列",
+            "改用无关的文件格式化流程来绕开当前请求"
+          ],
+          "answer": "调用 $sales:apollo，在父级 Sales workflow 中安全使用 Apollo 搜索、丰富、记录与序列能力",
+          "explanation": "结论：应选择 $sales:apollo，把请求交给清晰且最窄的能力边界。\n依据：Apollo guide 规定 v2 version gate、credit-aware approval、标识解析以及 mutation 和 launch confirmation。\n错误选项：B：总览或路由说明不能替代 apollo（Sales:Apollo 使用指南） 的实际输出；C：该做法触犯“v2 行为需先验证版本不低于 2.0.0，付费查询、写入、联系人入序列和激活都需相应确认”这一边界；D：文件格式化不能产出“有范围的搜索或丰富结果，或供审查的记录与序列变更预览”\n实践：用虚构客户复述输入、预期输出和停止条件，再写出显式调用。"
+        },
+        {
+          "id": "course-sa-04-q02",
+          "type": "true_false",
+          "content": "[sales@1.0.8] 场景：Apollo 未连接，或父级 workflow 已选择另一销售情报来源。同事仍计划调用 $sales:apollo 并猜测 ID、批量消耗积分、写记录或激活序列。这个判断正确吗？",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "错误",
+          "explanation": "结论：该场景不应沿用这个执行路径。\n依据：v2 行为需先验证版本不低于 2.0.0；付费查询、写入、联系人入序列和激活都需相应确认；当前不适用条件是“Apollo 未连接，或父级 workflow 已选择另一销售情报来源”。\n实践：先写一句不适用理由，再选择更匹配的 skill 或停在澄清步骤。"
+        },
+        {
+          "id": "course-sa-04-q03",
+          "type": "fill_blank",
+          "content": "[sales@1.0.8] 场景：你已确认“focused workflow 已选择连接的 Apollo，或用户明确要求 Apollo 潜客、丰富、Company Details、记录、序列或外联规划”，要显式记录插件、skill slug 与 display name。应调用 ___（Sales:Apollo 使用指南）。",
+          "options": [],
+          "answer": "$sales:apollo",
+          "explanation": "结论：显式调用写作 $sales:apollo。\n依据：课程把 sales 作为插件名，并把 apollo 作为 skill slug；展示名是“Sales:Apollo 使用指南”。\n实践：把合成销售任务追加在调用后，并写明期望得到“有范围的搜索或丰富结果，或供审查的记录与序列变更预览”。"
+        },
+        {
+          "id": "course-sa-04-q04",
+          "type": "ordering",
+          "content": "[sales@1.0.8] 场景：用合成材料练习 apollo（Sales:Apollo 使用指南） 时，请按安全执行顺序排列。",
+          "options": [
+            "生成并检查有范围的搜索或丰富结果，或供审查的记录与序列变更预览",
+            "识别场景是否满足“focused workflow 已选择连接的 Apollo，或用户明确要求 Apollo 潜客、丰富、Company Details、记录、序列或外联规划”",
+            "核对输入“明确目标、Apollo 版本证据、精确筛选条件、预计积分影响和待执行动作”与所需依赖",
+            "按最小安全范围执行 $sales:apollo"
+          ],
+          "answer": "识别场景是否满足“focused workflow 已选择连接的 Apollo，或用户明确要求 Apollo 潜客、丰富、Company Details、记录、序列或外联规划”|核对输入“明确目标、Apollo 版本证据、精确筛选条件、预计积分影响和待执行动作”与所需依赖|按最小安全范围执行 $sales:apollo|生成并检查有范围的搜索或丰富结果，或供审查的记录与序列变更预览",
+          "explanation": "结论：先判定适用性和输入，再执行，最后检查可观察结果。\n依据：v2 行为需先验证版本不低于 2.0.0；付费查询、写入、联系人入序列和激活都需相应确认；乱序执行容易在证据不足时越过确认门槛。\n实践：把四步抄成检查表，任何前置项不满足时停在对应步骤。"
+        },
+        {
+          "id": "course-sa-04-q05",
+          "type": "true_false",
+          "content": "[sales@1.0.8] 场景：学员只用合成的“明确目标、Apollo 版本证据、精确筛选条件、预计积分影响和待执行动作”，得到有范围的搜索或丰富结果，或供审查的记录与序列变更预览，并确认没有猜测 ID、批量消耗积分、写记录或激活序列。这可以作为本单元的可观察验收吗？",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：这组证据覆盖了能力选择、输出和安全边界。\n依据：用合成公司和不执行的序列预览练习版本与确认门槛；验收不需要真实客户数据、外部写入或生产操作。\n实践：逐项记录输入、输出与“v2 行为需先验证版本不低于 2.0.0；付费查询、写入、联系人入序列和激活都需相应确认”的检查结果。"
+        }
+      ]
+    },
+    {
+      "id": "course-sa-05",
+      "code": "SA05",
+      "title": "SA05 Sales:商业论证构建",
+      "order": 5,
+      "lab_ref": "SA05",
+      "source_text": "sales@1.0.8#skills/build-business-case/SKILL.md; skills/build-business-case/agents/openai.yaml",
+      "questions": [
+        {
+          "id": "course-sa-05-q01",
+          "type": "multiple_choice",
+          "content": "[sales@1.0.8] 场景：用户要审查商业提案，构建 ROI、价值模型、投资依据、执行摘要或客户价值故事。哪项处理最符合 build-business-case（Sales:商业论证构建） 的职责？",
+          "options": [
+            "只打开 Sales 总览并直接宣称任务完成",
+            "调用 $sales:build-business-case，从客户原生证据建立 workflow、价值驱动、指标、量化影响与决策叙事",
+            "跳过输入与证据检查，直接捏造客户指标并把草案发送或写入 CRM",
+            "改用无关的文件格式化流程来绕开当前请求"
+          ],
+          "answer": "调用 $sales:build-business-case，从客户原生证据建立 workflow、价值驱动、指标、量化影响与决策叙事",
+          "explanation": "结论：应选择 $sales:build-business-case，把请求交给清晰且最窄的能力边界。\n依据：build-business-case 按 customer context 到 quantified impact 的链条工作，要求证据支持数学并保持只读。\n错误选项：A：总览或路由说明不能替代 build-business-case（Sales:商业论证构建） 的实际输出；C：该做法触犯“证据不足时只能给结构化论证和验证计划，公共基准不能冒充客户确认的影响”这一边界；D：文件格式化不能产出“客户主导的商业论证，含价值链、情景、假设、证据、 caveat 和最小验证计划”\n实践：用虚构客户复述输入、预期输出和停止条件，再写出显式调用。"
+        },
+        {
+          "id": "course-sa-05-q02",
+          "type": "true_false",
+          "content": "[sales@1.0.8] 场景：用户只要通用产品定位文案，或要求直接制作演示设计。同事仍计划调用 $sales:build-business-case 并捏造客户指标并把草案发送或写入 CRM。这个判断正确吗？",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "错误",
+          "explanation": "结论：该场景不应沿用这个执行路径。\n依据：证据不足时只能给结构化论证和验证计划；公共基准不能冒充客户确认的影响；当前不适用条件是“用户只要通用产品定位文案，或要求直接制作演示设计”。\n实践：先写一句不适用理由，再选择更匹配的 skill 或停在澄清步骤。"
+        },
+        {
+          "id": "course-sa-05-q03",
+          "type": "fill_blank",
+          "content": "[sales@1.0.8] 场景：你已确认“用户要审查商业提案，构建 ROI、价值模型、投资依据、执行摘要或客户价值故事”，要显式记录插件、skill slug 与 display name。应调用 ___（Sales:商业论证构建）。",
+          "options": [],
+          "answer": "$sales:build-business-case",
+          "explanation": "结论：显式调用写作 $sales:build-business-case。\n依据：课程把 sales 作为插件名，并把 build-business-case 作为 skill slug；展示名是“Sales:商业论证构建”。\n实践：把合成销售任务追加在调用后，并写明期望得到“客户主导的商业论证，含价值链、情景、假设、证据、 caveat 和最小验证计划”。"
+        },
+        {
+          "id": "course-sa-05-q04",
+          "type": "ordering",
+          "content": "[sales@1.0.8] 场景：用合成材料练习 build-business-case（Sales:商业论证构建） 时，请按安全执行顺序排列。",
+          "options": [
+            "生成并检查客户主导的商业论证，含价值链、情景、假设、证据、 caveat 和最小验证计划",
+            "识别场景是否满足“用户要审查商业提案，构建 ROI、价值模型、投资依据、执行摘要或客户价值故事”",
+            "核对输入“客户与决策锚点、当前 workflow、已确认指标、假设、价格和可追溯证据”与所需依赖",
+            "按最小安全范围执行 $sales:build-business-case"
+          ],
+          "answer": "识别场景是否满足“用户要审查商业提案，构建 ROI、价值模型、投资依据、执行摘要或客户价值故事”|核对输入“客户与决策锚点、当前 workflow、已确认指标、假设、价格和可追溯证据”与所需依赖|按最小安全范围执行 $sales:build-business-case|生成并检查客户主导的商业论证，含价值链、情景、假设、证据、 caveat 和最小验证计划",
+          "explanation": "结论：先判定适用性和输入，再执行，最后检查可观察结果。\n依据：证据不足时只能给结构化论证和验证计划；公共基准不能冒充客户确认的影响；乱序执行容易在证据不足时越过确认门槛。\n实践：把四步抄成检查表，任何前置项不满足时停在对应步骤。"
+        },
+        {
+          "id": "course-sa-05-q05",
+          "type": "true_false",
+          "content": "[sales@1.0.8] 场景：学员只用合成的“客户与决策锚点、当前 workflow、已确认指标、假设、价格和可追溯证据”，得到客户主导的商业论证，含价值链、情景、假设、证据、 caveat 和最小验证计划，并确认没有捏造客户指标并把草案发送或写入 CRM。这可以作为本单元的可观察验收吗？",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：这组证据覆盖了能力选择、输出和安全边界。\n依据：使用虚构客户、明确假设和可复算的小型价值模型；验收不需要真实客户数据、外部写入或生产操作。\n实践：逐项记录输入、输出与“证据不足时只能给结构化论证和验证计划；公共基准不能冒充客户确认的影响”的检查结果。"
+        }
+      ]
+    },
+    {
+      "id": "course-sa-06",
+      "code": "SA06",
+      "title": "SA06 Sales:竞品简报构建",
+      "order": 6,
+      "lab_ref": "SA06",
+      "source_text": "sales@1.0.8#skills/build-competitive-brief/SKILL.md; skills/build-competitive-brief/agents/openai.yaml",
+      "questions": [
+        {
+          "id": "course-sa-06-q01",
+          "type": "multiple_choice",
+          "content": "[sales@1.0.8] 场景：用户要竞品或供应商比较、battlecard、市场对照、定位简报或客户特定竞争视图。哪项处理最符合 build-competitive-brief（Sales:竞品简报构建） 的职责？",
+          "options": [
+            "只打开 Sales 总览并直接宣称任务完成",
+            "跳过输入与证据检查，直接把销售传闻写成已核实事实并直接对外发布",
+            "调用 $sales:build-competitive-brief，把已核实事实、现场信号和推断分开，制作卖方可用的竞品比较与异议指南",
+            "改用无关的文件格式化流程来绕开当前请求"
+          ],
+          "answer": "调用 $sales:build-competitive-brief，把已核实事实、现场信号和推断分开，制作卖方可用的竞品比较与异议指南",
+          "explanation": "结论：应选择 $sales:build-competitive-brief，把请求交给清晰且最窄的能力边界。\n依据：build-competitive-brief 默认生成自包含 HTML，并明确区分 verified facts、field signal 与 inference。\n错误选项：A：总览或路由说明不能替代 build-competitive-brief（Sales:竞品简报构建） 的实际输出；B：该做法触犯“事实、现场信号和推断必须分栏标注，产物不自动发布，也不写 CRM”这一边界；D：文件格式化不能产出“默认自包含 HTML 竞品简报和简短 chat readout，含比较矩阵、异议指导与 caveat”\n实践：用虚构客户复述输入、预期输出和停止条件，再写出显式调用。"
+        },
+        {
+          "id": "course-sa-06-q02",
+          "type": "true_false",
+          "content": "[sales@1.0.8] 场景：用户只问某个客户近期发生了什么，且没有竞争分析目标。同事仍计划调用 $sales:build-competitive-brief 并把销售传闻写成已核实事实并直接对外发布。这个判断正确吗？",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "错误",
+          "explanation": "结论：该场景不应沿用这个执行路径。\n依据：事实、现场信号和推断必须分栏标注；产物不自动发布，也不写 CRM；当前不适用条件是“用户只问某个客户近期发生了什么，且没有竞争分析目标”。\n实践：先写一句不适用理由，再选择更匹配的 skill 或停在澄清步骤。"
+        },
+        {
+          "id": "course-sa-06-q03",
+          "type": "fill_blank",
+          "content": "[sales@1.0.8] 场景：你已确认“用户要竞品或供应商比较、battlecard、市场对照、定位简报或客户特定竞争视图”，要显式记录插件、skill slug 与 display name。应调用 ___（Sales:竞品简报构建）。",
+          "options": [],
+          "answer": "$sales:build-competitive-brief",
+          "explanation": "结论：显式调用写作 $sales:build-competitive-brief。\n依据：课程把 sales 作为插件名，并把 build-competitive-brief 作为 skill slug；展示名是“Sales:竞品简报构建”。\n实践：把合成销售任务追加在调用后，并写明期望得到“默认自包含 HTML 竞品简报和简短 chat readout，含比较矩阵、异议指导与 caveat”。"
+        },
+        {
+          "id": "course-sa-06-q04",
+          "type": "ordering",
+          "content": "[sales@1.0.8] 场景：用合成材料练习 build-competitive-brief（Sales:竞品简报构建） 时，请按安全执行顺序排列。",
+          "options": [
+            "生成并检查默认自包含 HTML 竞品简报和简短 chat readout，含比较矩阵、异议指导与 caveat",
+            "识别场景是否满足“用户要竞品或供应商比较、battlecard、市场对照、定位简报或客户特定竞争视图”",
+            "核对输入“比较对象、客户场景、已批准材料、内部信号和可核验公开来源”与所需依赖",
+            "按最小安全范围执行 $sales:build-competitive-brief"
+          ],
+          "answer": "识别场景是否满足“用户要竞品或供应商比较、battlecard、市场对照、定位简报或客户特定竞争视图”|核对输入“比较对象、客户场景、已批准材料、内部信号和可核验公开来源”与所需依赖|按最小安全范围执行 $sales:build-competitive-brief|生成并检查默认自包含 HTML 竞品简报和简短 chat readout，含比较矩阵、异议指导与 caveat",
+          "explanation": "结论：先判定适用性和输入，再执行，最后检查可观察结果。\n依据：事实、现场信号和推断必须分栏标注；产物不自动发布，也不写 CRM；乱序执行容易在证据不足时越过确认门槛。\n实践：把四步抄成检查表，任何前置项不满足时停在对应步骤。"
+        },
+        {
+          "id": "course-sa-06-q05",
+          "type": "true_false",
+          "content": "[sales@1.0.8] 场景：学员只用合成的“比较对象、客户场景、已批准材料、内部信号和可核验公开来源”，得到默认自包含 HTML 竞品简报和简短 chat readout，含比较矩阵、异议指导与 caveat，并确认没有把销售传闻写成已核实事实并直接对外发布。这可以作为本单元的可观察验收吗？",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：这组证据覆盖了能力选择、输出和安全边界。\n依据：用虚构供应商和合成证据练习来源分级；验收不需要真实客户数据、外部写入或生产操作。\n实践：逐项记录输入、输出与“事实、现场信号和推断必须分栏标注；产物不自动发布，也不写 CRM”的检查结果。"
+        }
+      ]
+    },
+    {
+      "id": "course-sa-07",
+      "code": "SA07",
+      "title": "SA07 Sales:企业与联系人数据丰富",
+      "order": 7,
+      "lab_ref": "SA07",
+      "source_text": "sales@1.0.8#skills/enrich-company-and-contact-data/SKILL.md; skills/enrich-company-and-contact-data/agents/openai.yaml",
+      "questions": [
+        {
+          "id": "course-sa-07-q01",
+          "type": "multiple_choice",
+          "content": "[sales@1.0.8] 场景：用户要公司或联系人发现、字段补全、实体解析、ICP 匹配、名单构建、分群或市场扫描。哪项处理最符合 enrich-company-and-contact-data（Sales:企业与联系人数据丰富） 的职责？",
+          "options": [
+            "只打开 Sales 总览并直接宣称任务完成",
+            "跳过输入与证据检查，直接把不确定联系人合并后直接写入 CRM 或发送外联",
+            "改用无关的文件格式化流程来绕开当前请求",
+            "调用 $sales:enrich-company-and-contact-data，解析企业和联系人身份，补充字段、ICP fit、覆盖度与来源置信度"
+          ],
+          "answer": "调用 $sales:enrich-company-and-contact-data，解析企业和联系人身份，补充字段、ICP fit、覆盖度与来源置信度",
+          "explanation": "结论：应选择 $sales:enrich-company-and-contact-data，把请求交给清晰且最窄的能力边界。\n依据：该 skill 拥有 data-first discovery、enrichment、entity resolution 和 ICP comparison，排除已有 account book 的优先级与外联执行。\n错误选项：A：总览或路由说明不能替代 enrich-company-and-contact-data（Sales:企业与联系人数据丰富） 的实际输出；B：该做法触犯“该 skill 不负责 rep 工作优先级、外联执行或 CRM 写入，来源冲突要保留”这一边界；C：文件格式化不能产出“来源可追溯的丰富表、匹配解释、缺口、置信度和可支持的安全下一步”\n实践：用虚构客户复述输入、预期输出和停止条件，再写出显式调用。"
+        },
+        {
+          "id": "course-sa-07-q02",
+          "type": "true_false",
+          "content": "[sales@1.0.8] 场景：用户已有明确客户 book，只想决定本周先跟进谁。同事仍计划调用 $sales:enrich-company-and-contact-data 并把不确定联系人合并后直接写入 CRM 或发送外联。这个判断正确吗？",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "错误",
+          "explanation": "结论：该场景不应沿用这个执行路径。\n依据：该 skill 不负责 rep 工作优先级、外联执行或 CRM 写入；来源冲突要保留；当前不适用条件是“用户已有明确客户 book，只想决定本周先跟进谁”。\n实践：先写一句不适用理由，再选择更匹配的 skill 或停在澄清步骤。"
+        },
+        {
+          "id": "course-sa-07-q03",
+          "type": "fill_blank",
+          "content": "[sales@1.0.8] 场景：你已确认“用户要公司或联系人发现、字段补全、实体解析、ICP 匹配、名单构建、分群或市场扫描”，要显式记录插件、skill slug 与 display name。应调用 ___（Sales:企业与联系人数据丰富）。",
+          "options": [],
+          "answer": "$sales:enrich-company-and-contact-data",
+          "explanation": "结论：显式调用写作 $sales:enrich-company-and-contact-data。\n依据：课程把 sales 作为插件名，并把 enrich-company-and-contact-data 作为 skill slug；展示名是“Sales:企业与联系人数据丰富”。\n实践：把合成销售任务追加在调用后，并写明期望得到“来源可追溯的丰富表、匹配解释、缺口、置信度和可支持的安全下一步”。"
+        },
+        {
+          "id": "course-sa-07-q04",
+          "type": "ordering",
+          "content": "[sales@1.0.8] 场景：用合成材料练习 enrich-company-and-contact-data（Sales:企业与联系人数据丰富） 时，请按安全执行顺序排列。",
+          "options": [
+            "生成并检查来源可追溯的丰富表、匹配解释、缺口、置信度和可支持的安全下一步",
+            "识别场景是否满足“用户要公司或联系人发现、字段补全、实体解析、ICP 匹配、名单构建、分群或市场扫描”",
+            "核对输入“输入名单或搜索范围、所需字段、ICP 规则、地理与规模限制、来源约束”与所需依赖",
+            "按最小安全范围执行 $sales:enrich-company-and-contact-data"
+          ],
+          "answer": "识别场景是否满足“用户要公司或联系人发现、字段补全、实体解析、ICP 匹配、名单构建、分群或市场扫描”|核对输入“输入名单或搜索范围、所需字段、ICP 规则、地理与规模限制、来源约束”与所需依赖|按最小安全范围执行 $sales:enrich-company-and-contact-data|生成并检查来源可追溯的丰富表、匹配解释、缺口、置信度和可支持的安全下一步",
+          "explanation": "结论：先判定适用性和输入，再执行，最后检查可观察结果。\n依据：该 skill 不负责 rep 工作优先级、外联执行或 CRM 写入；来源冲突要保留；乱序执行容易在证据不足时越过确认门槛。\n实践：把四步抄成检查表，任何前置项不满足时停在对应步骤。"
+        },
+        {
+          "id": "course-sa-07-q05",
+          "type": "true_false",
+          "content": "[sales@1.0.8] 场景：学员只用合成的“输入名单或搜索范围、所需字段、ICP 规则、地理与规模限制、来源约束”，得到来源可追溯的丰富表、匹配解释、缺口、置信度和可支持的安全下一步，并确认没有把不确定联系人合并后直接写入 CRM 或发送外联。这可以作为本单元的可观察验收吗？",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：这组证据覆盖了能力选择、输出和安全边界。\n依据：用虚构域名和合成字段展示实体解析与置信度；验收不需要真实客户数据、外部写入或生产操作。\n实践：逐项记录输入、输出与“该 skill 不负责 rep 工作优先级、外联执行或 CRM 写入；来源冲突要保留”的检查结果。"
+        }
+      ]
+    },
+    {
+      "id": "course-sa-08",
+      "code": "SA08",
+      "title": "SA08 Sales:客户引言查找",
+      "order": 8,
+      "lab_ref": "SA08",
+      "source_text": "sales@1.0.8#skills/find-customer-quotes/SKILL.md; skills/find-customer-quotes/agents/openai.yaml",
+      "questions": [
+        {
+          "id": "course-sa-08-q01",
+          "type": "multiple_choice",
+          "content": "[sales@1.0.8] 场景：用户要 voice-of-customer、异议证据、产品摩擦实例或支持销售叙事的逐字引言。哪项处理最符合 find-customer-quotes（Sales:客户引言查找） 的职责？",
+          "options": [
+            "调用 $sales:find-customer-quotes，从通话记录中提取逐字客户引言，并附说话人信心、上下文和来源",
+            "只打开 Sales 总览并直接宣称任务完成",
+            "跳过输入与证据检查，直接润色客户措辞后仍标为 verbatim quote",
+            "改用无关的文件格式化流程来绕开当前请求"
+          ],
+          "answer": "调用 $sales:find-customer-quotes，从通话记录中提取逐字客户引言，并附说话人信心、上下文和来源",
+          "explanation": "结论：应选择 $sales:find-customer-quotes，把请求交给清晰且最窄的能力边界。\n依据：find-customer-quotes 要求 transcript-backed verbatim evidence，并执行 speaker-confidence 与 provenance 规则。\n错误选项：B：总览或路由说明不能替代 find-customer-quotes（Sales:客户引言查找） 的实际输出；C：该做法触犯“不能把转述改写成引号内容，也不能在说话人不明时声称来自客户”这一边界；D：文件格式化不能产出“逐字引言、说话人角色与信心、日期、通话上下文、来源和安全使用提示”\n实践：用虚构客户复述输入、预期输出和停止条件，再写出显式调用。"
+        },
+        {
+          "id": "course-sa-08-q02",
+          "type": "true_false",
+          "content": "[sales@1.0.8] 场景：只有销售人员的二手总结，且没有可核对的客户原话。同事仍计划调用 $sales:find-customer-quotes 并润色客户措辞后仍标为 verbatim quote。这个判断正确吗？",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "错误",
+          "explanation": "结论：该场景不应沿用这个执行路径。\n依据：不能把转述改写成引号内容，也不能在说话人不明时声称来自客户；当前不适用条件是“只有销售人员的二手总结，且没有可核对的客户原话”。\n实践：先写一句不适用理由，再选择更匹配的 skill 或停在澄清步骤。"
+        },
+        {
+          "id": "course-sa-08-q03",
+          "type": "fill_blank",
+          "content": "[sales@1.0.8] 场景：你已确认“用户要 voice-of-customer、异议证据、产品摩擦实例或支持销售叙事的逐字引言”，要显式记录插件、skill slug 与 display name。应调用 ___（Sales:客户引言查找）。",
+          "options": [],
+          "answer": "$sales:find-customer-quotes",
+          "explanation": "结论：显式调用写作 $sales:find-customer-quotes。\n依据：课程把 sales 作为插件名，并把 find-customer-quotes 作为 skill slug；展示名是“Sales:客户引言查找”。\n实践：把合成销售任务追加在调用后，并写明期望得到“逐字引言、说话人角色与信心、日期、通话上下文、来源和安全使用提示”。"
+        },
+        {
+          "id": "course-sa-08-q04",
+          "type": "ordering",
+          "content": "[sales@1.0.8] 场景：用合成材料练习 find-customer-quotes（Sales:客户引言查找） 时，请按安全执行顺序排列。",
+          "options": [
+            "生成并检查逐字引言、说话人角色与信心、日期、通话上下文、来源和安全使用提示",
+            "识别场景是否满足“用户要 voice-of-customer、异议证据、产品摩擦实例或支持销售叙事的逐字引言”",
+            "核对输入“明确主题、时间窗、可访问 transcript 或 transcript-like 材料和使用场景”与所需依赖",
+            "按最小安全范围执行 $sales:find-customer-quotes"
+          ],
+          "answer": "识别场景是否满足“用户要 voice-of-customer、异议证据、产品摩擦实例或支持销售叙事的逐字引言”|核对输入“明确主题、时间窗、可访问 transcript 或 transcript-like 材料和使用场景”与所需依赖|按最小安全范围执行 $sales:find-customer-quotes|生成并检查逐字引言、说话人角色与信心、日期、通话上下文、来源和安全使用提示",
+          "explanation": "结论：先判定适用性和输入，再执行，最后检查可观察结果。\n依据：不能把转述改写成引号内容，也不能在说话人不明时声称来自客户；乱序执行容易在证据不足时越过确认门槛。\n实践：把四步抄成检查表，任何前置项不满足时停在对应步骤。"
+        },
+        {
+          "id": "course-sa-08-q05",
+          "type": "true_false",
+          "content": "[sales@1.0.8] 场景：学员只用合成的“明确主题、时间窗、可访问 transcript 或 transcript-like 材料和使用场景”，得到逐字引言、说话人角色与信心、日期、通话上下文、来源和安全使用提示，并确认没有润色客户措辞后仍标为 verbatim quote。这可以作为本单元的可观察验收吗？",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：这组证据覆盖了能力选择、输出和安全边界。\n依据：用标注为合成的短 transcript 练习逐字提取；验收不需要真实客户数据、外部写入或生产操作。\n实践：逐项记录输入、输出与“不能把转述改写成引号内容，也不能在说话人不明时声称来自客户”的检查结果。"
+        }
+      ]
+    },
+    {
+      "id": "course-sa-09",
+      "code": "SA09",
+      "title": "SA09 Sales:内部关键来源查找",
+      "order": 9,
+      "lab_ref": "SA09",
+      "source_text": "sales@1.0.8#skills/find-key-internal-sources/SKILL.md; skills/find-key-internal-sources/agents/openai.yaml",
+      "questions": [
+        {
+          "id": "course-sa-09-q01",
+          "type": "multiple_choice",
+          "content": "[sales@1.0.8] 场景：卖方询问谁了解某问题、应该读什么、事实来源在哪里或应走哪条内部升级路径。哪项处理最符合 find-key-internal-sources（Sales:内部关键来源查找） 的职责？",
+          "options": [
+            "只打开 Sales 总览并直接宣称任务完成",
+            "调用 $sales:find-key-internal-sources，为销售问题排序内部专家、负责人、审批人、文档、频道与事实来源",
+            "跳过输入与证据检查，直接向真实频道发问或根据姓名猜测唯一 owner",
+            "改用无关的文件格式化流程来绕开当前请求"
+          ],
+          "answer": "调用 $sales:find-key-internal-sources，为销售问题排序内部专家、负责人、审批人、文档、频道与事实来源",
+          "explanation": "结论：应选择 $sales:find-key-internal-sources，把请求交给清晰且最窄的能力边界。\n依据：该 skill 路由 who knows、what should I read 与 source of truth 请求，产出 ranked sources 和 draft-ready first ask。\n错误选项：A：总览或路由说明不能替代 find-key-internal-sources（Sales:内部关键来源查找） 的实际输出；C：该做法触犯“结果只提供来源和草稿，不能代用户发送消息或把推测的负责人写成事实”这一边界；D：文件格式化不能产出“排序后的专家与资料、选择依据、可点击来源和一封待审查的首次询问草稿”\n实践：用虚构客户复述输入、预期输出和停止条件，再写出显式调用。"
+        },
+        {
+          "id": "course-sa-09-q02",
+          "type": "true_false",
+          "content": "[sales@1.0.8] 场景：用户要研究外部企业并起草外联，而非寻找内部知识。同事仍计划调用 $sales:find-key-internal-sources 并向真实频道发问或根据姓名猜测唯一 owner。这个判断正确吗？",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "错误",
+          "explanation": "结论：该场景不应沿用这个执行路径。\n依据：结果只提供来源和草稿，不能代用户发送消息或把推测的负责人写成事实；当前不适用条件是“用户要研究外部企业并起草外联，而非寻找内部知识”。\n实践：先写一句不适用理由，再选择更匹配的 skill 或停在澄清步骤。"
+        },
+        {
+          "id": "course-sa-09-q03",
+          "type": "fill_blank",
+          "content": "[sales@1.0.8] 场景：你已确认“卖方询问谁了解某问题、应该读什么、事实来源在哪里或应走哪条内部升级路径”，要显式记录插件、skill slug 与 display name。应调用 ___（Sales:内部关键来源查找）。",
+          "options": [],
+          "answer": "$sales:find-key-internal-sources",
+          "explanation": "结论：显式调用写作 $sales:find-key-internal-sources。\n依据：课程把 sales 作为插件名，并把 find-key-internal-sources 作为 skill slug；展示名是“Sales:内部关键来源查找”。\n实践：把合成销售任务追加在调用后，并写明期望得到“排序后的专家与资料、选择依据、可点击来源和一封待审查的首次询问草稿”。"
+        },
+        {
+          "id": "course-sa-09-q04",
+          "type": "ordering",
+          "content": "[sales@1.0.8] 场景：用合成材料练习 find-key-internal-sources（Sales:内部关键来源查找） 时，请按安全执行顺序排列。",
+          "options": [
+            "生成并检查排序后的专家与资料、选择依据、可点击来源和一封待审查的首次询问草稿",
+            "识别场景是否满足“卖方询问谁了解某问题、应该读什么、事实来源在哪里或应走哪条内部升级路径”",
+            "核对输入“客户问题、产品主题或阻塞、公司上下文和可搜索的内部来源范围”与所需依赖",
+            "按最小安全范围执行 $sales:find-key-internal-sources"
+          ],
+          "answer": "识别场景是否满足“卖方询问谁了解某问题、应该读什么、事实来源在哪里或应走哪条内部升级路径”|核对输入“客户问题、产品主题或阻塞、公司上下文和可搜索的内部来源范围”与所需依赖|按最小安全范围执行 $sales:find-key-internal-sources|生成并检查排序后的专家与资料、选择依据、可点击来源和一封待审查的首次询问草稿",
+          "explanation": "结论：先判定适用性和输入，再执行，最后检查可观察结果。\n依据：结果只提供来源和草稿，不能代用户发送消息或把推测的负责人写成事实；乱序执行容易在证据不足时越过确认门槛。\n实践：把四步抄成检查表，任何前置项不满足时停在对应步骤。"
+        },
+        {
+          "id": "course-sa-09-q05",
+          "type": "true_false",
+          "content": "[sales@1.0.8] 场景：学员只用合成的“客户问题、产品主题或阻塞、公司上下文和可搜索的内部来源范围”，得到排序后的专家与资料、选择依据、可点击来源和一封待审查的首次询问草稿，并确认没有向真实频道发问或根据姓名猜测唯一 owner。这可以作为本单元的可观察验收吗？",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：这组证据覆盖了能力选择、输出和安全边界。\n依据：用虚构组织目录和合成文档标题练习排序；验收不需要真实客户数据、外部写入或生产操作。\n实践：逐项记录输入、输出与“结果只提供来源和草稿，不能代用户发送消息或把推测的负责人写成事实”的检查结果。"
+        }
+      ]
+    },
+    {
+      "id": "course-sa-10",
+      "code": "SA10",
+      "title": "SA10 Sales:通话后跟进",
+      "order": 10,
+      "lab_ref": "SA10",
+      "source_text": "sales@1.0.8#skills/follow-up-after-call/SKILL.md; skills/follow-up-after-call/agents/openai.yaml",
+      "questions": [
+        {
+          "id": "course-sa-10-q01",
+          "type": "multiple_choice",
+          "content": "[sales@1.0.8] 场景：客户、潜客、伙伴或重要内部销售通话已结束，用户提供 transcript、笔记或录音摘要。哪项处理最符合 follow-up-after-call（Sales:通话后跟进） 的职责？",
+          "options": [
+            "只打开 Sales 总览并直接宣称任务完成",
+            "跳过输入与证据检查，直接补写不存在的承诺并直接发邮件或更新 CRM",
+            "调用 $sales:follow-up-after-call，依据已结束通话的证据生成回顾、双方行动、邮件草稿、CRM-ready 文本与内部摘要草稿",
+            "改用无关的文件格式化流程来绕开当前请求"
+          ],
+          "answer": "调用 $sales:follow-up-after-call，依据已结束通话的证据生成回顾、双方行动、邮件草稿、CRM-ready 文本与内部摘要草稿",
+          "explanation": "结论：应选择 $sales:follow-up-after-call，把请求交给清晰且最窄的能力边界。\n依据：follow-up-after-call 由完成后的通话证据驱动，产出 seller-ready drafts 而非自动发送或写回。\n错误选项：A：总览或路由说明不能替代 follow-up-after-call（Sales:通话后跟进） 的实际输出；B：该做法触犯“通话证据中的承诺与推断要分开，所有消息和 CRM 内容停在草稿，等待另行确认”这一边界；D：文件格式化不能产出“事实可追溯的 recap、customer/seller actions、对外邮件草稿、CRM-ready 草稿与内部摘要”\n实践：用虚构客户复述输入、预期输出和停止条件，再写出显式调用。"
+        },
+        {
+          "id": "course-sa-10-q02",
+          "type": "true_false",
+          "content": "[sales@1.0.8] 场景：会议尚未发生，用户要的是会前准备。同事仍计划调用 $sales:follow-up-after-call 并补写不存在的承诺并直接发邮件或更新 CRM。这个判断正确吗？",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "错误",
+          "explanation": "结论：该场景不应沿用这个执行路径。\n依据：通话证据中的承诺与推断要分开；所有消息和 CRM 内容停在草稿，等待另行确认；当前不适用条件是“会议尚未发生，用户要的是会前准备”。\n实践：先写一句不适用理由，再选择更匹配的 skill 或停在澄清步骤。"
+        },
+        {
+          "id": "course-sa-10-q03",
+          "type": "fill_blank",
+          "content": "[sales@1.0.8] 场景：你已确认“客户、潜客、伙伴或重要内部销售通话已结束，用户提供 transcript、笔记或录音摘要”，要显式记录插件、skill slug 与 display name。应调用 ___（Sales:通话后跟进）。",
+          "options": [],
+          "answer": "$sales:follow-up-after-call",
+          "explanation": "结论：显式调用写作 $sales:follow-up-after-call。\n依据：课程把 sales 作为插件名，并把 follow-up-after-call 作为 skill slug；展示名是“Sales:通话后跟进”。\n实践：把合成销售任务追加在调用后，并写明期望得到“事实可追溯的 recap、customer/seller actions、对外邮件草稿、CRM-ready 草稿与内部摘要”。"
+        },
+        {
+          "id": "course-sa-10-q04",
+          "type": "ordering",
+          "content": "[sales@1.0.8] 场景：用合成材料练习 follow-up-after-call（Sales:通话后跟进） 时，请按安全执行顺序排列。",
+          "options": [
+            "生成并检查事实可追溯的 recap、customer/seller actions、对外邮件草稿、CRM-ready 草稿与内部摘要",
+            "识别场景是否满足“客户、潜客、伙伴或重要内部销售通话已结束，用户提供 transcript、笔记或录音摘要”",
+            "核对输入“已结束通话的 transcript 或笔记、参会者、商机上下文和跟进目标”与所需依赖",
+            "按最小安全范围执行 $sales:follow-up-after-call"
+          ],
+          "answer": "识别场景是否满足“客户、潜客、伙伴或重要内部销售通话已结束，用户提供 transcript、笔记或录音摘要”|核对输入“已结束通话的 transcript 或笔记、参会者、商机上下文和跟进目标”与所需依赖|按最小安全范围执行 $sales:follow-up-after-call|生成并检查事实可追溯的 recap、customer/seller actions、对外邮件草稿、CRM-ready 草稿与内部摘要",
+          "explanation": "结论：先判定适用性和输入，再执行，最后检查可观察结果。\n依据：通话证据中的承诺与推断要分开；所有消息和 CRM 内容停在草稿，等待另行确认；乱序执行容易在证据不足时越过确认门槛。\n实践：把四步抄成检查表，任何前置项不满足时停在对应步骤。"
+        },
+        {
+          "id": "course-sa-10-q05",
+          "type": "true_false",
+          "content": "[sales@1.0.8] 场景：学员只用合成的“已结束通话的 transcript 或笔记、参会者、商机上下文和跟进目标”，得到事实可追溯的 recap、customer/seller actions、对外邮件草稿、CRM-ready 草稿与内部摘要，并确认没有补写不存在的承诺并直接发邮件或更新 CRM。这可以作为本单元的可观察验收吗？",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：这组证据覆盖了能力选择、输出和安全边界。\n依据：用合成 transcript 生成标注清楚的跟进包；验收不需要真实客户数据、外部写入或生产操作。\n实践：逐项记录输入、输出与“通话证据中的承诺与推断要分开；所有消息和 CRM 内容停在草稿，等待另行确认”的检查结果。"
+        }
+      ]
+    },
+    {
+      "id": "course-sa-11",
+      "code": "SA11",
+      "title": "SA11 Sales:销售通话反馈",
+      "order": 11,
+      "lab_ref": "SA11",
+      "source_text": "sales@1.0.8#skills/get-rep-call-feedback/SKILL.md; skills/get-rep-call-feedback/agents/openai.yaml",
+      "questions": [
+        {
+          "id": "course-sa-11-q01",
+          "type": "multiple_choice",
+          "content": "[sales@1.0.8] 场景：用户要针对一位销售代表的证据化通话辅导，尤其需要同伴对照和下一通话语言。哪项处理最符合 get-rep-call-feedback（Sales:销售通话反馈） 的职责？",
+          "options": [
+            "只打开 Sales 总览并直接宣称任务完成",
+            "跳过输入与证据检查，直接根据个性推断给代表打分并自动发送",
+            "改用无关的文件格式化流程来绕开当前请求",
+            "调用 $sales:get-rep-call-feedback，把一位销售代表的通话与相关同伴实例比较，定位可复用做法和具体改进时刻"
+          ],
+          "answer": "调用 $sales:get-rep-call-feedback，把一位销售代表的通话与相关同伴实例比较，定位可复用做法和具体改进时刻",
+          "explanation": "结论：应选择 $sales:get-rep-call-feedback，把请求交给清晰且最窄的能力边界。\n依据：get-rep-call-feedback 聚焦 one-rep coaching、peer exemplars 与 exact moments，输出 readout 而不执行传播。\n错误选项：A：总览或路由说明不能替代 get-rep-call-feedback（Sales:销售通话反馈） 的实际输出；B：该做法触犯“只生成辅导 readout，不能创建 scorecard、发送反馈、发消息或保存辅导记录”这一边界；C：文件格式化不能产出“证据化同伴范例、具体升级时刻、可复用语言和实用 steal sheet”\n实践：用虚构客户复述输入、预期输出和停止条件，再写出显式调用。"
+        },
+        {
+          "id": "course-sa-11-q02",
+          "type": "true_false",
+          "content": "[sales@1.0.8] 场景：用户要观察同一代表数月内行为是否改善或退步。同事仍计划调用 $sales:get-rep-call-feedback 并根据个性推断给代表打分并自动发送。这个判断正确吗？",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "错误",
+          "explanation": "结论：该场景不应沿用这个执行路径。\n依据：只生成辅导 readout，不能创建 scorecard、发送反馈、发消息或保存辅导记录；当前不适用条件是“用户要观察同一代表数月内行为是否改善或退步”。\n实践：先写一句不适用理由，再选择更匹配的 skill 或停在澄清步骤。"
+        },
+        {
+          "id": "course-sa-11-q03",
+          "type": "fill_blank",
+          "content": "[sales@1.0.8] 场景：你已确认“用户要针对一位销售代表的证据化通话辅导，尤其需要同伴对照和下一通话语言”，要显式记录插件、skill slug 与 display name。应调用 ___（Sales:销售通话反馈）。",
+          "options": [],
+          "answer": "$sales:get-rep-call-feedback",
+          "explanation": "结论：显式调用写作 $sales:get-rep-call-feedback。\n依据：课程把 sales 作为插件名，并把 get-rep-call-feedback 作为 skill slug；展示名是“Sales:销售通话反馈”。\n实践：把合成销售任务追加在调用后，并写明期望得到“证据化同伴范例、具体升级时刻、可复用语言和实用 steal sheet”。"
+        },
+        {
+          "id": "course-sa-11-q04",
+          "type": "ordering",
+          "content": "[sales@1.0.8] 场景：用合成材料练习 get-rep-call-feedback（Sales:销售通话反馈） 时，请按安全执行顺序排列。",
+          "options": [
+            "生成并检查证据化同伴范例、具体升级时刻、可复用语言和实用 steal sheet",
+            "识别场景是否满足“用户要针对一位销售代表的证据化通话辅导，尤其需要同伴对照和下一通话语言”",
+            "核对输入“目标代表、目标通话、相关同伴样本、辅导维度和可定位 transcript 片段”与所需依赖",
+            "按最小安全范围执行 $sales:get-rep-call-feedback"
+          ],
+          "answer": "识别场景是否满足“用户要针对一位销售代表的证据化通话辅导，尤其需要同伴对照和下一通话语言”|核对输入“目标代表、目标通话、相关同伴样本、辅导维度和可定位 transcript 片段”与所需依赖|按最小安全范围执行 $sales:get-rep-call-feedback|生成并检查证据化同伴范例、具体升级时刻、可复用语言和实用 steal sheet",
+          "explanation": "结论：先判定适用性和输入，再执行，最后检查可观察结果。\n依据：只生成辅导 readout，不能创建 scorecard、发送反馈、发消息或保存辅导记录；乱序执行容易在证据不足时越过确认门槛。\n实践：把四步抄成检查表，任何前置项不满足时停在对应步骤。"
+        },
+        {
+          "id": "course-sa-11-q05",
+          "type": "true_false",
+          "content": "[sales@1.0.8] 场景：学员只用合成的“目标代表、目标通话、相关同伴样本、辅导维度和可定位 transcript 片段”，得到证据化同伴范例、具体升级时刻、可复用语言和实用 steal sheet，并确认没有根据个性推断给代表打分并自动发送。这可以作为本单元的可观察验收吗？",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：这组证据覆盖了能力选择、输出和安全边界。\n依据：使用合成通话片段比较同一辅导维度；验收不需要真实客户数据、外部写入或生产操作。\n实践：逐项记录输入、输出与“只生成辅导 readout，不能创建 scorecard、发送反馈、发消息或保存辅导记录”的检查结果。"
+        }
+      ]
+    },
+    {
+      "id": "course-sa-12",
+      "code": "SA12",
+      "title": "SA12 Sales:HubSpot 使用指南",
+      "order": 12,
+      "lab_ref": "SA12",
+      "source_text": "sales@1.0.8#skills/hubspot/SKILL.md; skills/hubspot/agents/openai.yaml",
+      "questions": [
+        {
+          "id": "course-sa-12-q01",
+          "type": "multiple_choice",
+          "content": "[sales@1.0.8] 场景：focused workflow 已选择连接的 HubSpot，或用户明确要求 HubSpot 查询、草稿、notes 或审查后的变更。哪项处理最符合 hubspot（Sales:HubSpot 使用指南） 的职责？",
+          "options": [
+            "调用 $sales:hubspot，在父级 Sales workflow 中读取 HubSpot 上下文、准备草稿，并生成待确认的记录变更预览",
+            "只打开 Sales 总览并直接宣称任务完成",
+            "跳过输入与证据检查，直接猜测 record ID 或未经确认改写属性",
+            "改用无关的文件格式化流程来绕开当前请求"
+          ],
+          "answer": "调用 $sales:hubspot，在父级 Sales workflow 中读取 HubSpot 上下文、准备草稿，并生成待确认的记录变更预览",
+          "explanation": "结论：应选择 $sales:hubspot，把请求交给清晰且最窄的能力边界。\n依据：HubSpot guide 只在已选择 HubSpot 时生效，并把 reads、drafts 与 reviewed record changes 分开；课程只练习变更预览。\n错误选项：B：总览或路由说明不能替代 hubspot（Sales:HubSpot 使用指南） 的实际输出；C：该做法触犯“父级 workflow 决定业务任务，任何写入先展示目标和差异，再获明确确认并验证”这一边界；D：文件格式化不能产出“可信记录上下文、可点击链接、更新草稿、Before I Write 变更 diff 与验证计划”\n实践：用虚构客户复述输入、预期输出和停止条件，再写出显式调用。"
+        },
+        {
+          "id": "course-sa-12-q02",
+          "type": "true_false",
+          "content": "[sales@1.0.8] 场景：另一个 CRM 才是当前事实来源，或用户要开发通用 CRM 应用。同事仍计划调用 $sales:hubspot 并猜测 record ID 或未经确认改写属性。这个判断正确吗？",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "错误",
+          "explanation": "结论：该场景不应沿用这个执行路径。\n依据：父级 workflow 决定业务任务；任何写入先展示目标和差异，再获明确确认并验证；当前不适用条件是“另一个 CRM 才是当前事实来源，或用户要开发通用 CRM 应用”。\n实践：先写一句不适用理由，再选择更匹配的 skill 或停在澄清步骤。"
+        },
+        {
+          "id": "course-sa-12-q03",
+          "type": "fill_blank",
+          "content": "[sales@1.0.8] 场景：你已确认“focused workflow 已选择连接的 HubSpot，或用户明确要求 HubSpot 查询、草稿、notes 或审查后的变更”，要显式记录插件、skill slug 与 display name。应调用 ___（Sales:HubSpot 使用指南）。",
+          "options": [],
+          "answer": "$sales:hubspot",
+          "explanation": "结论：显式调用写作 $sales:hubspot。\n依据：课程把 sales 作为插件名，并把 hubspot 作为 skill slug；展示名是“Sales:HubSpot 使用指南”。\n实践：把合成销售任务追加在调用后，并写明期望得到“可信记录上下文、可点击链接、更新草稿、Before I Write 变更 diff 与验证计划”，不执行写入。"
+        },
+        {
+          "id": "course-sa-12-q04",
+          "type": "ordering",
+          "content": "[sales@1.0.8] 场景：用合成材料练习 hubspot（Sales:HubSpot 使用指南） 时，请按安全执行顺序排列。",
+          "options": [
+            "生成并检查可信记录上下文、可点击链接、更新草稿、Before I Write 变更 diff 与验证计划",
+            "识别场景是否满足“focused workflow 已选择连接的 HubSpot，或用户明确要求 HubSpot 查询、草稿、notes 或审查后的变更”",
+            "核对输入“HubSpot record 类型、精确标识或消歧信息、读取目标或待审查 diff”与所需依赖",
+            "按最小安全范围执行 $sales:hubspot"
+          ],
+          "answer": "识别场景是否满足“focused workflow 已选择连接的 HubSpot，或用户明确要求 HubSpot 查询、草稿、notes 或审查后的变更”|核对输入“HubSpot record 类型、精确标识或消歧信息、读取目标或待审查 diff”与所需依赖|按最小安全范围执行 $sales:hubspot|生成并检查可信记录上下文、可点击链接、更新草稿、Before I Write 变更 diff 与验证计划",
+          "explanation": "结论：先判定适用性和输入，再执行，最后检查可观察结果。\n依据：技能本身只有在明确确认后才可处理记录变更；本课程只展示目标和差异并生成验证计划；乱序执行容易在证据不足时越过确认门槛。\n实践：把四步抄成检查表，任何前置项不满足时停在对应步骤。"
+        },
+        {
+          "id": "course-sa-12-q05",
+          "type": "true_false",
+          "content": "[sales@1.0.8] 场景：学员只用合成的“HubSpot record 类型、精确标识或消歧信息、读取目标或待审查 diff”，得到可信记录上下文、可点击链接、更新草稿、Before I Write 变更 diff 与验证计划，并确认没有执行写入、猜测 record ID 或未经确认改写属性。这可以作为本单元的可观察验收吗？",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：这组证据覆盖了能力选择、输出和安全边界。\n依据：用虚构 company/deal 属性编写只读查询与更新预览；验收不需要真实客户数据、外部写入或生产操作。\n实践：逐项记录输入、输出与“父级 workflow 决定业务任务；任何写入先展示目标和差异，再获明确确认并验证”的检查结果。"
+        }
+      ]
+    },
+    {
+      "id": "course-sa-13",
+      "code": "SA13",
+      "title": "SA13 Sales:销售工作流入口",
+      "order": 13,
+      "lab_ref": "SA13",
+      "source_text": "sales@1.0.8#skills/index/SKILL.md; skills/index/agents/openai.yaml",
+      "questions": [
+        {
+          "id": "course-sa-13-q01",
+          "type": "multiple_choice",
+          "content": "[sales@1.0.8] 场景：用户显式提到 Sales，或请求包含明确的 seller、prospect、account、opportunity、pipeline、forecast 或 CRM 意图。哪项处理最符合 index（Sales:销售工作流入口） 的职责？",
+          "options": [
+            "只打开 Sales 总览并直接宣称任务完成",
+            "调用 $sales:index，读取全部 Sales skill 的触发边界，把请求交给最匹配的 focused workflow",
+            "跳过输入与证据检查，直接罗列全部 Sales skill 后不给出明确路由",
+            "改用无关的文件格式化流程来绕开当前请求"
+          ],
+          "answer": "调用 $sales:index，读取全部 Sales skill 的触发边界，把请求交给最匹配的 focused workflow",
+          "explanation": "结论：应选择 $sales:index，把请求交给清晰且最窄的能力边界。\n依据：Sales index 要求先读所有 skill frontmatter，并在候选 focused skill 存在时转交而非自行回答。\n错误选项：A：总览或路由说明不能替代 index（Sales:销售工作流入口） 的实际输出；C：该做法触犯“index 是路由器，只要 focused skill 能处理，就不能通过 index 直接完成业务输出”这一边界；D：文件格式化不能产出“一个 focused skill 或有依赖顺序的短 workflow，并列出最少缺失信息”\n实践：用虚构客户复述输入、预期输出和停止条件，再写出显式调用。"
+        },
+        {
+          "id": "course-sa-13-q02",
+          "type": "true_false",
+          "content": "[sales@1.0.8] 场景：只有模糊商业词汇，没有卖方角色、客户推进或销售数据意图。同事仍计划调用 $sales:index 并罗列全部 Sales skill 后不给出明确路由。这个判断正确吗？",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "错误",
+          "explanation": "结论：该场景不应沿用这个执行路径。\n依据：index 是路由器；只要 focused skill 能处理，就不能通过 index 直接完成业务输出；当前不适用条件是“只有模糊商业词汇，没有卖方角色、客户推进或销售数据意图”。\n实践：先写一句不适用理由，再选择更匹配的 skill 或停在澄清步骤。"
+        },
+        {
+          "id": "course-sa-13-q03",
+          "type": "fill_blank",
+          "content": "[sales@1.0.8] 场景：你已确认“用户显式提到 Sales，或请求包含明确的 seller、prospect、account、opportunity、pipeline、forecast 或 CRM 意图”，要显式记录插件、skill slug 与 display name。应调用 ___（Sales:销售工作流入口）。",
+          "options": [],
+          "answer": "$sales:index",
+          "explanation": "结论：显式调用写作 $sales:index。\n依据：课程把 sales 作为插件名，并把 index 作为 skill slug；展示名是“Sales:销售工作流入口”。\n实践：把合成销售任务追加在调用后，并写明期望得到“一个 focused skill 或有依赖顺序的短 workflow，并列出最少缺失信息”。"
+        },
+        {
+          "id": "course-sa-13-q04",
+          "type": "ordering",
+          "content": "[sales@1.0.8] 场景：用合成材料练习 index（Sales:销售工作流入口） 时，请按安全执行顺序排列。",
+          "options": [
+            "生成并检查一个 focused skill 或有依赖顺序的短 workflow，并列出最少缺失信息",
+            "识别场景是否满足“用户显式提到 Sales，或请求包含明确的 seller、prospect、account、opportunity、pipeline、forecast 或 CRM 意图”",
+            "核对输入“用户目标、销售对象、时间范围、已有来源、期望产物和可能的外部动作”与所需依赖",
+            "按最小安全范围执行 $sales:index"
+          ],
+          "answer": "识别场景是否满足“用户显式提到 Sales，或请求包含明确的 seller、prospect、account、opportunity、pipeline、forecast 或 CRM 意图”|核对输入“用户目标、销售对象、时间范围、已有来源、期望产物和可能的外部动作”与所需依赖|按最小安全范围执行 $sales:index|生成并检查一个 focused skill 或有依赖顺序的短 workflow，并列出最少缺失信息",
+          "explanation": "结论：先判定适用性和输入，再执行，最后检查可观察结果。\n依据：index 是路由器；只要 focused skill 能处理，就不能通过 index 直接完成业务输出；乱序执行容易在证据不足时越过确认门槛。\n实践：把四步抄成检查表，任何前置项不满足时停在对应步骤。"
+        },
+        {
+          "id": "course-sa-13-q05",
+          "type": "true_false",
+          "content": "[sales@1.0.8] 场景：学员只用合成的“用户目标、销售对象、时间范围、已有来源、期望产物和可能的外部动作”，得到一个 focused skill 或有依赖顺序的短 workflow，并列出最少缺失信息，并确认没有罗列全部 Sales skill 后不给出明确路由。这可以作为本单元的可观察验收吗？",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：这组证据覆盖了能力选择、输出和安全边界。\n依据：用合成请求对比相邻 skill 的边界并只选择一个主流程；验收不需要真实客户数据、外部写入或生产操作。\n实践：逐项记录输入、输出与“index 是路由器；只要 focused skill 能处理，就不能通过 index 直接完成业务输出”的检查结果。"
+        }
+      ]
+    },
+    {
+      "id": "course-sa-14",
+      "code": "SA14",
+      "title": "SA14 Sales:商机策略规划",
+      "order": 14,
+      "lab_ref": "SA14",
+      "source_text": "sales@1.0.8#skills/plan-deal-strategy/SKILL.md; skills/plan-deal-strategy/agents/openai.yaml",
+      "questions": [
+        {
+          "id": "course-sa-14-q01",
+          "type": "multiple_choice",
+          "content": "[sales@1.0.8] 场景：用户要推进一个明确 active deal、renewal、negotiation、buying process 或初始销售 motion。哪项处理最符合 plan-deal-strategy（Sales:商机策略规划） 的职责？",
+          "options": [
+            "只打开 Sales 总览并直接宣称任务完成",
+            "跳过输入与证据检查，直接凭空补齐 buying committee 并写回 CRM",
+            "调用 $sales:plan-deal-strategy，为一个活跃商机、续约、谈判或购买过程建立证据化 deal map 与行动顺序",
+            "改用无关的文件格式化流程来绕开当前请求"
+          ],
+          "answer": "调用 $sales:plan-deal-strategy，为一个活跃商机、续约、谈判或购买过程建立证据化 deal map 与行动顺序",
+          "explanation": "结论：应选择 $sales:plan-deal-strategy，把请求交给清晰且最窄的能力边界。\n依据：plan-deal-strategy 拥有 active-deal map、buying committee、negotiation posture、objections 与 sequencing。\n错误选项：A：总览或路由说明不能替代 plan-deal-strategy（Sales:商机策略规划） 的实际输出；B：该做法触犯“不把未知利益相关者、预算或采购步骤写成事实，也不自动创建任务或 CRM 变更”这一边界；D：文件格式化不能产出“deal map、角色与缺口、谈判姿态、异议、行动序列和优先下一步”\n实践：用虚构客户复述输入、预期输出和停止条件，再写出显式调用。"
+        },
+        {
+          "id": "course-sa-14-q02",
+          "type": "true_false",
+          "content": "[sales@1.0.8] 场景：用户要整理当天多个客户会议的时间顺序与会前简报。同事仍计划调用 $sales:plan-deal-strategy 并凭空补齐 buying committee 并写回 CRM。这个判断正确吗？",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "错误",
+          "explanation": "结论：该场景不应沿用这个执行路径。\n依据：不把未知利益相关者、预算或采购步骤写成事实，也不自动创建任务或 CRM 变更；当前不适用条件是“用户要整理当天多个客户会议的时间顺序与会前简报”。\n实践：先写一句不适用理由，再选择更匹配的 skill 或停在澄清步骤。"
+        },
+        {
+          "id": "course-sa-14-q03",
+          "type": "fill_blank",
+          "content": "[sales@1.0.8] 场景：你已确认“用户要推进一个明确 active deal、renewal、negotiation、buying process 或初始销售 motion”，要显式记录插件、skill slug 与 display name。应调用 ___（Sales:商机策略规划）。",
+          "options": [],
+          "answer": "$sales:plan-deal-strategy",
+          "explanation": "结论：显式调用写作 $sales:plan-deal-strategy。\n依据：课程把 sales 作为插件名，并把 plan-deal-strategy 作为 skill slug；展示名是“Sales:商机策略规划”。\n实践：把合成销售任务追加在调用后，并写明期望得到“deal map、角色与缺口、谈判姿态、异议、行动序列和优先下一步”。"
+        },
+        {
+          "id": "course-sa-14-q04",
+          "type": "ordering",
+          "content": "[sales@1.0.8] 场景：用合成材料练习 plan-deal-strategy（Sales:商机策略规划） 时，请按安全执行顺序排列。",
+          "options": [
+            "生成并检查deal map、角色与缺口、谈判姿态、异议、行动序列和优先下一步",
+            "识别场景是否满足“用户要推进一个明确 active deal、renewal、negotiation、buying process 或初始销售 motion”",
+            "核对输入“商机锚点、阶段、购买委员会、已知异议、采购路径、竞争态势和证据”与所需依赖",
+            "按最小安全范围执行 $sales:plan-deal-strategy"
+          ],
+          "answer": "识别场景是否满足“用户要推进一个明确 active deal、renewal、negotiation、buying process 或初始销售 motion”|核对输入“商机锚点、阶段、购买委员会、已知异议、采购路径、竞争态势和证据”与所需依赖|按最小安全范围执行 $sales:plan-deal-strategy|生成并检查deal map、角色与缺口、谈判姿态、异议、行动序列和优先下一步",
+          "explanation": "结论：先判定适用性和输入，再执行，最后检查可观察结果。\n依据：不把未知利益相关者、预算或采购步骤写成事实，也不自动创建任务或 CRM 变更；乱序执行容易在证据不足时越过确认门槛。\n实践：把四步抄成检查表，任何前置项不满足时停在对应步骤。"
+        },
+        {
+          "id": "course-sa-14-q05",
+          "type": "true_false",
+          "content": "[sales@1.0.8] 场景：学员只用合成的“商机锚点、阶段、购买委员会、已知异议、采购路径、竞争态势和证据”，得到deal map、角色与缺口、谈判姿态、异议、行动序列和优先下一步，并确认没有凭空补齐 buying committee 并写回 CRM。这可以作为本单元的可观察验收吗？",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：这组证据覆盖了能力选择、输出和安全边界。\n依据：用虚构商机制作带置信度的策略图；验收不需要真实客户数据、外部写入或生产操作。\n实践：逐项记录输入、输出与“不把未知利益相关者、预算或采购步骤写成事实，也不自动创建任务或 CRM 变更”的检查结果。"
+        }
+      ]
+    },
+    {
+      "id": "course-sa-15",
+      "code": "SA15",
+      "title": "SA15 Sales:会议准备",
+      "order": 15,
+      "lab_ref": "SA15",
+      "source_text": "sales@1.0.8#skills/prepare-for-meeting/SKILL.md; skills/prepare-for-meeting/agents/openai.yaml",
+      "questions": [
+        {
+          "id": "course-sa-15-q01",
+          "type": "multiple_choice",
+          "content": "[sales@1.0.8] 场景：用户要准备即将到来的客户、潜客、伙伴或重要利益相关者会议，或整理当天客户 call queue。哪项处理最符合 prepare-for-meeting（Sales:会议准备） 的职责？",
+          "options": [
+            "只打开 Sales 总览并直接宣称任务完成",
+            "跳过输入与证据检查，直接访问无关日历或替用户发出会议消息",
+            "改用无关的文件格式化流程来绕开当前请求",
+            "调用 $sales:prepare-for-meeting，为一场或按日期排列的多场即将到来的客户会议生成实用会前简报"
+          ],
+          "answer": "调用 $sales:prepare-for-meeting，为一场或按日期排列的多场即将到来的客户会议生成实用会前简报",
+          "explanation": "结论：应选择 $sales:prepare-for-meeting，把请求交给清晰且最窄的能力边界。\n依据：prepare-for-meeting 根据单场或多场 upcoming meetings 选择 individual brief 或 chronological agenda。\n错误选项：A：总览或路由说明不能替代 prepare-for-meeting（Sales:会议准备） 的实际输出；B：该做法触犯“不能编造参会者、会议目标或最新客户状态，会前产物保持只读”这一边界；C：文件格式化不能产出“单会 brief 或按时间排列的 agenda，含背景、目标、阻塞、问题和下一步”\n实践：用虚构客户复述输入、预期输出和停止条件，再写出显式调用。"
+        },
+        {
+          "id": "course-sa-15-q02",
+          "type": "true_false",
+          "content": "[sales@1.0.8] 场景：通话已经结束，用户要提炼承诺和跟进草稿。同事仍计划调用 $sales:prepare-for-meeting 并访问无关日历或替用户发出会议消息。这个判断正确吗？",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "错误",
+          "explanation": "结论：该场景不应沿用这个执行路径。\n依据：不能编造参会者、会议目标或最新客户状态；会前产物保持只读；当前不适用条件是“通话已经结束，用户要提炼承诺和跟进草稿”。\n实践：先写一句不适用理由，再选择更匹配的 skill 或停在澄清步骤。"
+        },
+        {
+          "id": "course-sa-15-q03",
+          "type": "fill_blank",
+          "content": "[sales@1.0.8] 场景：你已确认“用户要准备即将到来的客户、潜客、伙伴或重要利益相关者会议，或整理当天客户 call queue”，要显式记录插件、skill slug 与 display name。应调用 ___（Sales:会议准备）。",
+          "options": [],
+          "answer": "$sales:prepare-for-meeting",
+          "explanation": "结论：显式调用写作 $sales:prepare-for-meeting。\n依据：课程把 sales 作为插件名，并把 prepare-for-meeting 作为 skill slug；展示名是“Sales:会议准备”。\n实践：把合成销售任务追加在调用后，并写明期望得到“单会 brief 或按时间排列的 agenda，含背景、目标、阻塞、问题和下一步”。"
+        },
+        {
+          "id": "course-sa-15-q04",
+          "type": "ordering",
+          "content": "[sales@1.0.8] 场景：用合成材料练习 prepare-for-meeting（Sales:会议准备） 时，请按安全执行顺序排列。",
+          "options": [
+            "生成并检查单会 brief 或按时间排列的 agenda，含背景、目标、阻塞、问题和下一步",
+            "识别场景是否满足“用户要准备即将到来的客户、潜客、伙伴或重要利益相关者会议，或整理当天客户 call queue”",
+            "核对输入“会议日期与参会者、客户与商机上下文、目标、历史互动和可用资料”与所需依赖",
+            "按最小安全范围执行 $sales:prepare-for-meeting"
+          ],
+          "answer": "识别场景是否满足“用户要准备即将到来的客户、潜客、伙伴或重要利益相关者会议，或整理当天客户 call queue”|核对输入“会议日期与参会者、客户与商机上下文、目标、历史互动和可用资料”与所需依赖|按最小安全范围执行 $sales:prepare-for-meeting|生成并检查单会 brief 或按时间排列的 agenda，含背景、目标、阻塞、问题和下一步",
+          "explanation": "结论：先判定适用性和输入，再执行，最后检查可观察结果。\n依据：不能编造参会者、会议目标或最新客户状态；会前产物保持只读；乱序执行容易在证据不足时越过确认门槛。\n实践：把四步抄成检查表，任何前置项不满足时停在对应步骤。"
+        },
+        {
+          "id": "course-sa-15-q05",
+          "type": "true_false",
+          "content": "[sales@1.0.8] 场景：学员只用合成的“会议日期与参会者、客户与商机上下文、目标、历史互动和可用资料”，得到单会 brief 或按时间排列的 agenda，含背景、目标、阻塞、问题和下一步，并确认没有访问无关日历或替用户发出会议消息。这可以作为本单元的可观察验收吗？",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：这组证据覆盖了能力选择、输出和安全边界。\n依据：用虚构日历事件和合成 CRM 片段准备简报；验收不需要真实客户数据、外部写入或生产操作。\n实践：逐项记录输入、输出与“不能编造参会者、会议目标或最新客户状态；会前产物保持只读”的检查结果。"
+        }
+      ]
+    },
+    {
+      "id": "course-sa-16",
+      "code": "SA16",
+      "title": "SA16 Sales:客户优先级排序",
+      "order": 16,
+      "lab_ref": "SA16",
+      "source_text": "sales@1.0.8#skills/prioritize-accounts/SKILL.md; skills/prioritize-accounts/agents/openai.yaml",
+      "questions": [
+        {
+          "id": "course-sa-16-q01",
+          "type": "multiple_choice",
+          "content": "[sales@1.0.8] 场景：用户问本周该处理哪些现有客户、哪些 leads 最热，或如何排列 territory、pipeline、ICP list 或 account list。哪项处理最符合 prioritize-accounts（Sales:客户优先级排序） 的职责？",
+          "options": [
+            "调用 $sales:prioritize-accounts，依据当前证据为现有 account book 排序，并给出可执行且规划性质的下一步",
+            "只打开 Sales 总览并直接宣称任务完成",
+            "跳过输入与证据检查，直接凭模型偏好排名并自动创建外联任务",
+            "改用无关的文件格式化流程来绕开当前请求"
+          ],
+          "answer": "调用 $sales:prioritize-accounts，依据当前证据为现有 account book 排序，并给出可执行且规划性质的下一步",
+          "explanation": "结论：应选择 $sales:prioritize-accounts，把请求交给清晰且最窄的能力边界。\n依据：prioritize-accounts 面向 established account book，要求 current evidence、in-flight suppression 和 planning-only actions。\n错误选项：B：总览或路由说明不能替代 prioritize-accounts（Sales:客户优先级排序） 的实际输出；C：该做法触犯“排名必须基于公开评分依据并考虑正在进行的动作，不得自动外联或写 CRM”这一边界；D：文件格式化不能产出“小型客户行动视图，含排名、证据、reachable contact、抑制原因和下一步”\n实践：用虚构客户复述输入、预期输出和停止条件，再写出显式调用。"
+        },
+        {
+          "id": "course-sa-16-q02",
+          "type": "true_false",
+          "content": "[sales@1.0.8] 场景：用户要发现净新企业或为名单补充缺失字段。同事仍计划调用 $sales:prioritize-accounts 并凭模型偏好排名并自动创建外联任务。这个判断正确吗？",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "错误",
+          "explanation": "结论：该场景不应沿用这个执行路径。\n依据：排名必须基于公开评分依据并考虑正在进行的动作；不得自动外联或写 CRM；当前不适用条件是“用户要发现净新企业或为名单补充缺失字段”。\n实践：先写一句不适用理由，再选择更匹配的 skill 或停在澄清步骤。"
+        },
+        {
+          "id": "course-sa-16-q03",
+          "type": "fill_blank",
+          "content": "[sales@1.0.8] 场景：你已确认“用户问本周该处理哪些现有客户、哪些 leads 最热，或如何排列 territory、pipeline、ICP list 或 account list”，要显式记录插件、skill slug 与 display name。应调用 ___（Sales:客户优先级排序）。",
+          "options": [],
+          "answer": "$sales:prioritize-accounts",
+          "explanation": "结论：显式调用写作 $sales:prioritize-accounts。\n依据：课程把 sales 作为插件名，并把 prioritize-accounts 作为 skill slug；展示名是“Sales:客户优先级排序”。\n实践：把合成销售任务追加在调用后，并写明期望得到“小型客户行动视图，含排名、证据、reachable contact、抑制原因和下一步”。"
+        },
+        {
+          "id": "course-sa-16-q04",
+          "type": "ordering",
+          "content": "[sales@1.0.8] 场景：用合成材料练习 prioritize-accounts（Sales:客户优先级排序） 时，请按安全执行顺序排列。",
+          "options": [
+            "生成并检查小型客户行动视图，含排名、证据、reachable contact、抑制原因和下一步",
+            "识别场景是否满足“用户问本周该处理哪些现有客户、哪些 leads 最热，或如何排列 territory、pipeline、ICP list 或 account list”",
+            "核对输入“明确的现有客户集合、排序周期、评分依据、当前互动和 in-flight motion”与所需依赖",
+            "按最小安全范围执行 $sales:prioritize-accounts"
+          ],
+          "answer": "识别场景是否满足“用户问本周该处理哪些现有客户、哪些 leads 最热，或如何排列 territory、pipeline、ICP list 或 account list”|核对输入“明确的现有客户集合、排序周期、评分依据、当前互动和 in-flight motion”与所需依赖|按最小安全范围执行 $sales:prioritize-accounts|生成并检查小型客户行动视图，含排名、证据、reachable contact、抑制原因和下一步",
+          "explanation": "结论：先判定适用性和输入，再执行，最后检查可观察结果。\n依据：排名必须基于公开评分依据并考虑正在进行的动作；不得自动外联或写 CRM；乱序执行容易在证据不足时越过确认门槛。\n实践：把四步抄成检查表，任何前置项不满足时停在对应步骤。"
+        },
+        {
+          "id": "course-sa-16-q05",
+          "type": "true_false",
+          "content": "[sales@1.0.8] 场景：学员只用合成的“明确的现有客户集合、排序周期、评分依据、当前互动和 in-flight motion”，得到小型客户行动视图，含排名、证据、reachable contact、抑制原因和下一步，并确认没有凭模型偏好排名并自动创建外联任务。这可以作为本单元的可观察验收吗？",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：这组证据覆盖了能力选择、输出和安全边界。\n依据：用合成客户表和明确权重计算排序；验收不需要真实客户数据、外部写入或生产操作。\n实践：逐项记录输入、输出与“排名必须基于公开评分依据并考虑正在进行的动作；不得自动外联或写 CRM”的检查结果。"
+        }
+      ]
+    },
+    {
+      "id": "course-sa-17",
+      "code": "SA17",
+      "title": "SA17 Sales:销售预测审查",
+      "order": 17,
+      "lab_ref": "SA17",
+      "source_text": "sales@1.0.8#skills/review-forecast/SKILL.md; skills/review-forecast/agents/openai.yaml",
+      "questions": [
+        {
+          "id": "course-sa-17-q01",
+          "type": "multiple_choice",
+          "content": "[sales@1.0.8] 场景：用户要 forecast、commit、upside、forecast-call 准备或 pipeline/deal-risk review。哪项处理最符合 review-forecast（Sales:销售预测审查） 的职责？",
+          "options": [
+            "只打开 Sales 总览并直接宣称任务完成",
+            "调用 $sales:review-forecast，基于明确口径和范围审查 forecast posture、风险、建议变化与证据缺口",
+            "跳过输入与证据检查，直接把猜测写成 commit 并改动 CRM forecast category",
+            "改用无关的文件格式化流程来绕开当前请求"
+          ],
+          "answer": "调用 $sales:review-forecast，基于明确口径和范围审查 forecast posture、风险、建议变化与证据缺口",
+          "explanation": "结论：应选择 $sales:review-forecast，把请求交给清晰且最窄的能力边界。\n依据：review-forecast 要求 canonical scope、period、amount basis 与 category convention，并保持初始 review 只读。\n错误选项：A：总览或路由说明不能替代 review-forecast（Sales:销售预测审查） 的实际输出；C：该做法触犯“没有 prior snapshot 时不能声称真实 movement，初次审查不能修改类别、日期、金额、任务或消息”这一边界；D：文件格式化不能产出“manager-ready rollup、总体姿态、风险 deal、建议变化、证据缺口和 follow-up actions”\n实践：用虚构客户复述输入、预期输出和停止条件，再写出显式调用。"
+        },
+        {
+          "id": "course-sa-17-q02",
+          "type": "true_false",
+          "content": "[sales@1.0.8] 场景：用户没有给出 owner、team、period、report、pipeline view 或 named deal set 中任一范围。同事仍计划调用 $sales:review-forecast 并把猜测写成 commit 并改动 CRM forecast category。这个判断正确吗？",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "错误",
+          "explanation": "结论：该场景不应沿用这个执行路径。\n依据：没有 prior snapshot 时不能声称真实 movement；初次审查不能修改类别、日期、金额、任务或消息；当前不适用条件是“用户没有给出 owner、team、period、report、pipeline view 或 named deal set 中任一范围”。\n实践：先写一句不适用理由，再选择更匹配的 skill 或停在澄清步骤。"
+        },
+        {
+          "id": "course-sa-17-q03",
+          "type": "fill_blank",
+          "content": "[sales@1.0.8] 场景：你已确认“用户要 forecast、commit、upside、forecast-call 准备或 pipeline/deal-risk review”，要显式记录插件、skill slug 与 display name。应调用 ___（Sales:销售预测审查）。",
+          "options": [],
+          "answer": "$sales:review-forecast",
+          "explanation": "结论：显式调用写作 $sales:review-forecast。\n依据：课程把 sales 作为插件名，并把 review-forecast 作为 skill slug；展示名是“Sales:销售预测审查”。\n实践：把合成销售任务追加在调用后，并写明期望得到“manager-ready rollup、总体姿态、风险 deal、建议变化、证据缺口和 follow-up actions”。"
+        },
+        {
+          "id": "course-sa-17-q04",
+          "type": "ordering",
+          "content": "[sales@1.0.8] 场景：用合成材料练习 review-forecast（Sales:销售预测审查） 时，请按安全执行顺序排列。",
+          "options": [
+            "生成并检查manager-ready rollup、总体姿态、风险 deal、建议变化、证据缺口和 follow-up actions",
+            "识别场景是否满足“用户要 forecast、commit、upside、forecast-call 准备或 pipeline/deal-risk review”",
+            "核对输入“规范 CRM report 或导出、期间、金额口径、forecast category 约定和可选 prior snapshot”与所需依赖",
+            "按最小安全范围执行 $sales:review-forecast"
+          ],
+          "answer": "识别场景是否满足“用户要 forecast、commit、upside、forecast-call 准备或 pipeline/deal-risk review”|核对输入“规范 CRM report 或导出、期间、金额口径、forecast category 约定和可选 prior snapshot”与所需依赖|按最小安全范围执行 $sales:review-forecast|生成并检查manager-ready rollup、总体姿态、风险 deal、建议变化、证据缺口和 follow-up actions",
+          "explanation": "结论：先判定适用性和输入，再执行，最后检查可观察结果。\n依据：没有 prior snapshot 时不能声称真实 movement；初次审查不能修改类别、日期、金额、任务或消息；乱序执行容易在证据不足时越过确认门槛。\n实践：把四步抄成检查表，任何前置项不满足时停在对应步骤。"
+        },
+        {
+          "id": "course-sa-17-q05",
+          "type": "true_false",
+          "content": "[sales@1.0.8] 场景：学员只用合成的“规范 CRM report 或导出、期间、金额口径、forecast category 约定和可选 prior snapshot”，得到manager-ready rollup、总体姿态、风险 deal、建议变化、证据缺口和 follow-up actions，并确认没有把猜测写成 commit 并改动 CRM forecast category。这可以作为本单元的可观察验收吗？",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：这组证据覆盖了能力选择、输出和安全边界。\n依据：用合成 pipeline 快照复算汇总并标注 Needs confirmation；验收不需要真实客户数据、外部写入或生产操作。\n实践：逐项记录输入、输出与“没有 prior snapshot 时不能声称真实 movement；初次审查不能修改类别、日期、金额、任务或消息”的检查结果。"
+        }
+      ]
+    },
+    {
+      "id": "course-sa-18",
+      "code": "SA18",
+      "title": "SA18 Sales:销售通话趋势审查",
+      "order": 18,
+      "lab_ref": "SA18",
+      "source_text": "sales@1.0.8#skills/review-rep-call-trends/SKILL.md; skills/review-rep-call-trends/agents/openai.yaml",
+      "questions": [
+        {
+          "id": "course-sa-18-q01",
+          "type": "multiple_choice",
+          "content": "[sales@1.0.8] 场景：用户要了解销售或客户代表的通话行为如何随时间变化。哪项处理最符合 review-rep-call-trends（Sales:销售通话趋势审查） 的职责？",
+          "options": [
+            "只打开 Sales 总览并直接宣称任务完成",
+            "跳过输入与证据检查，直接只凭一通电话宣布三个月趋势并发送绩效评价",
+            "调用 $sales:review-rep-call-trends，比较同一代表在较早与较新时间片的通话行为，识别改善、退步和稳定模式",
+            "改用无关的文件格式化流程来绕开当前请求"
+          ],
+          "answer": "调用 $sales:review-rep-call-trends，比较同一代表在较早与较新时间片的通话行为，识别改善、退步和稳定模式",
+          "explanation": "结论：应选择 $sales:review-rep-call-trends，把请求交给清晰且最窄的能力边界。\n依据：review-rep-call-trends 要求 time-sliced representative sample、older/newer evidence 和可追溯趋势主张。\n错误选项：A：总览或路由说明不能替代 review-rep-call-trends（Sales:销售通话趋势审查） 的实际输出；B：该做法触犯“每个趋势都要比较前后证据，单一轶事不能变成趋势，也不能推断性格或动机”这一边界；D：文件格式化不能产出“coverage、改善、风险、稳定模式、两周辅导动作和建议重听的通话”\n实践：用虚构客户复述输入、预期输出和停止条件，再写出显式调用。"
+        },
+        {
+          "id": "course-sa-18-q02",
+          "type": "true_false",
+          "content": "[sales@1.0.8] 场景：用户只要对一通电话做同伴对照和即时反馈。同事仍计划调用 $sales:review-rep-call-trends 并只凭一通电话宣布三个月趋势并发送绩效评价。这个判断正确吗？",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "错误",
+          "explanation": "结论：该场景不应沿用这个执行路径。\n依据：每个趋势都要比较前后证据；单一轶事不能变成趋势，也不能推断性格或动机；当前不适用条件是“用户只要对一通电话做同伴对照和即时反馈”。\n实践：先写一句不适用理由，再选择更匹配的 skill 或停在澄清步骤。"
+        },
+        {
+          "id": "course-sa-18-q03",
+          "type": "fill_blank",
+          "content": "[sales@1.0.8] 场景：你已确认“用户要了解销售或客户代表的通话行为如何随时间变化”，要显式记录插件、skill slug 与 display name。应调用 ___（Sales:销售通话趋势审查）。",
+          "options": [],
+          "answer": "$sales:review-rep-call-trends",
+          "explanation": "结论：显式调用写作 $sales:review-rep-call-trends。\n依据：课程把 sales 作为插件名，并把 review-rep-call-trends 作为 skill slug；展示名是“Sales:销售通话趋势审查”。\n实践：把合成销售任务追加在调用后，并写明期望得到“coverage、改善、风险、稳定模式、两周辅导动作和建议重听的通话”。"
+        },
+        {
+          "id": "course-sa-18-q04",
+          "type": "ordering",
+          "content": "[sales@1.0.8] 场景：用合成材料练习 review-rep-call-trends（Sales:销售通话趋势审查） 时，请按安全执行顺序排列。",
+          "options": [
+            "生成并检查coverage、改善、风险、稳定模式、两周辅导动作和建议重听的通话",
+            "识别场景是否满足“用户要了解销售或客户代表的通话行为如何随时间变化”",
+            "核对输入“目标代表、比较窗口、较早和较新样本、同一评价维度与可定位通话链接”与所需依赖",
+            "按最小安全范围执行 $sales:review-rep-call-trends"
+          ],
+          "answer": "识别场景是否满足“用户要了解销售或客户代表的通话行为如何随时间变化”|核对输入“目标代表、比较窗口、较早和较新样本、同一评价维度与可定位通话链接”与所需依赖|按最小安全范围执行 $sales:review-rep-call-trends|生成并检查coverage、改善、风险、稳定模式、两周辅导动作和建议重听的通话",
+          "explanation": "结论：先判定适用性和输入，再执行，最后检查可观察结果。\n依据：每个趋势都要比较前后证据；单一轶事不能变成趋势，也不能推断性格或动机；乱序执行容易在证据不足时越过确认门槛。\n实践：把四步抄成检查表，任何前置项不满足时停在对应步骤。"
+        },
+        {
+          "id": "course-sa-18-q05",
+          "type": "true_false",
+          "content": "[sales@1.0.8] 场景：学员只用合成的“目标代表、比较窗口、较早和较新样本、同一评价维度与可定位通话链接”，得到coverage、改善、风险、稳定模式、两周辅导动作和建议重听的通话，并确认没有只凭一通电话宣布三个月趋势并发送绩效评价。这可以作为本单元的可观察验收吗？",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：这组证据覆盖了能力选择、输出和安全边界。\n依据：用两组合成 transcript 按同一 rubric 对比；验收不需要真实客户数据、外部写入或生产操作。\n实践：逐项记录输入、输出与“每个趋势都要比较前后证据；单一轶事不能变成趋势，也不能推断性格或动机”的检查结果。"
+        }
+      ]
+    },
+    {
+      "id": "course-sa-19",
+      "code": "SA19",
+      "title": "SA19 Sales:目标企业研究",
+      "order": 19,
+      "lab_ref": "SA19",
+      "source_text": "sales@1.0.8#skills/sales-company-research/SKILL.md; skills/sales-company-research/agents/openai.yaml",
+      "questions": [
+        {
+          "id": "course-sa-19-q01",
+          "type": "multiple_choice",
+          "content": "[sales@1.0.8] 场景：用户要研究目标企业或伙伴，以形成 fit hypothesis、销售 motion 和 draft outreach。哪项处理最符合 sales-company-research（Sales:目标企业研究） 的职责？",
+          "options": [
+            "只打开 Sales 总览并直接宣称任务完成",
+            "跳过输入与证据检查，直接把推测写成企业事实并直接发送外联",
+            "改用无关的文件格式化流程来绕开当前请求",
+            "调用 $sales:sales-company-research，把外部公司、伙伴或推荐渠道研究转成有依据的外联方法和草稿"
+          ],
+          "answer": "调用 $sales:sales-company-research，把外部公司、伙伴或推荐渠道研究转成有依据的外联方法和草稿",
+          "explanation": "结论：应选择 $sales:sales-company-research，把请求交给清晰且最窄的能力边界。\n依据：sales-company-research 拥有 external research-to-outreach，排除 descriptive enrichment、internal lookup、发送和 CRM 写入。\n错误选项：A：总览或路由说明不能替代 sales-company-research（Sales:目标企业研究） 的实际输出；B：该做法触犯“推断要显式标注，不能编造企业事实、伙伴条款、联系人或声誉，也不能发送草稿”这一边界；C：文件格式化不能产出“来源化背景、fit 与 motion、推荐外联方式和待审查草稿”\n实践：用虚构客户复述输入、预期输出和停止条件，再写出显式调用。"
+        },
+        {
+          "id": "course-sa-19-q02",
+          "type": "true_false",
+          "content": "[sales@1.0.8] 场景：主要产物是公司名单、字段补全、联系人发现或内部事实来源。同事仍计划调用 $sales:sales-company-research 并把推测写成企业事实并直接发送外联。这个判断正确吗？",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "错误",
+          "explanation": "结论：该场景不应沿用这个执行路径。\n依据：推断要显式标注；不能编造企业事实、伙伴条款、联系人或声誉，也不能发送草稿；当前不适用条件是“主要产物是公司名单、字段补全、联系人发现或内部事实来源”。\n实践：先写一句不适用理由，再选择更匹配的 skill 或停在澄清步骤。"
+        },
+        {
+          "id": "course-sa-19-q03",
+          "type": "fill_blank",
+          "content": "[sales@1.0.8] 场景：你已确认“用户要研究目标企业或伙伴，以形成 fit hypothesis、销售 motion 和 draft outreach”，要显式记录插件、skill slug 与 display name。应调用 ___（Sales:目标企业研究）。",
+          "options": [],
+          "answer": "$sales:sales-company-research",
+          "explanation": "结论：显式调用写作 $sales:sales-company-research。\n依据：课程把 sales 作为插件名，并把 sales-company-research 作为 skill slug；展示名是“Sales:目标企业研究”。\n实践：把合成销售任务追加在调用后，并写明期望得到“来源化背景、fit 与 motion、推荐外联方式和待审查草稿”。"
+        },
+        {
+          "id": "course-sa-19-q04",
+          "type": "ordering",
+          "content": "[sales@1.0.8] 场景：用合成材料练习 sales-company-research（Sales:目标企业研究） 时，请按安全执行顺序排列。",
+          "options": [
+            "生成并检查来源化背景、fit 与 motion、推荐外联方式和待审查草稿",
+            "识别场景是否满足“用户要研究目标企业或伙伴，以形成 fit hypothesis、销售 motion 和 draft outreach”",
+            "核对输入“目标企业或伙伴、offer、受众、已批准定位、外部来源和已有 CRM 关系”与所需依赖",
+            "按最小安全范围执行 $sales:sales-company-research"
+          ],
+          "answer": "识别场景是否满足“用户要研究目标企业或伙伴，以形成 fit hypothesis、销售 motion 和 draft outreach”|核对输入“目标企业或伙伴、offer、受众、已批准定位、外部来源和已有 CRM 关系”与所需依赖|按最小安全范围执行 $sales:sales-company-research|生成并检查来源化背景、fit 与 motion、推荐外联方式和待审查草稿",
+          "explanation": "结论：先判定适用性和输入，再执行，最后检查可观察结果。\n依据：推断要显式标注；不能编造企业事实、伙伴条款、联系人或声誉，也不能发送草稿；乱序执行容易在证据不足时越过确认门槛。\n实践：把四步抄成检查表，任何前置项不满足时停在对应步骤。"
+        },
+        {
+          "id": "course-sa-19-q05",
+          "type": "true_false",
+          "content": "[sales@1.0.8] 场景：学员只用合成的“目标企业或伙伴、offer、受众、已批准定位、外部来源和已有 CRM 关系”，得到来源化背景、fit 与 motion、推荐外联方式和待审查草稿，并确认没有把推测写成企业事实并直接发送外联。这可以作为本单元的可观察验收吗？",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：这组证据覆盖了能力选择、输出和安全边界。\n依据：研究虚构企业的合成资料并标注假设；验收不需要真实客户数据、外部写入或生产操作。\n实践：逐项记录输入、输出与“推断要显式标注；不能编造企业事实、伙伴条款、联系人或声誉，也不能发送草稿”的检查结果。"
+        }
+      ]
+    },
+    {
+      "id": "course-sa-20",
+      "code": "SA20",
+      "title": "SA20 Sales:Salesforce 使用指南",
+      "order": 20,
+      "lab_ref": "SA20",
+      "source_text": "sales@1.0.8#skills/salesforce/SKILL.md; skills/salesforce/agents/openai.yaml",
+      "questions": [
+        {
+          "id": "course-sa-20-q01",
+          "type": "multiple_choice",
+          "content": "[sales@1.0.8] 场景：focused workflow 需要 Salesforce-backed CRM reads、links、drafts、notes、account plans 或明确的 connector/query guidance。哪项处理最符合 salesforce（Sales:Salesforce 使用指南） 的职责？",
+          "options": [
+            "调用 $sales:salesforce，在父级 Sales workflow 中读取 Salesforce、准备更新草稿，并生成待确认且可验证的支持动作预览",
+            "只打开 Sales 总览并直接宣称任务完成",
+            "跳过输入与证据检查，直接猜测 Salesforce ID 或未经确认执行写入",
+            "改用无关的文件格式化流程来绕开当前请求"
+          ],
+          "answer": "调用 $sales:salesforce，在父级 Sales workflow 中读取 Salesforce、准备更新草稿，并生成待确认且可验证的支持动作预览",
+          "explanation": "结论：应选择 $sales:salesforce，把请求交给清晰且最窄的能力边界。\n依据：Salesforce guide 把 read、update draft、approved write 与 account-plan actions 分开，并要求写后窄读验证；课程只练习预览和验证计划。\n错误选项：B：总览或路由说明不能替代 salesforce（Sales:Salesforce 使用指南） 的实际输出；C：该做法触犯“优先最窄只读查询，删除、外部 ID upsert、任意 automation 或未经确认写入均禁止”这一边界；D：文件格式化不能产出“可信 CRM 上下文、可点击链接、Before I Write 预览、变更 diff 与验证计划”\n实践：用虚构客户复述输入、预期输出和停止条件，再写出显式调用。"
+        },
+        {
+          "id": "course-sa-20-q02",
+          "type": "true_false",
+          "content": "[sales@1.0.8] 场景：另一个 CRM 是权威来源，或用户要开发通用 CRM 应用。同事仍计划调用 $sales:salesforce 并猜测 Salesforce ID 或未经确认执行写入。这个判断正确吗？",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "错误",
+          "explanation": "结论：该场景不应沿用这个执行路径。\n依据：优先最窄只读查询；删除、外部 ID upsert、任意 automation 或未经确认写入均禁止；当前不适用条件是“另一个 CRM 是权威来源，或用户要开发通用 CRM 应用”。\n实践：先写一句不适用理由，再选择更匹配的 skill 或停在澄清步骤。"
+        },
+        {
+          "id": "course-sa-20-q03",
+          "type": "fill_blank",
+          "content": "[sales@1.0.8] 场景：你已确认“focused workflow 需要 Salesforce-backed CRM reads、links、drafts、notes、account plans 或明确的 connector/query guidance”，要显式记录插件、skill slug 与 display name。应调用 ___（Sales:Salesforce 使用指南）。",
+          "options": [],
+          "answer": "$sales:salesforce",
+          "explanation": "结论：显式调用写作 $sales:salesforce。\n依据：课程把 sales 作为插件名，并把 salesforce 作为 skill slug；展示名是“Sales:Salesforce 使用指南”。\n实践：把合成销售任务追加在调用后，并写明期望得到“可信 CRM 上下文、可点击链接、Before I Write 预览、变更 diff 与验证计划”，不执行写入。"
+        },
+        {
+          "id": "course-sa-20-q04",
+          "type": "ordering",
+          "content": "[sales@1.0.8] 场景：用合成材料练习 salesforce（Sales:Salesforce 使用指南） 时，请按安全执行顺序排列。",
+          "options": [
+            "生成并检查可信 CRM 上下文、可点击链接、Before I Write 预览、变更 diff 与验证计划",
+            "识别场景是否满足“focused workflow 需要 Salesforce-backed CRM reads、links、drafts、notes、account plans 或明确的 connector/query guidance”",
+            "核对输入“对象、精确记录或 SOQL 范围、所需字段、当前值和待审查变更”与所需依赖",
+            "按最小安全范围执行 $sales:salesforce"
+          ],
+          "answer": "识别场景是否满足“focused workflow 需要 Salesforce-backed CRM reads、links、drafts、notes、account plans 或明确的 connector/query guidance”|核对输入“对象、精确记录或 SOQL 范围、所需字段、当前值和待审查变更”与所需依赖|按最小安全范围执行 $sales:salesforce|生成并检查可信 CRM 上下文、可点击链接、Before I Write 预览、变更 diff 与验证计划",
+          "explanation": "结论：先判定适用性和输入，再执行，最后检查可观察结果。\n依据：优先最窄只读查询；技能本身的支持写入也必须经过明确确认和窄读验证；本课程只展示 Before I Write 预览、变更 diff 与验证计划；乱序执行容易在证据不足时越过确认门槛。\n实践：把四步抄成检查表，任何前置项不满足时停在对应步骤。"
+        },
+        {
+          "id": "course-sa-20-q05",
+          "type": "true_false",
+          "content": "[sales@1.0.8] 场景：学员只用合成的“对象、精确记录或 SOQL 范围、所需字段、当前值和待审查变更”，得到可信 CRM 上下文、可点击链接、Before I Write 预览、变更 diff 与验证计划，并确认没有执行写入、猜测 Salesforce ID 或未经确认执行写入。这可以作为本单元的可观察验收吗？",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：这组证据覆盖了能力选择、输出和安全边界。\n依据：用虚构 Account 和 Opportunity 编写查询与 diff；验收不需要真实客户数据、外部写入或生产操作。\n实践：逐项记录输入、输出与“优先最窄只读查询；删除、外部 ID upsert、任意 automation 或未经确认写入均禁止”的检查结果。"
+        }
+      ]
+    },
+    {
+      "id": "course-sa-21",
+      "code": "SA21",
+      "title": "SA21 Sales:ZoomInfo 使用指南",
+      "order": 21,
+      "lab_ref": "SA21",
+      "source_text": "sales@1.0.8#skills/zoominfo/SKILL.md; skills/zoominfo/agents/openai.yaml",
+      "questions": [
+        {
+          "id": "course-sa-21-q01",
+          "type": "multiple_choice",
+          "content": "[sales@1.0.8] 场景：focused workflow 已选择连接的 ZoomInfo，或用户明确要求 ZoomInfo 搜索、丰富、intent、推荐或研究。哪项处理最符合 zoominfo（Sales:ZoomInfo 使用指南） 的职责？",
+          "options": [
+            "只打开 Sales 总览并直接宣称任务完成",
+            "调用 $sales:zoominfo，在父级 Sales workflow 中安全执行 ZoomInfo 公司、联系人、intent、similarity 与 enrichment 查询",
+            "跳过输入与证据检查，直接对全部候选做付费丰富或构造猜测链接",
+            "改用无关的文件格式化流程来绕开当前请求"
+          ],
+          "answer": "调用 $sales:zoominfo，在父级 Sales workflow 中安全执行 ZoomInfo 公司、联系人、intent、similarity 与 enrichment 查询",
+          "explanation": "结论：应选择 $sales:zoominfo，把请求交给清晰且最窄的能力边界。\n依据：ZoomInfo guide 要求 lookup discipline、identifier resolution、explicit filters、shortlist enrichment 与 credit awareness。\n错误选项：A：总览或路由说明不能替代 zoominfo（Sales:ZoomInfo 使用指南） 的实际输出；C：该做法触犯“先 lookup 支持值再查询，不能猜 taxonomy 或 ID，先缩小候选再对 shortlist 丰富”这一边界；D：文件格式化不能产出“经过身份解析的候选表、丰富结果、来源链接、质量说明与积分影响”\n实践：用虚构客户复述输入、预期输出和停止条件，再写出显式调用。"
+        },
+        {
+          "id": "course-sa-21-q02",
+          "type": "true_false",
+          "content": "[sales@1.0.8] 场景：另一 enrichment 来源已被选定，或 ZoomInfo 未连接。同事仍计划调用 $sales:zoominfo 并对全部候选做付费丰富或构造猜测链接。这个判断正确吗？",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "错误",
+          "explanation": "结论：该场景不应沿用这个执行路径。\n依据：先 lookup 支持值再查询，不能猜 taxonomy 或 ID；先缩小候选再对 shortlist 丰富；当前不适用条件是“另一 enrichment 来源已被选定，或 ZoomInfo 未连接”。\n实践：先写一句不适用理由，再选择更匹配的 skill 或停在澄清步骤。"
+        },
+        {
+          "id": "course-sa-21-q03",
+          "type": "fill_blank",
+          "content": "[sales@1.0.8] 场景：你已确认“focused workflow 已选择连接的 ZoomInfo，或用户明确要求 ZoomInfo 搜索、丰富、intent、推荐或研究”，要显式记录插件、skill slug 与 display name。应调用 ___（Sales:ZoomInfo 使用指南）。",
+          "options": [],
+          "answer": "$sales:zoominfo",
+          "explanation": "结论：显式调用写作 $sales:zoominfo。\n依据：课程把 sales 作为插件名，并把 zoominfo 作为 skill slug；展示名是“Sales:ZoomInfo 使用指南”。\n实践：把合成销售任务追加在调用后，并写明期望得到“经过身份解析的候选表、丰富结果、来源链接、质量说明与积分影响”。"
+        },
+        {
+          "id": "course-sa-21-q04",
+          "type": "ordering",
+          "content": "[sales@1.0.8] 场景：用合成材料练习 zoominfo（Sales:ZoomInfo 使用指南） 时，请按安全执行顺序排列。",
+          "options": [
+            "生成并检查经过身份解析的候选表、丰富结果、来源链接、质量说明与积分影响",
+            "识别场景是否满足“focused workflow 已选择连接的 ZoomInfo，或用户明确要求 ZoomInfo 搜索、丰富、intent、推荐或研究”",
+            "核对输入“目标实体、强标识、显式筛选、所需字段、支持的 taxonomy 和查询范围”与所需依赖",
+            "按最小安全范围执行 $sales:zoominfo"
+          ],
+          "answer": "识别场景是否满足“focused workflow 已选择连接的 ZoomInfo，或用户明确要求 ZoomInfo 搜索、丰富、intent、推荐或研究”|核对输入“目标实体、强标识、显式筛选、所需字段、支持的 taxonomy 和查询范围”与所需依赖|按最小安全范围执行 $sales:zoominfo|生成并检查经过身份解析的候选表、丰富结果、来源链接、质量说明与积分影响",
+          "explanation": "结论：先判定适用性和输入，再执行，最后检查可观察结果。\n依据：先 lookup 支持值再查询，不能猜 taxonomy 或 ID；先缩小候选再对 shortlist 丰富；乱序执行容易在证据不足时越过确认门槛。\n实践：把四步抄成检查表，任何前置项不满足时停在对应步骤。"
+        },
+        {
+          "id": "course-sa-21-q05",
+          "type": "true_false",
+          "content": "[sales@1.0.8] 场景：学员只用合成的“目标实体、强标识、显式筛选、所需字段、支持的 taxonomy 和查询范围”，得到经过身份解析的候选表、丰富结果、来源链接、质量说明与积分影响，并确认没有对全部候选做付费丰富或构造猜测链接。这可以作为本单元的可观察验收吗？",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：这组证据覆盖了能力选择、输出和安全边界。\n依据：用虚构公司和合成 lookup 值设计窄查询；验收不需要真实客户数据、外部写入或生产操作。\n实践：逐项记录输入、输出与“先 lookup 支持值再查询，不能猜 taxonomy 或 ID；先缩小候选再对 shortlist 丰富”的检查结果。"
+        }
+      ]
+    }
+  ]
+}

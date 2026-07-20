@@ -1,0 +1,669 @@
+{
+  "course": {
+    "id": "fastapi1-project-skills",
+    "prefix": "FS",
+    "title": "fastapi1 项目 Skills"
+  },
+  "source": {
+    "kind": "git",
+    "ref": "fastapi1@710807b32a2a7af6b48496390d15c728a8afd06b",
+    "snapshot": "2026-07-20"
+  },
+  "decks": [
+    {
+      "id": "course-fs-01",
+      "code": "FS01",
+      "title": "FS01 fastapi1 项目 Skills",
+      "order": 1,
+      "lab_ref": "FS01",
+      "source_text": "fastapi1@710807b32a2a7af6b48496390d15c728a8afd06b；.agents/skills 8 个项目 skill 的脱敏快照；2026-07-20。",
+      "questions": [
+        {
+          "id": "course-fs-01-q01",
+          "type": "multiple_choice",
+          "content": "[fastapi1 项目 Skills] 合成任务只要求核对 `.codex` Harness 合同，哪条路由最准确？",
+          "options": [
+            "选择 $harness-maintenance，先做静态合同核对；课程不修改 Harness",
+            "选择 $frontend-ui-engineering，把合同改成页面组件",
+            "选择 $windows-vm-operator，在 VM 中验证合同",
+            "选择 $remote-server-operator，登录生产服务器核对合同"
+          ],
+          "answer": "选择 $harness-maintenance，先做静态合同核对；课程不修改 Harness",
+          "explanation": "结论：选择 $harness-maintenance，先做静态合同核对；课程不修改 Harness。\n依据：根 AGENTS 的触发矩阵把 `.codex` 配置、contract、hooks、rules、MCP 与 harness CI 归给 `$harness-maintenance`；VM 和生产运维是独立且高风险的执行面。\n错误选项：B：前端 skill 面向 `html/**`、页面交互与可访问性，不维护 Harness。；C：Windows VM skill 只处理明确的 Parallels/Windows 客户端任务。；D：远程服务器 skill 只在用户明确要求生产运维时使用，课程也不访问生产。\n实践：为另一个合成任务写出主 skill、可选安全 companion 和一个停止条件。"
+        },
+        {
+          "id": "course-fs-01-q02",
+          "type": "multiple_choice",
+          "content": "[fastapi1 项目 Skills] 这套课程应以哪个事实快照为准？",
+          "options": [
+            "每次学习都跟随当前 main，允许内容自动漂移",
+            "固定使用 fastapi1@710807b32a2a7af6b48496390d15c728a8afd06b 与 2026-07-20 快照",
+            "读取当前 `.env` 与运行数据库来补足课程事实",
+            "只记录仓库名称，不保留 commit 或来源路径"
+          ],
+          "answer": "固定使用 fastapi1@710807b32a2a7af6b48496390d15c728a8afd06b 与 2026-07-20 快照",
+          "explanation": "结论：固定使用 fastapi1@710807b32a2a7af6b48496390d15c728a8afd06b 与 2026-07-20 快照。\n依据：课程 `source.ref`、研究表 SHA-256 和实验手册共同锁定同一 Git 提交；运行态秘密和客户数据不属于课程来源。\n错误选项：A：自动漂移会让题目与研究哈希失去可复现性。；C：`.env`、运行数据库和客户数据超出只读脱敏边界。；D：没有 commit 与相对路径就无法复核事实。\n实践：用 `git show <commit>:<relative-path>` 的预期输出描述一次只读核对，不运行项目。"
+        },
+        {
+          "id": "course-fs-01-q03",
+          "type": "multiple_choice",
+          "content": "[fastapi1 项目 Skills] 哪组 skill 与任务表面的对应关系正确？",
+          "options": [
+            "$source-driven-development 负责生产部署；$remote-server-operator 负责查官方文档",
+            "$windows-vm-operator 负责合并 GitHub PR；$git-branch-pr-merge 负责 VM 截图",
+            "$frontend-ui-engineering 负责现有 Vue 页面；$security-and-hardening 负责鉴权与导出边界",
+            "$performance-optimization 负责修改 Hooks；$harness-maintenance 负责所有慢查询"
+          ],
+          "answer": "$frontend-ui-engineering 负责现有 Vue 页面；$security-and-hardening 负责鉴权与导出边界",
+          "explanation": "结论：$frontend-ui-engineering 负责现有 Vue 页面；$security-and-hardening 负责鉴权与导出边界。\n依据：根 AGENTS 把前端页面、鉴权安全、性能、Harness、Git、Windows VM 与远程服务器拆成不同触发面；skill 可组合，但职责不能互换。\n错误选项：A：一手文档核验与生产运维的职责被颠倒。；B：Windows VM 操作与 Git PR 流程的职责被颠倒。；D：性能 skill 不维护 Harness，Harness skill也不替代慢路径测量。\n实践：给合成任务标注“主要 skill / 可选 companion / 不选择的 skill”。"
+        },
+        {
+          "id": "course-fs-01-q04",
+          "type": "multiple_choice",
+          "content": "[fastapi1 项目 Skills] 课程练习遇到需要 VM、生产连接或真实客户状态的步骤时，应怎样验收？",
+          "options": [
+            "启动 VM 并执行一次真实客户端任务",
+            "连接生产健康接口并把响应当作课程答案",
+            "读取本地 `.env`，只要不复制完整值即可",
+            "停在合成 fixture、命令预览和只读 Git 证据，并明确运行态尚未验证"
+          ],
+          "answer": "停在合成 fixture、命令预览和只读 Git 证据，并明确运行态尚未验证",
+          "explanation": "结论：停在合成 fixture、命令预览和只读 Git 证据，并明确运行态尚未验证。\n依据：课程边界只允许固定 Git 快照、合成输入、预览和只读状态判断；VM、远程服务器、外部写入和真实数据需要新的明确授权。\n错误选项：A：启动 VM 和真实客户端动作会改变外部状态。；B：生产连接不是课程验收所需，也不能由静态课程授权。；C：秘密值即使只显示一部分也不应成为课程输入。\n实践：把高风险步骤改写成包含占位符、预期证据和停止条件的预览。"
+        },
+        {
+          "id": "course-fs-01-q05",
+          "type": "true_false",
+          "content": "[fastapi1 项目 Skills] 只要 Harness health 检查通过，就能证明业务 API、Windows 客户端和生产部署全部兼容。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "错误",
+          "explanation": "结论：Harness 治理、业务 API、Windows 客户端和生产部署属于不同验证层。\n依据：固定提交分别提供项目 skills、Harness 配置和各执行面的独立合同；一种静态或治理检查不能替代其他层的运行证据。\n实践：为合成改动列出 Harness、业务、平台与部署四列证据，未知项保持未验证。"
+        }
+      ]
+    },
+    {
+      "id": "course-fs-02",
+      "code": "FS02",
+      "title": "FS02 fastapi1:源文档驱动开发",
+      "order": 2,
+      "lab_ref": "FS02",
+      "source_text": "fastapi1@710807b32a2a7af6b48496390d15c728a8afd06b 的 .agents/skills/source-driven-development/SKILL.md 脱敏快照；2026-07-20。",
+      "questions": [
+        {
+          "id": "course-fs-02-q01",
+          "type": "multiple_choice",
+          "content": "[fastapi1:源文档驱动开发] 任务要决定当前 FastAPI/OpenAI API 的版本敏感写法，最合适的显式调用是什么？",
+          "options": [
+            "调用 $source-driven-development，先查本地依赖与项目规则，再核对相关官方文档",
+            "调用 $remote-server-operator，从生产日志推断 API 规范",
+            "调用 $frontend-ui-engineering，按记忆选择后端接口",
+            "不调用任何 skill，直接复用训练数据中的旧示例"
+          ],
+          "answer": "调用 $source-driven-development，先查本地依赖与项目规则，再核对相关官方文档",
+          "explanation": "结论：调用 $source-driven-development，先查本地依赖与项目规则，再核对相关官方文档。\n依据：`source-driven-development` 专门处理外部库、Codex/OpenAI、MCP、FastAPI、Vue 与 ECharts 等版本敏感行为，并规定内部事实仍先查本地。\n错误选项：B：生产运维不是文档核验入口，课程也不读取生产日志。；C：前端 skill 不负责核验后端或 OpenAI API 版本事实。；D：该 skill 的核心正是避免把可能过时的训练数据当证据。\n实践：写出本地事实、一手来源和推断三栏，并为每条非平凡结论预留引用。"
+        },
+        {
+          "id": "course-fs-02-q02",
+          "type": "multiple_choice",
+          "content": "[fastapi1:源文档驱动开发] 哪份输出最能证明已完成只读研究，而不是只记住 skill 名称？",
+          "options": [
+            "一段没有 URL 的“最佳实践”总结",
+            "检测到的版本约束、具体官方页面、支持的结论、冲突与未验证项",
+            "一份从搜索摘要复制的答案",
+            "一条声称“API 应该没变”的模型自述"
+          ],
+          "answer": "检测到的版本约束、具体官方页面、支持的结论、冲突与未验证项",
+          "explanation": "结论：检测到的版本约束、具体官方页面、支持的结论、冲突与未验证项。\n依据：源文档驱动流程要求检测栈与版本、获取具体官方页面、按文档实施或规划，并给出可核验引用；找不到依据时必须明确标为未验证。\n错误选项：A：没有具体来源就不能复核版本敏感结论。；C：搜索摘要只能定位来源，不能替代一手文档。；D：模型信心和记忆不是权威证据。\n实践：用一个合成 API 问题记录“项目事实 / 官方事实 / 冲突 / 未验证”。"
+        },
+        {
+          "id": "course-fs-02-q03",
+          "type": "fill_blank",
+          "content": "[fastapi1:源文档驱动开发] 无法从项目版本与一手资料核验的框架行为，应明确标为 ___，而不是从记忆补全。",
+          "options": [],
+          "answer": "未验证（UNVERIFIED）",
+          "explanation": "结论：应填写“未验证（UNVERIFIED）”。\n依据：SKILL.md 明确要求无法找到官方依据时如实标注未验证，并提醒生产使用前再次核实。\n实践：给一条合成的未知 API 行为写出停止条件和下一步所需证据。"
+        },
+        {
+          "id": "course-fs-02-q04",
+          "type": "multiple_choice",
+          "content": "[fastapi1:源文档驱动开发] 项目实现与官方文档看起来冲突时，哪种处理符合边界？",
+          "options": [
+            "把搜索结果排名最高的页面视为最终事实",
+            "把依赖下限直接称为实际安装版本",
+            "让通用框架建议覆盖仓库 AGENTS 与现有测试",
+            "分别记录本地实现和官方行为，解析实际版本，并把冲突交给用户或验证步骤"
+          ],
+          "answer": "分别记录本地实现和官方行为，解析实际版本，并把冲突交给用户或验证步骤",
+          "explanation": "结论：分别记录本地实现和官方行为，解析实际版本，并把冲突交给用户或验证步骤。\n依据：项目事实优先来自本地源码、配置、测试与命令；外部行为来自对应版本的一手文档。二者冲突时必须显式呈现，不能静默选择。\n错误选项：A：搜索排名不能替代具体的一手来源。；B：版本范围的下限不是已安装版本。；C：通用建议不能覆盖仓库特定合同。\n实践：为一个合成冲突写出两种可选路径及各自证据。"
+        },
+        {
+          "id": "course-fs-02-q05",
+          "type": "true_false",
+          "content": "[fastapi1:源文档驱动开发] 找不到官方依据时，课程应保留“未验证”结论，而不是编造一个看似完整的 API 用法。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：应保留未验证状态。\n依据：该 skill 把诚实披露证据缺口视为比无来源的确定结论更可靠。\n实践：在提示词中加入“若无一手依据，停止实现并列出缺口”。"
+        }
+      ]
+    },
+    {
+      "id": "course-fs-03",
+      "code": "FS03",
+      "title": "FS03 fastapi1:前端 UI 工程",
+      "order": 3,
+      "lab_ref": "FS03",
+      "source_text": "fastapi1@710807b32a2a7af6b48496390d15c728a8afd06b 的 .agents/skills/frontend-ui-engineering/SKILL.md 脱敏快照；2026-07-20。",
+      "questions": [
+        {
+          "id": "course-fs-03-q01",
+          "type": "multiple_choice",
+          "content": "[fastapi1:前端 UI 工程] 合成需求要修改现有 `html/**` 页面交互和可访问性，哪项路由正确？",
+          "options": [
+            "调用 $frontend-ui-engineering，沿用 Vue 3 全局版、Tailwind CDN 与现有共享脚本",
+            "调用 $harness-maintenance，把页面逻辑移入 `.codex`",
+            "调用 $windows-vm-operator，用 VM 操作代替页面设计",
+            "引入 React、Vite 和 SFC 后再决定是否调用 skill"
+          ],
+          "answer": "调用 $frontend-ui-engineering，沿用 Vue 3 全局版、Tailwind CDN 与现有共享脚本",
+          "explanation": "结论：调用 $frontend-ui-engineering，沿用 Vue 3 全局版、Tailwind CDN 与现有共享脚本。\n依据：`frontend-ui-engineering` 的项目边界明确覆盖 HTML、页面脚本、图表、认证跳转、响应式、可访问性和视觉质量，并禁止默认引入新的前端构建体系。\n错误选项：B：Harness skill 不负责普通页面实现。；C：VM 操作不能替代页面代码与交互设计。；D：React/Vite/SFC 是该项目默认不允许的架构扩张。\n实践：用虚构页面状态写出最小变更面和共享脚本复用清单。"
+        },
+        {
+          "id": "course-fs-03-q02",
+          "type": "multiple_choice",
+          "content": "[fastapi1:前端 UI 工程] 哪组证据最符合本单元的只读验收？",
+          "options": [
+            "只确认页面能打开",
+            "列出键盘路径、加载/错误/空状态、四个视口与共享工具复用的预期检查",
+            "只提供一张桌面截图",
+            "用新组件库重画整个页面"
+          ],
+          "answer": "列出键盘路径、加载/错误/空状态、四个视口与共享工具复用的预期检查",
+          "explanation": "结论：列出键盘路径、加载/错误/空状态、四个视口与共享工具复用的预期检查。\n依据：SKILL.md 要求键盘可访问、语义结构、加载/错误/空状态，以及 320、768、1024、1440 四个视口的响应式检查。\n错误选项：A：页面打开不能证明交互、可访问性和状态处理正确。；C：单张桌面截图不能覆盖键盘、动态状态与响应式。；D：课程目标是理解现有模式，不是引入未经请求的重设计。\n实践：为一个合成表格页面写出四视口与三种状态的验收矩阵。"
+        },
+        {
+          "id": "course-fs-03-q03",
+          "type": "multiple_choice",
+          "content": "[fastapi1:前端 UI 工程] 出现哪种情况时应停止当前实现路径并先澄清？",
+          "options": [
+            "页面已经使用 Vue 全局对象",
+            "现有 `html/js/` 有可复用鉴权工具",
+            "需求要求引入 React/Vite 或整体重设计，但用户未明确授权架构变化",
+            "需要补充加载和错误状态"
+          ],
+          "answer": "需求要求引入 React/Vite 或整体重设计，但用户未明确授权架构变化",
+          "explanation": "结论：需求要求引入 React/Vite 或整体重设计，但用户未明确授权架构变化。\n依据：项目边界要求局部页面工作保留静态 Vue 3 全局版与 Tailwind CDN；构建工具、SFC 或广泛重设计必须由用户明确要求。\n错误选项：A：Vue 全局对象正是当前项目模式。；B：复用现有工具符合最小改动原则。；D：补齐必要状态属于本 skill 的正常职责。\n实践：把越界需求拆成“现有模式内可做”和“需用户批准”的两栏。"
+        },
+        {
+          "id": "course-fs-03-q04",
+          "type": "ordering",
+          "content": "[fastapi1:前端 UI 工程] 请排列一轮安全的合成 UI 练习。",
+          "options": [
+            "规划键盘、状态和四个视口的验证",
+            "读取现有页面与适用的近端 AGENTS、共享脚本",
+            "记录未实际运行浏览器的证据缺口",
+            "用合成内容拟定现有架构内的最小改动"
+          ],
+          "answer": "读取现有页面与适用的近端 AGENTS、共享脚本|用合成内容拟定现有架构内的最小改动|规划键盘、状态和四个视口的验证|记录未实际运行浏览器的证据缺口",
+          "explanation": "结论：正确顺序是先理解现有约束，再拟定最小改动，随后规划多维验证，最后明确未覆盖的运行证据。\n依据：先设计验证再扩大实现可以避免把截图或构建成功误当完整 UI 质量证据。\n实践：把四步转成评审清单，练习不启动服务器或浏览器。"
+        },
+        {
+          "id": "course-fs-03-q05",
+          "type": "true_false",
+          "content": "[fastapi1:前端 UI 工程] 为局部页面改动默认引入 Vue SFC、Vite 或新的客户端状态库，符合该 skill 的项目边界。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "错误",
+          "explanation": "结论：默认引入新的前端架构不符合边界。\n依据：该仓库使用 Vue 3 全局版、Tailwind CDN、页面内脚本和共享 `html/js/` 工具；广泛架构变化需要用户明确要求。\n实践：在合成方案中标出要复用的现有页面和共享工具。"
+        }
+      ]
+    },
+    {
+      "id": "course-fs-04",
+      "code": "FS04",
+      "title": "FS04 fastapi1:安全加固",
+      "order": 4,
+      "lab_ref": "FS04",
+      "source_text": "fastapi1@710807b32a2a7af6b48496390d15c728a8afd06b 的 .agents/skills/security-and-hardening/SKILL.md 脱敏快照；2026-07-20。",
+      "questions": [
+        {
+          "id": "course-fs-04-q01",
+          "type": "multiple_choice",
+          "content": "[fastapi1:安全加固] 合成改动涉及鉴权、导出权限和外部回调，最合适的显式调用是什么？",
+          "options": [
+            "调用 $security-and-hardening，先检查信任边界、最小权限和敏感数据流",
+            "调用 $performance-optimization，用响应时间代替权限审查",
+            "调用 $git-branch-pr-merge，直接发布后再补安全检查",
+            "调用 $remote-server-operator，从生产数据验证越权"
+          ],
+          "answer": "调用 $security-and-hardening，先检查信任边界、最小权限和敏感数据流",
+          "explanation": "结论：调用 $security-and-hardening，先检查信任边界、最小权限和敏感数据流。\n依据：`security-and-hardening` 的触发范围覆盖 auth、authorization、secrets、输入、导出、数据库、Redis、邮件、回调、AI 调用和外部集成。\n错误选项：B：性能数据不能证明权限或输入边界安全。；C：Git 发布流程不能替代发布前安全审查。；D：课程不得访问生产或真实用户数据。\n实践：为虚构导出接口画出输入、权限、输出和日志四个边界。"
+        },
+        {
+          "id": "course-fs-04-q02",
+          "type": "matching",
+          "content": "[fastapi1:安全加固] 将安全关注点与课程中的正确只读检查配对。",
+          "options": [],
+          "answer": "认证授权-核对后端权限依赖|外部输入-核对边界校验与参数化|秘密与日志-只说明存在和风险而不回显值",
+          "explanation": "结论：认证授权对应后端权限依赖，外部输入对应边界校验与参数化，秘密与日志对应不回显具体值。\n依据：SKILL.md 明确要求后端强制权限、系统边界验证输入、参数化查询，并禁止把 secret 值写入文档、日志或回复。\n实践：用合成字段名完成一次检查，不填入真实 token、数据库 URL 或客户内容。",
+          "match_left": [
+            "认证授权",
+            "外部输入",
+            "秘密与日志"
+          ],
+          "match_right": [
+            "核对后端权限依赖",
+            "核对边界校验与参数化",
+            "只说明存在和风险而不回显值"
+          ]
+        },
+        {
+          "id": "course-fs-04-q03",
+          "type": "multiple_choice",
+          "content": "[fastapi1:安全加固] 以下哪种情况必须停止并请求明确授权或脱敏输入？",
+          "options": [
+            "复用现有 `user_required` 做静态方案",
+            "检查响应模型是否排除敏感字段",
+            "需要新增认证流、改变 CORS、接入外部服务，或必须读取真实 secret 才能继续",
+            "用合成 payload 检查长度和枚举约束"
+          ],
+          "answer": "需要新增认证流、改变 CORS、接入外部服务，或必须读取真实 secret 才能继续",
+          "explanation": "结论：需要新增认证流、改变 CORS、接入外部服务，或必须读取真实 secret 才能继续。\n依据：新增认证、敏感数据类别、外部集成、CORS、上传、限流和提权属于 Ask First；真实 secret 也不能进入课程。\n错误选项：A：复用现有依赖并做静态方案在课程边界内。；B：检查公开字段边界是安全审查的正常工作。；D：合成 payload 可用于只读课程练习。\n实践：把高风险请求改写成“所需批准 / 合成替代 / 停止条件”。"
+        },
+        {
+          "id": "course-fs-04-q04",
+          "type": "multiple_choice",
+          "content": "[fastapi1:安全加固] 哪份验收报告不会把安全 skill 伪装成执行器？",
+          "options": [
+            "声称已经修复所有生产漏洞",
+            "贴出依赖审计的原始秘密和环境信息",
+            "只给出“框架默认安全”的结论",
+            "列出威胁、现有控制、证据路径、缺口、建议验证与未执行动作"
+          ],
+          "answer": "列出威胁、现有控制、证据路径、缺口、建议验证与未执行动作",
+          "explanation": "结论：列出威胁、现有控制、证据路径、缺口、建议验证与未执行动作。\n依据：课程只允许基于固定源码和合成输入形成可审查的安全结论；实现、生产验证与外部操作必须保持未执行。\n错误选项：A：静态课程不能证明生产漏洞已修复。；B：安全审计不得暴露 secret 或环境值。；C：框架提供工具但不自动保证正确使用。\n实践：为一条虚构高风险发现写出严重度、证据与验证计划。"
+        },
+        {
+          "id": "course-fs-04-q05",
+          "type": "true_false",
+          "content": "[fastapi1:安全加固] 只要前端隐藏了某个按钮，就已经建立了可靠的权限边界。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "错误",
+          "explanation": "结论：前端隐藏不是可靠的授权边界。\n依据：项目规则要求角色、区域、导出和数据可见性在后端强制执行；客户端过滤只能改善体验。\n实践：在合成 API 方案中指出后端依赖与对象级权限检查位置。"
+        }
+      ]
+    },
+    {
+      "id": "course-fs-05",
+      "code": "FS05",
+      "title": "FS05 fastapi1:性能优化",
+      "order": 5,
+      "lab_ref": "FS05",
+      "source_text": "fastapi1@710807b32a2a7af6b48496390d15c728a8afd06b 的 .agents/skills/performance-optimization/SKILL.md 脱敏快照；2026-07-20。",
+      "questions": [
+        {
+          "id": "course-fs-05-q01",
+          "type": "true_false",
+          "content": "[fastapi1:性能优化] 没有基线测量时，应先调用 $performance-optimization 增加缓存，再观察是否变快。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "错误",
+          "explanation": "结论：没有基线时不应先增加缓存。\n依据：该 skill 的首要原则是 Measure → Identify → Fix → Verify → Guard；新缓存层还需要证据与用户批准。\n实践：为虚构慢接口先写出可重复的基线指标和单一假设。"
+        },
+        {
+          "id": "course-fs-05-q02",
+          "type": "multiple_choice",
+          "content": "[fastapi1:性能优化] 哪组记录最能证明性能分析形成了紧密反馈循环？",
+          "options": [
+            "“感觉更快”与一张页面截图",
+            "同一合成流程的基线、瓶颈证据、目标指标、最小改动和复测计划",
+            "一次没有输入规模的耗时",
+            "一份与症状无关的通用优化清单"
+          ],
+          "answer": "同一合成流程的基线、瓶颈证据、目标指标、最小改动和复测计划",
+          "explanation": "结论：同一合成流程的基线、瓶颈证据、目标指标、最小改动和复测计划。\n依据：性能工作必须在同一流程上记录前后测量并定位具体瓶颈；无上下文的单次数字和通用清单不能支持因果结论。\n错误选项：A：主观感受与截图不是可比较的性能数据。；C：缺少输入规模、环境与重复条件的耗时不可比较。；D：通用清单没有证明当前瓶颈。\n实践：用合成数据规模写出 p50/p95 或前端指标的基线表头。"
+        },
+        {
+          "id": "course-fs-05-q03",
+          "type": "multiple_choice",
+          "content": "[fastapi1:性能优化] 出现哪种情况应停止优化并先补证据或批准？",
+          "options": [
+            "已定位一个重复查询路径",
+            "已有可重复的浏览器 trace",
+            "尚无瓶颈证据，却计划新增缓存层、任务系统或前端构建工具",
+            "需要比较同一查询的前后耗时"
+          ],
+          "answer": "尚无瓶颈证据，却计划新增缓存层、任务系统或前端构建工具",
+          "explanation": "结论：尚无瓶颈证据，却计划新增缓存层、任务系统或前端构建工具。\n依据：项目边界禁止在无证据和用户批准时引入缓存、任务系统、构建工具或架构变化；应先测量最小相关路径。\n错误选项：A：已定位的重复查询可进入最小优化设计。；B：可重复 trace 是合格的定位证据。；D：同一流程的前后比较是验证步骤。\n实践：把拟议优化拆成“现有证据 / 需要补的测量 / 需批准的架构变化”。"
+        },
+        {
+          "id": "course-fs-05-q04",
+          "type": "multiple_choice",
+          "content": "[fastapi1:性能优化] 哪项输出最符合课程的只读验收？",
+          "options": [
+            "直接修改生产索引并报告成功",
+            "只列出 Core Web Vitals 阈值",
+            "把所有慢请求归因于数据库",
+            "给出测量、定位、最小修复、复测和回归守卫的方案，并保留未运行项"
+          ],
+          "answer": "给出测量、定位、最小修复、复测和回归守卫的方案，并保留未运行项",
+          "explanation": "结论：给出测量、定位、最小修复、复测和回归守卫的方案，并保留未运行项。\n依据：完整性能闭环必须覆盖基线、瓶颈、修复、复测和防回归；课程只产出方案与预期证据，不修改数据库或运行生产。\n错误选项：A：生产索引变更超出课程和当前授权。；B：阈值不能替代当前症状的测量。；C：未测量就归因违反“先测量”原则。\n实践：把虚构慢页面的前端与后端测量分别列出。"
+        },
+        {
+          "id": "course-fs-05-q05",
+          "type": "true_false",
+          "content": "[fastapi1:性能优化] Core Web Vitals 可以衡量前端体验，但不能替代后端 API、SQL 与外部依赖的定时证据。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：前端体验指标与后端瓶颈证据必须分开。\n依据：SKILL.md 同时要求浏览器 trace、API 定时和数据库观察；不同层的指标回答不同问题。\n实践：给合成症状选择一个前端指标和一个后端指标。"
+        }
+      ]
+    },
+    {
+      "id": "course-fs-06",
+      "code": "FS06",
+      "title": "FS06 fastapi1:Harness 维护",
+      "order": 6,
+      "lab_ref": "FS06",
+      "source_text": "fastapi1@710807b32a2a7af6b48496390d15c728a8afd06b 的 .agents/skills/harness-maintenance/SKILL.md 脱敏快照；2026-07-20。",
+      "questions": [
+        {
+          "id": "course-fs-06-q01",
+          "type": "multiple_choice",
+          "content": "[fastapi1:Harness 维护] 用户要调整 `.codex/config.toml` 的项目 MCP 合同，哪项路由正确？",
+          "options": [
+            "调用 $harness-maintenance，先核对根与 `.codex` AGENTS、contract 和官方 Codex 文档",
+            "调用 $frontend-ui-engineering，把 MCP 配置做成页面",
+            "调用 $performance-optimization，把 MCP 数量视为性能问题",
+            "调用 $remote-server-operator，在生产机器直接修改配置"
+          ],
+          "answer": "调用 $harness-maintenance，先核对根与 `.codex` AGENTS、contract 和官方 Codex 文档",
+          "explanation": "结论：调用 $harness-maintenance，先核对根与 `.codex` AGENTS、contract 和官方 Codex 文档。\n依据：`harness-maintenance` 覆盖 config、contract、hooks、rules、agents、MCP、repo-local skills、graphify 与 Harness CI，并要求 Codex 行为核对官方文档。\n错误选项：B：前端 skill 不维护 Codex Harness。；C：MCP 合同变更不是一般性能优化。；D：项目 Harness 应先在版本化仓库维护，课程也不访问生产。\n实践：列出会被 config 变化影响的合同字段和最窄验证。"
+        },
+        {
+          "id": "course-fs-06-q02",
+          "type": "multiple_choice",
+          "content": "[fastapi1:Harness 维护] 哪种同步与验证判断正确？",
+          "options": [
+            "任何措辞变化都必须修改 contract",
+            "结构化 features、MCP、hooks、rules、skills 或图谱策略变化才同步 contract，并运行对应窄检查",
+            "只要 `check_harness_health.py` 通过，rules 内容就已全部审查",
+            "修改 `.agents/**` 必须刷新知识图谱"
+          ],
+          "answer": "结构化 features、MCP、hooks、rules、skills 或图谱策略变化才同步 contract，并运行对应窄检查",
+          "explanation": "结论：结构化 features、MCP、hooks、rules、skills 或图谱策略变化才同步 contract，并运行对应窄检查。\n依据：SKILL.md 区分结构化事实变化与纯措辞变化，并为 config/hooks/MCP、rules、skills、contract、CI 和 graphify 指定不同验证。\n错误选项：A：纯 prose 或普通元数据调整不一定改变结构化合同。；C：Harness health 不检查 rules 的全部内容，也不覆盖每个 contract 字段。；D：`.agents/**` 与 `.codex/**` 被图谱输入排除，单独修改时不刷新。\n实践：为一个合成 config 变更选择 contract、health、rules、skills 检查中的必要子集。"
+        },
+        {
+          "id": "course-fs-06-q03",
+          "type": "multiple_choice",
+          "content": "[fastapi1:Harness 维护] 哪类请求不应调用 `$harness-maintenance`？",
+          "options": [
+            "修改 SessionStart Hook 合同",
+            "调整只读 subagent 配置",
+            "只改普通 FastAPI 业务路由，且不改变 Harness 行为",
+            "审查 PostgreSQL MCP wrapper 的最小权限"
+          ],
+          "answer": "只改普通 FastAPI 业务路由，且不改变 Harness 行为",
+          "explanation": "结论：只改普通 FastAPI 业务路由，且不改变 Harness 行为。\n依据：该 skill 明确排除普通 FastAPI routes、SQLAlchemy services、Vue pages、ECharts charts 和常规测试，除非它们也改变 Codex Harness。\n错误选项：A：Hook 属于 Harness 维护范围。；B：`.codex/agents/**` 属于 Harness 维护范围。；D：MCP wrapper 与最小权限属于 Harness 维护范围。\n实践：为业务代码任务写一句不触发理由，并指出真正应选的 skill。"
+        },
+        {
+          "id": "course-fs-06-q04",
+          "type": "multiple_choice",
+          "content": "[fastapi1:Harness 维护] 如何避免把 config、Hook、MCP 或 rule 写成独立执行器？",
+          "options": [
+            "文件存在就声称功能已执行",
+            "把 contract 通过等同于所有工具健康",
+            "让只读 agent 自动修复发现的问题",
+            "分别记录声明、加载条件、暴露能力、实际调用证据和未验证层"
+          ],
+          "answer": "分别记录声明、加载条件、暴露能力、实际调用证据和未验证层",
+          "explanation": "结论：分别记录声明、加载条件、暴露能力、实际调用证据和未验证层。\n依据：Harness 文件描述配置与治理；加载、连接、调用和业务结果是不同证据层，且五个项目 agent 明确为只读。\n错误选项：A：静态文件只证明声明存在。；B：结构化合同不能证明所有外部工具健康。；C：只读 agent 不得修改文件或执行修复。\n实践：为合成 MCP 配置画出“声明 → 暴露 → 调用 → 结果”证据链。"
+        },
+        {
+          "id": "course-fs-06-q05",
+          "type": "true_false",
+          "content": "[fastapi1:Harness 维护] `check_harness_health.py` 一次通过，就能替代 Rules 内容审查、所有 contract consumer 测试和业务验证。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "错误",
+          "explanation": "结论：Harness health 不能替代其他验证层。\n依据：SKILL.md 明确说明该脚本覆盖 config/hooks/MCP 切片，不检查 Rules 内容，也不覆盖 contract 的每个字段。\n实践：按变更面选择最窄检查，并把未运行的验证明确列出。"
+        }
+      ]
+    },
+    {
+      "id": "course-fs-07",
+      "code": "FS07",
+      "title": "FS07 fastapi1:Git 分支审查合并",
+      "order": 7,
+      "lab_ref": "FS07",
+      "source_text": "fastapi1@710807b32a2a7af6b48496390d15c728a8afd06b 的 .agents/skills/git-branch-pr-merge/SKILL.md 脱敏快照；2026-07-20。",
+      "questions": [
+        {
+          "id": "course-fs-07-q01",
+          "type": "multiple_choice",
+          "content": "[fastapi1:Git 分支审查合并] 什么情况下应显式调用 `$git-branch-pr-merge`？",
+          "options": [
+            "用户明确要求审查分支、发布或更新中文 PR、合并 main 或清理本地分支",
+            "任何普通代码编辑开始前",
+            "只需要阅读一个源文件时",
+            "课程想演示一次真实 push 时"
+          ],
+          "answer": "用户明确要求审查分支、发布或更新中文 PR、合并 main 或清理本地分支",
+          "explanation": "结论：用户明确要求审查分支、发布或更新中文 PR、合并 main 或清理本地分支。\n依据：该 skill 只在用户要求 branch/PR/main merge/cleanup 等 release-style Git 工作时触发，不是普通开发的默认入口。\n错误选项：B：普通代码改动不自动授权 PR 或合并操作。；C：只读源码核对不需要发布流程。；D：课程练习禁止 push、merge 和外部状态变化。\n实践：用虚构分支名写出触发条件和不触发条件。"
+        },
+        {
+          "id": "course-fs-07-q02",
+          "type": "multiple_choice",
+          "content": "[fastapi1:Git 分支审查合并] 哪份流程预览符合该 skill 的安全顺序？",
+          "options": [
+            "先删除分支，再检查是否有未合并提交",
+            "先检查状态与分支差异，保护用户改动，运行验证，再准备中文 PR 并等待 checks",
+            "直接把本地 main push 到远端",
+            "跳过本地测试，只依赖 GitHub merge 按钮"
+          ],
+          "answer": "先检查状态与分支差异，保护用户改动，运行验证，再准备中文 PR 并等待 checks",
+          "explanation": "结论：先检查状态与分支差异，保护用户改动，运行验证，再准备中文 PR 并等待 checks。\n依据：Required Flow 要求先 fetch/status/分支枚举与三点 diff，保护脏工作树，完成本地验证和 GitHub checks 后才允许合并。\n错误选项：A：删除前必须确认提交已可从 main 或 origin/main 到达。；C：本地 main ahead 时应创建 feature branch，不直接推 main。；D：GitHub checks 不能替代与改动相关的本地验证。\n实践：课程只写预览：列出每一步的输入、停止条件和预期证据。"
+        },
+        {
+          "id": "course-fs-07-q03",
+          "type": "multiple_choice",
+          "content": "[fastapi1:Git 分支审查合并] 遇到哪种状态必须停止，而不是继续发布或清理？",
+          "options": [
+            "分支已经合并",
+            "PR 标题需要中文",
+            "工作树含归属不明改动、checks 失败，或待删分支有 main 不可达提交",
+            "远端分支列表为空"
+          ],
+          "answer": "工作树含归属不明改动、checks 失败，或待删分支有 main 不可达提交",
+          "explanation": "结论：工作树含归属不明改动、checks 失败，或待删分支有 main 不可达提交。\n依据：skill 明确要求保护用户改动、等待 checks，并在分支含不可达提交时报告精确分支与提交后停止。\n错误选项：A：已合并分支只需记录已集成，必要时安全清理。；B：中文 GitHub 输出是项目规范，不是阻塞。；D：空列表本身不证明错误，应结合命令状态判断。\n实践：为三种停止状态分别写出不产生外部副作用的报告字段。"
+        },
+        {
+          "id": "course-fs-07-q04",
+          "type": "multiple_choice",
+          "content": "[fastapi1:Git 分支审查合并] 本课程如何练习该有写入能力的 Git workflow？",
+          "options": [
+            "创建一个真实 PR 后立即关闭",
+            "push 一个临时远端分支",
+            "删除本地其他分支验证清理规则",
+            "只生成 diff 审查清单、中文 PR 正文草稿和命令预览，不执行 fetch/push/merge/delete"
+          ],
+          "answer": "只生成 diff 审查清单、中文 PR 正文草稿和命令预览，不执行 fetch/push/merge/delete",
+          "explanation": "结论：只生成 diff 审查清单、中文 PR 正文草稿和命令预览，不执行 fetch/push/merge/delete。\n依据：课程边界只允许合成分支图、草稿与只读证据；实际网络发布、合并和分支删除需要用户对具体仓库的明确请求。\n错误选项：A：创建 PR 会改变 GitHub 外部状态。；B：push 会改变远端仓库。；C：即使是本地删除也可能丢失未引用提交。\n实践：用 `<BASE>`、`<BRANCH>` 和 `<PR_NUMBER>` 占位符写流程。"
+        },
+        {
+          "id": "course-fs-07-q05",
+          "type": "true_false",
+          "content": "[fastapi1:Git 分支审查合并] 该 skill 的默认清理范围包括删除远端 feature branches。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "错误",
+          "explanation": "结论：默认清理只删除确认安全的本地其他分支。\n依据：远端分支只有在用户明确要求远端清理时才可删除；不可达提交会阻止本地删除。\n实践：在合成清理报告中分开列出本地与远端分支。"
+        }
+      ]
+    },
+    {
+      "id": "course-fs-08",
+      "code": "FS08",
+      "title": "FS08 fastapi1:Windows VM 操作",
+      "order": 8,
+      "lab_ref": "FS08",
+      "source_text": "fastapi1@710807b32a2a7af6b48496390d15c728a8afd06b 的 .agents/skills/windows-vm-operator/SKILL.md 脱敏快照；2026-07-20。",
+      "questions": [
+        {
+          "id": "course-fs-08-q01",
+          "type": "multiple_choice",
+          "content": "[fastapi1:Windows VM 操作] 用户明确要求在 Parallels Windows VM 中验证 fastapi1 客户端，哪项入口正确？",
+          "options": [
+            "调用 $windows-vm-operator，先发现 VM 状态并保持课程为命令预览",
+            "调用 $remote-server-operator，把 VM 当生产服务器",
+            "调用 $git-branch-pr-merge，用 PR checks 代替 Windows smoke",
+            "直接假定 VM 名称和登录用户"
+          ],
+          "answer": "调用 $windows-vm-operator，先发现 VM 状态并保持课程为命令预览",
+          "explanation": "结论：调用 $windows-vm-operator，先发现 VM 状态并保持课程为命令预览。\n依据：`windows-vm-operator` 覆盖 Parallels discovery、当前用户 PowerShell、截图、键盘事件与 Windows 客户端 smoke；VM 名称必须从状态中发现。\n错误选项：B：Windows VM 与远程生产服务器是不同执行面。；C：Git checks 不能证明 Windows 运行行为。；D：skill 明确禁止硬编码 VM 名称和错误的 systemprofile 上下文。\n实践：用 `<VM_NAME>` 和合成客户端命令写出只读预检。"
+        },
+        {
+          "id": "course-fs-08-q02",
+          "type": "multiple_choice",
+          "content": "[fastapi1:Windows VM 操作] 哪组步骤体现了该 skill 的最小权限与可观察性？",
+          "options": [
+            "默认以 systemprofile 运行所有命令",
+            "先发现 VM，再用当前桌面用户运行最小命令；视觉问题先截图并记录未操作项",
+            "先发送随机键盘事件，再判断 VM 是否启动",
+            "把凭证配置复制到课程日志"
+          ],
+          "answer": "先发现 VM，再用当前桌面用户运行最小命令；视觉问题先截图并记录未操作项",
+          "explanation": "结论：先发现 VM，再用当前桌面用户运行最小命令；视觉问题先截图并记录未操作项。\n依据：Workflow 规定先 `prlctl list`，命令优先 current-user，视觉状态先 capture；凭证、手机号、客户标识与任务文本不得进入输出。\n错误选项：A：默认 systemprofile 可能与真实桌面用户环境不一致。；C：未发现状态前发送输入既不可控也缺乏证据。；D：客户端凭证和客户数据必须脱敏。\n实践：写出状态、用户、命令、截图和脱敏五项预期证据。"
+        },
+        {
+          "id": "course-fs-08-q03",
+          "type": "multiple_choice",
+          "content": "[fastapi1:Windows VM 操作] 哪种情况必须停止 VM 路径？",
+          "options": [
+            "需要读取 `prlctl --help` 的静态说明",
+            "合成 smoke 只检查命令形状",
+            "动作会删除 VM bundle、清除大量用户数据、暴露凭证，或执行未授权真实业务任务",
+            "需要说明命令行不能替代鼠标 UI"
+          ],
+          "answer": "动作会删除 VM bundle、清除大量用户数据、暴露凭证，或执行未授权真实业务任务",
+          "explanation": "结论：动作会删除 VM bundle、清除大量用户数据、暴露凭证，或执行未授权真实业务任务。\n依据：skill 允许范围内的 VM 操作，但明确要求在破坏 VM、广泛数据删除、秘密暴露或超出用户任务的真实业务动作前停止。\n错误选项：A：帮助文本属于只读事实来源。；B：合成命令形状检查符合课程边界。；D：说明 UI 限制是正确的风险披露。\n实践：把真实任务 ID、用户配置和 VM 名称都替换成角色明确的占位符。"
+        },
+        {
+          "id": "course-fs-08-q04",
+          "type": "multiple_choice",
+          "content": "[fastapi1:Windows VM 操作] 课程的可观察验收应是什么？",
+          "options": [
+            "声称已经启动 Windows 并部署客户端",
+            "贴出 Windows 用户配置内容",
+            "运行一次真实领取或同步任务",
+            "给出 `<VM_NAME>` 的发现、current-user 命令、截图与停止条件预览，并注明未执行"
+          ],
+          "answer": "给出 `<VM_NAME>` 的发现、current-user 命令、截图与停止条件预览，并注明未执行",
+          "explanation": "结论：给出 `<VM_NAME>` 的发现、current-user 命令、截图与停止条件预览，并注明未执行。\n依据：课程只使用合成 fixture 与命令预览，不调用 Parallels、Computer Use 或真实客户端任务；输出必须区分计划与运行证据。\n错误选项：A：没有运行证据时不能声称 VM 已启动或已部署。；B：用户配置可能包含 Account-Key 或 Bearer。；C：真实任务会改变外部业务状态。\n实践：让同伴检查预览中是否仍含真实 VM、账号、任务或客户信息。"
+        },
+        {
+          "id": "course-fs-08-q05",
+          "type": "true_false",
+          "content": "[fastapi1:Windows VM 操作] `prlctl exec` 能直接可靠地完成任意鼠标驱动的 Windows UI 流程。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "错误",
+          "explanation": "结论：`prlctl exec` 不能替代任意鼠标 UI 操作。\n依据：SKILL.md 要求鼠标密集流程结合 Computer Use 或 Windows 侧脚本，并先用截图建立视觉状态。\n实践：在合成方案中把命令行 smoke 与视觉 UI 验证分开。"
+        }
+      ]
+    },
+    {
+      "id": "course-fs-09",
+      "code": "FS09",
+      "title": "FS09 fastapi1:远程服务器运维",
+      "order": 9,
+      "lab_ref": "FS09",
+      "source_text": "fastapi1@710807b32a2a7af6b48496390d15c728a8afd06b 的 .agents/skills/remote-server-operator/SKILL.md 脱敏快照；2026-07-20。",
+      "questions": [
+        {
+          "id": "course-fs-09-q01",
+          "type": "multiple_choice",
+          "content": "[fastapi1:远程服务器运维] 用户明确要求检查 fastapi1 生产发布流程，课程应怎样路由？",
+          "options": [
+            "识别应调用 $remote-server-operator，但只输出脱敏预检与健康验证方案",
+            "调用 $windows-vm-operator，把生产主机当 VM",
+            "直接执行远程重启以证明 skill 可用",
+            "把 SSH 身份文件路径写进答案"
+          ],
+          "answer": "识别应调用 $remote-server-operator，但只输出脱敏预检与健康验证方案",
+          "explanation": "结论：识别应调用 $remote-server-operator，但只输出脱敏预检与健康验证方案。\n依据：`remote-server-operator` 只用于明确的生产 SSH、部署、服务重启、health/ready 与上线 smoke；课程只能识别入口和安全顺序。\n错误选项：B：Windows VM 与生产服务器边界不同。；C：远程重启是外部写入，课程不执行。；D：个人身份文件绝对路径不应进入课程。\n实践：使用 `<PRODUCTION_HOST>`、`<DEPLOY_DIR>`、`<SERVICE>` 占位符描述流程。"
+        },
+        {
+          "id": "course-fs-09-q02",
+          "type": "multiple_choice",
+          "content": "[fastapi1:远程服务器运维] 哪份运维预览最符合固定合同与脱敏要求？",
+          "options": [
+            "回显 SSH 命令中的真实账号、IP 和身份文件",
+            "先核对目标提交与远端工作树，再预览快进更新、服务检查、health/ready 和 SHA 回读",
+            "只要公网 health 返回成功就结束",
+            "把生产 `.env` 加入诊断附件"
+          ],
+          "answer": "先核对目标提交与远端工作树，再预览快进更新、服务检查、health/ready 和 SHA 回读",
+          "explanation": "结论：先核对目标提交与远端工作树，再预览快进更新、服务检查、health/ready 和 SHA 回读。\n依据：skill 要求部署前确认本地提交与远端干净状态，部署后同时检查服务、health/ready、launch readiness 和实际 HEAD；秘密与生产环境值必须隐藏。\n错误选项：A：真实基础设施标识和个人密钥路径不属于课程内容。；C：单一 health 响应不能证明提交、ready 和上线检查一致。；D：生产 `.env` 绝不能进入课程、日志或附件。\n实践：为每一步写“声明证据 / 运行证据 / 未验证”，但不连接网络。"
+        },
+        {
+          "id": "course-fs-09-q03",
+          "type": "multiple_choice",
+          "content": "[fastapi1:远程服务器运维] 哪种状态必须停止远程流程？",
+          "options": [
+            "需要预览 `git status` 的期望字段",
+            "计划检查 health 与 ready 两个端点",
+            "远端有无关改动、动作涉及破坏性迁移或广泛删除，或会暴露 secret/执行未授权业务",
+            "部署计划需要记录目标 commit"
+          ],
+          "answer": "远端有无关改动、动作涉及破坏性迁移或广泛删除，或会暴露 secret/执行未授权业务",
+          "explanation": "结论：远端有无关改动、动作涉及破坏性迁移或广泛删除，或会暴露 secret/执行未授权业务。\n依据：Workflow 明确要求远端工作树干净，并在破坏性数据库迁移、广泛数据删除、秘密暴露和超授权业务动作前停止。\n错误选项：A：预期字段说明不产生远程副作用。；B：health/ready 是授权运维后的正常验证面。；D：记录目标 commit 是防止部署漂移的必要步骤。\n实践：把阻塞报告写成状态、风险、缺失授权和安全恢复路径。"
+        },
+        {
+          "id": "course-fs-09-q04",
+          "type": "multiple_choice",
+          "content": "[fastapi1:远程服务器运维] 如何避免把生产配置或 helper 当作已经完成部署？",
+          "options": [
+            "helper 文件存在就标记部署成功",
+            "远程命令退出码为零就忽略目标 SHA",
+            "只检查 service 名称写在文档里",
+            "分别要求目标 commit、远端干净状态、服务状态、health/ready、readiness 与 HEAD 一致证据"
+          ],
+          "answer": "分别要求目标 commit、远端干净状态、服务状态、health/ready、readiness 与 HEAD 一致证据",
+          "explanation": "结论：分别要求目标 commit、远端干净状态、服务状态、health/ready、readiness 与 HEAD 一致证据。\n依据：配置与 helper 只定义能力；真实发布需要多个独立运行证据，尤其是部署后 HEAD 等于预期 SHA。\n错误选项：A：helper 存在只证明脚本被版本控制。；B：零退出码不能证明部署了正确提交。；C：静态 service 名称不能证明服务正在运行。\n实践：用合成值制作一张发布证据表，所有实际状态标为未运行。"
+        },
+        {
+          "id": "course-fs-09-q05",
+          "type": "true_false",
+          "content": "[fastapi1:远程服务器运维] 公网 `/health` 成功就足以证明目标提交已部署、服务 ready 且上线检查全部通过。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "错误",
+          "explanation": "结论：单一 health 响应不足以证明完整发布。\n依据：skill 还要求 service 状态、ready、launch readiness 和部署后 HEAD 与目标 SHA 一致。\n实践：为合成发布列出缺失的每一种证据。"
+        }
+      ]
+    }
+  ]
+}

@@ -6,8 +6,8 @@
   },
   "source": {
     "kind": "local-sanitized",
-    "ref": "codex-cli-0.144.1",
-    "snapshot": "2026-07-11"
+    "ref": "codex-cli-0.144.6",
+    "snapshot": "2026-07-20"
   },
   "decks": [
     {
@@ -16,7 +16,7 @@
       "title": "CX01 凭证安全",
       "order": 1,
       "lab_ref": "CX01",
-      "source_text": "本机 Codex CLI 0.144.1 帮助与 2026-07-11 配置键级脱敏快照；OpenAI 官方 Customization 与安全文档。",
+      "source_text": "本机 Codex CLI 0.144.6 帮助与 2026-07-20 配置键级脱敏快照；OpenAI 官方 Customization 与安全文档。",
       "questions": [
         {
           "id": "course-cx-01-q01",
@@ -68,7 +68,7 @@
             "运行 codex --version，并只打印 approval_policy 与 sandbox_mode"
           ],
           "answer": "运行 codex --version，并只打印 approval_policy 与 sandbox_mode",
-          "explanation": "结论：版本与两个非秘密策略值是安全基线。\n依据：它们足以确认课程对应 0.144.1，以及当前审批和沙箱组合；递归搜索、完整配置和环境导出都会扩大不必要的数据暴露面。\n错误选项：A：递归搜索会读取无关文件，并可能把匹配到的秘密打印出来；B：遮住窗口不影响命令已经读取和输出完整配置；C：导出全部环境会把潜在凭证复制到剪贴板。\n实践：使用白名单提取明确字段，输出前再次检查命令不会显示其他表、环境值或个人绝对路径。"
+          "explanation": "结论：版本与两个非秘密策略值是安全基线。\n依据：它们足以确认课程对应 0.144.6，以及当前审批和沙箱组合；递归搜索、完整配置和环境导出都会扩大不必要的数据暴露面。\n错误选项：A：递归搜索会读取无关文件，并可能把匹配到的秘密打印出来；B：遮住窗口不影响命令已经读取和输出完整配置；C：导出全部环境会把潜在凭证复制到剪贴板。\n实践：使用白名单提取明确字段，输出前再次检查命令不会显示其他表、环境值或个人绝对路径。"
         },
         {
           "id": "course-cx-01-q05",
@@ -91,7 +91,7 @@
       "title": "CX02 有效配置",
       "order": 2,
       "lab_ref": "CX02",
-      "source_text": "本机配置键级快照、Codex CLI 0.144.1 strict-config 表面与 OpenAI 官方 Configuration Reference。",
+      "source_text": "本机配置键级快照、Codex CLI 0.144.6 strict-config 表面与 OpenAI 官方 Configuration Reference。",
       "questions": [
         {
           "id": "course-cx-02-q01",
@@ -104,7 +104,7 @@
             "只要重启桌面应用后文件仍存在"
           ],
           "answer": "当前版本识别、所在层允许且会加载，未被高层或 requirements 否决",
-          "explanation": "结论：语法存在不等于配置生效。\n依据：有效性同时取决于 0.144.1 是否支持该键、所在层允许该键且会加载、更高优先级是否覆盖，以及管理员 requirements 是否限制最终值；项目层的 provider、通知等机器级键即使语法正确也会被忽略。\n错误选项：A：语法解析只证明文件格式成立，未知键仍可能被拒绝或忽略；C：名称像官方术语不能证明当前版本实现了该键；D：文件保留只说明磁盘内容未变，不说明加载层或最终值。\n实践：先查当前版本和配置层限制，用支持 strict-config 的运行时命令检查未知字段，再核对 requirements 与可观察行为。"
+          "explanation": "结论：语法存在不等于配置生效。\n依据：有效性同时取决于 0.144.6 是否支持该键、所在层允许该键且会加载、更高优先级是否覆盖，以及管理员 requirements 是否限制最终值；项目层的 provider、通知等机器级键即使语法正确也会被忽略。\n错误选项：A：语法解析只证明文件格式成立，未知键仍可能被拒绝或忽略；C：名称像官方术语不能证明当前版本实现了该键；D：文件保留只说明磁盘内容未变，不说明加载层或最终值。\n实践：先查当前版本和配置层限制，用支持 strict-config 的运行时命令检查未知字段，再核对 requirements 与可观察行为。"
         },
         {
           "id": "course-cx-02-q02",
@@ -130,7 +130,7 @@
             "备份配置，按当前参考核对键，再用 strict-config 验证"
           ],
           "answer": "备份配置，按当前参考核对键，再用 strict-config 验证",
-          "explanation": "结论：先定位不兼容键，不做破坏性重置。\n依据：未知键通常是版本差异、拼写或层级错误；清空目录会丢失无关设置，关闭检查则掩盖根因。\n错误选项：A：清空主目录会破坏无关配置和状态，且没有定位具体不兼容键；B：强制改成字符串可能改变合法类型，不能让未知键变成受支持键；C：关闭严格检查只会隐藏错误，不能确认升级后的真实语义。\n实践：保存可回滚副本，逐个对照 0.144.1 配置参考，只改一个键，用 codex --strict-config mcp-server </dev/null 做 EOF 检查并记录结果。"
+          "explanation": "结论：先定位不兼容键，不做破坏性重置。\n依据：未知键通常是版本差异、拼写或层级错误；清空目录会丢失无关设置，关闭检查则掩盖根因。\n错误选项：A：清空主目录会破坏无关配置和状态，且没有定位具体不兼容键；B：强制改成字符串可能改变合法类型，不能让未知键变成受支持键；C：关闭严格检查只会隐藏错误，不能确认升级后的真实语义。\n实践：保存可回滚副本，逐个对照 0.144.6 配置参考，只改一个键，用 codex --strict-config mcp-server </dev/null 做 EOF 检查并记录结果。"
         },
         {
           "id": "course-cx-02-q04",
@@ -143,7 +143,7 @@
             "显示配置中所有 URL、环境表和值"
           ],
           "answer": "codex --strict-config mcp-server </dev/null，并白名单读取两个策略值",
-          "explanation": "结论：用支持严格模式且在标准输入 EOF 后退出的运行时命令解析配置。\n依据：0.144.1 的 features 子命令不支持 --strict-config；mcp-server 支持严格解析，关闭标准输入后无需发起模型请求即可退出。白名单提取只输出已知策略枚举。\n错误选项：B：复制到公共目录会扩大配置暴露面，在线解析器还引入第三方传输；C：安装命令会改变本机状态，不适合作为只读解析检查；D：输出所有地址、环境表和值违反最小披露，并可能泄露凭证。\n实践：失败时把错误路径替换成 $HOME，只记录错误键名和版本；成功只证明字段被接受，不代表外部 MCP 已初始化。"
+          "explanation": "结论：用支持严格模式且在标准输入 EOF 后退出的运行时命令解析配置。\n依据：0.144.6 的 features 子命令不支持 --strict-config；mcp-server 支持严格解析，关闭标准输入后无需发起模型请求即可退出。白名单提取只输出已知策略枚举。\n错误选项：B：复制到公共目录会扩大配置暴露面，在线解析器还引入第三方传输；C：安装命令会改变本机状态，不适合作为只读解析检查；D：输出所有地址、环境表和值违反最小披露，并可能泄露凭证。\n实践：失败时把错误路径替换成 $HOME，只记录错误键名和版本；成功只证明字段被接受，不代表外部 MCP 已初始化。"
         },
         {
           "id": "course-cx-02-q05",
@@ -166,7 +166,7 @@
       "title": "CX03 AGENTS作用域",
       "order": 3,
       "lab_ref": "CX03",
-      "source_text": "2026-07-11 脱敏文件存在性观察与 OpenAI 官方 Custom instructions with AGENTS.md 文档。",
+      "source_text": "2026-07-20 脱敏文件存在性观察与 OpenAI 官方 Custom instructions with AGENTS.md 文档。",
       "questions": [
         {
           "id": "course-cx-03-q01",
@@ -241,7 +241,7 @@
       "title": "CX04 配置分层",
       "order": 4,
       "lab_ref": "CX04",
-      "source_text": "OpenAI 官方 Config basics 优先级、Configuration Reference 与本机 2026-07-11 键级快照。",
+      "source_text": "OpenAI 官方 Config basics 优先级、Configuration Reference 与本机 2026-07-20 键级快照。",
       "questions": [
         {
           "id": "course-cx-04-q01",
@@ -391,7 +391,7 @@
       "title": "CX06 Plugin来源",
       "order": 6,
       "lab_ref": "CX06",
-      "source_text": "本机 codex plugin list 的 2026-07-11 脱敏状态与 OpenAI 官方 Plugins 文档。",
+      "source_text": "本机 codex plugin list 的 2026-07-20 脱敏状态与 OpenAI 官方 Plugins 文档。",
       "questions": [
         {
           "id": "course-cx-06-q01",
@@ -541,7 +541,7 @@
       "title": "CX08 Hook与Rules",
       "order": 8,
       "lab_ref": "CX08",
-      "source_text": "本机 Hook 信任键名级观察、Codex CLI 0.144.1 execpolicy 帮助与 OpenAI 官方 Hooks、Rules 文档。",
+      "source_text": "本机 Hook 信任键名级观察、Codex CLI 0.144.6 execpolicy 帮助与 OpenAI 官方 Hooks、Rules 文档。",
       "questions": [
         {
           "id": "course-cx-08-q01",
@@ -616,7 +616,7 @@
       "title": "CX09 Subagent自动化",
       "order": 9,
       "lab_ref": "CX09",
-      "source_text": "Codex CLI 0.144.1 功能状态、当前任务脱敏空状态说明与 OpenAI 官方 Subagents、Scheduled tasks、Memories 文档。",
+      "source_text": "Codex CLI 0.144.6 功能状态、当前任务脱敏空状态说明与 OpenAI 官方 Subagents、Scheduled tasks、Memories 文档。",
       "questions": [
         {
           "id": "course-cx-09-q01",
@@ -636,7 +636,7 @@
           "type": "multiple_choice",
           "content": "[Codex] 材料题：快照显示 Memory、Goals、Automations 当前没有数据，能得出什么结论？",
           "options": [
-            "三个能力在 0.144.1 中都不存在",
+            "三个能力在 0.144.6 中都不存在",
             "只能说明当前没有对应状态，不能否定功能或入口存在",
             "说明 Subagent 也被永久禁用",
             "说明必须删除配置后才能创建数据"
@@ -691,7 +691,7 @@
       "title": "CX10 场景化诊断",
       "order": 10,
       "lab_ref": "CX10",
-      "source_text": "Codex CLI 0.144.1、本机 2026-07-11 脱敏快照与 OpenAI 官方 Customization 文档的综合诊断矩阵。",
+      "source_text": "Codex CLI 0.144.6、本机 2026-07-20 脱敏快照与 OpenAI 官方 Customization 文档的综合诊断矩阵。",
       "questions": [
         {
           "id": "course-cx-10-q01",
@@ -748,7 +748,7 @@
         {
           "id": "course-cx-10-q05",
           "type": "multiple_choice",
-          "content": "[Codex] 审查题：报告因当前 Memory、Goal、Automation 列表为空，就断言 0.144.1 不支持这些能力。应如何修正？",
+          "content": "[Codex] 审查题：报告因当前 Memory、Goal、Automation 列表为空，就断言 0.144.6 不支持这些能力。应如何修正？",
           "options": [
             "保留断言，因为空列表等于功能不存在",
             "改成三个能力都已启用并正在使用",

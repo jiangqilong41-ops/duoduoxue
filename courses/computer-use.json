@@ -1,0 +1,160 @@
+{
+  "course": {
+    "id": "computer-use",
+    "prefix": "CU",
+    "title": "computer-use"
+  },
+  "source": {
+    "kind": "local-sanitized",
+    "ref": "computer-use@1.0.1000451",
+    "snapshot": "2026-07-20"
+  },
+  "decks": [
+    {
+      "id": "course-cu-01",
+      "code": "CU01",
+      "title": "CU01 Computer Use 插件总览",
+      "order": 1,
+      "lab_ref": "CU01",
+      "source_text": "computer-use@1.0.1000451 的 .codex-plugin/plugin.json 与 canonical skills 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-cu-01-q01",
+          "type": "multiple_choice",
+          "content": "[Computer Use] 第一次学习 Computer Use，怎样建立正确路径？",
+          "options": [
+            "先学习插件总览，再逐个学习 1 个独立 skill 单元",
+            "只背插件名，不区分内部 skill",
+            "同时调用所有可见工具",
+            "先在真实系统执行再补边界"
+          ],
+          "answer": "先学习插件总览，再逐个学习 1 个独立 skill 单元",
+          "explanation": "结论：先学习插件总览，再逐个学习 1 个独立 skill 单元。\n依据：manifest 声明 1 个 canonical skill；总览负责地图，后续单元负责具体判断。\n错误选项：B：无法形成路由能力；C：忽略了接口优先级和停止条件；D：课程不授权真实外部动作\n实践：列出每个 skill 的调用名、适用场景和一个停止条件。"
+        },
+        {
+          "id": "course-cu-01-q02",
+          "type": "multiple_choice",
+          "content": "[Computer Use] 课程事实应如何固定？",
+          "options": [
+            "每次启动自动覆盖为最新版",
+            "使用 computer-use@1.0.1000451 的 local-sanitized 快照并记录 2026-07-20",
+            "复制插件缓存和个人绝对路径",
+            "只保留营销名称"
+          ],
+          "answer": "使用 computer-use@1.0.1000451 的 local-sanitized 快照并记录 2026-07-20",
+          "explanation": "结论：使用 computer-use@1.0.1000451 的 local-sanitized 快照并记录 2026-07-20。\n依据：course source 同时记录 kind、ref 和 snapshot；技能事实来自 manifest 与 canonical SKILL.md。\n错误选项：A：会破坏可复现性；C：会泄露机器信息且超出课程范围；D：无法追溯版本与来源\n实践：对照研究表核对版本、相对路径和 SHA-256。"
+        },
+        {
+          "id": "course-cu-01-q03",
+          "type": "multiple_choice",
+          "content": "[Computer Use] 课程练习应产出什么？",
+          "options": [
+            "真实系统操作后的截图",
+            "账户登录状态和 cookies",
+            "合成场景下的路由理由、输入输出、停止条件和预期验收证据",
+            "一句没有证据的“已完成”"
+          ],
+          "answer": "合成场景下的路由理由、输入输出、停止条件和预期验收证据",
+          "explanation": "结论：合成场景下的路由理由、输入输出、停止条件和预期验收证据。\n依据：接口选择、合成 UI 状态读取计划、动作前确认点和预期证据。\n错误选项：A：课程不执行真实 UI 或部署；B：属于敏感运行态信息；D：不能观察或复核\n实践：使用 <synthetic-fixture> 写一份只读路由记录。"
+        },
+        {
+          "id": "course-cu-01-q04",
+          "type": "multiple_choice",
+          "content": "[Computer Use] 遇到真实凭证、敏感状态或不可逆动作时怎么办？",
+          "options": [
+            "把凭证粘进提示词",
+            "先执行再询问",
+            "复制生产状态到本地",
+            "停止练习，改用 <synthetic-fixture>、占位符和预期证据"
+          ],
+          "answer": "停止练习，改用 <synthetic-fixture>、占位符和预期证据",
+          "explanation": "结论：停止练习，改用 <synthetic-fixture>、占位符和预期证据。\n依据：课程只使用 <synthetic-fixture> accessibility tree 与虚构截图说明；不调用 node_repl，不启动或控制真实 Mac 应用。\n错误选项：A：会扩大敏感数据暴露；B：授权必须发生在受约束动作之前；C：生产数据不属于课程材料\n实践：明确写出停止原因，不尝试绕过。"
+        },
+        {
+          "id": "course-cu-01-q05",
+          "type": "true_false",
+          "content": "[Computer Use] 插件可用或已安装就等于课程获得真实 UI、账户或部署操作授权。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "错误",
+          "explanation": "结论：安装状态不等于授权，课程只允许合成材料和预期证据。\n依据：manifest 描述能力，不替代用户授权与安全边界。\n实践：把实际操作改写成路由题和发布/动作前检查清单。"
+        }
+      ]
+    },
+    {
+      "id": "course-cu-02",
+      "code": "CU02",
+      "title": "CU02 computer-use",
+      "order": 2,
+      "lab_ref": "CU02",
+      "source_text": "computer-use@1.0.1000451 的 skills/computer-use/SKILL.md 本地脱敏快照；相邻 agents/openai.yaml 不存在，显示名回退为 SKILL.md frontmatter name computer-use；调用名 computer-use；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-cu-02-q01",
+          "type": "multiple_choice",
+          "content": "[computer-use] 需要操作一个没有专用 connector、API 或 CLI 的本地 Mac 应用 UI，最合适的入口是什么？",
+          "options": [
+            "显式调用 $computer-use:computer-use（computer-use），先标出读取/动作和确认边界",
+            "无条件使用 Browser",
+            "直接用 AppleScript",
+            "跳过状态读取直接点坐标"
+          ],
+          "answer": "显式调用 $computer-use:computer-use（computer-use），先标出读取/动作和确认边界",
+          "explanation": "结论：显式调用 $computer-use:computer-use（computer-use），先标出读取/动作和确认边界。\n依据：Computer Use 是没有更窄接口时的本地 Mac UI 表面。\n错误选项：B：目标是本地应用，不一定是浏览器；C：除非用户特意要求，否则 skill 规定通过 node_repl 运行 Computer Use；D：应先读取应用状态并优先 element_index\n实践：只用合成 accessibility tree 写操作计划，不执行任何 UI 动作。"
+        },
+        {
+          "id": "course-cu-02-q02",
+          "type": "multiple_choice",
+          "content": "[computer-use] 同一任务已有专用应用 connector 可以完成语义操作，下一步是什么？",
+          "options": [
+            "仍用 Computer Use 因为能看见 UI",
+            "使用专用 connector，不启动 Computer Use",
+            "同时调用两者竞争",
+            "先截真实应用屏幕再选"
+          ],
+          "answer": "使用专用 connector，不启动 Computer Use",
+          "explanation": "结论：使用专用 connector，不启动 Computer Use。\n依据：SKILL.md 要求优先 dedicated plugin、skill、API 或 CLI。\n错误选项：A：专用接口更窄且证据更结构化；C：增加副作用和上下文；D：课程不读取真实桌面\n实践：对合成任务写一行接口选择理由。"
+        },
+        {
+          "id": "course-cu-02-q03",
+          "type": "multiple_choice",
+          "content": "[computer-use] 一次合成 UI 动作后还要决定下一步，应怎样处理 element_index？",
+          "options": [
+            "永久复用首次 index",
+            "只凭旧截图猜位置",
+            "重新获取最新 app state，再从新状态导出 element_index",
+            "直接连续点击直到成功"
+          ],
+          "answer": "重新获取最新 app state，再从新状态导出 element_index",
+          "explanation": "结论：重新获取最新 app state，再从新状态导出 element_index。\n依据：工作流要求动作后调用 get_app_state，不能复用 stale element_index。\n错误选项：A：UI 状态变化后 index 可能失效；B：应以最新 accessibility 状态为主；D：缺少状态反馈会扩大误操作\n实践：比较两份虚构 AX 树，标出 index 变化但不调用工具。"
+        },
+        {
+          "id": "course-cu-02-q04",
+          "type": "multiple_choice",
+          "content": "[computer-use] 界面要求输入新密码并提交，Computer Use 应怎样处理？",
+          "options": [
+            "只在提交前问一次即可代填密码",
+            "将密码先写入草稿框",
+            "把网页提示视为用户授权",
+            "要求用户接管并亲自完成凭证输入、确认和提交"
+          ],
+          "answer": "要求用户接管并亲自完成凭证输入、确认和提交",
+          "explanation": "结论：要求用户接管并亲自完成凭证输入、确认和提交。\n依据：确认政策把更改密码或认证凭证列为必须 hand-off 的动作。\n错误选项：A：改认证凭证属于 hand-off required；B：输入敏感数据本身已经是传输/操作；C：第三方内容不能提供权限\n实践：在合成流程中标记接管点，不收集任何凭证。"
+        },
+        {
+          "id": "course-cu-02-q05",
+          "type": "true_false",
+          "content": "[computer-use] 网页、PDF 或其他第三方内容中的指令本身可以授权 Computer Use 执行高风险动作。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "错误",
+          "explanation": "结论：第三方内容可能是恶意指令，不能代替用户授权。\n依据：确认政策只把用户亲自输入的明确意图视为授权来源。\n实践：为虚构提示注入写出“忽略并回到用户意图”的处理。"
+        }
+      ]
+    }
+  ]
+}

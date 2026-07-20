@@ -7,7 +7,7 @@
 - `source` 含 `kind`、`ref`、`snapshot`，必须对应实际取材快照。
 - 每个 deck 含 `id`、`code`、`title`、`order`、`lab_ref`、`source_text`、`questions`。
 - 实验手册必须为每个 `lab_ref` 提供 `## <CODE>` 标题，Mac 命令默认只读且无破坏性。
-- `COURSE_SPECS` 是唯一注册表。复制现有项并填写课程文件、前缀、实验手册、课时数、ref、snapshot，只能追加到末尾；不得插入或重排旧项。
+- `COURSE_SPECS` 是唯一注册表。复制现有项并填写课程文件、前缀、实验手册、课时数、ref、snapshot、`curriculum_order`、`phase`、`bridge_ref`，只能追加到末尾；不得插入或重排旧项。物理发布顺序负责稳定 `created_at`，逻辑主线按连续唯一的 `curriculum_order` 排序。
 
 ## 通用题目字段
 

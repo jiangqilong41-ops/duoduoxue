@@ -1,0 +1,1651 @@
+{
+  "course": {
+    "id": "codex-user-skills",
+    "prefix": "GS",
+    "title": "Codex 用户 Skills"
+  },
+  "source": {
+    "kind": "local-sanitized",
+    "ref": "codex-cli-0.144.6",
+    "snapshot": "2026-07-20"
+  },
+  "decks": [
+    {
+      "id": "course-gs-01",
+      "code": "GS01",
+      "title": "GS01 Codex 用户 Skills 总览",
+      "order": 1,
+      "lab_ref": "GS01",
+      "source_text": "codex-cli-0.144.6；用户级 SKILL.md 与 `.system` SKILL.md 的 2026-07-20 脱敏清单",
+      "questions": [
+        {
+          "id": "course-gs-01-q01",
+          "type": "multiple_choice",
+          "content": "[Codex 用户 Skills] 场景判断：学习者面对一个新任务，怎样开始这套课程最能建立“何时用哪个 skill”的能力？",
+          "options": [
+            "先读总览，再用合成场景比较一个主 skill 与相邻 skill 的触发边界",
+            "把 23 个 skill 全部调用一遍",
+            "只背 display name 和目录名",
+            "先安装或更新所有 skill"
+          ],
+          "answer": "先读总览，再用合成场景比较一个主 skill 与相邻 skill 的触发边界",
+          "explanation": "结论：先读总览，再用合成场景比较一个主 skill 与相邻 skill 的触发边界。\n依据：课程目标是选择与显式调用，不是把能力清单当批处理执行器。\n错误选项：B：全量调用会掩盖 skill 分工并引入不必要副作用；C：名称记忆不能证明会判断输入、输出与停止条件；D：安装或更新不是学习前置，也会改变外部状态\n实践：任选两个相邻单元，写出一条选择理由和一条排除理由。"
+        },
+        {
+          "id": "course-gs-01-q02",
+          "type": "multiple_choice",
+          "content": "[Codex 用户 Skills] 来源判断：目录名、SKILL.md 的 name 与 openai.yaml 的 display_name 不一致时，正式调用和展示应分别依据什么？",
+          "options": [
+            "调用和展示都使用目录名",
+            "调用依据 SKILL.md 的 name，展示依据 openai.yaml 的 display_name，并保留相对来源路径",
+            "调用使用中文 display_name",
+            "复制用户主目录绝对路径作为调用名"
+          ],
+          "answer": "调用依据 SKILL.md 的 name，展示依据 openai.yaml 的 display_name，并保留相对来源路径",
+          "explanation": "结论：调用依据 SKILL.md 的 name，展示依据 openai.yaml 的 display_name，并保留相对来源路径。\n依据：SKILL.md name 是调用标识，openai.yaml display_name 是界面名称，路径只承担来源追溯。\n错误选项：A：目录名可能只是存放位置，不能覆盖正式元数据；C：display_name 面向人类界面，不是稳定调用语法；D：绝对路径既不可移植，也违反课程脱敏要求\n实践：用一个合成示例写出 name、display_name 和相对路径三列。"
+        },
+        {
+          "id": "course-gs-01-q03",
+          "type": "multiple_choice",
+          "content": "[Codex 用户 Skills] 安全判断：怎样验证路由、配置、安装或外部执行类 skill，而不把练习变成真实操作？",
+          "options": [
+            "以真实账户写入成功作为成绩",
+            "读取 token、日志或状态库证明已配置",
+            "只提交合成输入、最小调用模板、停止条件和预期验收证据",
+            "把 skill 文件存在当成已经执行"
+          ],
+          "answer": "只提交合成输入、最小调用模板、停止条件和预期验收证据",
+          "explanation": "结论：只提交合成输入、最小调用模板、停止条件和预期验收证据。\n依据：课程练习限定为合成 fixture、提示词和只读判断，不扩大授权。\n错误选项：A：真实写入需要额外授权且不是路由学习证据；B：敏感运行态不属于课程输入；D：文件存在只能证明来源可见，不能证明加载、授权或执行\n实践：把一个会写外部系统的流程改写成纯计划和预期证据练习。"
+        },
+        {
+          "id": "course-gs-01-q04",
+          "type": "ordering",
+          "content": "[Codex 用户 Skills] 请按安全学习顺序排列一次全局 skill 场景判断。",
+          "options": [
+            "写出预期输出与停止条件",
+            "识别任务意图和必要输入",
+            "核对 SKILL.md name 与 display_name",
+            "选择一个主 skill 并排除相邻入口"
+          ],
+          "answer": "识别任务意图和必要输入|核对 SKILL.md name 与 display_name|选择一个主 skill 并排除相邻入口|写出预期输出与停止条件",
+          "explanation": "结论：先理解场景和元数据，再路由，最后定义可观察证据。\n依据：没有输入和正式调用标识，选择结论无法追溯；没有停止条件，练习容易越过安全边界。\n实践：将四步抄成检查表，用一个不涉及真实系统的例子走完。"
+        },
+        {
+          "id": "course-gs-01-q05",
+          "type": "true_false",
+          "content": "[Codex 用户 Skills] 判断：skill 可见、插件已缓存或配置文件存在，都不能单独证明本任务已授权并实际执行。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：正确。\n依据：来源可见、加载、信任、授权和实际执行是不同证据层。\n实践：为每一层各写一个只读可观察信号，不读取任何敏感值。"
+        }
+      ]
+    },
+    {
+      "id": "course-gs-02",
+      "code": "GS02",
+      "title": "GS02 Local:学术研究套件",
+      "order": 2,
+      "lab_ref": "GS02",
+      "source_text": "codex-cli-0.144.6 的 .codex/skills/academic-research-suite/SKILL.md；skill name academic-research-suite；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-gs-02-q01",
+          "type": "multiple_choice",
+          "content": "[Local:学术研究套件] 场景判断：虚构研究者只有“平台治理”这个宽泛题目，同时说最终想写论文，请判断第一步。最合适的下一步是什么？",
+          "options": [
+            "改用 $teach 直接建立长期通识课程",
+            "跳过“研究问题成熟度与当前阶段”，直接要求产出“一个明确的内部工作流和模式、当前阶段产物、下一道可选或强制门槛”",
+            "把“内部 WORKFLOW.md 文件存在”当作 Local:学术研究套件 已完成",
+            "显式调用 $academic-research-suite（Local:学术研究套件），先核对研究问题成熟度与当前阶段"
+          ],
+          "answer": "显式调用 $academic-research-suite（Local:学术研究套件），先核对研究问题成熟度与当前阶段",
+          "explanation": "结论：显式调用 $academic-research-suite（Local:学术研究套件），先核对研究问题成熟度与当前阶段。\n依据：该 skill 是研究工作流路由器，用途是把深度研究、论文写作、审稿、完整研究管线或实验规划请求路由到一个最匹配的内部 WORKFLOW.md。\n错误选项：A：teach 管理多轮教学工作区，不负责学术研究阶段路由；B：研究问题成熟度与当前阶段是该流程的必要入口，缺失时不能声称已得到可靠输出；C：内部 WORKFLOW.md 文件存在不是“一个明确的内部工作流和模式、当前阶段产物、下一道可选或强制门槛”的可观察证据\n实践：写一句 $academic-research-suite 调用，随后列出所需输入和一个停止条件；不要实际调用工具。"
+        },
+        {
+          "id": "course-gs-02-q02",
+          "type": "multiple_choice",
+          "content": "[Local:学术研究套件] 场景判断：只是一般事实问答，或宽泛论文主题尚未收敛为可回答的研究问题却要求立即写大纲。应如何处理？",
+          "options": [
+            "不调用 $academic-research-suite；先进入 deep-research 的 Socratic 模式收敛研究问题，不直接产出论文大纲",
+            "仍调用 $academic-research-suite，因为该 skill 已安装",
+            "删掉场景中的关键限制，再把任务强行改写成“需要文献综述、研究问题收敛、论文写作或审稿等学术流程，并能说明当前研究阶段”",
+            "先访问真实系统或写入一次，用结果反推是否适用"
+          ],
+          "answer": "不调用 $academic-research-suite；先进入 deep-research 的 Socratic 模式收敛研究问题，不直接产出论文大纲",
+          "explanation": "结论：不调用 $academic-research-suite；先进入 deep-research 的 Socratic 模式收敛研究问题，不直接产出论文大纲。\n依据：SKILL.md 将适用入口限定为“需要文献综述、研究问题收敛、论文写作或审稿等学术流程，并能说明当前研究阶段”，当前场景不满足。\n错误选项：B：安装状态不能覆盖不适用条件：“只是一般事实问答，或宽泛论文主题尚未收敛为可回答的研究问题却要求立即写大纲”；C：修改题目事实会让路由判断失真，不能证明原场景适用；D：真实访问或写入扩大了课程授权，也不能替代前置判断\n实践：写出正确替代入口或需要补充的一个条件。"
+        },
+        {
+          "id": "course-gs-02-q03",
+          "type": "multiple_choice",
+          "content": "[Local:学术研究套件] 输入输出判断：哪组接口最能让一次合成练习独立复核？",
+          "options": [
+            "输入只写“帮我完成”，输出只写“成功”",
+            "输入：研究意图、研究问题成熟度、已有文献或数据、当前阶段与期望交付物；输出：一个明确的内部工作流和模式、当前阶段产物、下一道可选或强制门槛",
+            "输入真实凭证或客户运行态，输出要求直接完成不可逆动作",
+            "只记录“内部 WORKFLOW.md 文件存在”，不定义结果结构"
+          ],
+          "answer": "输入：研究意图、研究问题成熟度、已有文献或数据、当前阶段与期望交付物；输出：一个明确的内部工作流和模式、当前阶段产物、下一道可选或强制门槛",
+          "explanation": "结论：输入：研究意图、研究问题成熟度、已有文献或数据、当前阶段与期望交付物；输出：一个明确的内部工作流和模式、当前阶段产物、下一道可选或强制门槛。\n依据：源 skill 的流程需要把“研究意图、研究问题成熟度、已有文献或数据、当前阶段与期望交付物”转化为“一个明确的内部工作流和模式、当前阶段产物、下一道可选或强制门槛”。\n错误选项：A：模糊输入缺少“研究意图、研究问题成熟度、已有文献或数据、当前阶段与期望交付物”，也没有可验收输出；C：敏感运行态和不可逆动作都超出本课程的合成只读边界；D：内部 WORKFLOW.md 文件存在不能替代“一个明确的内部工作流和模式、当前阶段产物、下一道可选或强制门槛”\n实践：把输入字段改成虚构值，并为输出列三项可观察检查。"
+        },
+        {
+          "id": "course-gs-02-q04",
+          "type": "fill_blank",
+          "content": "[Local:学术研究套件] 显式调用：已确认场景属于“需要文献综述、研究问题收敛、论文写作或审稿等学术流程，并能说明当前研究阶段”，应填写 ___。",
+          "options": [],
+          "answer": "$academic-research-suite",
+          "explanation": "结论：正式调用写作 $academic-research-suite。\n依据：SKILL.md 的 name 是 academic-research-suite，openai.yaml 的 display_name 是“Local:学术研究套件”。\n实践：在调用后追加一条合成任务，只要求路由理由、预期输出和停止条件。"
+        },
+        {
+          "id": "course-gs-02-q05",
+          "type": "true_false",
+          "content": "[Local:学术研究套件] 边界判断：不要一次加载整套资源；宽泛选题先走 Socratic 收敛；未获同意不得把未发表材料发送给外部模型。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：正确。\n依据：这是 academic-research-suite 的关键流程或安全边界，能防止把研究工作流路由器误当成无条件执行器。\n实践：把“研究问题成熟度与当前阶段”写进提示词末尾，并只检查计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-gs-03",
+      "code": "GS03",
+      "title": "GS03 Local:代理框架配置盘点",
+      "order": 3,
+      "lab_ref": "GS03",
+      "source_text": "codex-cli-0.144.6 的 .codex/skills/cataloging-agent-framework-configs/SKILL.md；skill name cataloging-agent-framework-configs；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-gs-03-q01",
+          "type": "multiple_choice",
+          "content": "[Local:代理框架配置盘点] 场景判断：虚构仓库同时有项目 config、禁用 MCP、插件缓存和 hooks.json，请区分来源层与活动状态。最合适的下一步是什么？",
+          "options": [
+            "改用 $graphify 回答普通模块依赖关系",
+            "跳过“来源快照、信任层与活动证据”，直接要求产出“以项目简介开头、按类别分节、每项一条且标注来源层和活动状态的证据化目录”",
+            "显式调用 $cataloging-agent-framework-configs（Local:代理框架配置盘点），先核对来源快照、信任层与活动证据",
+            "把“README 中的数量声明”当作 Local:代理框架配置盘点 已完成"
+          ],
+          "answer": "显式调用 $cataloging-agent-framework-configs（Local:代理框架配置盘点），先核对来源快照、信任层与活动证据",
+          "explanation": "结论：显式调用 $cataloging-agent-framework-configs（Local:代理框架配置盘点），先核对来源快照、信任层与活动证据。\n依据：该 skill 是只读配置盘点工作流，用途是基于仓库与非敏感配置证据，分类盘点 agent 框架的 skills、agents、MCP、hooks、插件、权限与生成缓存。\n错误选项：A：graphify 适合代码和内容关系，不能替代配置层、信任与启用状态盘点；B：来源快照、信任层与活动证据是该流程的必要入口，缺失时不能声称已得到可靠输出；D：README 中的数量声明不是“以项目简介开头、按类别分节、每项一条且标注来源层和活动状态的证据化目录”的可观察证据\n实践：写一句 $cataloging-agent-framework-configs 调用，随后列出所需输入和一个停止条件；不要实际调用工具。"
+        },
+        {
+          "id": "course-gs-03-q02",
+          "type": "multiple_choice",
+          "content": "[Local:代理框架配置盘点] 场景判断：用户要的是普通业务代码架构、调用链或模块关系，而不是 agent 配置面。应如何处理？",
+          "options": [
+            "仍调用 $cataloging-agent-framework-configs，因为该 skill 已安装",
+            "删掉场景中的关键限制，再把任务强行改写成“用户明确要列出或解释 Codex、Claude 或类似代理框架的配置面及启用证据”",
+            "先访问真实系统或写入一次，用结果反推是否适用",
+            "不调用 $cataloging-agent-framework-configs；改用代码架构或知识图谱工具，而不是输出 agent 配置目录"
+          ],
+          "answer": "不调用 $cataloging-agent-framework-configs；改用代码架构或知识图谱工具，而不是输出 agent 配置目录",
+          "explanation": "结论：不调用 $cataloging-agent-framework-configs；改用代码架构或知识图谱工具，而不是输出 agent 配置目录。\n依据：SKILL.md 将适用入口限定为“用户明确要列出或解释 Codex、Claude 或类似代理框架的配置面及启用证据”，当前场景不满足。\n错误选项：A：安装状态不能覆盖不适用条件：“用户要的是普通业务代码架构、调用链或模块关系，而不是 agent 配置面”；B：修改题目事实会让路由判断失真，不能证明原场景适用；C：真实访问或写入扩大了课程授权，也不能替代前置判断\n实践：写出正确替代入口或需要补充的一个条件。"
+        },
+        {
+          "id": "course-gs-03-q03",
+          "type": "multiple_choice",
+          "content": "[Local:代理框架配置盘点] 输入输出判断：哪组接口最能让一次合成练习独立复核？",
+          "options": [
+            "输入：仓库或 URL、版本或日期、顶层文档、manifest 与允许读取的非敏感配置；输出：以项目简介开头、按类别分节、每项一条且标注来源层和活动状态的证据化目录",
+            "输入只写“帮我完成”，输出只写“成功”",
+            "输入真实凭证或客户运行态，输出要求直接完成不可逆动作",
+            "只记录“README 中的数量声明”，不定义结果结构"
+          ],
+          "answer": "输入：仓库或 URL、版本或日期、顶层文档、manifest 与允许读取的非敏感配置；输出：以项目简介开头、按类别分节、每项一条且标注来源层和活动状态的证据化目录",
+          "explanation": "结论：输入：仓库或 URL、版本或日期、顶层文档、manifest 与允许读取的非敏感配置；输出：以项目简介开头、按类别分节、每项一条且标注来源层和活动状态的证据化目录。\n依据：源 skill 的流程需要把“仓库或 URL、版本或日期、顶层文档、manifest 与允许读取的非敏感配置”转化为“以项目简介开头、按类别分节、每项一条且标注来源层和活动状态的证据化目录”。\n错误选项：B：模糊输入缺少“仓库或 URL、版本或日期、顶层文档、manifest 与允许读取的非敏感配置”，也没有可验收输出；C：敏感运行态和不可逆动作都超出本课程的合成只读边界；D：README 中的数量声明不能替代“以项目简介开头、按类别分节、每项一条且标注来源层和活动状态的证据化目录”\n实践：把输入字段改成虚构值，并为输出列三项可观察检查。"
+        },
+        {
+          "id": "course-gs-03-q04",
+          "type": "fill_blank",
+          "content": "[Local:代理框架配置盘点] 显式调用：已确认场景属于“用户明确要列出或解释 Codex、Claude 或类似代理框架的配置面及启用证据”，应填写 ___。",
+          "options": [],
+          "answer": "$cataloging-agent-framework-configs",
+          "explanation": "结论：正式调用写作 $cataloging-agent-framework-configs。\n依据：SKILL.md 的 name 是 cataloging-agent-framework-configs，openai.yaml 的 display_name 是“Local:代理框架配置盘点”。\n实践：在调用后追加一条合成任务，只要求路由理由、预期输出和停止条件。"
+        },
+        {
+          "id": "course-gs-03-q05",
+          "type": "true_false",
+          "content": "[Local:代理框架配置盘点] 边界判断：文件存在不等于活动；不读取认证、会话、历史、日志、token、cookie 或 key 文件；只静态记录 hook，绝不执行。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：正确。\n依据：这是 cataloging-agent-framework-configs 的关键流程或安全边界，能防止把只读配置盘点工作流误当成无条件执行器。\n实践：把“来源快照、信任层与活动证据”写进提示词末尾，并只检查计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-gs-04",
+      "code": "GS04",
+      "title": "GS04 Agents:中文 Skill 元数据与更新",
+      "order": 4,
+      "lab_ref": "GS04",
+      "source_text": "codex-cli-0.144.6 的 .codex/skills/chinese-openai-yaml/SKILL.md；skill name chinese-openai-yaml；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-gs-04-q01",
+          "type": "multiple_choice",
+          "content": "[Agents:中文 Skill 元数据与更新] 场景判断：某个已知 skill 的中文显示名变成英文，但用户尚未确认写入，请设计安全处理顺序。最合适的下一步是什么？",
+          "options": [
+            "改用 $skill-creator 重写整个 skill",
+            "显式调用 $chinese-openai-yaml（Agents:中文 Skill 元数据与更新），先核对 dry-run 预览与 apply 确认",
+            "跳过“dry-run 预览与 apply 确认”，直接要求产出“恢复或更新预览、目标清单、验证结果；只有确认后才产生限定字段的修改”",
+            "把“发现一个英文 openai.yaml”当作 Agents:中文 Skill 元数据与更新 已完成"
+          ],
+          "answer": "显式调用 $chinese-openai-yaml（Agents:中文 Skill 元数据与更新），先核对 dry-run 预览与 apply 确认",
+          "explanation": "结论：显式调用 $chinese-openai-yaml（Agents:中文 Skill 元数据与更新），先核对 dry-run 预览与 apply 确认。\n依据：该 skill 是预览优先的元数据维护工作流，用途是恢复或备份生效 skill 的中文 display_name 与 short_description，并在确认后更新已登记的 GitHub skill。\n错误选项：A：skill-creator 负责技能创建与结构更新，不负责批量恢复限定 UI 字段；C：dry-run 预览与 apply 确认是该流程的必要入口，缺失时不能声称已得到可靠输出；D：发现一个英文 openai.yaml 不是“恢复或更新预览、目标清单、验证结果，只有确认后才产生限定字段的修改”的可观察证据\n实践：写一句 $chinese-openai-yaml 调用，随后列出所需输入和一个停止条件；不要实际调用工具。"
+        },
+        {
+          "id": "course-gs-04-q02",
+          "type": "multiple_choice",
+          "content": "[Agents:中文 Skill 元数据与更新] 场景判断：用户要创建新 skill、修改 SKILL.md、default_prompt、插件根元数据或未登记来源。应如何处理？",
+          "options": [
+            "仍调用 $chinese-openai-yaml，因为该 skill 已安装",
+            "删掉场景中的关键限制，再把任务强行改写成“中文技能元数据变回英文、缺失或需要备份，或用户要检查已确认 GitHub skill 的更新”",
+            "不调用 $chinese-openai-yaml；改用 skill-creator 或人工编辑流程；不要把未知目标送入恢复脚本",
+            "先访问真实系统或写入一次，用结果反推是否适用"
+          ],
+          "answer": "不调用 $chinese-openai-yaml；改用 skill-creator 或人工编辑流程；不要把未知目标送入恢复脚本",
+          "explanation": "结论：不调用 $chinese-openai-yaml；改用 skill-creator 或人工编辑流程；不要把未知目标送入恢复脚本。\n依据：SKILL.md 将适用入口限定为“中文技能元数据变回英文、缺失或需要备份，或用户要检查已确认 GitHub skill 的更新”，当前场景不满足。\n错误选项：A：安装状态不能覆盖不适用条件：“用户要创建新 skill、修改 SKILL.md、default_prompt、插件根元数据或未登记来源”；B：修改题目事实会让路由判断失真，不能证明原场景适用；D：真实访问或写入扩大了课程授权，也不能替代前置判断\n实践：写出正确替代入口或需要补充的一个条件。"
+        },
+        {
+          "id": "course-gs-04-q03",
+          "type": "multiple_choice",
+          "content": "[Agents:中文 Skill 元数据与更新] 输入输出判断：哪组接口最能让一次合成练习独立复核？",
+          "options": [
+            "输入只写“帮我完成”，输出只写“成功”",
+            "输入真实凭证或客户运行态，输出要求直接完成不可逆动作",
+            "只记录“发现一个英文 openai.yaml”，不定义结果结构",
+            "输入：目标 skill 或稳定 ID、备份或注册表状态、dry-run 结果与用户对 apply 的明确确认；输出：恢复或更新预览、目标清单、验证结果；只有确认后才产生限定字段的修改"
+          ],
+          "answer": "输入：目标 skill 或稳定 ID、备份或注册表状态、dry-run 结果与用户对 apply 的明确确认；输出：恢复或更新预览、目标清单、验证结果；只有确认后才产生限定字段的修改",
+          "explanation": "结论：输入：目标 skill 或稳定 ID、备份或注册表状态、dry-run 结果与用户对 apply 的明确确认；输出：恢复或更新预览、目标清单、验证结果；只有确认后才产生限定字段的修改。\n依据：源 skill 的流程需要把“目标 skill 或稳定 ID、备份或注册表状态、dry-run 结果与用户对 apply 的明确确认”转化为“恢复或更新预览、目标清单、验证结果，只有确认后才产生限定字段的修改”。\n错误选项：A：模糊输入缺少“目标 skill 或稳定 ID、备份或注册表状态、dry-run 结果与用户对 apply 的明确确认”，也没有可验收输出；B：敏感运行态和不可逆动作都超出本课程的合成只读边界；C：发现一个英文 openai.yaml不能替代“恢复或更新预览、目标清单、验证结果，只有确认后才产生限定字段的修改”\n实践：把输入字段改成虚构值，并为输出列三项可观察检查。"
+        },
+        {
+          "id": "course-gs-04-q04",
+          "type": "fill_blank",
+          "content": "[Agents:中文 Skill 元数据与更新] 显式调用：已确认场景属于“中文技能元数据变回英文、缺失或需要备份，或用户要检查已确认 GitHub skill 的更新”，应填写 ___。",
+          "options": [],
+          "answer": "$chinese-openai-yaml",
+          "explanation": "结论：正式调用写作 $chinese-openai-yaml。\n依据：SKILL.md 的 name 是 chinese-openai-yaml，openai.yaml 的 display_name 是“Agents:中文 Skill 元数据与更新”。\n实践：在调用后追加一条合成任务，只要求路由理由、预期输出和停止条件。"
+        },
+        {
+          "id": "course-gs-04-q05",
+          "type": "true_false",
+          "content": "[Agents:中文 Skill 元数据与更新] 边界判断：只允许技能级两个中文 UI 字段；先预览后 apply；不得触碰缓存副本、SKILL.md、default_prompt 或未知来源。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：正确。\n依据：这是 chinese-openai-yaml 的关键流程或安全边界，能防止把预览优先的元数据维护工作流误当成无条件执行器。\n实践：把“dry-run 预览与 apply 确认”写进提示词末尾，并只检查计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-gs-05",
+      "code": "GS05",
+      "title": "GS05 Local:Chronicle 屏幕上下文",
+      "order": 5,
+      "lab_ref": "GS05",
+      "source_text": "codex-cli-0.144.6 的 .codex/skills/chronicle/SKILL.md；skill name chronicle；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-gs-05-q01",
+          "type": "multiple_choice",
+          "content": "[Local:Chronicle 屏幕上下文] 场景判断：用户说“审查我刚打开的文档”但没有文件名，请比较 Memories 可用和不可用两种路由。最合适的下一步是什么？",
+          "options": [
+            "显式调用 $chronicle（Local:Chronicle 屏幕上下文），先核对 Memories 可用、Chronicle 正在运行与录制新鲜度",
+            "直接用 OCR 抄完整份屏幕文档",
+            "跳过“Memories 可用、Chronicle 正在运行与录制新鲜度”，直接要求产出“最小屏幕上下文、时间与新鲜度判断，以及切换到精确文件或连接器工具的下一步”",
+            "把“磁盘上残留旧截图”当作 Local:Chronicle 屏幕上下文 已完成"
+          ],
+          "answer": "显式调用 $chronicle（Local:Chronicle 屏幕上下文），先核对 Memories 可用、Chronicle 正在运行与录制新鲜度",
+          "explanation": "结论：显式调用 $chronicle（Local:Chronicle 屏幕上下文），先核对 Memories 可用、Chronicle 正在运行与录制新鲜度。\n依据：该 skill 是最小化屏幕上下文桥接器，用途是在用户引用近期屏幕工作且现有文本不足以消除歧义时，查看最少必要的当前或历史屏幕上下文。\n错误选项：B：Chronicle 只补最少上下文，正文应尽快交给精确来源读取；C：Memories 可用、Chronicle 正在运行与录制新鲜度是该流程的必要入口，缺失时不能声称已得到可靠输出；D：磁盘上残留旧截图不是“最小屏幕上下文、时间与新鲜度判断，以及切换到精确文件或连接器工具的下一步”的可观察证据\n实践：写一句 $chronicle 调用，随后列出所需输入和一个停止条件；不要实际调用工具。"
+        },
+        {
+          "id": "course-gs-05-q02",
+          "type": "multiple_choice",
+          "content": "[Local:Chronicle 屏幕上下文] 场景判断：没有 Memories 能力、Chronicle 未运行、用户已提供明确文件或连接器标识，或任务可直接从文件系统核实。应如何处理？",
+          "options": [
+            "仍调用 $chronicle，因为该 skill 已安装",
+            "不调用 $chronicle；说明当前不能使用 Chronicle，并请用户提供文件或更精确上下文",
+            "删掉场景中的关键限制，再把任务强行改写成“需要辨认用户刚才操作的应用、文档或错误，且当前 rollout 明确提供 Memories、Chronicle 仍在运行”",
+            "先访问真实系统或写入一次，用结果反推是否适用"
+          ],
+          "answer": "不调用 $chronicle；说明当前不能使用 Chronicle，并请用户提供文件或更精确上下文",
+          "explanation": "结论：不调用 $chronicle；说明当前不能使用 Chronicle，并请用户提供文件或更精确上下文。\n依据：SKILL.md 将适用入口限定为“需要辨认用户刚才操作的应用、文档或错误，且当前 rollout 明确提供 Memories、Chronicle 仍在运行”，当前场景不满足。\n错误选项：A：安装状态不能覆盖不适用条件：“没有 Memories 能力、Chronicle 未运行、用户已提供明确文件或连接器标识，或任务可直接从文件系统核实”；C：修改题目事实会让路由判断失真，不能证明原场景适用；D：真实访问或写入扩大了课程授权，也不能替代前置判断\n实践：写出正确替代入口或需要补充的一个条件。"
+        },
+        {
+          "id": "course-gs-05-q03",
+          "type": "multiple_choice",
+          "content": "[Local:Chronicle 屏幕上下文] 输入输出判断：哪组接口最能让一次合成练习独立复核？",
+          "options": [
+            "输入只写“帮我完成”，输出只写“成功”",
+            "输入真实凭证或客户运行态，输出要求直接完成不可逆动作",
+            "输入：待消除的具体歧义、所需时间范围、可用 display 与录制新鲜度；输出：最小屏幕上下文、时间与新鲜度判断，以及切换到精确文件或连接器工具的下一步",
+            "只记录“磁盘上残留旧截图”，不定义结果结构"
+          ],
+          "answer": "输入：待消除的具体歧义、所需时间范围、可用 display 与录制新鲜度；输出：最小屏幕上下文、时间与新鲜度判断，以及切换到精确文件或连接器工具的下一步",
+          "explanation": "结论：输入：待消除的具体歧义、所需时间范围、可用 display 与录制新鲜度；输出：最小屏幕上下文、时间与新鲜度判断，以及切换到精确文件或连接器工具的下一步。\n依据：源 skill 的流程需要把“待消除的具体歧义、所需时间范围、可用 display 与录制新鲜度”转化为“最小屏幕上下文、时间与新鲜度判断，以及切换到精确文件或连接器工具的下一步”。\n错误选项：A：模糊输入缺少“待消除的具体歧义、所需时间范围、可用 display 与录制新鲜度”，也没有可验收输出；B：敏感运行态和不可逆动作都超出本课程的合成只读边界；D：磁盘上残留旧截图不能替代“最小屏幕上下文、时间与新鲜度判断，以及切换到精确文件或连接器工具的下一步”\n实践：把输入字段改成虚构值，并为输出列三项可观察检查。"
+        },
+        {
+          "id": "course-gs-05-q04",
+          "type": "fill_blank",
+          "content": "[Local:Chronicle 屏幕上下文] 显式调用：已确认场景属于“需要辨认用户刚才操作的应用、文档或错误，且当前 rollout 明确提供 Memories、Chronicle 仍在运行”，应填写 ___。",
+          "options": [],
+          "answer": "$chronicle",
+          "explanation": "结论：正式调用写作 $chronicle。\n依据：SKILL.md 的 name 是 chronicle，openai.yaml 的 display_name 是“Local:Chronicle 屏幕上下文”。\n实践：在调用后追加一条合成任务，只要求路由理由、预期输出和停止条件。"
+        },
+        {
+          "id": "course-gs-05-q05",
+          "type": "true_false",
+          "content": "[Local:Chronicle 屏幕上下文] 边界判断：先满足 Memories 与运行前置；OCR 只用于搜索；不得靠截图全文提取或长期替代文件、文档连接器。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：正确。\n依据：这是 chronicle 的关键流程或安全边界，能防止把最小化屏幕上下文桥接器误当成无条件执行器。\n实践：把“Memories 可用、Chronicle 正在运行与录制新鲜度”写进提示词末尾，并只检查计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-gs-06",
+      "code": "GS06",
+      "title": "GS06 Local:CLI 创建器",
+      "order": 6,
+      "lab_ref": "GS06",
+      "source_text": "codex-cli-0.144.6 的 .codex/skills/cli-creator/SKILL.md；skill name cli-creator；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-gs-06-q01",
+          "type": "multiple_choice",
+          "content": "[Local:CLI 创建器] 场景判断：团队每周重复查询构建日志并下载失败片段，请判断是否值得做持久 CLI 并草拟命令面。最合适的下一步是什么？",
+          "options": [
+            "在当前仓库写一个一次性脚本后立即丢弃",
+            "跳过“重复 jobs、安装名、认证与命令契约”，直接要求产出“命令契约、可安装 CLI、稳定 JSON 协议、验证证据与 companion skill”",
+            "把“一个能在源码目录里运行的临时命令”当作 Local:CLI 创建器 已完成",
+            "显式调用 $cli-creator（Local:CLI 创建器），先核对重复 jobs、安装名、认证与命令契约"
+          ],
+          "answer": "显式调用 $cli-creator（Local:CLI 创建器），先核对重复 jobs、安装名、认证与命令契约",
+          "explanation": "结论：显式调用 $cli-creator（Local:CLI 创建器），先核对重复 jobs、安装名、认证与命令契约。\n依据：该 skill 是持久 CLI 构建工作流，用途是把 API、SDK、网页流程或重复脚本封装成可从任意仓库调用、输出稳定 JSON 的可组合 CLI。\n错误选项：A：一次性脚本适合单次需求，不能满足跨仓库复用和稳定 JSON 契约；B：重复 jobs、安装名、认证与命令契约是该流程的必要入口，缺失时不能声称已得到可靠输出；C：一个能在源码目录里运行的临时命令不是“命令契约、可安装 CLI、稳定 JSON 协议、验证证据与 companion skill”的可观察证据\n实践：写一句 $cli-creator 调用，随后列出所需输入和一个停止条件；不要实际调用工具。"
+        },
+        {
+          "id": "course-gs-06-q02",
+          "type": "multiple_choice",
+          "content": "[Local:CLI 创建器] 场景判断：当前仓库里一个短脚本即可解决一次性任务，或用户只需要 curl 示例。应如何处理？",
+          "options": [
+            "不调用 $cli-creator；在当前仓库写最小一次性脚本，不创建持久 CLI 与 companion skill",
+            "仍调用 $cli-creator，因为该 skill 已安装",
+            "删掉场景中的关键限制，再把任务强行改写成“用户需要长期复用的命令行工具，具有发现、读取、窄写入、doctor、JSON 和 companion skill”",
+            "先访问真实系统或写入一次，用结果反推是否适用"
+          ],
+          "answer": "不调用 $cli-creator；在当前仓库写最小一次性脚本，不创建持久 CLI 与 companion skill",
+          "explanation": "结论：不调用 $cli-creator；在当前仓库写最小一次性脚本，不创建持久 CLI 与 companion skill。\n依据：SKILL.md 将适用入口限定为“用户需要长期复用的命令行工具，具有发现、读取、窄写入、doctor、JSON 和 companion skill”，当前场景不满足。\n错误选项：B：安装状态不能覆盖不适用条件：“当前仓库里一个短脚本即可解决一次性任务，或用户只需要 curl 示例”；C：修改题目事实会让路由判断失真，不能证明原场景适用；D：真实访问或写入扩大了课程授权，也不能替代前置判断\n实践：写出正确替代入口或需要补充的一个条件。"
+        },
+        {
+          "id": "course-gs-06-q03",
+          "type": "multiple_choice",
+          "content": "[Local:CLI 创建器] 输入输出判断：哪组接口最能让一次合成练习独立复核？",
+          "options": [
+            "输入只写“帮我完成”，输出只写“成功”",
+            "输入：工具来源、首批真实 jobs、安装名、认证方式、读写边界与目标运行环境；输出：命令契约、可安装 CLI、稳定 JSON 协议、验证证据与 companion skill",
+            "输入真实凭证或客户运行态，输出要求直接完成不可逆动作",
+            "只记录“一个能在源码目录里运行的临时命令”，不定义结果结构"
+          ],
+          "answer": "输入：工具来源、首批真实 jobs、安装名、认证方式、读写边界与目标运行环境；输出：命令契约、可安装 CLI、稳定 JSON 协议、验证证据与 companion skill",
+          "explanation": "结论：输入：工具来源、首批真实 jobs、安装名、认证方式、读写边界与目标运行环境；输出：命令契约、可安装 CLI、稳定 JSON 协议、验证证据与 companion skill。\n依据：源 skill 的流程需要把“工具来源、首批真实 jobs、安装名、认证方式、读写边界与目标运行环境”转化为“命令契约、可安装 CLI、稳定 JSON 协议、验证证据与 companion skill”。\n错误选项：A：模糊输入缺少“工具来源、首批真实 jobs、安装名、认证方式、读写边界与目标运行环境”，也没有可验收输出；C：敏感运行态和不可逆动作都超出本课程的合成只读边界；D：一个能在源码目录里运行的临时命令不能替代“命令契约、可安装 CLI、稳定 JSON 协议、验证证据与 companion skill”\n实践：把输入字段改成虚构值，并为输出列三项可观察检查。"
+        },
+        {
+          "id": "course-gs-06-q04",
+          "type": "fill_blank",
+          "content": "[Local:CLI 创建器] 显式调用：已确认场景属于“用户需要长期复用的命令行工具，具有发现、读取、窄写入、doctor、JSON 和 companion skill”，应填写 ___。",
+          "options": [],
+          "answer": "$cli-creator",
+          "explanation": "结论：正式调用写作 $cli-creator。\n依据：SKILL.md 的 name 是 cli-creator，openai.yaml 的 display_name 是“Local:CLI 创建器”。\n实践：在调用后追加一条合成任务，只要求路由理由、预期输出和停止条件。"
+        },
+        {
+          "id": "course-gs-06-q05",
+          "type": "true_false",
+          "content": "[Local:CLI 创建器] 边界判断：先检查命令名和工具链；写命令应窄且优先 dry-run；不得泄露 token；课程不脚手架、不安装。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：正确。\n依据：这是 cli-creator 的关键流程或安全边界，能防止把持久 CLI 构建工作流误当成无条件执行器。\n实践：把“重复 jobs、安装名、认证与命令契约”写进提示词末尾，并只检查计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-gs-07",
+      "code": "GS07",
+      "title": "GS07 Local:EC 知识产权商机任务",
+      "order": 7,
+      "lab_ref": "GS07",
+      "source_text": "codex-cli-0.144.6 的 .codex/skills/ec-public-customer-task/SKILL.md；skill name ec-public-customer-task；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-gs-07-q01",
+          "type": "multiple_choice",
+          "content": "[Local:EC 知识产权商机任务] 场景判断：虚构批次包含三家企业，其中一家公司名截断、另一家六项机会全为零，请只写路由和停止条件。最合适的下一步是什么？",
+          "options": [
+            "改用全局客户搜索直接猜测企业与机会",
+            "跳过“精确企业身份、稳定截图计数与运行授权”，直接要求产出“逐企业 task-created、claimed+task、skipped 或 blocked 状态及可验证的批次计数”",
+            "显式调用 $ec-public-customer-task（Local:EC 知识产权商机任务），先核对精确企业身份、稳定截图计数与运行授权",
+            "把“列表里出现企业名称”当作 Local:EC 知识产权商机任务 已完成"
+          ],
+          "answer": "显式调用 $ec-public-customer-task（Local:EC 知识产权商机任务），先核对精确企业身份、稳定截图计数与运行授权",
+          "explanation": "结论：显式调用 $ec-public-customer-task（Local:EC 知识产权商机任务），先核对精确企业身份、稳定截图计数与运行授权。\n依据：该 skill 是高副作用 CRM 连续执行工作流，用途是从 EC 指定知识产权商机列表逐家核验企业与专利商标机会，并在授权范围内创建跟进任务。\n错误选项：A：该流程只接受指定知识产权商机列表和易企查截图证据；B：精确企业身份、稳定截图计数与运行授权是该流程的必要入口，缺失时不能声称已得到可靠输出；D：列表里出现企业名称不是“逐企业 task-created、claimed+task、skipped 或 blocked 状态及可验证的批次计数”的可观察证据\n实践：写一句 $ec-public-customer-task 调用，随后列出所需输入和一个停止条件；不要实际调用工具。"
+        },
+        {
+          "id": "course-gs-07-q02",
+          "type": "multiple_choice",
+          "content": "[Local:EC 知识产权商机任务] 场景判断：只是查询一般企业资料、联系人数量，或没有 EC 授权与可核验列表上下文。应如何处理？",
+          "options": [
+            "仍调用 $ec-public-customer-task，因为该 skill 已安装",
+            "删掉场景中的关键限制，再把任务强行改写成“用户明确要求运行或继续 EC 知识产权商机批次，并给出数量、名称或全部范围”",
+            "先访问真实系统或写入一次，用结果反推是否适用",
+            "不调用 $ec-public-customer-task；停止 CRM 执行，改做只读资料核验或向用户补齐授权与列表范围"
+          ],
+          "answer": "不调用 $ec-public-customer-task；停止 CRM 执行，改做只读资料核验或向用户补齐授权与列表范围",
+          "explanation": "结论：不调用 $ec-public-customer-task；停止 CRM 执行，改做只读资料核验或向用户补齐授权与列表范围。\n依据：SKILL.md 将适用入口限定为“用户明确要求运行或继续 EC 知识产权商机批次，并给出数量、名称或全部范围”，当前场景不满足。\n错误选项：A：安装状态不能覆盖不适用条件：“只是查询一般企业资料、联系人数量，或没有 EC 授权与可核验列表上下文”；B：修改题目事实会让路由判断失真，不能证明原场景适用；C：真实访问或写入扩大了课程授权，也不能替代前置判断\n实践：写出正确替代入口或需要补充的一个条件。"
+        },
+        {
+          "id": "course-gs-07-q03",
+          "type": "multiple_choice",
+          "content": "[Local:EC 知识产权商机任务] 输入输出判断：哪组接口最能让一次合成练习独立复核？",
+          "options": [
+            "输入：运行范围、当前列表锚点、企业身份、截图中的机会计数与唯一客户跟进人；输出：逐企业 task-created、claimed+task、skipped 或 blocked 状态及可验证的批次计数",
+            "输入只写“帮我完成”，输出只写“成功”",
+            "输入真实凭证或客户运行态，输出要求直接完成不可逆动作",
+            "只记录“列表里出现企业名称”，不定义结果结构"
+          ],
+          "answer": "输入：运行范围、当前列表锚点、企业身份、截图中的机会计数与唯一客户跟进人；输出：逐企业 task-created、claimed+task、skipped 或 blocked 状态及可验证的批次计数",
+          "explanation": "结论：输入：运行范围、当前列表锚点、企业身份、截图中的机会计数与唯一客户跟进人；输出：逐企业 task-created、claimed+task、skipped 或 blocked 状态及可验证的批次计数。\n依据：源 skill 的流程需要把“运行范围、当前列表锚点、企业身份、截图中的机会计数与唯一客户跟进人”转化为“逐企业 task-created、claimed+task、skipped 或 blocked 状态及可验证的批次计数”。\n错误选项：B：模糊输入缺少“运行范围、当前列表锚点、企业身份、截图中的机会计数与唯一客户跟进人”，也没有可验收输出；C：敏感运行态和不可逆动作都超出本课程的合成只读边界；D：列表里出现企业名称不能替代“逐企业 task-created、claimed+task、skipped 或 blocked 状态及可验证的批次计数”\n实践：把输入字段改成虚构值，并为输出列三项可观察检查。"
+        },
+        {
+          "id": "course-gs-07-q04",
+          "type": "fill_blank",
+          "content": "[Local:EC 知识产权商机任务] 显式调用：已确认场景属于“用户明确要求运行或继续 EC 知识产权商机批次，并给出数量、名称或全部范围”，应填写 ___。",
+          "options": [],
+          "answer": "$ec-public-customer-task",
+          "explanation": "结论：正式调用写作 $ec-public-customer-task。\n依据：SKILL.md 的 name 是 ec-public-customer-task，openai.yaml 的 display_name 是“Local:EC 知识产权商机任务”。\n实践：在调用后追加一条合成任务，只要求路由理由、预期输出和停止条件。"
+        },
+        {
+          "id": "course-gs-07-q05",
+          "type": "true_false",
+          "content": "[Local:EC 知识产权商机任务] 边界判断：列表名与信用代码必须匹配；计数以稳定截图为准；验证码、身份、字段或列表位置不清即停止；课程绝不操作 CRM 或状态文件。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：正确。\n依据：这是 ec-public-customer-task 的关键流程或安全边界，能防止把高副作用 CRM 连续执行工作流误当成无条件执行器。\n实践：把“精确企业身份、稳定截图计数与运行授权”写进提示词末尾，并只检查计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-gs-08",
+      "code": "GS08",
+      "title": "GS08 企业数据平台邮件营销",
+      "order": 8,
+      "lab_ref": "GS08",
+      "source_text": "codex-cli-0.144.6 的 .codex/skills/fastapi1-email-marketing/SKILL.md；skill name fastapi1-email-marketing；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-gs-08-q01",
+          "type": "multiple_choice",
+          "content": "[企业数据平台邮件营销] 场景判断：虚构活动面向某地区已确认企业，用户只要求预览，请设计候选摘要和停止条件。最合适的下一步是什么？",
+          "options": [
+            "直接把过去活动的收件人和文案复制为新任务",
+            "显式调用 $fastapi1-email-marketing（企业数据平台邮件营销），先核对具体候选范围、payload 校验与创建意图",
+            "跳过“具体候选范围、payload 校验与创建意图”，直接要求产出“候选摘要、校验结果与预览；获明确授权后才有任务 ID、状态和 post-create 明细”",
+            "把“过去活动曾经成功发送”当作 企业数据平台邮件营销 已完成"
+          ],
+          "answer": "显式调用 $fastapi1-email-marketing（企业数据平台邮件营销），先核对具体候选范围、payload 校验与创建意图",
+          "explanation": "结论：显式调用 $fastapi1-email-marketing（企业数据平台邮件营销），先核对具体候选范围、payload 校验与创建意图。\n依据：该 skill 是邮件任务编排工作流，用途是通过 fastapi1 CLI 选择收件范围、生成文案、校验 payload，并在明确创建意图下建立邮件营销任务。\n错误选项：A：每次任务都必须按当前请求和当前范围重新生成；C：具体候选范围、payload 校验与创建意图是该流程的必要入口，缺失时不能声称已得到可靠输出；D：过去活动曾经成功发送不是“候选摘要、校验结果与预览，获明确授权后才有任务 ID、状态和 post-create 明细”的可观察证据\n实践：写一句 $fastapi1-email-marketing 调用，随后列出所需输入和一个停止条件；不要实际调用工具。"
+        },
+        {
+          "id": "course-gs-08-q02",
+          "type": "multiple_choice",
+          "content": "[企业数据平台邮件营销] 场景判断：只是普通邮件写作、没有可表示的收件范围，或用户未要求创建时却准备直接发送。应如何处理？",
+          "options": [
+            "仍调用 $fastapi1-email-marketing，因为该 skill 已安装",
+            "删掉场景中的关键限制，再把任务强行改写成“需要准备、预览、校验或明确创建企业数据平台邮件营销任务”",
+            "不调用 $fastapi1-email-marketing；只起草普通邮件或补齐可表示的收件范围，不创建营销任务",
+            "先访问真实系统或写入一次，用结果反推是否适用"
+          ],
+          "answer": "不调用 $fastapi1-email-marketing；只起草普通邮件或补齐可表示的收件范围，不创建营销任务",
+          "explanation": "结论：不调用 $fastapi1-email-marketing；只起草普通邮件或补齐可表示的收件范围，不创建营销任务。\n依据：SKILL.md 将适用入口限定为“需要准备、预览、校验或明确创建企业数据平台邮件营销任务”，当前场景不满足。\n错误选项：A：安装状态不能覆盖不适用条件：“只是普通邮件写作、没有可表示的收件范围，或用户未要求创建时却准备直接发送”；B：修改题目事实会让路由判断失真，不能证明原场景适用；D：真实访问或写入扩大了课程授权，也不能替代前置判断\n实践：写出正确替代入口或需要补充的一个条件。"
+        },
+        {
+          "id": "course-gs-08-q03",
+          "type": "multiple_choice",
+          "content": "[企业数据平台邮件营销] 输入输出判断：哪组接口最能让一次合成练习独立复核？",
+          "options": [
+            "输入只写“帮我完成”，输出只写“成功”",
+            "输入真实凭证或客户运行态，输出要求直接完成不可逆动作",
+            "只记录“过去活动曾经成功发送”，不定义结果结构",
+            "输入：收件来源、包含排除规则、主题正文、发送时间、模板选择与预览或创建意图；输出：候选摘要、校验结果与预览；获明确授权后才有任务 ID、状态和 post-create 明细"
+          ],
+          "answer": "输入：收件来源、包含排除规则、主题正文、发送时间、模板选择与预览或创建意图；输出：候选摘要、校验结果与预览；获明确授权后才有任务 ID、状态和 post-create 明细",
+          "explanation": "结论：输入：收件来源、包含排除规则、主题正文、发送时间、模板选择与预览或创建意图；输出：候选摘要、校验结果与预览；获明确授权后才有任务 ID、状态和 post-create 明细。\n依据：源 skill 的流程需要把“收件来源、包含排除规则、主题正文、发送时间、模板选择与预览或创建意图”转化为“候选摘要、校验结果与预览，获明确授权后才有任务 ID、状态和 post-create 明细”。\n错误选项：A：模糊输入缺少“收件来源、包含排除规则、主题正文、发送时间、模板选择与预览或创建意图”，也没有可验收输出；B：敏感运行态和不可逆动作都超出本课程的合成只读边界；C：过去活动曾经成功发送不能替代“候选摘要、校验结果与预览，获明确授权后才有任务 ID、状态和 post-create 明细”\n实践：把输入字段改成虚构值，并为输出列三项可观察检查。"
+        },
+        {
+          "id": "course-gs-08-q04",
+          "type": "fill_blank",
+          "content": "[企业数据平台邮件营销] 显式调用：已确认场景属于“需要准备、预览、校验或明确创建企业数据平台邮件营销任务”，应填写 ___。",
+          "options": [],
+          "answer": "$fastapi1-email-marketing",
+          "explanation": "结论：正式调用写作 $fastapi1-email-marketing。\n依据：SKILL.md 的 name 是 fastapi1-email-marketing，openai.yaml 的 display_name 是“企业数据平台邮件营销”。\n实践：在调用后追加一条合成任务，只要求路由理由、预期输出和停止条件。"
+        },
+        {
+          "id": "course-gs-08-q05",
+          "type": "true_false",
+          "content": "[企业数据平台邮件营销] 边界判断：必须先有具体候选范围并校验；自动化不等于直接发送授权；不得打印认证信息；课程只产出合成预览。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：正确。\n依据：这是 fastapi1-email-marketing 的关键流程或安全边界，能防止把邮件任务编排工作流误当成无条件执行器。\n实践：把“具体候选范围、payload 校验与创建意图”写进提示词末尾，并只检查计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-gs-09",
+      "code": "GS09",
+      "title": "GS09 企业数据平台 CLI",
+      "order": 9,
+      "lab_ref": "GS09",
+      "source_text": "codex-cli-0.144.6 的 .codex/skills/fastapi1-skill/SKILL.md；skill name fastapi1-skill；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-gs-09-q01",
+          "type": "multiple_choice",
+          "content": "[企业数据平台 CLI] 场景判断：虚构用户只想确认生产 CLI 是否可用并读取一页项目列表，请区分公开检查与认证读取。最合适的下一步是什么？",
+          "options": [
+            "显式调用 $fastapi1-skill（企业数据平台 CLI），先核对操作类别、profile 与认证风险",
+            "启动本地项目服务并直接调用内部数据库",
+            "跳过“操作类别、profile 与认证风险”，直接要求产出“稳定 JSON 的 doctor、preflight、读取或业务命令结果及缺失配置类别”",
+            "把“命令已安装在 PATH”当作 企业数据平台 CLI 已完成"
+          ],
+          "answer": "显式调用 $fastapi1-skill（企业数据平台 CLI），先核对操作类别、profile 与认证风险",
+          "explanation": "结论：显式调用 $fastapi1-skill（企业数据平台 CLI），先核对操作类别、profile 与认证风险。\n依据：该 skill 是远端平台 CLI 网关，用途是安装、配置、验证或使用独立 fastapi1 CLI，以高层命令安全访问企业数据平台。\n错误选项：B：该 skill 面向独立远端 CLI，不是服务端开发或数据库入口；C：操作类别、profile 与认证风险是该流程的必要入口，缺失时不能声称已得到可靠输出；D：命令已安装在 PATH不是“稳定 JSON 的 doctor、preflight、读取或业务命令结果及缺失配置类别”的可观察证据\n实践：写一句 $fastapi1-skill 调用，随后列出所需输入和一个停止条件；不要实际调用工具。"
+        },
+        {
+          "id": "course-gs-09-q02",
+          "type": "multiple_choice",
+          "content": "[企业数据平台 CLI] 场景判断：用户要修改 fastapi1 服务端代码、启动本地 FastAPI 服务，或绕过高层命令做任意写请求。应如何处理？",
+          "options": [
+            "仍调用 $fastapi1-skill，因为该 skill 已安装",
+            "不调用 $fastapi1-skill；改走项目开发流程，不调用远端业务 CLI",
+            "删掉场景中的关键限制，再把任务强行改写成“用户要检查 CLI、执行公开 preflight、读取企业数据或调用受保护的高层业务命令”",
+            "先访问真实系统或写入一次，用结果反推是否适用"
+          ],
+          "answer": "不调用 $fastapi1-skill；改走项目开发流程，不调用远端业务 CLI",
+          "explanation": "结论：不调用 $fastapi1-skill；改走项目开发流程，不调用远端业务 CLI。\n依据：SKILL.md 将适用入口限定为“用户要检查 CLI、执行公开 preflight、读取企业数据或调用受保护的高层业务命令”，当前场景不满足。\n错误选项：A：安装状态不能覆盖不适用条件：“用户要修改 fastapi1 服务端代码、启动本地 FastAPI 服务，或绕过高层命令做任意写请求”；C：修改题目事实会让路由判断失真，不能证明原场景适用；D：真实访问或写入扩大了课程授权，也不能替代前置判断\n实践：写出正确替代入口或需要补充的一个条件。"
+        },
+        {
+          "id": "course-gs-09-q03",
+          "type": "multiple_choice",
+          "content": "[企业数据平台 CLI] 输入输出判断：哪组接口最能让一次合成练习独立复核？",
+          "options": [
+            "输入只写“帮我完成”，输出只写“成功”",
+            "输入真实凭证或客户运行态，输出要求直接完成不可逆动作",
+            "输入：目标 CLI 操作、profile、是否公开或认证、输出格式与明确业务范围；输出：稳定 JSON 的 doctor、preflight、读取或业务命令结果及缺失配置类别",
+            "只记录“命令已安装在 PATH”，不定义结果结构"
+          ],
+          "answer": "输入：目标 CLI 操作、profile、是否公开或认证、输出格式与明确业务范围；输出：稳定 JSON 的 doctor、preflight、读取或业务命令结果及缺失配置类别",
+          "explanation": "结论：输入：目标 CLI 操作、profile、是否公开或认证、输出格式与明确业务范围；输出：稳定 JSON 的 doctor、preflight、读取或业务命令结果及缺失配置类别。\n依据：源 skill 的流程需要把“目标 CLI 操作、profile、是否公开或认证、输出格式与明确业务范围”转化为“稳定 JSON 的 doctor、preflight、读取或业务命令结果及缺失配置类别”。\n错误选项：A：模糊输入缺少“目标 CLI 操作、profile、是否公开或认证、输出格式与明确业务范围”，也没有可验收输出；B：敏感运行态和不可逆动作都超出本课程的合成只读边界；D：命令已安装在 PATH不能替代“稳定 JSON 的 doctor、preflight、读取或业务命令结果及缺失配置类别”\n实践：把输入字段改成虚构值，并为输出列三项可观察检查。"
+        },
+        {
+          "id": "course-gs-09-q04",
+          "type": "fill_blank",
+          "content": "[企业数据平台 CLI] 显式调用：已确认场景属于“用户要检查 CLI、执行公开 preflight、读取企业数据或调用受保护的高层业务命令”，应填写 ___。",
+          "options": [],
+          "answer": "$fastapi1-skill",
+          "explanation": "结论：正式调用写作 $fastapi1-skill。\n依据：SKILL.md 的 name 是 fastapi1-skill，openai.yaml 的 display_name 是“企业数据平台 CLI”。\n实践：在调用后追加一条合成任务，只要求路由理由、预期输出和停止条件。"
+        },
+        {
+          "id": "course-gs-09-q05",
+          "type": "true_false",
+          "content": "[企业数据平台 CLI] 边界判断：优先公开检查和高层命令；raw 只允许只读方法；不得读取或打印认证值；课程不连接远端。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：正确。\n依据：这是 fastapi1-skill 的关键流程或安全边界，能防止把远端平台 CLI 网关误当成无条件执行器。\n实践：把“操作类别、profile 与认证风险”写进提示词末尾，并只检查计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-gs-10",
+      "code": "GS10",
+      "title": "GS10 企业数据平台微信营销",
+      "order": 10,
+      "lab_ref": "GS10",
+      "source_text": "codex-cli-0.144.6 的 .codex/skills/fastapi1-wechat-marketing/SKILL.md；skill name fastapi1-wechat-marketing；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-gs-10-q01",
+          "type": "multiple_choice",
+          "content": "[企业数据平台微信营销] 场景判断：虚构任务有明确地区筛选和短文案，但用户只要求预览且未确认 PC 微信操作，请写安全路径。最合适的下一步是什么？",
+          "options": [
+            "直接启动 wx 自动模式并处理所有可见任务",
+            "跳过“候选范围、payload 校验、创建意图与操作者确认”，直接要求产出“校验后的预览或任务明细；客户端阶段产生受限状态，不暴露完整 claim token 或原始标识”",
+            "把“平台能列出多个可见任务”当作 企业数据平台微信营销 已完成",
+            "显式调用 $fastapi1-wechat-marketing（企业数据平台微信营销），先核对候选范围、payload 校验、创建意图与操作者确认"
+          ],
+          "answer": "显式调用 $fastapi1-wechat-marketing（企业数据平台微信营销），先核对候选范围、payload 校验、创建意图与操作者确认",
+          "explanation": "结论：显式调用 $fastapi1-wechat-marketing（企业数据平台微信营销），先核对候选范围、payload 校验、创建意图与操作者确认。\n依据：该 skill 是微信营销任务与客户端协议编排器，用途是准备、预览、校验、创建或检查企业数据平台微信任务，并在明确确认后处理受控客户端协议。\n错误选项：A：任务编排与客户端执行有独立确认和单任务范围门槛；B：候选范围、payload 校验、创建意图与操作者确认是该流程的必要入口，缺失时不能声称已得到可靠输出；C：平台能列出多个可见任务不是“校验后的预览或任务明细，客户端阶段产生受限状态，不暴露完整 claim token 或原始标识”的可观察证据\n实践：写一句 $fastapi1-wechat-marketing 调用，随后列出所需输入和一个停止条件；不要实际调用工具。"
+        },
+        {
+          "id": "course-gs-10-q02",
+          "type": "multiple_choice",
+          "content": "[企业数据平台微信营销] 场景判断：只是个人微信聊天、没有明确任务范围，或尚未确认却准备操作 PC 微信。应如何处理？",
+          "options": [
+            "不调用 $fastapi1-wechat-marketing；按普通写作处理，或先补齐任务范围与操作者确认",
+            "仍调用 $fastapi1-wechat-marketing，因为该 skill 已安装",
+            "删掉场景中的关键限制，再把任务强行改写成“需要定义微信任务收件范围、加好友文案、节奏、任务创建或 claim/result/sync 协议”",
+            "先访问真实系统或写入一次，用结果反推是否适用"
+          ],
+          "answer": "不调用 $fastapi1-wechat-marketing；按普通写作处理，或先补齐任务范围与操作者确认",
+          "explanation": "结论：不调用 $fastapi1-wechat-marketing；按普通写作处理，或先补齐任务范围与操作者确认。\n依据：SKILL.md 将适用入口限定为“需要定义微信任务收件范围、加好友文案、节奏、任务创建或 claim/result/sync 协议”，当前场景不满足。\n错误选项：B：安装状态不能覆盖不适用条件：“只是个人微信聊天、没有明确任务范围，或尚未确认却准备操作 PC 微信”；C：修改题目事实会让路由判断失真，不能证明原场景适用；D：真实访问或写入扩大了课程授权，也不能替代前置判断\n实践：写出正确替代入口或需要补充的一个条件。"
+        },
+        {
+          "id": "course-gs-10-q03",
+          "type": "multiple_choice",
+          "content": "[企业数据平台微信营销] 输入输出判断：哪组接口最能让一次合成练习独立复核？",
+          "options": [
+            "输入只写“帮我完成”，输出只写“成功”",
+            "输入：候选来源、排除项、短文案、间隔、预览或创建意图，以及客户端模式和操作者确认；输出：校验后的预览或任务明细；客户端阶段产生受限状态，不暴露完整 claim token 或原始标识",
+            "输入真实凭证或客户运行态，输出要求直接完成不可逆动作",
+            "只记录“平台能列出多个可见任务”，不定义结果结构"
+          ],
+          "answer": "输入：候选来源、排除项、短文案、间隔、预览或创建意图，以及客户端模式和操作者确认；输出：校验后的预览或任务明细；客户端阶段产生受限状态，不暴露完整 claim token 或原始标识",
+          "explanation": "结论：输入：候选来源、排除项、短文案、间隔、预览或创建意图，以及客户端模式和操作者确认；输出：校验后的预览或任务明细；客户端阶段产生受限状态，不暴露完整 claim token 或原始标识。\n依据：源 skill 的流程需要把“候选来源、排除项、短文案、间隔、预览或创建意图，以及客户端模式和操作者确认”转化为“校验后的预览或任务明细，客户端阶段产生受限状态，不暴露完整 claim token 或原始标识”。\n错误选项：A：模糊输入缺少“候选来源、排除项、短文案、间隔、预览或创建意图，以及客户端模式和操作者确认”，也没有可验收输出；C：敏感运行态和不可逆动作都超出本课程的合成只读边界；D：平台能列出多个可见任务不能替代“校验后的预览或任务明细，客户端阶段产生受限状态，不暴露完整 claim token 或原始标识”\n实践：把输入字段改成虚构值，并为输出列三项可观察检查。"
+        },
+        {
+          "id": "course-gs-10-q04",
+          "type": "fill_blank",
+          "content": "[企业数据平台微信营销] 显式调用：已确认场景属于“需要定义微信任务收件范围、加好友文案、节奏、任务创建或 claim/result/sync 协议”，应填写 ___。",
+          "options": [],
+          "answer": "$fastapi1-wechat-marketing",
+          "explanation": "结论：正式调用写作 $fastapi1-wechat-marketing。\n依据：SKILL.md 的 name 是 fastapi1-wechat-marketing，openai.yaml 的 display_name 是“企业数据平台微信营销”。\n实践：在调用后追加一条合成任务，只要求路由理由、预期输出和停止条件。"
+        },
+        {
+          "id": "course-gs-10-q05",
+          "type": "true_false",
+          "content": "[企业数据平台微信营销] 边界判断：范围未知、数量异常或校验失败即停；操作 PC 微信前必须结构化确认；限流后不得立即重试；课程不创建任务。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：正确。\n依据：这是 fastapi1-wechat-marketing 的关键流程或安全边界，能防止把微信营销任务与客户端协议编排器误当成无条件执行器。\n实践：把“候选范围、payload 校验、创建意图与操作者确认”写进提示词末尾，并只检查计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-gs-11",
+      "code": "GS11",
+      "title": "GS11 企业数据平台 wxcli",
+      "order": 11,
+      "lab_ref": "GS11",
+      "source_text": "codex-cli-0.144.6 的 .codex/skills/fastapi1-wxcli/SKILL.md；skill name fastapi1-wxcli；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-gs-11-q01",
+          "type": "multiple_choice",
+          "content": "[企业数据平台 wxcli] 场景判断：虚构 Windows 机器缺少一个运行依赖且操作者尚未确认，请判断可做的只读检查和必须停止的位置。最合适的下一步是什么？",
+          "options": [
+            "改用 $fastapi1-wechat-marketing 直接创建并领取任务",
+            "跳过“Windows readiness、单任务范围与操作者确认”，直接要求产出“依赖与 readiness 诊断、受控执行状态或具体阻塞，不输出敏感 pending 和账目标识”",
+            "显式调用 $fastapi1-wxcli（企业数据平台 wxcli），先核对 Windows readiness、单任务范围与操作者确认",
+            "把“检测到一个 wx 命令”当作 企业数据平台 wxcli 已完成"
+          ],
+          "answer": "显式调用 $fastapi1-wxcli（企业数据平台 wxcli），先核对 Windows readiness、单任务范围与操作者确认",
+          "explanation": "结论：显式调用 $fastapi1-wxcli（企业数据平台 wxcli），先核对 Windows readiness、单任务范围与操作者确认。\n依据：该 skill 是 Windows 微信执行端运维工作流，用途是安装、诊断或运行 Windows wxcli 执行端，并核对 PC 微信版本、依赖、身份隔离和执行状态。\n错误选项：A：wxcli 负责本机执行端，营销任务创建属于另一个 skill；B：Windows readiness、单任务范围与操作者确认是该流程的必要入口，缺失时不能声称已得到可靠输出；D：检测到一个 wx 命令不是“依赖与 readiness 诊断、受控执行状态或具体阻塞，不输出敏感 pending 和账目标识”的可观察证据\n实践：写一句 $fastapi1-wxcli 调用，随后列出所需输入和一个停止条件；不要实际调用工具。"
+        },
+        {
+          "id": "course-gs-11-q02",
+          "type": "multiple_choice",
+          "content": "[企业数据平台 wxcli] 场景判断：用户要创建营销任务、讨论服务器端协议，或尚未确认便操作 PC 微信。应如何处理？",
+          "options": [
+            "仍调用 $fastapi1-wxcli，因为该 skill 已安装",
+            "删掉场景中的关键限制，再把任务强行改写成“用户明确要处理 Windows wxcli 安装、doctor、engine detect、交互启动或执行故障”",
+            "先访问真实系统或写入一次，用结果反推是否适用",
+            "不调用 $fastapi1-wxcli；改用营销任务或服务器 CLI skill，不运行本机 wxcli"
+          ],
+          "answer": "不调用 $fastapi1-wxcli；改用营销任务或服务器 CLI skill，不运行本机 wxcli",
+          "explanation": "结论：不调用 $fastapi1-wxcli；改用营销任务或服务器 CLI skill，不运行本机 wxcli。\n依据：SKILL.md 将适用入口限定为“用户明确要处理 Windows wxcli 安装、doctor、engine detect、交互启动或执行故障”，当前场景不满足。\n错误选项：A：安装状态不能覆盖不适用条件：“用户要创建营销任务、讨论服务器端协议，或尚未确认便操作 PC 微信”；B：修改题目事实会让路由判断失真，不能证明原场景适用；C：真实访问或写入扩大了课程授权，也不能替代前置判断\n实践：写出正确替代入口或需要补充的一个条件。"
+        },
+        {
+          "id": "course-gs-11-q03",
+          "type": "multiple_choice",
+          "content": "[企业数据平台 wxcli] 输入输出判断：哪组接口最能让一次合成练习独立复核？",
+          "options": [
+            "输入：Windows 环境、wxcli 版本、PC 微信状态、目标任务、运行模式与显式操作者确认；输出：依赖与 readiness 诊断、受控执行状态或具体阻塞，不输出敏感 pending 和账目标识",
+            "输入只写“帮我完成”，输出只写“成功”",
+            "输入真实凭证或客户运行态，输出要求直接完成不可逆动作",
+            "只记录“检测到一个 wx 命令”，不定义结果结构"
+          ],
+          "answer": "输入：Windows 环境、wxcli 版本、PC 微信状态、目标任务、运行模式与显式操作者确认；输出：依赖与 readiness 诊断、受控执行状态或具体阻塞，不输出敏感 pending 和账目标识",
+          "explanation": "结论：输入：Windows 环境、wxcli 版本、PC 微信状态、目标任务、运行模式与显式操作者确认；输出：依赖与 readiness 诊断、受控执行状态或具体阻塞，不输出敏感 pending 和账目标识。\n依据：源 skill 的流程需要把“Windows 环境、wxcli 版本、PC 微信状态、目标任务、运行模式与显式操作者确认”转化为“依赖与 readiness 诊断、受控执行状态或具体阻塞，不输出敏感 pending 和账目标识”。\n错误选项：B：模糊输入缺少“Windows 环境、wxcli 版本、PC 微信状态、目标任务、运行模式与显式操作者确认”，也没有可验收输出；C：敏感运行态和不可逆动作都超出本课程的合成只读边界；D：检测到一个 wx 命令不能替代“依赖与 readiness 诊断、受控执行状态或具体阻塞，不输出敏感 pending 和账目标识”\n实践：把输入字段改成虚构值，并为输出列三项可观察检查。"
+        },
+        {
+          "id": "course-gs-11-q04",
+          "type": "fill_blank",
+          "content": "[企业数据平台 wxcli] 显式调用：已确认场景属于“用户明确要处理 Windows wxcli 安装、doctor、engine detect、交互启动或执行故障”，应填写 ___。",
+          "options": [],
+          "answer": "$fastapi1-wxcli",
+          "explanation": "结论：正式调用写作 $fastapi1-wxcli。\n依据：SKILL.md 的 name 是 fastapi1-wxcli，openai.yaml 的 display_name 是“企业数据平台 wxcli”。\n实践：在调用后追加一条合成任务，只要求路由理由、预期输出和停止条件。"
+        },
+        {
+          "id": "course-gs-11-q05",
+          "type": "true_false",
+          "content": "[企业数据平台 wxcli] 边界判断：不得自动安装、启动或登录 PC 微信；确认前不运行会触碰 UI 的命令；任务和账号严格隔离；课程不操作 Windows。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：正确。\n依据：这是 fastapi1-wxcli 的关键流程或安全边界，能防止把Windows 微信执行端运维工作流误当成无条件执行器。\n实践：把“Windows readiness、单任务范围与操作者确认”写进提示词末尾，并只检查计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-gs-12",
+      "code": "GS12",
+      "title": "GS12 Local:前端设计终极版",
+      "order": 12,
+      "lab_ref": "GS12",
+      "source_text": "codex-cli-0.144.6 的 .codex/skills/frontend-design-ultimate/SKILL.md；skill name frontend-design-ultimate；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-gs-12-q01",
+          "type": "multiple_choice",
+          "content": "[Local:前端设计终极版] 场景判断：虚构 SaaS 需要一个深色静态落地页，包含定价和 FAQ，请先确定视觉方向与验收面。最合适的下一步是什么？",
+          "options": [
+            "改用普通后端功能开发流程实现支付和数据库",
+            "显式调用 $frontend-design-ultimate（Local:前端设计终极版），先核对产品目的、受众、静态范围与视觉方向",
+            "跳过“产品目的、受众、静态范围与视觉方向”，直接要求产出“明确视觉方向、React/TypeScript/Tailwind 实现、构建结果与移动端和无障碍验收”",
+            "把“页面在桌面宽度下能打开”当作 Local:前端设计终极版 已完成"
+          ],
+          "answer": "显式调用 $frontend-design-ultimate（Local:前端设计终极版），先核对产品目的、受众、静态范围与视觉方向",
+          "explanation": "结论：显式调用 $frontend-design-ultimate（Local:前端设计终极版），先核对产品目的、受众、静态范围与视觉方向。\n依据：该 skill 是静态前端设计与构建工作流，用途是从文本需求创建具有明确视觉方向、移动优先且可构建的 React 静态网站。\n错误选项：A：该 skill 只覆盖静态前端视觉和交互表面；C：产品目的、受众、静态范围与视觉方向是该流程的必要入口，缺失时不能声称已得到可靠输出；D：页面在桌面宽度下能打开不是“明确视觉方向、React/TypeScript/Tailwind 实现、构建结果与移动端和无障碍验收”的可观察证据\n实践：写一句 $frontend-design-ultimate 调用，随后列出所需输入和一个停止条件；不要实际调用工具。"
+        },
+        {
+          "id": "course-gs-12-q02",
+          "type": "multiple_choice",
+          "content": "[Local:前端设计终极版] 场景判断：目标是后端业务功能、原生 SVG 图标体系、小型现有样式修补或需要真实动态服务的应用。应如何处理？",
+          "options": [
+            "仍调用 $frontend-design-ultimate，因为该 skill 已安装",
+            "删掉场景中的关键限制，再把任务强行改写成“用户要落地页、营销站、作品集、仪表盘或其他静态 Web UI，且没有现成设计稿”",
+            "不调用 $frontend-design-ultimate；改走普通前端修复或后端应用开发流程",
+            "先访问真实系统或写入一次，用结果反推是否适用"
+          ],
+          "answer": "不调用 $frontend-design-ultimate；改走普通前端修复或后端应用开发流程",
+          "explanation": "结论：不调用 $frontend-design-ultimate；改走普通前端修复或后端应用开发流程。\n依据：SKILL.md 将适用入口限定为“用户要落地页、营销站、作品集、仪表盘或其他静态 Web UI，且没有现成设计稿”，当前场景不满足。\n错误选项：A：安装状态不能覆盖不适用条件：“目标是后端业务功能、原生 SVG 图标体系、小型现有样式修补或需要真实动态服务的应用”；B：修改题目事实会让路由判断失真，不能证明原场景适用；D：真实访问或写入扩大了课程授权，也不能替代前置判断\n实践：写出正确替代入口或需要补充的一个条件。"
+        },
+        {
+          "id": "course-gs-12-q03",
+          "type": "multiple_choice",
+          "content": "[Local:前端设计终极版] 输入输出判断：哪组接口最能让一次合成练习独立复核？",
+          "options": [
+            "输入只写“帮我完成”，输出只写“成功”",
+            "输入真实凭证或客户运行态，输出要求直接完成不可逆动作",
+            "只记录“页面在桌面宽度下能打开”，不定义结果结构",
+            "输入：站点目的、受众、页面范围、品牌约束、Vite 或 Next.js 目标与响应式要求；输出：明确视觉方向、React/TypeScript/Tailwind 实现、构建结果与移动端和无障碍验收"
+          ],
+          "answer": "输入：站点目的、受众、页面范围、品牌约束、Vite 或 Next.js 目标与响应式要求；输出：明确视觉方向、React/TypeScript/Tailwind 实现、构建结果与移动端和无障碍验收",
+          "explanation": "结论：输入：站点目的、受众、页面范围、品牌约束、Vite 或 Next.js 目标与响应式要求；输出：明确视觉方向、React/TypeScript/Tailwind 实现、构建结果与移动端和无障碍验收。\n依据：源 skill 的流程需要把“站点目的、受众、页面范围、品牌约束、Vite 或 Next.js 目标与响应式要求”转化为“明确视觉方向、React/TypeScript/Tailwind 实现、构建结果与移动端和无障碍验收”。\n错误选项：A：模糊输入缺少“站点目的、受众、页面范围、品牌约束、Vite 或 Next.js 目标与响应式要求”，也没有可验收输出；B：敏感运行态和不可逆动作都超出本课程的合成只读边界；C：页面在桌面宽度下能打开不能替代“明确视觉方向、React/TypeScript/Tailwind 实现、构建结果与移动端和无障碍验收”\n实践：把输入字段改成虚构值，并为输出列三项可观察检查。"
+        },
+        {
+          "id": "course-gs-12-q04",
+          "type": "fill_blank",
+          "content": "[Local:前端设计终极版] 显式调用：已确认场景属于“用户要落地页、营销站、作品集、仪表盘或其他静态 Web UI，且没有现成设计稿”，应填写 ___。",
+          "options": [],
+          "answer": "$frontend-design-ultimate",
+          "explanation": "结论：正式调用写作 $frontend-design-ultimate。\n依据：SKILL.md 的 name 是 frontend-design-ultimate，openai.yaml 的 display_name 是“Local:前端设计终极版”。\n实践：在调用后追加一条合成任务，只要求路由理由、预期输出和停止条件。"
+        },
+        {
+          "id": "course-gs-12-q05",
+          "type": "true_false",
+          "content": "[Local:前端设计终极版] 边界判断：先定大胆视觉方向再编码；不能牺牲响应式、焦点、对比度和语义 HTML；课程只评审方案不生成站点。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：正确。\n依据：这是 frontend-design-ultimate 的关键流程或安全边界，能防止把静态前端设计与构建工作流误当成无条件执行器。\n实践：把“产品目的、受众、静态范围与视觉方向”写进提示词末尾，并只检查计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-gs-13",
+      "code": "GS13",
+      "title": "GS13 Local:Graphify 知识图谱",
+      "order": 13,
+      "lab_ref": "GS13",
+      "source_text": "codex-cli-0.144.6 的 .codex/skills/graphify/SKILL.md；skill name graphify；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-gs-13-q01",
+          "type": "multiple_choice",
+          "content": "[Local:Graphify 知识图谱] 场景判断：虚构仓库已有 graphify-out/graph.json，用户问认证模块如何连接数据库，请选择查询或重建。最合适的下一步是什么？",
+          "options": [
+            "显式调用 $graphify（Local:Graphify 知识图谱），先核对已有图状态、请求类型与语料规模",
+            "无条件删除现有图并运行完整构建",
+            "跳过“已有图状态、请求类型与语料规模”，直接要求产出“查询答案，或 graph.json、GRAPH_REPORT.md 与可选可视化，并保留来源和诚实性标记”",
+            "把“graphify-out 目录存在但没有可读 graph.json”当作 Local:Graphify 知识图谱 已完成"
+          ],
+          "answer": "显式调用 $graphify（Local:Graphify 知识图谱），先核对已有图状态、请求类型与语料规模",
+          "explanation": "结论：显式调用 $graphify（Local:Graphify 知识图谱），先核对已有图状态、请求类型与语料规模。\n依据：该 skill 是知识图谱查询与构建工作流，用途是优先查询已有 graphify 图谱，或在明确重建请求下把代码、文档和媒体构造成可追溯知识图谱。\n错误选项：B：自然语言代码库问题命中已有图时必须走 query 快路径；C：已有图状态、请求类型与语料规模是该流程的必要入口，缺失时不能声称已得到可靠输出；D：graphify-out 目录存在但没有可读 graph.json不是“查询答案，或 graph.json、GRAPH_REPORT.md 与可选可视化，并保留来源和诚实性标记”的可观察证据\n实践：写一句 $graphify 调用，随后列出所需输入和一个停止条件；不要实际调用工具。"
+        },
+        {
+          "id": "course-gs-13-q02",
+          "type": "multiple_choice",
+          "content": "[Local:Graphify 知识图谱] 场景判断：已有图谱可回答自然语言问题却仍准备全量重建，或语料巨大时未先检查规模和范围。应如何处理？",
+          "options": [
+            "仍调用 $graphify，因为该 skill 已安装",
+            "不调用 $graphify；改用直接文件搜索，或先完成语料检测后再决定是否构建",
+            "删掉场景中的关键限制，再把任务强行改写成“用户询问代码库关系且已有 graph.json，或明确要求构建、更新、聚类、路径和节点解释”",
+            "先访问真实系统或写入一次，用结果反推是否适用"
+          ],
+          "answer": "不调用 $graphify；改用直接文件搜索，或先完成语料检测后再决定是否构建",
+          "explanation": "结论：不调用 $graphify；改用直接文件搜索，或先完成语料检测后再决定是否构建。\n依据：SKILL.md 将适用入口限定为“用户询问代码库关系且已有 graph.json，或明确要求构建、更新、聚类、路径和节点解释”，当前场景不满足。\n错误选项：A：安装状态不能覆盖不适用条件：“已有图谱可回答自然语言问题却仍准备全量重建，或语料巨大时未先检查规模和范围”；C：修改题目事实会让路由判断失真，不能证明原场景适用；D：真实访问或写入扩大了课程授权，也不能替代前置判断\n实践：写出正确替代入口或需要补充的一个条件。"
+        },
+        {
+          "id": "course-gs-13-q03",
+          "type": "multiple_choice",
+          "content": "[Local:Graphify 知识图谱] 输入输出判断：哪组接口最能让一次合成练习独立复核？",
+          "options": [
+            "输入只写“帮我完成”，输出只写“成功”",
+            "输入真实凭证或客户运行态，输出要求直接完成不可逆动作",
+            "输入：问题或输入路径、已有图谱状态、模式和导出 flags、语料检测摘要；输出：查询答案，或 graph.json、GRAPH_REPORT.md 与可选可视化，并保留来源和诚实性标记",
+            "只记录“graphify-out 目录存在但没有可读 graph.json”，不定义结果结构"
+          ],
+          "answer": "输入：问题或输入路径、已有图谱状态、模式和导出 flags、语料检测摘要；输出：查询答案，或 graph.json、GRAPH_REPORT.md 与可选可视化，并保留来源和诚实性标记",
+          "explanation": "结论：输入：问题或输入路径、已有图谱状态、模式和导出 flags、语料检测摘要；输出：查询答案，或 graph.json、GRAPH_REPORT.md 与可选可视化，并保留来源和诚实性标记。\n依据：源 skill 的流程需要把“问题或输入路径、已有图谱状态、模式和导出 flags、语料检测摘要”转化为“查询答案，或 graph.json、GRAPH_REPORT.md 与可选可视化，并保留来源和诚实性标记”。\n错误选项：A：模糊输入缺少“问题或输入路径、已有图谱状态、模式和导出 flags、语料检测摘要”，也没有可验收输出；B：敏感运行态和不可逆动作都超出本课程的合成只读边界；D：graphify-out 目录存在但没有可读 graph.json不能替代“查询答案，或 graph.json、GRAPH_REPORT.md 与可选可视化，并保留来源和诚实性标记”\n实践：把输入字段改成虚构值，并为输出列三项可观察检查。"
+        },
+        {
+          "id": "course-gs-13-q04",
+          "type": "fill_blank",
+          "content": "[Local:Graphify 知识图谱] 显式调用：已确认场景属于“用户询问代码库关系且已有 graph.json，或明确要求构建、更新、聚类、路径和节点解释”，应填写 ___。",
+          "options": [],
+          "answer": "$graphify",
+          "explanation": "结论：正式调用写作 $graphify。\n依据：SKILL.md 的 name 是 graphify，openai.yaml 的 display_name 是“Local:Graphify 知识图谱”。\n实践：在调用后追加一条合成任务，只要求路由理由、预期输出和停止条件。"
+        },
+        {
+          "id": "course-gs-13-q05",
+          "type": "true_false",
+          "content": "[Local:Graphify 知识图谱] 边界判断：已有图先 query；不要索要非 Gemini API key；语义抽取与构建会写文件，课程只做路由判断；不得发明边。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：正确。\n依据：这是 graphify 的关键流程或安全边界，能防止把知识图谱查询与构建工作流误当成无条件执行器。\n实践：把“已有图状态、请求类型与语料规模”写进提示词末尾，并只检查计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-gs-14",
+      "code": "GS14",
+      "title": "GS14 Local:高企申报材料",
+      "order": 14,
+      "lab_ref": "GS14",
+      "source_text": "codex-cli-0.144.6 的 .codex/skills/hightech-enterprise-certification/SKILL.md；skill name hightech-enterprise-certification；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-gs-14-q01",
+          "type": "multiple_choice",
+          "content": "[Local:高企申报材料] 场景判断：虚构企业主体可匹配，但研发制度编号缺失，请判断应中止还是记录缺口并继续规划五份材料。最合适的下一步是什么？",
+          "options": [
+            "联网搜索并把未经核实的信息补进申报表",
+            "跳过“企业主体匹配与基础信息可得性”，直接要求产出“数据采集记录、企业画像、规划矩阵、可选缺口记录以及固定五份 HTML”",
+            "把“已有一个公司名称字符串”当作 Local:高企申报材料 已完成",
+            "显式调用 $hightech-enterprise-certification（Local:高企申报材料），先核对企业主体匹配与基础信息可得性"
+          ],
+          "answer": "显式调用 $hightech-enterprise-certification（Local:高企申报材料），先核对企业主体匹配与基础信息可得性",
+          "explanation": "结论：显式调用 $hightech-enterprise-certification（Local:高企申报材料），先核对企业主体匹配与基础信息可得性。\n依据：该 skill 是高企申报材料生成工作流，用途是通过企业数据平台读取企业信息，生成数据记录、中间工件和五套高企申报 HTML 材料。\n错误选项：A：该流程限定企业数据来源并要求把缺口显式降级；B：企业主体匹配与基础信息可得性是该流程的必要入口，缺失时不能声称已得到可靠输出；C：已有一个公司名称字符串不是“数据采集记录、企业画像、规划矩阵、可选缺口记录以及固定五份 HTML”的可观察证据\n实践：写一句 $hightech-enterprise-certification 调用，随后列出所需输入和一个停止条件；不要实际调用工具。"
+        },
+        {
+          "id": "course-gs-14-q02",
+          "type": "multiple_choice",
+          "content": "[Local:高企申报材料] 场景判断：只是咨询认定政策、企业主体无法匹配或完全没有基础企业信息。应如何处理？",
+          "options": [
+            "不调用 $hightech-enterprise-certification；改做政策咨询，或先补齐可验证的企业主体和基础信息",
+            "仍调用 $hightech-enterprise-certification，因为该 skill 已安装",
+            "删掉场景中的关键限制，再把任务强行改写成“用户明确要生成中国高新技术企业申报的 IP、RD、PS、成果转化或研发管理材料”",
+            "先访问真实系统或写入一次，用结果反推是否适用"
+          ],
+          "answer": "不调用 $hightech-enterprise-certification；改做政策咨询，或先补齐可验证的企业主体和基础信息",
+          "explanation": "结论：不调用 $hightech-enterprise-certification；改做政策咨询，或先补齐可验证的企业主体和基础信息。\n依据：SKILL.md 将适用入口限定为“用户明确要生成中国高新技术企业申报的 IP、RD、PS、成果转化或研发管理材料”，当前场景不满足。\n错误选项：B：安装状态不能覆盖不适用条件：“只是咨询认定政策、企业主体无法匹配或完全没有基础企业信息”；C：修改题目事实会让路由判断失真，不能证明原场景适用；D：真实访问或写入扩大了课程授权，也不能替代前置判断\n实践：写出正确替代入口或需要补充的一个条件。"
+        },
+        {
+          "id": "course-gs-14-q03",
+          "type": "multiple_choice",
+          "content": "[Local:高企申报材料] 输入输出判断：哪组接口最能让一次合成练习独立复核？",
+          "options": [
+            "输入只写“帮我完成”，输出只写“成功”",
+            "输入：企业主体、只读数据查询结果、输出目录、企业画像、规划矩阵与数据缺口；输出：数据采集记录、企业画像、规划矩阵、可选缺口记录以及固定五份 HTML",
+            "输入真实凭证或客户运行态，输出要求直接完成不可逆动作",
+            "只记录“已有一个公司名称字符串”，不定义结果结构"
+          ],
+          "answer": "输入：企业主体、只读数据查询结果、输出目录、企业画像、规划矩阵与数据缺口；输出：数据采集记录、企业画像、规划矩阵、可选缺口记录以及固定五份 HTML",
+          "explanation": "结论：输入：企业主体、只读数据查询结果、输出目录、企业画像、规划矩阵与数据缺口；输出：数据采集记录、企业画像、规划矩阵、可选缺口记录以及固定五份 HTML。\n依据：源 skill 的流程需要把“企业主体、只读数据查询结果、输出目录、企业画像、规划矩阵与数据缺口”转化为“数据采集记录、企业画像、规划矩阵、可选缺口记录以及固定五份 HTML”。\n错误选项：A：模糊输入缺少“企业主体、只读数据查询结果、输出目录、企业画像、规划矩阵与数据缺口”，也没有可验收输出；C：敏感运行态和不可逆动作都超出本课程的合成只读边界；D：已有一个公司名称字符串不能替代“数据采集记录、企业画像、规划矩阵、可选缺口记录以及固定五份 HTML”\n实践：把输入字段改成虚构值，并为输出列三项可观察检查。"
+        },
+        {
+          "id": "course-gs-14-q04",
+          "type": "fill_blank",
+          "content": "[Local:高企申报材料] 显式调用：已确认场景属于“用户明确要生成中国高新技术企业申报的 IP、RD、PS、成果转化或研发管理材料”，应填写 ___。",
+          "options": [],
+          "answer": "$hightech-enterprise-certification",
+          "explanation": "结论：正式调用写作 $hightech-enterprise-certification。\n依据：SKILL.md 的 name 是 hightech-enterprise-certification，openai.yaml 的 display_name 是“Local:高企申报材料”。\n实践：在调用后追加一条合成任务，只要求路由理由、预期输出和停止条件。"
+        },
+        {
+          "id": "course-gs-14-q05",
+          "type": "true_false",
+          "content": "[Local:高企申报材料] 边界判断：数据只通过 fastapi1 CLI；主体外缺口应集中降级而非编造；必须保留骨架元数据；课程不连接平台或写文件。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：正确。\n依据：这是 hightech-enterprise-certification 的关键流程或安全边界，能防止把高企申报材料生成工作流误当成无条件执行器。\n实践：把“企业主体匹配与基础信息可得性”写进提示词末尾，并只检查计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-gs-15",
+      "code": "GS15",
+      "title": "GS15 Local:打印排版",
+      "order": 15,
+      "lab_ref": "GS15",
+      "source_text": "codex-cli-0.144.6 的 .codex/skills/html-a4-print/SKILL.md；skill name html-a4-print；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-gs-15-q01",
+          "type": "multiple_choice",
+          "content": "[Local:打印排版] 场景判断：虚构可信静态 HTML 报告需要 A4 打印和页码，请写主题选择与离线验收方案。最合适的下一步是什么？",
+          "options": [
+            "改用 PDF 文本提取工具直接修改现有 PDF",
+            "跳过“可信 HTML、纸张、主题与安全模式”，直接要求产出“打印样式方案；执行时得到带页码并通过分页、裁切和视觉检查的 PDF”",
+            "显式调用 $html-a4-print（Local:打印排版），先核对可信 HTML、纸张、主题与安全模式",
+            "把“浏览器屏幕版看起来正常”当作 Local:打印排版 已完成"
+          ],
+          "answer": "显式调用 $html-a4-print（Local:打印排版），先核对可信 HTML、纸张、主题与安全模式",
+          "explanation": "结论：显式调用 $html-a4-print（Local:打印排版），先核对可信 HTML、纸张、主题与安全模式。\n依据：该 skill 是 HTML 打印排版与 PDF 验证工作流，用途是为可信 HTML 选择打印主题、修复分页与版式，并在需要时导出和目视验证 A4 或 Letter PDF。\n错误选项：A：该 skill 的输入是 HTML，不负责现有 PDF 编辑或 OCR；B：可信 HTML、纸张、主题与安全模式是该流程的必要入口，缺失时不能声称已得到可靠输出；D：浏览器屏幕版看起来正常不是“打印样式方案，执行时得到带页码并通过分页、裁切和视觉检查的 PDF”的可观察证据\n实践：写一句 $html-a4-print 调用，随后列出所需输入和一个停止条件；不要实际调用工具。"
+        },
+        {
+          "id": "course-gs-15-q02",
+          "type": "multiple_choice",
+          "content": "[Local:打印排版] 场景判断：直接编辑现有 PDF、做 OCR 或文本提取，或只优化屏幕响应式 Web UI。应如何处理？",
+          "options": [
+            "仍调用 $html-a4-print，因为该 skill 已安装",
+            "删掉场景中的关键限制，再把任务强行改写成“需要 HTML 打印排版、分页、页边距、表格跨页或从 HTML 生成正式 PDF”",
+            "先访问真实系统或写入一次，用结果反推是否适用",
+            "不调用 $html-a4-print；改用 PDF、OCR 或普通响应式前端工具"
+          ],
+          "answer": "不调用 $html-a4-print；改用 PDF、OCR 或普通响应式前端工具",
+          "explanation": "结论：不调用 $html-a4-print；改用 PDF、OCR 或普通响应式前端工具。\n依据：SKILL.md 将适用入口限定为“需要 HTML 打印排版、分页、页边距、表格跨页或从 HTML 生成正式 PDF”，当前场景不满足。\n错误选项：A：安装状态不能覆盖不适用条件：“直接编辑现有 PDF、做 OCR 或文本提取，或只优化屏幕响应式 Web UI”；B：修改题目事实会让路由判断失真，不能证明原场景适用；C：真实访问或写入扩大了课程授权，也不能替代前置判断\n实践：写出正确替代入口或需要补充的一个条件。"
+        },
+        {
+          "id": "course-gs-15-q03",
+          "type": "multiple_choice",
+          "content": "[Local:打印排版] 输入输出判断：哪组接口最能让一次合成练习独立复核？",
+          "options": [
+            "输入：可信 HTML、纸张、中文主题、是否导出 PDF、页码与网络或 JavaScript 安全要求；输出：打印样式方案；执行时得到带页码并通过分页、裁切和视觉检查的 PDF",
+            "输入只写“帮我完成”，输出只写“成功”",
+            "输入真实凭证或客户运行态，输出要求直接完成不可逆动作",
+            "只记录“浏览器屏幕版看起来正常”，不定义结果结构"
+          ],
+          "answer": "输入：可信 HTML、纸张、中文主题、是否导出 PDF、页码与网络或 JavaScript 安全要求；输出：打印样式方案；执行时得到带页码并通过分页、裁切和视觉检查的 PDF",
+          "explanation": "结论：输入：可信 HTML、纸张、中文主题、是否导出 PDF、页码与网络或 JavaScript 安全要求；输出：打印样式方案；执行时得到带页码并通过分页、裁切和视觉检查的 PDF。\n依据：源 skill 的流程需要把“可信 HTML、纸张、中文主题、是否导出 PDF、页码与网络或 JavaScript 安全要求”转化为“打印样式方案，执行时得到带页码并通过分页、裁切和视觉检查的 PDF”。\n错误选项：B：模糊输入缺少“可信 HTML、纸张、中文主题、是否导出 PDF、页码与网络或 JavaScript 安全要求”，也没有可验收输出；C：敏感运行态和不可逆动作都超出本课程的合成只读边界；D：浏览器屏幕版看起来正常不能替代“打印样式方案，执行时得到带页码并通过分页、裁切和视觉检查的 PDF”\n实践：把输入字段改成虚构值，并为输出列三项可观察检查。"
+        },
+        {
+          "id": "course-gs-15-q04",
+          "type": "fill_blank",
+          "content": "[Local:打印排版] 显式调用：已确认场景属于“需要 HTML 打印排版、分页、页边距、表格跨页或从 HTML 生成正式 PDF”，应填写 ___。",
+          "options": [],
+          "answer": "$html-a4-print",
+          "explanation": "结论：正式调用写作 $html-a4-print。\n依据：SKILL.md 的 name 是 html-a4-print，openai.yaml 的 display_name 是“Local:打印排版”。\n实践：在调用后追加一条合成任务，只要求路由理由、预期输出和停止条件。"
+        },
+        {
+          "id": "course-gs-15-q05",
+          "type": "true_false",
+          "content": "[Local:打印排版] 边界判断：主题必须明确；不覆盖既有 PDF；不直接渲染不可信 HTML；命令成功不能代替真实 PDF 视觉验收。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：正确。\n依据：这是 html-a4-print 的关键流程或安全边界，能防止把HTML 打印排版与 PDF 验证工作流误当成无条件执行器。\n实践：把“可信 HTML、纸张、主题与安全模式”写进提示词末尾，并只检查计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-gs-16",
+      "code": "GS16",
+      "title": "GS16 Local:JS/Node 内存泄漏调试",
+      "order": 16,
+      "lab_ref": "GS16",
+      "source_text": "codex-cli-0.144.6 的 .codex/skills/memory-leak-debugging/SKILL.md；skill name memory-leak-debugging；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-gs-16-q01",
+          "type": "multiple_choice",
+          "content": "[Local:JS/Node 内存泄漏调试] 场景判断：虚构 SPA 重复进入并退出同一页面十次后内存持续增长，请设计三时点快照和分析路径。最合适的下一步是什么？",
+          "options": [
+            "直接 cat 原始 heapsnapshot 并凭对象名猜根因",
+            "显式调用 $memory-leak-debugging（Local:JS/Node 内存泄漏调试），先核对可重复增长、运行侧分类与可比较快照",
+            "跳过“可重复增长、运行侧分类与可比较快照”，直接要求产出“增长对象、泄漏轨迹、代码根因、最小修复和同流程复测证据”",
+            "把“任务管理器某一刻内存较高”当作 Local:JS/Node 内存泄漏调试 已完成"
+          ],
+          "answer": "显式调用 $memory-leak-debugging（Local:JS/Node 内存泄漏调试），先核对可重复增长、运行侧分类与可比较快照",
+          "explanation": "结论：显式调用 $memory-leak-debugging（Local:JS/Node 内存泄漏调试），先核对可重复增长、运行侧分类与可比较快照。\n依据：该 skill 是JavaScript 内存泄漏诊断工作流，用途是通过可重复操作、堆快照和 memlab 泄漏轨迹定位浏览器或 Node.js 的内存保留根因。\n错误选项：A：原始快照巨大且缺乏泄漏轨迹，skill 明确要求 memlab 或比较脚本；C：可重复增长、运行侧分类与可比较快照是该流程的必要入口，缺失时不能声称已得到可靠输出；D：任务管理器某一刻内存较高不是“增长对象、泄漏轨迹、代码根因、最小修复和同流程复测证据”的可观察证据\n实践：写一句 $memory-leak-debugging 调用，随后列出所需输入和一个停止条件；不要实际调用工具。"
+        },
+        {
+          "id": "course-gs-16-q02",
+          "type": "multiple_choice",
+          "content": "[Local:JS/Node 内存泄漏调试] 场景判断：问题是 CPU 变慢、网络延迟、非 JavaScript 进程内存，或没有可重复的增长症状。应如何处理？",
+          "options": [
+            "仍调用 $memory-leak-debugging，因为该 skill 已安装",
+            "删掉场景中的关键限制，再把任务强行改写成“JavaScript 或 Node.js 出现高内存、OOM、持续增长，或需要分析 heapsnapshot 与 memlab 结果”",
+            "不调用 $memory-leak-debugging；改走性能、网络或对应语言的诊断流程",
+            "先访问真实系统或写入一次，用结果反推是否适用"
+          ],
+          "answer": "不调用 $memory-leak-debugging；改走性能、网络或对应语言的诊断流程",
+          "explanation": "结论：不调用 $memory-leak-debugging；改走性能、网络或对应语言的诊断流程。\n依据：SKILL.md 将适用入口限定为“JavaScript 或 Node.js 出现高内存、OOM、持续增长，或需要分析 heapsnapshot 与 memlab 结果”，当前场景不满足。\n错误选项：A：安装状态不能覆盖不适用条件：“问题是 CPU 变慢、网络延迟、非 JavaScript 进程内存，或没有可重复的增长症状”；B：修改题目事实会让路由判断失真，不能证明原场景适用；D：真实访问或写入扩大了课程授权，也不能替代前置判断\n实践：写出正确替代入口或需要补充的一个条件。"
+        },
+        {
+          "id": "course-gs-16-q03",
+          "type": "multiple_choice",
+          "content": "[Local:JS/Node 内存泄漏调试] 输入输出判断：哪组接口最能让一次合成练习独立复核？",
+          "options": [
+            "输入只写“帮我完成”，输出只写“成功”",
+            "输入真实凭证或客户运行态，输出要求直接完成不可逆动作",
+            "只记录“任务管理器某一刻内存较高”，不定义结果结构",
+            "输入：浏览器或 Node 端分类、复现步骤、baseline/target/final 快照与 memlab 输出；输出：增长对象、泄漏轨迹、代码根因、最小修复和同流程复测证据"
+          ],
+          "answer": "输入：浏览器或 Node 端分类、复现步骤、baseline/target/final 快照与 memlab 输出；输出：增长对象、泄漏轨迹、代码根因、最小修复和同流程复测证据",
+          "explanation": "结论：输入：浏览器或 Node 端分类、复现步骤、baseline/target/final 快照与 memlab 输出；输出：增长对象、泄漏轨迹、代码根因、最小修复和同流程复测证据。\n依据：源 skill 的流程需要把“浏览器或 Node 端分类、复现步骤、baseline/target/final 快照与 memlab 输出”转化为“增长对象、泄漏轨迹、代码根因、最小修复和同流程复测证据”。\n错误选项：A：模糊输入缺少“浏览器或 Node 端分类、复现步骤、baseline/target/final 快照与 memlab 输出”，也没有可验收输出；B：敏感运行态和不可逆动作都超出本课程的合成只读边界；C：任务管理器某一刻内存较高不能替代“增长对象、泄漏轨迹、代码根因、最小修复和同流程复测证据”\n实践：把输入字段改成虚构值，并为输出列三项可观察检查。"
+        },
+        {
+          "id": "course-gs-16-q04",
+          "type": "fill_blank",
+          "content": "[Local:JS/Node 内存泄漏调试] 显式调用：已确认场景属于“JavaScript 或 Node.js 出现高内存、OOM、持续增长，或需要分析 heapsnapshot 与 memlab 结果”，应填写 ___。",
+          "options": [],
+          "answer": "$memory-leak-debugging",
+          "explanation": "结论：正式调用写作 $memory-leak-debugging。\n依据：SKILL.md 的 name 是 memory-leak-debugging，openai.yaml 的 display_name 是“Local:JS/Node 内存泄漏调试”。\n实践：在调用后追加一条合成任务，只要求路由理由、预期输出和停止条件。"
+        },
+        {
+          "id": "course-gs-16-q05",
+          "type": "true_false",
+          "content": "[Local:JS/Node 内存泄漏调试] 边界判断：不得直接读取巨大原始 heapsnapshot；优先 memlab，缺失时用比较脚本；分离有意缓存与真实泄漏。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：正确。\n依据：这是 memory-leak-debugging 的关键流程或安全边界，能防止把JavaScript 内存泄漏诊断工作流误当成无条件执行器。\n实践：把“可重复增长、运行侧分类与可比较快照”写进提示词末尾，并只检查计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-gs-17",
+      "code": "GS17",
+      "title": "GS17 Local:去除 AI 写作腔",
+      "order": 17,
+      "lab_ref": "GS17",
+      "source_text": "codex-cli-0.144.6 的 .codex/skills/stop-slop/SKILL.md；skill name stop-slop；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-gs-17-q01",
+          "type": "multiple_choice",
+          "content": "[Local:去除 AI 写作腔] 场景判断：给一段充满套话、三段式和被动语态的虚构产品说明，要求保留三个事实后改写。最合适的下一步是什么？",
+          "options": [
+            "显式调用 $stop-slop（Local:去除 AI 写作腔），先核对原文、受众与必须保留的事实",
+            "改用事实研究工具补写未经来源支持的新卖点",
+            "跳过“原文、受众与必须保留的事实”，直接要求产出“保留原意的精简改稿，以及按直接性、节奏、信任、真实感和密度的检查”",
+            "把“删除所有副词后的短文本”当作 Local:去除 AI 写作腔 已完成"
+          ],
+          "answer": "显式调用 $stop-slop（Local:去除 AI 写作腔），先核对原文、受众与必须保留的事实",
+          "explanation": "结论：显式调用 $stop-slop（Local:去除 AI 写作腔），先核对原文、受众与必须保留的事实。\n依据：该 skill 是文风编辑与评分工作流，用途是清理套话、模板结构、被动语态和抽象机器味，使现有文字更直接、具体且有自然节奏。\n错误选项：B：stop-slop 只编辑表达，不负责创造或验证新事实；C：原文、受众与必须保留的事实是该流程的必要入口，缺失时不能声称已得到可靠输出；D：删除所有副词后的短文本不是“保留原意的精简改稿，以及按直接性、节奏、信任、真实感和密度的检查”的可观察证据\n实践：写一句 $stop-slop 调用，随后列出所需输入和一个停止条件；不要实际调用工具。"
+        },
+        {
+          "id": "course-gs-17-q02",
+          "type": "multiple_choice",
+          "content": "[Local:去除 AI 写作腔] 场景判断：任务核心是核实事实、翻译术语、改变法律含义或生成代码而非润色 prose。应如何处理？",
+          "options": [
+            "仍调用 $stop-slop，因为该 skill 已安装",
+            "不调用 $stop-slop；改用研究、翻译或法律审阅流程，先解决事实和含义问题",
+            "删掉场景中的关键限制，再把任务强行改写成“用户要起草、编辑或审阅 prose，并明确希望减少 AI 写作痕迹”",
+            "先访问真实系统或写入一次，用结果反推是否适用"
+          ],
+          "answer": "不调用 $stop-slop；改用研究、翻译或法律审阅流程，先解决事实和含义问题",
+          "explanation": "结论：不调用 $stop-slop；改用研究、翻译或法律审阅流程，先解决事实和含义问题。\n依据：SKILL.md 将适用入口限定为“用户要起草、编辑或审阅 prose，并明确希望减少 AI 写作痕迹”，当前场景不满足。\n错误选项：A：安装状态不能覆盖不适用条件：“任务核心是核实事实、翻译术语、改变法律含义或生成代码而非润色 prose”；C：修改题目事实会让路由判断失真，不能证明原场景适用；D：真实访问或写入扩大了课程授权，也不能替代前置判断\n实践：写出正确替代入口或需要补充的一个条件。"
+        },
+        {
+          "id": "course-gs-17-q03",
+          "type": "multiple_choice",
+          "content": "[Local:去除 AI 写作腔] 输入输出判断：哪组接口最能让一次合成练习独立复核？",
+          "options": [
+            "输入只写“帮我完成”，输出只写“成功”",
+            "输入真实凭证或客户运行态，输出要求直接完成不可逆动作",
+            "输入：原文、受众、必须保留的事实和术语、目标语气与不可改变的含义；输出：保留原意的精简改稿，以及按直接性、节奏、信任、真实感和密度的检查",
+            "只记录“删除所有副词后的短文本”，不定义结果结构"
+          ],
+          "answer": "输入：原文、受众、必须保留的事实和术语、目标语气与不可改变的含义；输出：保留原意的精简改稿，以及按直接性、节奏、信任、真实感和密度的检查",
+          "explanation": "结论：输入：原文、受众、必须保留的事实和术语、目标语气与不可改变的含义；输出：保留原意的精简改稿，以及按直接性、节奏、信任、真实感和密度的检查。\n依据：源 skill 的流程需要把“原文、受众、必须保留的事实和术语、目标语气与不可改变的含义”转化为“保留原意的精简改稿，以及按直接性、节奏、信任、真实感和密度的检查”。\n错误选项：A：模糊输入缺少“原文、受众、必须保留的事实和术语、目标语气与不可改变的含义”，也没有可验收输出；B：敏感运行态和不可逆动作都超出本课程的合成只读边界；D：删除所有副词后的短文本不能替代“保留原意的精简改稿，以及按直接性、节奏、信任、真实感和密度的检查”\n实践：把输入字段改成虚构值，并为输出列三项可观察检查。"
+        },
+        {
+          "id": "course-gs-17-q04",
+          "type": "fill_blank",
+          "content": "[Local:去除 AI 写作腔] 显式调用：已确认场景属于“用户要起草、编辑或审阅 prose，并明确希望减少 AI 写作痕迹”，应填写 ___。",
+          "options": [],
+          "answer": "$stop-slop",
+          "explanation": "结论：正式调用写作 $stop-slop。\n依据：SKILL.md 的 name 是 stop-slop，openai.yaml 的 display_name 是“Local:去除 AI 写作腔”。\n实践：在调用后追加一条合成任务，只要求路由理由、预期输出和停止条件。"
+        },
+        {
+          "id": "course-gs-17-q05",
+          "type": "true_false",
+          "content": "[Local:去除 AI 写作腔] 边界判断：不能为去模板化而删掉关键事实、技术限定或合规措辞；评分低于门槛才继续修订。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：正确。\n依据：这是 stop-slop 的关键流程或安全边界，能防止把文风编辑与评分工作流误当成无条件执行器。\n实践：把“原文、受众与必须保留的事实”写进提示词末尾，并只检查计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-gs-18",
+      "code": "GS18",
+      "title": "GS18 Local:结构化教学",
+      "order": 18,
+      "lab_ref": "GS18",
+      "source_text": "codex-cli-0.144.6 的 .codex/skills/teach/SKILL.md；skill name teach；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-gs-18-q01",
+          "type": "multiple_choice",
+          "content": "[Local:结构化教学] 场景判断：用户想多轮学习 SQL，但当前在无关仓库根且没有课程目录，请判断第一步。最合适的下一步是什么？",
+          "options": [
+            "立即在当前仓库根生成 MISSION.md 和 lessons 目录",
+            "跳过“学习使命与明确确认的课程目录”，直接要求产出“MISSION、资源清单、短 HTML 课程、参考资料、学习记录与下一步最近发展区”",
+            "把“当前目录可写”当作 Local:结构化教学 已完成",
+            "显式调用 $teach（Local:结构化教学），先核对学习使命与明确确认的课程目录"
+          ],
+          "answer": "显式调用 $teach（Local:结构化教学），先核对学习使命与明确确认的课程目录",
+          "explanation": "结论：显式调用 $teach（Local:结构化教学），先核对学习使命与明确确认的课程目录。\n依据：该 skill 是有状态多轮教学工作区，用途是围绕学习使命持续创建短课、参考资料、学习记录与复习反馈，逐步提升长期保持。\n错误选项：A：teach 必须先解析或确认专门教学工作区；B：学习使命与明确确认的课程目录是该流程的必要入口，缺失时不能声称已得到可靠输出；C：当前目录可写不是“MISSION、资源清单、短 HTML 课程、参考资料、学习记录与下一步最近发展区”的可观察证据\n实践：写一句 $teach 调用，随后列出所需输入和一个停止条件；不要实际调用工具。"
+        },
+        {
+          "id": "course-gs-18-q02",
+          "type": "multiple_choice",
+          "content": "[Local:结构化教学] 场景判断：只要一次性解释，尚未确认课程目录，或当前位于主目录、CODEX_HOME 或无关仓库根。应如何处理？",
+          "options": [
+            "不调用 $teach；作为一次性问答直接解释，不初始化有状态教学工作区",
+            "仍调用 $teach，因为该 skill 已安装",
+            "删掉场景中的关键限制，再把任务强行改写成“用户明确要在多个会话中学习一个新概念或技能，并愿意使用专门课程目录保存状态”",
+            "先访问真实系统或写入一次，用结果反推是否适用"
+          ],
+          "answer": "不调用 $teach；作为一次性问答直接解释，不初始化有状态教学工作区",
+          "explanation": "结论：不调用 $teach；作为一次性问答直接解释，不初始化有状态教学工作区。\n依据：SKILL.md 将适用入口限定为“用户明确要在多个会话中学习一个新概念或技能，并愿意使用专门课程目录保存状态”，当前场景不满足。\n错误选项：B：安装状态不能覆盖不适用条件：“只要一次性解释，尚未确认课程目录，或当前位于主目录、CODEX_HOME 或无关仓库根”；C：修改题目事实会让路由判断失真，不能证明原场景适用；D：真实访问或写入扩大了课程授权，也不能替代前置判断\n实践：写出正确替代入口或需要补充的一个条件。"
+        },
+        {
+          "id": "course-gs-18-q03",
+          "type": "multiple_choice",
+          "content": "[Local:结构化教学] 输入输出判断：哪组接口最能让一次合成练习独立复核？",
+          "options": [
+            "输入只写“帮我完成”，输出只写“成功”",
+            "输入：学习主题、使命、已确认课程目录、已有学习记录、偏好与可信资源；输出：MISSION、资源清单、短 HTML 课程、参考资料、学习记录与下一步最近发展区",
+            "输入真实凭证或客户运行态，输出要求直接完成不可逆动作",
+            "只记录“当前目录可写”，不定义结果结构"
+          ],
+          "answer": "输入：学习主题、使命、已确认课程目录、已有学习记录、偏好与可信资源；输出：MISSION、资源清单、短 HTML 课程、参考资料、学习记录与下一步最近发展区",
+          "explanation": "结论：输入：学习主题、使命、已确认课程目录、已有学习记录、偏好与可信资源；输出：MISSION、资源清单、短 HTML 课程、参考资料、学习记录与下一步最近发展区。\n依据：源 skill 的流程需要把“学习主题、使命、已确认课程目录、已有学习记录、偏好与可信资源”转化为“MISSION、资源清单、短 HTML 课程、参考资料、学习记录与下一步最近发展区”。\n错误选项：A：模糊输入缺少“学习主题、使命、已确认课程目录、已有学习记录、偏好与可信资源”，也没有可验收输出；C：敏感运行态和不可逆动作都超出本课程的合成只读边界；D：当前目录可写不能替代“MISSION、资源清单、短 HTML 课程、参考资料、学习记录与下一步最近发展区”\n实践：把输入字段改成虚构值，并为输出列三项可观察检查。"
+        },
+        {
+          "id": "course-gs-18-q04",
+          "type": "fill_blank",
+          "content": "[Local:结构化教学] 显式调用：已确认场景属于“用户明确要在多个会话中学习一个新概念或技能，并愿意使用专门课程目录保存状态”，应填写 ___。",
+          "options": [],
+          "answer": "$teach",
+          "explanation": "结论：正式调用写作 $teach。\n依据：SKILL.md 的 name 是 teach，openai.yaml 的 display_name 是“Local:结构化教学”。\n实践：在调用后追加一条合成任务，只要求路由理由、预期输出和停止条件。"
+        },
+        {
+          "id": "course-gs-18-q05",
+          "type": "true_false",
+          "content": "[Local:结构化教学] 边界判断：未确认专用目录前不创建文件；每课只教一个紧凑目标并提供反馈；课程练习不初始化另一个工作区。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：正确。\n依据：这是 teach 的关键流程或安全边界，能防止把有状态多轮教学工作区误当成无条件执行器。\n实践：把“学习使命与明确确认的课程目录”写进提示词末尾，并只检查计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-gs-19",
+      "code": "GS19",
+      "title": "GS19 System:图像生成",
+      "order": 19,
+      "lab_ref": "GS19",
+      "source_text": "codex-cli-0.144.6 的 .codex/skills/.system/imagegen/SKILL.md；skill name imagegen；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-gs-19-q01",
+          "type": "multiple_choice",
+          "content": "[System:图像生成] 场景判断：虚构项目需要一张摄影风格 PNG hero，同时已有 SVG 图标只需改颜色，请分别路由。最合适的下一步是什么？",
+          "options": [
+            "用 imagegen 重画整个现有 SVG 图标体系",
+            "跳过“位图意图、输入图角色与项目保存位置”，直接要求产出“经检查的位图及最终提示词；项目素材需复制到工作区并报告路径”",
+            "显式调用 $imagegen（System:图像生成），先核对位图意图、输入图角色与项目保存位置",
+            "把“聊天里出现过一张参考图”当作 System:图像生成 已完成"
+          ],
+          "answer": "显式调用 $imagegen（System:图像生成），先核对位图意图、输入图角色与项目保存位置",
+          "explanation": "结论：显式调用 $imagegen（System:图像生成），先核对位图意图、输入图角色与项目保存位置。\n依据：该 skill 是位图生成与编辑工作流，用途是用内置 image_gen 优先生成或编辑照片、插画、纹理、精灵、mockup 和透明位图素材。\n错误选项：A：既有矢量或代码原生资产应直接编辑而非生成位图替代；B：位图意图、输入图角色与项目保存位置是该流程的必要入口，缺失时不能声称已得到可靠输出；D：聊天里出现过一张参考图不是“经检查的位图及最终提示词，项目素材需复制到工作区并报告路径”的可观察证据\n实践：写一句 $imagegen 调用，随后列出所需输入和一个停止条件；不要实际调用工具。"
+        },
+        {
+          "id": "course-gs-19-q02",
+          "type": "multiple_choice",
+          "content": "[System:图像生成] 场景判断：应编辑现有 SVG、图标或 logo 系统，或用 HTML/CSS/canvas 直接构建确定性视觉。应如何处理？",
+          "options": [
+            "仍调用 $imagegen，因为该 skill 已安装",
+            "删掉场景中的关键限制，再把任务强行改写成“目标是新位图、现有位图编辑或参考图变体，且输出应是 raster asset”",
+            "先访问真实系统或写入一次，用结果反推是否适用",
+            "不调用 $imagegen；直接编辑 SVG、HTML/CSS 或其他代码原生视觉"
+          ],
+          "answer": "不调用 $imagegen；直接编辑 SVG、HTML/CSS 或其他代码原生视觉",
+          "explanation": "结论：不调用 $imagegen；直接编辑 SVG、HTML/CSS 或其他代码原生视觉。\n依据：SKILL.md 将适用入口限定为“目标是新位图、现有位图编辑或参考图变体，且输出应是 raster asset”，当前场景不满足。\n错误选项：A：安装状态不能覆盖不适用条件：“应编辑现有 SVG、图标或 logo 系统，或用 HTML/CSS/canvas 直接构建确定性视觉”；B：修改题目事实会让路由判断失真，不能证明原场景适用；C：真实访问或写入扩大了课程授权，也不能替代前置判断\n实践：写出正确替代入口或需要补充的一个条件。"
+        },
+        {
+          "id": "course-gs-19-q03",
+          "type": "multiple_choice",
+          "content": "[System:图像生成] 输入输出判断：哪组接口最能让一次合成练习独立复核？",
+          "options": [
+            "输入：生成或编辑意图、提示词、输入图角色、用途、尺寸构图、必须保留项与保存位置；输出：经检查的位图及最终提示词；项目素材需复制到工作区并报告路径",
+            "输入只写“帮我完成”，输出只写“成功”",
+            "输入真实凭证或客户运行态，输出要求直接完成不可逆动作",
+            "只记录“聊天里出现过一张参考图”，不定义结果结构"
+          ],
+          "answer": "输入：生成或编辑意图、提示词、输入图角色、用途、尺寸构图、必须保留项与保存位置；输出：经检查的位图及最终提示词；项目素材需复制到工作区并报告路径",
+          "explanation": "结论：输入：生成或编辑意图、提示词、输入图角色、用途、尺寸构图、必须保留项与保存位置；输出：经检查的位图及最终提示词；项目素材需复制到工作区并报告路径。\n依据：源 skill 的流程需要把“生成或编辑意图、提示词、输入图角色、用途、尺寸构图、必须保留项与保存位置”转化为“经检查的位图及最终提示词，项目素材需复制到工作区并报告路径”。\n错误选项：B：模糊输入缺少“生成或编辑意图、提示词、输入图角色、用途、尺寸构图、必须保留项与保存位置”，也没有可验收输出；C：敏感运行态和不可逆动作都超出本课程的合成只读边界；D：聊天里出现过一张参考图不能替代“经检查的位图及最终提示词，项目素材需复制到工作区并报告路径”\n实践：把输入字段改成虚构值，并为输出列三项可观察检查。"
+        },
+        {
+          "id": "course-gs-19-q04",
+          "type": "fill_blank",
+          "content": "[System:图像生成] 显式调用：已确认场景属于“目标是新位图、现有位图编辑或参考图变体，且输出应是 raster asset”，应填写 ___。",
+          "options": [],
+          "answer": "$imagegen",
+          "explanation": "结论：正式调用写作 $imagegen。\n依据：SKILL.md 的 name 是 imagegen，openai.yaml 的 display_name 是“System:图像生成”。\n实践：在调用后追加一条合成任务，只要求路由理由、预期输出和停止条件。"
+        },
+        {
+          "id": "course-gs-19-q05",
+          "type": "true_false",
+          "content": "[System:图像生成] 边界判断：默认内置工具；CLI 只在明确要求或确认 fallback 后使用；透明图先色键流程；不得覆盖现有素材。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：正确。\n依据：这是 imagegen 的关键流程或安全边界，能防止把位图生成与编辑工作流误当成无条件执行器。\n实践：把“位图意图、输入图角色与项目保存位置”写进提示词末尾，并只检查计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-gs-20",
+      "code": "GS20",
+      "title": "GS20 System:OpenAI 文档",
+      "order": 20,
+      "lab_ref": "GS20",
+      "source_text": "codex-cli-0.144.6 的 .codex/skills/.system/openai-docs/SKILL.md；skill name openai-docs；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-gs-20-q01",
+          "type": "multiple_choice",
+          "content": "[System:OpenAI 文档] 场景判断：用户问“Codex 中长期项目规则应该放哪里”，请判断 manual、Docs MCP 和 web fallback 的顺序。最合适的下一步是什么？",
+          "options": [
+            "直接凭记忆回答最新 Codex 行为",
+            "显式调用 $openai-docs（System:OpenAI 文档），先核对问题分类、时效性与目标模型是否明确",
+            "跳过“问题分类、时效性与目标模型是否明确”，直接要求产出“基于官方来源的答案、引用和必要的不确定性；模型升级时给出窄而保行为的范围”",
+            "把“模型记忆中的旧文档片段”当作 System:OpenAI 文档 已完成"
+          ],
+          "answer": "显式调用 $openai-docs（System:OpenAI 文档），先核对问题分类、时效性与目标模型是否明确",
+          "explanation": "结论：显式调用 $openai-docs（System:OpenAI 文档），先核对问题分类、时效性与目标模型是否明确。\n依据：该 skill 是官方来源选择与文档查询路由器，用途是从 Codex manual、OpenAI Developer Docs MCP 与官方域 fallback 获取当前、可引用的 OpenAI 产品和 Codex 指南。\n错误选项：A：Codex 自知识必须按官方 source route 核验；C：问题分类、时效性与目标模型是否明确是该流程的必要入口，缺失时不能声称已得到可靠输出；D：模型记忆中的旧文档片段不是“基于官方来源的答案、引用和必要的不确定性，模型升级时给出窄而保行为的范围”的可观察证据\n实践：写一句 $openai-docs 调用，随后列出所需输入和一个停止条件；不要实际调用工具。"
+        },
+        {
+          "id": "course-gs-20-q02",
+          "type": "multiple_choice",
+          "content": "[System:OpenAI 文档] 场景判断：只是一般软件实现问题、私有连接器数据，或代码库偶然提到 OpenAI 名词。应如何处理？",
+          "options": [
+            "仍调用 $openai-docs，因为该 skill 已安装",
+            "删掉场景中的关键限制，再把任务强行改写成“用户询问 OpenAI API、模型、迁移、提示词、Codex 配置或 Codex 产品表面”",
+            "不调用 $openai-docs；直接完成普通软件任务，或使用对应私有连接器读取授权数据",
+            "先访问真实系统或写入一次，用结果反推是否适用"
+          ],
+          "answer": "不调用 $openai-docs；直接完成普通软件任务，或使用对应私有连接器读取授权数据",
+          "explanation": "结论：不调用 $openai-docs；直接完成普通软件任务，或使用对应私有连接器读取授权数据。\n依据：SKILL.md 将适用入口限定为“用户询问 OpenAI API、模型、迁移、提示词、Codex 配置或 Codex 产品表面”，当前场景不满足。\n错误选项：A：安装状态不能覆盖不适用条件：“只是一般软件实现问题、私有连接器数据，或代码库偶然提到 OpenAI 名词”；B：修改题目事实会让路由判断失真，不能证明原场景适用；D：真实访问或写入扩大了课程授权，也不能替代前置判断\n实践：写出正确替代入口或需要补充的一个条件。"
+        },
+        {
+          "id": "course-gs-20-q03",
+          "type": "multiple_choice",
+          "content": "[System:OpenAI 文档] 输入输出判断：哪组接口最能让一次合成练习独立复核？",
+          "options": [
+            "输入只写“帮我完成”，输出只写“成功”",
+            "输入真实凭证或客户运行态，输出要求直接完成不可逆动作",
+            "只记录“模型记忆中的旧文档片段”，不定义结果结构",
+            "输入：问题类别、是否 Codex 自知识、是否最新模型或明确目标模型、所需引用粒度；输出：基于官方来源的答案、引用和必要的不确定性；模型升级时给出窄而保行为的范围"
+          ],
+          "answer": "输入：问题类别、是否 Codex 自知识、是否最新模型或明确目标模型、所需引用粒度；输出：基于官方来源的答案、引用和必要的不确定性；模型升级时给出窄而保行为的范围",
+          "explanation": "结论：输入：问题类别、是否 Codex 自知识、是否最新模型或明确目标模型、所需引用粒度；输出：基于官方来源的答案、引用和必要的不确定性；模型升级时给出窄而保行为的范围。\n依据：源 skill 的流程需要把“问题类别、是否 Codex 自知识、是否最新模型或明确目标模型、所需引用粒度”转化为“基于官方来源的答案、引用和必要的不确定性，模型升级时给出窄而保行为的范围”。\n错误选项：A：模糊输入缺少“问题类别、是否 Codex 自知识、是否最新模型或明确目标模型、所需引用粒度”，也没有可验收输出；B：敏感运行态和不可逆动作都超出本课程的合成只读边界；C：模型记忆中的旧文档片段不能替代“基于官方来源的答案、引用和必要的不确定性，模型升级时给出窄而保行为的范围”\n实践：把输入字段改成虚构值，并为输出列三项可观察检查。"
+        },
+        {
+          "id": "course-gs-20-q04",
+          "type": "fill_blank",
+          "content": "[System:OpenAI 文档] 显式调用：已确认场景属于“用户询问 OpenAI API、模型、迁移、提示词、Codex 配置或 Codex 产品表面”，应填写 ___。",
+          "options": [],
+          "answer": "$openai-docs",
+          "explanation": "结论：正式调用写作 $openai-docs。\n依据：SKILL.md 的 name 是 openai-docs，openai.yaml 的 display_name 是“System:OpenAI 文档”。\n实践：在调用后追加一条合成任务，只要求路由理由、预期输出和停止条件。"
+        },
+        {
+          "id": "course-gs-20-q05",
+          "type": "true_false",
+          "content": "[System:OpenAI 文档] 边界判断：广义 Codex 先 manual；非 Codex 文档先 MCP；web fallback 仅官方域；文档问答不应被 API key 门槛阻塞。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：正确。\n依据：这是 openai-docs 的关键流程或安全边界，能防止把官方来源选择与文档查询路由器误当成无条件执行器。\n实践：把“问题分类、时效性与目标模型是否明确”写进提示词末尾，并只检查计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-gs-21",
+      "code": "GS21",
+      "title": "GS21 System:插件创建器",
+      "order": 21,
+      "lab_ref": "GS21",
+      "source_text": "codex-cli-0.144.6 的 .codex/skills/.system/plugin-creator/SKILL.md；skill name plugin-creator；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-gs-21-q01",
+          "type": "multiple_choice",
+          "content": "[System:插件创建器] 场景判断：虚构用户要一个包含两项 skills 和 MCP 声明的个人插件，请列出最小目录与验证门槛。最合适的下一步是什么？",
+          "options": [
+            "显式调用 $plugin-creator（System:插件创建器），先核对目标目录、可选能力与 marketplace 授权",
+            "改用 $skill-creator 只创建一个独立 SKILL.md",
+            "跳过“目标目录、可选能力与 marketplace 授权”，直接要求产出“规范化插件目录、有效 manifest、可选 marketplace 条目和验证结果”",
+            "把“创建了一个同名空文件夹”当作 System:插件创建器 已完成"
+          ],
+          "answer": "显式调用 $plugin-creator（System:插件创建器），先核对目标目录、可选能力与 marketplace 授权",
+          "explanation": "结论：显式调用 $plugin-creator（System:插件创建器），先核对目标目录、可选能力与 marketplace 授权。\n依据：该 skill 是 Codex 插件脚手架工作流，用途是创建带必需 plugin.json、可选能力目录和个人 marketplace 条目的合法 Codex 插件。\n错误选项：B：单 skill 不提供插件 manifest、marketplace 和多能力封装；C：目标目录、可选能力与 marketplace 授权是该流程的必要入口，缺失时不能声称已得到可靠输出；D：创建了一个同名空文件夹不是“规范化插件目录、有效 manifest、可选 marketplace 条目和验证结果”的可观察证据\n实践：写一句 $plugin-creator 调用，随后列出所需输入和一个停止条件；不要实际调用工具。"
+        },
+        {
+          "id": "course-gs-21-q02",
+          "type": "multiple_choice",
+          "content": "[System:插件创建器] 场景判断：用户只要一个独立 skill、普通应用目录，或未授权写入目标 marketplace。应如何处理？",
+          "options": [
+            "仍调用 $plugin-creator，因为该 skill 已安装",
+            "不调用 $plugin-creator；改用 skill-creator 或普通项目脚手架，不创建插件 manifest",
+            "删掉场景中的关键限制，再把任务强行改写成“用户要新建个人插件、增加插件结构或更新本地插件的 marketplace/cachebuster 流程”",
+            "先访问真实系统或写入一次，用结果反推是否适用"
+          ],
+          "answer": "不调用 $plugin-creator；改用 skill-creator 或普通项目脚手架，不创建插件 manifest",
+          "explanation": "结论：不调用 $plugin-creator；改用 skill-creator 或普通项目脚手架，不创建插件 manifest。\n依据：SKILL.md 将适用入口限定为“用户要新建个人插件、增加插件结构或更新本地插件的 marketplace/cachebuster 流程”，当前场景不满足。\n错误选项：A：安装状态不能覆盖不适用条件：“用户只要一个独立 skill、普通应用目录，或未授权写入目标 marketplace”；C：修改题目事实会让路由判断失真，不能证明原场景适用；D：真实访问或写入扩大了课程授权，也不能替代前置判断\n实践：写出正确替代入口或需要补充的一个条件。"
+        },
+        {
+          "id": "course-gs-21-q03",
+          "type": "multiple_choice",
+          "content": "[System:插件创建器] 输入输出判断：哪组接口最能让一次合成练习独立复核？",
+          "options": [
+            "输入只写“帮我完成”，输出只写“成功”",
+            "输入真实凭证或客户运行态，输出要求直接完成不可逆动作",
+            "输入：插件名、目标父目录、可选 skills/hooks/scripts/assets/MCP/apps 与 marketplace 意图；输出：规范化插件目录、有效 manifest、可选 marketplace 条目和验证结果",
+            "只记录“创建了一个同名空文件夹”，不定义结果结构"
+          ],
+          "answer": "输入：插件名、目标父目录、可选 skills/hooks/scripts/assets/MCP/apps 与 marketplace 意图；输出：规范化插件目录、有效 manifest、可选 marketplace 条目和验证结果",
+          "explanation": "结论：输入：插件名、目标父目录、可选 skills/hooks/scripts/assets/MCP/apps 与 marketplace 意图；输出：规范化插件目录、有效 manifest、可选 marketplace 条目和验证结果。\n依据：源 skill 的流程需要把“插件名、目标父目录、可选 skills/hooks/scripts/assets/MCP/apps 与 marketplace 意图”转化为“规范化插件目录、有效 manifest、可选 marketplace 条目和验证结果”。\n错误选项：A：模糊输入缺少“插件名、目标父目录、可选 skills/hooks/scripts/assets/MCP/apps 与 marketplace 意图”，也没有可验收输出；B：敏感运行态和不可逆动作都超出本课程的合成只读边界；D：创建了一个同名空文件夹不能替代“规范化插件目录、有效 manifest、可选 marketplace 条目和验证结果”\n实践：把输入字段改成虚构值，并为输出列三项可观察检查。"
+        },
+        {
+          "id": "course-gs-21-q04",
+          "type": "fill_blank",
+          "content": "[System:插件创建器] 显式调用：已确认场景属于“用户要新建个人插件、增加插件结构或更新本地插件的 marketplace/cachebuster 流程”，应填写 ___。",
+          "options": [],
+          "answer": "$plugin-creator",
+          "explanation": "结论：正式调用写作 $plugin-creator。\n依据：SKILL.md 的 name 是 plugin-creator，openai.yaml 的 display_name 是“System:插件创建器”。\n实践：在调用后追加一条合成任务，只要求路由理由、预期输出和停止条件。"
+        },
+        {
+          "id": "course-gs-21-q05",
+          "type": "true_false",
+          "content": "[System:插件创建器] 边界判断：插件名与目录一致；必需 manifest 不可缺；默认个人 marketplace；现有插件更新走 cachebuster helper；课程不脚手架。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：正确。\n依据：这是 plugin-creator 的关键流程或安全边界，能防止把Codex 插件脚手架工作流误当成无条件执行器。\n实践：把“目标目录、可选能力与 marketplace 授权”写进提示词末尾，并只检查计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-gs-22",
+      "code": "GS22",
+      "title": "GS22 System:代码变更评审",
+      "order": 22,
+      "lab_ref": "GS22",
+      "source_text": "codex-cli-0.144.6 的 .codex/skills/.system/review-agent/SKILL.md；skill name review-agent；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-gs-22-q01",
+          "type": "multiple_choice",
+          "content": "[System:代码变更评审] 场景判断：虚构分支改了权限判断并附一个基线，请列出审查证据而不执行修复。最合适的下一步是什么？",
+          "options": [
+            "直接修改发现的问题并创建提交",
+            "跳过“明确评审目标、merge-base 与完整 diff”，直接要求产出“按 P0-P3 排序、带最小路径行号和受影响场景的 finding；没有缺陷时明确 No findings”",
+            "把“某文件看起来复杂”当作 System:代码变更评审 已完成",
+            "显式调用 $review-agent（System:代码变更评审），先核对明确评审目标、merge-base 与完整 diff"
+          ],
+          "answer": "显式调用 $review-agent（System:代码变更评审），先核对明确评审目标、merge-base 与完整 diff",
+          "explanation": "结论：显式调用 $review-agent（System:代码变更评审），先核对明确评审目标、merge-base 与完整 diff。\n依据：该 skill 是只读 defect-first 代码审查器，用途是针对未提交改动、基线 diff、commit 或自定义目标，返回完整且按优先级排序的可执行缺陷。\n错误选项：A：review-agent 被限定为只读发现，不负责实施或发布；B：明确评审目标、merge-base 与完整 diff 是该流程的必要入口，缺失时不能声称已得到可靠输出；C：某文件看起来复杂不是“按 P0-P3 排序、带最小路径行号和受影响场景的 finding，没有缺陷时明确 No findings”的可观察证据\n实践：写一句 $review-agent 调用，随后列出所需输入和一个停止条件；不要实际调用工具。"
+        },
+        {
+          "id": "course-gs-22-q02",
+          "type": "multiple_choice",
+          "content": "[System:代码变更评审] 场景判断：用户要求直接修复、提交、推送、审查整个旧代码库，或只想要风格建议。应如何处理？",
+          "options": [
+            "不调用 $review-agent；改用实现或全库审计流程，而不是声称完成本次变更评审",
+            "仍调用 $review-agent，因为该 skill 已安装",
+            "删掉场景中的关键限制，再把任务强行改写成“另一个 agent 委托只读审查一组明确代码变更，并给出目标或比较基线”",
+            "先访问真实系统或写入一次，用结果反推是否适用"
+          ],
+          "answer": "不调用 $review-agent；改用实现或全库审计流程，而不是声称完成本次变更评审",
+          "explanation": "结论：不调用 $review-agent；改用实现或全库审计流程，而不是声称完成本次变更评审。\n依据：SKILL.md 将适用入口限定为“另一个 agent 委托只读审查一组明确代码变更，并给出目标或比较基线”，当前场景不满足。\n错误选项：B：安装状态不能覆盖不适用条件：“用户要求直接修复、提交、推送、审查整个旧代码库，或只想要风格建议”；C：修改题目事实会让路由判断失真，不能证明原场景适用；D：真实访问或写入扩大了课程授权，也不能替代前置判断\n实践：写出正确替代入口或需要补充的一个条件。"
+        },
+        {
+          "id": "course-gs-22-q03",
+          "type": "multiple_choice",
+          "content": "[System:代码变更评审] 输入输出判断：哪组接口最能让一次合成练习独立复核？",
+          "options": [
+            "输入只写“帮我完成”，输出只写“成功”",
+            "输入：评审目标、比较基线或 commit、适用 AGENTS.md、完整 diff 与相关调用和测试；输出：按 P0-P3 排序、带最小路径行号和受影响场景的 finding；没有缺陷时明确 No findings",
+            "输入真实凭证或客户运行态，输出要求直接完成不可逆动作",
+            "只记录“某文件看起来复杂”，不定义结果结构"
+          ],
+          "answer": "输入：评审目标、比较基线或 commit、适用 AGENTS.md、完整 diff 与相关调用和测试；输出：按 P0-P3 排序、带最小路径行号和受影响场景的 finding；没有缺陷时明确 No findings",
+          "explanation": "结论：输入：评审目标、比较基线或 commit、适用 AGENTS.md、完整 diff 与相关调用和测试；输出：按 P0-P3 排序、带最小路径行号和受影响场景的 finding；没有缺陷时明确 No findings。\n依据：源 skill 的流程需要把“评审目标、比较基线或 commit、适用 AGENTS.md、完整 diff 与相关调用和测试”转化为“按 P0-P3 排序、带最小路径行号和受影响场景的 finding，没有缺陷时明确 No findings”。\n错误选项：A：模糊输入缺少“评审目标、比较基线或 commit、适用 AGENTS.md、完整 diff 与相关调用和测试”，也没有可验收输出；C：敏感运行态和不可逆动作都超出本课程的合成只读边界；D：某文件看起来复杂不能替代“按 P0-P3 排序、带最小路径行号和受影响场景的 finding，没有缺陷时明确 No findings”\n实践：把输入字段改成虚构值，并为输出列三项可观察检查。"
+        },
+        {
+          "id": "course-gs-22-q04",
+          "type": "fill_blank",
+          "content": "[System:代码变更评审] 显式调用：已确认场景属于“另一个 agent 委托只读审查一组明确代码变更，并给出目标或比较基线”，应填写 ___。",
+          "options": [],
+          "answer": "$review-agent",
+          "explanation": "结论：正式调用写作 $review-agent。\n依据：SKILL.md 的 name 是 review-agent，openai.yaml 的 display_name 是“System:代码变更评审”。\n实践：在调用后追加一条合成任务，只要求路由理由、预期输出和停止条件。"
+        },
+        {
+          "id": "course-gs-22-q05",
+          "type": "true_false",
+          "content": "[System:代码变更评审] 边界判断：只报本次变更新增且可证明的问题；不修改、不委托、不发评论；不得用猜测或样式 nit 填数。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：正确。\n依据：这是 review-agent 的关键流程或安全边界，能防止把只读 defect-first 代码审查器误当成无条件执行器。\n实践：把“明确评审目标、merge-base 与完整 diff”写进提示词末尾，并只检查计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-gs-23",
+      "code": "GS23",
+      "title": "GS23 System:技能创建器",
+      "order": 23,
+      "lab_ref": "GS23",
+      "source_text": "codex-cli-0.144.6 的 .codex/skills/.system/skill-creator/SKILL.md；skill name skill-creator；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-gs-23-q01",
+          "type": "multiple_choice",
+          "content": "[System:技能创建器] 场景判断：虚构团队反复执行同一合规检查，想做独立 skill，请规划触发语句、资源和验证。最合适的下一步是什么？",
+          "options": [
+            "改用 $plugin-creator 创建 marketplace 插件",
+            "跳过“具体示例、触发边界与创建位置”，直接要求产出“名称合法、元数据准确、资源最小且通过 quick validation 的 skill 目录”",
+            "显式调用 $skill-creator（System:技能创建器），先核对具体示例、触发边界与创建位置",
+            "把“只有一个名字和空目录”当作 System:技能创建器 已完成"
+          ],
+          "answer": "显式调用 $skill-creator（System:技能创建器），先核对具体示例、触发边界与创建位置",
+          "explanation": "结论：显式调用 $skill-creator（System:技能创建器），先核对具体示例、触发边界与创建位置。\n依据：该 skill 是 Codex skill 创建与更新工作流，用途是用具体触发示例设计、初始化、编写和验证包含 SKILL.md 与按需资源的 Codex skill。\n错误选项：A：当前需求是单一可复用 skill，不需要插件级 manifest 和 marketplace；B：具体示例、触发边界与创建位置是该流程的必要入口，缺失时不能声称已得到可靠输出；D：只有一个名字和空目录不是“名称合法、元数据准确、资源最小且通过 quick validation 的 skill 目录”的可观察证据\n实践：写一句 $skill-creator 调用，随后列出所需输入和一个停止条件；不要实际调用工具。"
+        },
+        {
+          "id": "course-gs-23-q02",
+          "type": "multiple_choice",
+          "content": "[System:技能创建器] 场景判断：用户要完整插件、一次性文档、普通代码功能，或尚未决定新 skill 的创建位置。应如何处理？",
+          "options": [
+            "仍调用 $skill-creator，因为该 skill 已安装",
+            "删掉场景中的关键限制，再把任务强行改写成“用户要创建或更新一个可复用 skill，为 Codex 增加专业知识、流程或工具集成”",
+            "先访问真实系统或写入一次，用结果反推是否适用",
+            "不调用 $skill-creator；改用普通代码或文档工作流，不创建 skill"
+          ],
+          "answer": "不调用 $skill-creator；改用普通代码或文档工作流，不创建 skill",
+          "explanation": "结论：不调用 $skill-creator；改用普通代码或文档工作流，不创建 skill。\n依据：SKILL.md 将适用入口限定为“用户要创建或更新一个可复用 skill，为 Codex 增加专业知识、流程或工具集成”，当前场景不满足。\n错误选项：A：安装状态不能覆盖不适用条件：“用户要完整插件、一次性文档、普通代码功能，或尚未决定新 skill 的创建位置”；B：修改题目事实会让路由判断失真，不能证明原场景适用；C：真实访问或写入扩大了课程授权，也不能替代前置判断\n实践：写出正确替代入口或需要补充的一个条件。"
+        },
+        {
+          "id": "course-gs-23-q03",
+          "type": "multiple_choice",
+          "content": "[System:技能创建器] 输入输出判断：哪组接口最能让一次合成练习独立复核？",
+          "options": [
+            "输入：具体使用示例、触发边界、目标位置、可复用 scripts/references/assets 与自由度；输出：名称合法、元数据准确、资源最小且通过 quick validation 的 skill 目录",
+            "输入只写“帮我完成”，输出只写“成功”",
+            "输入真实凭证或客户运行态，输出要求直接完成不可逆动作",
+            "只记录“只有一个名字和空目录”，不定义结果结构"
+          ],
+          "answer": "输入：具体使用示例、触发边界、目标位置、可复用 scripts/references/assets 与自由度；输出：名称合法、元数据准确、资源最小且通过 quick validation 的 skill 目录",
+          "explanation": "结论：输入：具体使用示例、触发边界、目标位置、可复用 scripts/references/assets 与自由度；输出：名称合法、元数据准确、资源最小且通过 quick validation 的 skill 目录。\n依据：源 skill 的流程需要把“具体使用示例、触发边界、目标位置、可复用 scripts/references/assets 与自由度”转化为“名称合法、元数据准确、资源最小且通过 quick validation 的 skill 目录”。\n错误选项：B：模糊输入缺少“具体使用示例、触发边界、目标位置、可复用 scripts/references/assets 与自由度”，也没有可验收输出；C：敏感运行态和不可逆动作都超出本课程的合成只读边界；D：只有一个名字和空目录不能替代“名称合法、元数据准确、资源最小且通过 quick validation 的 skill 目录”\n实践：把输入字段改成虚构值，并为输出列三项可观察检查。"
+        },
+        {
+          "id": "course-gs-23-q04",
+          "type": "fill_blank",
+          "content": "[System:技能创建器] 显式调用：已确认场景属于“用户要创建或更新一个可复用 skill，为 Codex 增加专业知识、流程或工具集成”，应填写 ___。",
+          "options": [],
+          "answer": "$skill-creator",
+          "explanation": "结论：正式调用写作 $skill-creator。\n依据：SKILL.md 的 name 是 skill-creator，openai.yaml 的 display_name 是“System:技能创建器”。\n实践：在调用后追加一条合成任务，只要求路由理由、预期输出和停止条件。"
+        },
+        {
+          "id": "course-gs-23-q05",
+          "type": "true_false",
+          "content": "[System:技能创建器] 边界判断：先理解示例并确认位置；新 skill 用 initializer；保持精简和渐进披露；不添加无关 README 等文件。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：正确。\n依据：这是 skill-creator 的关键流程或安全边界，能防止把Codex skill 创建与更新工作流误当成无条件执行器。\n实践：把“具体示例、触发边界与创建位置”写进提示词末尾，并只检查计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-gs-24",
+      "code": "GS24",
+      "title": "GS24 System:技能安装器",
+      "order": 24,
+      "lab_ref": "GS24",
+      "source_text": "codex-cli-0.144.6 的 .codex/skills/.system/skill-installer/SKILL.md；skill name skill-installer；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-gs-24-q01",
+          "type": "multiple_choice",
+          "content": "[System:技能安装器] 场景判断：虚构用户想查看 curated 清单但尚未选择安装项，请判断只列出还是直接安装。最合适的下一步是什么？",
+          "options": [
+            "直接覆盖同名已安装目录",
+            "显式调用 $skill-installer（System:技能安装器），先核对明确来源、目标与安装意图",
+            "跳过“明确来源、目标与安装意图”，直接要求产出“可安装清单或已安装 skill；安装后说明下一轮才可用”",
+            "把“GitHub URL 可以访问”当作 System:技能安装器 已完成"
+          ],
+          "answer": "显式调用 $skill-installer（System:技能安装器），先核对明确来源、目标与安装意图",
+          "explanation": "结论：显式调用 $skill-installer（System:技能安装器），先核对明确来源、目标与安装意图。\n依据：该 skill 是网络安装与发现工作流，用途是列出 curated 或 experimental skills，或从官方清单和 GitHub 仓库路径安装 Codex skill。\n错误选项：A：installer 在目标目录已存在时应中止，不能静默覆盖；C：明确来源、目标与安装意图是该流程的必要入口，缺失时不能声称已得到可靠输出；D：GitHub URL 可以访问不是“可安装清单或已安装 skill，安装后说明下一轮才可用”的可观察证据\n实践：写一句 $skill-installer 调用，随后列出所需输入和一个停止条件；不要实际调用工具。"
+        },
+        {
+          "id": "course-gs-24-q02",
+          "type": "multiple_choice",
+          "content": "[System:技能安装器] 场景判断：用户询问已预装的 system skill、目标目录已存在，或只想了解 skill 内容而不安装。应如何处理？",
+          "options": [
+            "仍调用 $skill-installer，因为该 skill 已安装",
+            "删掉场景中的关键限制，再把任务强行改写成“用户明确要查看可安装 skill，安装指定 curated skill，或从 GitHub 路径安装”",
+            "不调用 $skill-installer；只解释该 skill 或说明 system skill 已预装，不运行安装器",
+            "先访问真实系统或写入一次，用结果反推是否适用"
+          ],
+          "answer": "不调用 $skill-installer；只解释该 skill 或说明 system skill 已预装，不运行安装器",
+          "explanation": "结论：不调用 $skill-installer；只解释该 skill 或说明 system skill 已预装，不运行安装器。\n依据：SKILL.md 将适用入口限定为“用户明确要查看可安装 skill，安装指定 curated skill，或从 GitHub 路径安装”，当前场景不满足。\n错误选项：A：安装状态不能覆盖不适用条件：“用户询问已预装的 system skill、目标目录已存在，或只想了解 skill 内容而不安装”；B：修改题目事实会让路由判断失真，不能证明原场景适用；D：真实访问或写入扩大了课程授权，也不能替代前置判断\n实践：写出正确替代入口或需要补充的一个条件。"
+        },
+        {
+          "id": "course-gs-24-q03",
+          "type": "multiple_choice",
+          "content": "[System:技能安装器] 输入输出判断：哪组接口最能让一次合成练习独立复核？",
+          "options": [
+            "输入只写“帮我完成”，输出只写“成功”",
+            "输入真实凭证或客户运行态，输出要求直接完成不可逆动作",
+            "只记录“GitHub URL 可以访问”，不定义结果结构",
+            "输入：列表或安装意图、来源 repo/path、ref、目标目录与私有仓库认证可用性；输出：可安装清单或已安装 skill；安装后说明下一轮才可用"
+          ],
+          "answer": "输入：列表或安装意图、来源 repo/path、ref、目标目录与私有仓库认证可用性；输出：可安装清单或已安装 skill；安装后说明下一轮才可用",
+          "explanation": "结论：输入：列表或安装意图、来源 repo/path、ref、目标目录与私有仓库认证可用性；输出：可安装清单或已安装 skill；安装后说明下一轮才可用。\n依据：源 skill 的流程需要把“列表或安装意图、来源 repo/path、ref、目标目录与私有仓库认证可用性”转化为“可安装清单或已安装 skill，安装后说明下一轮才可用”。\n错误选项：A：模糊输入缺少“列表或安装意图、来源 repo/path、ref、目标目录与私有仓库认证可用性”，也没有可验收输出；B：敏感运行态和不可逆动作都超出本课程的合成只读边界；C：GitHub URL 可以访问不能替代“可安装清单或已安装 skill，安装后说明下一轮才可用”\n实践：把输入字段改成虚构值，并为输出列三项可观察检查。"
+        },
+        {
+          "id": "course-gs-24-q04",
+          "type": "fill_blank",
+          "content": "[System:技能安装器] 显式调用：已确认场景属于“用户明确要查看可安装 skill，安装指定 curated skill，或从 GitHub 路径安装”，应填写 ___。",
+          "options": [],
+          "answer": "$skill-installer",
+          "explanation": "结论：正式调用写作 $skill-installer。\n依据：SKILL.md 的 name 是 skill-installer，openai.yaml 的 display_name 是“System:技能安装器”。\n实践：在调用后追加一条合成任务，只要求路由理由、预期输出和停止条件。"
+        },
+        {
+          "id": "course-gs-24-q05",
+          "type": "true_false",
+          "content": "[System:技能安装器] 边界判断：脚本需要网络并写入技能目录；目标已存在即中止；system skills 无需安装；课程不联网或安装。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：正确。\n依据：这是 skill-installer 的关键流程或安全边界，能防止把网络安装与发现工作流误当成无条件执行器。\n实践：把“明确来源、目标与安装意图”写进提示词末尾，并只检查计划和验收项。"
+        }
+      ]
+    }
+  ]
+}

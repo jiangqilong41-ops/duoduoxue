@@ -1,0 +1,160 @@
+{
+  "course": {
+    "id": "visualize",
+    "prefix": "VZ",
+    "title": "visualize"
+  },
+  "source": {
+    "kind": "local-sanitized",
+    "ref": "visualize@1.0.12",
+    "snapshot": "2026-07-20"
+  },
+  "decks": [
+    {
+      "id": "course-vz-01",
+      "code": "VZ01",
+      "title": "VZ01 visualize 插件总览",
+      "order": 1,
+      "lab_ref": "VZ01",
+      "source_text": "visualize@1.0.12 的 .codex-plugin/plugin.json 与 skills/*/agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-vz-01-q01",
+          "type": "multiple_choice",
+          "content": "[visualize] 路由题：第一次学习 visualize，怎样建立可复用的技能地图?",
+          "options": [
+            "先学插件总览，再按清单逐个学习 1 个独立 skill 单元",
+            "只记插件名，遇到任务同时调用全部 skill",
+            "跳过总览，只背显示名",
+            "先在真实系统执行所有示例"
+          ],
+          "answer": "先学插件总览，再按清单逐个学习 1 个独立 skill 单元",
+          "explanation": "结论：先学插件总览，再按清单逐个学习 1 个独立 skill 单元。\n依据：manifest 将 visualize 作为插件，skill 清单为：visualize（Visualize）。\n错误选项：B：该选项绕过了本单元的边界或证据要求；C：该选项绕过了本单元的边界或证据要求；D：该选项绕过了本单元的边界或证据要求\n实践：用三个虚构任务分别指出候选 skill、排除理由和停止条件。"
+        },
+        {
+          "id": "course-vz-01-q02",
+          "type": "multiple_choice",
+          "content": "[visualize] 来源题：课程事实应如何固定?",
+          "options": [
+            "每次启动自动抓取最新版并覆盖课程",
+            "复制缓存中的个人绝对路径和全部文件",
+            "省略版本与日期，只保留营销名称",
+            "使用 visualize 的 local-sanitized 版本快照，并记录 2026-07-20"
+          ],
+          "answer": "使用 visualize 的 local-sanitized 版本快照，并记录 2026-07-20",
+          "explanation": "结论：使用 visualize 的 local-sanitized 版本快照，并记录 2026-07-20。\n依据：课程源字段固定记录 kind、ref 和 snapshot，保证可重建。\n错误选项：A：该选项绕过了本单元的边界或证据要求；B：该选项绕过了本单元的边界或证据要求；C：该选项绕过了本单元的边界或证据要求\n实践：对照 manifest、SKILL.md 和相邻 openai.yaml，只记录可复核的非敏感元数据。"
+        },
+        {
+          "id": "course-vz-01-q03",
+          "type": "multiple_choice",
+          "content": "[visualize] 调用题：技能单元的最小显式调用应包含什么?",
+          "options": [
+            "只写 display_name，省略插件和 slug",
+            "写入本机缓存绝对路径",
+            "插件名、skill slug、interface.display_name 与停止条件",
+            "只写模糊任务，不点名 skill"
+          ],
+          "answer": "插件名、skill slug、interface.display_name 与停止条件",
+          "explanation": "结论：插件名、skill slug、interface.display_name 与停止条件。\n依据：稳定 slug 用于路由，display_name 用于人类核对，二者都不能被绝对路径替代。\n错误选项：A：该选项绕过了本单元的边界或证据要求；B：该选项绕过了本单元的边界或证据要求；D：该选项绕过了本单元的边界或证据要求\n实践：用一个合成任务写出调用句：插件、slug、显示名三者同时出现。"
+        },
+        {
+          "id": "course-vz-01-q04",
+          "type": "multiple_choice",
+          "content": "[visualize] 安全题：练习应采用哪种边界?",
+          "options": [
+            "自动发送、部署或收费并把链接当成绩",
+            "只用合成 fixture、提示词和只读状态检查，不改变真实外部状态",
+            "使用真实客户数据验证效果",
+            "先安装/启用全部插件再答题"
+          ],
+          "answer": "只用合成 fixture、提示词和只读状态检查，不改变真实外部状态",
+          "explanation": "结论：只用合成 fixture、提示词和只读状态检查，不改变真实外部状态。\n依据：课程要求安全、可观察且可复核，不默认扩大用户授权。\n错误选项：A：该选项绕过了本单元的边界或证据要求；C：该选项绕过了本单元的边界或证据要求；D：该选项绕过了本单元的边界或证据要求\n实践：把任何真实名称替换成占位符，只检查路由、输入输出和验收项。"
+        },
+        {
+          "id": "course-vz-01-q05",
+          "type": "true_false",
+          "content": "[visualize] 判断题：知道插件名就足以代替对每个 skill 适用场景、输入输出和边界的判断。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "错误",
+          "explanation": "结论：错误。\n依据：插件总览只提供地图；每个 skill 仍有独立的用途和风险边界。\n实践：随机抽取两个相邻 skill，说明它们为何不能无差别互换。"
+        }
+      ]
+    },
+    {
+      "id": "course-vz-02",
+      "code": "VZ02",
+      "title": "VZ02 Visualize",
+      "order": 2,
+      "lab_ref": "VZ02",
+      "source_text": "visualize@1.0.12 的 skills/visualize/SKILL.md 与 skills/visualize/agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-vz-02-q01",
+          "type": "multiple_choice",
+          "content": "[Visualize] 场景题：合成团队需要在对话中创建能帮助理解静态关系、动态、图表、地图、模拟或探索的 Mermaid/HTML 可视化。 最合适的下一步是什么？",
+          "options": [
+            "显式调用 $visualize:visualize（Visualize），先核对输入、停止条件和只读边界",
+            "不判断场景，直接调用插件中的全部 skill",
+            "省略关键输入并承诺已经完成真实交付",
+            "先修改生产或客户数据，再补写理由"
+          ],
+          "answer": "显式调用 $visualize:visualize（Visualize），先核对输入、停止条件和只读边界",
+          "explanation": "结论：显式调用 $visualize:visualize（Visualize），先核对输入、停止条件和只读边界。\n依据：SKILL.md 将该用途作为 Visualize 的适用入口。\n错误选项：B：该选项绕过了本单元的边界或证据要求；C：该选项绕过了本单元的边界或证据要求；D：该选项绕过了本单元的边界或证据要求\n实践：把任务中的真实名称替换为虚构名称，只输出路由和验收清单。"
+        },
+        {
+          "id": "course-vz-02-q02",
+          "type": "multiple_choice",
+          "content": "[Visualize] 输入题：要让这条流程可复核，首先应收集什么？",
+          "options": [
+            "只给一句模糊目标，不提供上下文",
+            "复制本机绝对路径和凭证作为输入",
+            "先执行写入操作，之后再补输入",
+            "收集合成输入：问题、合成数据、静态或动态需求、目标宽度、键盘和主题可访问性要求，再请求只读方案"
+          ],
+          "answer": "收集合成输入：问题、合成数据、静态或动态需求、目标宽度、键盘和主题可访问性要求，再请求只读方案",
+          "explanation": "结论：收集合成输入：问题、合成数据、静态或动态需求、目标宽度、键盘和主题可访问性要求，再请求只读方案。\n依据：SKILL.md 与相邻接口说明共同限定了输入范围：问题、合成数据、静态或动态需求、目标宽度、键盘和主题可访问性要求。\n错误选项：A：该选项绕过了本单元的边界或证据要求；B：该选项绕过了本单元的边界或证据要求；C：该选项绕过了本单元的边界或证据要求\n实践：列出输入字段并标注缺失项；不调用外部工具。"
+        },
+        {
+          "id": "course-vz-02-q03",
+          "type": "multiple_choice",
+          "content": "[Visualize] 边界题：发现以下条件时怎样处理最稳妥？",
+          "options": [
+            "虚构运行结果让验收通过",
+            "把风险转移给真实客户或生产环境",
+            "若无法满足“只有在确实改善解释时才创建；不 fetch 外部数据、不用固定 viewport 或横向滚动、不在片段中重复标题和长说明”，则停止当前路由，补齐条件或改选其他 skill",
+            "无论条件是否满足都强行继续"
+          ],
+          "answer": "若无法满足“只有在确实改善解释时才创建；不 fetch 外部数据、不用固定 viewport 或横向滚动、不在片段中重复标题和长说明”，则停止当前路由，补齐条件或改选其他 skill",
+          "explanation": "结论：若无法满足“只有在确实改善解释时才创建；不 fetch 外部数据、不用固定 viewport 或横向滚动、不在片段中重复标题和长说明”，则停止当前路由，补齐条件或改选其他 skill。\n依据：技能说明明确了边界：只有在确实改善解释时才创建；不 fetch 外部数据、不用固定 viewport 或横向滚动、不在片段中重复标题和长说明。\n错误选项：A：该选项绕过了本单元的边界或证据要求；B：该选项绕过了本单元的边界或证据要求；D：该选项绕过了本单元的边界或证据要求\n实践：写出一句停止条件和一个安全替代路径。"
+        },
+        {
+          "id": "course-vz-02-q04",
+          "type": "multiple_choice",
+          "content": "[Visualize] 验收题：什么结果才能证明本单元真的学会？",
+          "options": [
+            "展示一次未经授权的真实写入截图",
+            "得到Mermaid 代码或线程可见的 HTML 片段，并附可观察的交互/布局结果，并能解释为什么选择 visualize",
+            "只背出显示名，不说明输入输出",
+            "只说“看起来完成”而没有证据"
+          ],
+          "answer": "得到Mermaid 代码或线程可见的 HTML 片段，并附可观察的交互/布局结果，并能解释为什么选择 visualize",
+          "explanation": "结论：得到Mermaid 代码或线程可见的 HTML 片段，并附可观察的交互/布局结果，并能解释为什么选择 visualize。\n依据：技能目标是把 问题、合成数据、静态或动态需求、目标宽度、键盘和主题可访问性要求 转化为 Mermaid 代码或线程可见的 HTML 片段，并附可观察的交互/布局结果，而不是只记名称。\n错误选项：A：该选项绕过了本单元的边界或证据要求；C：该选项绕过了本单元的边界或证据要求；D：该选项绕过了本单元的边界或证据要求\n实践：用合成 fixture 复述输入、输出、边界和三项可观察检查。"
+        },
+        {
+          "id": "course-vz-02-q05",
+          "type": "true_false",
+          "content": "[Visualize] 判断题：本单元练习应只使用合成材料和只读检查，不安装、发布、收费或改变真实外部状态。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：正确。\n依据：课程安全边界要求学习者在没有额外授权时不产生真实外部副作用；只有在确实改善解释时才创建；不 fetch 外部数据、不用固定 viewport 或横向滚动、不在片段中重复标题和长说明。\n实践：让同伴检查提示词中是否含有真实账号、客户数据或不可逆动作。"
+        }
+      ]
+    }
+  ]
+}

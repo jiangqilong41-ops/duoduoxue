@@ -25,23 +25,283 @@ COURSE_SPECS = (
         "lesson_count": 14,
         "ref": "shareAI-lab/learn-claude-code@a9cafe953aa714f9cb1171f217d96bd2734bbcc7",
         "snapshot": "2026-07-11",
+        "curriculum_order": 1,
+        "phase": "foundation",
+        "bridge_ref": "B01",
     },
     {
         "course_file": "codex-harness.json",
         "prefix": "CX",
         "lab_file": "codex.md",
         "lesson_count": 10,
-        "ref": "codex-cli-0.144.1",
-        "snapshot": "2026-07-11",
+        "ref": "codex-cli-0.144.6",
+        "snapshot": "2026-07-20",
+        "curriculum_order": 3,
+        "phase": "foundation",
+        "bridge_ref": "B01",
     },
     {
         "course_file": "fastapi1-project.json",
         "prefix": "FA",
         "lab_file": "fastapi1.md",
         "lesson_count": 12,
-        "ref": "fastapi1@b21b6e4",
-        "snapshot": "2026-07-11",
+        "ref": "fastapi1@710807b32a2a7af6b48496390d15c728a8afd06b",
+        "snapshot": "2026-07-20",
+        "curriculum_order": 9,
+        "phase": "project",
+        "bridge_ref": "B02",
     },
+    {
+        "course_file": "mattpocock-skills.json",
+        "prefix": "MP",
+        "lab_file": "mattpocock-skills.md",
+        "lesson_count": 22,
+        "ref": "mattpocock-skills@1.2.0+codex.9603c1c",
+        "snapshot": "2026-07-20",
+        "curriculum_order": 10,
+        "phase": "engineering",
+        "bridge_ref": "B03",
+    },
+    {
+        "course_file": "ponytail.json",
+        "prefix": "PT",
+        "lab_file": "ponytail.md",
+        "lesson_count": 7,
+        "ref": "ponytail@4.8.4",
+        "snapshot": "2026-07-20",
+        "curriculum_order": 11,
+        "phase": "engineering",
+        "bridge_ref": "B03",
+    },
+    {
+        "course_file": "data-analytics.json",
+        "prefix": "DA",
+        "lab_file": "data-analytics.md",
+        "lesson_count": 19,
+        "ref": "data-analytics@0.2.8-13ceeea1f599",
+        "snapshot": "2026-07-20",
+        "curriculum_order": 12,
+        "phase": "analysis-design",
+        "bridge_ref": "B04",
+    },
+    {
+        "course_file": "openai-templates.json",
+        "prefix": "OT",
+        "lab_file": "openai-templates.md",
+        "lesson_count": 21,
+        "ref": "openai-templates@0.1.0",
+        "snapshot": "2026-07-20",
+        "curriculum_order": 14,
+        "phase": "artifacts",
+        "bridge_ref": "B05",
+    },
+    {
+        "course_file": "hyperframes.json",
+        "prefix": "HF",
+        "lab_file": "hyperframes.md",
+        "lesson_count": 6,
+        "ref": "hyperframes@0.1.2",
+        "snapshot": "2026-07-20",
+        "curriculum_order": 21,
+        "phase": "build-growth",
+        "bridge_ref": "B06",
+    },
+    {
+        "course_file": "product-design.json",
+        "prefix": "PD",
+        "lab_file": "product-design.md",
+        "lesson_count": 11,
+        "ref": "product-design@0.1.50",
+        "snapshot": "2026-07-20",
+        "curriculum_order": 13,
+        "phase": "analysis-design",
+        "bridge_ref": "B04",
+    },
+    {
+        "course_file": "sales.json",
+        "prefix": "SA",
+        "lab_file": "sales.md",
+        "lesson_count": 21,
+        "ref": "sales@1.0.8",
+        "snapshot": "2026-07-20",
+        "curriculum_order": 25,
+        "phase": "build-growth",
+        "bridge_ref": "B06",
+    },
+    {
+        "course_file": "documents.json",
+        "prefix": "DO",
+        "lab_file": "documents.md",
+        "lesson_count": 2,
+        "ref": "documents@26.715.12143",
+        "snapshot": "2026-07-20",
+        "curriculum_order": 15,
+        "phase": "artifacts",
+        "bridge_ref": "B05",
+    },
+    {
+        "course_file": "pdf.json",
+        "prefix": "PF",
+        "lab_file": "pdf.md",
+        "lesson_count": 2,
+        "ref": "pdf@26.715.12143",
+        "snapshot": "2026-07-20",
+        "curriculum_order": 16,
+        "phase": "artifacts",
+        "bridge_ref": "B05",
+    },
+    {
+        "course_file": "spreadsheets.json",
+        "prefix": "SS",
+        "lab_file": "spreadsheets.md",
+        "lesson_count": 3,
+        "ref": "spreadsheets@26.715.12143",
+        "snapshot": "2026-07-20",
+        "curriculum_order": 17,
+        "phase": "artifacts",
+        "bridge_ref": "B05",
+    },
+    {
+        "course_file": "presentations.json",
+        "prefix": "PR",
+        "lab_file": "presentations.md",
+        "lesson_count": 2,
+        "ref": "presentations@26.715.12143",
+        "snapshot": "2026-07-20",
+        "curriculum_order": 18,
+        "phase": "artifacts",
+        "bridge_ref": "B05",
+    },
+    {
+        "course_file": "template-creator.json",
+        "prefix": "TC",
+        "lab_file": "template-creator.md",
+        "lesson_count": 2,
+        "ref": "template-creator@26.715.12143",
+        "snapshot": "2026-07-20",
+        "curriculum_order": 19,
+        "phase": "artifacts",
+        "bridge_ref": "B05",
+    },
+    {
+        "course_file": "visualize.json",
+        "prefix": "VZ",
+        "lab_file": "visualize.md",
+        "lesson_count": 2,
+        "ref": "visualize@1.0.12",
+        "snapshot": "2026-07-20",
+        "curriculum_order": 20,
+        "phase": "artifacts",
+        "bridge_ref": "B05",
+    },
+    {
+        "course_file": "build-ios-apps.json",
+        "prefix": "IO",
+        "lab_file": "build-ios-apps.md",
+        "lesson_count": 10,
+        "ref": "build-ios-apps@0.1.2",
+        "snapshot": "2026-07-20",
+        "curriculum_order": 22,
+        "phase": "build-growth",
+        "bridge_ref": "B06",
+    },
+    {
+        "course_file": "build-web-apps.json",
+        "prefix": "WB",
+        "lab_file": "build-web-apps.md",
+        "lesson_count": 7,
+        "ref": "build-web-apps@0.1.2",
+        "snapshot": "2026-07-20",
+        "curriculum_order": 23,
+        "phase": "build-growth",
+        "bridge_ref": "B06",
+    },
+    {
+        "course_file": "browser.json",
+        "prefix": "BR",
+        "lab_file": "browser.md",
+        "lesson_count": 2,
+        "ref": "browser@26.715.52143",
+        "snapshot": "2026-07-20",
+        "curriculum_order": 4,
+        "phase": "foundation",
+        "bridge_ref": "B01",
+    },
+    {
+        "course_file": "chrome.json",
+        "prefix": "CH",
+        "lab_file": "chrome.md",
+        "lesson_count": 2,
+        "ref": "chrome@26.715.52143",
+        "snapshot": "2026-07-20",
+        "curriculum_order": 5,
+        "phase": "foundation",
+        "bridge_ref": "B01",
+    },
+    {
+        "course_file": "computer-use.json",
+        "prefix": "CU",
+        "lab_file": "computer-use.md",
+        "lesson_count": 2,
+        "ref": "computer-use@1.0.1000451",
+        "snapshot": "2026-07-20",
+        "curriculum_order": 6,
+        "phase": "foundation",
+        "bridge_ref": "B01",
+    },
+    {
+        "course_file": "sites.json",
+        "prefix": "SI",
+        "lab_file": "sites.md",
+        "lesson_count": 3,
+        "ref": "sites@0.1.30",
+        "snapshot": "2026-07-20",
+        "curriculum_order": 24,
+        "phase": "build-growth",
+        "bridge_ref": "B06",
+    },
+    {
+        "course_file": "codex-user-skills.json",
+        "prefix": "GS",
+        "lab_file": "codex-user-skills.md",
+        "lesson_count": 24,
+        "ref": "codex-cli-0.144.6",
+        "snapshot": "2026-07-20",
+        "curriculum_order": 2,
+        "phase": "foundation",
+        "bridge_ref": "B01",
+    },
+    {
+        "course_file": "fastapi1-project-skills.json",
+        "prefix": "FS",
+        "lab_file": "fastapi1-project-skills.md",
+        "lesson_count": 9,
+        "ref": "fastapi1@710807b32a2a7af6b48496390d15c728a8afd06b",
+        "snapshot": "2026-07-20",
+        "curriculum_order": 8,
+        "phase": "project",
+        "bridge_ref": "B02",
+    },
+    {
+        "course_file": "fastapi1-codex-harness.json",
+        "prefix": "FH",
+        "lab_file": "fastapi1-codex-harness.md",
+        "lesson_count": 13,
+        "ref": "fastapi1@710807b32a2a7af6b48496390d15c728a8afd06b",
+        "snapshot": "2026-07-20",
+        "curriculum_order": 7,
+        "phase": "project",
+        "bridge_ref": "B02",
+    },
+)
+
+CURRICULUM_PHASES = (
+    ("foundation", "B01"),
+    ("project", "B02"),
+    ("engineering", "B03"),
+    ("analysis-design", "B04"),
+    ("artifacts", "B05"),
+    ("build-growth", "B06"),
 )
 
 # Backward-compatible views; COURSE_SPECS is the only release specification source.
@@ -57,6 +317,9 @@ COURSE_SPEC_FIELDS = {
     "lesson_count",
     "ref",
     "snapshot",
+    "curriculum_order",
+    "phase",
+    "bridge_ref",
 }
 DECK_FIELDS = {
     "id",
@@ -204,7 +467,9 @@ def _validated_course_specs() -> tuple[dict[str, Any], ...]:
         "course_file": set(),
         "prefix": set(),
         "lab_file": set(),
+        "curriculum_order": set(),
     }
+    phase_bridges = dict(CURRICULUM_PHASES)
     for index, spec in enumerate(COURSE_SPECS, start=1):
         label = f"COURSE_SPECS item {index}"
         if not isinstance(spec, dict) or set(spec) != COURSE_SPEC_FIELDS:
@@ -225,11 +490,31 @@ def _validated_course_specs() -> tuple[dict[str, Any], ...]:
         for key in ("course_file", "lab_file", "ref", "snapshot"):
             if not isinstance(spec[key], str) or not spec[key].strip():
                 raise ValidationError(f"{label} {key} must be non-empty text")
+        curriculum_order = spec["curriculum_order"]
+        if (
+            not isinstance(curriculum_order, int)
+            or isinstance(curriculum_order, bool)
+            or curriculum_order <= 0
+        ):
+            raise ValidationError(
+                f"{label} curriculum_order must be a positive integer"
+            )
+        phase = spec["phase"]
+        bridge_ref = spec["bridge_ref"]
+        if not isinstance(phase, str) or phase not in phase_bridges:
+            raise ValidationError(f"{label} phase is not a known curriculum phase")
+        if not isinstance(bridge_ref, str) or bridge_ref != phase_bridges[phase]:
+            raise ValidationError(
+                f"{label} bridge_ref must match phase {phase!r}"
+            )
         for key, values in seen.items():
             value = spec[key]
             if value in values:
                 raise ValidationError(f"{label} has duplicate {key} {value!r}")
             values.add(value)
+    logical_orders = sorted(spec["curriculum_order"] for spec in COURSE_SPECS)
+    if logical_orders != list(range(1, len(COURSE_SPECS) + 1)):
+        raise ValidationError("curriculum_order must be contiguous from 1")
     return COURSE_SPECS
 
 
@@ -497,7 +782,9 @@ def validate_course(
         title = _require(deck, "title", label)
         if not isinstance(title, str) or not title.startswith(f"{code} "):
             raise ValidationError(f"{label} title must start with {code!r}")
-        if len(title) > 20:
+        # The list UI ellipsizes long titles; keep a bounded storage value while
+        # preserving the canonical skill display name in the course source.
+        if len(title) > 80:
             raise ValidationError(f"{label} title is too long for the existing path UI")
         source_text = _require(deck, "source_text", label)
         if not isinstance(source_text, str) or not source_text.strip():

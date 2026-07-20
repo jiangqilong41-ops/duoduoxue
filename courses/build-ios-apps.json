@@ -1,0 +1,744 @@
+{
+  "course": {
+    "id": "build-ios-apps",
+    "prefix": "IO",
+    "title": "build-ios-apps"
+  },
+  "source": {
+    "kind": "local-sanitized",
+    "ref": "build-ios-apps@0.1.2",
+    "snapshot": "2026-07-20"
+  },
+  "decks": [
+    {
+      "id": "course-io-01",
+      "code": "IO01",
+      "title": "IO01 build-ios-apps 插件总览",
+      "order": 1,
+      "lab_ref": "IO01",
+      "source_text": "build-ios-apps@0.1.2 的 .codex-plugin/plugin.json 与 skills/*/agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-io-01-q01",
+          "type": "multiple_choice",
+          "content": "[build-ios-apps] 路由题：第一次学习 build-ios-apps，怎样建立可复用的技能地图?",
+          "options": [
+            "先学插件总览，再按清单逐个学习 9 个独立 skill 单元",
+            "只记插件名，遇到任务同时调用全部 skill",
+            "跳过总览，只背显示名",
+            "先在真实系统执行所有示例"
+          ],
+          "answer": "先学插件总览，再按清单逐个学习 9 个独立 skill 单元",
+          "explanation": "结论：先学插件总览，再按清单逐个学习 9 个独立 skill 单元。\n依据：manifest 将 build-ios-apps 作为插件，skill 清单为：ios-app-intents（Build iOS Apps:App Intents 集成）、ios-debugger-agent（Build iOS Apps:模拟器调试）、ios-ettrace-performance（Build iOS Apps:ETTrace 性能分析）、ios-memgraph-leaks（Build iOS Apps:Memgraph 泄漏分析）、ios-simulator-browser（Build iOS Apps:模拟器浏览器）、swiftui-liquid-glass（Build iOS Apps:SwiftUI 液态玻璃）、swiftui-performance-audit（Build iOS Apps:SwiftUI 性能审计）、swiftui-ui-patterns（Build iOS Apps:SwiftUI 界面模式）、swiftui-view-refactor（Build iOS Apps:SwiftUI 视图重构）。\n错误选项：B：该选项绕过了本单元的边界或证据要求；C：该选项绕过了本单元的边界或证据要求；D：该选项绕过了本单元的边界或证据要求\n实践：用三个虚构任务分别指出候选 skill、排除理由和停止条件。"
+        },
+        {
+          "id": "course-io-01-q02",
+          "type": "multiple_choice",
+          "content": "[build-ios-apps] 来源题：课程事实应如何固定?",
+          "options": [
+            "每次启动自动抓取最新版并覆盖课程",
+            "复制缓存中的个人绝对路径和全部文件",
+            "省略版本与日期，只保留营销名称",
+            "使用 build-ios-apps 的 local-sanitized 版本快照，并记录 2026-07-20"
+          ],
+          "answer": "使用 build-ios-apps 的 local-sanitized 版本快照，并记录 2026-07-20",
+          "explanation": "结论：使用 build-ios-apps 的 local-sanitized 版本快照，并记录 2026-07-20。\n依据：课程源字段固定记录 kind、ref 和 snapshot，保证可重建。\n错误选项：A：该选项绕过了本单元的边界或证据要求；B：该选项绕过了本单元的边界或证据要求；C：该选项绕过了本单元的边界或证据要求\n实践：对照 manifest、SKILL.md 和相邻 openai.yaml，只记录可复核的非敏感元数据。"
+        },
+        {
+          "id": "course-io-01-q03",
+          "type": "multiple_choice",
+          "content": "[build-ios-apps] 调用题：技能单元的最小显式调用应包含什么?",
+          "options": [
+            "只写 display_name，省略插件和 slug",
+            "写入本机缓存绝对路径",
+            "插件名、skill slug、interface.display_name 与停止条件",
+            "只写模糊任务，不点名 skill"
+          ],
+          "answer": "插件名、skill slug、interface.display_name 与停止条件",
+          "explanation": "结论：插件名、skill slug、interface.display_name 与停止条件。\n依据：稳定 slug 用于路由，display_name 用于人类核对，二者都不能被绝对路径替代。\n错误选项：A：该选项绕过了本单元的边界或证据要求；B：该选项绕过了本单元的边界或证据要求；D：该选项绕过了本单元的边界或证据要求\n实践：用一个合成任务写出调用句：插件、slug、显示名三者同时出现。"
+        },
+        {
+          "id": "course-io-01-q04",
+          "type": "multiple_choice",
+          "content": "[build-ios-apps] 安全题：练习应采用哪种边界?",
+          "options": [
+            "自动发送、部署或收费并把链接当成绩",
+            "只用合成 fixture、提示词和只读状态检查，不改变真实外部状态",
+            "使用真实客户数据验证效果",
+            "先安装/启用全部插件再答题"
+          ],
+          "answer": "只用合成 fixture、提示词和只读状态检查，不改变真实外部状态",
+          "explanation": "结论：只用合成 fixture、提示词和只读状态检查，不改变真实外部状态。\n依据：课程要求安全、可观察且可复核，不默认扩大用户授权。\n错误选项：A：该选项绕过了本单元的边界或证据要求；C：该选项绕过了本单元的边界或证据要求；D：该选项绕过了本单元的边界或证据要求\n实践：把任何真实名称替换成占位符，只检查路由、输入输出和验收项。"
+        },
+        {
+          "id": "course-io-01-q05",
+          "type": "true_false",
+          "content": "[build-ios-apps] 判断题：知道插件名就足以代替对每个 skill 适用场景、输入输出和边界的判断。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "错误",
+          "explanation": "结论：错误。\n依据：插件总览只提供地图；每个 skill 仍有独立的用途和风险边界。\n实践：随机抽取两个相邻 skill，说明它们为何不能无差别互换。"
+        }
+      ]
+    },
+    {
+      "id": "course-io-02",
+      "code": "IO02",
+      "title": "IO02 Build iOS Apps:App Intents 集成",
+      "order": 2,
+      "lab_ref": "IO02",
+      "source_text": "build-ios-apps@0.1.2 的 skills/ios-app-intents/SKILL.md 与 skills/ios-app-intents/agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-io-02-q01",
+          "type": "multiple_choice",
+          "content": "[Build iOS Apps:App Intents 集成] 场景题：合成团队需要为 Shortcuts、Siri、Spotlight、widgets 或 controls 暴露最小有用的 App Intents、entities 与 App Shortcuts。 最合适的下一步是什么？",
+          "options": [
+            "显式调用 $build-ios-apps:ios-app-intents（Build iOS Apps:App Intents 集成），先核对输入、停止条件和只读边界",
+            "不判断场景，直接调用插件中的全部 skill",
+            "省略关键输入并承诺已经完成真实交付",
+            "先修改生产或客户数据，再补写理由"
+          ],
+          "answer": "显式调用 $build-ios-apps:ios-app-intents（Build iOS Apps:App Intents 集成），先核对输入、停止条件和只读边界",
+          "explanation": "结论：显式调用 $build-ios-apps:ios-app-intents（Build iOS Apps:App Intents 集成），先核对输入、停止条件和只读边界。\n依据：SKILL.md 将该用途作为 Build iOS Apps:App Intents 集成 的适用入口。\n错误选项：B：该选项绕过了本单元的边界或证据要求；C：该选项绕过了本单元的边界或证据要求；D：该选项绕过了本单元的边界或证据要求\n实践：把任务中的真实名称替换为虚构名称，只输出路由和验收清单。"
+        },
+        {
+          "id": "course-io-02-q02",
+          "type": "multiple_choice",
+          "content": "[Build iOS Apps:App Intents 集成] 输入题：要让这条流程可复核，首先应收集什么？",
+          "options": [
+            "只给一句模糊目标，不提供上下文",
+            "复制本机绝对路径和凭证作为输入",
+            "先执行写入操作，之后再补输入",
+            "收集合成输入：用户真正需要的动作和对象、目标系统入口、参数、完成后是否打开 App，再请求只读方案"
+          ],
+          "answer": "收集合成输入：用户真正需要的动作和对象、目标系统入口、参数、完成后是否打开 App，再请求只读方案",
+          "explanation": "结论：收集合成输入：用户真正需要的动作和对象、目标系统入口、参数、完成后是否打开 App，再请求只读方案。\n依据：SKILL.md 与相邻接口说明共同限定了输入范围：用户真正需要的动作和对象、目标系统入口、参数、完成后是否打开 App。\n错误选项：A：该选项绕过了本单元的边界或证据要求；B：该选项绕过了本单元的边界或证据要求；C：该选项绕过了本单元的边界或证据要求\n实践：列出输入字段并标注缺失项；不调用外部工具。"
+        },
+        {
+          "id": "course-io-02-q03",
+          "type": "multiple_choice",
+          "content": "[Build iOS Apps:App Intents 集成] 边界题：发现以下条件时怎样处理最稳妥？",
+          "options": [
+            "虚构运行结果让验收通过",
+            "把风险转移给真实客户或生产环境",
+            "若无法满足“从动词和对象开始，保持最小接口；核对 iOS 可用性和失败 handoff，不凭空暴露全部内部模型”，则停止当前路由，补齐条件或改选其他 skill",
+            "无论条件是否满足都强行继续"
+          ],
+          "answer": "若无法满足“从动词和对象开始，保持最小接口；核对 iOS 可用性和失败 handoff，不凭空暴露全部内部模型”，则停止当前路由，补齐条件或改选其他 skill",
+          "explanation": "结论：若无法满足“从动词和对象开始，保持最小接口；核对 iOS 可用性和失败 handoff，不凭空暴露全部内部模型”，则停止当前路由，补齐条件或改选其他 skill。\n依据：技能说明明确了边界：从动词和对象开始，保持最小接口；核对 iOS 可用性和失败 handoff，不凭空暴露全部内部模型。\n错误选项：A：该选项绕过了本单元的边界或证据要求；B：该选项绕过了本单元的边界或证据要求；D：该选项绕过了本单元的边界或证据要求\n实践：写出一句停止条件和一个安全替代路径。"
+        },
+        {
+          "id": "course-io-02-q04",
+          "type": "multiple_choice",
+          "content": "[Build iOS Apps:App Intents 集成] 验收题：什么结果才能证明本单元真的学会？",
+          "options": [
+            "展示一次未经授权的真实写入截图",
+            "得到窄而可发现的 intent/entity 表面、深链或清晰的运行时 handoff 设计，并能解释为什么选择 ios-app-intents",
+            "只背出显示名，不说明输入输出",
+            "只说“看起来完成”而没有证据"
+          ],
+          "answer": "得到窄而可发现的 intent/entity 表面、深链或清晰的运行时 handoff 设计，并能解释为什么选择 ios-app-intents",
+          "explanation": "结论：得到窄而可发现的 intent/entity 表面、深链或清晰的运行时 handoff 设计，并能解释为什么选择 ios-app-intents。\n依据：技能目标是把 用户真正需要的动作和对象、目标系统入口、参数、完成后是否打开 App 转化为 窄而可发现的 intent/entity 表面、深链或清晰的运行时 handoff 设计，而不是只记名称。\n错误选项：A：该选项绕过了本单元的边界或证据要求；C：该选项绕过了本单元的边界或证据要求；D：该选项绕过了本单元的边界或证据要求\n实践：用合成 fixture 复述输入、输出、边界和三项可观察检查。"
+        },
+        {
+          "id": "course-io-02-q05",
+          "type": "true_false",
+          "content": "[Build iOS Apps:App Intents 集成] 判断题：本单元练习应只使用合成材料和只读检查，不安装、发布、收费或改变真实外部状态。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：正确。\n依据：课程安全边界要求学习者在没有额外授权时不产生真实外部副作用；从动词和对象开始，保持最小接口；核对 iOS 可用性和失败 handoff，不凭空暴露全部内部模型。\n实践：让同伴检查提示词中是否含有真实账号、客户数据或不可逆动作。"
+        }
+      ]
+    },
+    {
+      "id": "course-io-03",
+      "code": "IO03",
+      "title": "IO03 Build iOS Apps:模拟器调试",
+      "order": 3,
+      "lab_ref": "IO03",
+      "source_text": "build-ios-apps@0.1.2 的 skills/ios-debugger-agent/SKILL.md 与 skills/ios-debugger-agent/agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-io-03-q01",
+          "type": "multiple_choice",
+          "content": "[Build iOS Apps:模拟器调试] 场景题：合成团队需要用 XcodeBuildMCP 在已启动的 iOS Simulator 上构建、运行、交互和诊断应用。 最合适的下一步是什么？",
+          "options": [
+            "显式调用 $build-ios-apps:ios-debugger-agent（Build iOS Apps:模拟器调试），先核对输入、停止条件和只读边界",
+            "不判断场景，直接调用插件中的全部 skill",
+            "省略关键输入并承诺已经完成真实交付",
+            "先修改生产或客户数据，再补写理由"
+          ],
+          "answer": "显式调用 $build-ios-apps:ios-debugger-agent（Build iOS Apps:模拟器调试），先核对输入、停止条件和只读边界",
+          "explanation": "结论：显式调用 $build-ios-apps:ios-debugger-agent（Build iOS Apps:模拟器调试），先核对输入、停止条件和只读边界。\n依据：SKILL.md 将该用途作为 Build iOS Apps:模拟器调试 的适用入口。\n错误选项：B：该选项绕过了本单元的边界或证据要求；C：该选项绕过了本单元的边界或证据要求；D：该选项绕过了本单元的边界或证据要求\n实践：把任务中的真实名称替换为虚构名称，只输出路由和验收清单。"
+        },
+        {
+          "id": "course-io-03-q02",
+          "type": "multiple_choice",
+          "content": "[Build iOS Apps:模拟器调试] 输入题：要让这条流程可复核，首先应收集什么？",
+          "options": [
+            "只给一句模糊目标，不提供上下文",
+            "复制本机绝对路径和凭证作为输入",
+            "先执行写入操作，之后再补输入",
+            "收集合成输入：项目或 workspace、scheme、已启动模拟器、复现步骤、需要观察的 UI/日志，再请求只读方案"
+          ],
+          "answer": "收集合成输入：项目或 workspace、scheme、已启动模拟器、复现步骤、需要观察的 UI/日志，再请求只读方案",
+          "explanation": "结论：收集合成输入：项目或 workspace、scheme、已启动模拟器、复现步骤、需要观察的 UI/日志，再请求只读方案。\n依据：SKILL.md 与相邻接口说明共同限定了输入范围：项目或 workspace、scheme、已启动模拟器、复现步骤、需要观察的 UI/日志。\n错误选项：A：该选项绕过了本单元的边界或证据要求；B：该选项绕过了本单元的边界或证据要求；C：该选项绕过了本单元的边界或证据要求\n实践：列出输入字段并标注缺失项；不调用外部工具。"
+        },
+        {
+          "id": "course-io-03-q03",
+          "type": "multiple_choice",
+          "content": "[Build iOS Apps:模拟器调试] 边界题：发现以下条件时怎样处理最稳妥？",
+          "options": [
+            "虚构运行结果让验收通过",
+            "把风险转移给真实客户或生产环境",
+            "若无法满足“先发现 Booted simulator；没有启动设备就请求用户启动，不自动启动；只在明确请求时构建或安装”，则停止当前路由，补齐条件或改选其他 skill",
+            "无论条件是否满足都强行继续"
+          ],
+          "answer": "若无法满足“先发现 Booted simulator；没有启动设备就请求用户启动，不自动启动；只在明确请求时构建或安装”，则停止当前路由，补齐条件或改选其他 skill",
+          "explanation": "结论：若无法满足“先发现 Booted simulator；没有启动设备就请求用户启动，不自动启动；只在明确请求时构建或安装”，则停止当前路由，补齐条件或改选其他 skill。\n依据：技能说明明确了边界：先发现 Booted simulator；没有启动设备就请求用户启动，不自动启动；只在明确请求时构建或安装。\n错误选项：A：该选项绕过了本单元的边界或证据要求；B：该选项绕过了本单元的边界或证据要求；D：该选项绕过了本单元的边界或证据要求\n实践：写出一句停止条件和一个安全替代路径。"
+        },
+        {
+          "id": "course-io-03-q04",
+          "type": "multiple_choice",
+          "content": "[Build iOS Apps:模拟器调试] 验收题：什么结果才能证明本单元真的学会？",
+          "options": [
+            "展示一次未经授权的真实写入截图",
+            "得到可复现的 build/run 结果、UI 检查、日志和根因线索，并能解释为什么选择 ios-debugger-agent",
+            "只背出显示名，不说明输入输出",
+            "只说“看起来完成”而没有证据"
+          ],
+          "answer": "得到可复现的 build/run 结果、UI 检查、日志和根因线索，并能解释为什么选择 ios-debugger-agent",
+          "explanation": "结论：得到可复现的 build/run 结果、UI 检查、日志和根因线索，并能解释为什么选择 ios-debugger-agent。\n依据：技能目标是把 项目或 workspace、scheme、已启动模拟器、复现步骤、需要观察的 UI/日志 转化为 可复现的 build/run 结果、UI 检查、日志和根因线索，而不是只记名称。\n错误选项：A：该选项绕过了本单元的边界或证据要求；C：该选项绕过了本单元的边界或证据要求；D：该选项绕过了本单元的边界或证据要求\n实践：用合成 fixture 复述输入、输出、边界和三项可观察检查。"
+        },
+        {
+          "id": "course-io-03-q05",
+          "type": "true_false",
+          "content": "[Build iOS Apps:模拟器调试] 判断题：本单元练习应只使用合成材料和只读检查，不安装、发布、收费或改变真实外部状态。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：正确。\n依据：课程安全边界要求学习者在没有额外授权时不产生真实外部副作用；先发现 Booted simulator；没有启动设备就请求用户启动，不自动启动；只在明确请求时构建或安装。\n实践：让同伴检查提示词中是否含有真实账号、客户数据或不可逆动作。"
+        }
+      ]
+    },
+    {
+      "id": "course-io-04",
+      "code": "IO04",
+      "title": "IO04 Build iOS Apps:ETTrace 性能分析",
+      "order": 4,
+      "lab_ref": "IO04",
+      "source_text": "build-ios-apps@0.1.2 的 skills/ios-ettrace-performance/SKILL.md 与 skills/ios-ettrace-performance/agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-io-04-q01",
+          "type": "multiple_choice",
+          "content": "[Build iOS Apps:ETTrace 性能分析] 场景题：合成团队需要捕获并解释聚焦且有符号化的 iOS Simulator ETTrace，用于启动或运行延迟和 CPU 热点分析。 最合适的下一步是什么？",
+          "options": [
+            "显式调用 $build-ios-apps:ios-ettrace-performance（Build iOS Apps:ETTrace 性能分析），先核对输入、停止条件和只读边界",
+            "不判断场景，直接调用插件中的全部 skill",
+            "省略关键输入并承诺已经完成真实交付",
+            "先修改生产或客户数据，再补写理由"
+          ],
+          "answer": "显式调用 $build-ios-apps:ios-ettrace-performance（Build iOS Apps:ETTrace 性能分析），先核对输入、停止条件和只读边界",
+          "explanation": "结论：显式调用 $build-ios-apps:ios-ettrace-performance（Build iOS Apps:ETTrace 性能分析），先核对输入、停止条件和只读边界。\n依据：SKILL.md 将该用途作为 Build iOS Apps:ETTrace 性能分析 的适用入口。\n错误选项：B：该选项绕过了本单元的边界或证据要求；C：该选项绕过了本单元的边界或证据要求；D：该选项绕过了本单元的边界或证据要求\n实践：把任务中的真实名称替换为虚构名称，只输出路由和验收清单。"
+        },
+        {
+          "id": "course-io-04-q02",
+          "type": "multiple_choice",
+          "content": "[Build iOS Apps:ETTrace 性能分析] 输入题：要让这条流程可复核，首先应收集什么？",
+          "options": [
+            "只给一句模糊目标，不提供上下文",
+            "复制本机绝对路径和凭证作为输入",
+            "先执行写入操作，之后再补输入",
+            "收集合成输入：目标 simulator app、一个明确的开始/结束流程、匹配 UUID 的 dSYM 和性能假设，再请求只读方案"
+          ],
+          "answer": "收集合成输入：目标 simulator app、一个明确的开始/结束流程、匹配 UUID 的 dSYM 和性能假设，再请求只读方案",
+          "explanation": "结论：收集合成输入：目标 simulator app、一个明确的开始/结束流程、匹配 UUID 的 dSYM 和性能假设，再请求只读方案。\n依据：SKILL.md 与相邻接口说明共同限定了输入范围：目标 simulator app、一个明确的开始/结束流程、匹配 UUID 的 dSYM 和性能假设。\n错误选项：A：该选项绕过了本单元的边界或证据要求；B：该选项绕过了本单元的边界或证据要求；C：该选项绕过了本单元的边界或证据要求\n实践：列出输入字段并标注缺失项；不调用外部工具。"
+        },
+        {
+          "id": "course-io-04-q03",
+          "type": "multiple_choice",
+          "content": "[Build iOS Apps:ETTrace 性能分析] 边界题：发现以下条件时怎样处理最稳妥？",
+          "options": [
+            "虚构运行结果让验收通过",
+            "把风险转移给真实客户或生产环境",
+            "若无法满足“只采集一个聚焦流程；先满足符号化门槛，临时链接后清理；不要把未符号化猜测当作结论”，则停止当前路由，补齐条件或改选其他 skill",
+            "无论条件是否满足都强行继续"
+          ],
+          "answer": "若无法满足“只采集一个聚焦流程；先满足符号化门槛，临时链接后清理；不要把未符号化猜测当作结论”，则停止当前路由，补齐条件或改选其他 skill",
+          "explanation": "结论：若无法满足“只采集一个聚焦流程；先满足符号化门槛，临时链接后清理；不要把未符号化猜测当作结论”，则停止当前路由，补齐条件或改选其他 skill。\n依据：技能说明明确了边界：只采集一个聚焦流程；先满足符号化门槛，临时链接后清理；不要把未符号化猜测当作结论。\n错误选项：A：该选项绕过了本单元的边界或证据要求；B：该选项绕过了本单元的边界或证据要求；D：该选项绕过了本单元的边界或证据要求\n实践：写出一句停止条件和一个安全替代路径。"
+        },
+        {
+          "id": "course-io-04-q04",
+          "type": "multiple_choice",
+          "content": "[Build iOS Apps:ETTrace 性能分析] 验收题：什么结果才能证明本单元真的学会？",
+          "options": [
+            "展示一次未经授权的真实写入截图",
+            "得到一份 ETTrace、符号化栈、热点解释和可复现的下一步，并能解释为什么选择 ios-ettrace-performance",
+            "只背出显示名，不说明输入输出",
+            "只说“看起来完成”而没有证据"
+          ],
+          "answer": "得到一份 ETTrace、符号化栈、热点解释和可复现的下一步，并能解释为什么选择 ios-ettrace-performance",
+          "explanation": "结论：得到一份 ETTrace、符号化栈、热点解释和可复现的下一步，并能解释为什么选择 ios-ettrace-performance。\n依据：技能目标是把 目标 simulator app、一个明确的开始/结束流程、匹配 UUID 的 dSYM 和性能假设 转化为 一份 ETTrace、符号化栈、热点解释和可复现的下一步，而不是只记名称。\n错误选项：A：该选项绕过了本单元的边界或证据要求；C：该选项绕过了本单元的边界或证据要求；D：该选项绕过了本单元的边界或证据要求\n实践：用合成 fixture 复述输入、输出、边界和三项可观察检查。"
+        },
+        {
+          "id": "course-io-04-q05",
+          "type": "true_false",
+          "content": "[Build iOS Apps:ETTrace 性能分析] 判断题：本单元练习应只使用合成材料和只读检查，不安装、发布、收费或改变真实外部状态。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：正确。\n依据：课程安全边界要求学习者在没有额外授权时不产生真实外部副作用；只采集一个聚焦流程；先满足符号化门槛，临时链接后清理；不要把未符号化猜测当作结论。\n实践：让同伴检查提示词中是否含有真实账号、客户数据或不可逆动作。"
+        }
+      ]
+    },
+    {
+      "id": "course-io-05",
+      "code": "IO05",
+      "title": "IO05 Build iOS Apps:Memgraph 泄漏分析",
+      "order": 5,
+      "lab_ref": "IO05",
+      "source_text": "build-ios-apps@0.1.2 的 skills/ios-memgraph-leaks/SKILL.md 与 skills/ios-memgraph-leaks/agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-io-05-q01",
+          "type": "multiple_choice",
+          "content": "[Build iOS Apps:Memgraph 泄漏分析] 场景题：合成团队需要从运行中的 simulator 进程或现有 .memgraph 证明泄漏、retain cycle 或内存增长。 最合适的下一步是什么？",
+          "options": [
+            "显式调用 $build-ios-apps:ios-memgraph-leaks（Build iOS Apps:Memgraph 泄漏分析），先核对输入、停止条件和只读边界",
+            "不判断场景，直接调用插件中的全部 skill",
+            "省略关键输入并承诺已经完成真实交付",
+            "先修改生产或客户数据，再补写理由"
+          ],
+          "answer": "显式调用 $build-ios-apps:ios-memgraph-leaks（Build iOS Apps:Memgraph 泄漏分析），先核对输入、停止条件和只读边界",
+          "explanation": "结论：显式调用 $build-ios-apps:ios-memgraph-leaks（Build iOS Apps:Memgraph 泄漏分析），先核对输入、停止条件和只读边界。\n依据：SKILL.md 将该用途作为 Build iOS Apps:Memgraph 泄漏分析 的适用入口。\n错误选项：B：该选项绕过了本单元的边界或证据要求；C：该选项绕过了本单元的边界或证据要求；D：该选项绕过了本单元的边界或证据要求\n实践：把任务中的真实名称替换为虚构名称，只输出路由和验收清单。"
+        },
+        {
+          "id": "course-io-05-q02",
+          "type": "multiple_choice",
+          "content": "[Build iOS Apps:Memgraph 泄漏分析] 输入题：要让这条流程可复核，首先应收集什么？",
+          "options": [
+            "只给一句模糊目标，不提供上下文",
+            "复制本机绝对路径和凭证作为输入",
+            "先执行写入操作，之后再补输入",
+            "收集合成输入：目标进程或 memgraph、应释放对象的操作流、前后对照条件，再请求只读方案"
+          ],
+          "answer": "收集合成输入：目标进程或 memgraph、应释放对象的操作流、前后对照条件，再请求只读方案",
+          "explanation": "结论：收集合成输入：目标进程或 memgraph、应释放对象的操作流、前后对照条件，再请求只读方案。\n依据：SKILL.md 与相邻接口说明共同限定了输入范围：目标进程或 memgraph、应释放对象的操作流、前后对照条件。\n错误选项：A：该选项绕过了本单元的边界或证据要求；B：该选项绕过了本单元的边界或证据要求；C：该选项绕过了本单元的边界或证据要求\n实践：列出输入字段并标注缺失项；不调用外部工具。"
+        },
+        {
+          "id": "course-io-05-q03",
+          "type": "multiple_choice",
+          "content": "[Build iOS Apps:Memgraph 泄漏分析] 边界题：发现以下条件时怎样处理最稳妥？",
+          "options": [
+            "虚构运行结果让验收通过",
+            "把风险转移给真实客户或生产环境",
+            "若无法满足“区分 app-owned 与系统对象；同一流程复测前后；不把内存暂时增长直接宣布为泄漏”，则停止当前路由，补齐条件或改选其他 skill",
+            "无论条件是否满足都强行继续"
+          ],
+          "answer": "若无法满足“区分 app-owned 与系统对象；同一流程复测前后；不把内存暂时增长直接宣布为泄漏”，则停止当前路由，补齐条件或改选其他 skill",
+          "explanation": "结论：若无法满足“区分 app-owned 与系统对象；同一流程复测前后；不把内存暂时增长直接宣布为泄漏”，则停止当前路由，补齐条件或改选其他 skill。\n依据：技能说明明确了边界：区分 app-owned 与系统对象；同一流程复测前后；不把内存暂时增长直接宣布为泄漏。\n错误选项：A：该选项绕过了本单元的边界或证据要求；B：该选项绕过了本单元的边界或证据要求；D：该选项绕过了本单元的边界或证据要求\n实践：写出一句停止条件和一个安全替代路径。"
+        },
+        {
+          "id": "course-io-05-q04",
+          "type": "multiple_choice",
+          "content": "[Build iOS Apps:Memgraph 泄漏分析] 验收题：什么结果才能证明本单元真的学会？",
+          "options": [
+            "展示一次未经授权的真实写入截图",
+            "得到按类型分组的 leak 证据、ownership 线索、最小修复与同流程复测计划，并能解释为什么选择 ios-memgraph-leaks",
+            "只背出显示名，不说明输入输出",
+            "只说“看起来完成”而没有证据"
+          ],
+          "answer": "得到按类型分组的 leak 证据、ownership 线索、最小修复与同流程复测计划，并能解释为什么选择 ios-memgraph-leaks",
+          "explanation": "结论：得到按类型分组的 leak 证据、ownership 线索、最小修复与同流程复测计划，并能解释为什么选择 ios-memgraph-leaks。\n依据：技能目标是把 目标进程或 memgraph、应释放对象的操作流、前后对照条件 转化为 按类型分组的 leak 证据、ownership 线索、最小修复与同流程复测计划，而不是只记名称。\n错误选项：A：该选项绕过了本单元的边界或证据要求；C：该选项绕过了本单元的边界或证据要求；D：该选项绕过了本单元的边界或证据要求\n实践：用合成 fixture 复述输入、输出、边界和三项可观察检查。"
+        },
+        {
+          "id": "course-io-05-q05",
+          "type": "true_false",
+          "content": "[Build iOS Apps:Memgraph 泄漏分析] 判断题：本单元练习应只使用合成材料和只读检查，不安装、发布、收费或改变真实外部状态。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：正确。\n依据：课程安全边界要求学习者在没有额外授权时不产生真实外部副作用；区分 app-owned 与系统对象；同一流程复测前后；不把内存暂时增长直接宣布为泄漏。\n实践：让同伴检查提示词中是否含有真实账号、客户数据或不可逆动作。"
+        }
+      ]
+    },
+    {
+      "id": "course-io-06",
+      "code": "IO06",
+      "title": "IO06 Build iOS Apps:模拟器浏览器",
+      "order": 6,
+      "lab_ref": "IO06",
+      "source_text": "build-ios-apps@0.1.2 的 skills/ios-simulator-browser/SKILL.md 与 skills/ios-simulator-browser/agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-io-06-q01",
+          "type": "multiple_choice",
+          "content": "[Build iOS Apps:模拟器浏览器] 场景题：合成团队需要把 iOS Simulator 镜像到 Codex 浏览器，并从可导入 Swift package 渲染可热重载的 SwiftUI preview。 最合适的下一步是什么？",
+          "options": [
+            "显式调用 $build-ios-apps:ios-simulator-browser（Build iOS Apps:模拟器浏览器），先核对输入、停止条件和只读边界",
+            "不判断场景，直接调用插件中的全部 skill",
+            "省略关键输入并承诺已经完成真实交付",
+            "先修改生产或客户数据，再补写理由"
+          ],
+          "answer": "显式调用 $build-ios-apps:ios-simulator-browser（Build iOS Apps:模拟器浏览器），先核对输入、停止条件和只读边界",
+          "explanation": "结论：显式调用 $build-ios-apps:ios-simulator-browser（Build iOS Apps:模拟器浏览器），先核对输入、停止条件和只读边界。\n依据：SKILL.md 将该用途作为 Build iOS Apps:模拟器浏览器 的适用入口。\n错误选项：B：该选项绕过了本单元的边界或证据要求；C：该选项绕过了本单元的边界或证据要求；D：该选项绕过了本单元的边界或证据要求\n实践：把任务中的真实名称替换为虚构名称，只输出路由和验收清单。"
+        },
+        {
+          "id": "course-io-06-q02",
+          "type": "multiple_choice",
+          "content": "[Build iOS Apps:模拟器浏览器] 输入题：要让这条流程可复核，首先应收集什么？",
+          "options": [
+            "只给一句模糊目标，不提供上下文",
+            "复制本机绝对路径和凭证作为输入",
+            "先执行写入操作，之后再补输入",
+            "收集合成输入：已有流程提供的明确 simulator UDID、serve-sim 环境、可导入 package 和预览目标，再请求只读方案"
+          ],
+          "answer": "收集合成输入：已有流程提供的明确 simulator UDID、serve-sim 环境、可导入 package 和预览目标，再请求只读方案",
+          "explanation": "结论：收集合成输入：已有流程提供的明确 simulator UDID、serve-sim 环境、可导入 package 和预览目标，再请求只读方案。\n依据：SKILL.md 与相邻接口说明共同限定了输入范围：已有流程提供的明确 simulator UDID、serve-sim 环境、可导入 package 和预览目标。\n错误选项：A：该选项绕过了本单元的边界或证据要求；B：该选项绕过了本单元的边界或证据要求；C：该选项绕过了本单元的边界或证据要求\n实践：列出输入字段并标注缺失项；不调用外部工具。"
+        },
+        {
+          "id": "course-io-06-q03",
+          "type": "multiple_choice",
+          "content": "[Build iOS Apps:模拟器浏览器] 边界题：发现以下条件时怎样处理最稳妥？",
+          "options": [
+            "虚构运行结果让验收通过",
+            "把风险转移给真实客户或生产环境",
+            "若无法满足“必须使用明确 UDID，不猜设备；启动前清理同设备 stale helper，退出时清理；仅覆盖支持的 preview/package 边界”，则停止当前路由，补齐条件或改选其他 skill",
+            "无论条件是否满足都强行继续"
+          ],
+          "answer": "若无法满足“必须使用明确 UDID，不猜设备；启动前清理同设备 stale helper，退出时清理；仅覆盖支持的 preview/package 边界”，则停止当前路由，补齐条件或改选其他 skill",
+          "explanation": "结论：若无法满足“必须使用明确 UDID，不猜设备；启动前清理同设备 stale helper，退出时清理；仅覆盖支持的 preview/package 边界”，则停止当前路由，补齐条件或改选其他 skill。\n依据：技能说明明确了边界：必须使用明确 UDID，不猜设备；启动前清理同设备 stale helper，退出时清理；仅覆盖支持的 preview/package 边界。\n错误选项：A：该选项绕过了本单元的边界或证据要求；B：该选项绕过了本单元的边界或证据要求；D：该选项绕过了本单元的边界或证据要求\n实践：写出一句停止条件和一个安全替代路径。"
+        },
+        {
+          "id": "course-io-06-q04",
+          "type": "multiple_choice",
+          "content": "[Build iOS Apps:模拟器浏览器] 验收题：什么结果才能证明本单元真的学会？",
+          "options": [
+            "展示一次未经授权的真实写入截图",
+            "得到浏览器可见的 simulator/SwiftUI preview 与可核验截图或状态，并能解释为什么选择 ios-simulator-browser",
+            "只背出显示名，不说明输入输出",
+            "只说“看起来完成”而没有证据"
+          ],
+          "answer": "得到浏览器可见的 simulator/SwiftUI preview 与可核验截图或状态，并能解释为什么选择 ios-simulator-browser",
+          "explanation": "结论：得到浏览器可见的 simulator/SwiftUI preview 与可核验截图或状态，并能解释为什么选择 ios-simulator-browser。\n依据：技能目标是把 已有流程提供的明确 simulator UDID、serve-sim 环境、可导入 package 和预览目标 转化为 浏览器可见的 simulator/SwiftUI preview 与可核验截图或状态，而不是只记名称。\n错误选项：A：该选项绕过了本单元的边界或证据要求；C：该选项绕过了本单元的边界或证据要求；D：该选项绕过了本单元的边界或证据要求\n实践：用合成 fixture 复述输入、输出、边界和三项可观察检查。"
+        },
+        {
+          "id": "course-io-06-q05",
+          "type": "true_false",
+          "content": "[Build iOS Apps:模拟器浏览器] 判断题：本单元练习应只使用合成材料和只读检查，不安装、发布、收费或改变真实外部状态。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：正确。\n依据：课程安全边界要求学习者在没有额外授权时不产生真实外部副作用；必须使用明确 UDID，不猜设备；启动前清理同设备 stale helper，退出时清理；仅覆盖支持的 preview/package 边界。\n实践：让同伴检查提示词中是否含有真实账号、客户数据或不可逆动作。"
+        }
+      ]
+    },
+    {
+      "id": "course-io-07",
+      "code": "IO07",
+      "title": "IO07 Build iOS Apps:SwiftUI 液态玻璃",
+      "order": 7,
+      "lab_ref": "IO07",
+      "source_text": "build-ios-apps@0.1.2 的 skills/swiftui-liquid-glass/SKILL.md 与 skills/swiftui-liquid-glass/agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-io-07-q01",
+          "type": "multiple_choice",
+          "content": "[Build iOS Apps:SwiftUI 液态玻璃] 场景题：合成团队需要实现或审查 iOS 26+ SwiftUI Liquid Glass，检查 API、性能和设计适配。 最合适的下一步是什么？",
+          "options": [
+            "显式调用 $build-ios-apps:swiftui-liquid-glass（Build iOS Apps:SwiftUI 液态玻璃），先核对输入、停止条件和只读边界",
+            "不判断场景，直接调用插件中的全部 skill",
+            "省略关键输入并承诺已经完成真实交付",
+            "先修改生产或客户数据，再补写理由"
+          ],
+          "answer": "显式调用 $build-ios-apps:swiftui-liquid-glass（Build iOS Apps:SwiftUI 液态玻璃），先核对输入、停止条件和只读边界",
+          "explanation": "结论：显式调用 $build-ios-apps:swiftui-liquid-glass（Build iOS Apps:SwiftUI 液态玻璃），先核对输入、停止条件和只读边界。\n依据：SKILL.md 将该用途作为 Build iOS Apps:SwiftUI 液态玻璃 的适用入口。\n错误选项：B：该选项绕过了本单元的边界或证据要求；C：该选项绕过了本单元的边界或证据要求；D：该选项绕过了本单元的边界或证据要求\n实践：把任务中的真实名称替换为虚构名称，只输出路由和验收清单。"
+        },
+        {
+          "id": "course-io-07-q02",
+          "type": "multiple_choice",
+          "content": "[Build iOS Apps:SwiftUI 液态玻璃] 输入题：要让这条流程可复核，首先应收集什么？",
+          "options": [
+            "只给一句模糊目标，不提供上下文",
+            "复制本机绝对路径和凭证作为输入",
+            "先执行写入操作，之后再补输入",
+            "收集合成输入：目标视图、部署目标、玻璃表面/按钮/卡片、交互和 fallback 要求，再请求只读方案"
+          ],
+          "answer": "收集合成输入：目标视图、部署目标、玻璃表面/按钮/卡片、交互和 fallback 要求，再请求只读方案",
+          "explanation": "结论：收集合成输入：目标视图、部署目标、玻璃表面/按钮/卡片、交互和 fallback 要求，再请求只读方案。\n依据：SKILL.md 与相邻接口说明共同限定了输入范围：目标视图、部署目标、玻璃表面/按钮/卡片、交互和 fallback 要求。\n错误选项：A：该选项绕过了本单元的边界或证据要求；B：该选项绕过了本单元的边界或证据要求；C：该选项绕过了本单元的边界或证据要求\n实践：列出输入字段并标注缺失项；不调用外部工具。"
+        },
+        {
+          "id": "course-io-07-q03",
+          "type": "multiple_choice",
+          "content": "[Build iOS Apps:SwiftUI 液态玻璃] 边界题：发现以下条件时怎样处理最稳妥？",
+          "options": [
+            "虚构运行结果让验收通过",
+            "把风险转移给真实客户或生产环境",
+            "若无法满足“核对 iOS 26+ availability、modifier 顺序和容器位置；不为装饰而滥用玻璃，也不牺牲交互和性能”，则停止当前路由，补齐条件或改选其他 skill",
+            "无论条件是否满足都强行继续"
+          ],
+          "answer": "若无法满足“核对 iOS 26+ availability、modifier 顺序和容器位置；不为装饰而滥用玻璃，也不牺牲交互和性能”，则停止当前路由，补齐条件或改选其他 skill",
+          "explanation": "结论：若无法满足“核对 iOS 26+ availability、modifier 顺序和容器位置；不为装饰而滥用玻璃，也不牺牲交互和性能”，则停止当前路由，补齐条件或改选其他 skill。\n依据：技能说明明确了边界：核对 iOS 26+ availability、modifier 顺序和容器位置；不为装饰而滥用玻璃，也不牺牲交互和性能。\n错误选项：A：该选项绕过了本单元的边界或证据要求；B：该选项绕过了本单元的边界或证据要求；D：该选项绕过了本单元的边界或证据要求\n实践：写出一句停止条件和一个安全替代路径。"
+        },
+        {
+          "id": "course-io-07-q04",
+          "type": "multiple_choice",
+          "content": "[Build iOS Apps:SwiftUI 液态玻璃] 验收题：什么结果才能证明本单元真的学会？",
+          "options": [
+            "展示一次未经授权的真实写入截图",
+            "得到基于原生 glassEffect/容器/按钮样式的实现或审查清单，并有可用性 fallback，并能解释为什么选择 swiftui-liquid-glass",
+            "只背出显示名，不说明输入输出",
+            "只说“看起来完成”而没有证据"
+          ],
+          "answer": "得到基于原生 glassEffect/容器/按钮样式的实现或审查清单，并有可用性 fallback，并能解释为什么选择 swiftui-liquid-glass",
+          "explanation": "结论：得到基于原生 glassEffect/容器/按钮样式的实现或审查清单，并有可用性 fallback，并能解释为什么选择 swiftui-liquid-glass。\n依据：技能目标是把 目标视图、部署目标、玻璃表面/按钮/卡片、交互和 fallback 要求 转化为 基于原生 glassEffect/容器/按钮样式的实现或审查清单，并有可用性 fallback，而不是只记名称。\n错误选项：A：该选项绕过了本单元的边界或证据要求；C：该选项绕过了本单元的边界或证据要求；D：该选项绕过了本单元的边界或证据要求\n实践：用合成 fixture 复述输入、输出、边界和三项可观察检查。"
+        },
+        {
+          "id": "course-io-07-q05",
+          "type": "true_false",
+          "content": "[Build iOS Apps:SwiftUI 液态玻璃] 判断题：本单元练习应只使用合成材料和只读检查，不安装、发布、收费或改变真实外部状态。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：正确。\n依据：课程安全边界要求学习者在没有额外授权时不产生真实外部副作用；核对 iOS 26+ availability、modifier 顺序和容器位置；不为装饰而滥用玻璃，也不牺牲交互和性能。\n实践：让同伴检查提示词中是否含有真实账号、客户数据或不可逆动作。"
+        }
+      ]
+    },
+    {
+      "id": "course-io-08",
+      "code": "IO08",
+      "title": "IO08 Build iOS Apps:SwiftUI 性能审计",
+      "order": 8,
+      "lab_ref": "IO08",
+      "source_text": "build-ios-apps@0.1.2 的 skills/swiftui-performance-audit/SKILL.md 与 skills/swiftui-performance-audit/agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-io-08-q01",
+          "type": "multiple_choice",
+          "content": "[Build iOS Apps:SwiftUI 性能审计] 场景题：合成团队需要先从代码审计 SwiftUI 慢渲染、卡顿、昂贵更新、CPU 或内存症状，再决定是否需要 profile。 最合适的下一步是什么？",
+          "options": [
+            "显式调用 $build-ios-apps:swiftui-performance-audit（Build iOS Apps:SwiftUI 性能审计），先核对输入、停止条件和只读边界",
+            "不判断场景，直接调用插件中的全部 skill",
+            "省略关键输入并承诺已经完成真实交付",
+            "先修改生产或客户数据，再补写理由"
+          ],
+          "answer": "显式调用 $build-ios-apps:swiftui-performance-audit（Build iOS Apps:SwiftUI 性能审计），先核对输入、停止条件和只读边界",
+          "explanation": "结论：显式调用 $build-ios-apps:swiftui-performance-audit（Build iOS Apps:SwiftUI 性能审计），先核对输入、停止条件和只读边界。\n依据：SKILL.md 将该用途作为 Build iOS Apps:SwiftUI 性能审计 的适用入口。\n错误选项：B：该选项绕过了本单元的边界或证据要求；C：该选项绕过了本单元的边界或证据要求；D：该选项绕过了本单元的边界或证据要求\n实践：把任务中的真实名称替换为虚构名称，只输出路由和验收清单。"
+        },
+        {
+          "id": "course-io-08-q02",
+          "type": "multiple_choice",
+          "content": "[Build iOS Apps:SwiftUI 性能审计] 输入题：要让这条流程可复核，首先应收集什么？",
+          "options": [
+            "只给一句模糊目标，不提供上下文",
+            "复制本机绝对路径和凭证作为输入",
+            "先执行写入操作，之后再补输入",
+            "收集合成输入：目标 view、数据流、复现步骤、部署目标和已有运行证据，再请求只读方案"
+          ],
+          "answer": "收集合成输入：目标 view、数据流、复现步骤、部署目标和已有运行证据，再请求只读方案",
+          "explanation": "结论：收集合成输入：目标 view、数据流、复现步骤、部署目标和已有运行证据，再请求只读方案。\n依据：SKILL.md 与相邻接口说明共同限定了输入范围：目标 view、数据流、复现步骤、部署目标和已有运行证据。\n错误选项：A：该选项绕过了本单元的边界或证据要求；B：该选项绕过了本单元的边界或证据要求；C：该选项绕过了本单元的边界或证据要求\n实践：列出输入字段并标注缺失项；不调用外部工具。"
+        },
+        {
+          "id": "course-io-08-q03",
+          "type": "multiple_choice",
+          "content": "[Build iOS Apps:SwiftUI 性能审计] 边界题：发现以下条件时怎样处理最稳妥？",
+          "options": [
+            "虚构运行结果让验收通过",
+            "把风险转移给真实客户或生产环境",
+            "若无法满足“有代码先 code-first；证据不足时索取最小切片；不凭单一猜测改架构或宣称已验证”，则停止当前路由，补齐条件或改选其他 skill",
+            "无论条件是否满足都强行继续"
+          ],
+          "answer": "若无法满足“有代码先 code-first；证据不足时索取最小切片；不凭单一猜测改架构或宣称已验证”，则停止当前路由，补齐条件或改选其他 skill",
+          "explanation": "结论：若无法满足“有代码先 code-first；证据不足时索取最小切片；不凭单一猜测改架构或宣称已验证”，则停止当前路由，补齐条件或改选其他 skill。\n依据：技能说明明确了边界：有代码先 code-first；证据不足时索取最小切片；不凭单一猜测改架构或宣称已验证。\n错误选项：A：该选项绕过了本单元的边界或证据要求；B：该选项绕过了本单元的边界或证据要求；D：该选项绕过了本单元的边界或证据要求\n实践：写出一句停止条件和一个安全替代路径。"
+        },
+        {
+          "id": "course-io-08-q04",
+          "type": "multiple_choice",
+          "content": "[Build iOS Apps:SwiftUI 性能审计] 验收题：什么结果才能证明本单元真的学会？",
+          "options": [
+            "展示一次未经授权的真实写入截图",
+            "得到症状分类、证据链、可能原因、最小修复和必要时的 profiling intake，并能解释为什么选择 swiftui-performance-audit",
+            "只背出显示名，不说明输入输出",
+            "只说“看起来完成”而没有证据"
+          ],
+          "answer": "得到症状分类、证据链、可能原因、最小修复和必要时的 profiling intake，并能解释为什么选择 swiftui-performance-audit",
+          "explanation": "结论：得到症状分类、证据链、可能原因、最小修复和必要时的 profiling intake，并能解释为什么选择 swiftui-performance-audit。\n依据：技能目标是把 目标 view、数据流、复现步骤、部署目标和已有运行证据 转化为 症状分类、证据链、可能原因、最小修复和必要时的 profiling intake，而不是只记名称。\n错误选项：A：该选项绕过了本单元的边界或证据要求；C：该选项绕过了本单元的边界或证据要求；D：该选项绕过了本单元的边界或证据要求\n实践：用合成 fixture 复述输入、输出、边界和三项可观察检查。"
+        },
+        {
+          "id": "course-io-08-q05",
+          "type": "true_false",
+          "content": "[Build iOS Apps:SwiftUI 性能审计] 判断题：本单元练习应只使用合成材料和只读检查，不安装、发布、收费或改变真实外部状态。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：正确。\n依据：课程安全边界要求学习者在没有额外授权时不产生真实外部副作用；有代码先 code-first；证据不足时索取最小切片；不凭单一猜测改架构或宣称已验证。\n实践：让同伴检查提示词中是否含有真实账号、客户数据或不可逆动作。"
+        }
+      ]
+    },
+    {
+      "id": "course-io-09",
+      "code": "IO09",
+      "title": "IO09 Build iOS Apps:SwiftUI 界面模式",
+      "order": 9,
+      "lab_ref": "IO09",
+      "source_text": "build-ios-apps@0.1.2 的 skills/swiftui-ui-patterns/SKILL.md 与 skills/swiftui-ui-patterns/agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-io-09-q01",
+          "type": "multiple_choice",
+          "content": "[Build iOS Apps:SwiftUI 界面模式] 场景题：合成团队需要用 SwiftUI 组件模式设计或重构导航、状态、布局、控件和屏幕组合。 最合适的下一步是什么？",
+          "options": [
+            "显式调用 $build-ios-apps:swiftui-ui-patterns（Build iOS Apps:SwiftUI 界面模式），先核对输入、停止条件和只读边界",
+            "不判断场景，直接调用插件中的全部 skill",
+            "省略关键输入并承诺已经完成真实交付",
+            "先修改生产或客户数据，再补写理由"
+          ],
+          "answer": "显式调用 $build-ios-apps:swiftui-ui-patterns（Build iOS Apps:SwiftUI 界面模式），先核对输入、停止条件和只读边界",
+          "explanation": "结论：显式调用 $build-ios-apps:swiftui-ui-patterns（Build iOS Apps:SwiftUI 界面模式），先核对输入、停止条件和只读边界。\n依据：SKILL.md 将该用途作为 Build iOS Apps:SwiftUI 界面模式 的适用入口。\n错误选项：B：该选项绕过了本单元的边界或证据要求；C：该选项绕过了本单元的边界或证据要求；D：该选项绕过了本单元的边界或证据要求\n实践：把任务中的真实名称替换为虚构名称，只输出路由和验收清单。"
+        },
+        {
+          "id": "course-io-09-q02",
+          "type": "multiple_choice",
+          "content": "[Build iOS Apps:SwiftUI 界面模式] 输入题：要让这条流程可复核，首先应收集什么？",
+          "options": [
+            "只给一句模糊目标，不提供上下文",
+            "复制本机绝对路径和凭证作为输入",
+            "先执行写入操作，之后再补输入",
+            "收集合成输入：屏幕交互模型、附近示例、状态所有权、依赖注入和可访问性要求，再请求只读方案"
+          ],
+          "answer": "收集合成输入：屏幕交互模型、附近示例、状态所有权、依赖注入和可访问性要求，再请求只读方案",
+          "explanation": "结论：收集合成输入：屏幕交互模型、附近示例、状态所有权、依赖注入和可访问性要求，再请求只读方案。\n依据：SKILL.md 与相邻接口说明共同限定了输入范围：屏幕交互模型、附近示例、状态所有权、依赖注入和可访问性要求。\n错误选项：A：该选项绕过了本单元的边界或证据要求；B：该选项绕过了本单元的边界或证据要求；C：该选项绕过了本单元的边界或证据要求\n实践：列出输入字段并标注缺失项；不调用外部工具。"
+        },
+        {
+          "id": "course-io-09-q03",
+          "type": "multiple_choice",
+          "content": "[Build iOS Apps:SwiftUI 界面模式] 边界题：发现以下条件时怎样处理最稳妥？",
+          "options": [
+            "虚构运行结果让验收通过",
+            "把风险转移给真实客户或生产环境",
+            "若无法满足“优先 SwiftUI 原生状态与环境注入；按需读组件参考；不为每个画面引入不必要的 view model”，则停止当前路由，补齐条件或改选其他 skill",
+            "无论条件是否满足都强行继续"
+          ],
+          "answer": "若无法满足“优先 SwiftUI 原生状态与环境注入；按需读组件参考；不为每个画面引入不必要的 view model”，则停止当前路由，补齐条件或改选其他 skill",
+          "explanation": "结论：若无法满足“优先 SwiftUI 原生状态与环境注入；按需读组件参考；不为每个画面引入不必要的 view model”，则停止当前路由，补齐条件或改选其他 skill。\n依据：技能说明明确了边界：优先 SwiftUI 原生状态与环境注入；按需读组件参考；不为每个画面引入不必要的 view model。\n错误选项：A：该选项绕过了本单元的边界或证据要求；B：该选项绕过了本单元的边界或证据要求；D：该选项绕过了本单元的边界或证据要求\n实践：写出一句停止条件和一个安全替代路径。"
+        },
+        {
+          "id": "course-io-09-q04",
+          "type": "multiple_choice",
+          "content": "[Build iOS Apps:SwiftUI 界面模式] 验收题：什么结果才能证明本单元真的学会？",
+          "options": [
+            "展示一次未经授权的真实写入截图",
+            "得到符合本地约定的视图、导航、状态和组件组合，并能解释为什么选择 swiftui-ui-patterns",
+            "只背出显示名，不说明输入输出",
+            "只说“看起来完成”而没有证据"
+          ],
+          "answer": "得到符合本地约定的视图、导航、状态和组件组合，并能解释为什么选择 swiftui-ui-patterns",
+          "explanation": "结论：得到符合本地约定的视图、导航、状态和组件组合，并能解释为什么选择 swiftui-ui-patterns。\n依据：技能目标是把 屏幕交互模型、附近示例、状态所有权、依赖注入和可访问性要求 转化为 符合本地约定的视图、导航、状态和组件组合，而不是只记名称。\n错误选项：A：该选项绕过了本单元的边界或证据要求；C：该选项绕过了本单元的边界或证据要求；D：该选项绕过了本单元的边界或证据要求\n实践：用合成 fixture 复述输入、输出、边界和三项可观察检查。"
+        },
+        {
+          "id": "course-io-09-q05",
+          "type": "true_false",
+          "content": "[Build iOS Apps:SwiftUI 界面模式] 判断题：本单元练习应只使用合成材料和只读检查，不安装、发布、收费或改变真实外部状态。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：正确。\n依据：课程安全边界要求学习者在没有额外授权时不产生真实外部副作用；优先 SwiftUI 原生状态与环境注入；按需读组件参考；不为每个画面引入不必要的 view model。\n实践：让同伴检查提示词中是否含有真实账号、客户数据或不可逆动作。"
+        }
+      ]
+    },
+    {
+      "id": "course-io-10",
+      "code": "IO10",
+      "title": "IO10 Build iOS Apps:SwiftUI 视图重构",
+      "order": 10,
+      "lab_ref": "IO10",
+      "source_text": "build-ios-apps@0.1.2 的 skills/swiftui-view-refactor/SKILL.md 与 skills/swiftui-view-refactor/agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-io-10-q01",
+          "type": "multiple_choice",
+          "content": "[Build iOS Apps:SwiftUI 视图重构] 场景题：合成团队需要把大型 SwiftUI view 拆成稳定、可测试的显式子视图，收紧数据流和 Observation ownership。 最合适的下一步是什么？",
+          "options": [
+            "显式调用 $build-ios-apps:swiftui-view-refactor（Build iOS Apps:SwiftUI 视图重构），先核对输入、停止条件和只读边界",
+            "不判断场景，直接调用插件中的全部 skill",
+            "省略关键输入并承诺已经完成真实交付",
+            "先修改生产或客户数据，再补写理由"
+          ],
+          "answer": "显式调用 $build-ios-apps:swiftui-view-refactor（Build iOS Apps:SwiftUI 视图重构），先核对输入、停止条件和只读边界",
+          "explanation": "结论：显式调用 $build-ios-apps:swiftui-view-refactor（Build iOS Apps:SwiftUI 视图重构），先核对输入、停止条件和只读边界。\n依据：SKILL.md 将该用途作为 Build iOS Apps:SwiftUI 视图重构 的适用入口。\n错误选项：B：该选项绕过了本单元的边界或证据要求；C：该选项绕过了本单元的边界或证据要求；D：该选项绕过了本单元的边界或证据要求\n实践：把任务中的真实名称替换为虚构名称，只输出路由和验收清单。"
+        },
+        {
+          "id": "course-io-10-q02",
+          "type": "multiple_choice",
+          "content": "[Build iOS Apps:SwiftUI 视图重构] 输入题：要让这条流程可复核，首先应收集什么？",
+          "options": [
+            "只给一句模糊目标，不提供上下文",
+            "复制本机绝对路径和凭证作为输入",
+            "先执行写入操作，之后再补输入",
+            "收集合成输入：现有 view 文件、局部约定、数据流、动作/副作用和测试目标，再请求只读方案"
+          ],
+          "answer": "收集合成输入：现有 view 文件、局部约定、数据流、动作/副作用和测试目标，再请求只读方案",
+          "explanation": "结论：收集合成输入：现有 view 文件、局部约定、数据流、动作/副作用和测试目标，再请求只读方案。\n依据：SKILL.md 与相邻接口说明共同限定了输入范围：现有 view 文件、局部约定、数据流、动作/副作用和测试目标。\n错误选项：A：该选项绕过了本单元的边界或证据要求；B：该选项绕过了本单元的边界或证据要求；C：该选项绕过了本单元的边界或证据要求\n实践：列出输入字段并标注缺失项；不调用外部工具。"
+        },
+        {
+          "id": "course-io-10-q03",
+          "type": "multiple_choice",
+          "content": "[Build iOS Apps:SwiftUI 视图重构] 边界题：发现以下条件时怎样处理最稳妥？",
+          "options": [
+            "虚构运行结果让验收通过",
+            "把风险转移给真实客户或生产环境",
+            "若无法满足“默认 MV 而非新增 MVVM；避免顶层条件替换 view tree；只有已有或明确要求时才保留 view model”，则停止当前路由，补齐条件或改选其他 skill",
+            "无论条件是否满足都强行继续"
+          ],
+          "answer": "若无法满足“默认 MV 而非新增 MVVM；避免顶层条件替换 view tree；只有已有或明确要求时才保留 view model”，则停止当前路由，补齐条件或改选其他 skill",
+          "explanation": "结论：若无法满足“默认 MV 而非新增 MVVM；避免顶层条件替换 view tree；只有已有或明确要求时才保留 view model”，则停止当前路由，补齐条件或改选其他 skill。\n依据：技能说明明确了边界：默认 MV 而非新增 MVVM；避免顶层条件替换 view tree；只有已有或明确要求时才保留 view model。\n错误选项：A：该选项绕过了本单元的边界或证据要求；B：该选项绕过了本单元的边界或证据要求；D：该选项绕过了本单元的边界或证据要求\n实践：写出一句停止条件和一个安全替代路径。"
+        },
+        {
+          "id": "course-io-10-q04",
+          "type": "multiple_choice",
+          "content": "[Build iOS Apps:SwiftUI 视图重构] 验收题：什么结果才能证明本单元真的学会？",
+          "options": [
+            "展示一次未经授权的真实写入截图",
+            "得到稳定 view tree、专用子视图、移出 body 的动作与清晰的状态归属，并能解释为什么选择 swiftui-view-refactor",
+            "只背出显示名，不说明输入输出",
+            "只说“看起来完成”而没有证据"
+          ],
+          "answer": "得到稳定 view tree、专用子视图、移出 body 的动作与清晰的状态归属，并能解释为什么选择 swiftui-view-refactor",
+          "explanation": "结论：得到稳定 view tree、专用子视图、移出 body 的动作与清晰的状态归属，并能解释为什么选择 swiftui-view-refactor。\n依据：技能目标是把 现有 view 文件、局部约定、数据流、动作/副作用和测试目标 转化为 稳定 view tree、专用子视图、移出 body 的动作与清晰的状态归属，而不是只记名称。\n错误选项：A：该选项绕过了本单元的边界或证据要求；C：该选项绕过了本单元的边界或证据要求；D：该选项绕过了本单元的边界或证据要求\n实践：用合成 fixture 复述输入、输出、边界和三项可观察检查。"
+        },
+        {
+          "id": "course-io-10-q05",
+          "type": "true_false",
+          "content": "[Build iOS Apps:SwiftUI 视图重构] 判断题：本单元练习应只使用合成材料和只读检查，不安装、发布、收费或改变真实外部状态。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：正确。\n依据：课程安全边界要求学习者在没有额外授权时不产生真实外部副作用；默认 MV 而非新增 MVVM；避免顶层条件替换 view tree；只有已有或明确要求时才保留 view model。\n实践：让同伴检查提示词中是否含有真实账号、客户数据或不可逆动作。"
+        }
+      ]
+    }
+  ]
+}

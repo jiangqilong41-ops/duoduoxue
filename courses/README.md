@@ -1,18 +1,50 @@
 # 多多学技术课程
 
-本目录当前内置三套使用现有 `Deck + Question` 数据模型的题包式课程。课程不会被 Flutter 构建自动载入；`build.py` 会生成 `dist/dlg_q.db`。全新安装可在首次启动前注入该种子库，已安装 App 必须增量合并，不能用种子库覆盖用户数据库。
+本目录当前内置二十五套使用现有 `Deck + Question` 数据模型的题包式课程。课程不会被 Flutter 构建自动载入；`build.py` 会生成 `dist/dlg_q.db`。全新安装可在首次启动前注入该种子库，已安装 App 必须增量合并，不能用种子库覆盖用户数据库。
 
 ## 课程
 
-| 前缀 | 课程 | 课时 | 题目 |
-|---|---|---:|---:|
-| `AG` | 通用 Agent Harness | 14 | 70 |
-| `CX` | 我的 Codex Harness | 10 | 50 |
-| `FA` | 看懂 fastapi1 | 12 | 60 |
+| 主线序 | 前缀 | 课程 | 课时 | 题目 |
+|---:|---|---|---:|---:|
+| 1 | `AG` | 通用 Agent Harness | 14 | 70 |
+| 2 | `GS` | Codex 用户 Skills | 24 | 120 |
+| 3 | `CX` | 我的 Codex Harness | 10 | 50 |
+| 4 | `BR` | browser | 2 | 10 |
+| 5 | `CH` | chrome | 2 | 10 |
+| 6 | `CU` | computer-use | 2 | 10 |
+| 7 | `FH` | fastapi1 Codex Harness | 13 | 65 |
+| 8 | `FS` | fastapi1 项目 Skills | 9 | 45 |
+| 9 | `FA` | 看懂 fastapi1 | 12 | 60 |
+| 10 | `MP` | mattpocock-skills | 22 | 110 |
+| 11 | `PT` | ponytail | 7 | 35 |
+| 12 | `DA` | data-analytics | 19 | 95 |
+| 13 | `PD` | product-design | 11 | 55 |
+| 14 | `OT` | openai-templates | 21 | 105 |
+| 15 | `DO` | documents | 2 | 10 |
+| 16 | `PF` | pdf | 2 | 10 |
+| 17 | `SS` | spreadsheets | 3 | 15 |
+| 18 | `PR` | presentations | 2 | 10 |
+| 19 | `TC` | template-creator | 2 | 10 |
+| 20 | `VZ` | visualize | 2 | 10 |
+| 21 | `HF` | hyperframes | 6 | 30 |
+| 22 | `IO` | build-ios-apps | 10 | 50 |
+| 23 | `WB` | build-web-apps | 7 | 35 |
+| 24 | `SI` | sites | 3 | 15 |
+| 25 | `SA` | sales | 21 | 105 |
 
-该表只描述当前三套内置规格；追加 `COURSE_SPECS` 后，发布总数会随之变化。每课固定 5 道题，生成器支持单选、填空、判断、匹配和排序题。题目负责主动回忆与场景判断，提交答案后显示的 `explanation` 承担教学正文。三份 `labs/*.md` 是当前课程的 Mac 配套实验手册。
+合计 25 套课程、228 课时、1140 道题。
 
-三套课程正文中出现的技术英语见 [`GLOSSARY.md`](GLOSSARY.md)，每个术语均配有一句通俗解释。
+每课固定 5 道题，生成器支持单选、填空、判断、匹配和排序题。题目负责主动回忆与场景判断，提交答案后显示的 `explanation` 承担教学正文。每套课程都有一份 `labs/*.md` Mac 配套实验手册。19 个插件与 127 个 plugin skill 的来源清单见 [`PLUGIN_RESEARCH.md`](PLUGIN_RESEARCH.md)；全局 23 个 skill、fastapi1 的 8 个项目 skill、12 个 Harness 组件及 MCP/Hook 边界见 [`HARNESS_RESEARCH.md`](HARNESS_RESEARCH.md)；作者、许可证和来源见 [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md)。
+
+原有课程正文中出现的技术英语见 [`GLOSSARY.md`](GLOSSARY.md)；插件课程在各单元首次出现时就地解释术语。
+
+## 连续主线
+
+`COURSE_SPECS` 同时保留两种顺序：字典本身是不可重排的物理发布顺序，用于稳定旧 deck 的 `created_at`；`curriculum_order` 是逻辑学习顺序。当前主线为：
+
+`AG → GS → CX → BR → CH → CU → FH → FS → FA → MP → PT → DA → PD → OT → DO → PF → SS → PR → TC → VZ → HF → IO → WB → SI → SA`。
+
+主线分为六阶段：`foundation/B01`、`project/B02`、`engineering/B03`、`analysis-design/B04`、`artifacts/B05`、`build-growth/B06`。阶段桥接只使用合成 fixture 和只读验收，不新增题包或 App 状态；下一 deck 的实际解锁仍复用 App 现有 mastery 规则。
 
 ## 发布规格
 
@@ -26,6 +58,9 @@
 | `lesson_count` | 正整数课时数，也就是 deck 数 |
 | `ref` | 固定上游版本 |
 | `snapshot` | 固定内容快照日期 |
+| `curriculum_order` | 从 1 连续递增的逻辑学习顺序；不改变物理发布顺序 |
+| `phase` | 六个连续课程阶段之一 |
+| `bridge_ref` | 与阶段一一对应的 B01–B06 只读桥接编号 |
 
 `COURSE_FILES`、`LAB_FILES`、`EXPECTED_DECKS` 和 `EXPECTED_SOURCES` 仅是从 `COURSE_SPECS` 派生的兼容视图。发布 deck 总数由 `lesson_count` 求和，题目总数由 deck 总数乘以 5，不单独维护字面量。
 
@@ -41,11 +76,11 @@ python3 courses/build.py
 python3 courses/build.py --check
 ```
 
-当前三套内置规格的成功输出为：
+当前二十五套内置规格的成功输出为：
 
 ```text
-built .../courses/dist/dlg_q.db: 36 decks, 180 questions
-checked .../courses/dist/dlg_q.db: 36 decks, 180 questions
+built .../courses/dist/dlg_q.db: 228 decks, 1140 questions
+checked .../courses/dist/dlg_q.db: 228 decks, 1140 questions
 ```
 
 生成器会校验：
@@ -54,7 +89,7 @@ checked .../courses/dist/dlg_q.db: 36 decks, 180 questions
 - 已有合法数据库中同 ID deck 的不可变 `created_at`
 - 稳定 ID、连续课序和实验手册标题
 - 每包恰好 5 题及下述五种题型契约
-- 单选题子集的 A/B/C/D 正确位置计数最大差不超过 1；当前 180 道单选题为各 45 次
+- 单选题子集的 A/B/C/D 正确位置计数最大差不超过 1
 - 解析按 `结论 / 依据 / [错误选项] / 实践` 排列，各段唯一且非空；`错误选项` 仅允许单选题使用，并逐项说明三个干扰项
 - 常见密钥形态、Bearer 值、带凭据 URL 和个人绝对路径
 - SQLite 精确表结构、外键、三个列表列的 JSON TEXT、题数、99 颗心和 schema `user_version=1`
@@ -148,7 +183,7 @@ App 已安装或曾经启动后，禁止直接复制 `dist/dlg_q.db`，也禁止
 
 ## 已知限制
 
-- App 会把每节课显示为一个题包，而不会按 `COURSE_SPECS` 分组；当前三套课程合计显示 36 个题包。
+- App 会把每节课显示为一个题包，而不会显示 `phase` 或 `curriculum_order` 分组；当前二十五套课程合计显示 228 个题包。
 - 首次打开默认为随机模式；正式学习请切换到“知识点模式”。
 - 随机模式会混合全部已发布课程，用作跨课程复习。
 - `source_text` 当前没有展示入口；讲解只能放在题干和答后解析。

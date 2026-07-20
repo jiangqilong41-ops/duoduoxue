@@ -12,10 +12,10 @@ description: Use when adding, drafting, registering, or validating a course in t
 ## Workflow
 
 1. 在仓库根目录工作。先读 `courses/build.py` 的 `COURSE_SPECS`、现有相邻课程及 [课程契约](references/course-contract.md)。
-2. 明确课程标题、事实来源、唯一两字母前缀、正整数课时数、来源 ref 和独立 snapshot。来源无法核实时先停止，不编造材料。
+2. 明确课程标题、事实来源、唯一两字母前缀、正整数课时数、来源 ref、独立 snapshot、逻辑 `curriculum_order`、`phase` 与 `bridge_ref`。来源无法核实时先停止，不编造材料。
 3. 先为新规格或校验行为补失败测试，再创建 `courses/<name>.json` 和 `courses/labs/<name>.md`，并更新 `courses/README.md` 的课程表。
 4. 每课恰好 5 题，按内容选择题型。不要为了平均分配而扭曲内容；选择题正确位置在全部选择题子集中保持最大计数差不超过 1。
-5. 只在现有有序 `COURSE_SPECS` 末尾追加一个规格项。不得插入中间或重排旧项，否则会改变既有 deck 的稳定 `created_at`。不要创建第二个目录、映射或总数常量。
+5. 只在现有有序 `COURSE_SPECS` 末尾追加一个规格项。不得插入中间或重排旧项，否则会改变既有 deck 的稳定 `created_at`。逻辑课程顺序只通过同一规格项的 `curriculum_order / phase / bridge_ref` 表达；不要创建第二个目录、映射或总数常量。
 6. 运行：
 
 ```bash

@@ -1,0 +1,970 @@
+{
+  "course": {
+    "id": "fastapi1-codex-harness",
+    "prefix": "FH",
+    "title": "fastapi1 Codex Harness"
+  },
+  "source": {
+    "kind": "git",
+    "ref": "fastapi1@710807b32a2a7af6b48496390d15c728a8afd06b",
+    "snapshot": "2026-07-20"
+  },
+  "decks": [
+    {
+      "id": "course-fh-01",
+      "code": "FH01",
+      "title": "FH01 fastapi1 Codex Harness",
+      "order": 1,
+      "lab_ref": "FH01",
+      "source_text": "fastapi1@710807b32a2a7af6b48496390d15c728a8afd06b；.codex 的配置、合同、Hook、MCP、Rules 与只读 agent 脱敏快照；2026-07-20。",
+      "questions": [
+        {
+          "id": "course-fh-01-q01",
+          "type": "multiple_choice",
+          "content": "[fastapi1 Codex Harness] 要回答“某项设置由哪个 Harness 组件声明”，最稳妥的起点是什么？",
+          "options": [
+            "先把问题路由到 AGENTS、只读 agent、config、contract、Hooks、environment、MCP 或 Rules 对应单元，再读固定快照",
+            "启动 environment action，观察服务是否运行",
+            "启用所有 MCP，哪个返回结果就选哪个",
+            "让 reviewer agent 自动修改配置"
+          ],
+          "answer": "先把问题路由到 AGENTS、只读 agent、config、contract、Hooks、environment、MCP 或 Rules 对应单元，再读固定快照",
+          "explanation": "结论：先把问题路由到 AGENTS、只读 agent、config、contract、Hooks、environment、MCP 或 Rules 对应单元，再读固定快照。\n依据：FH 课程把 12 个组件按治理、只读角色、声明配置和安全边界分开；静态文件只能证明声明，不能替代加载或执行证据。\n错误选项：B：环境 action 会启动本地依赖，不是课程路由步骤。；C：启用 MCP 会改变运行面，也不能反推出配置职责。；D：reviewer 明确是只读角色，不执行修复。\n实践：为一个合成 Harness 问题选择唯一主单元，并写出未验证层。"
+        },
+        {
+          "id": "course-fh-01-q02",
+          "type": "multiple_choice",
+          "content": "[fastapi1 Codex Harness] 这套 Harness 课程的事实来源应固定在哪里？",
+          "options": [
+            "当前用户的 Codex 配置和本地凭证",
+            "fastapi1@710807b32a2a7af6b48496390d15c728a8afd06b 的 2026-07-20 Git 快照",
+            "当前运行中的 MCP 列表",
+            "生产服务器上的 `.codex` 目录"
+          ],
+          "answer": "fastapi1@710807b32a2a7af6b48496390d15c728a8afd06b 的 2026-07-20 Git 快照",
+          "explanation": "结论：fastapi1@710807b32a2a7af6b48496390d15c728a8afd06b 的 2026-07-20 Git 快照。\n依据：`source.ref`、研究哈希与各 deck 的相对来源路径共同锁定同一提交；用户级配置、运行态和生产状态均不进入课程。\n错误选项：A：用户配置可能包含个人偏好和秘密，且不是仓库快照。；C：运行列表会随会话变化，不能代替固定来源。；D：生产文件既非课程所需，也可能含运行态差异。\n实践：用 `git show <commit>:<relative-path>` 描述静态核对，不读取工作树外状态。"
+        },
+        {
+          "id": "course-fh-01-q03",
+          "type": "multiple_choice",
+          "content": "[fastapi1 Codex Harness] 哪一项准确概括 12 个组件单元？",
+          "options": [
+            "8 个项目 skill 加 4 个生产执行器",
+            "5 个可写 agent 加 7 个数据库工具",
+            "AGENTS 范围、5 个只读 agent、项目 config、contract、Hooks、environment action、MCP 和 Rules",
+            "12 个可独立调用的业务 API"
+          ],
+          "answer": "AGENTS 范围、5 个只读 agent、项目 config、contract、Hooks、environment action、MCP 和 Rules",
+          "explanation": "结论：AGENTS 范围、5 个只读 agent、项目 config、contract、Hooks、environment action、MCP 和 Rules。\n依据：FH02–FH13 正好对应治理文件、五个 read-only role、配置/合同、Hook、环境声明、MCP 边界和命令前缀规则。\n错误选项：A：项目 skills 属于 FS 课程，且 FH 组件不是生产执行器。；B：五个 agent 都声明 `sandbox_mode = read-only`。；D：这些是 Harness 组件，不是业务 API。\n实践：把 12 个组件按“治理 / 只读角色 / 声明 / guardrail”分组。"
+        },
+        {
+          "id": "course-fh-01-q04",
+          "type": "multiple_choice",
+          "content": "[fastapi1 Codex Harness] 课程如何证明组件边界而不执行它们？",
+          "options": [
+            "运行 SessionStart Hook 并保存真实输出",
+            "启动 Redis 与开发服务器",
+            "运行 PostgreSQL wrapper 读取 `.env`",
+            "只检查 Git blob、字段名和合成 fixture，分别标注声明、加载、调用与结果是否有证据"
+          ],
+          "answer": "只检查 Git blob、字段名和合成 fixture，分别标注声明、加载、调用与结果是否有证据",
+          "explanation": "结论：只检查 Git blob、字段名和合成 fixture，分别标注声明、加载、调用与结果是否有证据。\n依据：课程只允许固定 Git 材料、合成输入和只读推理；Hook、environment action、MCP wrapper 与外部工具均保持未执行。\n错误选项：A：Hook 执行会进入会话运行面，静态核对已足够。；B：environment action 会改变本机服务状态。；C：PostgreSQL wrapper 会读取秘密并启动外部进程。\n实践：为一个组件写四层证据表，运行态列明确写“未执行”。"
+        },
+        {
+          "id": "course-fh-01-q05",
+          "type": "true_false",
+          "content": "[fastapi1 Codex Harness] 仓库中存在 config、Hook 或 MCP 文件，就足以证明对应功能已加载、连接并完成业务操作。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "错误",
+          "explanation": "结论：静态文件只能证明声明存在。\n依据：加载、连接、工具暴露、实际调用和业务结果是不同证据层；Harness 课程必须保持这些层次分离。\n实践：选择一个组件，写出从声明到结果仍缺少的证据。"
+        }
+      ]
+    },
+    {
+      "id": "course-fh-02",
+      "code": "FH02",
+      "title": "FH02 AGENTS 范围",
+      "order": 2,
+      "lab_ref": "FH02",
+      "source_text": "fastapi1@710807b32a2a7af6b48496390d15c728a8afd06b 的 .codex/AGENTS.md 脱敏结构快照；2026-07-20。",
+      "questions": [
+        {
+          "id": "course-fh-02-q01",
+          "type": "multiple_choice",
+          "content": "[AGENTS 范围] 要审查 `.codex/**` 的项目 Harness 规则，应读取哪些指令？",
+          "options": [
+            "先读根 AGENTS，再读 `.codex/AGENTS.md`；近端规则只覆盖其目录范围",
+            "只读 `.codex/AGENTS.md`，忽略根级安全和项目合同",
+            "读取用户级配置来替代仓库指令",
+            "直接执行 config 中的命令判断规则"
+          ],
+          "answer": "先读根 AGENTS，再读 `.codex/AGENTS.md`；近端规则只覆盖其目录范围",
+          "explanation": "结论：先读根 AGENTS，再读 `.codex/AGENTS.md`；近端规则只覆盖其目录范围。\n依据：根 AGENTS 定义跨目录规则，`.codex/AGENTS.md` 只约束 `.codex/**`；Codex 指令从根到当前目录逐层拼接，近端覆盖冲突但不抹去全部上层规则。\n错误选项：B：忽略根规则会丢失跨目录安全与业务边界。；C：用户级设置不属于仓库课程来源。；D：指令范围可从文件静态判断，无需执行配置。\n实践：用一个合成冲突说明哪条规则在 `.codex/**` 内生效。"
+        },
+        {
+          "id": "course-fh-02-q02",
+          "type": "multiple_choice",
+          "content": "[AGENTS 范围] 哪项属于项目 config 可保留的内容？",
+          "options": [
+            "个人 provider、auth 与 profile",
+            "repo-specific features、基线 MCP、禁用插件和只读 subagent 注册",
+            "用户 approval、sandbox 与遥测偏好",
+            "数据库连接串和 OAuth 凭证"
+          ],
+          "answer": "repo-specific features、基线 MCP、禁用插件和只读 subagent 注册",
+          "explanation": "结论：repo-specific features、基线 MCP、禁用插件和只读 subagent 注册。\n依据：`.codex/AGENTS.md` 明确要求 config 只放 repo-specific 设置，并排除 provider、auth、profile、approval、sandbox、host-owned metadata、telemetry 与 secrets。\n错误选项：A：provider/auth/profile 是用户或主机级配置。；C：approval/sandbox/telemetry 不应由项目仓库强制。；D：连接串与凭证不得写入版本化 config。\n实践：把一份合成配置键清单分为“项目允许 / 用户级 / secret”。"
+        },
+        {
+          "id": "course-fh-02-q03",
+          "type": "multiple_choice",
+          "content": "[AGENTS 范围] 哪种 Harness 变更必须先取得明确批准？",
+          "options": [
+            "只读检查现有 SessionStart matcher",
+            "核对五个 agent 的 `read-only` 声明",
+            "新增额外 Hook，尤其是 PreToolUse、Stop 或其他写入型事件",
+            "确认 Redis 只开放 get/list"
+          ],
+          "answer": "新增额外 Hook，尤其是 PreToolUse、Stop 或其他写入型事件",
+          "explanation": "结论：新增额外 Hook，尤其是 PreToolUse、Stop 或其他写入型事件。\n依据：近端 AGENTS 规定额外 Hook 只有在用户明确批准后才可新增，写入型 Hook 还必须同步 contract 与测试。\n错误选项：A：静态核对现有 matcher 不改变状态。；B：检查只读声明属于课程正常范围。；D：确认现有最小权限是只读审查。\n实践：写出批准门槛、合同字段和预期测试三项，不修改文件。"
+        },
+        {
+          "id": "course-fh-02-q04",
+          "type": "multiple_choice",
+          "content": "[AGENTS 范围] 哪份输出正确描述了 AGENTS 的作用？",
+          "options": [
+            "它自动拦截所有危险 shell 命令",
+            "它能证明所有 MCP 已连接",
+            "它让只读 agent 自动修复发现",
+            "它提供作用域与治理指令；实际 guardrail、工具连接和执行结果仍需独立证据"
+          ],
+          "answer": "它提供作用域与治理指令；实际 guardrail、工具连接和执行结果仍需独立证据",
+          "explanation": "结论：它提供作用域与治理指令；实际 guardrail、工具连接和执行结果仍需独立证据。\n依据：AGENTS 是指令与治理层，不是 Hook、Rules、MCP 或 agent 执行引擎。\n错误选项：A：危险命令前缀由 Rules 等机制处理，且也不是完整策略。；B：AGENTS 声明不能证明工具连接。；C：只读 agent 不能执行修复。\n实践：把一条 AGENTS 规则关联到对应的 contract 或验证脚本。"
+        },
+        {
+          "id": "course-fh-02-q05",
+          "type": "true_false",
+          "content": "[AGENTS 范围] 进入 `.codex/**` 后，`.codex/AGENTS.md` 会完全取代根 AGENTS 的所有规则。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "错误",
+          "explanation": "结论：近端 AGENTS 只在冲突处具有更近的覆盖力，并不会抹去全部根规则。\n依据：项目指令从 Git 根到当前目录逐层拼接，每层最多一个文件。\n实践：列出一条根级规则和一条 `.codex` 专属规则。"
+        }
+      ]
+    },
+    {
+      "id": "course-fh-03",
+      "code": "FH03",
+      "title": "FH03 data_security 只读角色",
+      "order": 3,
+      "lab_ref": "FH03",
+      "source_text": "fastapi1@710807b32a2a7af6b48496390d15c728a8afd06b 的 .codex/agents/data_security.toml 脱敏结构快照；2026-07-20。",
+      "questions": [
+        {
+          "id": "course-fh-03-q01",
+          "type": "matching",
+          "content": "[data_security 只读角色] 将 `data_security` 的关注面与正确只读输出配对。",
+          "options": [],
+          "answer": "认证授权-权限边界与越权风险|SQL 与 Redis-查询和工具最小权限风险|敏感数据与回调-数据流、日志和泄露风险",
+          "explanation": "结论：认证授权对应权限边界，SQL/Redis 对应查询与工具最小权限，敏感数据/回调对应数据流和泄露风险。\n依据：`.codex/agents/data_security.toml` 要求只读关注认证授权、SQL/Redis、导出下载、日志和外部回调，并在遇到秘密时不回显。\n实践：为合成导出接口写三栏风险，所有值使用字段名或占位符。",
+          "match_left": [
+            "认证授权",
+            "SQL 与 Redis",
+            "敏感数据与回调"
+          ],
+          "match_right": [
+            "权限边界与越权风险",
+            "查询和工具最小权限风险",
+            "数据流、日志和泄露风险"
+          ]
+        },
+        {
+          "id": "course-fh-03-q02",
+          "type": "multiple_choice",
+          "content": "[data_security 只读角色] 哪项是该角色合格的输出？",
+          "options": [
+            "直接修复权限漏洞并提交",
+            "列出证据路径、权限/数据流风险、严重度与需主线程处理的建议",
+            "回显 token 以证明发现了秘密",
+            "运行写查询验证数据库权限"
+          ],
+          "answer": "列出证据路径、权限/数据流风险、严重度与需主线程处理的建议",
+          "explanation": "结论：列出证据路径、权限/数据流风险、严重度与需主线程处理的建议。\n依据：角色配置明确 `sandbox_mode = read-only`，只做数据与安全分析，不修改文件或替主线程实施修复。\n错误选项：A：修复和提交超出只读角色职责。；C：秘密只能说明存在与风险，不能回显具体值。；D：写查询会改变数据库状态。\n实践：用合成对象和字段名写一个 P1 风险，不触碰真实数据。"
+        },
+        {
+          "id": "course-fh-03-q03",
+          "type": "multiple_choice",
+          "content": "[data_security 只读角色] 该角色遇到 secret 时应怎样处理？",
+          "options": [
+            "输出前四位帮助定位",
+            "写入临时报告供主线程查看",
+            "只说明存在位置类别和风险，停止复制或读取具体值",
+            "把 secret 交给 reviewer 复核"
+          ],
+          "answer": "只说明存在位置类别和风险，停止复制或读取具体值",
+          "explanation": "结论：只说明存在位置类别和风险，停止复制或读取具体值。\n依据：developer_instructions 明确规定遇到 secrets 只说明存在与风险，不回显具体值；角色也不能把秘密转交给其他输出面。\n错误选项：A：任何部分回显都可能造成泄露。；B：临时报告仍会持久化敏感值。；D：转给另一角色不会消除泄露风险。\n实践：把“真实 token”改写成 `<REDACTED_TOKEN_PRESENT>` 一类角色清晰的占位符。"
+        },
+        {
+          "id": "course-fh-03-q04",
+          "type": "multiple_choice",
+          "content": "[data_security 只读角色] 如何证明角色边界，而不把 TOML 当成执行证据？",
+          "options": [
+            "文件存在就声称安全审查已经运行",
+            "role 名称含 security 就认为风险已修复",
+            "让主线程依赖该角色的模型自述",
+            "记录 TOML 的 read-only 声明、预期关注面，并注明未启动 agent、未访问数据、未执行修复"
+          ],
+          "answer": "记录 TOML 的 read-only 声明、预期关注面，并注明未启动 agent、未访问数据、未执行修复",
+          "explanation": "结论：记录 TOML 的 read-only 声明、预期关注面，并注明未启动 agent、未访问数据、未执行修复。\n依据：配置文件只描述角色和 sandbox；实际启动、读取范围、输出质量与修复状态需要各自证据。\n错误选项：A：静态配置不能证明 agent 被启动。；B：角色名称不能证明发现或修复任何问题。；C：模型自述不是独立运行证据。\n实践：为角色配置写“已证明 / 未证明”两栏。"
+        },
+        {
+          "id": "course-fh-03-q05",
+          "type": "true_false",
+          "content": "[data_security 只读角色] `data_security` 可以直接修改文件，只要改动属于安全修复。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "错误",
+          "explanation": "结论：该角色不得修改文件或替主线程执行修复。\n依据：TOML 明确设置 read-only sandbox，并在 developer instructions 中重复禁止实施。\n实践：把修复动作改写成供主线程评估的最小建议。"
+        }
+      ]
+    },
+    {
+      "id": "course-fh-04",
+      "code": "FH04",
+      "title": "FH04 docs_researcher 只读角色",
+      "order": 4,
+      "lab_ref": "FH04",
+      "source_text": "fastapi1@710807b32a2a7af6b48496390d15c728a8afd06b 的 .codex/agents/docs_researcher.toml 脱敏结构快照；2026-07-20。",
+      "questions": [
+        {
+          "id": "course-fh-04-q01",
+          "type": "multiple_choice",
+          "content": "[docs_researcher 只读角色] 需要核对当前 FastAPI/Pydantic/SQLAlchemy 行为时，哪项路由正确？",
+          "options": [
+            "让 `docs_researcher` 只读查询官方文档，并与项目实现和推断分栏",
+            "让 `explorer` 从训练数据补全官方 API",
+            "让 `reviewer` 修改代码验证",
+            "让 `data_security` 读取用户级 MCP 凭证"
+          ],
+          "answer": "让 `docs_researcher` 只读查询官方文档，并与项目实现和推断分栏",
+          "explanation": "结论：让 `docs_researcher` 只读查询官方文档，并与项目实现和推断分栏。\n依据：`docs_researcher` 专门核对 FastAPI、Pydantic、SQLAlchemy、Redis、Codex/OpenAI 等一手资料，并要求区分官方事实、项目实现与推断。\n错误选项：B：explorer 负责本地代码链路，不替代官方文档研究。；C：reviewer 是只读审查角色，不能修改代码。；D：MCP 凭证不应被任何课程角色读取。\n实践：为一个合成版本问题列出官方页面、项目文件和未验证推断。"
+        },
+        {
+          "id": "course-fh-04-q02",
+          "type": "multiple_choice",
+          "content": "[docs_researcher 只读角色] 哪份研究输出满足角色边界？",
+          "options": [
+            "只给出社区博客结论",
+            "给出一手来源、适用版本、项目对应位置、冲突和不确定性",
+            "复制用户级 MCP 配置中的连接信息",
+            "声称官方文档自动覆盖仓库测试"
+          ],
+          "answer": "给出一手来源、适用版本、项目对应位置、冲突和不确定性",
+          "explanation": "结论：给出一手来源、适用版本、项目对应位置、冲突和不确定性。\n依据：角色要求优先官方文档，且必须明确区分来源层级；项目实现与测试仍是项目事实。\n错误选项：A：社区内容不能替代一手资料。；C：用户级 secrets 和 MCP 凭证禁止复制。；D：官方通用说明不能静默覆盖项目合同与可观察测试。\n实践：用表格记录 claim、source、version、project evidence 与 confidence。"
+        },
+        {
+          "id": "course-fh-04-q03",
+          "type": "multiple_choice",
+          "content": "[docs_researcher 只读角色] 什么情况应停止并报告证据缺口？",
+          "options": [
+            "找到了具体官方 API 页面",
+            "项目锁文件能解析实际版本",
+            "只有搜索摘要或二手文章，无法取得支持结论的一手来源",
+            "项目实现与文档一致"
+          ],
+          "answer": "只有搜索摘要或二手文章，无法取得支持结论的一手来源",
+          "explanation": "结论：只有搜索摘要或二手文章，无法取得支持结论的一手来源。\n依据：文档核验角色的价值在于可追溯的一手依据；没有一手来源时应明确不确定性，不能由记忆补足。\n错误选项：A：具体官方页面是合格来源。；B：锁文件可支持版本事实。；D：一致的两层证据可形成有范围结论。\n实践：把缺口写成“未知事实 / 已查来源 / 下一步”。"
+        },
+        {
+          "id": "course-fh-04-q04",
+          "type": "multiple_choice",
+          "content": "[docs_researcher 只读角色] 如何避免把文档角色写成实现 agent？",
+          "options": [
+            "查询完文档后直接改代码",
+            "让角色决定最终架构",
+            "把引用粘贴成提交说明",
+            "只交付来源化事实、项目对照和建议验证，实施决定留给主线程"
+          ],
+          "answer": "只交付来源化事实、项目对照和建议验证，实施决定留给主线程",
+          "explanation": "结论：只交付来源化事实、项目对照和建议验证，实施决定留给主线程。\n依据：developer instructions 只授权文档核验，不允许修改文件；架构和实施仍由主线程在完整上下文中决定。\n错误选项：A：改代码超出 read-only。；B：角色缺少主线程的完整决策权。；C：提交和发布也不是该角色职责。\n实践：为主线程写一段包含来源和限制的只读 handoff。"
+        },
+        {
+          "id": "course-fh-04-q05",
+          "type": "true_false",
+          "content": "[docs_researcher 只读角色] 只要官方文档给出一种模式，就可以忽略 fastapi1 的现有测试和项目规则。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "错误",
+          "explanation": "结论：官方文档不能自动覆盖项目事实。\n依据：角色必须区分官方事实、项目实现和推断；冲突需要显式呈现并由主线程验证。\n实践：给一个合成冲突写出两边证据。"
+        }
+      ]
+    },
+    {
+      "id": "course-fh-05",
+      "code": "FH05",
+      "title": "FH05 explorer 只读角色",
+      "order": 5,
+      "lab_ref": "FH05",
+      "source_text": "fastapi1@710807b32a2a7af6b48496390d15c728a8afd06b 的 .codex/agents/explorer.toml 脱敏结构快照；2026-07-20。",
+      "questions": [
+        {
+          "id": "course-fh-05-q01",
+          "type": "multiple_choice",
+          "content": "[explorer 只读角色] 需要快速定位请求入口、依赖注入与定时任务链路时，应选择什么？",
+          "options": [
+            "选择 `explorer`，从 AGENTS、知识图谱线索、相关入口和测试开始只读勘探",
+            "选择 `reviewer` 并让它修改入口",
+            "选择 `fastapi_api` 并让它创建路由",
+            "启动所有 MCP 搜索运行数据库"
+          ],
+          "answer": "选择 `explorer`，从 AGENTS、知识图谱线索、相关入口和测试开始只读勘探",
+          "explanation": "结论：选择 `explorer`，从 AGENTS、知识图谱线索、相关入口和测试开始只读勘探。\n依据：`explorer` 的职责是搜索源码、梳理入口、依赖注入、数据流和定时任务链路，不实施修改或替主线程决策。\n错误选项：B：reviewer 负责风险审查，也不能修改。；C：fastapi_api 只读核对 API 事实，不能创建路由。；D：运行数据库和启用所有 MCP 超出课程边界。\n实践：为合成请求输出入口、调用链、数据对象和相关测试。"
+        },
+        {
+          "id": "course-fh-05-q02",
+          "type": "multiple_choice",
+          "content": "[explorer 只读角色] 哪份结果是合格的勘探 handoff？",
+          "options": [
+            "“代码很多，建议重构”",
+            "精确相对路径、入口函数、依赖/调用边和仍待确认的问题",
+            "一份未授权的重构 diff",
+            "运行态数据库记录"
+          ],
+          "answer": "精确相对路径、入口函数、依赖/调用边和仍待确认的问题",
+          "explanation": "结论：精确相对路径、入口函数、依赖/调用边和仍待确认的问题。\n依据：角色配置要求只读定位事实；具体路径和链路能让主线程继续工作，而宽泛意见和实现 diff 都越界。\n错误选项：A：宽泛评价没有可核验代码证据。；C：重构 diff 属于实施。；D：课程不读取运行数据库。\n实践：用三到五个节点画出一条合成调用链。"
+        },
+        {
+          "id": "course-fh-05-q03",
+          "type": "multiple_choice",
+          "content": "[explorer 只读角色] 勘探中哪种动作不允许？",
+          "options": [
+            "读取相关 AGENTS",
+            "搜索已提交源码",
+            "运行会改写项目状态的命令，或替主线程选择实现方案",
+            "定位现有测试"
+          ],
+          "answer": "运行会改写项目状态的命令，或替主线程选择实现方案",
+          "explanation": "结论：运行会改写项目状态的命令，或替主线程选择实现方案。\n依据：developer instructions 明确禁止修改文件、运行改写状态的命令和替主线程做实现决策。\n错误选项：A：读取指令是勘探起点。；B：只读搜索源码在职责内。；D：测试是验证现有行为的重要事实源。\n实践：把拟议命令按只读与写入分类，写入项不执行。"
+        },
+        {
+          "id": "course-fh-05-q04",
+          "type": "multiple_choice",
+          "content": "[explorer 只读角色] 如何区分 explorer 配置与实际勘探结果？",
+          "options": [
+            "配置存在就说明入口已找到",
+            "description 中提到 data flow 就视为链路证据",
+            "角色输出一句“完成”即可",
+            "配置证明允许的只读职责；具体入口、路径和调用边必须来自独立源码证据"
+          ],
+          "answer": "配置证明允许的只读职责；具体入口、路径和调用边必须来自独立源码证据",
+          "explanation": "结论：配置证明允许的只读职责；具体入口、路径和调用边必须来自独立源码证据。\n依据：TOML 只定义 role/sandbox，无法预先证明任何业务入口或依赖关系。\n错误选项：A：静态配置不包含本次任务结果。；B：描述是职责，不是代码事实。；C：无路径和证据的完成声明不可验收。\n实践：在 handoff 中分别引用角色配置和业务源码证据。"
+        },
+        {
+          "id": "course-fh-05-q05",
+          "type": "true_false",
+          "content": "[explorer 只读角色] `explorer` 可以在找到入口后替主线程决定最终架构，因为它最熟悉调用链。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "错误",
+          "explanation": "结论：勘探角色不能替主线程做实现决策。\n依据：其 developer instructions 明确限制为只读事实定位；决策需要主线程整合需求、安全和验证。\n实践：把架构建议改写成两个有证据的待决选项。"
+        }
+      ]
+    },
+    {
+      "id": "course-fh-06",
+      "code": "FH06",
+      "title": "FH06 fastapi_api 只读角色",
+      "order": 6,
+      "lab_ref": "FH06",
+      "source_text": "fastapi1@710807b32a2a7af6b48496390d15c728a8afd06b 的 .codex/agents/fastapi_api.toml 脱敏结构快照；2026-07-20。",
+      "questions": [
+        {
+          "id": "course-fh-06-q01",
+          "type": "multiple_choice",
+          "content": "[fastapi_api 只读角色] 要核对一个 JSON 路由的 `Depends`、`response_model` 与异常合同，应选择什么？",
+          "options": [
+            "选择 `fastapi_api` 做只读 API 合同核对",
+            "选择 `explorer` 并让它修改 schema",
+            "选择 `reviewer` 并直接提交修复",
+            "选择 MCP wrapper 查询生产数据库"
+          ],
+          "answer": "选择 `fastapi_api` 做只读 API 合同核对",
+          "explanation": "结论：选择 `fastapi_api` 做只读 API 合同核对。\n依据：`fastapi_api` 专注路由、依赖、Pydantic v2、异常、认证授权与前后端接口契约，来源从 main、routes、schema/model 和测试定位。\n错误选项：B：explorer 不修改 schema。；C：reviewer 不实施或提交修复。；D：API 合同可由固定源码核对，无需生产数据库。\n实践：用合成 endpoint 列出 method、path、dependency、response 与 error。"
+        },
+        {
+          "id": "course-fh-06-q02",
+          "type": "multiple_choice",
+          "content": "[fastapi_api 只读角色] 哪份输出最符合该角色？",
+          "options": [
+            "新增一个路由并声称通过",
+            "列出实际路由、依赖、响应模型、错误协议、相关测试和缺口",
+            "只引用 FastAPI 官方教程",
+            "用真实用户 token 调接口"
+          ],
+          "answer": "列出实际路由、依赖、响应模型、错误协议、相关测试和缺口",
+          "explanation": "结论：列出实际路由、依赖、响应模型、错误协议、相关测试和缺口。\n依据：角色必须从项目源码与测试核对接口事实；官方文档可辅助，但不能取代本项目合同，课程也不调用真实认证 API。\n错误选项：A：新增路由是实施动作。；C：通用教程不能证明 fastapi1 的具体接口。；D：真实 token 与运行 API 超出课程。\n实践：为合成接口写一张静态合同表。"
+        },
+        {
+          "id": "course-fh-06-q03",
+          "type": "multiple_choice",
+          "content": "[fastapi_api 只读角色] 哪种请求超出该只读角色边界？",
+          "options": [
+            "确认 route 是否使用 `response_model`",
+            "比较 schema 与前端期望字段",
+            "直接修改 handler、数据库模型或测试来修复问题",
+            "列出认证依赖"
+          ],
+          "answer": "直接修改 handler、数据库模型或测试来修复问题",
+          "explanation": "结论：直接修改 handler、数据库模型或测试来修复问题。\n依据：角色 developer instructions 明确不修改文件或替主线程实施改动。\n错误选项：A：静态检查 response_model 在职责内。；B：接口字段对照在职责内。；D：定位认证依赖是核心关注点。\n实践：把修复动作改写为最小发现、影响和建议测试。"
+        },
+        {
+          "id": "course-fh-06-q04",
+          "type": "multiple_choice",
+          "content": "[fastapi_api 只读角色] 如何避免把 API 角色的分析当成运行成功？",
+          "options": [
+            "路径字符串存在就说接口可用",
+            "有 response_model 就说权限正确",
+            "模型自述“测试通过”即可",
+            "分开记录静态路由合同、测试覆盖和未执行的运行请求"
+          ],
+          "answer": "分开记录静态路由合同、测试覆盖和未执行的运行请求",
+          "explanation": "结论：分开记录静态路由合同、测试覆盖和未执行的运行请求。\n依据：源码可证明声明与控制流，测试可证明有限行为；实际服务、认证和外部依赖仍是另一证据层。\n错误选项：A：路径存在不能证明服务运行或所有分支正确。；B：响应模型与授权是不同控制。；C：没有真实命令输出的自述不是测试证据。\n实践：为合成路由标记“源码已见 / 测试已覆盖 / 运行未验证”。"
+        },
+        {
+          "id": "course-fh-06-q05",
+          "type": "true_false",
+          "content": "[fastapi_api 只读角色] 发现缺少 `response_model` 后，`fastapi_api` 可以直接修复文件，因为这是 API 专业职责。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "错误",
+          "explanation": "结论：专业关注点不改变只读限制。\n依据：该角色只提供项目 API 事实与风险，实施由主线程在授权范围内完成。\n实践：写出一条包含路径、影响和建议回归测试的发现。"
+        }
+      ]
+    },
+    {
+      "id": "course-fh-07",
+      "code": "FH07",
+      "title": "FH07 reviewer 只读角色",
+      "order": 7,
+      "lab_ref": "FH07",
+      "source_text": "fastapi1@710807b32a2a7af6b48496390d15c728a8afd06b 的 .codex/agents/reviewer.toml 脱敏结构快照；2026-07-20。",
+      "questions": [
+        {
+          "id": "course-fh-07-q01",
+          "type": "multiple_choice",
+          "content": "[reviewer 只读角色] 分支改动需要检查 correctness、权限、缓存、调度和测试缺口时，应选择什么？",
+          "options": [
+            "选择 `reviewer` 做只读、按严重度排序的证据化审查",
+            "选择 `data_security` 并让它修复全部问题",
+            "选择 `explorer` 并让它批准合并",
+            "直接合并后观察生产"
+          ],
+          "answer": "选择 `reviewer` 做只读、按严重度排序的证据化审查",
+          "explanation": "结论：选择 `reviewer` 做只读、按严重度排序的证据化审查。\n依据：`reviewer` 的 developer instructions 明确关注 correctness、权限、缓存、调度、安全边界和测试缺口，并要求具体路径与最小证据。\n错误选项：B：data_security 关注安全数据边界且同样只读。；C：explorer 不负责批准或合并。；D：生产观察不能替代发布前审查。\n实践：用合成 diff 写一个 P1、一个 P2 和一个非问题。"
+        },
+        {
+          "id": "course-fh-07-q02",
+          "type": "multiple_choice",
+          "content": "[reviewer 只读角色] 哪份发现符合审查契约？",
+          "options": [
+            "“代码看起来不够优雅”",
+            "按严重度说明可复现风险、精确路径、影响与最小必要证据",
+            "提交一份修复 diff",
+            "罗列所有可能性但不指出触发条件"
+          ],
+          "answer": "按严重度说明可复现风险、精确路径、影响与最小必要证据",
+          "explanation": "结论：按严重度说明可复现风险、精确路径、影响与最小必要证据。\n依据：reviewer 要输出可行动的具体风险，避免无证据风格意见；角色也不能实施修复。\n错误选项：A：主观风格评价不是 correctness 发现。；C：修复 diff 越过只读职责。；D：没有触发条件与证据的可能性不可行动。\n实践：为发现写“触发 → 结果 → 证据 → 建议测试”。"
+        },
+        {
+          "id": "course-fh-07-q03",
+          "type": "multiple_choice",
+          "content": "[reviewer 只读角色] 哪项应由 reviewer 明确拒绝？",
+          "options": [
+            "读取分支 diff",
+            "检查权限与测试覆盖",
+            "修改文件、提交修复或替主线程决定发布",
+            "报告没有发现时说明审查范围"
+          ],
+          "answer": "修改文件、提交修复或替主线程决定发布",
+          "explanation": "结论：修改文件、提交修复或替主线程决定发布。\n依据：角色明确只审查，不修改文件或执行修复；发布决定需要主线程和完整验证。\n错误选项：A：读取 diff 是审查基础。；B：权限和测试缺口属于关注范围。；D：说明范围能避免把“无发现”夸大为“无风险”。\n实践：把实施请求转成 findings-only 输出。"
+        },
+        {
+          "id": "course-fh-07-q04",
+          "type": "multiple_choice",
+          "content": "[reviewer 只读角色] “没有发现”应怎样解释？",
+          "options": [
+            "证明改动完全正确",
+            "证明所有生产路径都已测试",
+            "证明其他角色不必再检查",
+            "只表示在已审查 diff、来源和测试范围内未发现可行动问题"
+          ],
+          "answer": "只表示在已审查 diff、来源和测试范围内未发现可行动问题",
+          "explanation": "结论：只表示在已审查 diff、来源和测试范围内未发现可行动问题。\n依据：只读审查受可见 diff、上下文和验证范围限制，不能证明系统所有路径无缺陷。\n错误选项：A：审查不是形式化正确性证明。；B：静态审查不能代替未运行的生产路径。；C：API、安全或文档角色可能仍需专门核验。\n实践：在无发现摘要中列出审查范围与未运行检查。"
+        },
+        {
+          "id": "course-fh-07-q05",
+          "type": "true_false",
+          "content": "[reviewer 只读角色] reviewer 输出了 P1 发现，就自动获得修改文件和提交修复的权限。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "错误",
+          "explanation": "结论：发现严重问题不会扩大只读角色权限。\n依据：developer instructions 始终禁止修改文件或替主线程执行修复。\n实践：把 P1 交接成路径、影响、最小修复方向和回归测试建议。"
+        }
+      ]
+    },
+    {
+      "id": "course-fh-08",
+      "code": "FH08",
+      "title": "FH08 项目 config",
+      "order": 8,
+      "lab_ref": "FH08",
+      "source_text": "fastapi1@710807b32a2a7af6b48496390d15c728a8afd06b 的 .codex/config.toml 脱敏结构快照；2026-07-20。",
+      "questions": [
+        {
+          "id": "course-fh-08-q01",
+          "type": "multiple_choice",
+          "content": "[项目 config] 要理解 `.codex/config.toml` 的职责，哪种读法正确？",
+          "options": [
+            "把它视为 repo-specific features、插件禁用、MCP 声明和只读 agent 注册",
+            "把它视为用户 provider、auth 与 profile 的保存位置",
+            "把它视为业务 API 路由表",
+            "把它视为已连接工具的运行日志"
+          ],
+          "answer": "把它视为 repo-specific features、插件禁用、MCP 声明和只读 agent 注册",
+          "explanation": "结论：把它视为 repo-specific features、插件禁用、MCP 声明和只读 agent 注册。\n依据：项目 config 声明 `[features]`、禁用插件、MCP servers 和 agents；项目 AGENTS 明确禁止写入用户级 provider/auth/profile/approval/sandbox 和 secrets。\n错误选项：B：用户身份与偏好不应版本化到项目 config。；C：业务路由属于应用源码，不属于 Codex config。；D：config 是声明，不记录实际连接或调用。\n实践：把合成 TOML 键按允许、禁止和敏感三类整理。"
+        },
+        {
+          "id": "course-fh-08-q02",
+          "type": "fill_blank",
+          "content": "[项目 config] 静态 config 能证明 MCP 被声明，但不能证明它已经 ___。",
+          "options": [],
+          "answer": "连接并执行",
+          "explanation": "结论：应填写“连接并执行”。\n依据：配置文件不包含本次会话的加载、健康、工具暴露或调用结果证据。\n实践：为 openaiDeveloperDocs 写出声明、连接和调用三层证据。"
+        },
+        {
+          "id": "course-fh-08-q03",
+          "type": "multiple_choice",
+          "content": "[项目 config] 哪个配置项最能体现只读 subagent 边界？",
+          "options": [
+            "agent 名称中含 `reviewer`",
+            "`max_threads = 6`",
+            "每个 `config_file` 指向单独 TOML，角色 TOML 设置 `sandbox_mode = read-only`",
+            "`multi_agent = true`"
+          ],
+          "answer": "每个 `config_file` 指向单独 TOML，角色 TOML 设置 `sandbox_mode = read-only`",
+          "explanation": "结论：每个 `config_file` 指向单独 TOML，角色 TOML 设置 `sandbox_mode = read-only`。\n依据：主 config 只注册角色路径，真正的 sandbox 边界由各 agent TOML 明确声明；名称和 feature flag 都不能替代该配置。\n错误选项：A：名称不形成权限控制。；B：并发上限与写权限无关。；D：启用 multi-agent 不代表 agent 可写。\n实践：核对五个 config_file 与对应 read-only 声明。"
+        },
+        {
+          "id": "course-fh-08-q04",
+          "type": "multiple_choice",
+          "content": "[项目 config] 哪份课程输出正确描述 config？",
+          "options": [
+            "所有禁用插件都已从用户机器卸载",
+            "所有 required MCP 都已健康连接",
+            "五个 agent 已完成一次审查",
+            "列出声明值与禁止键，并把安装、连接、启动和业务结果标为未验证"
+          ],
+          "answer": "列出声明值与禁止键，并把安装、连接、启动和业务结果标为未验证",
+          "explanation": "结论：列出声明值与禁止键，并把安装、连接、启动和业务结果标为未验证。\n依据：项目 config 只能证明版本化声明；插件安装态、MCP 健康、agent 启动与实际业务结果需要独立运行证据。\n错误选项：A：disabled 声明不等于卸载。；B：required 配置不等于健康连接。；C：agent 注册不等于 agent 已运行。\n实践：用“配置事实 / 运行未知”两栏总结。"
+        },
+        {
+          "id": "course-fh-08-q05",
+          "type": "true_false",
+          "content": "[项目 config] 只要 `mcp_servers.postgresql` 出现在 config 中，就能确认数据库连接成功且查询安全。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "错误",
+          "explanation": "结论：配置存在不能证明连接成功或查询安全。\n依据：还需 wrapper、环境、MCP 进程、工具权限和实际调用证据；课程不运行这些步骤。\n实践：列出 PostgreSQL MCP 从声明到调用的缺失证据。"
+        }
+      ]
+    },
+    {
+      "id": "course-fh-09",
+      "code": "FH09",
+      "title": "FH09 结构化 contract",
+      "order": 9,
+      "lab_ref": "FH09",
+      "source_text": "fastapi1@710807b32a2a7af6b48496390d15c728a8afd06b 的 .codex/contract.json 脱敏结构快照；2026-07-20。",
+      "questions": [
+        {
+          "id": "course-fh-09-q01",
+          "type": "multiple_choice",
+          "content": "[结构化 contract] `.codex/contract.json` 的主要职责是什么？",
+          "options": [
+            "记录 features、插件、MCP、Hooks、Rules、项目 skills、文档锚点和 graphify policy 的结构化事实",
+            "启动 MCP 与 Hooks",
+            "保存用户凭证",
+            "替代所有 AGENTS prose"
+          ],
+          "answer": "记录 features、插件、MCP、Hooks、Rules、项目 skills、文档锚点和 graphify policy 的结构化事实",
+          "explanation": "结论：记录 features、插件、MCP、Hooks、Rules、项目 skills、文档锚点和 graphify policy 的结构化事实。\n依据：contract 是 Harness 的结构化事实源，供 health、诊断和文档治理消费者读取；它不执行外部工具，也不包含 secrets。\n错误选项：B：contract 只声明期望，不启动进程。；C：凭证禁止写入项目合同。；D：AGENTS 仍提供作用域和行为指令，contract 不替代全部 prose。\n实践：选择一个字段，指出对应 config 或文档锚点。"
+        },
+        {
+          "id": "course-fh-09-q02",
+          "type": "multiple_choice",
+          "content": "[结构化 contract] 哪种变化需要同步 contract？",
+          "options": [
+            "仅改一处不影响结构的措辞",
+            "改变 required MCP、Hook 事件、project skills、Rules 路径或 graphify policy",
+            "普通业务路由改名",
+            "只更新课程说明"
+          ],
+          "answer": "改变 required MCP、Hook 事件、project skills、Rules 路径或 graphify policy",
+          "explanation": "结论：改变 required MCP、Hook 事件、project skills、Rules 路径或 graphify policy。\n依据：Harness maintenance 规定结构化事实变化才同步合同；纯 prose、普通业务代码和课程文字不应制造无意义 drift。\n错误选项：A：不改变结构化事实的措辞通常无需同步。；C：普通业务路由不属于 Harness contract 字段。；D：课程说明不是 fastapi1 Harness 事实源。\n实践：为一个合成 MCP 变化列出需要同步的字段与消费者。"
+        },
+        {
+          "id": "course-fh-09-q03",
+          "type": "multiple_choice",
+          "content": "[结构化 contract] 哪种解释必须被拒绝？",
+          "options": [
+            "`required` 表示项目期望的基线声明",
+            "`sqlite.enabled = false` 表示项目默认禁用",
+            "contract 通过就证明 MCP 已连接、Hook 已执行且所有业务兼容",
+            "`allow_extra` 允许额外项但不取消基线"
+          ],
+          "answer": "contract 通过就证明 MCP 已连接、Hook 已执行且所有业务兼容",
+          "explanation": "结论：contract 通过就证明 MCP 已连接、Hook 已执行且所有业务兼容。\n依据：contract 校验只证明结构化声明一致，不能证明会话加载、外部连接、Hook 运行或业务兼容。\n错误选项：A：这是 required 字段的正确治理含义。；B：这与 config 的禁用声明一致。；D：允许扩展与保留基线可以同时成立。\n实践：给每个 required 组件加一列“实际运行证据仍需什么”。"
+        },
+        {
+          "id": "course-fh-09-q04",
+          "type": "multiple_choice",
+          "content": "[结构化 contract] 如何只读验收 contract 与来源一致？",
+          "options": [
+            "执行所有 MCP 和 Hooks",
+            "读取 `.env` 验证 wrapper",
+            "修改 contract 直到 health 通过",
+            "比较固定 Git 中的 config/hooks/rules/skills 字段与合同，并报告未覆盖 consumer"
+          ],
+          "answer": "比较固定 Git 中的 config/hooks/rules/skills 字段与合同，并报告未覆盖 consumer",
+          "explanation": "结论：比较固定 Git 中的 config/hooks/rules/skills 字段与合同，并报告未覆盖 consumer。\n依据：静态字段对照足以教学结构化事实；运行外部工具、读取 secret 或修改源文件都不属于课程。\n错误选项：A：执行外部组件超出只读验收。；B：wrapper 的秘密输入禁止读取。；C：课程不能以修改事实源来追求通过。\n实践：用合成字段做一条 expected/actual/consumer 对照。"
+        },
+        {
+          "id": "course-fh-09-q05",
+          "type": "true_false",
+          "content": "[结构化 contract] `check_harness_health.py` 覆盖 contract 的每个字段，因此其他 consumer 测试都可以省略。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "错误",
+          "explanation": "结论：Harness health 只覆盖 contract 的部分切片。\n依据：Harness maintenance 明确指出 config/hooks/MCP 可由 health 检查，但 Rules 内容和其他字段需要对应 consumer 或专门测试。\n实践：按字段列出 health、Rules、skills、docs 或 graphify 的对应验证。"
+        }
+      ]
+    },
+    {
+      "id": "course-fh-10",
+      "code": "FH10",
+      "title": "FH10 SessionStart Hooks",
+      "order": 10,
+      "lab_ref": "FH10",
+      "source_text": "fastapi1@710807b32a2a7af6b48496390d15c728a8afd06b 的 .codex/hooks.json 与 .codex/hooks/session_start.py 脱敏结构快照；2026-07-20。",
+      "questions": [
+        {
+          "id": "course-fh-10-q01",
+          "type": "multiple_choice",
+          "content": "[SessionStart Hooks] 项目 Hook 单元实际声明了什么？",
+          "options": [
+            "一个 SessionStart command Hook，matcher 为 startup、resume、clear，脚本从 Git 根定位",
+            "一个自动修改代码的 PreToolUse Hook",
+            "一个保证权限安全的 Stop Hook",
+            "一个按顺序运行所有插件 Hook 的调度器"
+          ],
+          "answer": "一个 SessionStart command Hook，matcher 为 startup、resume、clear，脚本从 Git 根定位",
+          "explanation": "结论：一个 SessionStart command Hook，matcher 为 startup、resume、clear，脚本从 Git 根定位。\n依据：固定快照的 `hooks.json` 只声明项目 SessionStart，contract 同步 matcher、POSIX/Windows command 和脚本后缀。\n错误选项：B：项目未声明 PreToolUse，新增写入型 Hook 还需明确批准。；C：Hook 注入上下文，不替代权限和安全控制。；D：匹配的项目、用户和插件 Hook 可能并发，不能依赖顺序。\n实践：从静态文件提取 event、matcher、command suffix 和 timeout。"
+        },
+        {
+          "id": "course-fh-10-q02",
+          "type": "multiple_choice",
+          "content": "[SessionStart Hooks] 课程应如何验收 `session_start.py`？",
+          "options": [
+            "在真实会话中反复触发 Hook",
+            "静态核对它消费 JSON、输出 SessionStart additionalContext，并确认不写文件",
+            "修改脚本让它读取 `.env`",
+            "把打印的项目绝对路径复制到研究表"
+          ],
+          "answer": "静态核对它消费 JSON、输出 SessionStart additionalContext，并确认不写文件",
+          "explanation": "结论：静态核对它消费 JSON、输出 SessionStart additionalContext，并确认不写文件。\n依据：脚本只读取 stdin payload，构造项目上下文并输出 JSON；课程可从固定 blob 验证结构，无需执行或记录机器路径。\n错误选项：A：真实触发不是课程必需，且会进入会话运行态。；C：Hook 不应读取 secret。；D：机器绝对路径必须脱敏，研究表只记录相对路径。\n实践：写出预期 JSON 字段名，不填入真实根路径。"
+        },
+        {
+          "id": "course-fh-10-q03",
+          "type": "ordering",
+          "content": "[SessionStart Hooks] 请排列一轮只读 Hook 合同核对。",
+          "options": [
+            "与 contract 的 project Hook 字段逐项对照",
+            "读取 hooks.json 的 event、matcher、command 与 timeout",
+            "记录 Hook 未实际触发以及并发顺序未验证",
+            "读取 session_start.py 的输入输出和副作用"
+          ],
+          "answer": "读取 hooks.json 的 event、matcher、command 与 timeout|读取 session_start.py 的输入输出和副作用|与 contract 的 project Hook 字段逐项对照|记录 Hook 未实际触发以及并发顺序未验证",
+          "explanation": "结论：正确顺序是先读声明，再读脚本行为，然后对照合同，最后披露运行态缺口。\n依据：Hook 文件、脚本和 contract 分别提供配置、预期行为与结构化事实；实际触发是第四层证据。\n实践：把四步写成 checklist，课程不执行脚本。"
+        },
+        {
+          "id": "course-fh-10-q04",
+          "type": "multiple_choice",
+          "content": "[SessionStart Hooks] 哪种说法正确区分 Hook 与执行结果？",
+          "options": [
+            "Hook 文件存在就证明每个会话都成功注入",
+            "SessionStart 可以授予 agent 写权限",
+            "项目 Hook 总在插件 Hook 之前运行",
+            "静态文件证明声明与预期输出；实际加载、并发顺序和本次结果仍需运行证据"
+          ],
+          "answer": "静态文件证明声明与预期输出；实际加载、并发顺序和本次结果仍需运行证据",
+          "explanation": "结论：静态文件证明声明与预期输出；实际加载、并发顺序和本次结果仍需运行证据。\n依据：项目说明明确多个匹配 Hook 可能并发且不可依赖顺序；Hook 也不是权限边界。\n错误选项：A：存在不等于成功加载或执行。；B：Hook 上下文不能扩大 sandbox 或授权。；C：并发运行时顺序未定义。\n实践：为“文件存在但未触发”写一个准确结论。"
+        },
+        {
+          "id": "course-fh-10-q05",
+          "type": "true_false",
+          "content": "[SessionStart Hooks] 项目 SessionStart Hook 可以替代 Rules、sandbox、approval 和业务权限检查。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "错误",
+          "explanation": "结论：SessionStart Hook 只注入项目上下文。\n依据：固定脚本不做命令拦截、授权或业务鉴权；这些属于独立层。\n实践：列出 Hook 能证明和不能证明的各两项。"
+        }
+      ]
+    },
+    {
+      "id": "course-fh-11",
+      "code": "FH11",
+      "title": "FH11 environment action",
+      "order": 11,
+      "lab_ref": "FH11",
+      "source_text": "fastapi1@710807b32a2a7af6b48496390d15c728a8afd06b 的 .codex/environments/environment.toml 脱敏结构快照；2026-07-20。",
+      "questions": [
+        {
+          "id": "course-fh-11-q01",
+          "type": "multiple_choice",
+          "content": "[environment action] `.codex/environments/environment.toml` 在 FH 课程中是什么？",
+          "options": [
+            "一个自动生成的本地运行 action 声明，不是独立业务执行器",
+            "生产部署脚本",
+            "MCP server 配置",
+            "Windows VM 启动器"
+          ],
+          "answer": "一个自动生成的本地运行 action 声明，不是独立业务执行器",
+          "explanation": "结论：一个自动生成的本地运行 action 声明，不是独立业务执行器。\n依据：文件标记为 autogenerated，定义名为“运行”的 action，命令会启动 Redis 与开发服务器；课程只静态解释其依赖和副作用。\n错误选项：B：该 action 面向本地开发，不是生产部署。；C：MCP 定义位于 config 与 wrapper。；D：它不操作 Parallels VM。\n实践：用合成环境说明 action 会依赖哪些本地进程。"
+        },
+        {
+          "id": "course-fh-11-q02",
+          "type": "multiple_choice",
+          "content": "[environment action] 哪项是安全的课程验收？",
+          "options": [
+            "执行 action 并留下 Redis daemon",
+            "读取固定 TOML，列出命令、默认 host、reload 与会启动的进程，并注明未运行",
+            "访问本地服务确认页面",
+            "修改 autogenerated 文件"
+          ],
+          "answer": "读取固定 TOML，列出命令、默认 host、reload 与会启动的进程，并注明未运行",
+          "explanation": "结论：读取固定 TOML，列出命令、默认 host、reload 与会启动的进程，并注明未运行。\n依据：课程只使用 Git blob 和静态结构；action 会改变本地进程状态，因此只做预览。\n错误选项：A：启动 daemon 会改变外部状态并留下进程。；C：访问运行服务需要先启动环境，超出课程。；D：文件明确标记为自动生成，不应在课程中修改。\n实践：把命令分解为“环境默认 / 启动动作 / 外部依赖 / 停止条件”。"
+        },
+        {
+          "id": "course-fh-11-q03",
+          "type": "multiple_choice",
+          "content": "[environment action] 什么时候必须停止，不把 action 当作可执行练习？",
+          "options": [
+            "能够从 TOML 看出 action 名称",
+            "命令使用默认 loopback host",
+            "继续需要启动 Redis、开发服务器、读取本地环境或占用端口",
+            "需要解释文件是 autogenerated"
+          ],
+          "answer": "继续需要启动 Redis、开发服务器、读取本地环境或占用端口",
+          "explanation": "结论：继续需要启动 Redis、开发服务器、读取本地环境或占用端口。\n依据：任何实际启动进程、读取环境或改变端口状态都超出只读课程；静态描述已足以完成学习目标。\n错误选项：A：action 名称是静态事实。；B：默认 host 可从命令文本核对。；D：autogenerated 标记也是静态事实。\n实践：写出“若需运行，应由用户在独立任务授权”的前置声明。"
+        },
+        {
+          "id": "course-fh-11-q04",
+          "type": "multiple_choice",
+          "content": "[environment action] 哪种结论不会夸大 environment 配置？",
+          "options": [
+            "action 存在，所以 Redis 已启动",
+            "command 有 reload，所以页面已验证",
+            "name 是 fastapi1，所以生产服务正确",
+            "文件声明预期本地启动流程；进程、端口、依赖和应用健康均未验证"
+          ],
+          "answer": "文件声明预期本地启动流程；进程、端口、依赖和应用健康均未验证",
+          "explanation": "结论：文件声明预期本地启动流程；进程、端口、依赖和应用健康均未验证。\n依据：TOML 是启动声明，不记录本次运行结果；生产服务与本地 action 也属于不同合同。\n错误选项：A：静态命令不能证明 daemon 状态。；B：reload 参数不能证明页面或 API 正常。；C：environment 名称不证明生产部署。\n实践：把结论限定在声明层，并列出三项运行未知。"
+        },
+        {
+          "id": "course-fh-11-q05",
+          "type": "true_false",
+          "content": "[environment action] 只要 environment action 文件存在，就能确认 Redis、Uvicorn 和应用依赖都已健康。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "错误",
+          "explanation": "结论：action 文件不能证明任何进程健康。\n依据：进程启动、依赖安装、端口可用和应用 health 都需要独立运行证据。\n实践：为每个外部依赖写一个预期检查，但不要执行。"
+        }
+      ]
+    },
+    {
+      "id": "course-fh-12",
+      "code": "FH12",
+      "title": "FH12 MCP 配置",
+      "order": 12,
+      "lab_ref": "FH12",
+      "source_text": "fastapi1@710807b32a2a7af6b48496390d15c728a8afd06b 的 .codex/config.toml 的 MCP 与 .codex/mcp/postgres_from_env.py 脱敏结构快照；2026-07-20。",
+      "questions": [
+        {
+          "id": "course-fh-12-q01",
+          "type": "multiple_choice",
+          "content": "[MCP 配置] 哪项准确描述 fastapi1 的项目 MCP 基线？",
+          "options": [
+            "openaiDeveloperDocs、PostgreSQL wrapper、只读 Redis 工具和默认禁用的 sqlite",
+            "所有数据库 MCP 都具有写权限",
+            "PostgreSQL 连接串直接写在 config",
+            "required MCP 自动代表已连接"
+          ],
+          "answer": "openaiDeveloperDocs、PostgreSQL wrapper、只读 Redis 工具和默认禁用的 sqlite",
+          "explanation": "结论：openaiDeveloperDocs、PostgreSQL wrapper、只读 Redis 工具和默认禁用的 sqlite。\n依据：config 与 contract 声明 openaiDeveloperDocs、postgresql、redis、sqlite；PostgreSQL 经 wrapper，Redis 仅 get/list，sqlite 明确 disabled。\n错误选项：B：Redis 只开放 read tools，PostgreSQL 以 restricted mode 启动。；C：连接串必须留在 `.env` 到子进程的边界，不能进 config。；D：required 是合同期望，不是健康或连接证据。\n实践：用四行表格记录名称、声明、权限和运行状态。"
+        },
+        {
+          "id": "course-fh-12-q02",
+          "type": "multiple_choice",
+          "content": "[MCP 配置] PostgreSQL wrapper 的秘密边界是什么？",
+          "options": [
+            "把数据库 URL 作为命令参数写进 config",
+            "wrapper 从项目 `.env` 取指定键，仅向受限 MCP 子进程传递，并避免回显",
+            "把连接串写入课程日志后删除",
+            "让 Redis MCP 代为读取"
+          ],
+          "answer": "wrapper 从项目 `.env` 取指定键，仅向受限 MCP 子进程传递，并避免回显",
+          "explanation": "结论：wrapper 从项目 `.env` 取指定键，仅向受限 MCP 子进程传递，并避免回显。\n依据：`postgres_from_env.py` 在进程边界读取 URL，移除继承变量，仅用子进程环境传给固定版本、restricted mode 的 MCP。\n错误选项：A：命令参数和 config 会持久化并暴露秘密。；C：短暂日志仍构成泄露。；D：Redis MCP 与 PostgreSQL secret 无关。\n实践：只记录键名和数据流箭头，不读取或构造真实 URL。"
+        },
+        {
+          "id": "course-fh-12-q03",
+          "type": "multiple_choice",
+          "content": "[MCP 配置] 课程在什么条件下必须停止 MCP 路径？",
+          "options": [
+            "只需核对 server 名称",
+            "只需确认 sqlite disabled",
+            "需要运行 wrapper、读取 `.env`、连接数据库或调用真实工具才能继续",
+            "可以从固定源码确认 Redis enabled_tools"
+          ],
+          "answer": "需要运行 wrapper、读取 `.env`、连接数据库或调用真实工具才能继续",
+          "explanation": "结论：需要运行 wrapper、读取 `.env`、连接数据库或调用真实工具才能继续。\n依据：课程目标是理解声明与最小权限；秘密读取、进程启动、外部连接和工具调用都需要独立授权。\n错误选项：A：server 名称是静态可核对事实。；B：disabled 字段是静态事实。；D：enabled_tools 可由 Git blob核对。\n实践：把运行请求转换为配置预览与预期健康证据。"
+        },
+        {
+          "id": "course-fh-12-q04",
+          "type": "matching",
+          "content": "[MCP 配置] 将 MCP 名称与课程应保留的边界配对。",
+          "options": [],
+          "answer": "openaiDeveloperDocs-只记录官方文档端点声明|postgresql-经 wrapper 且 restricted|redis-只开放 get 和 list|sqlite-项目默认禁用",
+          "explanation": "结论：Docs 只记录端点声明，PostgreSQL 走受限 wrapper，Redis 只读，sqlite 默认禁用。\n依据：这些边界同时出现在 config、contract 与 `.codex/AGENTS.md`；实际连接仍未验证。\n实践：为每个 MCP 再添加一列“静态可证 / 运行未证”。",
+          "match_left": [
+            "openaiDeveloperDocs",
+            "postgresql",
+            "redis",
+            "sqlite"
+          ],
+          "match_right": [
+            "只记录官方文档端点声明",
+            "经 wrapper 且 restricted",
+            "只开放 get 和 list",
+            "项目默认禁用"
+          ]
+        },
+        {
+          "id": "course-fh-12-q05",
+          "type": "true_false",
+          "content": "[MCP 配置] contract 中列为 required 的 MCP 可以被课程视为已经连接并执行成功。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "错误",
+          "explanation": "结论：required 只表示项目期望的基线。\n依据：连接、工具暴露、调用和结果需要运行证据；课程不启动 MCP。\n实践：给一个 MCP 写出从 required 到实际结果的完整证据链。"
+        }
+      ]
+    },
+    {
+      "id": "course-fh-13",
+      "code": "FH13",
+      "title": "FH13 Rules",
+      "order": 13,
+      "lab_ref": "FH13",
+      "source_text": "fastapi1@710807b32a2a7af6b48496390d15c728a8afd06b 的 .codex/rules/default.rules 脱敏结构快照；2026-07-20。",
+      "questions": [
+        {
+          "id": "course-fh-13-q01",
+          "type": "multiple_choice",
+          "content": "[Rules] `.codex/rules/default.rules` 的定位是什么？",
+          "options": [
+            "对常见破坏性命令前缀提供 forbidden 或 prompt guardrail",
+            "完整替代 shell sandbox",
+            "自动批准所有未匹配命令",
+            "执行业务权限检查"
+          ],
+          "answer": "对常见破坏性命令前缀提供 forbidden 或 prompt guardrail",
+          "explanation": "结论：对常见破坏性命令前缀提供 forbidden 或 prompt guardrail。\n依据：近端 AGENTS 明确称 Rules 为常见破坏性命令的 prefix guardrail，不是完整 shell 安全策略。\n错误选项：B：Rules 不能覆盖所有 shell 语义或替代 sandbox。；C：未匹配并不等于安全或自动授权。；D：业务权限由应用合同执行。\n实践：从固定文件按 decision 汇总规则类别，不运行命令。"
+        },
+        {
+          "id": "course-fh-13-q02",
+          "type": "multiple_choice",
+          "content": "[Rules] 哪组规则事实可以从静态快照核对？",
+          "options": [
+            "所有危险命令都会被捕获",
+            "特权递归删除为 forbidden，递归删除与破坏性 Git/branch 操作多为 prompt",
+            "规则已在当前 Codex 版本加载",
+            "生产 shell 完全安全"
+          ],
+          "answer": "特权递归删除为 forbidden，递归删除与破坏性 Git/branch 操作多为 prompt",
+          "explanation": "结论：特权递归删除为 forbidden，递归删除与破坏性 Git/branch 操作多为 prompt。\n依据：源文件的 match/not_match 明确覆盖递归删除、hard reset、clean、restore、checkout、branch delete、force-create 和 find delete 等前缀。\n错误选项：A：prefix 规则不可能覆盖所有 shell 变体。；C：加载状态需要 execpolicy/运行证据，静态文件不能证明。；D：Rules 不是完整安全证明。\n实践：列出一条 forbidden、一条 prompt 和一条不匹配示例的角色化摘要。"
+        },
+        {
+          "id": "course-fh-13-q03",
+          "type": "multiple_choice",
+          "content": "[Rules] 什么情况必须停止并补其他安全层？",
+          "options": [
+            "命令恰好命中一条 prompt rule",
+            "静态文件包含 inline match tests",
+            "拟议命令未被 prefix rule 覆盖，却仍可能破坏数据或越过用户授权",
+            "需要记录 Rules 路径"
+          ],
+          "answer": "拟议命令未被 prefix rule 覆盖，却仍可能破坏数据或越过用户授权",
+          "explanation": "结论：拟议命令未被 prefix rule 覆盖，却仍可能破坏数据或越过用户授权。\n依据：未匹配只表示当前前缀规则没有覆盖；仍需系统 sandbox、approval、仓库规则和任务授权判断。\n错误选项：A：命中 prompt 表示需要明确确认，不是规则缺失。；B：inline tests 是规则自检的一部分。；D：相对路径可以安全记录。\n实践：为一个未匹配的合成危险命令列出额外安全检查，不执行它。"
+        },
+        {
+          "id": "course-fh-13-q04",
+          "type": "multiple_choice",
+          "content": "[Rules] 哪份验收不会把 Rules 写成独立执行器？",
+          "options": [
+            "声称 rule 文件已阻止一次真实命令",
+            "运行 destructive command 测试 prompt",
+            "把静态 match 列表当作完整 shell 审计",
+            "只对照 prefix、decision、match/not_match 与合同，并注明 execpolicy 和实际拦截未运行"
+          ],
+          "answer": "只对照 prefix、decision、match/not_match 与合同，并注明 execpolicy 和实际拦截未运行",
+          "explanation": "结论：只对照 prefix、decision、match/not_match 与合同，并注明 execpolicy 和实际拦截未运行。\n依据：课程可以验证规则语法意图和覆盖矩阵，但不能通过执行破坏性命令证明效果。\n错误选项：A：没有实际运行证据不能声称拦截发生。；B：破坏性命令不是安全课程测试方式。；C：prefix 列表不能代表完整 shell 语义。\n实践：用合成 token 序列说明匹配原因和限制。"
+        },
+        {
+          "id": "course-fh-13-q05",
+          "type": "true_false",
+          "content": "[Rules] default.rules 可以替代 sandbox、approval、AGENTS 约束和业务测试。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "错误",
+          "explanation": "结论：Rules 只是其中一个命令前缀 guardrail。\n依据：项目规则明确说它不是完整 shell 安全策略，其他安全和业务验证层仍然独立。\n实践：画出 Rules 与其他四层控制的关系。"
+        }
+      ]
+    }
+  ]
+}

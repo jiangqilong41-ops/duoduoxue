@@ -1,0 +1,160 @@
+{
+  "course": {
+    "id": "chrome",
+    "prefix": "CH",
+    "title": "chrome"
+  },
+  "source": {
+    "kind": "local-sanitized",
+    "ref": "chrome@26.715.52143",
+    "snapshot": "2026-07-20"
+  },
+  "decks": [
+    {
+      "id": "course-ch-01",
+      "code": "CH01",
+      "title": "CH01 Chrome 插件总览",
+      "order": 1,
+      "lab_ref": "CH01",
+      "source_text": "chrome@26.715.52143 的 .codex-plugin/plugin.json 与 canonical skills 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-ch-01-q01",
+          "type": "multiple_choice",
+          "content": "[Chrome] 第一次学习 Chrome，怎样建立正确路径？",
+          "options": [
+            "先学习插件总览，再逐个学习 1 个独立 skill 单元",
+            "只背插件名，不区分内部 skill",
+            "同时调用所有可见工具",
+            "先在真实系统执行再补边界"
+          ],
+          "answer": "先学习插件总览，再逐个学习 1 个独立 skill 单元",
+          "explanation": "结论：先学习插件总览，再逐个学习 1 个独立 skill 单元。\n依据：manifest 声明 1 个 canonical skill；总览负责地图，后续单元负责具体判断。\n错误选项：B：无法形成路由能力；C：忽略了接口优先级和停止条件；D：课程不授权真实外部动作\n实践：列出每个 skill 的调用名、适用场景和一个停止条件。"
+        },
+        {
+          "id": "course-ch-01-q02",
+          "type": "multiple_choice",
+          "content": "[Chrome] 课程事实应如何固定？",
+          "options": [
+            "每次启动自动覆盖为最新版",
+            "使用 chrome@26.715.52143 的 local-sanitized 快照并记录 2026-07-20",
+            "复制插件缓存和个人绝对路径",
+            "只保留营销名称"
+          ],
+          "answer": "使用 chrome@26.715.52143 的 local-sanitized 快照并记录 2026-07-20",
+          "explanation": "结论：使用 chrome@26.715.52143 的 local-sanitized 快照并记录 2026-07-20。\n依据：course source 同时记录 kind、ref 和 snapshot；技能事实来自 manifest 与 canonical SKILL.md。\n错误选项：A：会破坏可复现性；C：会泄露机器信息且超出课程范围；D：无法追溯版本与来源\n实践：对照研究表核对版本、相对路径和 SHA-256。"
+        },
+        {
+          "id": "course-ch-01-q03",
+          "type": "multiple_choice",
+          "content": "[Chrome] 课程练习应产出什么？",
+          "options": [
+            "真实系统操作后的截图",
+            "账户登录状态和 cookies",
+            "合成场景下的路由理由、输入输出、停止条件和预期验收证据",
+            "一句没有证据的“已完成”"
+          ],
+          "answer": "合成场景下的路由理由、输入输出、停止条件和预期验收证据",
+          "explanation": "结论：合成场景下的路由理由、输入输出、停止条件和预期验收证据。\n依据：Chrome 与专用接口的选择理由、认证阻塞处理、停止条件和预期可见证据。\n错误选项：A：课程不执行真实 UI 或部署；B：属于敏感运行态信息；D：不能观察或复核\n实践：使用 <synthetic-fixture> 写一份只读路由记录。"
+        },
+        {
+          "id": "course-ch-01-q04",
+          "type": "multiple_choice",
+          "content": "[Chrome] 遇到真实凭证、敏感状态或不可逆动作时怎么办？",
+          "options": [
+            "把凭证粘进提示词",
+            "先执行再询问",
+            "复制生产状态到本地",
+            "停止练习，改用 <synthetic-fixture>、占位符和预期证据"
+          ],
+          "answer": "停止练习，改用 <synthetic-fixture>、占位符和预期证据",
+          "explanation": "结论：停止练习，改用 <synthetic-fixture>、占位符和预期证据。\n依据：课程只使用 <synthetic-fixture> 场景；不读取真实 tabs、登录会话、cookies、扩展、密码或本地存储。\n错误选项：A：会扩大敏感数据暴露；B：授权必须发生在受约束动作之前；C：生产数据不属于课程材料\n实践：明确写出停止原因，不尝试绕过。"
+        },
+        {
+          "id": "course-ch-01-q05",
+          "type": "true_false",
+          "content": "[Chrome] 插件可用或已安装就等于课程获得真实 UI、账户或部署操作授权。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "错误",
+          "explanation": "结论：安装状态不等于授权，课程只允许合成材料和预期证据。\n依据：manifest 描述能力，不替代用户授权与安全边界。\n实践：把实际操作改写成路由题和发布/动作前检查清单。"
+        }
+      ]
+    },
+    {
+      "id": "course-ch-02",
+      "code": "CH02",
+      "title": "CH02 control-chrome",
+      "order": 2,
+      "lab_ref": "CH02",
+      "source_text": "chrome@26.715.52143 的 skills/control-chrome/SKILL.md 本地脱敏快照；相邻 agents/openai.yaml 不存在，显示名回退为 SKILL.md frontmatter name control-chrome；调用名 control-chrome；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-ch-02-q01",
+          "type": "multiple_choice",
+          "content": "[control-chrome] 用户明确要求在其 Chrome 当前标签页检查可见 UI，最合适的入口是什么？",
+          "options": [
+            "显式调用 $chrome:control-chrome（control-chrome），保留用户对 Chrome 的选择",
+            "用 in-app Browser 替换",
+            "先用 Computer Use 控制 Chrome",
+            "用 shell 打开新页面"
+          ],
+          "answer": "显式调用 $chrome:control-chrome（control-chrome），保留用户对 Chrome 的选择",
+          "explanation": "结论：显式调用 $chrome:control-chrome（control-chrome），保留用户对 Chrome 的选择。\n依据：Chrome skill 用于依赖现有 tabs、登录会话或扩展的可见 UI 工作。\n错误选项：B：显式 Chrome 选择优先且持续有效；C：Chrome skill 可用时不应跳过专用浏览器表面；D：不能替代用户指定的现有 Chrome 状态\n实践：只用 <synthetic-fixture> 描述标签页和预期状态，不访问真实 Chrome。"
+        },
+        {
+          "id": "course-ch-02-q02",
+          "type": "multiple_choice",
+          "content": "[control-chrome] 用户未指定 Chrome，只需对链接资源执行结构化语义操作，下一步是什么？",
+          "options": [
+            "默认用 Chrome 点击网页",
+            "先查询并使用适用的 connector、API 或 CLI",
+            "复用上次 Chrome 因为它已登录",
+            "先读取登录 cookies 再决定"
+          ],
+          "answer": "先查询并使用适用的 connector、API 或 CLI",
+          "explanation": "结论：先查询并使用适用的 connector、API 或 CLI。\n依据：没有显式浏览器意图时，必须先查询专用接口；仅在其不可用或 UI 仍必要时使用 Browser。\n错误选项：A：通用 UI 自动化不应替代专用接口；C：先前上下文不改变本次路由；D：浏览器发现不得读取 cookies\n实践：写出专用接口成功与失败两条合成分支。"
+        },
+        {
+          "id": "course-ch-02-q03",
+          "type": "multiple_choice",
+          "content": "[control-chrome] 用户明确要求 Chrome，但 Chrome skill 不可用，应该怎样处理？",
+          "options": [
+            "自动换 in-app Browser",
+            "改用 Computer Use 操作 Chrome",
+            "报告 Chrome 不可用，不自动换用 in-app Browser 或 Computer Use",
+            "用搜索引擎替代目标页面"
+          ],
+          "answer": "报告 Chrome 不可用，不自动换用 in-app Browser 或 Computer Use",
+          "explanation": "结论：报告 Chrome 不可用，不自动换用 in-app Browser 或 Computer Use。\n依据：SKILL.md 明确要求显式 Chrome 不可用时直接报告，而不是替换浏览器。\n错误选项：A：显式 Chrome 选择不能被替换；B：可见通用工具不是专用 Chrome skill 可用性的证据；D：不能通过换来源绕过用户选择\n实践：只写阻塞与可供用户选择的后续动作。"
+        },
+        {
+          "id": "course-ch-02-q04",
+          "type": "multiple_choice",
+          "content": "[control-chrome] 显式 Chrome 因未登录而无法继续，最稳妥的下一步是什么？",
+          "options": [
+            "读取 profile 或密码存储",
+            "自动切到另一个已登录浏览器",
+            "改用搜索结果绕过认证",
+            "请用户在 Chrome 登录并告知就绪；未经用户批准不切换浏览器"
+          ],
+          "answer": "请用户在 Chrome 登录并告知就绪；未经用户批准不切换浏览器",
+          "explanation": "结论：请用户在 Chrome 登录并告知就绪；未经用户批准不切换浏览器。\n依据：显式浏览器选择被认证阻塞时，应在同一浏览器请求用户完成登录。\n错误选项：A：这些私密状态禁止检查；B：显式选择仍然有效；C：认证阻塞不能通过替代来源规避\n实践：写一条说明目标 Chrome 和等待用户就绪的提示。"
+        },
+        {
+          "id": "course-ch-02-q05",
+          "type": "true_false",
+          "content": "[control-chrome] Chrome skill 可以依赖用户现有浏览器状态，但课程练习不得读取真实 tabs、会话、cookies、扩展或账户。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：技能能力不扩大课程授权；课程固定使用合成状态。\n依据：manifest 描述现有 Chrome 状态能力，同时指出内容可能敏感。\n实践：把真实状态字段替换为 <synthetic-fixture> 的虚构标签页摘要。"
+        }
+      ]
+    }
+  ]
+}

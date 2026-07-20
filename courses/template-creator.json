@@ -1,0 +1,160 @@
+{
+  "course": {
+    "id": "template-creator",
+    "prefix": "TC",
+    "title": "template-creator"
+  },
+  "source": {
+    "kind": "local-sanitized",
+    "ref": "template-creator@26.715.12143",
+    "snapshot": "2026-07-20"
+  },
+  "decks": [
+    {
+      "id": "course-tc-01",
+      "code": "TC01",
+      "title": "TC01 template-creator 插件总览",
+      "order": 1,
+      "lab_ref": "TC01",
+      "source_text": "template-creator@26.715.12143 的 .codex-plugin/plugin.json 与 skills/*/agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-tc-01-q01",
+          "type": "multiple_choice",
+          "content": "[template-creator] 路由题：第一次学习 template-creator，怎样建立可复用的技能地图?",
+          "options": [
+            "先学插件总览，再按清单逐个学习 1 个独立 skill 单元",
+            "只记插件名，遇到任务同时调用全部 skill",
+            "跳过总览，只背显示名",
+            "先在真实系统执行所有示例"
+          ],
+          "answer": "先学插件总览，再按清单逐个学习 1 个独立 skill 单元",
+          "explanation": "结论：先学插件总览，再按清单逐个学习 1 个独立 skill 单元。\n依据：manifest 将 template-creator 作为插件，skill 清单为：template-creator（Template Creator:模板创建器）。\n错误选项：B：该选项绕过了本单元的边界或证据要求；C：该选项绕过了本单元的边界或证据要求；D：该选项绕过了本单元的边界或证据要求\n实践：用三个虚构任务分别指出候选 skill、排除理由和停止条件。"
+        },
+        {
+          "id": "course-tc-01-q02",
+          "type": "multiple_choice",
+          "content": "[template-creator] 来源题：课程事实应如何固定?",
+          "options": [
+            "每次启动自动抓取最新版并覆盖课程",
+            "复制缓存中的个人绝对路径和全部文件",
+            "省略版本与日期，只保留营销名称",
+            "使用 template-creator 的 local-sanitized 版本快照，并记录 2026-07-20"
+          ],
+          "answer": "使用 template-creator 的 local-sanitized 版本快照，并记录 2026-07-20",
+          "explanation": "结论：使用 template-creator 的 local-sanitized 版本快照，并记录 2026-07-20。\n依据：课程源字段固定记录 kind、ref 和 snapshot，保证可重建。\n错误选项：A：该选项绕过了本单元的边界或证据要求；B：该选项绕过了本单元的边界或证据要求；C：该选项绕过了本单元的边界或证据要求\n实践：对照 manifest、SKILL.md 和相邻 openai.yaml，只记录可复核的非敏感元数据。"
+        },
+        {
+          "id": "course-tc-01-q03",
+          "type": "multiple_choice",
+          "content": "[template-creator] 调用题：技能单元的最小显式调用应包含什么?",
+          "options": [
+            "只写 display_name，省略插件和 slug",
+            "写入本机缓存绝对路径",
+            "插件名、skill slug、interface.display_name 与停止条件",
+            "只写模糊任务，不点名 skill"
+          ],
+          "answer": "插件名、skill slug、interface.display_name 与停止条件",
+          "explanation": "结论：插件名、skill slug、interface.display_name 与停止条件。\n依据：稳定 slug 用于路由，display_name 用于人类核对，二者都不能被绝对路径替代。\n错误选项：A：该选项绕过了本单元的边界或证据要求；B：该选项绕过了本单元的边界或证据要求；D：该选项绕过了本单元的边界或证据要求\n实践：用一个合成任务写出调用句：插件、slug、显示名三者同时出现。"
+        },
+        {
+          "id": "course-tc-01-q04",
+          "type": "multiple_choice",
+          "content": "[template-creator] 安全题：练习应采用哪种边界?",
+          "options": [
+            "自动发送、部署或收费并把链接当成绩",
+            "只用合成 fixture、提示词和只读状态检查，不改变真实外部状态",
+            "使用真实客户数据验证效果",
+            "先安装/启用全部插件再答题"
+          ],
+          "answer": "只用合成 fixture、提示词和只读状态检查，不改变真实外部状态",
+          "explanation": "结论：只用合成 fixture、提示词和只读状态检查，不改变真实外部状态。\n依据：课程要求安全、可观察且可复核，不默认扩大用户授权。\n错误选项：A：该选项绕过了本单元的边界或证据要求；C：该选项绕过了本单元的边界或证据要求；D：该选项绕过了本单元的边界或证据要求\n实践：把任何真实名称替换成占位符，只检查路由、输入输出和验收项。"
+        },
+        {
+          "id": "course-tc-01-q05",
+          "type": "true_false",
+          "content": "[template-creator] 判断题：知道插件名就足以代替对每个 skill 适用场景、输入输出和边界的判断。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "错误",
+          "explanation": "结论：错误。\n依据：插件总览只提供地图；每个 skill 仍有独立的用途和风险边界。\n实践：随机抽取两个相邻 skill，说明它们为何不能无差别互换。"
+        }
+      ]
+    },
+    {
+      "id": "course-tc-02",
+      "code": "TC02",
+      "title": "TC02 Template Creator:模板创建器",
+      "order": 2,
+      "lab_ref": "TC02",
+      "source_text": "template-creator@26.715.12143 的 skills/template-creator/SKILL.md 与 skills/template-creator/agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-tc-02-q01",
+          "type": "multiple_choice",
+          "content": "[Template Creator:模板创建器] 场景题：合成团队需要从一个参考 Office 文件创建或更新可复用的个人 artifact-template skill。 最合适的下一步是什么？",
+          "options": [
+            "显式调用 $template-creator:template-creator（Template Creator:模板创建器），先核对输入、停止条件和只读边界",
+            "不判断场景，直接调用插件中的全部 skill",
+            "省略关键输入并承诺已经完成真实交付",
+            "先修改生产或客户数据，再补写理由"
+          ],
+          "answer": "显式调用 $template-creator:template-creator（Template Creator:模板创建器），先核对输入、停止条件和只读边界",
+          "explanation": "结论：显式调用 $template-creator:template-creator（Template Creator:模板创建器），先核对输入、停止条件和只读边界。\n依据：SKILL.md 将该用途作为 Template Creator:模板创建器 的适用入口。\n错误选项：B：该选项绕过了本单元的边界或证据要求；C：该选项绕过了本单元的边界或证据要求；D：该选项绕过了本单元的边界或证据要求\n实践：把任务中的真实名称替换为虚构名称，只输出路由和验收清单。"
+        },
+        {
+          "id": "course-tc-02-q02",
+          "type": "multiple_choice",
+          "content": "[Template Creator:模板创建器] 输入题：要让这条流程可复核，首先应收集什么？",
+          "options": [
+            "只给一句模糊目标，不提供上下文",
+            "复制本机绝对路径和凭证作为输入",
+            "先执行写入操作，之后再补输入",
+            "收集合成输入：恰好一个 .docx、.pptx 或 .xlsx、预期用途、显示名和（若更新）唯一目标 skill，再请求只读方案"
+          ],
+          "answer": "收集合成输入：恰好一个 .docx、.pptx 或 .xlsx、预期用途、显示名和（若更新）唯一目标 skill，再请求只读方案",
+          "explanation": "结论：收集合成输入：恰好一个 .docx、.pptx 或 .xlsx、预期用途、显示名和（若更新）唯一目标 skill，再请求只读方案。\n依据：SKILL.md 与相邻接口说明共同限定了输入范围：恰好一个 .docx、.pptx 或 .xlsx、预期用途、显示名和（若更新）唯一目标 skill。\n错误选项：A：该选项绕过了本单元的边界或证据要求；B：该选项绕过了本单元的边界或证据要求；C：该选项绕过了本单元的边界或证据要求\n实践：列出输入字段并标注缺失项；不调用外部工具。"
+        },
+        {
+          "id": "course-tc-02-q03",
+          "type": "multiple_choice",
+          "content": "[Template Creator:模板创建器] 边界题：发现以下条件时怎样处理最稳妥？",
+          "options": [
+            "虚构运行结果让验收通过",
+            "把风险转移给真实客户或生产环境",
+            "若无法满足“只管理个人 skills；不修改插件缓存，不创建插件；不要把一次性制品或不明确的批量目标送入更新流程”，则停止当前路由，补齐条件或改选其他 skill",
+            "无论条件是否满足都强行继续"
+          ],
+          "answer": "若无法满足“只管理个人 skills；不修改插件缓存，不创建插件；不要把一次性制品或不明确的批量目标送入更新流程”，则停止当前路由，补齐条件或改选其他 skill",
+          "explanation": "结论：若无法满足“只管理个人 skills；不修改插件缓存，不创建插件；不要把一次性制品或不明确的批量目标送入更新流程”，则停止当前路由，补齐条件或改选其他 skill。\n依据：技能说明明确了边界：只管理个人 skills；不修改插件缓存，不创建插件；不要把一次性制品或不明确的批量目标送入更新流程。\n错误选项：A：该选项绕过了本单元的边界或证据要求；B：该选项绕过了本单元的边界或证据要求；D：该选项绕过了本单元的边界或证据要求\n实践：写出一句停止条件和一个安全替代路径。"
+        },
+        {
+          "id": "course-tc-02-q04",
+          "type": "multiple_choice",
+          "content": "[Template Creator:模板创建器] 验收题：什么结果才能证明本单元真的学会？",
+          "options": [
+            "展示一次未经授权的真实写入截图",
+            "得到包含 SKILL.md、artifact-template.json、agents/openai.yaml、reference 和 preview 的个人 skill，并能解释为什么选择 template-creator",
+            "只背出显示名，不说明输入输出",
+            "只说“看起来完成”而没有证据"
+          ],
+          "answer": "得到包含 SKILL.md、artifact-template.json、agents/openai.yaml、reference 和 preview 的个人 skill，并能解释为什么选择 template-creator",
+          "explanation": "结论：得到包含 SKILL.md、artifact-template.json、agents/openai.yaml、reference 和 preview 的个人 skill，并能解释为什么选择 template-creator。\n依据：技能目标是把 恰好一个 .docx、.pptx 或 .xlsx、预期用途、显示名和（若更新）唯一目标 skill 转化为 包含 SKILL.md、artifact-template.json、agents/openai.yaml、reference 和 preview 的个人 skill，而不是只记名称。\n错误选项：A：该选项绕过了本单元的边界或证据要求；C：该选项绕过了本单元的边界或证据要求；D：该选项绕过了本单元的边界或证据要求\n实践：用合成 fixture 复述输入、输出、边界和三项可观察检查。"
+        },
+        {
+          "id": "course-tc-02-q05",
+          "type": "true_false",
+          "content": "[Template Creator:模板创建器] 判断题：本单元练习应只使用合成材料和只读检查，不安装、发布、收费或改变真实外部状态。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：正确。\n依据：课程安全边界要求学习者在没有额外授权时不产生真实外部副作用；只管理个人 skills；不修改插件缓存，不创建插件；不要把一次性制品或不明确的批量目标送入更新流程。\n实践：让同伴检查提示词中是否含有真实账号、客户数据或不可逆动作。"
+        }
+      ]
+    }
+  ]
+}

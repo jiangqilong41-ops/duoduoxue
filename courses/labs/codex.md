@@ -1,6 +1,6 @@
 # 我的 Codex Harness：Mac 实验手册
 
-本手册对应 Codex CLI `0.144.1` 与 `$HOME/.codex` 的 `2026-07-11` 脱敏快照，并以 OpenAI 官方 Customization 文档校准术语。默认实验全部只读：只显示版本、帮助、键名、功能状态、安装状态、布尔存在性或已脱敏路径；不读取凭证或运行态材料，不输出任何 secret。
+本手册对应 Codex CLI `0.144.6` 与 `$HOME/.codex` 的 `2026-07-20` 脱敏快照，并以 OpenAI 官方 Customization 文档校准术语。默认实验全部只读：只显示版本、帮助、键名、功能状态、安装状态、布尔存在性或已脱敏路径；不读取凭证或运行态材料，不输出任何 secret。
 
 ## 操作边界
 
@@ -69,7 +69,7 @@ codex --help | sed -n '/--sandbox/,/--search/p'
 
 ### 观察要点
 
-- 版本应为 `codex-cli 0.144.1`。
+- 版本应为 `codex-cli 0.144.6`。
 - 提取器只检查首个 TOML 表之前的顶层键，只打印已知枚举的固定字面量；嵌套同名键、未知值与行尾注释都不会进入输出。
 - 脱敏快照的非秘密策略值为 `sandbox_mode="danger-full-access"` 与 `approval_policy="never"`。
 - Full Access 与 Never 都是运行边界，不是“更聪明”或“更安全”的模式；组合后不会依赖人工确认兜底。
@@ -110,7 +110,7 @@ sed -n -E \
 
 ### 观察要点
 
-- `codex features list` 只观察功能清单；0.144.1 的 `features` 子命令不支持 `--strict-config`。
+- `codex features list` 只观察功能清单；0.144.6 的 `features` 子命令不支持 `--strict-config`。
 - `mcp-server` 是支持 `--strict-config` 的运行时命令；标准输入立即 EOF，因此解析后退出，不发起模型请求。
 - 第二条命令只显示白名单键名和表类别，不显示右侧值。
 - strict-config 成功只证明语法与字段被接受；该键是否允许出现在当前层、是否受 `requirements.toml` 限制，以及外部服务能否启动仍需单独证据。

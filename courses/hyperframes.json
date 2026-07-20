@@ -1,0 +1,452 @@
+{
+  "course": {
+    "id": "hyperframes",
+    "prefix": "HF",
+    "title": "hyperframes"
+  },
+  "source": {
+    "kind": "local-sanitized",
+    "ref": "hyperframes@0.1.2",
+    "snapshot": "2026-07-20"
+  },
+  "decks": [
+    {
+      "id": "course-hf-01",
+      "code": "HF01",
+      "title": "HF01 插件总览",
+      "order": 1,
+      "lab_ref": "HF01",
+      "source_text": "hyperframes@0.1.2 的 .codex-plugin/plugin.json 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-hf-01-q01",
+          "type": "multiple_choice",
+          "content": "[hyperframes] 场景题：学习者第一次接触该插件，怎样建立正确的课程路径？",
+          "options": [
+            "先学习插件总览，再逐个学习 5 个 canonical skill 的独立单元",
+            "只记住插件名，遇到任务时同时调用全部 skill",
+            "跳过总览，只背每个 display name 的中文字面意思",
+            "先在真实系统执行所有示例，再回头理解风险"
+          ],
+          "answer": "先学习插件总览，再逐个学习 5 个 canonical skill 的独立单元",
+          "explanation": "结论：总览负责建立地图，skill 单元负责形成可观察的选择能力。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：B：全量调用忽略路由边界，也无法判断技能之间的分工；C：字面记忆不能建立适用与不适用场景；D：未经确认的真实写入和发布不属于安全学习路径\n实践：先只读列出插件名、版本与 skill 数量，不调用任何执行工具。"
+        },
+        {
+          "id": "course-hf-01-q02",
+          "type": "multiple_choice",
+          "content": "[hyperframes] 来源题：课程事实应如何与本机插件材料对应？",
+          "options": [
+            "每次启动都自动抓取最新版并覆盖课程",
+            "使用 hyperframes 的 local-sanitized 版本快照，并记录 2026-07-20 日期",
+            "复制插件目录中的全部文件和个人绝对路径",
+            "省略版本与日期，只保留插件营销名称"
+          ],
+          "answer": "使用 hyperframes 的 local-sanitized 版本快照，并记录 2026-07-20 日期",
+          "explanation": "结论：固定版本、来源种类和快照日期才能复核课程内容。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：A：计划采用固定快照，自动漂移会破坏可复现性；C：课程只需中文概括和相对来源，不能复制机器信息；D：缺版本和快照日期就无法追溯课程事实\n实践：对照 manifest 与相邻 agents/openai.yaml，只记录非敏感元数据。"
+        },
+        {
+          "id": "course-hf-01-q03",
+          "type": "multiple_choice",
+          "content": "[hyperframes] 调用题：技能单元中的最小显式调用应包含哪些信息？",
+          "options": [
+            "只写一个模糊任务，不指出任何技能",
+            "只写 display_name，省略插件与 slug",
+            "插件名、skill slug 与 interface.display_name",
+            "写入本机插件缓存的绝对路径"
+          ],
+          "answer": "插件名、skill slug 与 interface.display_name",
+          "explanation": "结论：三项同时出现可把人类可读名称与稳定调用标识对应起来。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：A：无法验证学习者是否会正确显式路由；B：显示名不能替代稳定的技能标识；D：绝对路径是机器特定信息，也不是正常调用接口\n实践：用一个合成场景写出显式调用句，但注明只输出方案。"
+        },
+        {
+          "id": "course-hf-01-q04",
+          "type": "multiple_choice",
+          "content": "[hyperframes] 安全题：课程练习应采用哪种执行边界？",
+          "options": [
+            "使用真实客户数据验证技能是否有效",
+            "让学习者安装所有依赖和插件后再答题",
+            "自动发送、发布或部署，再把链接当作成绩",
+            "只使用合成 fixture、提示词和只读检查，不触碰真实外部状态"
+          ],
+          "answer": "只使用合成 fixture、提示词和只读检查，不触碰真实外部状态",
+          "explanation": "结论：安全练习必须可观察、可复核且不改变真实系统。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：A：客户数据超出教学最小范围并带来隐私风险；B：课程不应把安装和系统变更当作前置动作；C：外部写入需要额外授权，不能由课程练习默认执行\n实践：把任何真实名称替换为虚构占位符，只检查路由、提示词和验收清单。"
+        },
+        {
+          "id": "course-hf-01-q05",
+          "type": "true_false",
+          "content": "[hyperframes] 判断题：只要课程使用的是插件官方 skill，就可以在未确认授权时发送邮件、发布站点或写入生产数据。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "错误",
+          "explanation": "结论：官方 skill 也不自动扩大操作授权。\n依据：技能说明定义流程能力，真实外部写入仍受用户授权、数据边界和运行环境约束。\n实践：练习只提交计划、占位符和只读验收结果。"
+        }
+      ]
+    },
+    {
+      "id": "course-hf-02",
+      "code": "HF02",
+      "title": "HF02 HyperFrames:GSAP 动画参考",
+      "order": 2,
+      "lab_ref": "HF02",
+      "source_text": "hyperframes@0.1.2 的 skills/gsap/SKILL.md 与相邻 agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-hf-02-q01",
+          "type": "multiple_choice",
+          "content": "[HyperFrames:GSAP 动画参考] 场景题：团队遇到以下场景：在 HyperFrames 合成中编写 tween、timeline、缓动、stagger 与性能优化。最合适的下一步是什么？",
+          "options": [
+            "显式调用 $hyperframes:gsap（HyperFrames:GSAP 动画参考），先核对输入和边界",
+            "跳过技能，直接承诺已经交付最终结果",
+            "调用同插件全部技能，让它们自行竞争",
+            "先修改真实外部状态，再补写需求说明"
+          ],
+          "answer": "显式调用 $hyperframes:gsap（HyperFrames:GSAP 动画参考），先核对输入和边界",
+          "explanation": "结论：该场景正是 HyperFrames:GSAP 动画参考 的适用范围。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：B：没有执行相应流程，也缺少可观察证据；C：无差别调用增加上下文和副作用，掩盖清晰分工；D：把不可逆动作放在确认之前违反安全边界\n实践：用合成材料复述任务，并确认输入包含：已存在的 DOM、动画目标、时序、属性与可访问性要求。"
+        },
+        {
+          "id": "course-hf-02-q02",
+          "type": "multiple_choice",
+          "content": "[HyperFrames:GSAP 动画参考] 调用题：评审会上需要明确记录所选技能，哪种写法最完整？",
+          "options": [
+            "只写“使用 HyperFrames:GSAP 动画参考”",
+            "插件 hyperframes；skill gsap；调用 $hyperframes:gsap；显示名 HyperFrames:GSAP 动画参考",
+            "只写插件 hyperframes，不指定 skill",
+            "复制本机缓存绝对路径作为调用语法"
+          ],
+          "answer": "插件 hyperframes；skill gsap；调用 $hyperframes:gsap；显示名 HyperFrames:GSAP 动画参考",
+          "explanation": "结论：插件 hyperframes；skill gsap；调用 $hyperframes:gsap；显示名 HyperFrames:GSAP 动画参考。\n依据：HyperFrames:GSAP 动画参考 的正式入口是 $hyperframes:gsap；同时记录插件、skill slug 与显示名，才能在相似路由间复核选择。\n错误选项：A：省略稳定 slug 与插件名，不能完整核对调用目标；C：插件级名称无法区分内部多个独立技能；D：文件路径不是技能调用接口且会泄露机器特定信息\n实践：在合成场景中写出 $hyperframes:gsap，并补一条不适用条件；不实际执行工具。"
+        },
+        {
+          "id": "course-hf-02-q03",
+          "type": "multiple_choice",
+          "content": "[HyperFrames:GSAP 动画参考] 边界题：出现“需要初始化、预览、渲染或排查 CLI 环境”时，怎样处理最稳妥？",
+          "options": [
+            "仍强制使用该技能，因为课程要求每个技能都执行",
+            "编造缺失输入以让流程继续",
+            "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+            "直接对真实数据、账户或发布面做试错"
+          ],
+          "answer": "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+          "explanation": "结论：停止套用该技能，重新路由或先补齐真正改变选择的条件。\n依据：HyperFrames:GSAP 动画参考 的不适用条件决定何时停止；越过该条件会把本 skill 错当成通用执行器。\n错误选项：A：课程目标是会判断，不是无条件执行；B：虚构事实会污染后续产出和验收；D：真实外部状态不应成为未确认路由的试验场\n实践：为 $hyperframes:gsap 写一个最小反例和替代路由，只输出判断。"
+        },
+        {
+          "id": "course-hf-02-q04",
+          "type": "multiple_choice",
+          "content": "[HyperFrames:GSAP 动画参考] 验收题：怎样证明这个单元已学会，而不是只记住名称？",
+          "options": [
+            "只背出 display_name",
+            "只说任务看起来已完成",
+            "展示一次真实写入或发布截图",
+            "能说明用途、输入“已存在的 DOM、动画目标、时序、属性与可访问性要求”、输出“可注册、可控制且使用 transform 优先的 GSAP 时间线方案”和边界，并在合成场景中选对技能"
+          ],
+          "answer": "能说明用途、输入“已存在的 DOM、动画目标、时序、属性与可访问性要求”、输出“可注册、可控制且使用 transform 优先的 GSAP 时间线方案”和边界，并在合成场景中选对技能",
+          "explanation": "结论：能说明用途、输入“已存在的 DOM、动画目标、时序、属性与可访问性要求”、输出“可注册、可控制且使用 transform 优先的 GSAP 时间线方案”和边界，并在合成场景中选对技能。\n依据：HyperFrames:GSAP 动画参考 的验收必须同时覆盖其输入、输出、边界与可观察证据，不能只记名称。\n错误选项：A：显示名不能证明会判断适用场景；B：没有对应输入、输出或可观察证据；C：不可逆操作不是必要教学证据，也可能越权\n实践：用 <synthetic-fixture> 核对 $hyperframes:gsap 的输入与预期输出，不访问真实状态。"
+        },
+        {
+          "id": "course-hf-02-q05",
+          "type": "true_false",
+          "content": "[HyperFrames:GSAP 动画参考] 判断题：使用 $hyperframes:gsap 时，应保留这条约束——DOM 存在后再建 tween；避免布局属性并在不用时清理动画。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：该约束必须保留。\n依据：它来自 HyperFrames:GSAP 动画参考 的流程或风险边界，能防止把技能能力扩大为未经确认的操作。\n实践：在提示词末尾加入该约束，并只检查模型返回的计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-hf-03",
+      "code": "HF03",
+      "title": "HF03 HyperFrames:HyperFrames 视频制作",
+      "order": 3,
+      "lab_ref": "HF03",
+      "source_text": "hyperframes@0.1.2 的 skills/hyperframes/SKILL.md 与相邻 agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-hf-03-q01",
+          "type": "multiple_choice",
+          "content": "[HyperFrames:HyperFrames 视频制作] 场景题：团队遇到以下场景：创作 HTML 视频合成、字幕、配音、转场和音频响应视觉。最合适的下一步是什么？",
+          "options": [
+            "显式调用 $hyperframes:hyperframes（HyperFrames:HyperFrames 视频制作），先核对输入和边界",
+            "跳过技能，直接承诺已经交付最终结果",
+            "调用同插件全部技能，让它们自行竞争",
+            "先修改真实外部状态，再补写需求说明"
+          ],
+          "answer": "显式调用 $hyperframes:hyperframes（HyperFrames:HyperFrames 视频制作），先核对输入和边界",
+          "explanation": "结论：该场景正是 HyperFrames:HyperFrames 视频制作 的适用范围。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：B：没有执行相应流程，也缺少可观察证据；C：无差别调用增加上下文和副作用，掩盖清晰分工；D：把不可逆动作放在确认之前违反安全边界\n实践：用合成材料复述任务，并确认输入包含：叙事、画幅、素材、时长、布局、视觉风格与音频。"
+        },
+        {
+          "id": "course-hf-03-q02",
+          "type": "multiple_choice",
+          "content": "[HyperFrames:HyperFrames 视频制作] 调用题：评审会上需要明确记录所选技能，哪种写法最完整？",
+          "options": [
+            "只写“使用 HyperFrames:HyperFrames 视频制作”",
+            "插件 hyperframes；skill hyperframes；调用 $hyperframes:hyperframes；显示名 HyperFrames:HyperFrames 视频制作",
+            "只写插件 hyperframes，不指定 skill",
+            "复制本机缓存绝对路径作为调用语法"
+          ],
+          "answer": "插件 hyperframes；skill hyperframes；调用 $hyperframes:hyperframes；显示名 HyperFrames:HyperFrames 视频制作",
+          "explanation": "结论：插件 hyperframes；skill hyperframes；调用 $hyperframes:hyperframes；显示名 HyperFrames:HyperFrames 视频制作。\n依据：HyperFrames:HyperFrames 视频制作 的正式入口是 $hyperframes:hyperframes；同时记录插件、skill slug 与显示名，才能在相似路由间复核选择。\n错误选项：A：省略稳定 slug 与插件名，不能完整核对调用目标；C：插件级名称无法区分内部多个独立技能；D：文件路径不是技能调用接口且会泄露机器特定信息\n实践：在合成场景中写出 $hyperframes:hyperframes，并补一条不适用条件；不实际执行工具。"
+        },
+        {
+          "id": "course-hf-03-q03",
+          "type": "multiple_choice",
+          "content": "[HyperFrames:HyperFrames 视频制作] 边界题：出现“问题仅是 CLI 命令、registry 安装或 GSAP API 查询”时，怎样处理最稳妥？",
+          "options": [
+            "仍强制使用该技能，因为课程要求每个技能都执行",
+            "编造缺失输入以让流程继续",
+            "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+            "直接对真实数据、账户或发布面做试错"
+          ],
+          "answer": "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+          "explanation": "结论：停止套用该技能，重新路由或先补齐真正改变选择的条件。\n依据：HyperFrames:HyperFrames 视频制作 的不适用条件决定何时停止；越过该条件会把本 skill 错当成通用执行器。\n错误选项：A：课程目标是会判断，不是无条件执行；B：虚构事实会污染后续产出和验收；D：真实外部状态不应成为未确认路由的试验场\n实践：为 $hyperframes:hyperframes 写一个最小反例和替代路由，只输出判断。"
+        },
+        {
+          "id": "course-hf-03-q04",
+          "type": "multiple_choice",
+          "content": "[HyperFrames:HyperFrames 视频制作] 验收题：怎样证明这个单元已学会，而不是只记住名称？",
+          "options": [
+            "只背出 display_name",
+            "只说任务看起来已完成",
+            "展示一次真实写入或发布截图",
+            "能说明用途、输入“叙事、画幅、素材、时长、布局、视觉风格与音频”、输出“符合 data 属性和 timeline contract、通过 lint/validate/inspect 的合成项目”和边界，并在合成场景中选对技能"
+          ],
+          "answer": "能说明用途、输入“叙事、画幅、素材、时长、布局、视觉风格与音频”、输出“符合 data 属性和 timeline contract、通过 lint/validate/inspect 的合成项目”和边界，并在合成场景中选对技能",
+          "explanation": "结论：能说明用途、输入“叙事、画幅、素材、时长、布局、视觉风格与音频”、输出“符合 data 属性和 timeline contract、通过 lint/validate/inspect 的合成项目”和边界，并在合成场景中选对技能。\n依据：HyperFrames:HyperFrames 视频制作 的验收必须同时覆盖其输入、输出、边界与可观察证据，不能只记名称。\n错误选项：A：显示名不能证明会判断适用场景；B：没有对应输入、输出或可观察证据；C：不可逆操作不是必要教学证据，也可能越权\n实践：用 <synthetic-fixture> 核对 $hyperframes:hyperframes 的输入与预期输出，不访问真实状态。"
+        },
+        {
+          "id": "course-hf-03-q05",
+          "type": "true_false",
+          "content": "[HyperFrames:HyperFrames 视频制作] 判断题：使用 $hyperframes:hyperframes 时，应保留这条约束——时间线必须同步注册且可确定；多场景必须用转场并保留逐元素入场。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：该约束必须保留。\n依据：它来自 HyperFrames:HyperFrames 视频制作 的流程或风险边界，能防止把技能能力扩大为未经确认的操作。\n实践：在提示词末尾加入该约束，并只检查模型返回的计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-hf-04",
+      "code": "HF04",
+      "title": "HF04 HyperFrames:HyperFrames 命令行",
+      "order": 4,
+      "lab_ref": "HF04",
+      "source_text": "hyperframes@0.1.2 的 skills/hyperframes-cli/SKILL.md 与相邻 agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-hf-04-q01",
+          "type": "multiple_choice",
+          "content": "[HyperFrames:HyperFrames 命令行] 场景题：团队遇到以下场景：初始化、lint、inspect、preview、render、转录或诊断 HyperFrames 项目。最合适的下一步是什么？",
+          "options": [
+            "显式调用 $hyperframes:hyperframes-cli（HyperFrames:HyperFrames 命令行），先核对输入和边界",
+            "跳过技能，直接承诺已经交付最终结果",
+            "调用同插件全部技能，让它们自行竞争",
+            "先修改真实外部状态，再补写需求说明"
+          ],
+          "answer": "显式调用 $hyperframes:hyperframes-cli（HyperFrames:HyperFrames 命令行），先核对输入和边界",
+          "explanation": "结论：该场景正是 HyperFrames:HyperFrames 命令行 的适用范围。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：B：没有执行相应流程，也缺少可观察证据；C：无差别调用增加上下文和副作用，掩盖清晰分工；D：把不可逆动作放在确认之前违反安全边界\n实践：用合成材料复述任务，并确认输入包含：项目目录、所需命令、Node、FFmpeg 与输出质量。"
+        },
+        {
+          "id": "course-hf-04-q02",
+          "type": "multiple_choice",
+          "content": "[HyperFrames:HyperFrames 命令行] 调用题：评审会上需要明确记录所选技能，哪种写法最完整？",
+          "options": [
+            "只写“使用 HyperFrames:HyperFrames 命令行”",
+            "插件 hyperframes；skill hyperframes-cli；调用 $hyperframes:hyperframes-cli；显示名 HyperFrames:HyperFrames 命令行",
+            "只写插件 hyperframes，不指定 skill",
+            "复制本机缓存绝对路径作为调用语法"
+          ],
+          "answer": "插件 hyperframes；skill hyperframes-cli；调用 $hyperframes:hyperframes-cli；显示名 HyperFrames:HyperFrames 命令行",
+          "explanation": "结论：插件 hyperframes；skill hyperframes-cli；调用 $hyperframes:hyperframes-cli；显示名 HyperFrames:HyperFrames 命令行。\n依据：HyperFrames:HyperFrames 命令行 的正式入口是 $hyperframes:hyperframes-cli；同时记录插件、skill slug 与显示名，才能在相似路由间复核选择。\n错误选项：A：省略稳定 slug 与插件名，不能完整核对调用目标；C：插件级名称无法区分内部多个独立技能；D：文件路径不是技能调用接口且会泄露机器特定信息\n实践：在合成场景中写出 $hyperframes:hyperframes-cli，并补一条不适用条件；不实际执行工具。"
+        },
+        {
+          "id": "course-hf-04-q03",
+          "type": "multiple_choice",
+          "content": "[HyperFrames:HyperFrames 命令行] 边界题：出现“主要任务是设计合成内容或编写动画细节”时，怎样处理最稳妥？",
+          "options": [
+            "仍强制使用该技能，因为课程要求每个技能都执行",
+            "编造缺失输入以让流程继续",
+            "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+            "直接对真实数据、账户或发布面做试错"
+          ],
+          "answer": "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+          "explanation": "结论：停止套用该技能，重新路由或先补齐真正改变选择的条件。\n依据：HyperFrames:HyperFrames 命令行 的不适用条件决定何时停止；越过该条件会把本 skill 错当成通用执行器。\n错误选项：A：课程目标是会判断，不是无条件执行；B：虚构事实会污染后续产出和验收；D：真实外部状态不应成为未确认路由的试验场\n实践：为 $hyperframes:hyperframes-cli 写一个最小反例和替代路由，只输出判断。"
+        },
+        {
+          "id": "course-hf-04-q04",
+          "type": "multiple_choice",
+          "content": "[HyperFrames:HyperFrames 命令行] 验收题：怎样证明这个单元已学会，而不是只记住名称？",
+          "options": [
+            "只背出 display_name",
+            "只说任务看起来已完成",
+            "展示一次真实写入或发布截图",
+            "能说明用途、输入“项目目录、所需命令、Node、FFmpeg 与输出质量”、输出“CLI 检查结果、Studio 项目 URL 或明确请求后的渲染文件”和边界，并在合成场景中选对技能"
+          ],
+          "answer": "能说明用途、输入“项目目录、所需命令、Node、FFmpeg 与输出质量”、输出“CLI 检查结果、Studio 项目 URL 或明确请求后的渲染文件”和边界，并在合成场景中选对技能",
+          "explanation": "结论：能说明用途、输入“项目目录、所需命令、Node、FFmpeg 与输出质量”、输出“CLI 检查结果、Studio 项目 URL 或明确请求后的渲染文件”和边界，并在合成场景中选对技能。\n依据：HyperFrames:HyperFrames 命令行 的验收必须同时覆盖其输入、输出、边界与可观察证据，不能只记名称。\n错误选项：A：显示名不能证明会判断适用场景；B：没有对应输入、输出或可观察证据；C：不可逆操作不是必要教学证据，也可能越权\n实践：用 <synthetic-fixture> 核对 $hyperframes:hyperframes-cli 的输入与预期输出，不访问真实状态。"
+        },
+        {
+          "id": "course-hf-04-q05",
+          "type": "true_false",
+          "content": "[HyperFrames:HyperFrames 命令行] 判断题：使用 $hyperframes:hyperframes-cli 时，应保留这条约束——先 lint 和 inspect 再 preview/render；交付 Studio URL 而不是把 index.html 当预览。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：该约束必须保留。\n依据：它来自 HyperFrames:HyperFrames 命令行 的流程或风险边界，能防止把技能能力扩大为未经确认的操作。\n实践：在提示词末尾加入该约束，并只检查模型返回的计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-hf-05",
+      "code": "HF05",
+      "title": "HF05 HyperFrames:HyperFrames 组件库",
+      "order": 5,
+      "lab_ref": "HF05",
+      "source_text": "hyperframes@0.1.2 的 skills/hyperframes-registry/SKILL.md 与相邻 agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-hf-05-q01",
+          "type": "multiple_choice",
+          "content": "[HyperFrames:HyperFrames 组件库] 场景题：团队遇到以下场景：发现、安装并接线 HyperFrames blocks 或 components。最合适的下一步是什么？",
+          "options": [
+            "显式调用 $hyperframes:hyperframes-registry（HyperFrames:HyperFrames 组件库），先核对输入和边界",
+            "跳过技能，直接承诺已经交付最终结果",
+            "调用同插件全部技能，让它们自行竞争",
+            "先修改真实外部状态，再补写需求说明"
+          ],
+          "answer": "显式调用 $hyperframes:hyperframes-registry（HyperFrames:HyperFrames 组件库），先核对输入和边界",
+          "explanation": "结论：该场景正是 HyperFrames:HyperFrames 组件库 的适用范围。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：B：没有执行相应流程，也缺少可观察证据；C：无差别调用增加上下文和副作用，掩盖清晰分工；D：把不可逆动作放在确认之前违反安全边界\n实践：用合成材料复述任务，并确认输入包含：registry item 名称、项目目录、宿主合成和安装输出。"
+        },
+        {
+          "id": "course-hf-05-q02",
+          "type": "multiple_choice",
+          "content": "[HyperFrames:HyperFrames 组件库] 调用题：评审会上需要明确记录所选技能，哪种写法最完整？",
+          "options": [
+            "只写“使用 HyperFrames:HyperFrames 组件库”",
+            "插件 hyperframes；skill hyperframes-registry；调用 $hyperframes:hyperframes-registry；显示名 HyperFrames:HyperFrames 组件库",
+            "只写插件 hyperframes，不指定 skill",
+            "复制本机缓存绝对路径作为调用语法"
+          ],
+          "answer": "插件 hyperframes；skill hyperframes-registry；调用 $hyperframes:hyperframes-registry；显示名 HyperFrames:HyperFrames 组件库",
+          "explanation": "结论：插件 hyperframes；skill hyperframes-registry；调用 $hyperframes:hyperframes-registry；显示名 HyperFrames:HyperFrames 组件库。\n依据：HyperFrames:HyperFrames 组件库 的正式入口是 $hyperframes:hyperframes-registry；同时记录插件、skill slug 与显示名，才能在相似路由间复核选择。\n错误选项：A：省略稳定 slug 与插件名，不能完整核对调用目标；C：插件级名称无法区分内部多个独立技能；D：文件路径不是技能调用接口且会泄露机器特定信息\n实践：在合成场景中写出 $hyperframes:hyperframes-registry，并补一条不适用条件；不实际执行工具。"
+        },
+        {
+          "id": "course-hf-05-q03",
+          "type": "multiple_choice",
+          "content": "[HyperFrames:HyperFrames 组件库] 边界题：出现“要使用 example 模板，或不需要复用 registry 项”时，怎样处理最稳妥？",
+          "options": [
+            "仍强制使用该技能，因为课程要求每个技能都执行",
+            "编造缺失输入以让流程继续",
+            "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+            "直接对真实数据、账户或发布面做试错"
+          ],
+          "answer": "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+          "explanation": "结论：停止套用该技能，重新路由或先补齐真正改变选择的条件。\n依据：HyperFrames:HyperFrames 组件库 的不适用条件决定何时停止；越过该条件会把本 skill 错当成通用执行器。\n错误选项：A：课程目标是会判断，不是无条件执行；B：虚构事实会污染后续产出和验收；D：真实外部状态不应成为未确认路由的试验场\n实践：为 $hyperframes:hyperframes-registry 写一个最小反例和替代路由，只输出判断。"
+        },
+        {
+          "id": "course-hf-05-q04",
+          "type": "multiple_choice",
+          "content": "[HyperFrames:HyperFrames 组件库] 验收题：怎样证明这个单元已学会，而不是只记住名称？",
+          "options": [
+            "只背出 display_name",
+            "只说任务看起来已完成",
+            "展示一次真实写入或发布截图",
+            "能说明用途、输入“registry item 名称、项目目录、宿主合成和安装输出”、输出“正确路径的区块或组件以及匹配宿主的接线片段”和边界，并在合成场景中选对技能"
+          ],
+          "answer": "能说明用途、输入“registry item 名称、项目目录、宿主合成和安装输出”、输出“正确路径的区块或组件以及匹配宿主的接线片段”和边界，并在合成场景中选对技能",
+          "explanation": "结论：能说明用途、输入“registry item 名称、项目目录、宿主合成和安装输出”、输出“正确路径的区块或组件以及匹配宿主的接线片段”和边界，并在合成场景中选对技能。\n依据：HyperFrames:HyperFrames 组件库 的验收必须同时覆盖其输入、输出、边界与可观察证据，不能只记名称。\n错误选项：A：显示名不能证明会判断适用场景；B：没有对应输入、输出或可观察证据；C：不可逆操作不是必要教学证据，也可能越权\n实践：用 <synthetic-fixture> 核对 $hyperframes:hyperframes-registry 的输入与预期输出，不访问真实状态。"
+        },
+        {
+          "id": "course-hf-05-q05",
+          "type": "true_false",
+          "content": "[HyperFrames:HyperFrames 组件库] 判断题：使用 $hyperframes:hyperframes-registry 时，应保留这条约束——block 用 data-composition-src；component 合并片段，二者不能混用。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：该约束必须保留。\n依据：它来自 HyperFrames:HyperFrames 组件库 的流程或风险边界，能防止把技能能力扩大为未经确认的操作。\n实践：在提示词末尾加入该约束，并只检查模型返回的计划和验收项。"
+        }
+      ]
+    },
+    {
+      "id": "course-hf-06",
+      "code": "HF06",
+      "title": "HF06 HyperFrames:网站转 HyperFrames 视频",
+      "order": 6,
+      "lab_ref": "HF06",
+      "source_text": "hyperframes@0.1.2 的 skills/website-to-hyperframes/SKILL.md 与相邻 agents/openai.yaml 本地脱敏快照；快照日期 2026-07-20。",
+      "questions": [
+        {
+          "id": "course-hf-06-q01",
+          "type": "multiple_choice",
+          "content": "[HyperFrames:网站转 HyperFrames 视频] 场景题：团队遇到以下场景：从一个网站 URL 制作产品宣传、导览或社交视频。最合适的下一步是什么？",
+          "options": [
+            "显式调用 $hyperframes:website-to-hyperframes（HyperFrames:网站转 HyperFrames 视频），先核对输入和边界",
+            "跳过技能，直接承诺已经交付最终结果",
+            "调用同插件全部技能，让它们自行竞争",
+            "先修改真实外部状态，再补写需求说明"
+          ],
+          "answer": "显式调用 $hyperframes:website-to-hyperframes（HyperFrames:网站转 HyperFrames 视频），先核对输入和边界",
+          "explanation": "结论：该场景正是 HyperFrames:网站转 HyperFrames 视频 的适用范围。\n依据：题目描述的目标与该技能的用途、输入输出和边界一致。\n错误选项：B：没有执行相应流程，也缺少可观察证据；C：无差别调用增加上下文和副作用，掩盖清晰分工；D：把不可逆动作放在确认之前违反安全边界\n实践：用合成材料复述任务，并确认输入包含：可抓取 URL、目标受众、视频类型、画幅、时长与品牌素材。"
+        },
+        {
+          "id": "course-hf-06-q02",
+          "type": "multiple_choice",
+          "content": "[HyperFrames:网站转 HyperFrames 视频] 调用题：评审会上需要明确记录所选技能，哪种写法最完整？",
+          "options": [
+            "只写“使用 HyperFrames:网站转 HyperFrames 视频”",
+            "插件 hyperframes；skill website-to-hyperframes；调用 $hyperframes:website-to-hyperframes；显示名 HyperFrames:网站转 HyperFrames 视频",
+            "只写插件 hyperframes，不指定 skill",
+            "复制本机缓存绝对路径作为调用语法"
+          ],
+          "answer": "插件 hyperframes；skill website-to-hyperframes；调用 $hyperframes:website-to-hyperframes；显示名 HyperFrames:网站转 HyperFrames 视频",
+          "explanation": "结论：插件 hyperframes；skill website-to-hyperframes；调用 $hyperframes:website-to-hyperframes；显示名 HyperFrames:网站转 HyperFrames 视频。\n依据：HyperFrames:网站转 HyperFrames 视频 的正式入口是 $hyperframes:website-to-hyperframes；同时记录插件、skill slug 与显示名，才能在相似路由间复核选择。\n错误选项：A：省略稳定 slug 与插件名，不能完整核对调用目标；C：插件级名称无法区分内部多个独立技能；D：文件路径不是技能调用接口且会泄露机器特定信息\n实践：在合成场景中写出 $hyperframes:website-to-hyperframes，并补一条不适用条件；不实际执行工具。"
+        },
+        {
+          "id": "course-hf-06-q03",
+          "type": "multiple_choice",
+          "content": "[HyperFrames:网站转 HyperFrames 视频] 边界题：出现“只是调整现有合成的一个颜色、时长或元素”时，怎样处理最稳妥？",
+          "options": [
+            "仍强制使用该技能，因为课程要求每个技能都执行",
+            "编造缺失输入以让流程继续",
+            "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+            "直接对真实数据、账户或发布面做试错"
+          ],
+          "answer": "停止套用该技能，重新路由或先补齐真正改变选择的条件",
+          "explanation": "结论：停止套用该技能，重新路由或先补齐真正改变选择的条件。\n依据：HyperFrames:网站转 HyperFrames 视频 的不适用条件决定何时停止；越过该条件会把本 skill 错当成通用执行器。\n错误选项：A：课程目标是会判断，不是无条件执行；B：虚构事实会污染后续产出和验收；D：真实外部状态不应成为未确认路由的试验场\n实践：为 $hyperframes:website-to-hyperframes 写一个最小反例和替代路由，只输出判断。"
+        },
+        {
+          "id": "course-hf-06-q04",
+          "type": "multiple_choice",
+          "content": "[HyperFrames:网站转 HyperFrames 视频] 验收题：怎样证明这个单元已学会，而不是只记住名称？",
+          "options": [
+            "只背出 display_name",
+            "只说任务看起来已完成",
+            "展示一次真实写入或发布截图",
+            "能说明用途、输入“可抓取 URL、目标受众、视频类型、画幅、时长与品牌素材”、输出“按七个 gate 生成捕获摘要、DESIGN、SCRIPT、STORYBOARD、配音、合成和 Studio 链接”和边界，并在合成场景中选对技能"
+          ],
+          "answer": "能说明用途、输入“可抓取 URL、目标受众、视频类型、画幅、时长与品牌素材”、输出“按七个 gate 生成捕获摘要、DESIGN、SCRIPT、STORYBOARD、配音、合成和 Studio 链接”和边界，并在合成场景中选对技能",
+          "explanation": "结论：能说明用途、输入“可抓取 URL、目标受众、视频类型、画幅、时长与品牌素材”、输出“按七个 gate 生成捕获摘要、DESIGN、SCRIPT、STORYBOARD、配音、合成和 Studio 链接”和边界，并在合成场景中选对技能。\n依据：HyperFrames:网站转 HyperFrames 视频 的验收必须同时覆盖其输入、输出、边界与可观察证据，不能只记名称。\n错误选项：A：显示名不能证明会判断适用场景；B：没有对应输入、输出或可观察证据；C：不可逆操作不是必要教学证据，也可能越权\n实践：用 <synthetic-fixture> 核对 $hyperframes:website-to-hyperframes 的输入与预期输出，不访问真实状态。"
+        },
+        {
+          "id": "course-hf-06-q05",
+          "type": "true_false",
+          "content": "[HyperFrames:网站转 HyperFrames 视频] 判断题：使用 $hyperframes:website-to-hyperframes 时，应保留这条约束——每步产物通过 gate 后才继续；默认先交 Studio URL，MP4 需用户明确要求。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "answer": "正确",
+          "explanation": "结论：该约束必须保留。\n依据：它来自 HyperFrames:网站转 HyperFrames 视频 的流程或风险边界，能防止把技能能力扩大为未经确认的操作。\n实践：在提示词末尾加入该约束，并只检查模型返回的计划和验收项。"
+        }
+      ]
+    }
+  ]
+}
