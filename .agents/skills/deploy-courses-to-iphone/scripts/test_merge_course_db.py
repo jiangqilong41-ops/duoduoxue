@@ -302,6 +302,18 @@ class MergeCourseDatabaseTest(unittest.TestCase):
         self.assert_success(result, decks=0, questions=0)
         self.assertEqual(self.output.read_bytes(), self.device.read_bytes())
 
+    def test_accepts_legacy_null_matching_columns_for_non_matching_question(self) -> None:
+        base = deck("course-aa-01")
+        device_question = question("course-aa-01-q01", "course-aa-01")
+        seed_question = (*device_question[:-2], "[]", "[]")
+        create_database(self.device, decks=(base,), questions=(device_question,))
+        create_database(self.seed, decks=(base,), questions=(seed_question,))
+
+        result = self.run_merge()
+
+        self.assert_success(result, decks=0, questions=0)
+        self.assertEqual(self.output.read_bytes(), self.device.read_bytes())
+
     def test_copies_each_input_once_before_using_private_snapshots(self) -> None:
         base = deck("course-aa-01")
         first = question("course-aa-01-q01", "course-aa-01")

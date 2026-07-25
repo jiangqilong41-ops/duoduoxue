@@ -335,6 +335,23 @@ def _differences(
     ]
 
 
+def _question_differences(
+    device_row: tuple[Any, ...],
+    seed_row: tuple[Any, ...],
+) -> list[str]:
+    changed = _differences(QUESTION_COLUMNS, device_row, seed_row)
+    type_index = QUESTION_COLUMNS.index("type")
+    if device_row[type_index] == seed_row[type_index] != "matching":
+        for column in ("match_left", "match_right"):
+            index = QUESTION_COLUMNS.index(column)
+            if column in changed and {device_row[index], seed_row[index]} <= {
+                None,
+                "[]",
+            }:
+                changed.remove(column)
+    return changed
+
+
 def _plan_additions(
     device: dict[str, dict[Any, tuple[Any, ...]]],
     seed: dict[str, dict[Any, tuple[Any, ...]]],
@@ -362,7 +379,7 @@ def _plan_additions(
         if device_row is None:
             added_questions.append(seed_row)
             continue
-        changed = _differences(QUESTION_COLUMNS, device_row, seed_row)
+        changed = _question_differences(device_row, seed_row)
         if changed:
             raise MergeError(
                 f"question id conflict {question_id!r}; differing fields: "
